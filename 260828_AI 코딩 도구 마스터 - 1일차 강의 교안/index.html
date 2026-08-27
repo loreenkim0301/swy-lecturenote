@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>260828_AI 코딩 도구 마스터 - 1일차 강의 교안</title>
+<title>260828_AI 코딩 도구 마스터 강의 교안</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -17,9 +17,6 @@
   .flowrow .chip b{ display:block; font-size:14px; }
   .flowrow .chip small{ color:var(--ink-muted); font-size:12px; }
   .flowrow .arrow{ color:var(--ink-muted); }
-  .checklist2{ list-style:none; margin:16px 0 0; padding:0; display:flex; flex-direction:column; gap:8px; }
-  .checklist2 li{ display:flex; gap:10px; align-items:flex-start; background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:10px 12px; font-size:14px; }
-  .checklist2 input{ margin-top:3px; flex:none; }
 </style>
 </head>
 <body>
@@ -30,7 +27,7 @@
 <div class="page">
   <nav class="sidebar">
     <a class="home-link" href="/swy-lecturenote/">&larr; 전체 교안 목록</a>
-    <div class="doc-title">AI 코딩 도구 마스터<br>1일차 강의 교안</div>
+    <div class="doc-title">AI 코딩 도구 마스터<br>강의 교안</div>
     <div class="toc-label">목차</div>
     <ol>
       <li><a href="#overview">교육 개요</a></li>
@@ -49,14 +46,14 @@
           <li><a href="#s3-publish">2.4 배포·테스트</a></li>
         </ol>
       </li>
-      <li><a href="#wrapup">3. 오늘의 마무리 체크리스트</a></li>
+      <li><a href="#wrapup">3. 마무리 정리</a></li>
     </ol>
   </nav>
 
   <main class="content">
 
     <header class="doc-header">
-      <div class="date">SELECTWAY · 바이브 코딩 창업 교육 1일차 · 8.28 FRI · 09:00–18:00</div>
+      <div class="date">2026.08.28 교안</div>
       <h1>AI 코딩 도구 마스터 — 아이디어를 작동하는 화면으로</h1>
       <p class="lede">창업·예비창업자가 AI와 대화하며 이벤트 신청 페이지를 만들고 배포해봐요. 개발자와 소통할 때 필요한 프론트엔드·백엔드·데이터베이스·배포의 관계도 함께 익혀요.</p>
     </header>
@@ -65,7 +62,7 @@
       <div class="card"><b>대상</b><br><span style="font-size:13.5px; color:var(--ink-muted);">창업·예비창업자</span></div>
       <div class="card"><b>수준</b><br><span style="font-size:13.5px; color:var(--ink-muted);">비개발자·터미널 처음</span></div>
       <div class="card"><b>방식</b><br><span style="font-size:13.5px; color:var(--ink-muted);">이해 → 생성 → 배포 → 정리</span></div>
-      <div class="card"><b>결과</b><br><span style="font-size:13.5px; color:var(--ink-muted);">신청 페이지·배포 주소·체크리스트</span></div>
+      <div class="card"><b>결과</b><br><span style="font-size:13.5px; color:var(--ink-muted);">신청 페이지·배포 주소</span></div>
     </div>
 
     <section id="overview">
@@ -76,24 +73,14 @@
       <div class="grid3">
         <div class="card"><span class="step-num">1</span><h3 style="display:inline;">직접 만들기</h3><p style="margin-top:8px;">간단한 디자인 프로토타입과 회사 홈페이지 수준의 화면을 생성해요.</p></div>
         <div class="card"><span class="step-num">2</span><h3 style="display:inline;">구조 이해하기</h3><p style="margin-top:8px;">프론트엔드·백엔드·DB·배포를 신청 페이지 흐름으로 이해해요.</p></div>
-        <div class="card"><span class="step-num">3</span><h3 style="display:inline;">정리하기</h3><p style="margin-top:8px;">배포 주소와 오늘의 체크리스트를 정리해요.</p></div>
+        <div class="card"><span class="step-num">3</span><h3 style="display:inline;">정리하기</h3><p style="margin-top:8px;">배포 주소와 오늘 배운 내용을 정리해요.</p></div>
       </div>
 
-      <div class="notice"><span class="label">결과물</span>1일차 공통 결과물 — Bolt 이벤트 신청 페이지 · 배포 주소 · 오늘의 체크리스트</div>
-
-      <h2 class="sub-title">1일차 교육 시간표</h2>
-      <div class="tablewrap">
-        <table>
-          <tr><th>시간</th><th>내용</th></tr>
-          <tr><td>09:00–11:00</td><td>바이브코딩 이해·최신 도구·최소 기술 개념</td></tr>
-          <tr><td>11:00–17:00</td><td>Bolt.new 이벤트 신청 페이지 제작·배포</td></tr>
-          <tr><td>17:00–18:00</td><td>오늘의 마무리 체크리스트·공유</td></tr>
-        </table>
-      </div>
+      <div class="notice"><span class="label">결과물</span>공통 결과물 — Bolt 이벤트 신청 페이지 · 배포 주소</div>
 
       <details>
-        <summary>전체 과정에서 1일차의 역할</summary>
-        <p>1일차는 완성도 높은 서비스를 개발하는 날이 아니라, 아이디어가 화면·데이터·배포로 이어지는 전체 흐름을 한 번 경험하는 날이에요. 이후 과정에서 개발 프로세스와 아키텍처를 더 깊게 배울 때 오늘의 결과물을 공통 사례로 사용해요.</p>
+        <summary>전체 과정에서 이 교안의 역할</summary>
+        <p>이 교안은 완성도 높은 서비스를 개발하는 자리가 아니라, 아이디어가 화면·데이터·배포로 이어지는 전체 흐름을 한 번 경험하는 자리예요. 이후 과정에서 개발 프로세스와 아키텍처를 더 깊게 배울 때 오늘의 결과물을 공통 사례로 사용해요.</p>
       </details>
     </section>
 
@@ -105,7 +92,7 @@
       <h2 class="sub-title" id="s1-goal">1.1 창업자에게 바이브코딩이 필요한 이유</h2>
       <p>창업자가 모든 코드를 직접 작성할 필요는 없어요. 다만 아이디어를 빠르게 화면으로 확인하고, 작은 홈페이지나 프로토타입을 직접 배포하며, 개발자에게 원하는 기능과 데이터 흐름을 설명할 수 있으면 초기 검증 속도가 빨라져요.</p>
 
-      <h4>1일차에 경험하는 창업자의 작업 흐름</h4>
+      <h4>창업자의 작업 흐름</h4>
       <div class="flowrow">
         <div class="chip"><b>1. 설명</b><small>고객과 문제 정의</small></div>
         <span class="arrow">&rarr;</span>
@@ -238,17 +225,17 @@
     </section>
 
     <section id="wrapup">
-      <h1 class="section-title">3. 오늘의 마무리 체크리스트</h1>
-      <ul class="checklist2">
-        <li><input type="checkbox"><span>창업자에게 바이브코딩이 필요한 이유와 한계를 설명한다</span></li>
-        <li><input type="checkbox"><span>최신 도구의 역할을 구분한다</span></li>
-        <li><input type="checkbox"><span>프론트엔드·백엔드·DB·배포의 관계를 설명한다</span></li>
-        <li><input type="checkbox"><span>Bolt.new로 이벤트 신청 페이지를 만들었다</span></li>
-        <li><input type="checkbox"><span>입력값 검증과 DB 저장 여부를 확인했다</span></li>
-        <li><input type="checkbox"><span>배포 주소를 다른 기기에서 열어 보았다</span></li>
-        <li><input type="checkbox"><span>오늘 만든 결과와 배운 점을 한 줄로 정리한다</span></li>
-        <li><input type="checkbox"><span>다음 수업에서 확인할 질문을 적어 둔다</span></li>
-      </ul>
+      <h1 class="section-title">3. 마무리 정리</h1>
+      <ol>
+        <li>창업자에게 바이브코딩이 필요한 이유와 한계를 설명한다</li>
+        <li>최신 도구의 역할을 구분한다</li>
+        <li>프론트엔드·백엔드·DB·배포의 관계를 설명한다</li>
+        <li>Bolt.new로 이벤트 신청 페이지를 만들었다</li>
+        <li>입력값 검증과 DB 저장 여부를 확인했다</li>
+        <li>배포 주소를 다른 기기에서 열어 보았다</li>
+        <li>오늘 만든 결과와 배운 점을 한 줄로 정리한다</li>
+        <li>다음 수업에서 확인할 질문을 적어 둔다</li>
+      </ol>
 
       <div class="tip" style="margin-top:20px;"><span class="label">다음 과정</span><strong>개발 프로세스와 소프트웨어 아키텍처</strong> — 오늘 경험한 화면·요청 처리·데이터 저장·배포 흐름을 바탕으로 서비스 개발 단계와 구조를 더 깊게 학습해요.</div>
 
