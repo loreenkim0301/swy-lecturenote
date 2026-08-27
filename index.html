@@ -94,6 +94,37 @@
     font-size: 0.85rem;
     margin-right: 0.5rem;
   }
+  a {
+    color: #2563eb;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  a:hover { color: #1d4ed8; }
+  .link-line {
+    font-size: 0.9rem;
+    margin: 0.4rem 0 0;
+  }
+  .link-line::before { content: "🔗 "; }
+
+  .prompt-wrap {
+    position: relative;
+    margin: 0.75rem 0;
+  }
+  .prompt-wrap .prompt-box { margin: 0; padding-right: 4.5rem; }
+  .copy-btn {
+    position: absolute;
+    top: 0.55rem;
+    right: 0.55rem;
+    background: #374151;
+    color: #e5e7eb;
+    border: 1px solid #4b5563;
+    border-radius: 6px;
+    padding: 0.3rem 0.65rem;
+    font-size: 0.78rem;
+    cursor: pointer;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Pretendard, Roboto, sans-serif;
+  }
+  .copy-btn:hover { background: #4b5563; }
 
   /* ---- 목업(가짜 화면) 공통 ---- */
   .mockup-caption {
@@ -244,9 +275,9 @@
     <h3>준비물</h3>
     <div class="prep-box">
       <ul>
-        <li>GitHub 계정 1개 (없다면 github.com에서 무료로 가입)</li>
-        <li>웹페이지를 담을 GitHub 저장소(repository) 1개</li>
-        <li>Claude 웹 채팅(Claude Code) 접속 화면</li>
+        <li>GitHub 계정 1개 (없다면 <a href="https://github.com/join" target="_blank" rel="noopener">github.com/join</a>에서 무료로 가입)</li>
+        <li>웹페이지를 담을 GitHub 저장소(repository) 1개 — 이번 실습 예시: <a href="https://github.com/loreenkim0301/swy-lecturenote" target="_blank" rel="noopener">github.com/loreenkim0301/swy-lecturenote</a></li>
+        <li>Claude 웹 채팅(Claude Code) 접속 화면 — <a href="https://claude.ai/code" target="_blank" rel="noopener">claude.ai/code</a></li>
       </ul>
     </div>
   </section>
@@ -254,8 +285,11 @@
   <section>
     <h2>STEP 1. Claude에게 딱 한 문장으로 요청하기</h2>
     <p>Claude Code 채팅창에 아래 문장을 그대로 입력합니다. 코드를 몰라도 됩니다 — 이 문장 하나가 시작입니다.</p>
-    <div class="prompt-box">여기서 시작한다.
+    <div class="prompt-wrap">
+      <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+      <div class="prompt-box">여기서 시작한다.
 hello 페이지를 하나 띄워서 배포해줘.</div>
+    </div>
 
     <div class="chat-mock">
       <div class="head">Claude Code — Hello 페이지 배포</div>
@@ -299,6 +333,7 @@ hello 페이지를 하나 띄워서 배포해줘.</div>
       <li>브라우저를 열고 내 GitHub 저장소 주소로 들어갑니다.<br>예) <code>https://github.com/내계정/저장소이름</code></li>
       <li>로그인이 안 되어 있으면 먼저 로그인합니다.</li>
     </ol>
+    <p class="link-line">이번 실습 저장소로 바로 가기: <a href="https://github.com/loreenkim0301/swy-lecturenote" target="_blank" rel="noopener">github.com/loreenkim0301/swy-lecturenote</a></p>
 
     <h3><span class="step-num">2</span>"Settings"(설정) 메뉴 찾기</h3>
     <ol>
@@ -322,6 +357,7 @@ hello 페이지를 하나 띄워서 배포해줘.</div>
       <li>지금은 보통 "None" 또는 "Deploy from a branch"로 되어 있습니다.</li>
       <li>드롭다운에서 <b>"GitHub Actions"</b>를 선택합니다. 보통 자동으로 저장됩니다.</li>
     </ol>
+    <p class="link-line">Pages 설정 화면 바로 가기: <a href="https://github.com/loreenkim0301/swy-lecturenote/settings/pages" target="_blank" rel="noopener">github.com/loreenkim0301/swy-lecturenote/settings/pages</a></p>
   </section>
 
   <section>
@@ -333,6 +369,7 @@ hello 페이지를 하나 띄워서 배포해줘.</div>
       <li><b>"Change repository visibility"</b> 항목 오른쪽의 <b>"Change visibility"</b> 버튼을 클릭합니다.</li>
       <li>펼쳐지는 메뉴에서 <b>"Change to public"</b>을 선택하고, 안내에 따라 저장소 이름을 입력해 확인합니다.</li>
     </ol>
+    <p class="link-line">Danger Zone 바로 가기: <a href="https://github.com/loreenkim0301/swy-lecturenote/settings" target="_blank" rel="noopener">github.com/loreenkim0301/swy-lecturenote/settings</a> (맨 아래로 스크롤)</p>
 
     <div class="github-mock">
       <div class="head">Danger Zone</div>
@@ -355,12 +392,15 @@ hello 페이지를 하나 띄워서 배포해줘.</div>
     <h2>STEP 4. 완성된 페이지 확인하기</h2>
     <p>Pages 설정을 마치면, Claude에게 "설정 끝났어"라고 알려주세요. Claude가 배포를 다시 실행하고 성공 여부를 확인해줍니다.</p>
     <p>배포가 성공하면 아래와 같은 주소로 내 웹페이지를 열어볼 수 있습니다.</p>
-    <div class="prompt-box">https://내계정.github.io/저장소이름/</div>
+    <div class="prompt-wrap">
+      <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+      <div class="prompt-box">https://내계정.github.io/저장소이름/</div>
+    </div>
 
     <div class="browser-mock">
       <div class="bar">
         <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-        <span class="url">loreenkim0301.github.io/swy-lecturenote/</span>
+        <span class="url"><a href="https://loreenkim0301.github.io/swy-lecturenote/" target="_blank" rel="noopener" style="color:#374151;">loreenkim0301.github.io/swy-lecturenote/</a></span>
       </div>
       <div class="content">
         <div class="card">
@@ -370,6 +410,7 @@ hello 페이지를 하나 띄워서 배포해줘.</div>
       </div>
     </div>
     <p class="mockup-caption">▲ 완성된 hello 페이지가 실제로 열린 모습(재현 이미지)</p>
+    <p class="link-line">이번 실습 결과물 바로 열어보기: <a href="https://loreenkim0301.github.io/swy-lecturenote/" target="_blank" rel="noopener">loreenkim0301.github.io/swy-lecturenote</a></p>
   </section>
 
   <section>
@@ -397,34 +438,93 @@ hello 페이지를 하나 띄워서 배포해줘.</div>
     <p>참고용으로, 이 교안을 만드는 동안 Claude 웹 채팅(Claude Code)에 실제로 입력했던 문장들을 순서대로 그대로 옮겨두었습니다. 그대로 따라 입력해봐도 좋습니다.</p>
 
     <h3><span class="step-num">1</span>웹페이지 배포 요청</h3>
-    <div class="prompt-box">여기서 시작한다.
+    <div class="prompt-wrap">
+      <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+      <div class="prompt-box">여기서 시작한다.
 hello 페이지를 하나 띄워서 배포해줘.</div>
+    </div>
 
     <h3><span class="step-num">2</span>남은 단계 상세 설명 요청</h3>
-    <div class="prompt-box">어떻게 해야할지, 남은 한 단계 (사용자가 직접 해야 함)를 초등학생도 따라가도록 상세하게 설명.</div>
+    <div class="prompt-wrap">
+      <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+      <div class="prompt-box">어떻게 해야할지, 남은 한 단계 (사용자가 직접 해야 함)를 초등학생도 따라가도록 상세하게 설명.</div>
+    </div>
 
     <h3><span class="step-num">3</span>Ctrl+F 팁 추가 요청</h3>
-    <div class="prompt-box">키워드나 메뉴를 못 찾는다면 '컨트롤 + F키' 눌러서 해당 'Pages' 단어를 검색하면 빠르다. 라고 추가. 3단계에 추가.</div>
+    <div class="prompt-wrap">
+      <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+      <div class="prompt-box">키워드나 메뉴를 못 찾는다면 '컨트롤 + F키' 눌러서 해당 'Pages' 단어를 검색하면 빠르다. 라고 추가. 3단계에 추가.</div>
+    </div>
 
     <h3><span class="step-num">4</span>Private 저장소 관련 내용 추가 + 설정 완료 알림</h3>
-    <div class="prompt-box">그리고 나는 처음에 실수로 private 으로 만들었더니, 업그레이드 플랜하거나 퍼블릭으로 바꾸라고 되어 있었음. 이 부분 단계 중간에 추가.
+    <div class="prompt-wrap">
+      <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+      <div class="prompt-box">그리고 나는 처음에 실수로 private 으로 만들었더니, 업그레이드 플랜하거나 퍼블릭으로 바꾸라고 되어 있었음. 이 부분 단계 중간에 추가.
 
 설정 끝났어.</div>
+    </div>
 
     <h3><span class="step-num">5</span>교안 제작 및 배포 요청 (스크린샷 3장 첨부)</h3>
-    <div class="prompt-box">[스크린샷 3장 첨부: 완성된 Hello 페이지 / Claude Code 채팅 화면 / GitHub Danger Zone 화면]
+    <div class="prompt-wrap">
+      <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+      <div class="prompt-box">[스크린샷 3장 첨부: 완성된 Hello 페이지 / Claude Code 채팅 화면 / GitHub Danger Zone 화면]
 첨부한 이미지들을 재가공/포함해서 전체적으로 초등학생도 지금처럼 따라갈 수 있는 수준의 클로드 웹 채팅에서 Code & Github 활용해서 웹페이지 하나 배포하기. 를 교안 흐름으로 정리해줘. 산출물은 디자인 제외. html 형태로 만들기.
 
 그리고 최종 교안을 https://loreenkim0301.github.io/swy-lecturenote/ 에다가 '260828_비개발자를 위한 클로드코드 입문'이라는 제목으로 저장후 배포해줘.</div>
+    </div>
 
     <h3><span class="step-num">6</span>사용한 프롬프트 전체 첨부 요청</h3>
-    <div class="prompt-box">또한 내가 클로드 코드에 채팉창에 쳤던 프롬프트들도 모두 동일하게 첨부해야함.</div>
+    <div class="prompt-wrap">
+      <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+      <div class="prompt-box">또한 내가 클로드 코드에 채팉창에 쳤던 프롬프트들도 모두 동일하게 첨부해야함.</div>
+    </div>
+
+    <h3><span class="step-num">7</span>복사 버튼 &amp; 하이퍼링크 반영 요청</h3>
+    <div class="prompt-wrap">
+      <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+      <div class="prompt-box">프롬프트는 복사 버튼 있어여하고,
+
+주요링크는 모두 하이퍼링크로 구성.</div>
+    </div>
   </section>
 
   <footer>
-    260828_비개발자를 위한 클로드코드 입문 · Claude Code &amp; GitHub 실습 교안
+    260828_비개발자를 위한 클로드코드 입문 · Claude Code &amp; GitHub 실습 교안<br>
+    <a href="https://github.com/loreenkim0301/swy-lecturenote" target="_blank" rel="noopener">GitHub 저장소</a>
+    &nbsp;·&nbsp;
+    <a href="https://loreenkim0301.github.io/swy-lecturenote/" target="_blank" rel="noopener">배포된 페이지</a>
   </footer>
 
 </div>
+
+<script>
+function copyPrompt(btn) {
+  var box = btn.nextElementSibling;
+  var text = box.innerText || box.textContent;
+  var orig = btn.textContent;
+  function done(ok) {
+    btn.textContent = ok ? '✅ 복사됨' : '복사 실패';
+    setTimeout(function () { btn.textContent = orig; }, 1500);
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(function () { done(true); }, function () { fallbackCopy(text, done); });
+  } else {
+    fallbackCopy(text, done);
+  }
+}
+function fallbackCopy(text, cb) {
+  var ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.focus();
+  ta.select();
+  var ok = false;
+  try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+  document.body.removeChild(ta);
+  cb(ok);
+}
+</script>
 </body>
 </html>
