@@ -4,126 +4,46 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>260828_실습 교안 모음</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/swy-lecturenote/assets/style.css">
 <style>
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Pretendard, Roboto, sans-serif;
-    line-height: 1.7;
-    color: #1f2937;
-    background: #ffffff;
-  }
-  .wrap {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 2.5rem 1.25rem 5rem;
-  }
-  header {
-    border-bottom: 3px solid #1f2937;
-    padding-bottom: 1.25rem;
-    margin-bottom: 2rem;
-  }
-  header .date {
-    font-size: 0.9rem;
-    color: #6b7280;
-    letter-spacing: 0.05em;
-  }
-  header h1 {
-    font-size: 1.7rem;
-    margin: 0.3rem 0 0.4rem;
-  }
-  header p {
-    margin: 0;
-    color: #4b5563;
-  }
-  .toc-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-  .toc-item {
-    display: block;
-    border: 1px solid #d1d5db;
-    border-radius: 10px;
-    padding: 1.1rem 1.25rem;
-    text-decoration: none;
-    color: inherit;
-    transition: border-color .15s, background .15s;
-  }
-  .toc-item:hover {
-    border-color: #2563eb;
-    background: #f8fafc;
-  }
-  .toc-item .n {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 1.6rem;
-    height: 1.6rem;
-    border-radius: 50%;
-    background: #1f2937;
-    color: #fff;
-    font-size: 0.85rem;
-    margin-right: 0.6rem;
-    font-family: "SFMono-Regular", Consolas, monospace;
-  }
-  .toc-item h2 {
-    display: inline;
-    font-size: 1.05rem;
-    margin: 0;
-    color: #111827;
-  }
-  .toc-item p {
-    margin: 0.5rem 0 0;
-    font-size: 0.92rem;
-    color: #6b7280;
-    padding-left: 2.2rem;
-  }
-  footer {
-    margin-top: 3.5rem;
-    padding-top: 1.25rem;
-    border-top: 1px solid #e5e7eb;
-    color: #9ca3af;
-    font-size: 0.85rem;
-    text-align: center;
-  }
-  footer a { color: #6b7280; }
+  body{ display:flex; justify-content:center; }
+  .wrap{ max-width:720px; width:100%; padding:56px 24px 96px; }
 </style>
 </head>
 <body>
 <div class="wrap">
 
-  <header>
+  <header class="doc-header">
     <div class="date">2026.08.28</div>
     <h1>실습 교안 모음</h1>
-    <p>Claude 웹 채팅(Claude Code) &amp; GitHub로 만든 실습 교안 목록입니다. 아래에서 원하는 교안을 선택하세요.</p>
+    <p class="lede">클로드(Claude) 웹 채팅과 GitHub로 만든 실습 교안 목록입니다. 아래에서 보고 싶은 교안을 골라주세요.</p>
   </header>
 
   <ul class="toc-list">
     <li>
       <a class="toc-item" href="./260828_%EC%B2%AB%20hello%20%ED%8E%98%EC%9D%B4%EC%A7%80%20%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%EB%93%9C%EB%A1%9C%20%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0/">
-        <span class="n">1</span><h2>첫 hello 페이지 클로드코드로 배포하기</h2>
-        <p>비개발자를 위한 클로드코드 입문 — Claude 웹 채팅 + Code + GitHub로 웹페이지 하나를 처음부터 끝까지 배포해보는 실습 교안</p>
+        <span class="step-num">1</span><h2>첫 hello 페이지 클로드코드로 배포하기</h2>
+        <p>비개발자를 위한 클로드코드 입문 — Claude 웹 채팅과 GitHub로 웹페이지 하나를 처음부터 끝까지 배포해보는 실습 교안</p>
       </a>
     </li>
     <li>
       <a class="toc-item" href="./260828_%ED%81%B4%EB%A1%9C%EB%93%9C%20%EC%82%AC%EC%9A%A9%EB%B2%95%20%EC%A0%84%EC%B2%B4%20%EC%A0%95%EB%A6%AC/">
-        <span class="n">2</span><h2>클로드 사용법 전체 정리</h2>
+        <span class="step-num">2</span><h2>클로드 사용법 전체 정리</h2>
         <p>우리는 채팅에서 클로드 코드를 씁니다 — 웹 방식과 터미널 방식부터 GitHub 연동까지 한 번에 정리한 자료</p>
       </a>
     </li>
     <li>
       <a class="toc-item" href="./260828_AI%EC%B1%84%ED%8C%85%EC%97%90%EC%84%9C%20%EC%BD%94%EB%93%9C%20%ED%94%84%EB%A1%9C%ED%86%A0%ED%83%80%EC%9E%85%20%EB%A7%8C%EB%93%A4%EA%B8%B0/">
-        <span class="n">3</span><h2>AI채팅에서 코드 프로토타입 만들기</h2>
+        <span class="step-num">3</span><h2>AI채팅에서 코드 프로토타입 만들기</h2>
         <p>캔버스 vs 아티팩트 — 챗지피티·클로드·제미나이의 미리보기 기능으로 HTML 프로토타입을 만드는 방법 비교</p>
       </a>
     </li>
   </ul>
 
-  <footer>
+  <footer class="page-footer">
     <a href="https://github.com/loreenkim0301/swy-lecturenote" target="_blank" rel="noopener">GitHub 저장소</a>
   </footer>
 
