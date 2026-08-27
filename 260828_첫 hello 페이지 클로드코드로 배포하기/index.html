@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>260828_비개발자를 위한 클로드코드 입문</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Pretendard, Roboto, sans-serif;
+    line-height: 1.7;
+    color: #1f2937;
+    background: #ffffff;
+  }
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 5rem;
+  }
+  header.title {
+    border-bottom: 3px solid #1f2937;
+    padding-bottom: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  header.title .date {
+    font-size: 0.9rem;
+    color: #6b7280;
+    letter-spacing: 0.05em;
+  }
+  header.title h1 {
+    font-size: 1.7rem;
+    margin: 0.3rem 0 0.4rem;
+  }
+  header.title p {
+    margin: 0;
+    color: #4b5563;
+  }
+  h2 {
+    font-size: 1.25rem;
+    margin-top: 2.75rem;
+    padding: 0.5rem 0.75rem;
+    background: #1f2937;
+    color: #fff;
+    border-radius: 6px;
+  }
+  h3 {
+    font-size: 1.05rem;
+    margin-top: 1.75rem;
+    color: #111827;
+  }
+  p, li { color: #374151; }
+  ol, ul { padding-left: 1.4rem; }
+  li { margin-bottom: 0.4rem; }
+  .goal-box, .prep-box {
+    background: #f3f4f6;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+  }
+  .prompt-box {
+    background: #111827;
+    color: #e5e7eb;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 0.95rem;
+    white-space: pre-wrap;
+  }
+  .tip {
+    border-left: 4px solid #2563eb;
+    background: #eff6ff;
+    padding: 0.75rem 1rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1rem 0;
+    font-size: 0.95rem;
+  }
+  .warn {
+    border-left: 4px solid #dc2626;
+    background: #fef2f2;
+    padding: 0.75rem 1rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1rem 0;
+    font-size: 0.95rem;
+  }
+  .step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    background: #1f2937;
+    color: #fff;
+    font-size: 0.85rem;
+    margin-right: 0.5rem;
+  }
+  a {
+    color: #2563eb;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  a:hover { color: #1d4ed8; }
+  .link-line {
+    font-size: 0.9rem;
+    margin: 0.4rem 0 0;
+  }
+  .link-line::before { content: "🔗 "; }
+
+  .prompt-wrap {
+    position: relative;
+    margin: 0.75rem 0;
+  }
+  .prompt-wrap .prompt-box { margin: 0; padding-right: 4.5rem; }
+  .copy-btn {
+    position: absolute;
+    top: 0.55rem;
+    right: 0.55rem;
+    background: #374151;
+    color: #e5e7eb;
+    border: 1px solid #4b5563;
+    border-radius: 6px;
+    padding: 0.3rem 0.65rem;
+    font-size: 0.78rem;
+    cursor: pointer;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Pretendard, Roboto, sans-serif;
+  }
+  .copy-btn:hover { background: #4b5563; }
+
+  /* ---- 목업(가짜 화면) 공통 ---- */
+  .mockup-caption {
+    font-size: 0.85rem;
+    color: #6b7280;
+    text-align: center;
+    margin-top: 0.4rem;
+  }
+  .browser-mock {
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1rem 0;
+  }
+  .browser-mock .bar {
+    background: #e5e7eb;
+    padding: 0.5rem 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .browser-mock .dot { width: 9px; height: 9px; border-radius: 50%; }
+  .dot.red { background: #ff5f57; }
+  .dot.yellow { background: #febc2e; }
+  .dot.green { background: #28c840; }
+  .browser-mock .url {
+    margin-left: 0.75rem;
+    background: #fff;
+    border-radius: 5px;
+    padding: 0.25rem 0.6rem;
+    font-size: 0.8rem;
+    color: #374151;
+    font-family: monospace;
+  }
+  .browser-mock .content {
+    background: #0f172a;
+    padding: 2.5rem 1rem;
+    text-align: center;
+  }
+  .browser-mock .card {
+    display: inline-block;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 10px;
+    padding: 1.25rem 2rem;
+  }
+  .browser-mock .card h4 {
+    color: #f8fafc;
+    margin: 0 0 0.3rem;
+    font-size: 1.2rem;
+  }
+  .browser-mock .card p {
+    color: #94a3b8;
+    margin: 0;
+    font-size: 0.85rem;
+  }
+
+  .chat-mock {
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+  }
+  .chat-mock .head {
+    background: #f9fafb;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 0.6rem 0.9rem;
+    font-weight: 600;
+  }
+  .chat-mock .body { padding: 1rem; background: #fff; }
+  .chat-mock .bubble {
+    background: #eef2ff;
+    border-radius: 10px;
+    padding: 0.6rem 0.9rem;
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
+  .chat-mock .checklist { list-style: none; padding-left: 0; }
+  .chat-mock .checklist li { margin-bottom: 0.35rem; }
+  .chat-mock .checklist li.done::before { content: "✅ "; }
+  .chat-mock .checklist li.doing::before { content: "🟠 "; }
+
+  .github-mock {
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+  }
+  .github-mock .head {
+    background: #f6f8fa;
+    border-bottom: 1px solid #d1d5db;
+    padding: 0.6rem 0.9rem;
+    font-weight: 700;
+    color: #cf222e;
+  }
+  .github-mock .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.9rem;
+    border-bottom: 1px solid #eee;
+    gap: 1rem;
+  }
+  .github-mock .row:last-child { border-bottom: none; }
+  .github-mock .row div.label b { display: block; }
+  .github-mock .row div.label span { color: #57606a; font-size: 0.85rem; }
+  .github-mock button {
+    border: 1px solid #cf222e;
+    color: #cf222e;
+    background: #fff;
+    padding: 0.35rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+
+  footer {
+    margin-top: 3.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid #e5e7eb;
+    color: #9ca3af;
+    font-size: 0.85rem;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="title">
+    <div class="date">2026.08.28 교안</div>
+    <h1>비개발자를 위한 클로드코드 입문</h1>
+    <p>클로드(Claude) 웹 채팅 + Claude Code + GitHub로, 코드를 몰라도 나만의 웹페이지 하나를 인터넷에 진짜로 배포해보는 실습 교안입니다.</p>
+  </header>
+
+  <section>
+    <h2>이 교안에서 배우는 것</h2>
+    <div class="goal-box">
+      <ul>
+        <li>Claude 웹 채팅에게 문장 하나로 요청해서, 웹페이지 파일을 만들고 GitHub에 자동으로 올리는 것을 경험합니다.</li>
+        <li>GitHub에서 그 웹페이지를 실제 인터넷 주소로 열어볼 수 있게(배포) 설정하는 방법을 배웁니다.</li>
+        <li>중간에 막히는 대표적인 상황(Pages 꺼짐, 저장소가 비공개)을 스스로 해결하는 방법을 익힙니다.</li>
+      </ul>
+    </div>
+
+    <h3>준비물</h3>
+    <div class="prep-box">
+      <ul>
+        <li>GitHub 계정 1개 (없다면 <a href="https://github.com/join" target="_blank" rel="noopener">github.com/join</a>에서 무료로 가입)</li>
+        <li>웹페이지를 담을 GitHub 저장소(repository) 1개 — 이번 실습 예시: <a href="https://github.com/loreenkim0301/swy-lecturenote" target="_blank" rel="noopener">github.com/loreenkim0301/swy-lecturenote</a></li>
+        <li>Claude 웹 채팅(Claude Code) 접속 화면 — <a href="https://claude.ai/code" target="_blank" rel="noopener">claude.ai/code</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>STEP 1. Claude에게 딱 한 문장으로 요청하기</h2>
+    <p>Claude Code 채팅창에 아래 문장을 그대로 입력합니다. 코드를 몰라도 됩니다 — 이 문장 하나가 시작입니다.</p>
+    <div class="prompt-wrap">
+      <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+      <div class="prompt-box">여기서 시작한다.
+hello 페이지를 하나 띄워서 배포해줘.</div>
+    </div>
+
+    <div class="chat-mock">
+      <div class="head">Claude Code — Hello 페이지 배포</div>
+      <div class="body">
+        <div class="bubble">여기서 시작한다.<br>hello 페이지를 하나 띄워서 배포해줘.</div>
+        <p><b>세션 초기화됨</b></p>
+        <ul class="checklist">
+          <li class="done">클라우드 컨테이너 설정</li>
+          <li class="done">리포지토리 1개 복제 완료</li>
+          <li class="done">Claude Code 시작됨</li>
+          <li class="doing">전송 중...</li>
+        </ul>
+      </div>
+    </div>
+    <p class="mockup-caption">▲ Claude Code 채팅 화면(재현 이미지) — 요청을 보내면 왼쪽에 진행 상황 체크리스트가 자동으로 올라옵니다.</p>
+
+    <div class="tip">
+      💡 이 한 문장을 보내는 순간, Claude가 스스로 <b>index.html</b>(웹페이지 파일)과 <b>배포용 설정 파일</b>을 만들고, 그것을 GitHub 저장소에 커밋(commit)·푸시(push)까지 전부 대신 해줍니다. 여러분은 클릭 몇 번만 하면 됩니다.
+    </div>
+  </section>
+
+  <section>
+    <h2>STEP 2. Claude가 자동으로 한 일 확인하기</h2>
+    <p>Claude가 작업을 마치면 보통 다음과 같은 결과를 보고합니다.</p>
+    <ul>
+      <li>👋 인사말이 담긴 <code>index.html</code> 웹페이지 파일 생성</li>
+      <li>push할 때마다 자동으로 배포해주는 GitHub Actions 설정 파일 생성</li>
+      <li>GitHub 저장소에 커밋 &amp; 푸시 완료</li>
+    </ul>
+    <div class="warn">
+      ⚠️ 첫 시도에서는 배포가 <b>실패</b>할 수 있습니다! 정상입니다. 이유는 GitHub 저장소에서 "Pages(페이지 공개 기능)"가 아직 켜져 있지 않기 때문입니다. 아래 STEP 3에서 딱 한 번만 켜주면 됩니다.
+    </div>
+  </section>
+
+  <section>
+    <h2>STEP 3. GitHub에서 Pages(페이지 공개 기능) 켜기</h2>
+    <p>웹사이트를 인터넷에서 보이게 하려면, GitHub 저장소에서 버튼 하나만 누르면 됩니다.</p>
+
+    <h3><span class="step-num">1</span>저장소 페이지로 들어가기</h3>
+    <ol>
+      <li>브라우저를 열고 내 GitHub 저장소 주소로 들어갑니다.<br>예) <code>https://github.com/내계정/저장소이름</code></li>
+      <li>로그인이 안 되어 있으면 먼저 로그인합니다.</li>
+    </ol>
+    <p class="link-line">이번 실습 저장소로 바로 가기: <a href="https://github.com/loreenkim0301/swy-lecturenote" target="_blank" rel="noopener">github.com/loreenkim0301/swy-lecturenote</a></p>
+
+    <h3><span class="step-num">2</span>"Settings"(설정) 메뉴 찾기</h3>
+    <ol>
+      <li>저장소 화면 맨 위쪽 탭들(Code / Issues / Pull requests / Actions / Projects / Settings) 중에서</li>
+      <li>맨 오른쪽 끝의 <b>⚙️ Settings</b> 탭을 클릭합니다. (화면이 좁으면 <code>...</code> 더보기 안에 숨어있을 수 있어요)</li>
+    </ol>
+
+    <h3><span class="step-num">3</span>"Pages" 메뉴 찾기</h3>
+    <ol>
+      <li>Settings 화면 왼쪽에 세로로 긴 메뉴 목록이 보입니다.</li>
+      <li>아래로 내리다 보면 <b>"Pages"</b>라는 글자가 있습니다. ("Code and automation" 그룹 아래)</li>
+      <li><b>Pages</b>를 클릭합니다.</li>
+    </ol>
+    <div class="tip">
+      💡 <b>팁</b>: 메뉴를 못 찾겠으면 키보드에서 <b>Ctrl + F</b> (맥은 <b>Command(⌘) + F</b>)를 눌러 작은 검색창을 띄운 뒤 <b>"Pages"</b>라고 입력해보세요. 그 단어가 있는 곳을 바로 찾아줍니다.
+    </div>
+
+    <h3><span class="step-num">4</span>Source(소스)를 "GitHub Actions"로 바꾸기 ⭐ 제일 중요!</h3>
+    <ol>
+      <li>Pages 화면의 "Build and deployment" 아래 <b>"Source"</b> 드롭다운을 클릭합니다.</li>
+      <li>지금은 보통 "None" 또는 "Deploy from a branch"로 되어 있습니다.</li>
+      <li>드롭다운에서 <b>"GitHub Actions"</b>를 선택합니다. 보통 자동으로 저장됩니다.</li>
+    </ol>
+    <p class="link-line">Pages 설정 화면 바로 가기: <a href="https://github.com/loreenkim0301/swy-lecturenote/settings/pages" target="_blank" rel="noopener">github.com/loreenkim0301/swy-lecturenote/settings/pages</a></p>
+  </section>
+
+  <section>
+    <h2>STEP 3-1. 저장소를 실수로 Private(비공개)로 만들었다면</h2>
+    <p>Pages 설정 화면에 <b>"이 저장소는 비공개라서 유료 플랜이 필요하다"</b>는 안내나 <b>"Upgrade your plan" / "Make repository public"</b> 문구가 뜬다면, 무료 계정은 <b>비공개 저장소에서 Pages를 쓰려면 유료 플랜</b>이 필요하기 때문입니다.</p>
+    <p>결제 없이 해결하려면 저장소를 <b>공개(Public)</b>로 바꾸면 됩니다.</p>
+    <ol>
+      <li>Settings 화면을 맨 아래까지 내려서 <b>"Danger Zone"</b>(위험 구역)을 찾습니다.</li>
+      <li><b>"Change repository visibility"</b> 항목 오른쪽의 <b>"Change visibility"</b> 버튼을 클릭합니다.</li>
+      <li>펼쳐지는 메뉴에서 <b>"Change to public"</b>을 선택하고, 안내에 따라 저장소 이름을 입력해 확인합니다.</li>
+    </ol>
+    <p class="link-line">Danger Zone 바로 가기: <a href="https://github.com/loreenkim0301/swy-lecturenote/settings" target="_blank" rel="noopener">github.com/loreenkim0301/swy-lecturenote/settings</a> (맨 아래로 스크롤)</p>
+
+    <div class="github-mock">
+      <div class="head">Danger Zone</div>
+      <div class="row">
+        <div class="label">
+          <b>Change repository visibility</b>
+          <span>This repository is currently private.</span>
+        </div>
+        <button>Change visibility ▾ Change to public</button>
+      </div>
+    </div>
+    <p class="mockup-caption">▲ GitHub 저장소 Settings 맨 아래 Danger Zone 화면(재현 이미지)</p>
+
+    <div class="tip">
+      💡 공개로 바꾼 뒤에는 다시 <b>Pages</b> 메뉴로 가서 STEP 3의 4번(Source를 "GitHub Actions"로 선택)을 진행하면 됩니다.
+    </div>
+  </section>
+
+  <section>
+    <h2>STEP 4. 완성된 페이지 확인하기</h2>
+    <p>Pages 설정을 마치면, Claude에게 "설정 끝났어"라고 알려주세요. Claude가 배포를 다시 실행하고 성공 여부를 확인해줍니다.</p>
+    <p>배포가 성공하면 아래와 같은 주소로 내 웹페이지를 열어볼 수 있습니다.</p>
+    <div class="prompt-wrap">
+      <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+      <div class="prompt-box">https://내계정.github.io/저장소이름/</div>
+    </div>
+
+    <div class="browser-mock">
+      <div class="bar">
+        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+        <span class="url"><a href="https://loreenkim0301.github.io/swy-lecturenote/" target="_blank" rel="noopener" style="color:#374151;">loreenkim0301.github.io/swy-lecturenote/</a></span>
+      </div>
+      <div class="content">
+        <div class="card">
+          <h4>👋 Hello, SWY Lecture Note!</h4>
+          <p>이 페이지는 배포 테스트를 위해 생성되었습니다.</p>
+        </div>
+      </div>
+    </div>
+    <p class="mockup-caption">▲ 완성된 hello 페이지가 실제로 열린 모습(재현 이미지)</p>
+    <p class="link-line">이번 실습 결과물 바로 열어보기: <a href="https://loreenkim0301.github.io/swy-lecturenote/" target="_blank" rel="noopener">loreenkim0301.github.io/swy-lecturenote</a></p>
+  </section>
+
+  <section>
+    <h2>정리 &amp; 자주 묻는 질문</h2>
+    <h3>오늘 한 일 한눈에 보기</h3>
+    <ol>
+      <li>Claude에게 문장 하나로 웹페이지 배포 요청</li>
+      <li>Claude가 파일 생성 + 자동 배포 설정 + GitHub 업로드까지 처리</li>
+      <li>GitHub Settings → Pages → Source를 "GitHub Actions"로 변경</li>
+      <li>(필요 시) 저장소를 Public으로 변경</li>
+      <li>완성된 웹페이지 주소 접속해서 확인</li>
+    </ol>
+
+    <h3>Q&amp;A</h3>
+    <p><b>Q. 배포가 계속 실패해요.</b><br>
+    A. Settings → Pages에서 Source가 "GitHub Actions"로 되어 있는지, 저장소가 Public인지 다시 확인해보세요.</p>
+    <p><b>Q. 메뉴를 못 찾겠어요.</b><br>
+    A. Ctrl + F(맥은 Command + F)로 원하는 단어를 검색하면 빨리 찾을 수 있어요.</p>
+    <p><b>Q. 주소로 들어갔는데 페이지가 안 보여요.</b><br>
+    A. 처음 배포된 직후에는 1~2분 정도 걸릴 수 있습니다. 잠시 후 새로고침 해보세요.</p>
+    <p><b>Q. 저장소(레포지토리) 자체도 Claude한테 만들어달라고 할 순 없나요?</b><br>
+    A. 아쉽지만 안 됩니다. Claude Code 세션에 연결된 GitHub 권한은 보통 미리 지정된 저장소 1개에만 부여되어 있고, 새 저장소를 만드는 권한(Administration: write)은 포함되어 있지 않아서 <code>POST /user/repos → 403 Resource not accessible</code> 같은 오류로 거부됩니다. 이 부분은 Claude 쪽에서 우회할 방법이 없습니다.<br>
+    가장 쉬운 방법은 <b><a href="https://github.com/new" target="_blank" rel="noopener">github.com/new</a></b>에서 원하는 이름으로 저장소를 먼저 직접 만든 뒤, Claude에게 "이 저장소 이름으로 연결해서 작업해줘"라고 알려주는 것입니다. (다른 방법: claude.ai 설정 → 커넥터에서 GitHub 연결 권한 범위를 넓게 다시 인증하기 — 다만 이쪽은 별도 설정이 필요해서 첫 번째 방법이 더 간단합니다.)</p>
+  </section>
+
+  <section>
+    <h2>부록. 이번 실습에서 실제로 입력한 프롬프트 전체</h2>
+    <p>참고용으로, 이 교안을 만드는 동안 Claude 웹 채팅(Claude Code)에 실제로 입력했던 문장들을 순서대로 그대로 옮겨두었습니다. 그대로 따라 입력해봐도 좋습니다.</p>
+
+    <h3><span class="step-num">1</span>웹페이지 배포 요청</h3>
+    <div class="prompt-wrap">
+      <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+      <div class="prompt-box">여기서 시작한다.
+hello 페이지를 하나 띄워서 배포해줘.</div>
+    </div>
+
+    <h3><span class="step-num">2</span>남은 단계 상세 설명 요청</h3>
+    <div class="prompt-wrap">
+      <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+      <div class="prompt-box">어떻게 해야할지, 남은 한 단계 (사용자가 직접 해야 함)를 초등학생도 따라가도록 상세하게 설명.</div>
+    </div>
+
+    <h3><span class="step-num">3</span>Ctrl+F 팁 추가 요청</h3>
+    <div class="prompt-wrap">
+      <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+      <div class="prompt-box">키워드나 메뉴를 못 찾는다면 '컨트롤 + F키' 눌러서 해당 'Pages' 단어를 검색하면 빠르다. 라고 추가. 3단계에 추가.</div>
+    </div>
+
+    <h3><span class="step-num">4</span>Private 저장소 관련 내용 추가 + 설정 완료 알림</h3>
+    <div class="prompt-wrap">
+      <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+      <div class="prompt-box">그리고 나는 처음에 실수로 private 으로 만들었더니, 업그레이드 플랜하거나 퍼블릭으로 바꾸라고 되어 있었음. 이 부분 단계 중간에 추가.
+
+설정 끝났어.</div>
+    </div>
+
+    <h3><span class="step-num">5</span>교안 제작 및 배포 요청 (스크린샷 3장 첨부)</h3>
+    <div class="prompt-wrap">
+      <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+      <div class="prompt-box">[스크린샷 3장 첨부: 완성된 Hello 페이지 / Claude Code 채팅 화면 / GitHub Danger Zone 화면]
+첨부한 이미지들을 재가공/포함해서 전체적으로 초등학생도 지금처럼 따라갈 수 있는 수준의 클로드 웹 채팅에서 Code & Github 활용해서 웹페이지 하나 배포하기. 를 교안 흐름으로 정리해줘. 산출물은 디자인 제외. html 형태로 만들기.
+
+그리고 최종 교안을 https://loreenkim0301.github.io/swy-lecturenote/ 에다가 '260828_비개발자를 위한 클로드코드 입문'이라는 제목으로 저장후 배포해줘.</div>
+    </div>
+
+    <h3><span class="step-num">6</span>사용한 프롬프트 전체 첨부 요청</h3>
+    <div class="prompt-wrap">
+      <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+      <div class="prompt-box">또한 내가 클로드 코드에 채팉창에 쳤던 프롬프트들도 모두 동일하게 첨부해야함.</div>
+    </div>
+
+    <h3><span class="step-num">7</span>복사 버튼 &amp; 하이퍼링크 반영 요청</h3>
+    <div class="prompt-wrap">
+      <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+      <div class="prompt-box">프롬프트는 복사 버튼 있어여하고,
+
+주요링크는 모두 하이퍼링크로 구성.</div>
+    </div>
+
+    <h3><span class="step-num">8</span>저장소 자동 생성 관련 Q&amp;A 추가 요청</h3>
+    <div class="prompt-wrap">
+      <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+      <div class="prompt-box">마지막 qna에 레포지토리 자체도 만들어달라고 할 순 없나요? 부분에 답변 추가. 쉬운 방법은 레포 만들고 연결하는 것</div>
+    </div>
+  </section>
+
+  <footer>
+    260828_비개발자를 위한 클로드코드 입문 · Claude Code &amp; GitHub 실습 교안<br>
+    <a href="https://github.com/loreenkim0301/swy-lecturenote" target="_blank" rel="noopener">GitHub 저장소</a>
+    &nbsp;·&nbsp;
+    <a href="https://loreenkim0301.github.io/swy-lecturenote/260828_%EC%B2%AB%20hello%20%ED%8E%98%EC%9D%B4%EC%A7%80%20%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%EB%93%9C%EB%A1%9C%20%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0/" target="_blank" rel="noopener">배포된 페이지</a>
+  </footer>
+
+</div>
+
+<script>
+function copyPrompt(btn) {
+  var box = btn.nextElementSibling;
+  var text = box.innerText || box.textContent;
+  var orig = btn.textContent;
+  function done(ok) {
+    btn.textContent = ok ? '✅ 복사됨' : '복사 실패';
+    setTimeout(function () { btn.textContent = orig; }, 1500);
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(function () { done(true); }, function () { fallbackCopy(text, done); });
+  } else {
+    fallbackCopy(text, done);
+  }
+}
+function fallbackCopy(text, cb) {
+  var ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.focus();
+  ta.select();
+  var ok = false;
+  try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+  document.body.removeChild(ta);
+  cb(ok);
+}
+</script>
+</body>
+</html>
