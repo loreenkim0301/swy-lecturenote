@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>260828_AI 코딩 도구 마스터 - 1일차 강의 교안</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/swy-lecturenote/assets/style.css">
+<style>
+  .grid3{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:16px; }
+  .grid4{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:16px; }
+  @media (max-width:760px){ .grid3, .grid4{ grid-template-columns:1fr 1fr; } }
+  .flowrow{ display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:16px 0; }
+  .flowrow .chip{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:10px 14px; min-width:110px; }
+  .flowrow .chip b{ display:block; font-size:14px; }
+  .flowrow .chip small{ color:var(--ink-muted); font-size:12px; }
+  .flowrow .arrow{ color:var(--ink-muted); }
+  .checklist2{ list-style:none; margin:16px 0 0; padding:0; display:flex; flex-direction:column; gap:8px; }
+  .checklist2 li{ display:flex; gap:10px; align-items:flex-start; background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:10px 12px; font-size:14px; }
+  .checklist2 input{ margin-top:3px; flex:none; }
+</style>
+</head>
+<body>
+
+<input type="checkbox" id="sidebar-toggle" class="sidebar-toggle-input">
+<label for="sidebar-toggle" class="sidebar-toggle-btn">&#8801; 목차</label>
+
+<div class="page">
+  <nav class="sidebar">
+    <a class="home-link" href="/swy-lecturenote/">&larr; 전체 교안 목록</a>
+    <div class="doc-title">AI 코딩 도구 마스터<br>1일차 강의 교안</div>
+    <div class="toc-label">목차</div>
+    <ol>
+      <li><a href="#overview">교육 개요</a></li>
+      <li><a href="#session1">1. 바이브코딩 도입</a>
+        <ol>
+          <li><a href="#s1-goal">1.1 창업자를 위한 도입</a></li>
+          <li><a href="#s1-tools">1.2 최신 도구 지도</a></li>
+          <li><a href="#s1-stack">1.3 프론트·백엔드·DB</a></li>
+        </ol>
+      </li>
+      <li><a href="#session3">2. Bolt 신청 페이지</a>
+        <ol>
+          <li><a href="#s3-structure">2.1 서비스 구조</a></li>
+          <li><a href="#s3-build">2.2 생성 실습</a></li>
+          <li><a href="#s3-data">2.3 저장·확인</a></li>
+          <li><a href="#s3-publish">2.4 배포·테스트</a></li>
+        </ol>
+      </li>
+      <li><a href="#wrapup">3. 오늘의 마무리 체크리스트</a></li>
+    </ol>
+  </nav>
+
+  <main class="content">
+
+    <header class="doc-header">
+      <div class="date">SELECTWAY · 바이브 코딩 창업 교육 1일차 · 8.28 FRI · 09:00–18:00</div>
+      <h1>AI 코딩 도구 마스터 — 아이디어를 작동하는 화면으로</h1>
+      <p class="lede">창업·예비창업자가 AI와 대화하며 이벤트 신청 페이지를 만들고 배포해봐요. 개발자와 소통할 때 필요한 프론트엔드·백엔드·데이터베이스·배포의 관계도 함께 익혀요.</p>
+    </header>
+
+    <div class="grid4">
+      <div class="card"><b>대상</b><br><span style="font-size:13.5px; color:var(--ink-muted);">창업·예비창업자</span></div>
+      <div class="card"><b>수준</b><br><span style="font-size:13.5px; color:var(--ink-muted);">비개발자·터미널 처음</span></div>
+      <div class="card"><b>방식</b><br><span style="font-size:13.5px; color:var(--ink-muted);">이해 → 생성 → 배포 → 정리</span></div>
+      <div class="card"><b>결과</b><br><span style="font-size:13.5px; color:var(--ink-muted);">신청 페이지·배포 주소·체크리스트</span></div>
+    </div>
+
+    <section id="overview">
+      <h1 class="section-title">교육 개요</h1>
+      <p>이 수업은 전체 교육 과정의 <strong>첫 번째 도입 수업</strong>이에요. 본격적인 개발 프로세스와 아키텍처를 배우기 전에, 창업자가 작은 화면을 직접 만들고 기술 개념을 실제 결과물과 연결해봐요.</p>
+
+      <h2 class="sub-title">오늘의 학습 목표</h2>
+      <div class="grid3">
+        <div class="card"><span class="step-num">1</span><h3 style="display:inline;">직접 만들기</h3><p style="margin-top:8px;">간단한 디자인 프로토타입과 회사 홈페이지 수준의 화면을 생성해요.</p></div>
+        <div class="card"><span class="step-num">2</span><h3 style="display:inline;">구조 이해하기</h3><p style="margin-top:8px;">프론트엔드·백엔드·DB·배포를 신청 페이지 흐름으로 이해해요.</p></div>
+        <div class="card"><span class="step-num">3</span><h3 style="display:inline;">정리하기</h3><p style="margin-top:8px;">배포 주소와 오늘의 체크리스트를 정리해요.</p></div>
+      </div>
+
+      <div class="notice"><span class="label">결과물</span>1일차 공통 결과물 — Bolt 이벤트 신청 페이지 · 배포 주소 · 오늘의 체크리스트</div>
+
+      <h2 class="sub-title">1일차 교육 시간표</h2>
+      <div class="tablewrap">
+        <table>
+          <tr><th>시간</th><th>내용</th></tr>
+          <tr><td>09:00–11:00</td><td>바이브코딩 이해·최신 도구·최소 기술 개념</td></tr>
+          <tr><td>11:00–17:00</td><td>Bolt.new 이벤트 신청 페이지 제작·배포</td></tr>
+          <tr><td>17:00–18:00</td><td>오늘의 마무리 체크리스트·공유</td></tr>
+        </table>
+      </div>
+
+      <details>
+        <summary>전체 과정에서 1일차의 역할</summary>
+        <p>1일차는 완성도 높은 서비스를 개발하는 날이 아니라, 아이디어가 화면·데이터·배포로 이어지는 전체 흐름을 한 번 경험하는 날이에요. 이후 과정에서 개발 프로세스와 아키텍처를 더 깊게 배울 때 오늘의 결과물을 공통 사례로 사용해요.</p>
+      </details>
+    </section>
+
+    <section id="session1">
+      <h1 class="section-title">1. 바이브코딩이란? 최신 도구와 최소 기술 개념</h1>
+      <p style="font-size:13px; color:var(--ink-muted);">SESSION 1 · 09:00–11:00 · 120분</p>
+      <p>창업자의 관점에서 바이브코딩의 쓰임과 한계를 이해하고, 오늘 사용할 도구와 웹서비스의 기본 구조를 연결해요.</p>
+
+      <h2 class="sub-title" id="s1-goal">1.1 창업자에게 바이브코딩이 필요한 이유</h2>
+      <p>창업자가 모든 코드를 직접 작성할 필요는 없어요. 다만 아이디어를 빠르게 화면으로 확인하고, 작은 홈페이지나 프로토타입을 직접 배포하며, 개발자에게 원하는 기능과 데이터 흐름을 설명할 수 있으면 초기 검증 속도가 빨라져요.</p>
+
+      <h4>1일차에 경험하는 창업자의 작업 흐름</h4>
+      <div class="flowrow">
+        <div class="chip"><b>1. 설명</b><small>고객과 문제 정의</small></div>
+        <span class="arrow">&rarr;</span>
+        <div class="chip"><b>2. 생성</b><small>화면 초안 만들기</small></div>
+        <span class="arrow">&rarr;</span>
+        <div class="chip"><b>3. 연결</b><small>입력과 저장 구현</small></div>
+        <span class="arrow">&rarr;</span>
+        <div class="chip"><b>4. 배포</b><small>접속 주소 만들기</small></div>
+        <span class="arrow">&rarr;</span>
+        <div class="chip"><b>5. 개선</b><small>피드백 반영</small></div>
+      </div>
+
+      <div class="notice"><span class="label">주의</span><strong>빠른 생성은 검증의 시작이에요.</strong> AI가 만든 화면의 내용, 동작, 개인정보 처리, 보안과 사업 적합성은 사람이 직접 판단해야 해요.</div>
+
+      <h2 class="sub-title" id="s1-tools">1.2 오늘 사용할 AI 코딩 도구 지도</h2>
+      <p>도구가 많아 보여도 역할은 크게 나뉘어요. 채팅 AI로 아이디어와 조건을 정리하고, Bolt.new로 데이터가 저장되는 웹서비스를 만들며, 배포된 화면을 기준으로 결과를 확인해요.</p>
+      <div class="grid4">
+        <div class="card"><b>문제 설명</b><p style="margin-top:6px; font-size:13px;">AI에게 원하는 화면과 기능을 짧고 분명하게 전달해요</p></div>
+        <div class="card"><b>바이브코딩 전문 도구</b><p style="margin-top:6px; font-size:13px;">Bolt.new에서 프론트엔드·백엔드·DB가 포함된 신청 페이지 제작과 배포</p></div>
+        <div class="card"><b>배포 확인</b><p style="margin-top:6px; font-size:13px;">브라우저와 휴대전화에서 신청 흐름과 반응형을 점검해요</p></div>
+        <div class="card"><b>마무리 정리</b><p style="margin-top:6px; font-size:13px;">오늘 만든 결과와 다음 수정 사항을 기록해요</p></div>
+      </div>
+
+      <h2 class="sub-title" id="s1-stack">1.3 프론트엔드·백엔드·DB·배포</h2>
+      <p>이 네 가지는 개발자와 소통할 때 가장 먼저 구분해야 하는 개념이에요. 이벤트 신청 페이지에서 사용자가 보는 폼은 프론트엔드, 제출을 처리하는 로직은 백엔드, 신청 내용을 보관하는 곳은 DB, 다른 사람이 접속할 주소를 만드는 과정은 배포예요.</p>
+
+      <h4>이벤트 신청이 저장되는 구조</h4>
+      <div class="flowrow">
+        <div class="chip"><b>1. 신청 폼</b><small>프론트엔드</small></div>
+        <span class="arrow">&rarr;</span>
+        <div class="chip"><b>2. 요청 처리</b><small>백엔드</small></div>
+        <span class="arrow">&rarr;</span>
+        <div class="chip"><b>3. 신청 데이터</b><small>DB</small></div>
+        <span class="arrow">&rarr;</span>
+        <div class="chip"><b>4. 접속 주소</b><small>배포</small></div>
+      </div>
+
+      <details>
+        <summary>개발자에게 이렇게 질문해요</summary>
+        <ul>
+          <li>사용자가 보는 화면과 입력 항목은 무엇인가요?</li>
+          <li>제출 버튼을 누르면 백엔드에서 어떤 검증을 하나요?</li>
+          <li>어떤 데이터를 DB에 저장하고 누가 볼 수 있나요?</li>
+          <li>개발용 화면과 실제 배포 주소는 어떻게 구분하나요?</li>
+        </ul>
+      </details>
+    </section>
+
+    <section id="session3">
+      <h1 class="section-title">2. Bolt.new 이벤트 신청 페이지 제작·배포</h1>
+      <p style="font-size:13px; color:var(--ink-muted);">SESSION 2 · 14:00–16:00 · 120분</p>
+      <p>화면만 있는 프로토타입을 넘어 신청 정보가 저장되는 작은 웹서비스를 만들고, 프론트엔드·백엔드·DB·배포를 실제 결과와 연결해요.</p>
+
+      <h2 class="sub-title" id="s3-structure">2.1 오늘 만들 서비스의 최소 구조</h2>
+      <p>실습 범위는 "행사 소개 → 신청서 입력 → 서버 검증 → DB 저장 → 완료 안내 → 배포 주소 확인"이에요. 실제 개인정보 대신 테스트용 가상 데이터를 사용하고, 로그인·결제·관리자 기능은 이번 수업에서 제외해요.</p>
+      <div class="flowrow">
+        <div class="chip"><b>1. 안내</b><small>행사 정보 확인</small></div>
+        <span class="arrow">&rarr;</span>
+        <div class="chip"><b>2. 입력</b><small>이름·이메일 작성</small></div>
+        <span class="arrow">&rarr;</span>
+        <div class="chip"><b>3. 검증</b><small>필수값 확인</small></div>
+        <span class="arrow">&rarr;</span>
+        <div class="chip"><b>4. 저장</b><small>DB에 신청 추가</small></div>
+        <span class="arrow">&rarr;</span>
+        <div class="chip"><b>5. 완료</b><small>접수 결과 표시</small></div>
+      </div>
+
+      <h2 class="sub-title" id="s3-build">2.2 Bolt.new에서 신청 페이지 생성</h2>
+      <p>첫 요청에서 화면과 데이터 저장 조건을 함께 설명해요. 생성 후에는 데이터베이스가 실제로 만들어졌는지, 제출 성공과 실패 상태가 구분되는지 확인해요.</p>
+      <div class="prompt-wrap">
+        <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+        <div class="prompt-box">가상의 창업 네트워킹 행사 'Founder Connect Day' 신청 웹페이지를 만들어줘.
+
+[프론트엔드]
+행사 소개, 일정·장소, 프로그램 3개, 신청 폼, 접수 완료 안내
+
+[신청 항목]
+이름, 이메일, 소속, 참가 목적
+
+[백엔드·DB]
+- 필수 항목을 서버에서도 검증
+- 신청 내용을 데이터베이스에 저장
+- 성공하면 완료 메시지, 실패하면 이해하기 쉬운 오류 메시지 표시
+
+[디자인]
+신뢰감 있는 남색 계열, 모바일 반응형, 입력창과 버튼을 명확하게 구분
+
+[제외]
+로그인, 결제, 외부 API, 공개 관리자 페이지는 만들지 말 것
+
+[완료 기준]
+테스트 신청 1건을 제출하고 데이터베이스에서 저장 결과를 확인할 수 있을 것</div>
+      </div>
+      <ol>
+        <li>Bolt.new 시작 화면 입력창에 위 프롬프트를 붙여넣고 생성을 요청해요.</li>
+        <li>생성이 끝나면 미리보기 화면에서 화면 구성과 반응형 디자인을 확인해요.</li>
+      </ol>
+
+      <h2 class="sub-title" id="s3-data">2.3 입력·백엔드·DB 확인</h2>
+      <p>화면에 완료 메시지가 보이는 것만으로 저장 성공을 단정하지 않아요. 정상 입력과 빈 입력을 각각 시험하고, Bolt의 데이터베이스 화면에서 테스트 신청이 실제로 저장됐는지 확인해요.</p>
+      <div class="tablewrap">
+        <table>
+          <tr><th>구분</th><th>시험 행동</th><th>정상 결과</th></tr>
+          <tr><td>프론트엔드</td><td>PC·모바일에서 폼 확인</td><td>잘림과 가로 스크롤 없음</td></tr>
+          <tr><td>검증</td><td>필수 항목을 비우고 제출</td><td>저장되지 않고 안내 표시</td></tr>
+          <tr><td>백엔드</td><td>가상 데이터를 정상 제출</td><td>성공 응답과 완료 안내</td></tr>
+          <tr><td>DB</td><td>데이터베이스 테이블 확인</td><td>테스트 신청 1건 저장</td></tr>
+        </table>
+      </div>
+      <div class="notice"><span class="label">주의</span><strong>수업에서는 실제 개인정보를 입력하지 않아요.</strong> 배포된 신청 페이지를 실제 운영하려면 개인정보 수집·이용 고지, 접근 권한, 보관·삭제 기준과 보안 검토가 별도로 필요해요.</div>
+
+      <h2 class="sub-title" id="s3-publish">2.4 배포하고 다른 기기에서 확인</h2>
+      <p>미리보기는 제작 중 화면이고, 배포는 외부에서 접속할 주소를 만드는 과정이에요. Bolt의 Publish 기능으로 배포한 뒤 새 브라우저 창이나 휴대전화에서 주소를 열어 신청 흐름을 다시 확인해요.</p>
+      <ol>
+        <li>프로젝트 미리보기 확인을 마친 뒤 화면 오른쪽 위의 <strong>Publish</strong> 버튼을 선택해요.</li>
+        <li>공개 안내(Publish your project) 대화상자를 확인하고 <strong>Publish</strong>를 눌러 외부에서 접속할 수 있는 주소를 생성해요.</li>
+        <li>배포 완료 메시지와 생성된 주소(bolt.host)를 확인한 뒤 새 브라우저 창이나 다른 기기에서 접속해요.</li>
+      </ol>
+
+      <details>
+        <summary>배포 후 확인할 항목</summary>
+        <ul>
+          <li>배포 주소가 로그인 없이 열리나요?</li>
+          <li>모바일에서 신청 폼을 사용할 수 있나요?</li>
+          <li>정상 신청과 오류 안내가 모두 작동하나요?</li>
+          <li>테스트 데이터가 DB에 한 번만 저장되나요?</li>
+          <li>공유 전 실제 개인정보와 비밀키가 노출되지 않았나요?</li>
+        </ul>
+      </details>
+    </section>
+
+    <section id="wrapup">
+      <h1 class="section-title">3. 오늘의 마무리 체크리스트</h1>
+      <ul class="checklist2">
+        <li><input type="checkbox"><span>창업자에게 바이브코딩이 필요한 이유와 한계를 설명한다</span></li>
+        <li><input type="checkbox"><span>최신 도구의 역할을 구분한다</span></li>
+        <li><input type="checkbox"><span>프론트엔드·백엔드·DB·배포의 관계를 설명한다</span></li>
+        <li><input type="checkbox"><span>Bolt.new로 이벤트 신청 페이지를 만들었다</span></li>
+        <li><input type="checkbox"><span>입력값 검증과 DB 저장 여부를 확인했다</span></li>
+        <li><input type="checkbox"><span>배포 주소를 다른 기기에서 열어 보았다</span></li>
+        <li><input type="checkbox"><span>오늘 만든 결과와 배운 점을 한 줄로 정리한다</span></li>
+        <li><input type="checkbox"><span>다음 수업에서 확인할 질문을 적어 둔다</span></li>
+      </ul>
+
+      <div class="tip" style="margin-top:20px;"><span class="label">다음 과정</span><strong>개발 프로세스와 소프트웨어 아키텍처</strong> — 오늘 경험한 화면·요청 처리·데이터 저장·배포 흐름을 바탕으로 서비스 개발 단계와 구조를 더 깊게 학습해요.</div>
+
+      <div class="cite"><span class="cite-label">출처</span> <a href="https://support.bolt.new/concepts/intro-databases" target="_blank" rel="noopener">Bolt 데이터베이스 공식 문서 — support.bolt.new</a></div>
+    </section>
+
+    <footer class="page-footer">
+      260828_AI 코딩 도구 마스터 - 1일차 강의 교안 · SELECTWAY 실습 교안<br>
+      <a href="https://github.com/loreenkim0301/swy-lecturenote" target="_blank" rel="noopener">GitHub 저장소</a>
+      &nbsp;·&nbsp;
+      <a href="/swy-lecturenote/">전체 교안 목록</a>
+    </footer>
+
+  </main>
+</div>
+
+<script src="/swy-lecturenote/assets/site.js"></script>
+</body>
+</html>
