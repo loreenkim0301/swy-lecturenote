@@ -397,6 +397,19 @@
       <h1 class="section-title">5. 추가: 다양한 프로토타입 실습</h1>
       <p>지금까지 배운 방법으로, 실제로 자주 쓰이는 프로토타입 3가지를 직접 만들어봐요. 아래 프롬프트를 그대로 복사해서 채팅AI에 붙여넣으면 돼요.</p>
 
+      <div class="tip"><span class="label">팁</span>실습하다가 화면이 깨지거나 버튼이 눌러도 반응이 없으면, 이렇게 구체적으로 물어보세요.
+        <ul style="margin:8px 0 0;">
+          <li>"지금 보이는 화면이 이렇게 깨져요(스크린샷 또는 상황 설명 첨부). 왜 깨지는 거야?"</li>
+          <li>"깨진다면 어떻게 해결할 수 있어? 너라면 어떻게 할래?"</li>
+          <li>"문의하기 버튼에 입력은 되는데, 실제로 눌렀을 때 동작은 하는 거야?"</li>
+        </ul>
+      </div>
+      <p>그리고 아래 문장을 질문 끝에 붙여보세요. 훨씬 근거 있는 답을 들을 수 있어요.</p>
+      <div class="prompt-wrap">
+        <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+        <div class="prompt-box">모든 질문에 대한 답변은 실제 코드를 근거로 설명해줘.</div>
+      </div>
+
       <h2 class="sub-title" id="ep-data">5.1 인터랙티브 데이터 분석 및 보고서 만들기</h2>
       <p>먼저 예시 매출 데이터 파일을 내려받아서, 채팅창에 파일을 첨부한 뒤 아래 프롬프트들을 순서대로 시도해보세요.</p>
       <p class="link-line">예시 데이터 파일 내려받기: <a href="./sample_sales_data.xlsx" download>sample_sales_data.xlsx</a> (가상 매출 데이터 — 요약·상품 목록·주간/월간/연간 매출 시트 포함)</p>
@@ -464,6 +477,21 @@
       </div>
       <div class="note"><span class="label">참고</span>결과물을 열어본 뒤 항목을 몇 개 추가하고 새로고침해보세요. 목록이 그대로 남아있으면 로컬 저장이 잘 된 거예요.</div>
 
+      <h3>로컬 저장이 실제로 뭔지 물어보기</h3>
+      <p>"로컬에 저장했다"는 말이 실제로 무슨 뜻인지, 아래 질문들로 AI에게 직접 확인해보세요.</p>
+      <div class="prompt-wrap">
+        <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+        <div class="prompt-box">새로고침했는데도 항목이 저장되어 있어. 근데 왜 그렇게 되는 거야?</div>
+      </div>
+      <div class="prompt-wrap">
+        <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+        <div class="prompt-box">로컬 저장이라고 하는데, 그러면 내가 이 파일을 친구에게 공유해도 친구가 그 저장된 내용을 볼 수 있어?</div>
+      </div>
+      <div class="prompt-wrap">
+        <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+        <div class="prompt-box">현재 내가 만든 프로젝트에 데이터베이스가 어떻게 연결되어 있어? 무엇이 연결되어 있고, 어디에 연결되어 있는지 알려줘. (예: 로컬 저장 또는 Supabase, 구글 파이어베이스 같은 외부 데이터베이스)</div>
+      </div>
+
       <h2 class="sub-title" id="ep-chatbot">5.3 내장된 AI를 활용한 챗봇 프로토타입</h2>
       <p>아래 프롬프트를 <strong>클로드</strong>와 <strong>제미나이</strong> 두 곳에서 각각 시도해보고, 결과가 어떻게 다른지 비교해보세요.</p>
       <p class="prompt-tier basic">기본 프롬프트</p>
@@ -477,6 +505,46 @@
         <div class="prompt-box">채팅 대화 내용이 새로고침해도 유지되도록 로컬에 저장해줘. 대화를 시작하기 전에 "너는 친절한 고객 상담 챗봇이야"처럼 챗봇의 역할(페르소나)을 입력할 수 있는 설정창도 추가해줘. 답변이 한 번에 나오지 않고 타이핑되듯 스트리밍으로 나오게 해주고, API 호출이 실패했을 때는 사용자에게 에러 메시지를 보여줘.</div>
       </div>
       <div class="note"><span class="label">참고</span>도구마다 API 키를 넣는 방식이나 미리보기가 되는 범위가 다를 수 있어요. 막히는 부분이 있으면 "왜 안 되는지 이유를 설명해줘"라고 되물어보는 것도 좋은 방법이에요.</div>
+
+      <h3>테스트하면서 이런 걸 살펴보세요</h3>
+      <p>완성된 챗봇에 여러 질문을 던져보면서, 아래 내용을 직접 관찰해보세요.</p>
+      <ul>
+        <li>채팅에 질문을 여러 개 던져보세요. 답변에 패턴이 보이나요? (예: 앞부분은 항상 똑같고, 뒷부분에 내가 한 질문이 그대로 붙어서 나오지 않나요?)</li>
+        <li>어떤 질문을 던져도 매번 다른 답변을 만들어내나요?</li>
+        <li>"1+1" 같은 계산 질문을 했을 때 정확하게 "2"라고 답하나요?</li>
+        <li>"내 이름이 뭔지 알아?"처럼 앞의 대화 맥락을 기억해서 답하나요?</li>
+        <li>아니면 답변에 규칙이 없고 뒤섞여 있는 것처럼 보이나요?</li>
+      </ul>
+      <p>관찰한 내용을 짧게 메모해두면, 다음 질문들의 답과 비교하기 좋아요.</p>
+
+      <h3>테스트 후 AI에게 물어보기</h3>
+      <div class="prompt-wrap">
+        <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+        <div class="prompt-box">지금 이 채팅 프로토타입이 내부적으로 생성형 AI를 쓰고 있는 건지, 아닌지, 아니면 섞여 있는 건지 코드를 근거로 구분해서 설명해줘.</div>
+      </div>
+      <div class="prompt-wrap">
+        <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+        <div class="prompt-box">규칙기반 시스템이 뭔지 설명해주고, 지금 코드 안에 규칙기반으로 동작하는 부분을 추가해서 내가 직접 코드를 보고 확인할 수 있게 해줘.</div>
+      </div>
+
+      <h3>한 단계 더 — 규칙과 생성으로 고도화하기</h3>
+      <p>규칙기반과 생성형 AI를 섞으면, 자주 나오는 질문은 빠르고 정확하게 답하면서도 예상 못한 질문에는 유연하게 대응할 수 있어요.</p>
+      <div class="prompt-wrap">
+        <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+        <div class="prompt-box">질문이 들어오면 처음에는 2~3가지 규칙으로 먼저 걸러내고, 규칙으로 답이 안 되는 질문만 생성형 AI가 답하도록 바꿔줘.</div>
+      </div>
+      <div class="prompt-wrap">
+        <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+        <div class="prompt-box">자주 나오는 질문을 정리한 엑셀 파일을 첨부할 테니, 이 내용을 참고해서 답변하도록 연결해줘.</div>
+      </div>
+      <div class="note"><span class="label">참고</span>마지막 프롬프트는 회사·팀에서 자주 받는 질문을 정리한 엑셀 파일이 있을 때 함께 첨부해서 사용하세요.</div>
+
+      <h3>PM 관점에서 물어보기</h3>
+      <p>프로토타입이 실제 서비스가 된다면 얼마나 비용이 들지도 미리 가늠해봐요.</p>
+      <div class="prompt-wrap">
+        <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+        <div class="prompt-box">지금 만든 이 챗봇을 실제로 운영한다면 한 달 운영비용이 대략 얼마나 들지 알려줘. MAU(월간 활성 사용자)가 1,000명, 1만 명, 10만 명일 때 각각 어떻게 달라지는지, 그리고 동시 최대 접속자가 1,000명, 1만 명, 10만 명일 때도 문제없이 운영하려면 무엇을 준비해야 하는지도 같이 설명해줘.</div>
+      </div>
     </section>
 
     <section id="figma">

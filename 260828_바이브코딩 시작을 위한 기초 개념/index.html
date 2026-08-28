@@ -35,7 +35,8 @@
         <ol>
           <li><a href="#s1-goal">1.1 창업자를 위한 도입</a></li>
           <li><a href="#s1-tools">1.2 최신 도구 지도</a></li>
-          <li><a href="#s1-stack">1.3 프론트·백엔드·DB</a></li>
+          <li><a href="#s1-ladder">1.3 AI 프로토타이핑 5단계</a></li>
+          <li><a href="#s1-stack">1.4 프론트·백엔드·DB</a></li>
         </ol>
       </li>
       <li><a href="#session3">2. Bolt 신청 페이지</a>
@@ -115,7 +116,21 @@
         <div class="card"><b>마무리 정리</b><p style="margin-top:6px; font-size:13px;">오늘 만든 결과와 다음 수정 사항을 기록해요</p></div>
       </div>
 
-      <h2 class="sub-title" id="s1-stack">1.3 프론트엔드·백엔드·DB·배포</h2>
+      <h2 class="sub-title" id="s1-ladder">1.3 여기서 우리는 어디쯤 있을까? — 5단계로 보는 AI 프로토타이핑</h2>
+      <p>비개발자가 AI로 프로토타입을 만드는 방법은 하나가 아니에요. 아래 5단계는 도구가 얼마나 "알아서" 해주는지(자동화)와, 내가 얼마나 직접 다뤄야 하는지(자유도)의 순서예요. 오늘은 이 중 <strong>2단계(Bolt.new)</strong>를 실습하고, <strong>3·5단계(클로드)</strong>는 다른 교안에서 이어서 다뤄요.</p>
+      <div class="tablewrap">
+        <table>
+          <tr><th>단계</th><th>방법</th><th>설명</th></tr>
+          <tr><td>1</td><td>그냥 AI 채팅</td><td>별도 도구 없이 챗지피티·클로드·제미나이 채팅창에서 바로 프로토타입을 요청해요. 준비물이 없어 가장 쉽지만, 배포까지는 직접 챙겨야 해요.</td></tr>
+          <tr><td>2</td><td>Bolt.new / Lovable 등</td><td>AI가 코드 작성부터 배포까지 한 번에 처리해주는 "바이브코딩 통합 도구"예요. <strong>오늘 우리가 쓸 단계</strong>예요.</td></tr>
+          <tr><td>3</td><td>클로드 웹 브라우저 → 클로드 코드</td><td>claude.ai 채팅 화면 안에서 Code 탭으로 들어가 저장소와 연결해 작업해요. 터미널 없이도 실제 개발 흐름에 가까워져요.</td></tr>
+          <tr><td>4</td><td>개발자용 IDE + AI</td><td>VS Code 같은 개발자 도구에 AI 기능이 붙은 형태예요. 코드를 직접 다룰 수 있는 사람에게 적합해요.</td></tr>
+          <tr><td>5</td><td>터미널의 클로드 코드</td><td>바탕화면에서 터미널을 열어 <code>claude</code> 명령어로 직접 실행해요. 가장 자유롭지만 진입장벽도 가장 높아요.</td></tr>
+        </table>
+      </div>
+      <p class="link-line">3·5단계를 더 자세히 보고 싶다면: <a href="/swy-lecturenote/260828_%ED%81%B4%EB%A1%9C%EB%93%9CAI%EC%97%90%EC%84%9C%20%ED%81%B4%EB%A1%9C%EB%93%9C%20%EC%BD%94%EB%93%9C%EA%B9%8C%EC%A7%80%20%EC%82%AC%EC%9A%A9%EB%B2%95%20%EA%B8%B0%EC%B4%88/">클로드AI에서 클로드 코드까지 사용법 기초</a></p>
+
+      <h2 class="sub-title" id="s1-stack">1.4 프론트엔드·백엔드·DB·배포</h2>
       <p>이 네 가지는 개발자와 소통할 때 가장 먼저 구분해야 하는 개념이에요. 이벤트 신청 페이지에서 사용자가 보는 폼은 프론트엔드, 제출을 처리하는 로직은 백엔드, 신청 내용을 보관하는 곳은 DB, 다른 사람이 접속할 주소를 만드는 과정은 배포예요.</p>
 
       <h4>이벤트 신청이 저장되는 구조</h4>
@@ -161,6 +176,12 @@
 
       <h2 class="sub-title" id="s3-build">2.2 Bolt.new에서 신청 페이지 생성</h2>
       <p>첫 요청에서 화면과 데이터 저장 조건을 함께 설명해요. 생성 후에는 데이터베이스가 실제로 만들어졌는지, 제출 성공과 실패 상태가 구분되는지 확인해요.</p>
+      <p class="prompt-tier basic">기본 프롬프트 — 최소 와이어프레임</p>
+      <div class="prompt-wrap">
+        <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+        <div class="prompt-box">간단한 이벤트 신청서 페이지를 만들자. 디자인은 최소화할거야. 흑백 톤의 와이어프레임으로 그려줘. 버튼만 잘 보이면 됩니다. 꼭 들어가야하는 것은 이름, 전화번호 입력하는 부분 정도만 받자.</div>
+      </div>
+      <p class="prompt-tier advanced">심화 프롬프트 — 데이터베이스까지 포함한 풀 버전</p>
       <div class="prompt-wrap">
         <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
         <div class="prompt-box">가상의 창업 네트워킹 행사 'Founder Connect Day' 신청 웹페이지를 만들어줘.
@@ -211,6 +232,15 @@
         <li>공개 안내(Publish your project) 대화상자를 확인하고 <strong>Publish</strong>를 눌러 외부에서 접속할 수 있는 주소를 생성해요.</li>
         <li>배포 완료 메시지와 생성된 주소(bolt.host)를 확인한 뒤 새 브라우저 창이나 다른 기기에서 접속해요.</li>
       </ol>
+
+      <div class="note"><span class="label">참고</span>오늘 실제로 배포된 결과물 주소 예시예요.
+        <ul style="margin:8px 0 0;">
+          <li>Bolt.new — <code>https://….bolt.host</code></li>
+          <li>Netlify — <code>https://selectway-official.netlify.app</code></li>
+          <li>ChatGPT 사이트 빌더 — <code>https://selectway-te-2178.chatgpt.site</code></li>
+        </ul>
+        이렇게 주소 뒷부분(도메인)만 봐도 어떤 서비스로 배포했는지 알 수 있어요.
+      </div>
 
       <details>
         <summary>배포 후 확인할 항목</summary>
