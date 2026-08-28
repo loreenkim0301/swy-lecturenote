@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>260828_첫 hello 페이지를 클로드코드로 배포하기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/swy-lecturenote/assets/style.css">
+</head>
+<body>
+
+<input type="checkbox" id="sidebar-toggle" class="sidebar-toggle-input">
+<label for="sidebar-toggle" class="sidebar-toggle-btn">&#8801; 목차</label>
+
+<div class="page">
+  <nav class="sidebar">
+    <a class="home-link" href="/swy-lecturenote/">&larr; 전체 교안 목록</a>
+    <div class="doc-title">첫 hello 페이지<br>클로드코드로 배포하기</div>
+    <div class="toc-label">목차</div>
+    <ol>
+      <li><a href="#goal">배우는 것 &amp; 준비물</a></li>
+      <li><a href="#step1">STEP 1. 한 문장으로 요청하기</a></li>
+      <li><a href="#step2">STEP 2. 처리 결과 확인하기</a></li>
+      <li><a href="#step3">STEP 3. GitHub Pages 켜기</a></li>
+      <li><a href="#step3-1">STEP 3-1. Private일 때 대처법</a></li>
+      <li><a href="#step4">STEP 4. 완성 페이지 확인하기</a></li>
+      <li><a href="#faq">정리 &amp; 자주 묻는 질문</a></li>
+      <li><a href="#appendix">부록. 전체 프롬프트</a></li>
+    </ol>
+  </nav>
+
+  <main class="content">
+
+    <header class="doc-header">
+      <div class="date">2026.08.28 교안</div>
+      <h1>첫 hello 페이지를 클로드코드로 배포하기</h1>
+      <p class="lede">비개발자를 위한 클로드코드 입문 교안이에요. 코드를 하나도 몰라도, 클로드(Claude) 웹 채팅과 GitHub만 있으면 나만의 웹페이지를 진짜 인터넷 주소로 띄워볼 수 있어요.</p>
+    </header>
+
+    <section id="goal">
+      <h1 class="section-title">이 교안에서 배우는 것</h1>
+      <div class="card">
+        <ul>
+          <li>클로드 웹 채팅에게 문장 하나로 요청해서, 웹페이지 파일을 만들고 GitHub에 자동으로 올리는 것을 경험해요.</li>
+          <li>GitHub에서 그 웹페이지를 실제 인터넷 주소로 열어볼 수 있게(배포) 설정하는 방법을 배워요.</li>
+          <li>중간에 자주 막히는 상황(Pages가 꺼져 있을 때, 저장소가 비공개일 때)을 스스로 해결하는 방법도 함께 익혀요.</li>
+        </ul>
+      </div>
+
+      <h2 class="sub-title">준비물</h2>
+      <div class="card">
+        <ul>
+          <li>GitHub 계정 1개 (없다면 <a href="https://github.com/join" target="_blank" rel="noopener">github.com/join</a>에서 무료로 가입할 수 있어요)</li>
+          <li>웹페이지를 담을 GitHub 저장소(repository) 1개 — 이번 실습 예시: <a href="https://github.com/loreenkim0301/swy-lecturenote" target="_blank" rel="noopener">github.com/loreenkim0301/swy-lecturenote</a></li>
+          <li>클로드 웹 채팅(Claude Code) 접속 화면 — <a href="https://claude.ai/code" target="_blank" rel="noopener">claude.ai/code</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="step1">
+      <h1 class="section-title">STEP 1. 클로드에게 한 문장으로 요청하기</h1>
+      <p>클로드 코드 채팅창에 아래 문장을 그대로 입력해보세요. 코드를 몰라도 괜찮아요 — 이 문장 하나면 충분히 시작할 수 있어요.</p>
+      <div class="prompt-wrap">
+        <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+        <div class="prompt-box">여기서 시작한다.
+hello 페이지를 하나 띄워서 배포해줘.</div>
+      </div>
+
+      <div class="chat-mock">
+        <div class="head">Claude Code — Hello 페이지 배포</div>
+        <div class="body">
+          <div class="bubble">여기서 시작한다.<br>hello 페이지를 하나 띄워서 배포해줘.</div>
+          <p><strong>세션 초기화됨</strong></p>
+          <ul class="checklist">
+            <li class="done">클라우드 컨테이너 설정</li>
+            <li class="done">리포지토리 1개 복제 완료</li>
+            <li class="done">Claude Code 시작됨</li>
+            <li class="doing">전송 중...</li>
+          </ul>
+        </div>
+      </div>
+      <p class="mockup-caption">재현 이미지 — 요청을 보내면 왼쪽에 진행 상황 체크리스트가 자동으로 올라와요.</p>
+
+      <div class="tip"><span class="label">팁</span>이 문장을 보내는 순간, 클로드가 스스로 <code>index.html</code>(웹페이지 파일)과 배포용 설정 파일을 만들고, GitHub 저장소에 커밋(commit)·푸시(push)까지 전부 대신 해줘요. 여러분은 클릭 몇 번만 하면 돼요.</div>
+    </section>
+
+    <section id="step2">
+      <h1 class="section-title">STEP 2. 클로드가 자동으로 한 일 확인하기</h1>
+      <p>클로드가 작업을 마치면 보통 다음과 같은 결과를 알려줘요.</p>
+      <ul>
+        <li>인사말이 담긴 <code>index.html</code> 웹페이지 파일 생성</li>
+        <li>push할 때마다 자동으로 배포해주는 GitHub Actions 설정 파일 생성</li>
+        <li>GitHub 저장소에 커밋 &amp; 푸시 완료</li>
+      </ul>
+      <div class="note"><span class="label">참고</span>첫 시도에서는 배포가 <strong>실패</strong>할 수 있어요. 정상이니 놀라지 마세요! GitHub 저장소에서 "Pages(페이지 공개 기능)"가 아직 켜져 있지 않기 때문이에요. 아래 STEP 3에서 딱 한 번만 켜주면 돼요.</div>
+    </section>
+
+    <section id="step3">
+      <h1 class="section-title">STEP 3. GitHub에서 Pages 켜기</h1>
+      <p>웹사이트를 인터넷에서 볼 수 있게 하려면, GitHub 저장소에서 버튼 하나만 누르면 돼요.</p>
+
+      <h2 class="sub-title"><span class="step-num">1</span>저장소 페이지로 들어가기</h2>
+      <ol>
+        <li>브라우저를 열고 내 GitHub 저장소 주소로 들어가요.<br>예) <code>https://github.com/내계정/저장소이름</code></li>
+        <li>로그인이 안 되어 있으면 먼저 로그인해요.</li>
+      </ol>
+      <p class="link-line">이번 실습 저장소로 바로 가기: <a href="https://github.com/loreenkim0301/swy-lecturenote" target="_blank" rel="noopener">github.com/loreenkim0301/swy-lecturenote</a></p>
+
+      <h2 class="sub-title"><span class="step-num">2</span>"Settings"(설정) 메뉴 찾기</h2>
+      <ol>
+        <li>저장소 화면 맨 위쪽 탭들(Code / Issues / Pull requests / Actions / Projects / Settings) 중에서</li>
+        <li>맨 오른쪽 끝의 <strong>Settings</strong> 탭을 눌러요. (화면이 좁으면 <code>...</code> 더보기 안에 숨어있을 수 있어요)</li>
+      </ol>
+
+      <h2 class="sub-title"><span class="step-num">3</span>"Pages" 메뉴 찾기</h2>
+      <ol>
+        <li>Settings 화면 왼쪽에 세로로 긴 메뉴 목록이 보여요.</li>
+        <li>아래로 내리다 보면 <strong>"Pages"</strong>라는 글자가 있어요. ("Code and automation" 그룹 아래)</li>
+        <li><strong>Pages</strong>를 눌러요.</li>
+      </ol>
+      <div class="tip"><span class="label">팁</span>메뉴를 못 찾겠으면 키보드에서 <strong>Ctrl + F</strong> (맥은 <strong>Command + F</strong>)를 눌러 작은 검색창을 띄운 뒤 <strong>"Pages"</strong>라고 입력해보세요. 그 단어가 있는 곳을 바로 찾아줘요.</div>
+
+      <h2 class="sub-title"><span class="step-num">4</span>Source(소스)를 "GitHub Actions"로 바꾸기</h2>
+      <ol>
+        <li>Pages 화면의 "Build and deployment" 아래 <strong>"Source"</strong> 드롭다운을 눌러요.</li>
+        <li>지금은 보통 "None" 또는 "Deploy from a branch"로 되어 있어요.</li>
+        <li>드롭다운에서 <strong>"GitHub Actions"</strong>를 선택해요. 보통 자동으로 저장돼요.</li>
+      </ol>
+      <p class="link-line">Pages 설정 화면 바로 가기: <a href="https://github.com/loreenkim0301/swy-lecturenote/settings/pages" target="_blank" rel="noopener">github.com/loreenkim0301/swy-lecturenote/settings/pages</a></p>
+    </section>
+
+    <section id="step3-1">
+      <h1 class="section-title">STEP 3-1. 저장소를 실수로 Private(비공개)로 만들었다면</h1>
+      <p>Pages 설정 화면에 "이 저장소는 비공개라서 유료 플랜이 필요하다"는 안내나 <strong>"Upgrade your plan" / "Make repository public"</strong> 문구가 뜬다면, 무료 계정은 비공개 저장소에서 Pages를 쓰려면 유료 플랜이 필요하기 때문이에요.</p>
+      <p>결제 없이 해결하려면 저장소를 <strong>공개(Public)</strong>로 바꾸면 돼요.</p>
+      <ol>
+        <li>Settings 화면을 맨 아래까지 내려서 <strong>"Danger Zone"</strong>(위험 구역)을 찾아요.</li>
+        <li><strong>"Change repository visibility"</strong> 항목 오른쪽의 <strong>"Change visibility"</strong> 버튼을 눌러요.</li>
+        <li>펼쳐지는 메뉴에서 <strong>"Change to public"</strong>을 선택하고, 안내에 따라 저장소 이름을 입력해 확인해요.</li>
+      </ol>
+      <p class="link-line">Danger Zone 바로 가기: <a href="https://github.com/loreenkim0301/swy-lecturenote/settings" target="_blank" rel="noopener">github.com/loreenkim0301/swy-lecturenote/settings</a> (맨 아래로 스크롤)</p>
+
+      <div class="github-mock">
+        <div class="head">Danger Zone</div>
+        <div class="row">
+          <div class="label">
+            <b>Change repository visibility</b>
+            <span>This repository is currently private.</span>
+          </div>
+          <button>Change visibility &#9662; Change to public</button>
+        </div>
+      </div>
+      <p class="mockup-caption">재현 이미지 — GitHub 저장소 Settings 맨 아래 Danger Zone 화면</p>
+
+      <div class="tip"><span class="label">팁</span>공개로 바꾼 뒤에는 다시 <strong>Pages</strong> 메뉴로 가서 STEP 3의 4번(Source를 "GitHub Actions"로 선택)을 진행하면 돼요.</div>
+    </section>
+
+    <section id="step4">
+      <h1 class="section-title">STEP 4. 완성된 페이지 확인하기</h1>
+      <p>Pages 설정을 마쳤으면, 클로드에게 "설정 끝났어"라고 알려주세요. 클로드가 배포를 다시 실행하고 성공 여부를 확인해줘요.</p>
+      <p>배포가 성공하면 아래와 같은 주소로 내 웹페이지를 열어볼 수 있어요.</p>
+      <div class="prompt-wrap">
+        <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+        <div class="prompt-box">https://내계정.github.io/저장소이름/</div>
+      </div>
+
+      <div class="browser-mock">
+        <div class="bar">
+          <span class="dotc"></span><span class="dotc"></span><span class="dotc"></span>
+          <span class="url"><a href="https://loreenkim0301.github.io/swy-lecturenote/" target="_blank" rel="noopener" style="color:inherit;">loreenkim0301.github.io/swy-lecturenote/</a></span>
+        </div>
+        <div class="content">
+          <div class="card2">
+            <h4>Hello, SWY Lecture Note!</h4>
+            <p>이 페이지는 배포 테스트를 위해 생성되었습니다.</p>
+          </div>
+        </div>
+      </div>
+      <p class="mockup-caption">재현 이미지 — 완성된 hello 페이지가 실제로 열린 모습</p>
+      <p class="link-line">전체 교안 목록 바로 열어보기: <a href="https://loreenkim0301.github.io/swy-lecturenote/" target="_blank" rel="noopener">loreenkim0301.github.io/swy-lecturenote</a></p>
+    </section>
+
+    <section id="faq">
+      <h1 class="section-title">정리 &amp; 자주 묻는 질문</h1>
+      <h2 class="sub-title">오늘 한 일 한눈에 보기</h2>
+      <ol>
+        <li>클로드에게 문장 하나로 웹페이지 배포 요청</li>
+        <li>클로드가 파일 생성 + 자동 배포 설정 + GitHub 업로드까지 처리</li>
+        <li>GitHub Settings → Pages → Source를 "GitHub Actions"로 변경</li>
+        <li>(필요할 때만) 저장소를 Public으로 변경</li>
+        <li>완성된 웹페이지 주소 접속해서 확인</li>
+      </ol>
+
+      <h2 class="sub-title">자주 묻는 질문</h2>
+      <p><strong>Q. 배포가 계속 실패해요.</strong><br>
+      A. Settings → Pages에서 Source가 "GitHub Actions"로 되어 있는지, 저장소가 Public인지 다시 확인해보세요.</p>
+      <p><strong>Q. 메뉴를 못 찾겠어요.</strong><br>
+      A. Ctrl + F(맥은 Command + F)로 원하는 단어를 검색하면 빨리 찾을 수 있어요.</p>
+      <p><strong>Q. 주소로 들어갔는데 페이지가 안 보여요.</strong><br>
+      A. 처음 배포된 직후에는 1~2분 정도 걸릴 수 있어요. 잠시 후 새로고침 해보세요.</p>
+      <p><strong>Q. 저장소(레포지토리) 자체도 클로드한테 만들어달라고 할 순 없나요?</strong><br>
+      A. 아쉽지만 안 돼요. 클로드 코드 세션에 연결된 GitHub 권한은 보통 미리 지정된 저장소 1개에만 부여되어 있고, 새 저장소를 만드는 권한(Administration: write)은 포함되어 있지 않아서 <code>POST /user/repos → 403 Resource not accessible</code> 같은 오류로 거부돼요. 이 부분은 클로드 쪽에서 우회할 방법이 없어요.<br>
+      가장 쉬운 방법은 <a href="https://github.com/new" target="_blank" rel="noopener">github.com/new</a>에서 원하는 이름으로 저장소를 먼저 직접 만든 뒤, 클로드에게 "이 저장소 이름으로 연결해서 작업해줘"라고 알려주는 거예요. (다른 방법: claude.ai 설정 → 커넥터에서 GitHub 연결 권한 범위를 넓게 다시 인증하기 — 다만 이쪽은 별도 설정이 필요해서 첫 번째 방법이 더 간단해요.)</p>
+    </section>
+
+    <section id="appendix">
+      <h1 class="section-title">부록. 이번 실습에서 실제로 입력한 프롬프트 전체</h1>
+      <p>참고용으로, 이 교안을 만드는 동안 클로드 웹 채팅에 실제로 입력했던 문장들을 순서대로 그대로 옮겨두었어요. 그대로 따라 입력해봐도 좋아요.</p>
+
+      <h2 class="sub-title"><span class="step-num">1</span>웹페이지 배포 요청</h2>
+      <div class="prompt-wrap">
+        <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+        <div class="prompt-box">여기서 시작한다.
+hello 페이지를 하나 띄워서 배포해줘.</div>
+      </div>
+
+      <h2 class="sub-title"><span class="step-num">2</span>남은 단계 상세 설명 요청</h2>
+      <div class="prompt-wrap">
+        <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+        <div class="prompt-box">어떻게 해야할지, 남은 한 단계 (사용자가 직접 해야 함)를 초등학생도 따라가도록 상세하게 설명.</div>
+      </div>
+
+      <h2 class="sub-title"><span class="step-num">3</span>Ctrl+F 팁 추가 요청</h2>
+      <div class="prompt-wrap">
+        <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+        <div class="prompt-box">키워드나 메뉴를 못 찾는다면 '컨트롤 + F키' 눌러서 해당 'Pages' 단어를 검색하면 빠르다. 라고 추가. 3단계에 추가.</div>
+      </div>
+
+      <h2 class="sub-title"><span class="step-num">4</span>Private 저장소 관련 내용 추가 + 설정 완료 알림</h2>
+      <div class="prompt-wrap">
+        <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+        <div class="prompt-box">그리고 나는 처음에 실수로 private 으로 만들었더니, 업그레이드 플랜하거나 퍼블릭으로 바꾸라고 되어 있었음. 이 부분 단계 중간에 추가.
+
+설정 끝났어.</div>
+      </div>
+    </section>
+
+    <footer class="page-footer">
+      260828_첫 hello 페이지를 클로드코드로 배포하기 · SELECTWAY 실습 교안<br>
+      <a href="https://github.com/loreenkim0301/swy-lecturenote" target="_blank" rel="noopener">GitHub 저장소</a>
+      &nbsp;·&nbsp;
+      <a href="/swy-lecturenote/">전체 교안 목록</a>
+    </footer>
+
+  </main>
+</div>
+
+<script src="/swy-lecturenote/assets/site.js"></script>
+</body>
+</html>
