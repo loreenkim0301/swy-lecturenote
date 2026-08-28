@@ -263,6 +263,16 @@ h4{ font-size:14.5px; margin-top:16px; color:var(--ink-muted); }
 }
 
 /* ---------- 프롬프트 / 명령어 박스 (항상 복사 가능) ---------- */
+.prompt-tier{
+  font-family:"JetBrains Mono",monospace;
+  font-size:11px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  font-weight:700;
+  margin:14px 0 6px;
+}
+.prompt-tier.basic{ color:var(--ink-muted); }
+.prompt-tier.advanced{ color:var(--accent-ink); }
 .prompt-wrap{ position:relative; margin:14px 0; }
 .prompt-box{
   background:var(--code-bg);

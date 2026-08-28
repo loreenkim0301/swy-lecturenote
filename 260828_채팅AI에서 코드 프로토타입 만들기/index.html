@@ -403,42 +403,78 @@
 
       <h3><span class="step-num">1</span>대시보드 만들기 — 파일 첨부</h3>
       <p>채팅창에 위에서 내려받은 <code>sample_sales_data.xlsx</code> 파일을 첨부하고, 아래 프롬프트를 함께 보내세요.</p>
+      <p class="prompt-tier basic">기본 프롬프트</p>
       <div class="prompt-wrap">
         <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
         <div class="prompt-box">첨부한 엑셀 파일의 매출 데이터를 분석해서, 월별 매출 추이를 보여주는 그래프와 상품별 매출 표가 있는 대시보드를 만들어줘.</div>
       </div>
+      <p class="prompt-tier advanced">심화 프롬프트</p>
+      <div class="prompt-wrap">
+        <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+        <div class="prompt-box">첨부한 엑셀 파일의 모든 시트(요약, 상품 목록, 주간/월간/연간 매출)를 활용해서 한 페이지짜리 대시보드를 만들어줘. 상단에는 총매출·총이익·마진율을 보여주는 요약 카드 3개를, 가운데에는 월별 매출 추이 꺾은선 그래프와 카테고리별 매출 비중 도넛 차트를 넣어줘. 하단에는 상품 목록을 매출 기준 내림차순으로 정렬한 표를 넣고, 그래프에 마우스를 올리면 정확한 수치가 툴팁으로 보이게 해줘.</div>
+      </div>
 
       <h3><span class="step-num">2</span>디자인 수정 연습 — 그래프 색상·축 변경</h3>
+      <p class="prompt-tier basic">기본 프롬프트</p>
       <div class="prompt-wrap">
         <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
         <div class="prompt-box">그래프 색상을 파란색 계열로 바꾸고, X축은 "월", Y축은 "매출(원)"으로 라벨을 더 명확하게 표시해줘.</div>
       </div>
+      <p class="prompt-tier advanced">심화 프롬프트</p>
+      <div class="prompt-wrap">
+        <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+        <div class="prompt-box">전체 화면에 일관된 색상 테마를 적용해줘 — 주요 그래프는 남색(#1e3a8a) 계열, 강조가 필요한 부분은 주황색(#f97316) 포인트 컬러로 통일하고, 그래프 범례(legend)와 축 눈금 글씨 크기를 키워서 잘 보이게 해줘. 다크 모드 토글 버튼도 추가해서, 눌렀을 때 배경은 어둡게, 글씨와 그래프 색상은 그에 맞게 자동으로 바뀌게 해줘.</div>
+      </div>
 
       <h3><span class="step-num">3</span>기능 추가 연습 — 검색·필터</h3>
+      <p class="prompt-tier basic">기본 프롬프트</p>
       <div class="prompt-wrap">
         <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
         <div class="prompt-box">상품 목록 표에 상품명으로 검색할 수 있는 검색창과, 카테고리별로 걸러볼 수 있는 필터 드롭다운을 추가해줘.</div>
       </div>
+      <p class="prompt-tier advanced">심화 프롬프트</p>
+      <div class="prompt-wrap">
+        <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+        <div class="prompt-box">상품 목록 표에 검색·카테고리 필터에 더해서, 판매가·마진율 두 항목으로 정렬(오름차순/내림차순)할 수 있는 기능과 여러 카테고리를 동시에 선택할 수 있는 다중 필터를 추가해줘. 또 현재 필터링된 결과만 CSV 파일로 다운로드할 수 있는 버튼도 만들어줘.</div>
+      </div>
 
       <h3><span class="step-num">4</span>모바일 반응형 디자인 연습</h3>
+      <p class="prompt-tier basic">기본 프롬프트</p>
       <div class="prompt-wrap">
         <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
         <div class="prompt-box">표 부분이 모바일 화면 너비에서도 잘리거나 가로 스크롤이 생기지 않도록, 좁은 화면에서는 카드 형태로 보이게 반응형으로 개선해줘.</div>
       </div>
+      <p class="prompt-tier advanced">심화 프롬프트</p>
+      <div class="prompt-wrap">
+        <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+        <div class="prompt-box">화면 너비 768px 이하에서는 표를 카드 리스트로, 480px 이하에서는 핵심 정보(상품명·판매가·마진율)만 보이고 나머지 항목은 탭하면 펼쳐지는 아코디언 형태로 바꿔줘. 그래프도 모바일에서는 가로 스크롤 없이 화면 안에 맞게 자동으로 크기가 줄어들게 해줘.</div>
+      </div>
 
       <h2 class="sub-title" id="ep-todo">5.2 PM을 위한 프로젝트 TODO 및 체크리스트 만들기</h2>
       <p>새로고침해도 목록이 사라지지 않는, 내 브라우저에만 저장되는(로컬) TODO 리스트를 만들어봐요.</p>
+      <p class="prompt-tier basic">기본 프롬프트</p>
       <div class="prompt-wrap">
         <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
         <div class="prompt-box">프로젝트 관리용 TODO 리스트를 만들어줘. 할 일을 추가·삭제하고 완료 체크를 할 수 있어야 하고, 브라우저를 새로고침해도 목록이 사라지지 않게 내 브라우저(로컬)에 저장해줘.</div>
       </div>
+      <p class="prompt-tier advanced">심화 프롬프트</p>
+      <div class="prompt-wrap">
+        <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+        <div class="prompt-box">할 일마다 우선순위(높음·보통·낮음)와 마감일을 설정할 수 있게 해주고, 마감일이 지난 항목은 빨간색으로 표시해줘. 우선순위 높은 순으로 자동 정렬되게 하고, 마우스로 항목 순서를 드래그해서 바꿀 수 있게 해줘. 완료한 항목은 목록 아래에 따로 접어서 볼 수 있게 해줘.</div>
+      </div>
       <div class="note"><span class="label">참고</span>결과물을 열어본 뒤 항목을 몇 개 추가하고 새로고침해보세요. 목록이 그대로 남아있으면 로컬 저장이 잘 된 거예요.</div>
 
       <h2 class="sub-title" id="ep-chatbot">5.3 내장된 AI를 활용한 챗봇 프로토타입</h2>
-      <p>아래 같은 프롬프트를 <strong>클로드</strong>와 <strong>제미나이</strong> 두 곳에서 각각 시도해보고, 결과가 어떻게 다른지 비교해보세요.</p>
+      <p>아래 프롬프트를 <strong>클로드</strong>와 <strong>제미나이</strong> 두 곳에서 각각 시도해보고, 결과가 어떻게 다른지 비교해보세요.</p>
+      <p class="prompt-tier basic">기본 프롬프트</p>
       <div class="prompt-wrap">
         <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
         <div class="prompt-box">간단한 채팅 프로토타입을 만들어주고, 무료로 사용 가능한 내장 제미나이 API를 연결해줘. 결과를 미리보기 하게 해줘.</div>
+      </div>
+      <p class="prompt-tier advanced">심화 프롬프트</p>
+      <div class="prompt-wrap">
+        <button class="copy-btn" onclick="copyPrompt(this)">복사</button>
+        <div class="prompt-box">채팅 대화 내용이 새로고침해도 유지되도록 로컬에 저장해줘. 대화를 시작하기 전에 "너는 친절한 고객 상담 챗봇이야"처럼 챗봇의 역할(페르소나)을 입력할 수 있는 설정창도 추가해줘. 답변이 한 번에 나오지 않고 타이핑되듯 스트리밍으로 나오게 해주고, API 호출이 실패했을 때는 사용자에게 에러 메시지를 보여줘.</div>
       </div>
       <div class="note"><span class="label">참고</span>도구마다 API 키를 넣는 방식이나 미리보기가 되는 범위가 다를 수 있어요. 막히는 부분이 있으면 "왜 안 되는지 이유를 설명해줘"라고 되물어보는 것도 좋은 방법이에요.</div>
     </section>
