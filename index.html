@@ -39,6 +39,19 @@
     .session-row a{ gap:12px; padding:18px 4px; }
     .session-main h2{ font-size:16px; }
   }
+
+  .list-toolbar{ display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; }
+  .list-toolbar-label{ font-size:13px; font-weight:700; color:var(--muted); }
+  .qr-btn{ display:inline-flex; align-items:center; gap:6px; font:600 13px "Noto Sans KR",sans-serif; color:var(--accent-ink); background:var(--accent-soft); border:1px solid var(--line); border-radius:999px; padding:7px 14px; cursor:pointer; }
+  .qr-btn:hover{ background:#e3e9ff; }
+
+  .qr-overlay{ position:fixed; inset:0; background:rgba(15,17,21,.94); z-index:999; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:22px; padding:24px; }
+  .qr-overlay[hidden]{ display:none; }
+  .qr-overlay img{ width:min(72vw,340px); height:min(72vw,340px); background:#fff; border-radius:16px; padding:20px; box-sizing:border-box; }
+  .qr-overlay .qr-url{ font:600 15px/1.5 "JetBrains Mono",monospace; color:#fff; text-align:center; word-break:break-all; max-width:90vw; }
+  .qr-overlay .qr-url a{ color:#fff; text-decoration:underline; }
+  .qr-close{ position:absolute; top:20px; right:24px; width:40px; height:40px; border-radius:50%; border:none; background:rgba(255,255,255,.12); color:#fff; font-size:20px; cursor:pointer; }
+  .qr-close:hover{ background:rgba(255,255,255,.22); }
 </style>
 </head>
 <body>
@@ -49,6 +62,17 @@
     <h1>실습 교안 모음</h1>
     <p class="lede">AI 코딩 도구로 직접 만들고 배포해보는 SELECTWAY 실습 교안 목록입니다. 아래에서 보고 싶은 강의를 골라주세요.</p>
   </header>
+
+  <div class="list-toolbar">
+    <span class="list-toolbar-label">교안 목록</span>
+    <button type="button" class="qr-btn" id="qr-open-btn" aria-haspopup="dialog">📱 QR코드</button>
+  </div>
+
+  <div class="qr-overlay" id="qr-overlay" hidden role="dialog" aria-modal="true" aria-label="QR 코드">
+    <button type="button" class="qr-close" id="qr-close-btn" aria-label="닫기">✕</button>
+    <img src="data:image/png;base64,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" alt="접속 QR 코드">
+    <p class="qr-url">https://m.site.naver.com/2fI48</p>
+  </div>
 
   <ul class="session-list">
     <li class="session-row">
@@ -94,5 +118,19 @@
   </footer>
 
 </div>
+<script>
+(function () {
+  var openBtn = document.getElementById('qr-open-btn');
+  var closeBtn = document.getElementById('qr-close-btn');
+  var overlay = document.getElementById('qr-overlay');
+  if (!openBtn || !overlay) return;
+  function open() { overlay.hidden = false; document.body.style.overflow = 'hidden'; }
+  function close() { overlay.hidden = true; document.body.style.overflow = ''; }
+  openBtn.addEventListener('click', open);
+  closeBtn.addEventListener('click', close);
+  overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !overlay.hidden) close(); });
+})();
+</script>
 </body>
 </html>
