@@ -213,6 +213,13 @@
       </div>
 
       <div class="note"><span class="label">참고</span>최근 업데이트로 일부 용어와 화면 흐름이 바뀌었어요. <strong>챗지피티</strong>는 더는 "캔버스"라는 이름을 쓰지 않고, 같은 미리보기 기능을 <strong>"코드블록"</strong>으로 부르고 있어요. <strong>클로드</strong>도 아티팩트가 곧바로 열리지 않고, 먼저 <strong>대화 화면 안에서 코드블럭 형태로</strong> 결과가 나온 뒤 이를 열어야 아티팩트 화면으로 넘어가는 흐름으로 바뀌었어요. 화면 이름이 달라 보여도 위 표의 기본 절차(활성화 → 코드 확인 → 필요할 때만 .html로 내보내기)는 동일하게 적용돼요.</div>
+      <div class="tip"><span class="label">참고 링크</span>도구별 공식 도움말 문서예요. 화면 구성은 자주 바뀌니, 실습 중 헷갈리면 아래에서 최신 안내를 먼저 확인해보세요.
+        <ul style="margin:8px 0 0 18px; padding:0;">
+          <li><a href="https://help.openai.com/en/articles/9930697-what-is-the-canvas-feature-in-chatgpt-and-how-do-i-use-it" target="_blank" rel="noopener">OpenAI 도움말 · ChatGPT 캔버스(코드블록) 사용법</a></li>
+          <li><a href="https://support.claude.com/en/articles/9487310-what-are-artifacts-and-how-do-i-use-them" target="_blank" rel="noopener">Anthropic 도움말 · 클로드 아티팩트란 무엇인가</a></li>
+          <li><a href="https://support.google.com/gemini/answer/15150152" target="_blank" rel="noopener">Google 도움말 · 제미나이 캔버스 사용법</a></li>
+        </ul>
+      </div>
     </section>
 
     <section id="tools">
@@ -332,6 +339,7 @@
         </div>
 
       </div>
+      <div class="notice"><span class="label">자주 겪는 상황</span>세 도구 모두 <strong>미리보기 패널이 자동으로 안 열리는 경우</strong>가 있어요. 이럴 땐 "이 코드를 미리보기(캔버스/아티팩트)로 열어줘"라고 다시 요청하면 대부분 해결돼요. 화면이 하얗게만 나온다면 우클릭 → 검사 → 콘솔 탭에서 에러 메시지부터 확인해보세요. (자세한 디버깅 방법은 8번 "디버깅 &amp; 배포 팁" 참고)</div>
     </section>
 
     <section id="walkthrough">
@@ -357,6 +365,7 @@
           <div>
             <h3 style="margin-top:0;">IA(정보구조)를 표로 정리해 개선점부터 확인</h3>
             <p>코드보다 먼저 AS-IS/TO-BE 구조표로 화면 단위를 맞춰요. 이 단계를 건너뛰면 이후 수정 요청이 산발적으로 흩어지기 쉬워요.</p>
+            <div class="tip"><span class="label">더 깊게 배우기</span>IA·기능정의서·화면설계서 같은 기획 문서를 처음부터 차근차근 배우고 싶다면, <a href="/swy-lecturenote/260831_%EB%B9%84%EA%B0%9C%EB%B0%9C%EC%9E%90%C2%B7%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%A5%BC%20%EC%9C%84%ED%95%9C%20AI%20%ED%94%84%EB%A1%9C%ED%86%A0%ED%83%80%EC%9D%B4%ED%95%91%20%EC%9E%85%EB%AC%B8/">비개발자·기획자를 위한 AI 프로토타이핑 입문</a> 교안의 3장(서비스 설계를 위한 다양한 기획 문서)을 참고하세요.</div>
           </div>
         </div>
         <div class="flow-step">
@@ -369,6 +378,7 @@
 '캔버스 기능'을 통해서 미리보기 하게 해줘.</div>
             </div>
             <p>캔버스 화면에서 결과를 확인하고, 마음에 안 드는 부분은 다시 프롬프트로 고쳐요. 실습·검토는 대부분 이 미리보기 화면 안에서 끝나요.</p>
+            <div class="note"><span class="label">참고</span>미리보기가 하얗게만 나오거나 반응이 없으면, 코드 자체보다 <strong>렌더링 과정의 오류</strong>일 때가 많아요. 브라우저 콘솔(우클릭 → 검사 → Console 탭)의 에러 메시지를 그대로 복사해서 AI에게 전달하면 훨씬 빠르게 해결돼요. 자세한 방법은 8번 "디버깅 &amp; 배포 팁"을 참고하세요.</div>
           </div>
         </div>
         <div class="flow-step">
@@ -390,6 +400,7 @@
           <div>
             <h3 style="margin-top:0;">오류 대응 — 미리 다운로드, 맥락 유실 시 재투입</h3>
             <p>캔버스 결과물은 완성될 때마다 04단계 방식으로 미리 다운로드해둬요. AI가 이전 맥락을 잃으면, 갖고 있는 마지막 <strong>.html 파일</strong>을 다시 넣고 처음부터 요청하는 편이 빨라요.</p>
+            <div class="tip"><span class="label">실전 사례 더보기</span>실습 중 자주 겪는 실패 패턴(응답 멈춤, 캡처와 다른 결과, 모바일 반응형 오류 등)은 7번 "실전 사례 — 성공과 실패"에 정리되어 있어요. 비슷한 상황을 먼저 찾아보면 시행착오를 줄일 수 있어요.</div>
           </div>
         </div>
       </div>
