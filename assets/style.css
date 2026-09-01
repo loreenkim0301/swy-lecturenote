@@ -106,6 +106,9 @@ li{ margin-bottom:.4rem; }
 .sidebar nav > ol > li > a{ font-weight:700; }
 .sidebar nav ol ol a{ font-size:12.8px; color:var(--ink-muted); font-weight:400; }
 .sidebar nav ol ol a:hover{ color:var(--accent-ink); }
+.sidebar nav a.active{ background:var(--accent-soft); color:var(--accent-ink); font-weight:700; box-shadow:inset 2px 0 0 var(--accent); }
+.sidebar nav ol ol a.active{ font-weight:700; }
+.sidebar nav a.active-parent{ color:var(--accent-ink); }
 
 .sidebar-toggle-input{ display:none; }
 .sidebar-toggle-btn{
