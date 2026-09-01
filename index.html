@@ -45,10 +45,10 @@
   .qr-btn{ display:inline-flex; align-items:center; gap:6px; font:600 13px "Noto Sans KR",sans-serif; color:var(--accent-ink); background:var(--accent-soft); border:1px solid var(--line); border-radius:999px; padding:7px 14px; cursor:pointer; }
   .qr-btn:hover{ background:#e3e9ff; }
 
-  .qr-overlay{ position:fixed; inset:0; background:rgba(15,17,21,.94); z-index:999; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:22px; padding:24px; }
+  .qr-overlay{ position:fixed; inset:0; background:rgba(15,17,21,.94); z-index:999; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:28px; padding:24px; }
   .qr-overlay[hidden]{ display:none; }
-  .qr-overlay img{ width:min(72vw,340px); height:min(72vw,340px); background:#fff; border-radius:16px; padding:20px; box-sizing:border-box; }
-  .qr-overlay .qr-url{ font:600 15px/1.5 "JetBrains Mono",monospace; color:#fff; text-align:center; word-break:break-all; max-width:90vw; }
+  .qr-overlay img{ width:min(38vw,200px); height:min(38vw,200px); background:#fff; border-radius:14px; padding:14px; box-sizing:border-box; }
+  .qr-overlay .qr-url{ font:800 clamp(28px,6vw,64px)/1.3 "JetBrains Mono",monospace; color:#fff; text-align:center; word-break:break-all; width:96vw; max-width:1400px; }
   .qr-overlay .qr-url a{ color:#fff; text-decoration:underline; }
   .qr-close{ position:absolute; top:20px; right:24px; width:40px; height:40px; border-radius:50%; border:none; background:rgba(255,255,255,.12); color:#fff; font-size:20px; cursor:pointer; }
   .qr-close:hover{ background:rgba(255,255,255,.22); }
