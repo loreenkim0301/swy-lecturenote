@@ -172,7 +172,7 @@ details.optional[open] .summary-hint { display: none; }
       <a href="#s2-1">2.1 ChatGPT 데스크톱 준비</a>
       <a href="#s2-2">2.2 채팅으로 다양한 프로토타입 만들어보기</a>
       <a href="#s2-3">2.3 홈페이지 프로토타입 만들기</a>
-      <a href="#s2-4">2.4 HTML 파일의 특징 알아보기</a>
+      <a href="#s2-4">2.4 (선택) HTML 파일의 특징 알아보기</a>
       <a class="major" href="#s3">3. ChatGPT Sites로 간단하게 배포하기</a>
       <a href="#s3-1">3.1 프로토타입에서 사이트로</a>
       <a href="#s3-2">3.2 (선택) Sites로 사이트 배포하기</a>
@@ -647,7 +647,7 @@ details.optional[open] .summary-hint { display: none; }
 
       <div class="topic" id="s2-4">
         <div class="topic-label">HTML BASICS</div>
-        <h3>2.4 HTML 파일의 특징 알아보기</h3>
+        <h3>2.4 (선택) HTML 파일의 특징 알아보기</h3>
         <p>2.3에서 저장한 <code class="inline">index.html</code>을 열어보며, 오늘 만든 결과물이 어떤 형태의 파일인지 간단히 이해합니다. 코드를 외울 필요는 없고, <b>“이 파일은 이렇게 생겼구나”</b>를 확인하는 것이 목표입니다.</p>
 
         <h4>1. 메모장으로도 열고 직접 수정할 수 있습니다</h4>
@@ -694,6 +694,23 @@ details.optional[open] .summary-hint { display: none; }
           <article><span>보이지 않는 영역</span><h3>&lt;head&gt;</h3><p>탭 제목, 글꼴, 색상 같은 설정이 들어갑니다. 화면 본문에는 나타나지 않습니다.</p></article>
           <article><span>보이는 영역</span><h3>&lt;body&gt;</h3><p>메뉴, 제목, 버튼, 문의 폼처럼 실제 화면에 보이는 내용이 들어갑니다.</p></article>
         </div>
+        <h4>4. 인터넷이 없어도 열리고, 파일 그대로 공유할 수 있습니다</h4>
+        <p>HTML 파일은 서버나 인터넷 연결 없이 <b>내 컴퓨터의 브라우저만으로 열립니다.</b> 이메일 첨부, USB, 사내 메신저, 공유 폴더 등으로 파일을 전달하면 받은 사람도 더블클릭만으로 같은 화면을 볼 수 있습니다. 별도 프로그램 설치나 회원가입도 필요 없습니다.</p>
+        <div class="notice"><b>내부망(폐쇄망) 환경에서 특히 유용합니다</b><br>
+        공공기관·지자체 공무원이나 대기업처럼 보안을 위해 <b>외부 인터넷 서비스 연결이 막힌 내부망</b>을 쓰는 곳에서는, 외부 웹사이트나 클라우드 도구를 사용하기 어렵습니다. 이런 환경에서도 HTML 파일은 파일만 옮기면 바로 열 수 있기 때문에, 외부 서비스에 연결하지 않고도 프로토타입 화면이나 간단한 계산기·대시보드·체크리스트를 공유하고 사용할 수 있습니다.</div>
+        <div class="warning"><b>인터넷 없이 쓰려면 외부 연결이 없는 파일이어야 합니다</b><br>
+        AI가 만든 HTML에는 그래프 라이브러리, 웹 글꼴, 아이콘처럼 <b>인터넷에서 불러오는 요소</b>가 들어 있는 경우가 많습니다. 이런 파일은 내부망에서 열면 그래프가 안 보이거나 글꼴·아이콘이 깨질 수 있습니다. 내부망에서 쓸 파일이라면 처음부터 아래처럼 요청합니다.</div>
+        <div class="copybox">
+          <div class="copyhead"><span>내부망에서도 열리는 HTML로 요청하기</span><button onclick="copyPrompt(this)">복사</button></div>
+          <pre>인터넷이 연결되지 않은 내부망 PC에서도 열 수 있도록 만들어줘.
+
+- 외부 라이브러리, 웹 글꼴, 외부 이미지, CDN 링크는 사용하지 마
+- 그래프가 필요하면 외부 라이브러리 없이 직접 그려줘
+- 필요한 디자인과 동작은 모두 index.html 한 파일 안에 넣어줘
+- 외부 서버나 데이터베이스는 사용하지 마</pre>
+        </div>
+        <p class="small">확인 방법: 와이파이를 끄거나 랜선을 뺀 상태에서 파일을 열어 화면이 그대로 보이는지 확인합니다.</p>
+
         <div class="notice"><b>실전 팁: AI가 준 코드를 복사할 때</b><br>AI가 코드를 채팅창에 글로 보여준 경우, <b>첫 줄 <code class="inline">&lt;!DOCTYPE html&gt;</code>부터 마지막 줄 <code class="inline">&lt;/html&gt;</code>까지 빠짐없이</b> 복사해야 합니다. 답변이 중간에 끊겨 <code class="inline">&lt;/html&gt;</code>이 없다면 “이어서 끝까지 작성해줘”라고 요청합니다.</div>
 
         <div class="notice"><b>여기까지는 아직 ‘배포’가 아닙니다.</b><br>브라우저에서 화면이 잘 열리더라도 파일이 내 컴퓨터에만 있다면 다른 사람은 접속할 수 없습니다. 다음 파트에서는 이 결과를 사이트 형태로 공유하거나, GitHub·Vercel을 이용해 실제 웹주소로 배포하는 흐름으로 이어집니다.</div>
