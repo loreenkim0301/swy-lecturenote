@@ -127,6 +127,7 @@ details.optional[open] .summary-hint { display: none; }
 .sample-shot figcaption { margin-top: 10px; color: var(--muted); font-size: 14px; }
 @media (max-width: 680px) { .profile-card { grid-template-columns: 1fr; padding: 18px; } }
 .app aside { word-break: keep-all; }
+.topic .three-cards h3 { margin: 8px 0 5px; font-size: 20px; letter-spacing: -0.02em; }
 .block-title { margin: 34px 0 4px; font-size: 22px; letter-spacing: -0.02em; scroll-margin-top: 18px; }
 .break { padding: 54px var(--page-pad); background: rgb(246, 248, 252); border-bottom: 1px solid var(--line); }
 .break h2 { margin: 0px 0px 8px; font-size: 32px; }
@@ -736,24 +737,59 @@ details.optional[open] .summary-hint { display: none; }
         <div class="procedure">
           <div><b>GitHub 계정을 만듭니다.</b><br>이메일, 비밀번호, 사용자 이름을 입력하고 이메일 인증을 완료합니다. 사용자 이름은 이후 Repository 주소에 들어가므로 짧고 알아보기 쉽게 정합니다.<br><a class="resource-link" href="https://github.com/signup" target="_blank" rel="noopener">↗ GitHub 무료 계정 만들기</a></div>
           <div><b>로그인한 뒤 새 Repository 만들기 화면을 엽니다.</b><br>오른쪽 위 <b>+</b> 버튼 → <b>New repository</b>를 선택합니다.<br><a class="resource-link" href="https://github.com/new" target="_blank" rel="noopener">↗ GitHub 새 Repository 만들기</a></div>
-          <div><b>Repository 이름을 입력합니다.</b><br>예: <code class="inline">locallink-homepage</code> — 영문 소문자와 하이픈(-)을 사용하면 주소가 깔끔합니다.</div>
-          <div><b>공개 범위를 선택하고 생성합니다.</b><br>실습에서는 <b>Public</b>을 선택하고 <b>Create repository</b>를 누릅니다.</div>
+        </div>
+        <div class="notice"><b>Repository(레포지토리, 줄여서 ‘레포’)란?</b><br>
+        프로젝트에 필요한 파일을 한곳에 모아두는 <b>온라인 프로젝트 폴더</b>입니다. 홈페이지 하나당 Repository 하나를 만든다고 생각하면 됩니다. 일반 폴더와 다른 점은, 파일을 바꿀 때마다 <b>무엇이 · 언제 · 왜 바뀌었는지 기록(커밋)</b>이 남아서 이전 상태로 되돌릴 수 있다는 것입니다.</div>
+        <div class="procedure" style="counter-reset: step 2">
+          <div><b>Repository 이름을 입력합니다. — 필수 항목은 이름 하나뿐입니다.</b><br>예: <code class="inline">locallink-homepage</code> — 영문 소문자와 하이픈(-)을 사용하면 주소가 깔끔합니다. 설명(Description), README·.gitignore·라이선스 추가 등 <b>나머지 항목은 기본값 그대로 두어도 됩니다.</b></div>
+          <div><b>공개 범위를 선택하고 생성합니다.</b><br>실습에서는 <b>Public</b>을 선택하고 <b>Create repository</b>를 누릅니다. 공개하고 싶지 않은 코드라면 Private을 선택해도 오늘 실습(업로드·Vercel 배포)은 똑같이 진행할 수 있습니다.</div>
+        </div>
+        <div class="warning"><b>Public과 Private의 차이, 무료 계정에서 주의할 점</b><br>
+        · <b>Public(공개)</b> — 인터넷의 누구나 Repository 주소로 들어와 <b>소스코드 전체를 볼 수 있습니다.</b> 검색에 노출될 수도 있습니다.<br>
+        · <b>Private(비공개)</b> — 나와 내가 초대한 사람만 볼 수 있습니다. 무료 계정에서도 Private Repository를 만들 수 있습니다.<br>
+        · <b>Public에는 절대 올리면 안 되는 것</b> — 비밀번호, API 키, 고객 이름·연락처 같은 개인정보, 내부 매출 자료, 계약서 등. 한 번 올라간 내용은 파일을 지워도 커밋 기록에 남을 수 있습니다.<br>
+        · 공개 범위는 나중에 Repository의 <b>Settings</b>에서 바꿀 수 있습니다. 어떤 것을 골라야 할지 모르겠다면 <b>Private</b>이 안전합니다.</div>
+        <div class="procedure" style="counter-reset: step 4">
           <div><b>Repository 주소를 확인합니다.</b><br>주소창의 <code class="inline">https://github.com/내아이디/locallink-homepage</code>가 내 Repository 주소입니다. 3.3에서 사용하므로 메모해둡니다.</div>
         </div>
-        <div class="notice"><b>Repository란?</b><br>프로젝트에 필요한 파일을 한곳에 모아두는 <b>온라인 프로젝트 폴더</b>라고 이해하면 됩니다. 파일을 바꿀 때마다 무엇이 언제 바뀌었는지 기록(커밋)이 남습니다.</div>
       </div>
 
       <div class="topic" id="s3-2">
         <div class="topic-label">PRACTICE 04 · 직접 업로드</div>
         <h3>3.2 GitHub에 소스코드 올리기 (수동)</h3>
-        <p>2.3에서 저장한 <code class="inline">index.html</code>을 GitHub 웹사이트에서 <b>직접</b> 업로드합니다. 먼저 손으로 한 번 해봐야, 나중에 AI에게 맡겼을 때 무엇이 어디로 올라가는지 확인할 수 있습니다.</p>
+        <p>쉽게 말해, <b>내 컴퓨터에 있는 <code class="inline">index.html</code> 파일을 GitHub라는 온라인 보관함에 올려두는 작업</b>입니다. 이메일에 파일을 첨부해 두는 것과 비슷하지만, GitHub에 올려두면 이런 점이 좋습니다.</p>
+        <div class="three-cards">
+          <article><span>안전한 보관</span><h3>파일을 잃어버려도 다시 찾기</h3><p>내 컴퓨터에서 파일을 지우거나 컴퓨터가 고장 나도, GitHub에서 언제든 다시 내려받을 수 있습니다.</p></article>
+          <article><span>버전 관리</span><h3>이전 버전으로 되돌리기</h3><p>파일을 올릴 때마다 기록이 남아서, 수정하다 망가져도 잘 동작하던 이전 버전을 찾아 복구할 수 있습니다.</p></article>
+          <article><span>배포와 협업</span><h3>배포·공유의 출발점</h3><p>4장의 Vercel이 이 파일을 가져가 웹사이트로 만들고, 개발자·디자이너에게는 링크 하나로 코드를 전달할 수 있습니다.</p></article>
+        </div>
+        <p>먼저 손으로 한 번 해봐야, 나중에 AI에게 맡겼을 때 무엇이 어디로 올라가는지 확인할 수 있습니다.</p>
         <div class="procedure">
           <div><b>파일 업로드 화면을 엽니다.</b><br>빈 Repository의 <b>Quick setup → uploading an existing file</b>을 선택합니다. 이미 파일이 있는 Repository라면 <b>Add file → Upload files</b>를 선택합니다.</div>
-          <div><b>내 <code class="inline">index.html</code>을 업로드합니다.</b><br>2.3에서 저장한 파일을 화면에 드래그하거나 <b>choose your files</b>로 선택합니다. 파일 이름은 반드시 <code class="inline">index.html</code>이어야 4장에서 배포할 때 첫 화면으로 인식됩니다.</div>
-          <div><b>Commit changes를 누릅니다.</b><br>업로드할 파일을 확인한 뒤 <b>Commit changes</b>를 눌러 Repository에 저장합니다.</div>
+          <div><b>내 <code class="inline">index.html</code>을 업로드합니다.</b><br>2.3에서 저장한 파일을 화면에 드래그하거나 <b>choose your files</b>로 선택합니다. 파일 이름은 반드시 <b>모두 소문자</b>로 된 <code class="inline">index.html</code>이어야 4장에서 배포할 때 첫 화면으로 인식됩니다.</div>
+        </div>
+        <div class="warning"><b>대문자·소문자가 중요한가요? — 네, 인터넷에서는 다른 파일입니다.</b><br>
+        Windows·Mac 컴퓨터에서는 <code class="inline">Index.html</code>과 <code class="inline">index.html</code>을 사실상 같은 파일로 취급하지만, GitHub와 웹 서버는 <b>대문자와 소문자를 다른 글자로 구분</b>합니다. 그래서 내 컴퓨터에서는 잘 열리던 파일이 배포 후에는 “페이지를 찾을 수 없음(404)”으로 나올 수 있습니다.<br>
+        · 파일 이름: <code class="inline">index.html</code> (O) / <code class="inline">Index.html</code>, <code class="inline">INDEX.HTML</code> (X)<br>
+        · 확장자까지 확인: <code class="inline">index.html.txt</code>나 <code class="inline">index (1).html</code>처럼 저장되지 않았는지 확인합니다.<br>
+        · 파일·Repository 이름은 <b>영문 소문자, 숫자, 하이픈(-)</b>만 쓰는 습관을 들이면 이런 문제를 피할 수 있습니다.</div>
+        <div class="procedure" style="counter-reset: step 2">
+          <div><b>변경 내용을 적고 Commit changes를 누릅니다.</b><br>화면 아래 <b>Commit changes</b> 영역의 입력칸에 이번에 무엇을 올렸는지 적고, <b>Commit changes</b>를 눌러 Repository에 저장합니다.</div>
+        </div>
+        <div class="notice"><b>커밋(Commit)이란?</b><br>
+        파일의 현재 상태를 <b>“이 시점의 버전”으로 저장하고, 무엇을 바꿨는지 메모를 남기는 것</b>입니다. 게임의 세이브 포인트처럼, 커밋이 쌓일수록 원하는 시점으로 돌아갈 수 있는 지점이 늘어납니다.<br><br>
+        · <b>메시지를 아무것도 안 써도 됩니다.</b> 비워두면 GitHub가 <code class="inline">Add files via upload</code> 같은 기본 문구를 자동으로 넣어 저장합니다.<br>
+        · <b>하지만 쓰는 것을 권장합니다.</b> 나중에 기록을 볼 때 “메인 문구 수정”, “문의하기 페이지 추가”처럼 적혀 있어야 어느 버전으로 돌아갈지 바로 찾을 수 있습니다. 한글로 짧게 적어도 됩니다.</div>
+        <div class="procedure" style="counter-reset: step 3">
           <div><b>Code 화면에서 실제 파일을 확인합니다.</b><br><code class="inline">index.html</code>이 Repository 목록에 보이면 업로드 완료입니다.</div>
         </div>
-        <div class="notice"><b>업로드 순서</b><br>uploading an existing file → index.html 추가 → Commit changes → 파일 목록 확인<br>파일을 수정했다면 같은 방법(<b>Add file → Upload files</b>)으로 다시 올리면 기존 파일이 새 버전으로 바뀝니다.</div>
+        <div class="warning"><b>업로드했다고 웹사이트 주소가 생긴 것은 아닙니다.</b><br>
+        지금 보이는 <code class="inline">https://github.com/내아이디/locallink-homepage</code>는 <b>소스코드를 보관한 곳의 주소</b>입니다. 이 주소로 들어가면 홈페이지 화면이 아니라 파일 목록과 코드가 보입니다. 다른 사람이 홈페이지 화면을 볼 수 있는 웹사이트 주소는 <b>4장에서 배포해야</b> 만들어집니다.</div>
+        <div class="notice"><b>올린 파일을 다시 내려받는 방법</b><br>
+        · <b>파일 하나만:</b> 목록에서 <code class="inline">index.html</code>을 클릭 → 오른쪽 위 <b>다운로드(Download raw file)</b> 아이콘을 누릅니다.<br>
+        · <b>전체 파일을 한 번에:</b> Repository 첫 화면의 초록색 <b>Code</b> 버튼 → <b>Download ZIP</b>을 누른 뒤 압축을 풉니다.<br>
+        · <b>이전 버전이 필요할 때:</b> 파일 화면의 <b>History</b>에서 원하는 커밋을 골라 그 시점의 파일을 열고 내려받습니다.<br><br>
+        파일을 수정했다면 같은 방법(<b>Add file → Upload files</b>)으로 다시 올리면 기존 파일이 새 버전으로 바뀌고, 이전 버전은 기록에 그대로 남습니다.</div>
       </div>
 
       <div class="topic" id="s3-3">
