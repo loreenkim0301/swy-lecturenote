@@ -6,21 +6,18 @@
   <style>:root { --ink: #172033; --muted: #657086; --line: #dfe4ed; --soft: #f5f7fb; --blue: #2457f5; --nav: #111a2e; --green: #16a36b; --warn: #ffad22; --page-pad: clamp(28px,5.8vw,82px); --font-sans: Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; scroll-behavior: smooth; }
 * { box-sizing: border-box; }
 body { margin: 0px; background: rgb(238, 241, 246); color: var(--ink); font-family: var(--font-sans); line-height: 1.7; letter-spacing: -0.01em; }
-.app aside { position: fixed; inset: 0px auto 0px 0px; width: 310px; height: 100vh; padding: 36px 28px; background: var(--nav); color: rgb(255, 255, 255); overflow-y: auto; z-index: 10; }
+.app aside { position: fixed; inset: 0px auto 0px 0px; width: 310px; height: 100vh; padding: 0 16px 28px; background: var(--nav); color: rgb(255, 255, 255); overflow-y: auto; z-index: 10; }
 .app main { min-height: 100vh; margin-left: 310px; background: rgb(255, 255, 255); }
-.brand { font-size: 13px; font-weight: 800; letter-spacing: 0.14em; color: rgb(153, 167, 197); }
-aside h1 { margin: 18px 0px 8px; font-size: 29px; line-height: 1.25; letter-spacing: -0.03em; }
-.course-tag, .side-foot, .duration { font-size: 13px; color: rgb(174, 185, 206); }
-.side-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 24px 0px 10px; }
-.side-meta div { background: rgb(27, 39, 65); border-radius: 8px; padding: 10px 12px; }
-.side-meta b { display: block; color: rgb(130, 145, 177); font-size: 12px; }
-.side-meta span { font-size: 13px; }
-.duration { padding-bottom: 18px; border-bottom: 1px solid rgb(45, 56, 80); }
-aside nav { margin-top: 16px; }
-aside nav a { display: block; padding: 7px 9px; color: rgb(174, 185, 206); text-decoration: none; font-size: 13px; border-left: 2px solid transparent; }
-aside nav a:hover { color: rgb(255, 255, 255); background: rgb(25, 36, 60); border-color: var(--blue); }
-aside nav .major { margin-top: 8px; color: rgb(255, 255, 255); font-weight: 800; }
-.side-foot { margin-top: 20px; padding-top: 14px; border-top: 1px solid rgb(45, 56, 80); }
+.side-head { position: sticky; top: 0; z-index: 1; margin: 0 -16px; padding: 20px 26px 14px; background: var(--nav); border-bottom: 1px solid rgb(45, 56, 80); }
+.brand { font-size: 11px; font-weight: 800; letter-spacing: 0.14em; color: rgb(130, 145, 177); }
+aside h1 { margin: 6px 0 4px; font-size: 17px; line-height: 1.35; letter-spacing: -0.02em; }
+.side-sub, .side-foot { font-size: 12px; color: rgb(150, 162, 186); }
+aside nav { margin-top: 10px; }
+aside nav a { display: block; padding: 7px 10px 7px 22px; color: rgb(190, 200, 219); text-decoration: none; font-size: 14px; line-height: 1.45; border-left: 3px solid transparent; border-radius: 0 6px 6px 0; }
+aside nav a:hover { color: rgb(255, 255, 255); background: rgb(25, 36, 60); }
+aside nav .major { margin-top: 12px; padding-left: 10px; color: rgb(255, 255, 255); font-size: 15px; font-weight: 800; }
+aside nav a.active { color: rgb(255, 255, 255); background: rgb(30, 44, 74); border-left-color: var(--blue); font-weight: 700; }
+.side-foot { margin: 20px 10px 0; padding-top: 14px; border-top: 1px solid rgb(45, 56, 80); }
 .hero { padding: 86px var(--page-pad) 72px; background: linear-gradient(135deg, rgb(247, 249, 255), rgb(238, 243, 255) 58%, rgb(233, 255, 246)); border-bottom: 1px solid var(--line); }
 .kicker, .section-label, .topic-label, .eyebrow { font-size: 13px; font-weight: 800; letter-spacing: 0.13em; color: var(--blue); }
 .hero h1 { margin: 16px 0px; font-size: clamp(40px, 5vw, 70px); line-height: 1.08; letter-spacing: -0.055em; }
@@ -152,14 +149,11 @@ details.optional[open] .summary-hint { display: none; }
 <body>
 <div class="app">
   <aside>
-    <div class="brand">SELECTWAY · LECTURE NOTE</div>
-    <h1>ChatGPT<br>바이브코딩 창업 실습</h1>
-    <div class="course-tag">성북구 중장년 기술창업센터 교육<br>아이디어를 화면으로 만들고 실제 웹에 배포하기</div>
-    <div class="side-meta">
-      <div><b>DATE</b><span>9.29 TUE</span></div>
-      <div><b>DURATION</b><span>총 2시간</span></div>
+    <div class="side-head">
+      <div class="brand">SELECTWAY · LECTURE NOTE</div>
+      <h1>ChatGPT 바이브코딩 창업 실습</h1>
+      <div class="side-sub">9.29(화) · 2시간 · 성북구 중장년 기술창업센터</div>
     </div>
-    <div class="duration">총 운영 약 100분 · 실습·설명 약 90분 + 쉬는 시간 약 10분 · 중장년 창업자 · 10명 이내</div>
     <nav>
       <a class="major" href="#profile">강사 소개</a>
       <a class="major" href="#overview">교육 개요</a>
@@ -1084,6 +1078,21 @@ function downloadSampleSales(){
   ['2026-09','베스트 패딩','패션',38000000,20000000],['2026-09','스니커즈','신발',27000000,14500000],['2026-09','스킨케어 세트','뷰티',24000000,12500000],['2026-09','캠핑 백팩','레저',18000000,9500000],['2026-09','홈 스테이션','디지털',15000000,8000000]];
   const csv='\ufeff'+rows.map(r=>r.join(',')).join('\n'); const blob=new Blob([csv],{type:'text/csv;charset=utf-8'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='onestore_sales_500m_sample.csv'; a.click(); URL.revokeObjectURL(a.href);
 }
+</script>
+
+<script type="text/javascript">
+(function(){
+  var links=[].slice.call(document.querySelectorAll('aside nav a[href^="#"]'));
+  var targets=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));});
+  function update(){
+    var y=window.scrollY+120, cur=-1;
+    targets.forEach(function(el,i){ if(el && el.getBoundingClientRect().top+window.scrollY<=y) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('active', i===cur); });
+    if(cur>=0){ var a=links[cur], box=a.closest('aside'), r=a.getBoundingClientRect();
+      if(r.top<120||r.bottom>window.innerHeight-20) box.scrollTop+=r.top-window.innerHeight/2; }
+  }
+  window.addEventListener('scroll',update,{passive:true}); update();
+})();
 </script>
 </body>
 </html>
