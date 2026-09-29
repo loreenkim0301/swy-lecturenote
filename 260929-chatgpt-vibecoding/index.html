@@ -136,6 +136,21 @@ details.optional[open] .summary-hint { display: none; }
   .hero-grid, .three-cards, .steps, .term-grid, .example-flow { grid-template-columns: 1fr 1fr; }
   .flow { grid-template-columns: 1fr 1fr; }
 }
+.nav-toggle { position: fixed; top: 14px; left: 322px; z-index: 20; display: flex; align-items: center; gap: 6px; height: 36px; padding: 0 12px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255, 255, 255, 0.94); color: var(--ink); font: 700 13px/1 var(--font-sans); cursor: pointer; box-shadow: 0 4px 14px rgba(17, 26, 46, 0.12); transition: left .25s ease; }
+.nav-toggle:hover { border-color: var(--blue); color: var(--blue); }
+.nav-toggle svg { width: 16px; height: 16px; }
+.app aside { transition: transform .25s ease; }
+.app main { transition: margin-left .25s ease; }
+body.nav-hidden .app aside { transform: translateX(-100%); }
+body.nav-hidden .app main { margin-left: 0; }
+body.nav-hidden .nav-toggle { left: 14px; }
+@media (max-width: 1020px) {
+  .app aside { display: block; width: min(310px, calc(100vw - 64px)); transform: translateX(-100%); }
+  .nav-toggle { left: 14px; }
+  body.nav-open .app aside { transform: none; box-shadow: 8px 0 24px rgba(17, 26, 46, 0.25); }
+  body.nav-open .nav-toggle { left: auto; right: 10px; padding: 0 11px; }
+  body.nav-open .nav-toggle span { display: none; }
+}
 @media (max-width: 680px) {
   .hero, .section, .break { padding-left: 20px; padding-right: 20px; }
   .hero { padding-top: 54px; }
@@ -149,8 +164,9 @@ details.optional[open] .summary-hint { display: none; }
 }</style>
 </head>
 <body>
+<button class="nav-toggle" type="button" aria-controls="side-nav" aria-expanded="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M2 4h12M2 8h12M2 12h12"/></svg><span>목차 숨기기</span></button>
 <div class="app">
-  <aside>
+  <aside id="side-nav">
     <div class="side-head">
       <div class="brand">SELECTWAY · LECTURE NOTE</div>
       <h1>ChatGPT 바이브코딩 창업 실습</h1>
@@ -1161,6 +1177,23 @@ function downloadSampleSales(){
       if(r.top<120||r.bottom>window.innerHeight-20) box.scrollTop+=r.top-window.innerHeight/2; }
   }
   window.addEventListener('scroll',update,{passive:true}); update();
+})();
+</script>
+<script type="text/javascript">
+(function(){
+  var btn=document.querySelector('.nav-toggle'), label=btn.querySelector('span'), body=document.body;
+  var mq=window.matchMedia('(max-width: 1020px)');
+  function isOpen(){ return mq.matches ? body.classList.contains('nav-open') : !body.classList.contains('nav-hidden'); }
+  function sync(){ var o=isOpen(); btn.setAttribute('aria-expanded',o); label.textContent=o?'목차 숨기기':'목차 보기'; }
+  try{ if(localStorage.getItem('navHidden')==='1') body.classList.add('nav-hidden'); }catch(e){}
+  btn.addEventListener('click',function(){
+    if(mq.matches){ body.classList.toggle('nav-open'); }
+    else{ var h=body.classList.toggle('nav-hidden'); try{ localStorage.setItem('navHidden',h?'1':'0'); }catch(e){} }
+    sync();
+  });
+  document.querySelectorAll('aside nav a').forEach(function(a){ a.addEventListener('click',function(){ if(mq.matches){ body.classList.remove('nav-open'); sync(); } }); });
+  if(mq.addEventListener) mq.addEventListener('change',sync);
+  sync();
 })();
 </script>
 </body>
