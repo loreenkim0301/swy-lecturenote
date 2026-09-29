@@ -2,7 +2,7 @@
 <html lang="ko"><head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ChatGPT·Codex 바이브코딩 창업 실습</title>
+  <title>ChatGPT 바이브코딩 창업 실습</title>
   <style>:root { --ink: #172033; --muted: #657086; --line: #dfe4ed; --soft: #f5f7fb; --blue: #2457f5; --nav: #111a2e; --green: #16a36b; --warn: #ffad22; --page-pad: clamp(28px,5.8vw,82px); --font-sans: Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; scroll-behavior: smooth; }
 * { box-sizing: border-box; }
 body { margin: 0px; background: rgb(238, 241, 246); color: var(--ink); font-family: var(--font-sans); line-height: 1.7; letter-spacing: -0.01em; }
@@ -111,6 +111,15 @@ details.optional[open] > summary::before { content: "▾"; }
 details.optional .summary-title { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
 details.optional .summary-hint { font-size: 13px; color: var(--muted); }
 details.optional[open] .summary-hint { display: none; }
+.profile-card { display: grid; grid-template-columns: 1.6fr 1fr; gap: 20px; padding: 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--soft); }
+.profile-card h3 { margin: 0 0 6px; font-size: 22px; }
+.profile-card ul { margin: 10px 0 0; padding-left: 18px; }
+.profile-links { display: grid; gap: 8px; align-content: start; }
+.profile-links a { padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--blue); font-size: 14px; font-weight: 700; text-decoration: none; word-break: break-all; }
+.sample-shot { margin: 22px 0; }
+.sample-shot img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 12px; }
+.sample-shot figcaption { margin-top: 10px; color: var(--muted); font-size: 14px; }
+@media (max-width: 680px) { .profile-card { grid-template-columns: 1fr; padding: 18px; } }
 .break { padding: 54px var(--page-pad); background: rgb(246, 248, 252); border-bottom: 1px solid var(--line); }
 .break h2 { margin: 0px 0px 8px; font-size: 32px; }
 @media (max-width: 1020px) {
@@ -135,14 +144,15 @@ details.optional[open] .summary-hint { display: none; }
 <div class="app">
   <aside>
     <div class="brand">SELECTWAY · LECTURE NOTE</div>
-    <h1>ChatGPT·Codex<br>바이브코딩 창업 실습</h1>
-    <div class="course-tag">아이디어를 화면으로 만들고 실제 웹에 배포하기</div>
+    <h1>ChatGPT<br>바이브코딩 창업 실습</h1>
+    <div class="course-tag">성북구 중장년 기술창업센터 교육<br>아이디어를 화면으로 만들고 실제 웹에 배포하기</div>
     <div class="side-meta">
       <div><b>DATE</b><span>9.29 TUE</span></div>
       <div><b>DURATION</b><span>총 2시간</span></div>
     </div>
     <div class="duration">총 운영 약 100분 · 실습·설명 약 90분 + 쉬는 시간 약 10분 · 중장년 창업자 · 10명 이내</div>
     <nav>
+      <a class="major" href="#profile">강사 소개</a>
       <a class="major" href="#overview">교육 개요</a>
       <a href="#goals">학습 목표</a>
       <a href="#schedule">시간표</a>
@@ -162,7 +172,8 @@ details.optional[open] .summary-hint { display: none; }
       <a href="#s4-1">4.1 역할 이해하기</a>
       <a href="#s4-2">4.2 GitHub에 직접 업로드</a>
       <a href="#s4-3">4.3 Vercel로 직접 배포</a>
-      <a href="#s4-4">4.4 참고: Work로 업로드</a>
+      <a href="#s4-4">4.4 Work로 업로드</a>
+      <a href="#s4-5">4.5 Codex (선택)</a>
       <a class="major" href="#wrap">마무리</a>
     </nav>
     <div class="side-foot">무료 계정으로 가능한 실습과 대상 플랜 기능을 구분 · Work/Sites는 계정·플랜별 제공 여부 확인</div>
@@ -170,10 +181,38 @@ details.optional[open] .summary-hint { display: none; }
 
   <main>
     <header class="hero">
-      <div class="kicker">VIBE CODING · START</div>
+      <div class="kicker">성북구 중장년 기술창업센터 교육 · VIBE CODING</div>
       <h1>아이디어를 <em>화면으로</em>,<br>화면을 <em>실제 웹사이트로</em></h1>
-      <p>중장년 창업자가 ChatGPT와 Codex를 활용해 사업 아이디어를 직접 화면으로 구현하고, GitHub와 Vercel을 이용해 실제 웹에 배포하는 바이브코딩 입문 실습입니다.</p>
+      <p>중장년 창업자가 ChatGPT를 활용해 사업 아이디어를 직접 화면으로 구현하고, GitHub와 Vercel을 이용해 실제 웹에 배포하는 바이브코딩 입문 실습입니다.</p>
     </header>
+
+    <section class="section" id="profile">
+      <div class="section-label">INSTRUCTOR</div>
+      <h2>강사 소개</h2>
+      <div class="profile-card">
+        <div>
+          <h3>기획자 김로린(김수정) — 셀렉트웨이 대표, 서비스기획/PM</h3>
+          <p class="small">8년차 PM/서비스 기획자. 기획부터 디자인, AI 바이브코딩까지 직접 하는 기획자로 활동하며, 예비 창업자·재직자·미래의 기획자를 대상으로 기술 교육을 진행하고 있습니다.</p>
+          <ul>
+            <li>(현) 서비스기획 스튜디오 셀렉트웨이 대표/기획자</li>
+            <li>(전) 핀테크기업 앱 서비스 기획 / PO</li>
+            <li>(전) 영어교육기업 웹 서비스 기획 / PM</li>
+            <li>(전) 커리어 매칭 기업 웹 서비스 기획자 / PM</li>
+            <li>(전) 실무교육기업 개발자 교육 기획/운영 매니저</li>
+            <li>(전) IT여성 커뮤니티 위민후코드 서울 운영자</li>
+            <li>(전) Holix(홀릭스) 플랫폼 "Figma 커뮤니티" 설립</li>
+          </ul>
+        </div>
+        <div class="profile-links">
+          <b>연락처 · 채널</b>
+          <a href="https://www.swy.kr/" target="_blank" rel="noopener">셀렉트웨이 · www.swy.kr</a>
+          <a href="https://brunch.co.kr/@loreenkim" target="_blank" rel="noopener">브런치 · AI코딩하는 김로린 기획자</a>
+          <a href="https://www.instagram.com/loreenkim.ceo/" target="_blank" rel="noopener">인스타그램 · @loreenkim.ceo</a>
+          <a href="https://www.linkedin.com/in/soojung-sue/" target="_blank" rel="noopener">링크드인 · soojung-sue</a>
+          <a href="mailto:loreen@selectway.co.kr">협업/제안 · loreen@selectway.co.kr</a>
+        </div>
+      </div>
+    </section>
 
     <section class="section" id="overview">
       <div class="section-label">OVERVIEW</div>
@@ -208,7 +247,7 @@ details.optional[open] .summary-hint { display: none; }
       <div class="session-head">
         <div class="eyebrow">SESSION 1</div><div class="time">약 10분</div>
         <h2>1. 바이브코딩이란?</h2>
-        <p>창업자의 관점에서 바이브코딩이 무엇인지 이해하고, 오늘 사용할 ChatGPT·Codex·GitHub·Vercel이 각각 어떤 역할을 하는지 살펴봅니다.</p>
+        <p>창업자의 관점에서 바이브코딩이 무엇인지 이해하고, 오늘 사용할 ChatGPT·GitHub·Vercel이 각각 어떤 역할을 하는지 살펴봅니다.</p>
       </div>
 
       <div class="topic" id="s1-1">
@@ -262,7 +301,7 @@ details.optional[open] .summary-hint { display: none; }
         <div class="example-flow">
           <div><span>1. 한 사람 정하기</span><b>“퇴근이 늦은 1인 가구 직장인”처럼 처음 고객을 한 유형으로 좁힙니다.</b></div>
           <div><span>2. 한 가지 행동 정하기</span><b>고객이 주간 메뉴를 보고 ‘신청하기’를 누르는 흐름 하나만 정합니다.</b></div>
-          <div><span>3. AI로 화면 만들기</span><b>ChatGPT나 Codex에 메뉴, 가격, 배송 요일, 신청 버튼이 있는 한 장의 웹페이지를 요청합니다.</b></div>
+          <div><span>3. AI로 화면 만들기</span><b>ChatGPT에 메뉴, 가격, 배송 요일, 신청 버튼이 있는 한 장의 웹페이지를 요청합니다.</b></div>
           <div><span>4. 실제 고객에게 보여주기</span><b>대상 고객 3명에게 화면을 보여주고, 어떤 메뉴를 고르는지와 신청이 망설여지는 이유를 기록합니다.</b></div>
         </div>
 
@@ -287,16 +326,16 @@ details.optional[open] .summary-hint { display: none; }
       <div class="topic" id="s2-1">
         <div class="topic-label">SETUP</div>
         <h3>2.1 ChatGPT 데스크톱 준비</h3>
-        <p><b>ChatGPT 데스크톱 앱 하나만 설치하면 ChatGPT와 Codex를 모두 사용할 수 있습니다.</b> 앱 안에서 ChatGPT와 Codex 화면을 전환할 수 있고, ChatGPT 화면에서는 Chat과 Work를 전환해 사용할 수 있으며, 이번 수업에서도 별도의 코딩 앱을 추가로 설치하지 않고 하나의 ChatGPT 데스크톱 앱에서 실습합니다.</p>
+        <p><b>오늘 실습은 ChatGPT 데스크톱 앱 하나로 진행합니다.</b> ChatGPT 화면에서 Chat과 Work를 전환해 사용할 수 있으며, 이번 수업에서도 별도의 코딩 앱을 추가로 설치하지 않고 하나의 ChatGPT 데스크톱 앱에서 실습합니다.</p>
         <div class="procedure">
           <div><b>ChatGPT 공식 다운로드 페이지에 접속합니다.</b><br>아래 링크를 눌러 OpenAI의 공식 ChatGPT 앱 다운로드 페이지를 엽니다.<br><a class="resource-link" href="https://chatgpt.com/download/" target="_blank" rel="noopener">↗ ChatGPT 앱 공식 다운로드 페이지</a></div>
           <div><b>사용 중인 운영체제에 맞는 앱을 다운로드합니다.</b><br>macOS 또는 Windows용 ChatGPT 데스크톱 앱을 선택해 설치 파일을 받습니다.</div>
           <div><b>ChatGPT 계정으로 로그인합니다.</b><br>계정이 없다면 회원가입 후 로그인합니다.</div>
-          <div><b>앱의 왼쪽 상단 전환 메뉴를 확인합니다.</b><br>ChatGPT와 Codex를 전환할 수 있으며, ChatGPT에서는 Chat과 Work를 선택해 사용할 수 있습니다.</div>
+          <div><b>앱의 왼쪽 상단 전환 메뉴를 확인합니다.</b><br>ChatGPT에서는 Chat과 Work를 선택해 사용할 수 있습니다. (같은 메뉴의 Codex는 4.5 선택 항목에서 다룹니다.)</div>
           <div><b>먼저 Chat에서 새 대화를 시작합니다.</b><br>앞부분의 프로토타입 실습은 Chat에서 진행합니다.</div>
         </div>
         <div class="notice"><b>무료 계정과 데스크톱 앱 기능</b><br>
-        데스크톱 앱을 설치해도 계정의 플랜과 사용 가능 기능은 달라지지 않습니다. 무료 계정에서는 기본 ChatGPT와 제한된 Codex 기능을 사용할 수 있지만, <b>Work는 대상 유료 플랜 또는 워크스페이스에 순차 제공되는 기능</b>입니다. <b>Sites는 무료·Go 플랜에서는 사용할 수 없고</b>, Plus·Pro 및 대상 워크스페이스에서 공개 베타로 제공됩니다. 유료 플랜이어도 지역·워크스페이스 설정·계정별 배포 상태에 따라 보이지 않을 수 있습니다.<br><span class="small">기준일: 2026-09-29 · 출처: OpenAI Help Center</span><br><a class="resource-link" href="https://help.openai.com/en/articles/20001275" target="_blank" rel="noopener">↗ Work·Codex 공식 안내</a><a class="resource-link" href="https://help.openai.com/en/articles/20001339-creating-and-managing-chatgpt-sites" target="_blank" rel="noopener">↗ Sites 공식 안내</a></div>
+        데스크톱 앱을 설치해도 계정의 플랜과 사용 가능 기능은 달라지지 않습니다. 무료 계정에서는 기본 ChatGPT 기능을 사용할 수 있지만, <b>Work는 대상 유료 플랜 또는 워크스페이스에 순차 제공되는 기능</b>입니다. <b>Sites는 무료·Go 플랜에서는 사용할 수 없고</b>, Plus·Pro 및 대상 워크스페이스에서 공개 베타로 제공됩니다. 유료 플랜이어도 지역·워크스페이스 설정·계정별 배포 상태에 따라 보이지 않을 수 있습니다.<br><span class="small">기준일: 2026-09-29 · 출처: OpenAI Help Center</span><br><a class="resource-link" href="https://help.openai.com/en/articles/20001275" target="_blank" rel="noopener">↗ Work·Codex 공식 안내</a><a class="resource-link" href="https://help.openai.com/en/articles/20001339-creating-and-managing-chatgpt-sites" target="_blank" rel="noopener">↗ Sites 공식 안내</a></div>
       </div>
 
       <div class="topic" id="s2-2">
@@ -714,7 +753,7 @@ details.optional[open] .summary-hint { display: none; }
           <article><strong>GITHUB</strong><b>홈페이지 원본을 보관하는 공간</b><p>소스코드와 변경 내용을 온라인에 저장합니다.</p></article>
           <article><strong>VERCEL</strong><b>홈페이지를 인터넷에 공개하는 공간</b><p>GitHub에 올린 프로젝트를 가져와 실제 웹주소로 배포합니다.</p></article>
         </div>
-        <div class="notice"><b>오늘의 순서</b><br>① 내 소스코드를 GitHub에 직접 올리기 → ② Vercel에서 내 GitHub Repository를 직접 배포하기 → ③ (참고) ChatGPT Work 모드에 GitHub 업로드를 요청해보기<br>먼저 손으로 한 번 해봐야, 나중에 AI에게 맡겼을 때 무엇이 어디로 올라가는지 확인할 수 있습니다.</div>
+        <div class="notice"><b>오늘의 순서</b><br>① 내 소스코드를 GitHub에 직접 올리기 → ② Vercel에서 내 GitHub Repository를 직접 배포하기 → ③ ChatGPT Work 모드에 GitHub 업로드를 요청해보기 → ④ (선택) Codex<br><b>우선순위는 직접 업로드가 먼저, 그다음이 Work 모드</b>입니다. 먼저 손으로 한 번 해봐야, 나중에 AI에게 맡겼을 때 무엇이 어디로 올라가는지 확인할 수 있습니다.</div>
       </div>
 
       <div class="topic" id="s4-2">
@@ -754,9 +793,9 @@ details.optional[open] .summary-hint { display: none; }
       </div>
 
       <div class="topic" id="s4-4">
-        <div class="topic-label">REFERENCE · WORK</div>
-        <h3>4.4 참고: ChatGPT Work 모드에 GitHub 업로드를 요청해보기</h3>
-        <p>4.2에서 손으로 했던 업로드를 이번에는 ChatGPT 데스크톱 앱의 <b>Work 모드</b>에 자연어로 요청해봅니다. 계정·플랜·연결 상태에 따라 동작하지 않을 수 있는 <b>참고 실습</b>이며, 실패해도 4.2의 수동 업로드로 배포는 이미 완료된 상태입니다.</p>
+        <div class="topic-label">PRACTICE 06 · WORK</div>
+        <h3>4.4 ChatGPT Work 모드에 GitHub 업로드를 요청해보기</h3>
+        <p>4.2에서 손으로 했던 업로드를 이번에는 ChatGPT 데스크톱 앱의 <b>Work 모드</b>에 자연어로 요청해봅니다. Work 모드에서도 GitHub 업로드가 가능하지만, <b>기본은 4.2의 직접 업로드</b>이고 Work 모드는 그다음 방법입니다. Work 모드로 되지 않으면 직접 업로드로 진행하면 되며, 이미 4.2·4.3에서 배포는 완료된 상태입니다.</p>
         <div class="procedure">
           <div><b>ChatGPT에 GitHub를 연결합니다.</b><br><b>계정 → 설정 → 플러그인 → 디렉터리 찾아보기</b>로 이동해 GitHub 항목의 ‘+’ 버튼을 누릅니다. 브라우저 로그인 화면이 열리면 GitHub 계정으로 로그인하고, 4.2에서 만든 Repository에 대한 접근 권한을 승인합니다.</div>
           <div><b>ChatGPT 데스크톱 앱에서 Work로 전환하고 새 대화를 엽니다.</b><br>앱 왼쪽 상단 전환 메뉴에서 ChatGPT → Work를 선택합니다.</div>
@@ -778,11 +817,41 @@ details.optional[open] .summary-hint { display: none; }
           <div><b>GitHub 웹사이트에서 결과를 확인합니다.</b><br>Repository의 커밋 기록에 방금 요청한 커밋이 생겼는지, <code class="inline">index.html</code>이 바뀌었는지 확인합니다.</div>
           <div><b>Vercel URL을 새로고침해 자동 재배포를 확인합니다.</b><br>GitHub에 새 커밋이 올라가면 Vercel이 자동으로 다시 배포합니다.</div>
         </div>
-        <div class="warning"><b>업로드가 되지 않는 경우</b><br>
+        <figure class="sample-shot">
+          <img src="images/work-github-upload-sample.webp" alt="ChatGPT Work 모드에서 GitHub 저장소 주소를 넣어 Hello 페이지 업로드를 요청하고, index.html 생성·커밋·main 브랜치 push 완료 결과를 받은 화면" loading="lazy">
+          <figcaption><b>강사 샘플 결과</b> — Work 모드에 저장소 주소(<code class="inline">https://github.com/…/test2222.git</code>)와 함께 업로드를 요청하자, <code class="inline">index.html</code> 생성 → 커밋 → <code class="inline">main</code> 브랜치 push까지 완료하고 결과를 알려준 화면입니다.</figcaption>
+        </figure>
+        <div class="warning"><b>Work 모드로 업로드가 되지 않는 경우</b><br>
         · Work는 대상 유료 플랜 또는 워크스페이스에 순차 제공되는 기능이라 계정에 따라 보이지 않을 수 있습니다.<br>
         · ChatGPT의 GitHub 연결은 기본적으로 승인한 Repository를 <b>읽고 분석하기 위한 연결</b>이며, 쓰기(업로드) 권한이나 대상 Repository 승인이 없으면 업로드가 거절될 수 있습니다.<br>
-        · 이 경우 AI가 안내하는 권한 설정을 확인하거나, <b>4.2의 수동 업로드</b>로 진행합니다. 어떤 방법이든 마지막에는 GitHub 웹사이트에서 파일이 실제로 바뀌었는지 직접 확인합니다.</div>
-        <p class="small"><b>참고 · ChatGPT Work·Codex 공식 가이드</b> — ChatGPT 데스크톱 앱에서 Work와 Codex를 전환하는 방법과 기본 사용 방식을 확인할 수 있는 OpenAI 공식 안내입니다. 로컬 프로젝트 폴더에서 코드를 만들고 직접 push하는 작업은 Codex에서도 할 수 있습니다.<br><a class="resource-link" href="https://help.openai.com/ko-kr/articles/20001275-chatgpt-work-and-codex" target="_blank" rel="noopener">↗ Work·Codex 공식 가이드 보기</a></p>
+        · 이 경우 AI가 안내하는 권한 설정을 확인하거나, <b>4.2의 직접 업로드</b>로 진행합니다. 어떤 방법이든 마지막에는 GitHub 웹사이트에서 파일이 실제로 바뀌었는지 직접 확인합니다.</div>
+        <p class="small"><b>참고 · ChatGPT Work·Codex 공식 가이드</b> — ChatGPT 데스크톱 앱에서 Work와 Codex를 전환하는 방법과 기본 사용 방식을 확인할 수 있는 OpenAI 공식 안내입니다. Codex 활용은 아래 4.5 선택 항목을 참고합니다.<br><a class="resource-link" href="https://help.openai.com/ko-kr/articles/20001275-chatgpt-work-and-codex" target="_blank" rel="noopener">↗ Work·Codex 공식 가이드 보기</a></p>
+      </div>
+
+      <div class="topic" id="s4-5">
+        <details class="optional">
+          <summary><span class="topic-label">OPTIONAL · 참고</span><span class="summary-title">4.5 (선택) Codex로 코드 작업하고 GitHub에 push하기</span><span class="summary-hint">눌러서 펼치기</span></summary>
+          <p>이 파트는 <b>선택 항목</b>입니다. 같은 ChatGPT 데스크톱 앱에서 <b>Codex</b>로 전환하면, 내 컴퓨터의 프로젝트 폴더에서 AI가 파일을 직접 만들고 수정하며 GitHub에 push까지 요청할 수 있습니다. 여러 파일로 된 프로젝트를 계속 수정·운영할 때 유용합니다.</p>
+          <div class="notice"><b>Codex는 무료 플랜에서도 사용할 수 있습니다.</b><br>다만 플랜별 사용량 한도가 다르므로 무료 계정에서는 여러 번 생성·수정하는 중 한도에 먼저 도달할 수 있습니다.</div>
+          <div class="procedure">
+            <div><b>ChatGPT 데스크톱 앱의 왼쪽 상단 전환 메뉴에서 Codex를 선택합니다.</b></div>
+            <div><b>‘새 채팅’을 열고 작업할 로컬 프로젝트 폴더를 선택합니다.</b><br>수업용 새 폴더를 만들고, 2.3에서 저장한 <code class="inline">index.html</code>을 넣은 뒤 그 폴더를 엽니다.</div>
+            <div><b>수정이나 업로드를 자연어로 요청합니다.</b></div>
+          </div>
+          <div class="copybox">
+            <div class="copyhead"><span>Codex · GitHub에 push 요청</span><button onclick="copyPrompt(this)">복사</button></div>
+            <pre>현재 프로젝트의 소스코드를 GitHub Repository에 올려줘.
+
+레포지토리 주소: https://github.com/내아이디/locallink-homepage
+
+- Git 저장소 초기화가 필요하면 진행
+- 변경 내용을 커밋
+- main 브랜치로 push
+
+각 단계에서 권한 승인이나 내가 확인해야 할 작업이 있으면 먼저 알려줘.</pre>
+          </div>
+          <div class="warning"><b>push가 되지 않는 경우</b><br>로컬 환경의 GitHub 인증이나 원격 Repository 연결이 추가로 필요할 수 있습니다. Codex가 안내하는 조치를 따르거나, 4.2의 직접 업로드로 진행합니다.</div>
+        </details>
       </div>
     </section>
 
@@ -794,7 +863,7 @@ details.optional[open] .summary-hint { display: none; }
           <thead><tr><th>방법</th><th>오늘의 역할</th><th>추천 상황</th></tr></thead>
           <tbody>
             <tr><td><b>ChatGPT 채팅</b></td><td>빠른 프로토타입</td><td>아이디어를 화면으로 먼저 확인할 때</td></tr>
-            <tr><td><b>ChatGPT Work / Sites</b> <span class="small">(선택)</span></td><td>사이트 게시 · GitHub 업로드 요청</td><td>Sites가 제공되는 계정에서 빠르게 공유하거나, 반복 업로드를 AI에게 맡길 때</td></tr>
+            <tr><td><b>ChatGPT Work / Sites</b> <span class="small">(선택)</span></td><td>사이트 게시 · GitHub 업로드 요청</td><td>Sites가 제공되는 계정에서 빠르게 공유하거나, 직접 업로드에 익숙해진 뒤 반복 업로드를 AI에게 맡길 때</td></tr>
             <tr><td><b>GitHub + Vercel</b></td><td>소스 보관·실제 배포</td><td>계속 수정하고 운영할 웹사이트가 필요할 때</td></tr>
           </tbody>
         </table>
