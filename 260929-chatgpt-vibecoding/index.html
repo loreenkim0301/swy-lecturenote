@@ -121,6 +121,7 @@ details.optional[open] .summary-hint { display: none; }
 .profile-links a { padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--blue); font-size: 14px; font-weight: 700; text-decoration: none; word-break: break-all; }
 .sample-shot { margin: 22px 0; }
 .sample-shot img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 12px; }
+.sample-shot.narrow img { max-width: 700px; margin: 0 auto; }
 .sample-shot figcaption { margin-top: 10px; color: var(--muted); font-size: 14px; }
 @media (max-width: 680px) { .profile-card { grid-template-columns: 1fr; padding: 18px; } }
 .app aside { word-break: keep-all; }
@@ -739,6 +740,10 @@ details.optional[open] .summary-hint { display: none; }
           <div><b>Repository 이름을 입력합니다. — 필수 항목은 이름 하나뿐입니다.</b><br>예: <code class="inline">locallink-homepage</code> — 영문 소문자와 하이픈(-)을 사용하면 주소가 깔끔합니다. 설명(Description), README·.gitignore·라이선스 추가 등 <b>나머지 항목은 기본값 그대로 두어도 됩니다.</b></div>
           <div><b>공개 범위를 선택하고 생성합니다.</b><br>실습에서는 <b>Public</b>을 선택하고 <b>Create repository</b>를 누릅니다. 무료 계정에서는 Public이어야 GitHub Pages(GitHub의 무료 웹사이트 공개 기능)도 함께 쓸 수 있기 때문입니다. 이유는 아래 박스를 참고합니다.</div>
         </div>
+        <figure class="sample-shot">
+          <img src="images/github-new-repo.webp" alt="GitHub 새 Repository 만들기 화면. Repository name에 locallink-homepage를 입력해 사용 가능 표시가 나오고, 공개 범위는 Public, 아래에 Create repository 버튼이 있다" loading="lazy">
+          <figcaption><b>화면 예시</b> — Repository name에 <code class="inline">locallink-homepage</code>를 입력하면 “is available”(사용 가능) 표시가 나옵니다. 공개 범위는 <b>Public</b> 그대로 두고, README·.gitignore·license도 기본값 그대로 <b>Create repository</b>를 누릅니다.</figcaption>
+        </figure>
         <div class="warning"><b>Public과 Private의 차이, 무료 계정에서 주의할 점</b><br>
         · <b>Public(공개)</b> — 인터넷의 누구나 Repository 주소로 들어와 <b>소스코드 전체를 볼 수 있습니다.</b> 검색에 노출될 수도 있습니다.<br>
         · <b>Private(비공개)</b> — 나와 내가 초대한 사람만 볼 수 있습니다. 무료 계정에서도 Private Repository를 만들 수 있습니다.<br>
@@ -750,6 +755,10 @@ details.optional[open] .summary-hint { display: none; }
         <div class="procedure" style="counter-reset: step 4">
           <div><b>Repository 주소를 확인합니다.</b><br>주소창의 <code class="inline">https://github.com/내아이디/locallink-homepage</code>가 내 Repository 주소입니다. 3.3에서 사용하므로 메모해둡니다.</div>
         </div>
+        <figure class="sample-shot">
+          <img src="images/github-quick-setup.webp" alt="Repository 생성 직후의 빈 Repository 화면. Quick setup 영역에 저장소 주소와 uploading an existing file 링크가 보인다" loading="lazy">
+          <figcaption><b>화면 예시</b> — Repository를 만든 직후의 빈 화면입니다. 이름 옆 <b>Public</b> 표시와 Quick setup의 저장소 주소를 확인하고, 3.2에서는 빨간 박스의 <b>uploading an existing file</b>을 눌러 업로드를 시작합니다.</figcaption>
+        </figure>
       </div>
 
       <div class="topic" id="s3-2">
@@ -766,6 +775,10 @@ details.optional[open] .summary-hint { display: none; }
           <div><b>파일 업로드 화면을 엽니다.</b><br>빈 Repository의 <b>Quick setup → uploading an existing file</b>을 선택합니다. 이미 파일이 있는 Repository라면 <b>Add file → Upload files</b>를 선택합니다.</div>
           <div><b>내 <code class="inline">index.html</code>을 업로드합니다.</b><br>2.3에서 저장한 파일을 화면에 드래그하거나 <b>choose your files</b>로 선택합니다. 파일 이름은 반드시 <b>모두 소문자</b>로 된 <code class="inline">index.html</code>이어야 4장에서 배포할 때 첫 화면으로 인식됩니다.</div>
         </div>
+        <figure class="sample-shot">
+          <img src="images/github-upload-empty.webp" alt="GitHub 파일 업로드 화면. Drag files here to add them to your repository 영역과 choose your files 링크가 있다" loading="lazy">
+          <figcaption><b>화면 예시</b> — 업로드 화면입니다. 빨간 박스 영역에 <code class="inline">index.html</code>을 끌어다 놓거나 <b>choose your files</b>로 파일을 선택합니다.</figcaption>
+        </figure>
         <div class="warning"><b>대문자·소문자가 중요한가요? — 네, 인터넷에서는 다른 파일입니다.</b><br>
         Windows·Mac 컴퓨터에서는 <code class="inline">Index.html</code>과 <code class="inline">index.html</code>을 사실상 같은 파일로 취급하지만, GitHub와 웹 서버는 <b>대문자와 소문자를 다른 글자로 구분</b>합니다. 그래서 내 컴퓨터에서는 잘 열리던 파일이 배포 후에는 “페이지를 찾을 수 없음(404)”으로 나올 수 있습니다.<br>
         · 파일 이름: <code class="inline">index.html</code> (O) / <code class="inline">Index.html</code>, <code class="inline">INDEX.HTML</code> (X)<br>
@@ -774,6 +787,10 @@ details.optional[open] .summary-hint { display: none; }
         <div class="procedure" style="counter-reset: step 2">
           <div><b>변경 내용을 적고 Commit changes를 누릅니다.</b><br>화면 아래 <b>Commit changes</b> 영역의 입력칸에 이번에 무엇을 올렸는지 적고, <b>Commit changes</b>를 눌러 Repository에 저장합니다.</div>
         </div>
+        <figure class="sample-shot">
+          <img src="images/github-upload-commit.webp" alt="index.html이 업로드 목록에 올라가고 Commit changes 입력칸에 홈페이지 첫 업로드라고 적은 화면" loading="lazy">
+          <figcaption><b>화면 예시</b> — <code class="inline">index.html</code>이 목록에 올라온 것을 확인하고, 커밋 메시지(예: “홈페이지 첫 업로드”)를 적은 뒤 <b>Commit changes</b>를 누릅니다.</figcaption>
+        </figure>
         <div class="notice"><b>커밋(Commit)이란?</b><br>
         파일의 현재 상태를 <b>“이 시점의 버전”으로 저장하고, 무엇을 바꿨는지 메모를 남기는 것</b>입니다. 게임의 세이브 포인트처럼, 커밋이 쌓일수록 원하는 시점으로 돌아갈 수 있는 지점이 늘어납니다.<br><br>
         · <b>메시지를 아무것도 안 써도 됩니다.</b> 비워두면 GitHub가 <code class="inline">Add files via upload</code> 같은 기본 문구를 자동으로 넣어 저장합니다.<br>
@@ -781,6 +798,10 @@ details.optional[open] .summary-hint { display: none; }
         <div class="procedure" style="counter-reset: step 3">
           <div><b>Code 화면에서 실제 파일을 확인합니다.</b><br><code class="inline">index.html</code>이 Repository 목록에 보이면 업로드 완료입니다.</div>
         </div>
+        <figure class="sample-shot">
+          <img src="images/github-repo-uploaded.webp" alt="업로드 완료 후 Repository Code 화면. 파일 목록에 index.html과 커밋 메시지 홈페이지 첫 업로드가 보인다" loading="lazy">
+          <figcaption><b>화면 예시</b> — 업로드가 끝난 Code 화면입니다. 파일 목록에 <code class="inline">index.html</code>과 방금 적은 커밋 메시지가 보이면 완료입니다.</figcaption>
+        </figure>
         <div class="warning"><b>업로드했다고 웹사이트 주소가 생긴 것은 아닙니다.</b><br>
         지금 보이는 <code class="inline">https://github.com/내아이디/locallink-homepage</code>는 <b>소스코드를 보관한 곳의 주소</b>입니다. 이 주소로 들어가면 홈페이지 화면이 아니라 파일 목록과 코드가 보입니다. 다른 사람이 홈페이지 화면을 볼 수 있는 웹사이트 주소는 <b>4장에서 배포해야</b> 만들어집니다.</div>
         <div class="notice"><b>올린 파일을 다시 내려받는 방법</b><br>
@@ -874,6 +895,10 @@ details.optional[open] .summary-hint { display: none; }
           <div><b>새 프로젝트 만들기 화면을 엽니다.</b><br>대시보드 오른쪽 위 <b>Add New… → Project</b>를 누르거나, 아래 링크로 바로 이동합니다.<br><a class="resource-link" href="https://vercel.com/new" target="_blank" rel="noopener">↗ Vercel 새 프로젝트 만들기 (vercel.com/new)</a></div>
           <div><b>Import Git Repository 목록에서 3.1에서 만든 Repository를 찾습니다.</b><br>예: <code class="inline">locallink-homepage</code> 옆의 <b>Import</b> 버튼을 누릅니다.</div>
         </div>
+        <figure class="sample-shot">
+          <img src="images/vercel-import-list.webp" alt="Vercel 새 프로젝트 화면의 Import Git Repository 목록. locallink-homepage 옆에 Import 버튼이 있다" loading="lazy">
+          <figcaption><b>화면 예시</b> — vercel.com/new의 <b>Import Git Repository</b> 목록입니다. 방금 만든 <code class="inline">locallink-homepage</code> 옆의 <b>Import</b>를 누릅니다. (다른 Repository 이름은 가림 처리했습니다.)</figcaption>
+        </figure>
         <div class="notice"><b>목록에 내 Repository가 안 보인다면?</b><br>
         Vercel에 해당 Repository 접근 권한이 아직 없는 상태입니다. 목록 아래의 <b>Adjust GitHub App Permissions</b>(또는 <b>Install</b>)를 누르면 GitHub 화면이 열립니다. <b>Only select repositories</b>를 고르고 내 Repository를 선택한 뒤 <b>Save</b>(또는 Install)를 누르면 목록에 나타납니다. 처음이라면 <b>All repositories</b>를 골라도 됩니다.</div>
 
@@ -881,19 +906,35 @@ details.optional[open] .summary-hint { display: none; }
         <div class="procedure" style="counter-reset: step 6">
           <div><b>Project Name을 확인합니다.</b><br>이 이름이 웹사이트 주소(<code class="inline">https://프로젝트이름.vercel.app</code>)가 됩니다. <b>영문 소문자·숫자·하이픈(-)</b>만 쓸 수 있으며, 기본값으로 Repository 이름이 들어가 있습니다.</div>
           <div><b>나머지 설정은 그대로 둡니다.</b><br><code class="inline">index.html</code> 한 파일짜리 프로젝트는 설정할 것이 없습니다.<br>
-          · <b>Framework Preset</b>: <code class="inline">Other</code>로 자동 선택되면 그대로 둡니다.<br>
+          · <b>Application Preset</b>(예전 이름 Framework Preset): <code class="inline">Other</code>로 자동 선택되면 그대로 둡니다.<br>
           · <b>Root Directory</b>: <code class="inline">./</code> 그대로 둡니다. (<code class="inline">index.html</code>이 Repository 맨 바깥에 있어야 합니다.)<br>
           · <b>Build and Output Settings</b>, <b>Environment Variables</b>: 비워 둡니다.</div>
           <div><b>Deploy 버튼을 누르고 완료될 때까지 기다립니다.</b><br>HTML 한 파일은 보통 수십 초 안에 끝납니다. 진행 로그가 흐르다가 <b>Congratulations!</b> 화면과 홈페이지 미리보기가 나오면 배포 완료입니다.</div>
         </div>
 
+        <figure class="sample-shot narrow">
+          <img src="images/vercel-configure.webp" alt="Vercel 프로젝트 설정 화면. Importing from GitHub locallink-homepage main, Vercel Team Hobby, Project Name locallink-homepage, Root Directory ./, Application Preset Other, Deploy 버튼" loading="lazy">
+          <figcaption><b>화면 예시</b> — Import 후 설정 화면입니다. <b>Project Name</b>은 Repository 이름이 자동으로 들어가고, <b>Root Directory</b> <code class="inline">./</code>, <b>Application Preset</b> <code class="inline">Other</code>는 그대로 둔 채 <b>Deploy</b>를 누릅니다.</figcaption>
+        </figure>
+        <figure class="sample-shot narrow">
+          <img src="images/vercel-congrats.webp" alt="Vercel 배포 완료 화면. Congratulations! You just deployed a new project 문구와 홈페이지 미리보기가 보인다" loading="lazy">
+          <figcaption><b>화면 예시</b> — 배포가 끝나면 <b>Congratulations!</b> 화면과 홈페이지 미리보기가 나옵니다. 아래로 스크롤해 <b>Continue to Project</b>를 누릅니다.</figcaption>
+        </figure>
         <h4>4. 내 웹사이트 주소 확인하기</h4>
         <div class="procedure" style="counter-reset: step 9">
-          <div><b>Continue to Dashboard를 눌러 프로젝트 화면으로 이동합니다.</b><br>프로젝트 화면의 <b>Domains</b> 항목에 표시된 <code class="inline">프로젝트이름.vercel.app</code>이 <b>공유할 공식 주소</b>입니다. 같은 이름이 이미 있으면 뒤에 글자가 붙은 주소가 만들어질 수 있습니다.</div>
+          <div><b>Continue to Project를 눌러 프로젝트 화면으로 이동합니다.</b><br>프로젝트 화면의 <b>Domains</b> 항목에 표시된 <code class="inline">프로젝트이름.vercel.app</code>이 <b>공유할 공식 주소</b>입니다. 같은 이름이 이미 있으면 뒤에 글자가 붙은 주소가 만들어질 수 있습니다.</div>
           <div><b>주소를 새 브라우저와 스마트폰에서 열어봅니다.</b><br>로그인하지 않은 시크릿 창에서도 열리는지, 스마트폰 화면에서 메뉴와 버튼이 잘 동작하는지 확인합니다.</div>
         </div>
+        <figure class="sample-shot">
+          <img src="images/vercel-project-overview.webp" alt="Vercel 프로젝트 Overview 화면. Production Deployment 영역에 Domains locallink-homepage.vercel.app, Status Ready, Source main 커밋 홈페이지 첫 업로드가 보인다" loading="lazy">
+          <figcaption><b>화면 예시</b> — 프로젝트 화면입니다. 빨간 박스의 <b>Domains</b>(<code class="inline">locallink-homepage.vercel.app</code>)가 공유할 주소이고, Status가 <b>Ready</b>, Source에 GitHub 커밋 메시지가 보이면 정상입니다.</figcaption>
+        </figure>
         <div class="notice"><b>주소가 여러 개 보여요 — 어떤 걸 공유하나요?</b><br>
         Deployments(배포 기록) 화면에는 <code class="inline">프로젝트이름-abc123-아이디.vercel.app</code>처럼 긴 주소도 보입니다. 이것은 <b>배포할 때마다 새로 생기는 버전별 주소</b>입니다. 고객이나 동료에게는 항상 짧은 <b>Domains의 주소</b>를 공유합니다. 배포가 실패하면 Deployments에서 상태가 <b>Error</b>로 표시되고, 눌러보면 원인이 나옵니다. 대부분은 파일 이름(<code class="inline">index.html</code>)이나 위치 문제입니다.</div>
+        <figure class="sample-shot">
+          <img src="images/vercel-live-site.webp" alt="locallink-homepage.vercel.app 주소로 접속한 LocalLink 예시 홈페이지 화면" loading="lazy">
+          <figcaption><b>화면 예시</b> — <code class="inline">https://locallink-homepage.vercel.app</code>으로 접속한 실제 화면입니다. 이제 이 주소를 누구에게나 공유할 수 있습니다.</figcaption>
+        </figure>
         <div class="final-box">
           <div class="eyebrow">DEPLOY COMPLETE</div>
           <h3>🎉 내 홈페이지 주소 완성</h3>
@@ -961,23 +1002,22 @@ details.optional[open] .summary-hint { display: none; }
             <div class="copyhead"><span>① 업로드 + GitHub Pages 배포 준비 요청</span><button onclick="copyPrompt(this)">복사</button></div>
             <pre>첨부한 index.html을 아래 GitHub 레포지토리에 올리고, GitHub Pages로 배포할 수 있게 준비해줘.
 
-레포지토리 주소: https://github.com/내아이디/locallink-homepage
-
-[진행할 것]
-- index.html을 레포지토리 맨 바깥(루트)에 올리고 main 브랜치에 커밋·push
-- 레포지토리가 Public인지 확인 (Private이면 진행하지 말고 먼저 알려줘)
-- GitHub Pages를 켤 수 있으면 main 브랜치 / (root) 기준으로 설정
-
-[지켜줄 것]
-- 권한이 없어 직접 할 수 없는 단계는 내가 GitHub 화면에서 할 수 있도록 메뉴 순서대로 알려줘
-- 끝나면 배포 주소와 확인 방법을 알려줘</pre>
+레포지토리 주소: https://github.com/내아이디/locallink-homepage</pre>
           </div>
           <div class="procedure" style="counter-reset: step 2">
             <div><b>GitHub Pages가 켜졌는지 직접 확인합니다.</b><br>ChatGPT에 Pages 설정 권한이 없으면 이 단계는 직접 합니다. Repository의 <b>Settings → Pages</b>에서 <b>Build and deployment</b>의 Source를 <b>Deploy from a branch</b>, Branch를 <b><code class="inline">main</code> / <code class="inline">(root)</code></b>로 선택하고 <b>Save</b>를 누릅니다.</div>
             <div><b>1~2분 뒤 배포 주소로 접속합니다.</b><br>주소 형식은 <code class="inline">https://내아이디.github.io/locallink-homepage/</code>입니다. Settings → Pages 상단에 “Your site is live at …”이 보이면 완료입니다. 새 브라우저와 스마트폰에서도 열어봅니다.</div>
             <div><b>주소가 열리지 않으면 확인을 요청합니다.</b></div>
           </div>
-          <div class="copybox">
+          <figure class="sample-shot">
+            <img src="images/github-pages-branch.webp" alt="GitHub Settings의 Pages 화면. Source는 Deploy from a branch, Branch는 main과 / (root)를 선택하고 Save 버튼이 있다" loading="lazy">
+            <figcaption><b>화면 예시</b> — <b>Settings → Pages</b> 화면입니다. Source는 <b>Deploy from a branch</b>, Branch는 <code class="inline">main</code> / <code class="inline">(root)</code>를 고르고 <b>Save</b>를 누릅니다.</figcaption>
+          </figure>
+          <figure class="sample-shot">
+            <img src="images/github-pages-live.webp" alt="GitHub Pages 설정 화면 상단에 Your site is live at https://loreenkim0301.github.io/locallink-homepage/ 문구와 Visit site 버튼이 보인다" loading="lazy">
+            <figcaption><b>화면 예시</b> — 1~2분 뒤 새로고침하면 상단에 <b>Your site is live at …</b>과 배포 주소가 나타납니다. <b>Visit site</b>로 바로 열어볼 수 있습니다.</figcaption>
+          </figure>
+            <div class="copybox">
             <div class="copyhead"><span>② 배포가 안 될 때 원인 확인 요청</span><button onclick="copyPrompt(this)">복사</button></div>
             <pre>GitHub Pages 주소 https://내아이디.github.io/locallink-homepage/ 가 열리지 않아.
 
