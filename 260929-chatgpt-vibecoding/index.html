@@ -122,6 +122,7 @@ details.optional[open] .summary-hint { display: none; }
 .sample-shot { margin: 22px 0; }
 .sample-shot img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 12px; }
 .sample-shot.narrow img { max-width: 700px; margin: 0 auto; }
+.sample-shot.small img { max-width: 360px; }
 .sample-shot figcaption { margin-top: 10px; color: var(--muted); font-size: 14px; }
 @media (max-width: 680px) { .profile-card { grid-template-columns: 1fr; padding: 18px; } }
 .app aside { word-break: keep-all; }
@@ -818,7 +819,13 @@ details.optional[open] .summary-hint { display: none; }
 
         <h4>1. 처음 업로드하기</h4>
         <div class="procedure">
-          <div><b>ChatGPT에 GitHub를 연결합니다.</b><br><b>계정 → 설정 → 플러그인 → 디렉터리 찾아보기</b>로 이동해 GitHub 항목의 ‘+’ 버튼을 누릅니다. 브라우저 로그인 화면이 열리면 GitHub 계정으로 로그인하고, 3.1에서 만든 Repository에 대한 접근 권한을 승인합니다.</div>
+          <div><b>ChatGPT에 GitHub를 연결합니다.</b><br><b>계정 → 설정</b>을 열고 위쪽 검색창에 <b>‘디렉터리’</b>를 입력한 뒤, 결과에서 <b>디렉터리 찾아보기(플러그인)</b>를 선택합니다. 목록에서 GitHub 항목의 ‘+’ 버튼을 누르고, 브라우저 로그인 화면이 열리면 GitHub 계정으로 로그인해 3.1에서 만든 Repository에 대한 접근 권한을 승인합니다.</div>
+        </div>
+        <figure class="sample-shot small">
+          <img src="images/chatgpt-settings-directory.webp" alt="ChatGPT 설정 화면 검색창에 디렉을 입력하자 결과 맨 위에 플러그인 항목인 디렉터리 찾아보기가 나타난 화면" loading="lazy">
+          <figcaption><b>화면 예시</b> — 설정 화면의 메뉴 구성이 바뀌어, 검색창에 ‘디렉터리’를 입력하면 <b>디렉터리 찾아보기</b>(플러그인)를 바로 찾을 수 있습니다.</figcaption>
+        </figure>
+        <div class="procedure" style="counter-reset: step 1">
           <div><b>ChatGPT 데스크톱 앱에서 Work로 전환하고 새 대화를 엽니다.</b><br>앱 왼쪽 상단 전환 메뉴에서 ChatGPT → Work를 선택합니다.</div>
           <div><b>업로드할 <code class="inline">index.html</code>을 첨부합니다.</b><br>2.4에서 문구를 수정했다면 그 최신 파일을 첨부합니다.</div>
           <div><b>아래 프롬프트에 Repository 주소를 넣어 업로드를 요청합니다.</b><br>3.1에서 메모한 Repository 주소를 붙여넣습니다.</div>
