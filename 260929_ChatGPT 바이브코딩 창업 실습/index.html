@@ -77,8 +77,9 @@ td { padding: 14px 13px; border-bottom: 1px solid var(--line); }
 .steps article { padding: 18px; border-top: 4px solid var(--blue); border-radius: 12px; }
 .steps strong { display: block; color: var(--blue); font-size: 12px; }
 .steps b { display: block; font-size: 18px; margin-top: 3px; }
-.steps article.is-optional { border-top: 4px dashed var(--line); color: var(--muted); }
-.steps article.is-optional strong, .steps article.is-optional b { color: var(--muted); }
+.sub-optional { margin-top: 10px; padding: 10px 12px; border: 1px dashed var(--line); border-radius: 10px; color: var(--muted); font-size: 14px; }
+.sub-optional .tag { margin-left: 0; }
+.steps .sub-optional b { display: inline; font-size: 14px; margin: 0 4px 0 2px; color: var(--muted); }
 .tag { display: inline-block; margin-left: 6px; padding: 1px 8px; border-radius: 999px; font-size: 11px; font-weight: 800; letter-spacing: 0; vertical-align: 1px; }
 .tag-req { background: var(--blue); color: #fff; }
 .tag-opt { border: 1px solid var(--line); background: #fff; color: var(--muted); font-weight: 700; }
@@ -273,7 +274,7 @@ details.optional[open] .summary-hint { display: none; }
         <h3>1.2 오늘 사용할 AI 코딩 도구</h3>
         <div class="steps">
           <article><strong>LEVEL 1 <span class="tag tag-req">필수</span></strong><b>ChatGPT · 채팅</b><p>아이디어를 빠르게 화면으로 만들어 프로토타입을 확인합니다.</p></article>
-          <article class="is-optional"><strong>LEVEL 2 <span class="tag tag-opt">선택</span></strong><b>ChatGPT · Work / Sites</b><p>프로토타입을 발전시켜 사이트 형태로 만들고 공유합니다.</p></article>
+          <article><strong>LEVEL 2</strong><b>ChatGPT · Work</b><p>Work 모드에서 만든 결과물을 이어서 다루고, GitHub 업로드까지 요청해봅니다.</p><div class="sub-optional"><span class="tag tag-opt">선택</span> <b>Sites</b> 사이트 형태로 게시해 바로 공유 <span class="small">(대상 플랜만)</span></div></article>
           <article><strong>LEVEL 3</strong><b>GitHub · Vercel</b><p>만든 소스코드를 GitHub에 직접 저장한 뒤 Vercel로 실제 웹주소에 배포합니다.</p></article>
         </div>
       </div>
@@ -560,8 +561,6 @@ details.optional[open] .summary-hint { display: none; }
         <div class="procedure" style="counter-reset: step 2">
           <div><b>생성된 화면을 미리보기로 확인합니다.</b><br>세 개의 메뉴가 모두 보이는지, 메뉴를 누르면 화면이 전환되는지, 홈 화면에 가치 3개·이용 과정 3단계가 있는지 확인합니다.</div>
         </div>
-        <div class="notice"><b>프롬프트를 이렇게 나누는 이유</b><br>
-        전문 개발 용어를 사용하기 위한 것이 아니라, <b>대상 → 메뉴·구성 → 동작 → 디자인</b>처럼 원하는 결과를 빠뜨리지 않고 설명하기 위해서입니다. 수강생은 코드를 직접 작성하지 않습니다.</div>
 
         <h4>STEP 2. 회사 소개 페이지 추가·개선</h4>
         <div class="procedure" style="counter-reset: step 3">
