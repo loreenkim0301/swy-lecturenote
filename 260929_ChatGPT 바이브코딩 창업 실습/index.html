@@ -77,6 +77,11 @@ td { padding: 14px 13px; border-bottom: 1px solid var(--line); }
 .steps article { padding: 18px; border-top: 4px solid var(--blue); border-radius: 12px; }
 .steps strong { display: block; color: var(--blue); font-size: 12px; }
 .steps b { display: block; font-size: 18px; margin-top: 3px; }
+.steps article.is-optional { border-top: 4px dashed var(--line); color: var(--muted); }
+.steps article.is-optional strong, .steps article.is-optional b { color: var(--muted); }
+.tag { display: inline-block; margin-left: 6px; padding: 1px 8px; border-radius: 999px; font-size: 11px; font-weight: 800; letter-spacing: 0; vertical-align: 1px; }
+.tag-req { background: var(--blue); color: #fff; }
+.tag-opt { border: 1px solid var(--line); background: #fff; color: var(--muted); font-weight: 700; }
 .final-box { padding: 28px; border-radius: 18px; background: linear-gradient(135deg, rgb(17, 26, 46), rgb(29, 47, 88)); color: rgb(255, 255, 255); }
 .final-box h3 { margin: 6px 0px 8px; font-size: 30px; }
 .final-box p { color: rgb(203, 213, 231); }
@@ -192,7 +197,7 @@ details.optional[open] .summary-hint { display: none; }
       <div class="profile-card">
         <div>
           <h3>기획자 김로린(김수정) — 셀렉트웨이 대표, 서비스기획/PM</h3>
-          <p class="small">8년차 PM/서비스 기획자. 기획부터 디자인, AI 바이브코딩까지 직접 하는 기획자로 활동하며, 예비 창업자·재직자·미래의 기획자를 대상으로 기술 교육을 진행하고 있습니다.</p>
+          <p class="small">PM/서비스 기획자로 9년 이상의 경험을 쌓았습니다. 기획부터 디자인, AI 바이브코딩까지 직접 하는 기획자로 활동하며, 예비 창업자·재직자·미래의 기획자를 대상으로 기술 교육을 진행하고 있습니다.</p>
           <ul>
             <li>(현) 서비스기획 스튜디오 셀렉트웨이 대표/기획자</li>
             <li>(전) 핀테크기업 앱 서비스 기획 / PO</li>
@@ -267,9 +272,9 @@ details.optional[open] .summary-hint { display: none; }
         <div class="topic-label">MAP</div>
         <h3>1.2 오늘 사용할 AI 코딩 도구</h3>
         <div class="steps">
-          <article><strong>LEVEL 1</strong><b>ChatGPT · 채팅</b><p>아이디어를 빠르게 화면으로 만들어 프로토타입을 확인합니다.</p></article>
-          <article><strong>LEVEL 2</strong><b>ChatGPT · Work / Sites</b><p>프로토타입을 발전시켜 사이트 형태로 만들고 공유합니다.</p></article>
-          <article><strong>LEVEL 3</strong><b>GitHub · Vercel (+ Work 참고)</b><p>만든 소스코드를 GitHub에 직접 저장한 뒤 Vercel로 실제 웹주소에 배포하고, 참고로 Work 모드에 업로드를 맡겨봅니다.</p></article>
+          <article><strong>LEVEL 1 <span class="tag tag-req">필수</span></strong><b>ChatGPT · 채팅</b><p>아이디어를 빠르게 화면으로 만들어 프로토타입을 확인합니다.</p></article>
+          <article class="is-optional"><strong>LEVEL 2 <span class="tag tag-opt">선택</span></strong><b>ChatGPT · Work / Sites</b><p>프로토타입을 발전시켜 사이트 형태로 만들고 공유합니다.</p></article>
+          <article><strong>LEVEL 3</strong><b>GitHub · Vercel</b><p>만든 소스코드를 GitHub에 직접 저장한 뒤 Vercel로 실제 웹주소에 배포합니다.</p></article>
         </div>
       </div>
 
