@@ -860,7 +860,44 @@ details.optional[open] .summary-hint { display: none; }
       <div class="topic" id="s4-1">
         <div class="topic-label">PRACTICE 06 · DEPLOY</div>
         <h3>4.1 Vercel로 직접 배포하기</h3>
-        <div class="procedure"><div><b>Vercel 회원가입 페이지에 접속합니다.</b><br>실습에서는 <b>Continue with GitHub</b>를 권장합니다.<br><a class="resource-link" href="https://vercel.com/signup" target="_blank" rel="noopener">↗ Vercel 무료 계정 만들기</a></div><div><b>GitHub 연결 권한을 승인합니다.</b></div><div><b>Add New → Project에서 3.1에서 만든 Repository를 찾아 Import합니다.</b></div><div><b>프로젝트 설정을 확인합니다.</b><br>단순 HTML 프로젝트라면 자동 감지된 기본 설정을 그대로 사용합니다.</div><div><b>Deploy를 클릭하고 완료될 때까지 기다립니다.</b></div><div><b>생성된 Vercel URL을 엽니다.</b><br>새 브라우저와 스마트폰에서도 접속해 확인합니다.</div></div>
+        <p>Vercel은 GitHub에 올려둔 소스코드를 가져가 <b>누구나 접속할 수 있는 웹사이트 주소</b>로 만들어주는 서비스입니다. 3장에서 만든 Repository를 연결하면, 이후 GitHub에 올릴 때마다 자동으로 다시 배포됩니다.</p>
+        <div class="warning"><b>Vercel 무료(Hobby) 플랜은 개인·비상업용입니다.</b><br>
+        무료 Hobby 플랜은 약관상 <b>개인적·비상업적 용도</b>로만 사용할 수 있습니다. 오늘처럼 실습하거나 고객 반응을 확인하는 프로토타입 공유에는 사용할 수 있지만, <b>실제 매출이 발생하는 회사 홈페이지·서비스로 운영</b>하려면 유료(Pro) 플랜 전환이 필요합니다.<br>
+        <span class="small">기준일: 2026-09-29 · 출처: Vercel Docs(Hobby Plan, Fair Use Guidelines)</span></div>
+
+        <h4>1. Vercel 가입하고 GitHub 연결하기</h4>
+        <div class="procedure">
+          <div><b>Vercel 회원가입 페이지에 접속합니다.</b><br><a class="resource-link" href="https://vercel.com/signup" target="_blank" rel="noopener">↗ Vercel 무료 계정 만들기 (vercel.com/signup)</a></div>
+          <div><b>플랜 유형에서 Hobby를 선택하고 이름을 입력합니다.</b><br>“어떤 용도로 사용하나요?” 질문에서 개인 프로젝트용인 <b>Hobby</b>를 고르고, 표시될 이름(영문 권장)을 입력한 뒤 <b>Continue</b>를 누릅니다.</div>
+          <div><b>가입 방법으로 Continue with GitHub를 선택합니다.</b><br>이메일로 가입하는 것보다 GitHub로 가입하면 Repository 연결이 한 번에 끝납니다. 3.1에서 만든 GitHub 계정으로 로그인합니다.</div>
+          <div><b>GitHub 화면에서 Vercel 접근 권한을 승인합니다.</b><br><b>Authorize Vercel</b> 화면이 나오면 승인합니다. 이 단계는 “Vercel이 내 GitHub 계정 정보를 확인해도 된다”는 허락입니다.</div>
+        </div>
+
+        <h4>2. Repository 가져오기(Import)</h4>
+        <div class="procedure" style="counter-reset: step 4">
+          <div><b>새 프로젝트 만들기 화면을 엽니다.</b><br>대시보드 오른쪽 위 <b>Add New… → Project</b>를 누르거나, 아래 링크로 바로 이동합니다.<br><a class="resource-link" href="https://vercel.com/new" target="_blank" rel="noopener">↗ Vercel 새 프로젝트 만들기 (vercel.com/new)</a></div>
+          <div><b>Import Git Repository 목록에서 3.1에서 만든 Repository를 찾습니다.</b><br>예: <code class="inline">locallink-homepage</code> 옆의 <b>Import</b> 버튼을 누릅니다.</div>
+        </div>
+        <div class="notice"><b>목록에 내 Repository가 안 보인다면?</b><br>
+        Vercel에 해당 Repository 접근 권한이 아직 없는 상태입니다. 목록 아래의 <b>Adjust GitHub App Permissions</b>(또는 <b>Install</b>)를 누르면 GitHub 화면이 열립니다. <b>Only select repositories</b>를 고르고 내 Repository를 선택한 뒤 <b>Save</b>(또는 Install)를 누르면 목록에 나타납니다. 처음이라면 <b>All repositories</b>를 골라도 됩니다.</div>
+
+        <h4>3. 프로젝트 설정 확인하고 배포하기</h4>
+        <div class="procedure" style="counter-reset: step 6">
+          <div><b>Project Name을 확인합니다.</b><br>이 이름이 웹사이트 주소(<code class="inline">https://프로젝트이름.vercel.app</code>)가 됩니다. <b>영문 소문자·숫자·하이픈(-)</b>만 쓸 수 있으며, 기본값으로 Repository 이름이 들어가 있습니다.</div>
+          <div><b>나머지 설정은 그대로 둡니다.</b><br><code class="inline">index.html</code> 한 파일짜리 프로젝트는 설정할 것이 없습니다.<br>
+          · <b>Framework Preset</b>: <code class="inline">Other</code>로 자동 선택되면 그대로 둡니다.<br>
+          · <b>Root Directory</b>: <code class="inline">./</code> 그대로 둡니다. (<code class="inline">index.html</code>이 Repository 맨 바깥에 있어야 합니다.)<br>
+          · <b>Build and Output Settings</b>, <b>Environment Variables</b>: 비워 둡니다.</div>
+          <div><b>Deploy 버튼을 누르고 완료될 때까지 기다립니다.</b><br>HTML 한 파일은 보통 수십 초 안에 끝납니다. 진행 로그가 흐르다가 <b>Congratulations!</b> 화면과 홈페이지 미리보기가 나오면 배포 완료입니다.</div>
+        </div>
+
+        <h4>4. 내 웹사이트 주소 확인하기</h4>
+        <div class="procedure" style="counter-reset: step 9">
+          <div><b>Continue to Dashboard를 눌러 프로젝트 화면으로 이동합니다.</b><br>프로젝트 화면의 <b>Domains</b> 항목에 표시된 <code class="inline">프로젝트이름.vercel.app</code>이 <b>공유할 공식 주소</b>입니다. 같은 이름이 이미 있으면 뒤에 글자가 붙은 주소가 만들어질 수 있습니다.</div>
+          <div><b>주소를 새 브라우저와 스마트폰에서 열어봅니다.</b><br>로그인하지 않은 시크릿 창에서도 열리는지, 스마트폰 화면에서 메뉴와 버튼이 잘 동작하는지 확인합니다.</div>
+        </div>
+        <div class="notice"><b>주소가 여러 개 보여요 — 어떤 걸 공유하나요?</b><br>
+        Deployments(배포 기록) 화면에는 <code class="inline">프로젝트이름-abc123-아이디.vercel.app</code>처럼 긴 주소도 보입니다. 이것은 <b>배포할 때마다 새로 생기는 버전별 주소</b>입니다. 고객이나 동료에게는 항상 짧은 <b>Domains의 주소</b>를 공유합니다. 배포가 실패하면 Deployments에서 상태가 <b>Error</b>로 표시되고, 눌러보면 원인이 나옵니다. 대부분은 파일 이름(<code class="inline">index.html</code>)이나 위치 문제입니다.</div>
         <div class="final-box">
           <div class="eyebrow">DEPLOY COMPLETE</div>
           <h3>🎉 내 홈페이지 주소 완성</h3>
