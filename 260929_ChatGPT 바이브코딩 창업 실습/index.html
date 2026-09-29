@@ -373,7 +373,6 @@ details.optional[open] .summary-hint { display: none; }
         </div>
         <div class="procedure" style="counter-reset: step 3">
           <div><b>결과를 직접 확인합니다.</b><br>그래프와 표가 첨부한 데이터에 맞게 만들어졌는지 확인합니다.</div>
-          <div><b>기능과 디자인을 수정합니다.</b><br>새 대화를 열지 않고 같은 대화에서 아래 2차 프롬프트를 이어서 입력합니다. 수정 요청은 “더 예쁘게”, “좀 더 편하게”처럼 막연하게 쓰지 않고, <b>무엇을 · 어떻게 바꿀지</b>와 <b>바꾸면 안 되는 것</b>을 함께 적습니다.</div>
         </div>
         <div class="notice"><b>기능·디자인 수정 프롬프트는 구체적으로, 금지조건과 제약조건까지 씁니다.</b><br>
         AI는 요청이 모호하면 알아서 판단해 <b>요청하지 않은 부분까지 바꾸는 경우</b>가 많습니다. 제대로 동작하던 그래프가 사라지거나, 색상·문구가 통째로 바뀌는 식입니다. 수정할 때는 아래 네 가지를 나누어 적습니다.<br><br>
@@ -385,6 +384,9 @@ details.optional[open] .summary-hint { display: none; }
           <div><b>모호한 요청</b><p>“대시보드를 좀 더 보기 좋게 바꿔줘.”</p><p class="small">무엇을 바꿀지 AI가 임의로 정합니다. 결과가 매번 달라지고, 멀쩡하던 부분까지 바뀔 수 있습니다.</p></div>
           <i>→</i>
           <div><b>구체적인 요청</b><p>“상품 표에 상품명 검색창만 추가해줘. 기존 데이터와 그래프는 변경하지 마.”</p><p class="small">바꿀 곳과 바꾸면 안 되는 곳이 분명해서, 원하는 부분만 정확히 수정됩니다.</p></div>
+        </div>
+        <div class="procedure" style="counter-reset: step 4">
+          <div><b>기능과 디자인을 수정합니다.</b><br>새 대화를 열지 않고 같은 대화에서 아래 2차 프롬프트를 이어서 입력합니다. 수정 요청은 “더 예쁘게”, “좀 더 편하게”처럼 막연하게 쓰지 않고, <b>무엇을 · 어떻게 바꿀지</b>와 <b>바꾸면 안 되는 것</b>을 함께 적습니다.</div>
         </div>
         <div class="copybox">
           <div class="copyhead"><span>실습 A · 5단계 기능·디자인 수정하기</span><button onclick="copyPrompt(this)">복사</button></div>
@@ -423,9 +425,6 @@ details.optional[open] .summary-hint { display: none; }
           <div><b>Chat에서 새 대화를 엽니다.</b><br>실습 A와 구분하기 위해 새 대화에서 시작합니다.</div>
           <div><b>아래 프롬프트를 입력합니다.</b><br>입력 항목과 계산식을 빠뜨리지 않고 입력합니다. <b>계산식은 내가 정해서 알려주는 것</b>이며, 이렇게 정한 계산식은 만들어진 계산기 안에서 절대 바뀌지 않고 그대로 동작합니다.</div>
         </div>
-        <div class="warning"><b>정해진 계산식은 절대 바뀌지 않고 그대로 동작합니다.</b><br>
-        ChatGPT에게 같은 질문을 하면 답변이 매번 조금씩 달라지지만, <b>ChatGPT가 만든 계산기는 다릅니다.</b> 계산기는 프롬프트에 적은 계산식을 코드로 옮겨 둔 것이므로, 같은 값을 넣으면 언제, 누가 사용해도 항상 같은 결과가 나옵니다. 계산할 때마다 AI가 새로 판단하는 것이 아닙니다.<br><br>
-        그래서 <b>계산식이 틀리면 틀린 결과가 계속 반복됩니다.</b> 할인·수수료·세금처럼 돈과 관련된 계산식은 만들기 전에 사람이 먼저 확인하고, 이후 수정 요청을 할 때도 “기존 계산식은 변경하지 마”라고 금지조건을 적어 계산식이 바뀌지 않도록 지킵니다.</div>
         <div class="copybox">
           <div class="copyhead"><span>실습 B · 2단계 계산기 만들기</span><button onclick="copyPrompt(this)">복사</button></div>
           <pre>상품 가격 계산기 프로토타입을 만들어줘.
@@ -443,16 +442,20 @@ details.optional[open] .summary-hint { display: none; }
 위 계산식은 그대로 사용하고 임의로 바꾸지 마.
 입력창, 계산하기 버튼, 계산 결과가 보이는 화면으로 만들어줘.</pre>
         </div>
+        <div class="warning"><b>정해진 계산식은 절대 바뀌지 않고 그대로 동작합니다.</b><br>
+        ChatGPT에게 같은 질문을 하면 답변이 매번 조금씩 달라지지만, <b>ChatGPT가 만든 계산기는 다릅니다.</b> 계산기는 프롬프트에 적은 계산식을 코드로 옮겨 둔 것이므로, 같은 값을 넣으면 언제, 누가 사용해도 항상 같은 결과가 나옵니다. 계산할 때마다 AI가 새로 판단하는 것이 아닙니다.<br><br>
+        그래서 <b>계산식이 틀리면 틀린 결과가 계속 반복됩니다.</b> 할인·수수료·세금처럼 돈과 관련된 계산식은 만들기 전에 사람이 먼저 확인하고, 이후 수정 요청을 할 때도 “기존 계산식은 변경하지 마”라고 금지조건을 적어 계산식이 바뀌지 않도록 지킵니다.</div>
         <div class="procedure" style="counter-reset: step 2">
           <div><b>값을 입력해 계산 결과를 확인합니다.</b><br>직접 계산해 둔 값과 비교합니다. 예: 상품 가격 10,000원 · 수량 3개 · 할인율 10% → 할인 전 30,000원 / 할인 3,000원 / <b>최종 27,000원</b></div>
-          <div><b>오류가 있으면 화면을 캡처해 AI에게 보여주고 고칠 부분을 설명합니다.</b><br>결과 금액이 틀리거나, 버튼이 동작하지 않거나, 글자가 겹쳐 보이면 해당 화면을 캡처합니다. 같은 대화 입력창에 캡처 이미지를 첨부하고, <b>무엇이 어떻게 잘못되었는지</b>를 아래 형식으로 설명합니다.</div>
-          <div><b>같은 대화에서 아래 수정 요청을 입력합니다.</b><br>새 대화를 열지 않고 만든 계산기를 이어서 수정합니다.</div>
         </div>
         <div class="notice"><b>오류 개선 방법: 캡처 → 첨부 → 설명</b><br>
         · <b>화면 캡처</b> — Windows: <code class="inline">Win + Shift + S</code> / Mac: <code class="inline">Cmd + Shift + 4</code><br>
         · <b>캡처 이미지 첨부</b> — 캡처한 이미지를 입력창에 붙여넣거나(<code class="inline">Ctrl/Cmd + V</code>) 파일 첨부 버튼으로 올립니다.<br>
         · <b>설명</b> — “안 돼요”가 아니라 <b>어디에서 · 무엇을 했더니 · 어떤 결과가 나왔고 · 원래는 어떻게 나와야 하는지</b>를 적습니다.<br><br>
         말로만 설명하는 것보다 화면을 함께 보여주면 AI가 문제 위치를 훨씬 정확하게 찾습니다. 이 방법은 이후 홈페이지 실습에서도 그대로 사용합니다.</div>
+        <div class="procedure" style="counter-reset: step 3">
+          <div><b>오류가 있으면 화면을 캡처해 AI에게 보여주고 고칠 부분을 설명합니다.</b><br>결과 금액이 틀리거나, 버튼이 동작하지 않거나, 글자가 겹쳐 보이면 해당 화면을 캡처합니다. 같은 대화 입력창에 캡처 이미지를 첨부하고, <b>무엇이 어떻게 잘못되었는지</b>를 아래 형식으로 설명합니다.</div>
+        </div>
         <div class="copybox">
           <div class="copyhead"><span>실습 B · 4단계 오류 설명 예시 (캡처 이미지와 함께 입력)</span><button onclick="copyPrompt(this)">복사</button></div>
           <pre>첨부한 캡처 화면을 확인해줘.
@@ -463,6 +466,9 @@ details.optional[open] .summary-hint { display: none; }
 [원래는] 계산식대로라면 27,000원이 나와야 해
 
 원인을 찾아서 이 부분만 고쳐줘. 정해 둔 계산식과 다른 화면은 변경하지 마.</pre>
+        </div>
+        <div class="procedure" style="counter-reset: step 4">
+          <div><b>같은 대화에서 아래 수정 요청을 입력합니다.</b><br>새 대화를 열지 않고 만든 계산기를 이어서 수정합니다.</div>
         </div>
         <div class="copybox">
           <div class="copyhead"><span>실습 B · 5단계 기능·디자인 수정하기</span><button onclick="copyPrompt(this)">복사</button></div>
