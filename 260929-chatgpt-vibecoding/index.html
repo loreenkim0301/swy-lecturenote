@@ -46,6 +46,20 @@ aside nav a.active { color: rgb(255, 255, 255); background: rgb(30, 44, 74); bor
 .session-head { margin: 0 calc(var(--page-pad)*-1) 50px; padding: 52px var(--page-pad); background: var(--nav); color: rgb(255, 255, 255); }
 .session-head .eyebrow { color: rgb(125, 160, 255); }
 .session-head p { max-width: 900px; color: rgb(195, 204, 220); }
+.vibe-intro { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 28px; align-items: start; margin-top: 30px; padding-top: 28px; border-top: 1px solid rgb(45, 56, 80); }
+.vibe-quote { margin: 0; padding-left: 18px; border-left: 3px solid rgb(125, 160, 255); }
+.vibe-quote blockquote { margin: 0 0 10px; color: #fff; font-size: 21px; font-weight: 700; line-height: 1.5; letter-spacing: -0.03em; }
+.vibe-quote figcaption { color: rgb(160, 172, 196); font-size: 13px; }
+.vibe-meaning { margin: 18px 0 0; padding: 14px 16px; border-radius: 12px; background: rgb(25, 36, 60); color: rgb(215, 222, 236); font-size: 15px; }
+.vibe-meaning b { color: #fff; }
+.vibe-timeline { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.vibe-timeline li { display: grid; grid-template-columns: 74px 1fr; gap: 12px; padding: 12px 14px; border: 1px solid rgb(45, 56, 80); border-radius: 12px; background: rgba(255, 255, 255, 0.03); }
+.vibe-timeline time { color: rgb(125, 160, 255); font-size: 13px; font-weight: 800; letter-spacing: 0.02em; }
+.vibe-timeline b { display: block; color: #fff; font-size: 15px; }
+.vibe-timeline span { display: block; color: rgb(185, 195, 214); font-size: 14px; line-height: 1.55; }
+.vibe-sources { grid-column: 1 / -1; margin: 0; color: rgb(130, 145, 177); font-size: 12px; }
+.vibe-sources a { color: rgb(160, 180, 230); }
+@media (max-width: 1020px) { .vibe-intro { grid-template-columns: 1fr; } }
 .time { font-size: 13px; color: rgb(174, 185, 207); }
 .topic { margin-bottom: 70px; scroll-margin-top: 20px; }
 .topic h3 { margin: 8px 0px 12px; font-size: 28px; letter-spacing: -0.025em; }
@@ -270,6 +284,22 @@ body.nav-hidden .nav-toggle { left: 14px; }
         <div class="eyebrow">SESSION 1</div><div class="time">약 10분</div>
         <h2>1. 바이브코딩이란?</h2>
         <p>창업자의 관점에서 바이브코딩이 무엇인지 이해하고, 오늘 사용할 ChatGPT·GitHub·Vercel이 각각 어떤 역할을 하는지 살펴봅니다.</p>
+        <div class="vibe-intro">
+          <div>
+            <figure class="vibe-quote">
+              <blockquote>“코드가 존재한다는 사실조차 잊고, 바이브(느낌)에 온전히 맡기는 새로운 코딩.”</blockquote>
+              <figcaption>안드레이 카파시(OpenAI 공동창업자·전 테슬라 AI 총괄), 2025년 2월 X 게시글 · 한국어 번역</figcaption>
+            </figure>
+            <p class="vibe-meaning"><b>한마디로,</b> 코드를 한 줄씩 직접 짜는 대신 <b>원하는 것을 말(자연어)로 설명하고 AI가 코드를 만들게 하는 방식</b>입니다. 콜린스 사전은 “자연어 지시를 받은 인공지능으로 컴퓨터 코드를 작성하는 것”으로 정의합니다.</p>
+          </div>
+          <ol class="vibe-timeline" aria-label="바이브코딩 트렌드 타임라인">
+            <li><time datetime="2025-02">2025.02</time><div><b>용어의 탄생</b><span>카파시가 X에 올린 글 한 편에서 처음 쓰인 말이 개발자 커뮤니티로 빠르게 퍼졌습니다.</span></div></li>
+            <li><time datetime="2025-03">2025.03</time><div><b>스타트업 현장</b><span>Y Combinator 2025년 겨울 배치 스타트업의 <b style="display:inline">25%</b>는 코드의 <b style="display:inline">95% 이상</b>을 AI가 작성했습니다.</span></div></li>
+            <li><time datetime="2025-11">2025.11</time><div><b>올해의 단어</b><span>콜린스 영어사전이 ‘바이브코딩(vibe coding)’을 2025년 올해의 단어로 선정했습니다.</span></div></li>
+            <li><time datetime="2026">2026</time><div><b>다음 단계</b><span>카파시는 여러 AI 에이전트를 지휘·검수하는 개발을 ‘에이전틱 엔지니어링’이라 부르자고 제안했습니다. 바이브코딩은 누구나 아이디어를 화면으로 만들어보는 출발점이 되었습니다.</span></div></li>
+          </ol>
+          <p class="vibe-sources">출처: <a href="https://en.wikipedia.org/wiki/Vibe_coding" target="_blank" rel="noopener">Wikipedia · Vibe coding</a> · <a href="https://techcrunch.com/2025/03/06/a-quarter-of-startups-in-ycs-current-cohort-have-codebases-that-are-almost-entirely-ai-generated" target="_blank" rel="noopener">TechCrunch(2025.3.6)</a> · <a href="https://blog.collinsdictionary.com/language-lovers/collins-word-of-the-year-2025-ai-meets-authenticity-as-society-shifts/" target="_blank" rel="noopener">Collins Dictionary(2025.11.6)</a> · <a href="https://thenewstack.io/vibe-coding-is-passe/" target="_blank" rel="noopener">The New Stack</a></p>
+        </div>
       </div>
 
       <div class="topic" id="s1-1">
