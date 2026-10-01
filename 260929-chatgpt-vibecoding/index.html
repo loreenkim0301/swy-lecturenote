@@ -1183,12 +1183,35 @@ body.nav-hidden .nav-toggle { left: 14px; }
         <p>가장 쉬운 방법입니다. 문의 폼 HTML에 <code class="inline">data-netlify="true"</code>를 붙이고 Netlify에 배포하면, 고객이 보낸 문의가 Netlify 관리 화면에 차곡차곡 쌓입니다. 별도 DB나 서버 코드가 필요 없습니다.</p>
 
         <h4>1. 문의 폼을 Netlify Forms용으로 고치기</h4>
+        <p>처음부터 정답 프롬프트를 알 수는 없습니다. 그래서 <b>먼저 AI에게 “어떻게 해야 하는지” 묻고, 그 답으로 수정용 프롬프트를 받는 과정</b>부터 시작합니다. 이 방법을 익히면 Netlify Forms가 아닌 다른 기능을 붙일 때도 같은 방식으로 스스로 길을 찾을 수 있습니다.</p>
         <div class="procedure">
           <div><b>2.3에서 만든 홈페이지 대화(또는 새 대화)에 최신 <code class="inline">index.html</code>을 첨부합니다.</b></div>
-          <div><b>아래 프롬프트로 문의 폼을 수정합니다.</b><br>Netlify는 화면 전환 방식(자바스크립트로 보내기)일 때 정해진 형식으로 보내야 접수됩니다. 그 조건을 프롬프트에 그대로 넣었습니다.</div>
+          <div><b>먼저 방법을 물어봅니다.</b><br>바로 고쳐달라고 하지 않고, 무엇을 바꿔야 하는지 설명과 함께 <b>수정 요청에 쓸 프롬프트</b>를 만들어 달라고 합니다.</div>
         </div>
         <div class="copybox">
-          <div class="copyhead"><span>5.1 · 문의 폼을 Netlify Forms로 연결</span><button onclick="copyPrompt(this)">복사</button></div>
+          <div class="copyhead"><span>5.1 · ① 먼저 방법 물어보기</span><button onclick="copyPrompt(this)">복사</button></div>
+          <pre>넷리파이(Netlify)로 배포한 웹페이지에서 '문의하기'로 들어온 데이터를
+Netlify Forms 기능으로 저장하게 하고 싶어.
+
+첨부한 index.html을 기준으로
+- 무엇을 어떻게 바꿔야 하는지 비개발자도 이해할 수 있게 단계별로 설명해주고
+- 내가 그대로 복사해서 수정을 요청할 수 있는 프롬프트를 만들어줘.
+아직 코드는 고치지 마.</pre>
+        </div>
+        <div class="procedure" style="counter-reset: step 2">
+          <div><b>답변에 아래 핵심 내용이 들어 있는지 확인합니다.</b><br>AI 답변은 매번 표현이 다르지만, Netlify Forms가 동작하려면 다음 내용이 빠지면 안 됩니다. 빠진 것이 있으면 “○○도 포함해서 프롬프트를 다시 만들어줘”라고 요청합니다.</div>
+        </div>
+        <div class="notice"><b>AI 답변에서 확인할 체크리스트</b><br>
+        · <code class="inline">&lt;form&gt;</code>에 <code class="inline">name</code>(폼 이름)과 <code class="inline">data-netlify="true"</code>를 붙인다<br>
+        · 입력칸마다 <code class="inline">name</code> 속성을 붙인다 (이름이 있어야 접수 내역에 항목별로 저장됨)<br>
+        · 자바스크립트로 보낼 때는 숨김 칸 <code class="inline">form-name</code>을 넣고, <code class="inline">application/x-www-form-urlencoded</code> 형식으로 보낸다<br>
+        · 배포 후 Netlify의 <b>Forms → Enable form detection</b>을 켜고 다시 배포해야 한다<br>
+        · (있으면 좋음) 스팸 방지용 숨김 칸(honeypot), 전송 성공·실패 안내 문구</div>
+        <div class="procedure" style="counter-reset: step 3">
+          <div><b>AI가 만들어 준 프롬프트로 수정을 요청합니다.</b><br>답변 속 프롬프트를 복사해 같은 대화에 붙여넣고, 필요하면 “기존 필수 항목 검사는 유지”, “다른 화면과 디자인은 변경하지 마” 같은 금지조건을 덧붙입니다. 아래는 같은 과정을 거쳐 강사가 다듬은 <b>완성 예시</b>입니다. AI가 만든 프롬프트와 비교해 보거나, 잘 안 될 때 그대로 사용합니다.</div>
+        </div>
+        <div class="copybox">
+          <div class="copyhead"><span>5.1 · ② 참고 · 완성 예시 프롬프트</span><button onclick="copyPrompt(this)">복사</button></div>
           <pre>첨부한 index.html의 '문의하기' 폼이 Netlify Forms로 접수되도록 수정해줘.
 
 [수정할 내용]
@@ -1208,7 +1231,7 @@ body.nav-hidden .nav-toggle { left: 14px; }
         </div>
 
         <h4>2. Netlify에 배포하기</h4>
-        <div class="procedure" style="counter-reset: step 2">
+        <div class="procedure" style="counter-reset: step 4">
           <div><b>Netlify에 로그인한 뒤 Projects 화면에서 Add new project를 누릅니다.</b><br>4.2의 로그인 없는 Netlify Drop이 아니라 <b>로그인한 내 계정</b>에 배포해야 폼 접수 내역이 보관됩니다.<br><a class="resource-link" href="https://app.netlify.com/" target="_blank" rel="noopener">↗ Netlify 열기</a></div>
           <div><b>화면 아래 Upload your project files 영역에 폴더를 끌어다 놓습니다.</b><br><code class="inline">index.html</code>과 이미지 폴더가 함께 있다면 <b>폴더째</b>(또는 zip 파일로) 올립니다. 끌어다 놓기가 어렵다면 <b>browse files to upload</b>(파일 선택) 또는 <b>choose a folder</b>(폴더 선택)를 누릅니다.</div>
         </div>
@@ -1216,7 +1239,7 @@ body.nav-hidden .nav-toggle { left: 14px; }
           <img src="images/netlify-forms-01-upload.webp" alt="Netlify 새 프로젝트 만들기 화면 아래쪽의 Upload your project files 영역. Drop a project folder, zip file, or HTML file to deploy instantly 문구가 있다" loading="lazy">
           <figcaption><b>화면 예시</b> — Add new project 화면을 아래로 내리면 나오는 <b>Upload your project files</b> 영역입니다. 폴더, zip 파일, HTML 파일 하나를 끌어다 놓으면 바로 배포됩니다.</figcaption>
         </figure>
-        <div class="procedure" style="counter-reset: step 4">
+        <div class="procedure" style="counter-reset: step 6">
           <div><b>배포가 끝나면 프로젝트 화면(Project overview)이 열립니다.</b><br><code class="inline">임의이름.netlify.app</code> 주소가 생기고, 왼쪽 메뉴 맨 아래에 <b>Forms</b>가 있습니다.</div>
         </div>
         <figure class="sample-shot">
@@ -1225,28 +1248,28 @@ body.nav-hidden .nav-toggle { left: 14px; }
         </figure>
 
         <h4>3. 폼 감지(Form detection) 켜기</h4>
-        <div class="procedure" style="counter-reset: step 5">
+        <div class="procedure" style="counter-reset: step 7">
           <div><b>왼쪽 메뉴의 Forms를 누르고 Enable form detection 버튼을 누릅니다.</b><br>폼 감지는 <b>기본으로 꺼져 있습니다.</b> 이 버튼을 눌러야 Netlify가 배포할 때 HTML 안의 <code class="inline">data-netlify="true"</code> 폼을 찾아 접수함을 만들어 줍니다.</div>
         </div>
         <figure class="sample-shot">
           <img src="images/netlify-forms-03-enable.webp" alt="Netlify Forms 화면. Manage forms and submissions without any server-side code or JavaScript 설명 아래에 Enable form detection 버튼이 있다" loading="lazy">
           <figcaption><b>화면 예시</b> — Forms 화면의 <b>Enable form detection</b> 버튼입니다. 아직 한 번도 켜지 않은 프로젝트에는 이 안내와 버튼만 보입니다.</figcaption>
         </figure>
-        <div class="procedure" style="counter-reset: step 6">
+        <div class="procedure" style="counter-reset: step 8">
           <div><b>“Form detection is enabled.” 안내가 나오면 켜진 것입니다.</b><br>다만 이 시점에는 폼 목록이 아직 비어 있습니다. 폼 감지는 <b>켠 다음 배포부터</b> 적용되기 때문입니다.</div>
         </div>
         <figure class="sample-shot">
           <img src="images/netlify-forms-04-enabled.webp" alt="Netlify Forms 화면에 초록색으로 Form detection is enabled 안내가 표시되고 아래에 Form submission notifications 영역이 나타난 화면" loading="lazy">
           <figcaption><b>화면 예시</b> — 폼 감지를 켠 직후입니다. 초록색 “Form detection is enabled.” 안내가 보이지만, 아직 감지된 폼은 없습니다.</figcaption>
         </figure>
-        <div class="procedure" style="counter-reset: step 7">
+        <div class="procedure" style="counter-reset: step 9">
           <div><b>왼쪽 메뉴의 Deploys로 이동해 같은 폴더를 한 번 더 올립니다.</b><br>Deploys 화면 아래 <b>Production</b> 영역의 “Need to update your project?” 칸에 2단계에서 올린 폴더(또는 zip)를 다시 끌어다 놓습니다. 이 재배포 때 Netlify가 폼을 찾습니다.</div>
         </div>
         <figure class="sample-shot">
           <img src="images/netlify-forms-05-redeploy.webp" alt="Netlify Deploys 화면의 Production 영역. Need to update your project? Drag and drop your project folder, zip file, or a single HTML file to deploy 문구와 업로드 영역이 있다" loading="lazy">
           <figcaption><b>화면 예시</b> — Deploys 화면의 재배포 영역입니다. 내용을 고친 뒤 다시 올릴 때도 이곳을 사용합니다.</figcaption>
         </figure>
-        <div class="procedure" style="counter-reset: step 8">
+        <div class="procedure" style="counter-reset: step 10">
           <div><b>다시 Forms를 열어 contact 폼이 나타났는지 확인합니다.</b><br>“<b>1 form collecting data.</b>”와 함께 <b>Active forms</b> 목록에 <code class="inline">contact</code>가 보이면 준비 완료입니다.</div>
         </div>
         <figure class="sample-shot">
@@ -1259,7 +1282,7 @@ body.nav-hidden .nav-toggle { left: 14px; }
         · 그래도 안 되면 Forms 화면의 <b>Form detection</b> 탭에서 감지가 켜져 있는지 다시 확인합니다.</div>
 
         <h4>4. 접수 확인하고 알림 받기</h4>
-        <div class="procedure" style="counter-reset: step 9">
+        <div class="procedure" style="counter-reset: step 11">
           <div><b>배포된 주소에서 문의를 1~2건 보내봅니다.</b><br>“문의가 접수되었습니다”가 표시되면 전송된 것입니다. 이번에는 새로고침해도 사라지지 않고 Netlify에 저장됩니다.</div>
           <div><b>Forms → Active forms의 contact를 눌러 접수 내역을 확인합니다.</b><br><b>Verified submissions</b> 목록에 보낸 문의가 시간순으로 쌓입니다. 항목을 누르면 이름·회사명·이메일·문의 내용을 볼 수 있고, <b>Download as CSV</b>로 내려받아 엑셀에서 열 수 있습니다.</div>
         </div>
@@ -1267,7 +1290,7 @@ body.nav-hidden .nav-toggle { left: 14px; }
           <img src="images/netlify-forms-07-submissions.webp" alt="Netlify의 Submissions from contact 화면. Download as CSV 버튼과 Delete form 버튼, 아래 Verified submissions 목록에 Netlify Forms 접수 테스트입니다 항목이 보인다" loading="lazy">
           <figcaption><b>화면 예시</b> — contact 폼의 접수 내역입니다. “Extra spam prevention enabled via honeypot field.”는 프롬프트에서 넣은 스팸 방지용 숨김 칸이 적용되었다는 뜻입니다. <b>Delete form</b>은 폼과 접수 내역을 지우는 버튼이므로 누르지 않습니다.</figcaption>
         </figure>
-        <div class="procedure" style="counter-reset: step 11">
+        <div class="procedure" style="counter-reset: step 13">
           <div><b>(선택) 문의가 오면 이메일로 받도록 알림을 설정합니다.</b><br>Forms 화면에서 <b>Submission notifications</b> 탭 → <b>Add notification</b> → <b>Email notification</b>을 고르고, 안내에 따라 알림을 받을 이메일 주소와 대상 폼(<code class="inline">contact</code>)을 지정해 저장합니다.</div>
         </div>
         <figure class="sample-shot">
@@ -1312,14 +1335,45 @@ body.nav-hidden .nav-toggle { left: 14px; }
         <div class="notice"><b>오늘 만들 구조 — “누구나 문의를 넣을 수는 있지만, 아무도 읽을 수 없게”</b><br>
         홈페이지 방문자는 문의를 <b>등록(insert)만</b> 할 수 있고, 다른 사람의 문의를 <b>읽거나 수정·삭제할 수는 없게</b> 만듭니다. 접수된 문의는 운영자만 Supabase 관리 화면에서 확인합니다. 이 “누가 무엇을 할 수 있는지” 규칙을 <b>RLS(Row Level Security, 행 단위 보안)</b>라고 부릅니다.</div>
 
-        <h4>1. 프로젝트와 테이블 만들기</h4>
+        <h4>1. 먼저 AI에게 전체 방법 물어보기</h4>
+        <p>5.1과 마찬가지로, 처음부터 SQL이나 정답 프롬프트를 알 필요는 없습니다. <b>내가 원하는 조건을 말하고, AI에게 순서·SQL·프롬프트를 받는 것</b>부터 시작합니다.</p>
         <div class="procedure">
-          <div><b>Supabase에 가입합니다.</b><br>3.1에서 만든 GitHub 계정으로 가입하면 간편합니다.<br><a class="resource-link" href="https://supabase.com/dashboard" target="_blank" rel="noopener">↗ Supabase 시작하기</a></div>
-          <div><b>새 프로젝트를 만듭니다.</b><br>프로젝트 이름(예: <code class="inline">locallink</code>)을 넣고, <b>Database Password</b>는 자동 생성 후 따로 메모해 둡니다. 지역(Region)은 한국 사용자가 많다면 <b>Northeast Asia (Seoul)</b>을 고릅니다.</div>
-          <div><b>왼쪽 메뉴 SQL Editor에서 아래 SQL을 붙여넣고 Run을 누릅니다.</b><br>문의 테이블을 만들고, RLS를 켠 뒤 “문의 등록만 허용” 규칙을 한 번에 적용합니다.</div>
+          <div><b>새 대화를 열고 최신 <code class="inline">index.html</code>을 첨부합니다.</b></div>
+          <div><b>원하는 조건을 담아 방법을 물어봅니다.</b><br>특히 <b>“방문자는 등록만, 읽기·삭제는 불가”</b>라는 권한 조건을 꼭 넣습니다. 이 조건이 빠지면 AI가 편의상 모든 권한을 열어둔 방법을 알려줄 수 있습니다.</div>
         </div>
         <div class="copybox">
-          <div class="copyhead"><span>5.2 · SQL Editor에 붙여넣기 (테이블 + 권한 규칙)</span><button onclick="copyPrompt(this)">복사</button></div>
+          <div class="copyhead"><span>5.2 · ① 먼저 방법 물어보기</span><button onclick="copyPrompt(this)">복사</button></div>
+          <pre>홈페이지 '문의하기'로 들어온 데이터를 Supabase에 저장하고 싶어. 나는 개발자가 아니야.
+
+첨부한 index.html을 기준으로
+- Supabase에서 해야 할 일(가입, 프로젝트, 테이블, 권한 설정, 연결 정보)을 순서대로 설명해주고
+- 테이블과 권한 규칙을 만드는 SQL을 만들어줘
+- 홈페이지 수정을 요청할 때 그대로 쓸 수 있는 프롬프트도 만들어줘
+
+[조건]
+- 방문자는 문의를 등록만 할 수 있고, 다른 사람의 문의를 읽거나 수정·삭제할 수 없어야 해
+- 홈페이지 코드에는 공개해도 되는 키만 넣어야 해
+
+아직 코드는 고치지 마.</pre>
+        </div>
+        <div class="procedure" style="counter-reset: step 2">
+          <div><b>답변에 아래 핵심 내용이 들어 있는지 확인합니다.</b><br>빠진 것이 있으면 “○○도 포함해서 다시 만들어줘”라고 요청합니다. 아래 2~4번 과정에서는 AI가 만들어 준 SQL·프롬프트를 쓰거나, 강사가 다듬은 <b>완성 예시</b>를 비교·대체용으로 사용합니다.</div>
+        </div>
+        <div class="notice"><b>AI 답변에서 확인할 체크리스트</b><br>
+        · <b>RLS(Row Level Security)를 켠다</b> — “오류가 나면 RLS를 끄세요” 같은 안내가 있으면 따르지 않습니다<br>
+        · 방문자(<code class="inline">anon</code>)에게는 <b>등록(insert)만</b> 허용하고, 읽기(select)·수정·삭제 규칙은 만들지 않는다<br>
+        · 홈페이지에는 <b>Publishable key</b>(<code class="inline">sb_publishable_…</code>, 예전 이름 anon key)만 넣고, <b>Secret key</b>(예전 이름 service_role key)는 절대 넣지 않는다<br>
+        · 등록한 뒤 다시 읽어오지(select) 않게 한다 — 읽기 권한이 없어서 오류처럼 보일 수 있음<br>
+        · Supabase 공식 자바스크립트 라이브러리를 사용한다</div>
+
+        <h4>2. 프로젝트와 테이블 만들기</h4>
+        <div class="procedure" style="counter-reset: step 3">
+          <div><b>Supabase에 가입합니다.</b><br>3.1에서 만든 GitHub 계정으로 가입하면 간편합니다.<br><a class="resource-link" href="https://supabase.com/dashboard" target="_blank" rel="noopener">↗ Supabase 시작하기</a></div>
+          <div><b>새 프로젝트를 만듭니다.</b><br>프로젝트 이름(예: <code class="inline">locallink</code>)을 넣고, <b>Database Password</b>는 자동 생성 후 따로 메모해 둡니다. 지역(Region)은 한국 사용자가 많다면 <b>Northeast Asia (Seoul)</b>을 고릅니다.</div>
+          <div><b>왼쪽 메뉴 SQL Editor에 AI가 만들어 준 SQL(또는 아래 완성 예시)을 붙여넣고 Run을 누릅니다.</b><br>문의 테이블을 만들고, RLS를 켠 뒤 “문의 등록만 허용” 규칙을 한 번에 적용합니다.</div>
+        </div>
+        <div class="copybox">
+          <div class="copyhead"><span>5.2 · ② 참고 · 완성 예시 SQL (테이블 + 권한 규칙)</span><button onclick="copyPrompt(this)">복사</button></div>
           <pre>-- 1) 문의 테이블 만들기
 create table public.inquiries (
   id bigint generated always as identity primary key,
@@ -1340,12 +1394,12 @@ create policy "방문자는 문의 등록만 가능"
   to anon
   with check (true);</pre>
         </div>
-        <div class="procedure" style="counter-reset: step 3">
+        <div class="procedure" style="counter-reset: step 6">
           <div><b>Table Editor에서 <code class="inline">inquiries</code> 표가 생겼는지 확인합니다.</b><br>표 이름 옆에 RLS가 켜져 있다는 표시(자물쇠 또는 RLS enabled)가 보이면 정상입니다.</div>
         </div>
 
-        <h4>2. 연결 정보 복사하기</h4>
-        <div class="procedure" style="counter-reset: step 4">
+        <h4>3. 연결 정보 복사하기</h4>
+        <div class="procedure" style="counter-reset: step 7">
           <div><b>프로젝트 화면 위쪽 Connect 버튼(또는 Settings → API Keys)을 엽니다.</b></div>
           <div><b>Project URL과 Publishable key 두 가지를 복사합니다.</b><br>Project URL은 <code class="inline">https://프로젝트ID.supabase.co</code> 형태이고, Publishable key는 <code class="inline">sb_publishable_</code>로 시작합니다.</div>
         </div>
@@ -1354,12 +1408,12 @@ create policy "방문자는 문의 등록만 가능"
         · <b>Secret key</b>(<code class="inline">sb_secret_…</code>)는 모든 권한을 가진 관리자 열쇠입니다. ChatGPT에 붙여넣거나 HTML에 넣거나 GitHub에 올리면 안 됩니다.<br>
         · 예전 안내서에 나오는 <code class="inline">anon</code> 키는 Publishable key의 이전 이름이고, <code class="inline">service_role</code> 키는 Secret key의 이전 이름입니다.</div>
 
-        <h4>3. 홈페이지에 연결하고 확인하기</h4>
-        <div class="procedure" style="counter-reset: step 6">
-          <div><b>최신 <code class="inline">index.html</code>을 첨부하고 아래 프롬프트에 URL과 Publishable key를 넣어 요청합니다.</b></div>
+        <h4>4. 홈페이지에 연결하고 확인하기</h4>
+        <div class="procedure" style="counter-reset: step 9">
+          <div><b>1번 대화에서 AI가 만들어 준 프롬프트에 Project URL과 Publishable key를 넣어 요청합니다.</b><br>같은 대화에 이어서 요청하면 앞의 설명을 기억하고 있어 더 정확합니다. 잘 안 되면 아래 완성 예시 프롬프트를 사용합니다.</div>
         </div>
         <div class="copybox">
-          <div class="copyhead"><span>5.2 · 문의 폼을 Supabase에 연결</span><button onclick="copyPrompt(this)">복사</button></div>
+          <div class="copyhead"><span>5.2 · ③ 참고 · 완성 예시 프롬프트</span><button onclick="copyPrompt(this)">복사</button></div>
           <pre>첨부한 index.html의 '문의하기' 폼이 Supabase에 저장되도록 수정해줘.
 
 [연결 정보]
@@ -1378,7 +1432,7 @@ create policy "방문자는 문의 등록만 가능"
 - 기존 필수 항목·이메일 형식 검사는 유지
 - 다른 화면과 메뉴, 디자인은 변경하지 마</pre>
         </div>
-        <div class="procedure" style="counter-reset: step 7">
+        <div class="procedure" style="counter-reset: step 10">
           <div><b>수정된 파일을 3·4장 방식대로 GitHub에 올려 배포합니다.</b><br>Vercel과 연결해 두었다면 GitHub에 올리는 것만으로 자동 재배포됩니다.</div>
           <div><b>배포된 주소에서 문의를 보내고 Table Editor에서 확인합니다.</b><br>Supabase의 <b>Table Editor → inquiries</b>에 방금 보낸 문의가 한 줄씩 쌓이면 성공입니다.</div>
         </div>
@@ -1395,11 +1449,34 @@ create policy "방문자는 문의 등록만 가능"
           <summary><span class="topic-label">OPTIONAL · 참고</span><span class="summary-title">5.3 (선택) 구글 스프레드시트에 문의 쌓기</span><span class="summary-hint">눌러서 펼치기</span></summary>
           <p>구글 스프레드시트에 붙어 있는 <b>Apps Script</b>로 “데이터를 받아 시트에 한 줄 추가하는 주소(웹 앱)”를 만들고, 홈페이지 문의 폼이 그 주소로 보내게 합니다. 수강생에게 익숙한 시트에 바로 쌓이기 때문에 “DB에 데이터가 들어간다”는 감각을 익히기 좋습니다.</p>
           <div class="procedure">
-            <div><b>새 구글 스프레드시트를 만들고 1행에 제목을 적습니다.</b><br>A1부터 차례로 <code class="inline">접수일시</code> · <code class="inline">이름</code> · <code class="inline">회사명</code> · <code class="inline">이메일</code> · <code class="inline">문의내용</code></div>
-            <div><b>메뉴의 확장 프로그램 → Apps Script를 엽니다.</b><br>기본으로 들어 있는 코드를 모두 지우고 아래 코드를 붙여넣은 뒤 저장합니다.</div>
+            <div><b>먼저 AI에게 방법을 물어봅니다.</b><br>최신 <code class="inline">index.html</code>을 첨부하고, 시트·Apps Script에서 할 일과 코드, 홈페이지 수정용 프롬프트를 한 번에 받아봅니다.</div>
           </div>
           <div class="copybox">
-            <div class="copyhead"><span>5.3 · Apps Script 코드 (시트에 한 줄 추가)</span><button onclick="copyPrompt(this)">복사</button></div>
+            <div class="copyhead"><span>5.3 · ① 먼저 방법 물어보기</span><button onclick="copyPrompt(this)">복사</button></div>
+            <pre>홈페이지 '문의하기'로 들어온 데이터를 구글 스프레드시트에 저장하고 싶어. 나는 개발자가 아니야.
+
+첨부한 index.html을 기준으로
+- 구글 시트와 Apps Script에서 해야 할 일을 순서대로 설명해주고 (웹 앱 배포 설정 포함)
+- Apps Script에 붙여넣을 코드를 만들어줘
+- 홈페이지 수정을 요청할 때 그대로 쓸 수 있는 프롬프트도 만들어줘
+
+아직 홈페이지 코드는 고치지 마.</pre>
+          </div>
+          <div class="procedure" style="counter-reset: step 1">
+            <div><b>답변에 아래 핵심 내용이 들어 있는지 확인합니다.</b><br>빠진 것이 있으면 다시 요청합니다. 이후 단계에서는 AI가 만들어 준 코드·프롬프트를 쓰거나, 아래 <b>완성 예시</b>를 비교·대체용으로 사용합니다.</div>
+          </div>
+          <div class="notice"><b>AI 답변에서 확인할 체크리스트</b><br>
+          · Apps Script에 <code class="inline">doPost</code> 함수를 만들고, 받은 내용을 시트에 한 줄씩 추가(<code class="inline">appendRow</code>)한다<br>
+          · 웹 앱 배포 설정: <b>실행 계정은 ‘나’</b>, <b>액세스 권한은 ‘모든 사용자’</b><br>
+          · 코드를 고친 뒤에는 <b>배포 관리에서 새 버전으로 다시 배포</b>해야 반영된다<br>
+          · 홈페이지에서는 fetch로 POST 전송하되, 브라우저 보안 오류를 피하려고 <code class="inline">Content-Type</code> 헤더를 넣지 않는다(또는 text/plain)<br>
+          · (있으면 좋음) 동시에 여러 건이 와도 한 줄씩 기록하는 잠금 처리, <code class="inline">=</code>로 시작하는 입력이 수식으로 실행되지 않게 막는 처리</div>
+          <div class="procedure" style="counter-reset: step 2">
+            <div><b>새 구글 스프레드시트를 만들고 1행에 제목을 적습니다.</b><br>A1부터 차례로 <code class="inline">접수일시</code> · <code class="inline">이름</code> · <code class="inline">회사명</code> · <code class="inline">이메일</code> · <code class="inline">문의내용</code></div>
+            <div><b>메뉴의 확장 프로그램 → Apps Script를 엽니다.</b><br>기본으로 들어 있는 코드를 모두 지우고 AI가 만들어 준 코드(또는 아래 완성 예시 코드)를 붙여넣은 뒤 저장합니다.</div>
+          </div>
+          <div class="copybox">
+            <div class="copyhead"><span>5.3 · ② 참고 · 완성 예시 코드 (시트에 한 줄 추가)</span><button onclick="copyPrompt(this)">복사</button></div>
             <pre>function doPost(e) {
   const lock = LockService.getScriptLock();
   lock.waitLock(10000); // 동시에 여러 건이 들어와도 한 줄씩 차례로 기록
@@ -1423,14 +1500,14 @@ create policy "방문자는 문의 등록만 가능"
   }
 }</pre>
           </div>
-          <div class="procedure" style="counter-reset: step 2">
+          <div class="procedure" style="counter-reset: step 4">
             <div><b>오른쪽 위 배포 → 새 배포를 누르고 유형을 ‘웹 앱’으로 고릅니다.</b><br><b>다음 사용자 인증 정보로 실행: 나</b>, <b>액세스 권한이 있는 사용자: 모든 사용자</b>로 설정하고 배포합니다.</div>
             <div><b>권한 승인 화면이 나오면 내 구글 계정으로 승인합니다.</b><br>“Google에서 확인하지 않은 앱” 경고가 나오면 내가 만든 스크립트이므로 <b>고급 → (프로젝트 이름)(으)로 이동</b>을 눌러 진행합니다.</div>
             <div><b>표시된 웹 앱 URL을 복사합니다.</b><br><code class="inline">https://script.google.com/macros/s/…/exec</code> 형태입니다.</div>
-            <div><b>최신 <code class="inline">index.html</code>을 첨부하고 아래 프롬프트로 연결을 요청합니다.</b></div>
+            <div><b>1번 대화에서 AI가 만들어 준 프롬프트에 웹 앱 URL을 넣어 연결을 요청합니다.</b><br>잘 안 되면 아래 완성 예시 프롬프트를 사용합니다.</div>
           </div>
           <div class="copybox">
-            <div class="copyhead"><span>5.3 · 문의 폼을 구글 시트에 연결</span><button onclick="copyPrompt(this)">복사</button></div>
+            <div class="copyhead"><span>5.3 · ③ 참고 · 완성 예시 프롬프트</span><button onclick="copyPrompt(this)">복사</button></div>
             <pre>첨부한 index.html의 '문의하기' 폼이 구글 스프레드시트에 저장되도록 수정해줘.
 
 [연결 정보]
@@ -1447,7 +1524,7 @@ create policy "방문자는 문의 등록만 가능"
 - 기존 필수 항목·이메일 형식 검사는 유지
 - 다른 화면과 메뉴, 디자인은 변경하지 마</pre>
           </div>
-          <div class="procedure" style="counter-reset: step 6">
+          <div class="procedure" style="counter-reset: step 8">
             <div><b>배포한 홈페이지에서 문의를 보내고 시트에 한 줄씩 쌓이는지 확인합니다.</b></div>
           </div>
           <div class="warning"><b>구글 스프레드시트에서 안 되는 것 · 주의할 것</b><br>
