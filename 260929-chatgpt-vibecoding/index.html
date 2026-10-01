@@ -1278,7 +1278,18 @@ body.nav-hidden .nav-toggle { left: 14px; }
         · <b>넣기만 되고 꺼내 쓰기는 안 됩니다.</b> 접수 내용을 홈페이지 화면에 목록으로 다시 보여주려면 API 키와 서버 코드가 필요합니다.<br>
         · <b>고객별 권한이 없습니다.</b> “고객이 자기 문의 내역 보기” 같은 기능은 만들 수 없습니다.<br>
         · <b>Netlify에서만 동작합니다.</b> 같은 HTML을 Vercel이나 GitHub Pages에 올리면 폼이 접수되지 않습니다.<br>
-        · <b>무료 크레딧을 다 쓰면 사이트가 멈춥니다.</b> 폼 제출 자체는 무제한 무료지만, 월 300 크레딧(트래픽·배포)을 다 쓰면 사이트 전체가 다음 달까지 멈추고 폼도 함께 멈춥니다.</div>
+        · <b>무료 크레딧을 다 쓰면 사이트가 멈춥니다.</b> 폼 제출 자체는 무제한 무료지만, 월 300 크레딧(트래픽·배포)을 다 쓰면 사이트 전체가 다음 달까지 멈추고 폼도 함께 멈춥니다. 아래 <b>크레딧 소진 알림</b>을 꼭 받을 수 있게 해 둡니다.</div>
+        <div class="warning"><b>⚠ 크레딧 소진 알림은 꼭 받을 수 있게 해 두세요</b><br>
+        고객 문의를 받는 사이트가 어느 날 갑자기 멈추면, 그동안 들어온 문의는 모두 놓치게 됩니다. Netlify는 크레딧을 <b>50% · 75% · 100%</b> 사용했을 때 이메일과 Netlify 화면 알림을 보냅니다. 무료 플랜에서는 이 알림을 따로 켜고 끄는 설정이 없이 <b>자동으로 발송</b>되므로, “알림이 실제로 내 메일함에 도착하는지”를 확인하는 것이 핵심입니다.<br><br>
+        <b>① 알림 받을 이메일 주소 확인</b> — Netlify 계정의 이메일로 알림이 갑니다. <a href="https://app.netlify.com/user/settings" target="_blank" rel="noopener">User settings</a>의 <b>Profile → Email</b>이 평소 확인하는 주소인지 봅니다. GitHub로 가입했다면 GitHub 계정 이메일이 들어가 있을 수 있으니, 다르면 <b>Edit settings</b>에서 바꿉니다.<br>
+        <b>② 스팸함 확인</b> — 첫 알림 메일이 스팸함으로 갈 수 있습니다. Netlify에서 온 메일을 찾아 <b>“스팸 아님”</b>으로 표시하거나 보낸 사람을 주소록에 추가합니다.<br>
+        <b>③ 남은 크레딧 직접 확인</b> — 팀 화면 왼쪽 메뉴 <b>Usage &amp; billing</b>의 <b>Credits available</b>에서 이번 달 남은 크레딧을, 아래 <b>Credit usage breakdown</b>에서 어디에 썼는지 볼 수 있습니다. 문의를 받는 기간에는 일주일에 한 번 정도 확인합니다.<br>
+        <b>④ 배포 횟수 아끼기</b> — 무료 플랜에서는 <b>배포 1번에 15크레딧</b>이 차감됩니다. 한 달에 약 20번 배포하면 300크레딧을 다 쓰게 되므로, 수정 사항은 모아서 한 번에 배포합니다. GitHub를 연결해 두면 <b>push할 때마다 자동 배포</b>되어 크레딧이 빠르게 줄어드니 특히 주의합니다.<br>
+        <span class="small">Slack으로 사용량 알림을 받는 기능은 유료(Pro) 플랜부터 제공됩니다. · 기준일: 2026-10-01 · 출처: Netlify Docs(Monitor usage for Credit-based plans), 실제 Free 플랜 화면</span></div>
+        <figure class="sample-shot">
+          <img src="images/netlify-forms-09-usage.webp" alt="Netlify 팀 화면의 Usage and billing 페이지. Free 플랜, 이번 결제 기간, Credits available 254가 표시되어 있다" loading="lazy">
+          <figcaption><b>화면 예시</b> — 팀 화면 왼쪽 <b>Usage &amp; billing</b>을 누르면 이번 달 남은 크레딧(<b>Credits available</b>)이 보입니다. 이 예시는 이번 달 배포 3번(45크레딧)과 약간의 트래픽을 쓴 뒤라 300에서 254로 줄어 있습니다.</figcaption>
+        </figure>
       </div>
 
       <div class="topic" id="s5-2">
@@ -1447,6 +1458,7 @@ create policy "방문자는 문의 등록만 가능"
           <li>방문자가 다른 사람의 데이터를 읽거나 지울 수 없는지 직접 확인했는가?</li>
           <li>데이터를 주기적으로 내려받아(CSV) 백업하고 있는가?</li>
           <li>무료 플랜의 멈춤 조건(크레딧 소진, 1주일 미사용 일시정지)을 알고 있는가?</li>
+          <li>Netlify 크레딧 사용량 알림(50%·75%·100%) 메일이 평소 확인하는 메일함으로 들어오는가? (스팸함 포함 확인)</li>
         </ul>
       </div>
     </section>
