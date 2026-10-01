@@ -1207,19 +1207,73 @@ body.nav-hidden .nav-toggle { left: 14px; }
 - 다른 화면과 메뉴, 디자인은 변경하지 마</pre>
         </div>
 
-        <h4>2. Netlify에 배포하고 폼 감지 켜기</h4>
+        <h4>2. Netlify에 배포하기</h4>
         <div class="procedure" style="counter-reset: step 2">
-          <div><b>Netlify에 로그인해 사이트를 배포합니다.</b><br>4.2처럼 폴더를 끌어다 놓거나, 3장의 GitHub Repository를 연결해 배포합니다. 폼 접수 내역을 보관하려면 <b>로그인한 계정에 연결된 사이트</b>여야 합니다.<br><a class="resource-link" href="https://app.netlify.com/" target="_blank" rel="noopener">↗ Netlify 열기</a></div>
-          <div><b>사이트 메뉴의 Forms에서 Enable form detection을 누릅니다.</b><br>폼 감지는 <b>기본으로 꺼져 있습니다.</b> 켜야 Netlify가 HTML 안의 폼을 찾아 접수함을 만들어 줍니다.</div>
-          <div><b>한 번 더 배포합니다.</b><br>폼 감지는 <b>켠 다음 배포부터</b> 적용됩니다. 같은 폴더를 다시 끌어다 놓거나, GitHub에 다시 올려 재배포합니다. 배포 후 Forms 화면에 <code class="inline">contact</code> 폼이 보이면 준비 완료입니다.</div>
+          <div><b>Netlify에 로그인한 뒤 Projects 화면에서 Add new project를 누릅니다.</b><br>4.2의 로그인 없는 Netlify Drop이 아니라 <b>로그인한 내 계정</b>에 배포해야 폼 접수 내역이 보관됩니다.<br><a class="resource-link" href="https://app.netlify.com/" target="_blank" rel="noopener">↗ Netlify 열기</a></div>
+          <div><b>화면 아래 Upload your project files 영역에 폴더를 끌어다 놓습니다.</b><br><code class="inline">index.html</code>과 이미지 폴더가 함께 있다면 <b>폴더째</b>(또는 zip 파일로) 올립니다. 끌어다 놓기가 어렵다면 <b>browse files to upload</b>(파일 선택) 또는 <b>choose a folder</b>(폴더 선택)를 누릅니다.</div>
         </div>
+        <figure class="sample-shot">
+          <img src="images/netlify-forms-01-upload.webp" alt="Netlify 새 프로젝트 만들기 화면 아래쪽의 Upload your project files 영역. Drop a project folder, zip file, or HTML file to deploy instantly 문구가 있다" loading="lazy">
+          <figcaption><b>화면 예시</b> — Add new project 화면을 아래로 내리면 나오는 <b>Upload your project files</b> 영역입니다. 폴더, zip 파일, HTML 파일 하나를 끌어다 놓으면 바로 배포됩니다.</figcaption>
+        </figure>
+        <div class="procedure" style="counter-reset: step 4">
+          <div><b>배포가 끝나면 프로젝트 화면(Project overview)이 열립니다.</b><br><code class="inline">임의이름.netlify.app</code> 주소가 생기고, 왼쪽 메뉴 맨 아래에 <b>Forms</b>가 있습니다.</div>
+        </div>
+        <figure class="sample-shot">
+          <img src="images/netlify-forms-02-overview.webp" alt="Netlify 프로젝트 개요 화면. 프로젝트 이름과 netlify.app 주소, Last deployed from Netlify Drop 문구가 보이고 왼쪽 메뉴 맨 아래에 Forms가 있다" loading="lazy">
+          <figcaption><b>화면 예시</b> — 배포 직후의 프로젝트 화면입니다. 주소 아래 “Last deployed from Netlify Drop”이 보이면 업로드 배포가 끝난 것입니다. 다음 단계에서 왼쪽 맨 아래 <b>Forms</b>를 누릅니다.</figcaption>
+        </figure>
 
-        <h4>3. 접수 확인하고 알림 받기</h4>
+        <h4>3. 폼 감지(Form detection) 켜기</h4>
         <div class="procedure" style="counter-reset: step 5">
-          <div><b>배포된 주소에서 문의를 1~2건 보내봅니다.</b><br>새로고침해도 사라지지 않고 Netlify에 저장되는지 확인하는 것이 목표입니다.</div>
-          <div><b>Netlify의 Forms 화면에서 접수된 내용을 확인합니다.</b><br><code class="inline">contact</code> 폼을 누르면 이름·이메일·문의 내용이 시간순으로 보입니다. CSV로 내려받아 엑셀에서 열 수도 있습니다.</div>
-          <div><b>(선택) 이메일 알림을 설정합니다.</b><br><b>Forms → Submission notifications → Add notification</b>에서 이메일 주소를 등록하면 문의가 들어올 때마다 메일로 받아볼 수 있습니다.</div>
+          <div><b>왼쪽 메뉴의 Forms를 누르고 Enable form detection 버튼을 누릅니다.</b><br>폼 감지는 <b>기본으로 꺼져 있습니다.</b> 이 버튼을 눌러야 Netlify가 배포할 때 HTML 안의 <code class="inline">data-netlify="true"</code> 폼을 찾아 접수함을 만들어 줍니다.</div>
         </div>
+        <figure class="sample-shot">
+          <img src="images/netlify-forms-03-enable.webp" alt="Netlify Forms 화면. Manage forms and submissions without any server-side code or JavaScript 설명 아래에 Enable form detection 버튼이 있다" loading="lazy">
+          <figcaption><b>화면 예시</b> — Forms 화면의 <b>Enable form detection</b> 버튼입니다. 아직 한 번도 켜지 않은 프로젝트에는 이 안내와 버튼만 보입니다.</figcaption>
+        </figure>
+        <div class="procedure" style="counter-reset: step 6">
+          <div><b>“Form detection is enabled.” 안내가 나오면 켜진 것입니다.</b><br>다만 이 시점에는 폼 목록이 아직 비어 있습니다. 폼 감지는 <b>켠 다음 배포부터</b> 적용되기 때문입니다.</div>
+        </div>
+        <figure class="sample-shot">
+          <img src="images/netlify-forms-04-enabled.webp" alt="Netlify Forms 화면에 초록색으로 Form detection is enabled 안내가 표시되고 아래에 Form submission notifications 영역이 나타난 화면" loading="lazy">
+          <figcaption><b>화면 예시</b> — 폼 감지를 켠 직후입니다. 초록색 “Form detection is enabled.” 안내가 보이지만, 아직 감지된 폼은 없습니다.</figcaption>
+        </figure>
+        <div class="procedure" style="counter-reset: step 7">
+          <div><b>왼쪽 메뉴의 Deploys로 이동해 같은 폴더를 한 번 더 올립니다.</b><br>Deploys 화면 아래 <b>Production</b> 영역의 “Need to update your project?” 칸에 2단계에서 올린 폴더(또는 zip)를 다시 끌어다 놓습니다. 이 재배포 때 Netlify가 폼을 찾습니다.</div>
+        </div>
+        <figure class="sample-shot">
+          <img src="images/netlify-forms-05-redeploy.webp" alt="Netlify Deploys 화면의 Production 영역. Need to update your project? Drag and drop your project folder, zip file, or a single HTML file to deploy 문구와 업로드 영역이 있다" loading="lazy">
+          <figcaption><b>화면 예시</b> — Deploys 화면의 재배포 영역입니다. 내용을 고친 뒤 다시 올릴 때도 이곳을 사용합니다.</figcaption>
+        </figure>
+        <div class="procedure" style="counter-reset: step 8">
+          <div><b>다시 Forms를 열어 contact 폼이 나타났는지 확인합니다.</b><br>“<b>1 form collecting data.</b>”와 함께 <b>Active forms</b> 목록에 <code class="inline">contact</code>가 보이면 준비 완료입니다.</div>
+        </div>
+        <figure class="sample-shot">
+          <img src="images/netlify-forms-06-detected.webp" alt="Netlify Forms 화면. 1 form collecting data와 Form detection is enabled가 표시되고, Active forms 목록에 contact 폼이 보인다" loading="lazy">
+          <figcaption><b>화면 예시</b> — 재배포 후 Forms 화면입니다. 폼 이름은 HTML {C}&lt;form name="contact"&gt;</code>의 name 값이 그대로 표시됩니다.</figcaption>
+        </figure>
+        <div class="notice"><b>contact 폼이 보이지 않는다면?</b><br>
+        · 폼 감지를 켠 <b>뒤에</b> 다시 배포했는지 확인합니다. 켜기 전에 올린 배포에서는 폼을 찾지 않습니다.<br>
+        · <code class="inline">&lt;form&gt;</code> 태그에 <code class="inline">name="contact"</code>와 <code class="inline">data-netlify="true"</code>가 모두 있는지, 폼이 HTML 파일 안에 직접 적혀 있는지 확인합니다. 자바스크립트로 나중에 그려지는 폼은 찾지 못합니다.<br>
+        · 그래도 안 되면 Forms 화면의 <b>Form detection</b> 탭에서 감지가 켜져 있는지 다시 확인합니다.</div>
+
+        <h4>4. 접수 확인하고 알림 받기</h4>
+        <div class="procedure" style="counter-reset: step 9">
+          <div><b>배포된 주소에서 문의를 1~2건 보내봅니다.</b><br>“문의가 접수되었습니다”가 표시되면 전송된 것입니다. 이번에는 새로고침해도 사라지지 않고 Netlify에 저장됩니다.</div>
+          <div><b>Forms → Active forms의 contact를 눌러 접수 내역을 확인합니다.</b><br><b>Verified submissions</b> 목록에 보낸 문의가 시간순으로 쌓입니다. 항목을 누르면 이름·회사명·이메일·문의 내용을 볼 수 있고, <b>Download as CSV</b>로 내려받아 엑셀에서 열 수 있습니다.</div>
+        </div>
+        <figure class="sample-shot">
+          <img src="images/netlify-forms-07-submissions.webp" alt="Netlify의 Submissions from contact 화면. Download as CSV 버튼과 Delete form 버튼, 아래 Verified submissions 목록에 Netlify Forms 접수 테스트입니다 항목이 보인다" loading="lazy">
+          <figcaption><b>화면 예시</b> — contact 폼의 접수 내역입니다. “Extra spam prevention enabled via honeypot field.”는 프롬프트에서 넣은 스팸 방지용 숨김 칸이 적용되었다는 뜻입니다. <b>Delete form</b>은 폼과 접수 내역을 지우는 버튼이므로 누르지 않습니다.</figcaption>
+        </figure>
+        <div class="procedure" style="counter-reset: step 11">
+          <div><b>(선택) 문의가 오면 이메일로 받도록 알림을 설정합니다.</b><br>Forms 화면에서 <b>Submission notifications</b> 탭 → <b>Add notification</b> → <b>Email notification</b>을 고르고, 안내에 따라 알림을 받을 이메일 주소와 대상 폼(<code class="inline">contact</code>)을 지정해 저장합니다.</div>
+        </div>
+        <figure class="sample-shot">
+          <img src="images/netlify-forms-08-notify.webp" alt="Netlify Forms의 Submission notifications 탭에서 Add notification을 눌러 Email notification과 HTTP POST request 선택지가 펼쳐진 화면" loading="lazy">
+          <figcaption><b>화면 예시</b> — <b>Add notification</b>을 누르면 나오는 선택지입니다. 이메일로 받으려면 <b>Email notification</b>을 고릅니다.</figcaption>
+        </figure>
         <div class="warning"><b>Netlify Forms에서 안 되는 것</b><br>
         · <b>넣기만 되고 꺼내 쓰기는 안 됩니다.</b> 접수 내용을 홈페이지 화면에 목록으로 다시 보여주려면 API 키와 서버 코드가 필요합니다.<br>
         · <b>고객별 권한이 없습니다.</b> “고객이 자기 문의 내역 보기” 같은 기능은 만들 수 없습니다.<br>
