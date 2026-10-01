@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow, noai, noimageai">
-<title>왕초보 파이썬 맛보기 (초안)</title>
+<title>PM을 위한 프로그래밍의 이해 (초안)</title>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
 :root{--ink:#172033;--muted:#657086;--line:#dfe4ed;--soft:#f5f7fb;--blue:#2457f5;--green:#16a36b;--warn:#ffad22}
@@ -28,93 +28,174 @@ code{font-family:"JetBrains Mono",monospace}
 </head>
 <body><div class="wrap">
 
-<span class="draft">초안 v0.1 · 2026.10</span>
-<h1>왕초보를 위한 파이썬 맛보기</h1>
-<p class="lead">구글 계정 하나, 브라우저 하나, 그리고 ChatGPT. 설치 없이 Google Colab에서 첫 코드를 실행하고, 막히면 AI에게 묻는 법까지 익힙니다.</p>
+<span class="draft">초안 v0.2 · 2026.10</span>
+<h1>PM을 위한 프로그래밍의 이해<br><small style="font-size:.5em;color:var(--muted)">파이썬 맛보기 with Colab &amp; ChatGPT</small></h1>
+<p class="lead">개발자가 되려는 수업이 아닙니다. 코드가 어떻게 돌아가는지, 왜 어떤 건 바로 되고 어떤 건 안 되는지, 오류를 어떻게 확인하는지 감을 잡아서 개발자와 AI에게 <b>더 정확하게 요청하는 PM</b>이 되는 게 목표입니다.</p>
 
 <div class="tbl-wrap"><table>
-<tr><th>대상</th><td>코딩 경험 0인 왕초보</td></tr>
+<tr><th>대상</th><td>코딩 경험 없는 PM·기획자</td></tr>
 <tr><th>시간</th><td>수업 4시간 + 자율 학습·실습 과제 3시간</td></tr>
 <tr><th>도구</th><td>구글 무료 계정 · Google Colab · ChatGPT(질문·오류 해결용)</td></tr>
-<tr><th>목표</th><td>① Colab에서 코드 실행 ② 변수·자료형·조건문·반복문 맛보기 ③ 에러 메시지를 ChatGPT로 해결하는 루틴 체득 ④ 작은 프로그램 1개 완성</td></tr>
+<tr><th>수업이 끝나면</th><td>① 프로그램이 동작하는 원리를 설명할 수 있다 ② 파이썬과 웹(HTML/CSS/JS)의 역할 차이를 안다 ③ 오류를 3단계로 확인할 수 있다 ④ 변수·조건·반복·리스트·random을 웹 프로토타입 개념과 연결할 수 있다 ⑤ 데이터 분석 코드를 읽고 수정 요청을 할 수 있다</td></tr>
 </table></div>
 
-<h2>0. 수업 전 준비 (사전 안내용)</h2>
+<h2>0. 수업 전 준비</h2>
 <ul>
-<li>구글 계정 로그인 확인 (회사 계정은 Colab 차단될 수 있으니 개인 계정 권장)</li>
-<li>ChatGPT 무료 계정 가입·로그인</li>
-<li>크롬 브라우저 권장, 노트북 지참(태블릿·폰 비권장)</li>
+<li>개인 구글 계정 로그인 (회사 계정은 Colab이 막혀 있을 수 있음)</li>
+<li>ChatGPT 계정 로그인 · 크롬 · 노트북 지참</li>
 </ul>
 
-<h2>1. 수업 타임테이블 (4시간)</h2>
+<h2>1. 타임테이블 (4시간)</h2>
 <div class="tbl-wrap"><table>
-<tr><th>시간</th><th>파트</th><th>내용</th><th>산출물</th></tr>
-<tr><td>0:00–0:20</td><td>오리엔테이션</td><td>파이썬이 뭔지, 왜 지금 AI와 함께 배우는지. 오늘의 규칙: "막히면 3분 고민 → ChatGPT"</td><td>-</td></tr>
-<tr><td>0:20–0:50</td><td>Part 1. Colab 첫 실행</td><td>Colab 접속 → 새 노트 → 셀 실행(Shift+Enter) → 텍스트 셀 → 드라이브 저장 확인</td><td><code>print("안녕, 파이썬")</code></td></tr>
-<tr><td>0:50–1:40</td><td>Part 2. 변수와 자료형</td><td>숫자·문자열·불린, 변수 이름, <code>input()</code>, 형변환(<code>int()</code>)</td><td>자기소개 출력기</td></tr>
-<tr><td>1:40–1:50</td><td colspan="3">휴식</td></tr>
-<tr><td>1:50–2:30</td><td>Part 3. ChatGPT와 디버깅</td><td>일부러 에러 내기 → 에러 메시지 읽기 → ChatGPT 질문 템플릿으로 해결. 답을 그대로 붙여넣지 말고 "왜?"까지 묻기</td><td>에러 해결 기록 3건</td></tr>
-<tr><td>2:30–3:20</td><td>Part 4. 조건문·반복문·리스트</td><td><code>if/elif/else</code>, <code>for</code>, <code>range()</code>, 리스트 기초</td><td>구구단, 성적 판정기</td></tr>
-<tr><td>3:20–3:30</td><td colspan="3">휴식</td></tr>
-<tr><td>3:30–3:50</td><td>Part 5. 미니 프로젝트</td><td>"점심 메뉴 랜덤 추천기" (<code>random</code> 모듈) — ChatGPT와 함께 기능 1개씩 추가</td><td>완성 노트북</td></tr>
-<tr><td>3:50–4:00</td><td>마무리</td><td>공유 링크 제출 방법, 자율 과제 안내, Q&amp;A</td><td>-</td></tr>
+<tr><th>시간</th><th>파트</th><th>핵심 질문</th></tr>
+<tr><td>0:00–0:15</td><td>오리엔테이션</td><td>PM이 코드를 알면 뭐가 달라지나?</td></tr>
+<tr><td>0:15–0:50</td><td>Part 1. 프로그래밍은 어떻게 동작하나</td><td>입력 → 처리 → 출력. Colab 셀 실행해 보기</td></tr>
+<tr><td>0:50–1:20</td><td>Part 2. 파이썬으로 웹사이트를 바로 못 만드는 이유</td><td>브라우저는 무슨 언어를 알아듣나?</td></tr>
+<tr><td>1:20–1:30</td><td colspan="2">휴식</td></tr>
+<tr><td>1:30–2:30</td><td>Part 3. 5가지 개념 × 웹 프로토타입</td><td>변수·조건·반복·리스트·random이 화면에서는 어떻게 나타나나?</td></tr>
+<tr><td>2:30–3:05</td><td>Part 4. 오류는 어떻게 확인하나</td><td>에러 읽기 → 가설 → 검증. ChatGPT 답도 검증 대상</td></tr>
+<tr><td>3:05–3:15</td><td colspan="2">휴식</td></tr>
+<tr><td>3:15–3:50</td><td>Part 5. 데이터 분석에서 파이썬 문법은 이렇게 쓴다</td><td>같은 5가지 개념이 pandas에서는 어떻게 바뀌나?</td></tr>
+<tr><td>3:50–4:00</td><td>마무리</td><td>과제 안내, Q&amp;A</td></tr>
 </table></div>
 
-<h2>2. 파트별 핵심 실습 코드</h2>
+<h2>2. Part 1. 프로그래밍은 어떻게 동작하나</h2>
+<div class="box"><b>한 줄 정의:</b> 프로그래밍은 컴퓨터에게 <b>순서대로</b> 실행할 지시문을 써 주는 일입니다. 컴퓨터는 눈치를 보지 않고, 쓰인 그대로 위에서 아래로 실행합니다.</div>
+<ul>
+<li><b>입력 → 처리 → 출력:</b> 키오스크 주문(입력) → 금액 계산(처리) → 영수증(출력)</li>
+<li><b>코드는 사람이 쓰는 글, 실행은 해석기가 함:</b> 파이썬 코드는 "파이썬 해석기"가 읽어서 실행합니다. Colab은 구글 서버에 이 해석기가 이미 설치된 환경이라 설치 없이 바로 쓸 수 있습니다.</li>
+<li><b>순서가 곧 로직:</b> 순서를 바꾸면 결과도 달라집니다.</li>
+</ul>
+<pre># 실습 1: 입력 → 처리 → 출력
+price = int(input("상품 가격(원): "))   # 입력
+total = price * 1.1                    # 처리 (부가세 10%)
+print("결제 금액:", int(total), "원")   # 출력</pre>
+<div class="box tip"><b>PM 포인트:</b> 기획서의 "사용자가 ○○하면 △△가 보인다"는 문장이 바로 입력·처리·출력입니다. 처리 규칙이 모호하면 개발자도 AI도 추측해서 만듭니다.</div>
 
-<h3>Part 1. 첫 실행</h3>
-<pre>print("안녕, 파이썬")
-print(1 + 2)</pre>
-
-<h3>Part 2. 변수와 입력</h3>
-<pre>name = input("이름이 뭐예요? ")
-age = int(input("나이는요? "))
-print(name, "님은 내년에", age + 1, "살이 됩니다.")</pre>
-<div class="box warn"><b>예상 질문:</b> <code>int()</code>를 빼면? → <code>TypeError</code> 발생. Part 3 디버깅 소재로 재활용.</div>
-
-<h3>Part 3. ChatGPT 질문 템플릿</h3>
-<pre>나는 파이썬 왕초보야. Google Colab에서 아래 코드를 실행했어.
-[코드 붙여넣기]
-이런 에러가 났어.
-[에러 메시지 전체 붙여넣기]
-1) 왜 에러가 났는지 쉽게 설명해줘
-2) 고친 코드를 보여줘
-3) 다음에 같은 실수를 안 하려면 뭘 기억하면 돼?</pre>
-<div class="box tip"><b>원칙:</b> 고친 코드를 받으면 직접 타이핑해서 실행. 복붙만 하면 배운 게 남지 않음.</div>
-
-<h3>Part 4. 조건문·반복문</h3>
-<pre>score = int(input("점수: "))
-if score >= 90:
-    print("A")
-elif score >= 80:
-    print("B")
-else:
-    print("다음엔 더 잘할 거예요")
-
-for i in range(1, 10):
-    print("2 x", i, "=", 2 * i)</pre>
-
-<h3>Part 5. 미니 프로젝트</h3>
-<pre>import random
-menus = ["김치찌개", "돈까스", "쌀국수", "비빔밥"]
-print("오늘 점심은", random.choice(menus), "!")</pre>
-<p>확장 미션(ChatGPT에게 물어서 해결): 메뉴 직접 추가하기 / 3번 추천받기 / 싫은 메뉴 제외하기</p>
-
-<h2>3. 자율 학습·실습 과제 (3시간)</h2>
+<h2>3. Part 2. 파이썬으로 웹사이트를 바로 만들 수 없는 이유</h2>
 <div class="tbl-wrap"><table>
-<tr><th>과제</th><th>권장 시간</th><th>내용</th><th>난이도</th></tr>
-<tr><td>과제 1. 복습</td><td>40분</td><td>수업 코드 전부 새 노트에 직접 다시 타이핑해서 실행</td><td>★</td></tr>
-<tr><td>과제 2. 용돈 계산기</td><td>40분</td><td>한 달 수입·지출(원)을 입력받아 잔액 출력, 마이너스면 경고 문구</td><td>★★</td></tr>
-<tr><td>과제 3. 업다운 숫자 게임</td><td>60분</td><td>1~100 랜덤 숫자 맞히기, "업/다운" 힌트, 시도 횟수 출력 (<code>while</code>은 ChatGPT에게 질문해서 학습)</td><td>★★★</td></tr>
-<tr><td>과제 4. 회고</td><td>40분</td><td>ChatGPT에게 했던 질문 중 가장 도움된 3개 + 배운 점을 텍스트 셀에 정리</td><td>★</td></tr>
+<tr><th></th><th>HTML / CSS / JS</th><th>파이썬</th></tr>
+<tr><td>어디서 실행되나</td><td>사용자의 <b>브라우저</b></td><td>내 컴퓨터, Colab, <b>서버</b></td></tr>
+<tr><td>역할</td><td>화면 (구조·디자인·움직임)</td><td>계산·데이터 처리·자동화·서버 로직</td></tr>
+<tr><td>파일을 열면</td><td>더블클릭하면 브라우저에 바로 보임</td><td>해석기가 실행할 뿐, 화면은 따로 만들어야 함</td></tr>
+</table></div>
+<ul>
+<li><b>브라우저는 HTML·CSS·JS만 알아듣습니다.</b> 파이썬 코드를 브라우저에 그대로 주면 실행되지 않습니다.</li>
+<li>파이썬으로 웹을 만들려면 <b>웹 프레임워크</b>(Flask, Django, Streamlit 등)를 써서 서버를 띄우고, 서버가 HTML을 만들어 보내 줘야 합니다. 그 서버를 인터넷에 올리는 <b>배포</b>도 따로 해야 합니다.</li>
+<li>비유: HTML은 <b>매장 진열대</b>, 파이썬은 <b>주방</b>. 손님(브라우저)은 진열대만 보고, 주방은 뒤에서 음식을 만들어 내보냅니다.</li>
+</ul>
+<div class="box tip"><b>PM 포인트:</b> "화면 시안만 빨리" → HTML/CSS 프로토타입. "데이터 계산·자동화" → 파이썬. "로그인·저장이 되는 서비스" → 서버와 DB가 필요하므로 일정과 비용이 커집니다.</div>
+
+<h2>4. Part 3. 5가지 개념 × 웹 프로토타입</h2>
+<p>파이썬에서 배운 개념은 HTML/CSS/JS 프로토타입에서도 이름만 다를 뿐 똑같이 쓰입니다. ChatGPT로 프로토타입을 만들 때 이 단어로 요청하면 결과가 훨씬 정확해집니다.</p>
+<div class="tbl-wrap"><table>
+<tr><th>개념</th><th>파이썬</th><th>웹 프로토타입에서는</th><th>ChatGPT 요청 예시</th></tr>
+<tr><td>변수</td><td><code>brand = "#2457f5"</code></td><td>CSS 변수 <code>--brand</code>, JS <code>let cartCount = 0</code></td><td>"메인 색을 CSS 변수로 빼 줘"</td></tr>
+<tr><td>조건</td><td><code>if is_login:</code></td><td>로그인이면 "마이페이지", 아니면 "로그인" 버튼 표시. 재고 0이면 "품절" 배지</td><td>"재고가 0이면 버튼을 비활성화해 줘"</td></tr>
+<tr><td>반복</td><td><code>for item in items:</code></td><td>상품 카드 20개를 하나하나 복붙하지 않고 반복으로 생성</td><td>"카드 HTML을 반복문으로 만들어 줘"</td></tr>
+<tr><td>리스트</td><td><code>["A", "B", "C"]</code></td><td>상품 목록, 메뉴 항목, 후기 목록 (JS 배열/JSON)</td><td>"상품 데이터를 배열로 분리해 줘"</td></tr>
+<tr><td>random</td><td><code>random.choice()</code></td><td>방문할 때마다 바뀌는 배너, 추천 문구, A/B 테스트 시안</td><td>"새로고침마다 배너 문구를 랜덤으로 바꿔 줘"</td></tr>
+</table></div>
+
+<h3>실습 2: 파이썬으로 먼저 로직 만들기</h3>
+<pre>import random
+products = [                       # 리스트
+    {"name": "텀블러", "price": 15000, "stock": 3},
+    {"name": "에코백", "price": 9000,  "stock": 0},
+    {"name": "머그컵", "price": 12000, "stock": 5},
+]
+for p in products:                 # 반복
+    if p["stock"] == 0:            # 조건
+        label = "품절"
+    else:
+        label = f'{p["price"]:,}원'
+    print(p["name"], "-", label)
+
+print("오늘의 추천:", random.choice(products)["name"])   # random</pre>
+
+<h3>실습 3: 같은 로직을 웹 화면으로 (ChatGPT 활용)</h3>
+<pre>위 파이썬 코드와 똑같이 동작하는 HTML 파일 1개를 만들어 줘.
+- 상품은 JS 배열로 관리
+- 반복문으로 상품 카드를 만들고, 재고 0이면 "품절" 배지와 회색 처리
+- 새로고침할 때마다 "오늘의 추천" 상품을 랜덤으로 표시
+- CSS 변수로 메인 색상 관리</pre>
+<p>결과 HTML은 Colab 셀에서 바로 미리 볼 수 있습니다.</p>
+<pre>from IPython.display import HTML
+HTML("""여기에 ChatGPT가 준 HTML 붙여넣기""")</pre>
+<div class="box tip"><b>핵심 메시지:</b> 언어는 달라도 <b>데이터(리스트) + 규칙(조건) + 반복</b> 구조는 같습니다. PM이 이 구조로 요구사항을 쓰면 그대로 코드가 됩니다.</div>
+
+<h2>5. Part 4. 오류는 어떻게 확인하나</h2>
+<h3>오류의 3가지 종류</h3>
+<div class="tbl-wrap"><table>
+<tr><th>종류</th><th>뜻</th><th>예시</th><th>찾기 난이도</th></tr>
+<tr><td>문법 오류</td><td>문장 자체가 틀림 (실행 전에 멈춤)</td><td>괄호 누락, 들여쓰기 오류</td><td>쉬움</td></tr>
+<tr><td>실행 오류</td><td>실행하다가 멈춤</td><td>문자열 + 숫자, 없는 항목 찾기</td><td>보통</td></tr>
+<tr><td>논리 오류</td><td>멈추지 않지만 <b>결과가 틀림</b></td><td>할인 계산 순서 잘못, 조건 경계값(&gt;= vs &gt;) 실수</td><td><b>어려움, 가장 위험</b></td></tr>
+</table></div>
+
+<h3>검증 3단계</h3>
+<ol>
+<li><b>에러 메시지 맨 아래 줄부터 읽기:</b> 에러 이름(<code>TypeError</code> 등)과 줄 번호가 있습니다.</li>
+<li><b>중간값 출력하기:</b> <code>print()</code>로 값이 내 예상과 같은지 확인합니다.</li>
+<li><b>기대값으로 테스트하기:</b> "이 입력이면 이 결과가 나와야 한다"를 미리 정하고 비교합니다. 기획서의 인수 조건과 같은 개념입니다.</li>
+</ol>
+<pre># 논리 오류 찾기 실습: 3만원 이상이면 10% 할인
+def pay(price):
+    if price > 30000:          # 일부러 넣은 버그
+        return price * 0.9
+    return price
+
+assert pay(20000) == 20000
+assert pay(40000) == 36000
+assert pay(30000) == 27000     # 경계값 테스트 → 여기서 실패!</pre>
+
+<h3>ChatGPT 질문 템플릿</h3>
+<pre>나는 코딩을 잘 모르는 PM이야. Google Colab에서 아래 코드를 실행했어.
+[코드]
+기대한 결과: [예: 30000원이면 27000원]
+실제 결과/에러: [에러 메시지 전체]
+1) 원인을 비유로 쉽게 설명해줘
+2) 고친 코드를 보여줘
+3) 고친 게 맞는지 확인할 테스트 케이스도 3개 줘</pre>
+<div class="box warn"><b>원칙: AI 답변도 검증 대상입니다.</b> 고친 코드를 받으면 반드시 실행하고, 기대값 테스트를 통과하는지 확인하세요. "돌아간다"와 "맞다"는 다릅니다.</div>
+
+<h2>6. Part 5. 데이터 분석에서 파이썬 문법은 이렇게 쓴다</h2>
+<p>데이터 분석에서는 <b>pandas</b>라는 도구를 씁니다. 엑셀 표를 코드로 다룬다고 보면 됩니다. Colab에는 이미 설치되어 있습니다.</p>
+<div class="tbl-wrap"><table>
+<tr><th>기본 문법</th><th>데이터 분석에서는</th><th>엑셀로 치면</th></tr>
+<tr><td>변수</td><td><code>df = pd.read_csv(...)</code> 표 전체를 변수에 담기</td><td>시트</td></tr>
+<tr><td>리스트</td><td>열 하나 = 값들의 목록</td><td>열(column)</td></tr>
+<tr><td>조건</td><td><code>df[df["매출"] &gt; 100000]</code></td><td>필터</td></tr>
+<tr><td>반복</td><td>대부분 반복문 없이 열 전체에 한 번에 적용, <code>groupby</code>로 묶어 계산</td><td>피벗 테이블</td></tr>
+<tr><td>random</td><td><code>df.sample(5)</code> 표본 뽑기, 테스트용 가짜 데이터 만들기</td><td>RAND()</td></tr>
+</table></div>
+<pre># 실습 4: 가상의 주문 데이터 분석
+import pandas as pd
+df = pd.DataFrame({
+    "채널": ["앱", "웹", "앱", "매장", "웹", "앱"],
+    "상품": ["텀블러", "에코백", "머그컵", "텀블러", "텀블러", "에코백"],
+    "매출": [150000, 90000, 120000, 300000, 45000, 60000],
+})
+print(df[df["매출"] >= 100000])          # 조건: 10만원 이상 주문만
+print(df.groupby("채널")["매출"].sum())   # 채널별 매출 합계
+df.groupby("채널")["매출"].sum().plot(kind="bar")   # 차트</pre>
+<div class="box tip"><b>PM 포인트:</b> 코드를 직접 다 짜지 않아도 됩니다. "채널별 매출 합계를 막대그래프로" 같이 <b>무엇을 어떤 기준으로 묶을지</b>를 정확히 말하면 ChatGPT가 코드를 써 줍니다. 그다음 결과가 상식에 맞는지 검증하는 것이 PM의 일입니다.</div>
+
+<h2>7. 자율 학습·실습 과제 (3시간)</h2>
+<div class="tbl-wrap"><table>
+<tr><th>과제</th><th>시간</th><th>내용</th></tr>
+<tr><td>1. 개념 설명문</td><td>30분</td><td>"파이썬으로 웹을 바로 못 만드는 이유"를 동료 PM에게 설명하듯 5줄로 쓰기</td></tr>
+<tr><td>2. 로직 → 화면</td><td>60분</td><td>내 서비스의 목록 화면 하나를 골라 파이썬 리스트+조건+반복으로 로직 작성 → ChatGPT로 HTML 프로토타입 변환 → Colab에서 미리보기</td></tr>
+<tr><td>3. 버그 찾기</td><td>40분</td><td>제공된 "배송비 계산" 코드(논리 오류 2개 포함)에 기대값 테스트를 써서 버그 찾고 수정</td></tr>
+<tr><td>4. 데이터 질문하기</td><td>50분</td><td>제공 CSV로 "가장 매출이 높은 요일/채널" 찾기. ChatGPT 질문 기록과 결과가 맞는지 확인한 방법을 텍스트 셀에 정리</td></tr>
 </table></div>
 <div class="box"><b>제출:</b> Colab 노트북 → 공유 → "링크가 있는 모든 사용자(뷰어)" → 링크 제출</div>
 
-<h2>4. 강사 체크리스트</h2>
+<h2>8. 강사 체크리스트</h2>
 <ul>
-<li>Colab 로그인 실패자 대응(개인 계정 전환, 시크릿 창)</li>
-<li>Part 3에서 ChatGPT 답변이 틀리는 사례 1개 준비 → "AI도 틀린다, 실행해서 검증" 강조</li>
-<li>진도 이탈자용 완성본 노트북 링크 준비</li>
+<li>과제 3용 버그 코드, 과제 4용 CSV 준비 (미작성)</li>
+<li>Part 4에서 ChatGPT가 틀린 답을 주는 사례 1개 준비</li>
+<li>Colab HTML 미리보기가 안 될 때 대안: 메모장에 저장 후 .html로 열기</li>
 </ul>
 
 </div></body></html>
