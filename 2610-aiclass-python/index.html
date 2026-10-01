@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow, noai, noimageai">
-<title>PM을 위한 프로그래밍의 이해 (초안)</title>
+<title>PM을 위한 프로그래밍의 이해</title>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
 :root{--ink:#172033;--muted:#657086;--line:#dfe4ed;--soft:#f5f7fb;--blue:#2457f5;--green:#16a36b;--warn:#ffad22}
@@ -28,57 +28,80 @@ code{font-family:"JetBrains Mono",monospace}
 </head>
 <body><div class="wrap">
 
-<span class="draft">초안 v0.3 · 2026.10</span>
-<h1>PM을 위한 프로그래밍의 이해<br><small style="font-size:.5em;color:var(--muted)">파이썬 맛보기 with Colab &amp; ChatGPT</small></h1>
-<p class="lead">개발자가 되려는 수업이 아닙니다. 코드가 어떻게 돌아가는지, 왜 어떤 건 바로 되고 어떤 건 안 되는지, 오류를 어떻게 확인하는지 감을 잡아서 개발자와 AI에게 <b>더 정확하게 요청하는 PM</b>이 되는 게 목표입니다.</p>
+<span class="draft">초벌 교안 v0.4 · 2026.10</span>
+<h1>PM을 위한 프로그래밍의 이해<br><small style="font-size:.5em;color:var(--muted)">Colab + Gemini + ChatGPT로 파이썬 맛보기</small></h1>
+<p class="lead">개발자가 되는 수업이 아닙니다. 코드가 어떻게 돌아가는지 이해하고, <b>최신 AI 도구를 끝까지 활용해</b> 직접 써 보고, 결과를 검증하는 PM이 되는 것이 목표입니다.</p>
 
 <div class="tbl-wrap"><table>
-<tr><th>대상</th><td>코딩 경험 없는 PM·기획자</td></tr>
-<tr><th>시간</th><td>수업 4시간 + 자율 학습·실습 과제 3시간</td></tr>
-<tr><th>도구</th><td>구글 무료 계정 · Google Colab · ChatGPT(질문·오류 해결용)</td></tr>
-<tr><th>수업이 끝나면</th><td>① 프로그램이 동작하는 원리를 설명할 수 있다 ② 파이썬과 웹(HTML/CSS/JS)의 역할 차이를 안다 ③ 오류를 3단계로 확인할 수 있다 ④ 변수·조건·반복·리스트·random을 직접 써 보고 결과를 확인한다 ⑤ 데이터 분석 코드를 읽고 수정 요청을 할 수 있다</td></tr>
+<tr><th>대상</th><td>코딩 경험 없는 PM·기획자 (기업·기관 출강)</td></tr>
+<tr><th>시간</th><td>수업 4시간 + 자율 학습·실습 3시간</td></tr>
+<tr><th>도구</th><td>구글 무료 계정 · Google Colab (내장 Gemini AI) · ChatGPT 무료 플랜</td></tr>
+<tr><th>수업이 끝나면</th><td>① Colab 핵심 화면과 내장 AI를 쓸 수 있다 ② 프로그램이 동작하는 원리를 설명할 수 있다 ③ 기초 문법 5가지를 직접 써 보고 결과를 확인한다 ④ AI로 데이터 분석을 시키고 결과를 검증한다 ⑤ 오류를 AI와 함께 해결하되 스스로 검증한다</td></tr>
 </table></div>
+
+<div class="box"><b>이 수업의 AI 활용 원칙: 쓰기 → 실행 → AI에게 묻기 → 검증</b><br>
+모든 실습은 ① 내가 직접 타이핑 ② 실행해서 결과 확인 ③ Colab Gemini에게 설명·수정 요청 ④ 필요하면 ChatGPT로 교차 확인 ⑤ 기대값과 비교해 검증, 이 다섯 단계로 진행합니다. AI가 써 준 코드도 실행하고 확인하기 전까지는 "정답"이 아닙니다.</div>
 
 <h2>0. 수업 전 준비</h2>
 <ul>
-<li>개인 구글 계정 로그인 (회사 계정은 Colab이 막혀 있을 수 있음)</li>
+<li>개인 구글 계정 로그인 (회사 계정은 Colab이나 Gemini 기능이 막혀 있을 수 있음)</li>
 <li>ChatGPT 계정 로그인 · 크롬 · 노트북 지참</li>
 </ul>
 
 <h2>1. 타임테이블 (4시간)</h2>
-<p>흐름: <b>Part 1 원리 → Part 2 기초 문법 써 보기 → Part 3 데이터 분석 → Part 4 기타(오류 검증·웹과의 관계)</b>. 모든 파트는 "읽기 → 직접 타이핑 → 실행 결과 확인" 순서로 진행합니다.</p>
 <div class="tbl-wrap"><table>
 <tr><th>시간</th><th>파트</th><th>내용</th></tr>
-<tr><td>0:00–0:15</td><td>오리엔테이션</td><td>PM이 코드를 알면 뭐가 달라지나? Colab 접속·첫 셀 실행</td></tr>
-<tr><td>0:15–0:45</td><td>Part 1. 프로그래밍은 어떻게 동작하나</td><td>입력 → 처리 → 출력, 해석기, 순서가 곧 로직</td></tr>
-<tr><td>0:45–1:45</td><td>Part 2. 기초 문법 맛보기</td><td>변수 → 조건 → 리스트 → 반복 → random (개념마다 써 보기·결과 보기)</td></tr>
-<tr><td>1:45–1:55</td><td colspan="2">휴식</td></tr>
-<tr><td>1:55–2:55</td><td>Part 3. 데이터 분석 맛보기</td><td>같은 문법이 pandas에서 어떻게 쓰이나. CSV 불러오기 → 필터 → 묶어서 합계 → 차트</td></tr>
+<tr><td>0:00–0:30</td><td>Part 0. Colab 최신 인터페이스</td><td>꼭 필요한 화면 6가지 + 내장 Gemini AI 3가지 사용법</td></tr>
+<tr><td>0:30–0:55</td><td>Part 1. 프로그래밍은 어떻게 동작하나</td><td>입력 → 처리 → 출력, 해석기, 순서가 곧 로직</td></tr>
+<tr><td>0:55–1:50</td><td>Part 2. 기초 문법 맛보기</td><td>변수 → 조건 → 리스트 → 반복 → random. 직접 쓰기 + Gemini 설명</td></tr>
+<tr><td>1:50–2:00</td><td colspan="2">휴식</td></tr>
+<tr><td>2:00–2:55</td><td>Part 3. 데이터 분석 맛보기</td><td>직접 쓰는 pandas 5줄 → Gemini 데이터 분석 에이전트에게 맡겨 보기 → 결과 검증</td></tr>
 <tr><td>2:55–3:05</td><td colspan="2">휴식</td></tr>
-<tr><td>3:05–3:45</td><td>Part 4. 기타: 오류 검증 · 웹과의 관계</td><td>오류 3종류, 기대값 테스트, ChatGPT·Colab AI 활용과 검증 / 파이썬으로 웹을 바로 못 만드는 이유</td></tr>
+<tr><td>3:05–3:45</td><td>Part 4. 기타: 오류 검증 · 웹과의 관계</td><td>오류 3종류, Gemini 오류 설명·ChatGPT 교차 확인, 파이썬으로 웹을 바로 못 만드는 이유</td></tr>
 <tr><td>3:45–4:00</td><td>마무리</td><td>과제 안내, Q&amp;A</td></tr>
 </table></div>
 
-<h2>2. Part 1. 프로그래밍은 어떻게 동작하나</h2>
-<div class="box"><b>한 줄 정의:</b> 프로그래밍은 컴퓨터에게 <b>순서대로</b> 실행할 지시문을 써 주는 일입니다. 컴퓨터는 눈치를 보지 않고, 쓰인 그대로 위에서 아래로 실행합니다.</div>
+<h2>2. Part 0. Colab 최신 인터페이스 (꼭 필요한 것만)</h2>
+<div class="box warn">Colab 화면은 자주 바뀝니다. 아이콘 위치·명칭은 수업 직전 실제 화면으로 확인하고 스크린샷을 교체합니다. (스크린샷 자리 표시: 📷)</div>
+<h3>0-1. 꼭 알아야 할 화면 6가지</h3>
+<div class="tbl-wrap"><table>
+<tr><th>#</th><th>화면 요소</th><th>하는 일</th><th>실습</th></tr>
+<tr><td>1</td><td>새 노트 만들기</td><td>colab.research.google.com → 새 노트. 내 구글 드라이브 "Colab Notebooks" 폴더에 자동 저장</td><td>📷 노트 이름을 "PM파이썬_이름"으로 변경</td></tr>
+<tr><td>2</td><td>코드 셀</td><td>코드를 쓰는 칸. 셀 왼쪽 ▶ 버튼 또는 <code>Shift+Enter</code>로 실행, 결과는 셀 바로 아래</td><td><code>print("안녕, 파이썬")</code></td></tr>
+<tr><td>3</td><td>텍스트 셀</td><td>메모·설명을 쓰는 칸 (과제 정리용)</td><td>"오늘의 목표" 한 줄 쓰기</td></tr>
+<tr><td>4</td><td>런타임(연결 상태)</td><td>오른쪽 위 연결 표시. 오래 두면 끊기고 변수가 사라짐 → 위에서부터 다시 실행</td><td>런타임 → 모두 실행</td></tr>
+<tr><td>5</td><td>파일 패널</td><td>왼쪽 📁 아이콘. CSV 파일 업로드</td><td>(Part 3에서 사용)</td></tr>
+<tr><td>6</td><td>공유</td><td>오른쪽 위 공유 → "링크가 있는 모든 사용자(뷰어)"</td><td>과제 제출용 링크 복사</td></tr>
+</table></div>
+<h3>0-2. Colab 내장 Gemini AI 3가지</h3>
+<div class="tbl-wrap"><table>
+<tr><th>기능</th><th>어디서</th><th>언제 쓰나</th></tr>
+<tr><td>① 코드 생성</td><td>빈 셀의 "생성/Generate" 안내 또는 Gemini 패널</td><td>"1부터 10까지 더하는 코드" 같이 말로 요청</td></tr>
+<tr><td>② 코드 설명 · 오류 설명</td><td>셀의 Gemini 버튼, 에러 아래 "오류 설명" 버튼</td><td>모르는 코드·에러가 나왔을 때 바로 질문</td></tr>
+<tr><td>③ Gemini 사이드 패널 (데이터 분석 에이전트)</td><td>화면의 Gemini(✦) 아이콘</td><td>노트 전체에 대해 대화, CSV를 올리고 "분석해 줘"라고 하면 분석 노트를 단계별로 만들어 줌</td></tr>
+</table></div>
+<div class="box tip"><b>ChatGPT와 역할 나누기:</b> Colab Gemini는 <b>지금 이 노트의 코드·에러</b>를 바로 보고 답합니다. ChatGPT는 <b>개념 설명·비유·교차 확인</b>용으로 씁니다. 두 AI의 답이 다르면 그 자체가 좋은 학습 포인트입니다.</div>
+
+<h2>3. Part 1. 프로그래밍은 어떻게 동작하나</h2>
 <ul>
 <li><b>입력 → 처리 → 출력:</b> 키오스크 주문(입력) → 금액 계산(처리) → 영수증(출력)</li>
-<li><b>코드는 사람이 쓰는 글, 실행은 해석기가 함:</b> Colab은 구글 서버에 파이썬 해석기가 이미 설치된 환경이라 설치 없이 바로 쓸 수 있습니다.</li>
-<li><b>순서가 곧 로직:</b> 순서를 바꾸면 결과도 달라집니다.</li>
+<li><b>코드는 사람이 쓰고, 실행은 해석기가 함:</b> Colab은 구글 서버에 파이썬 해석기가 미리 설치된 환경</li>
+<li><b>위에서 아래로, 순서대로:</b> 순서가 곧 로직</li>
 </ul>
 <pre>price = int(input("상품 가격(원): "))   # 입력
 total = price * 1.1                    # 처리 (부가세 10%)
 print("결제 금액:", int(total), "원")   # 출력</pre>
-<div class="box tip"><b>PM 포인트:</b> 기획서의 "사용자가 ○○하면 △△가 보인다"가 바로 입력·처리·출력입니다. 처리 규칙이 모호하면 개발자도 AI도 추측해서 만듭니다.</div>
+<p><b>AI 활용:</b> 실행 후 Gemini에게 "이 코드를 한 줄씩 비유로 설명해 줘" → 내 이해와 비교</p>
+<div class="box tip"><b>PM 포인트:</b> 기획서의 "사용자가 ○○하면 △△가 보인다"가 입력·처리·출력입니다. 규칙이 모호하면 개발자도 AI도 추측합니다.</div>
 
-<h2>3. Part 2. 기초 문법 맛보기</h2>
-<p>개념마다 ① 코드 읽기 ② 직접 타이핑 ③ 실행 ④ 값 하나 바꿔서 다시 실행.</p>
-<h3>2-1. 변수: 값에 이름 붙이기</h3>
+<h2>4. Part 2. 기초 문법 맛보기</h2>
+<p>개념마다 <b>읽기 → 타이핑 → 실행 → 값 바꿔 재실행 → Gemini에게 "왜 이렇게 나와?" 묻기</b>.</p>
+<h3>2-1. 변수</h3>
 <pre>product = "텀블러"
 price = 15000
 qty = 3
 print(product, price * qty, "원")</pre>
-<h3>2-2. 조건: 규칙에 따라 다르게</h3>
+<h3>2-2. 조건</h3>
 <pre>stock = 0
 if stock == 0:
     print("품절")
@@ -86,67 +109,67 @@ elif stock &lt; 5:
     print("품절 임박")
 else:
     print("구매 가능")</pre>
-<h3>2-3. 리스트: 여러 값을 한 줄에</h3>
+<h3>2-3. 리스트</h3>
 <pre>menus = ["김치찌개", "돈까스", "쌀국수"]
-print(menus[0])        # 첫 번째 (0부터 셈!)
+print(menus[0])        # 0부터 센다
 menus.append("비빔밥")
 print(len(menus), menus)</pre>
-<h3>2-4. 반복: 같은 일을 여러 번</h3>
+<h3>2-4. 반복</h3>
 <pre>prices = [15000, 9000, 12000]
 for p in prices:
     print(p, "원 → 할인가", int(p * 0.9), "원")</pre>
-<h3>2-5. random: 매번 다른 결과</h3>
+<h3>2-5. random</h3>
 <pre>import random
 print("오늘 점심은", random.choice(menus))</pre>
-<h3>종합: 5가지를 한 번에</h3>
-<pre>import random
-products = [
-    {"name": "텀블러", "price": 15000, "stock": 3},
-    {"name": "에코백", "price": 9000,  "stock": 0},
-    {"name": "머그컵", "price": 12000, "stock": 5},
-]
-for p in products:
-    if p["stock"] == 0:
-        print(p["name"], "- 품절")
-    else:
-        print(p["name"], "-", f'{p["price"]:,}원')
-print("오늘의 추천:", random.choice(products)["name"])</pre>
-<div class="box tip"><b>PM 포인트:</b> 화면 기획의 대부분은 <b>데이터(리스트) + 규칙(조건) + 반복</b>입니다. "상품 목록을 보여주고, 재고 0이면 품절 표시"라는 요구사항은 위 코드와 같은 구조입니다.</div>
+<h3>2-6. AI로 확장하기</h3>
+<p>Gemini 코드 생성에 말로 요청 → 실행 → 결과 확인:</p>
+<pre>menus 리스트에서 점심 메뉴를 3번 추천하되, 같은 메뉴가 중복되지 않게 해 줘</pre>
+<div class="box tip"><b>PM 포인트:</b> 화면 기획의 대부분은 <b>데이터(리스트) + 규칙(조건) + 반복</b>입니다. 이 단어로 요구사항을 말하면 AI도 개발자도 정확히 알아듣습니다.</div>
 
-<h2>4. Part 3. 데이터 분석 맛보기</h2>
-<p>데이터 분석에서는 <b>pandas</b>를 씁니다. 엑셀 표를 코드로 다룬다고 보면 되고, Colab에는 이미 설치되어 있습니다.</p>
+<h2>5. Part 3. 데이터 분석 맛보기</h2>
+<h3>3-1. 직접 써 보기: pandas 5줄</h3>
 <div class="tbl-wrap"><table>
 <tr><th>기본 문법</th><th>데이터 분석에서는</th><th>엑셀로 치면</th></tr>
-<tr><td>변수</td><td><code>df = pd.read_csv(...)</code> 표 전체를 변수에 담기</td><td>시트</td></tr>
+<tr><td>변수</td><td><code>df = pd.read_csv(...)</code></td><td>시트</td></tr>
 <tr><td>리스트</td><td>열 하나 = 값들의 목록</td><td>열</td></tr>
-<tr><td>조건</td><td><code>df[df["매출"] &gt;= 30000]</code></td><td>필터</td></tr>
-<tr><td>반복</td><td>반복문 없이 열 전체에 한 번에 적용, <code>groupby</code>로 묶어 계산</td><td>피벗 테이블</td></tr>
-<tr><td>random</td><td><code>df.sample(5)</code> 표본 뽑기</td><td>RAND()</td></tr>
+<tr><td>조건</td><td><code>df[df["채널"] == "앱"]</code></td><td>필터</td></tr>
+<tr><td>반복</td><td><code>groupby</code>로 묶어 한 번에 계산</td><td>피벗 테이블</td></tr>
+<tr><td>random</td><td><code>df.sample(5)</code></td><td>RAND()</td></tr>
 </table></div>
 <pre>import pandas as pd
-url = "https://loreenkim0301.github.io/swy-lecturenote/2610-aiclass-python/homework/04_orders.csv"
-df = pd.read_csv(url)
-df.head()                                   # 앞 5줄 보기
-len(df)                                     # 행 수
-df[df["채널"] == "앱"]                       # 조건: 앱 주문만
-df.groupby("채널")["매출"].sum()             # 채널별 매출 합계
-df.groupby("채널")["매출"].sum().plot(kind="bar")   # 차트</pre>
-<div class="box warn"><b>차트 한글 깨짐:</b> Colab 기본 글꼴은 한글을 지원하지 않아 그래프 글자가 □로 보일 수 있습니다. 수업에서는 ChatGPT에게 "Colab matplotlib 한글 깨짐 해결"을 물어보는 실습으로 활용합니다.</div>
-<div class="box tip"><b>PM 포인트:</b> "채널별 매출 합계를 막대그래프로"처럼 <b>무엇을 어떤 기준으로 묶을지</b>를 정확히 말하면 AI가 코드를 써 줍니다. 결과가 상식에 맞는지 검증하는 것이 PM의 일입니다.</div>
+df = pd.read_csv("https://loreenkim0301.github.io/swy-lecturenote/2610-aiclass-python/homework/04_orders.csv")
+df.head()
+df[df["채널"] == "앱"]
+df.groupby("채널")["매출"].sum()</pre>
+<h3>3-2. AI에게 맡겨 보기: Gemini 데이터 분석</h3>
+<ol>
+<li>Gemini 패널을 열고 요청: "df로 채널별·요일별 매출을 분석하고 막대그래프로 그려 줘"</li>
+<li>Gemini가 만든 계획과 코드 셀을 <b>하나씩 읽고</b> 실행</li>
+<li>내가 쓴 3-1 결과와 비교: 채널별 합계가 같은가?</li>
+</ol>
+<h3>3-3. 검증하기</h3>
+<ul>
+<li>전체 행 수와 합계가 맞는가? (<code>len(df)</code>, <code>df["매출"].sum()</code>)</li>
+<li>채널별 합계를 모두 더하면 전체 합계와 같은가?</li>
+<li>결과가 상식적으로 말이 되는가?</li>
+</ul>
+<div class="box warn"><b>차트 한글 깨짐:</b> 그래프 글자가 □로 보이면 Gemini/ChatGPT에게 "Colab 그래프 한글 깨짐 해결"을 물어 해결 → 오류 해결 연습으로 활용</div>
+<div class="box tip"><b>PM 포인트:</b> 코드는 AI가 씁니다. PM은 <b>무엇을 어떤 기준으로 볼지 정하고, 결과가 맞는지 검증</b>합니다.</div>
 
-<h2>5. Part 4. 기타: 오류 검증 · 웹과의 관계</h2>
+<h2>6. Part 4. 기타: 오류 검증 · 웹과의 관계</h2>
 <h3>4-1. 오류의 3가지 종류</h3>
 <div class="tbl-wrap"><table>
-<tr><th>종류</th><th>뜻</th><th>예시</th><th>찾기 난이도</th></tr>
-<tr><td>문법 오류</td><td>문장 자체가 틀림 (실행 전에 멈춤)</td><td>괄호 누락, 들여쓰기 오류</td><td>쉬움</td></tr>
-<tr><td>실행 오류</td><td>실행하다가 멈춤</td><td>문자열 + 숫자, 없는 항목 찾기</td><td>보통</td></tr>
-<tr><td>논리 오류</td><td>멈추지 않지만 <b>결과가 틀림</b></td><td>조건 경계값(&gt;= vs &gt;) 실수</td><td><b>어려움, 가장 위험</b></td></tr>
+<tr><th>종류</th><th>뜻</th><th>예시</th><th>AI가 잘 잡나?</th></tr>
+<tr><td>문법 오류</td><td>문장 자체가 틀림</td><td>괄호 누락, 들여쓰기</td><td>잘 잡음</td></tr>
+<tr><td>실행 오류</td><td>실행 중 멈춤</td><td>문자열 + 숫자</td><td>잘 잡음</td></tr>
+<tr><td>논리 오류</td><td>멈추지 않지만 결과가 틀림</td><td>&gt;= 와 &gt; 실수</td><td><b>못 잡음. 기대값을 아는 사람만 잡을 수 있음</b></td></tr>
 </table></div>
-<h3>4-2. 검증 3단계</h3>
+<h3>4-2. 실습: 세 가지 오류 직접 내고 해결하기</h3>
 <ol>
-<li><b>에러 메시지 맨 아래 줄부터 읽기:</b> 에러 이름과 줄 번호 확인</li>
-<li><b>중간값 출력하기:</b> <code>print()</code>로 값이 예상과 같은지 확인</li>
-<li><b>기대값으로 테스트하기:</b> "이 입력이면 이 결과"를 미리 정하고 <code>assert</code>로 비교. 기획서의 인수 조건과 같은 개념</li>
+<li>일부러 에러 내기: <code>print("가격:" + 15000)</code></li>
+<li>에러 메시지 맨 아래 줄 읽기 → Colab "오류 설명" 버튼으로 Gemini 설명 보기</li>
+<li>같은 에러를 ChatGPT에 붙여넣고 설명 비교</li>
+<li>논리 오류는 AI가 모름 → 기대값 테스트로 직접 잡기</li>
 </ol>
 <pre>def pay(price):              # 3만원 이상이면 10% 할인
     if price > 30000:        # 일부러 넣은 버그
@@ -155,12 +178,8 @@ df.groupby("채널")["매출"].sum().plot(kind="bar")   # 차트</pre>
 
 assert pay(20000) == 20000
 assert pay(40000) == 36000
-assert pay(30000) == 27000   # 경계값 → 여기서 실패!</pre>
-<h3>4-3. AI로 오류 해결하기: ChatGPT와 Colab 내장 AI</h3>
-<ul>
-<li><b>Colab:</b> 2026년 현재 Colab에는 Gemini 기반 AI 기능이 들어 있어, 에러가 나면 셀 아래에서 원인 설명과 수정안을 바로 제안받을 수 있습니다. (메뉴 위치·명칭은 수업 직전 실제 화면으로 재확인)</li>
-<li><b>ChatGPT:</b> 무료 플랜으로 충분합니다. 다만 파일 업로드 횟수 등에 제한이 있으니 수업 중에는 코드와 에러를 <b>텍스트로 붙여넣는</b> 방식을 기본으로 합니다.</li>
-</ul>
+assert pay(30000) == 27000   # 경계값 → 실패!</pre>
+<h3>4-3. ChatGPT 질문 템플릿</h3>
 <pre>나는 코딩을 잘 모르는 PM이야. Google Colab에서 아래 코드를 실행했어.
 [코드]
 기대한 결과: [예: 30000원이면 27000원]
@@ -168,34 +187,34 @@ assert pay(30000) == 27000   # 경계값 → 여기서 실패!</pre>
 1) 원인을 비유로 쉽게 설명해줘
 2) 고친 코드를 보여줘
 3) 고친 게 맞는지 확인할 테스트 케이스도 3개 줘</pre>
-<div class="box warn"><b>원칙: AI 답변도 검증 대상입니다.</b> 고친 코드를 받으면 반드시 실행하고 기대값 테스트를 통과하는지 확인하세요. "돌아간다"와 "맞다"는 다릅니다.</div>
 <h3>4-4. 파이썬으로 웹사이트를 바로 만들 수 없는 이유</h3>
 <div class="tbl-wrap"><table>
 <tr><th></th><th>HTML / CSS / JS</th><th>파이썬</th></tr>
 <tr><td>어디서 실행되나</td><td>사용자의 <b>브라우저</b></td><td>내 컴퓨터, Colab, <b>서버</b></td></tr>
-<tr><td>역할</td><td>화면 (구조·디자인·움직임)</td><td>계산·데이터 처리·자동화·서버 로직</td></tr>
+<tr><td>역할</td><td>화면</td><td>계산·데이터 처리·자동화·서버 로직</td></tr>
 </table></div>
 <ul>
-<li>브라우저는 HTML·CSS·JS만 알아듣습니다. 파이썬으로 웹을 만들려면 웹 프레임워크(Flask, Django, Streamlit 등)로 서버를 띄우고, 서버를 인터넷에 올리는 배포까지 해야 합니다.</li>
-<li>비유: HTML은 <b>매장 진열대</b>, 파이썬은 <b>주방</b>. 손님(브라우저)은 진열대만 보고, 주방은 뒤에서 음식을 만들어 내보냅니다.</li>
-<li>Part 2에서 배운 변수·조건·반복·리스트·random은 JS에도 똑같이 있습니다. 화면 프로토타입을 AI에게 요청할 때 "상품 목록을 배열로, 재고 0이면 품절 배지, 카드는 반복으로"처럼 이 단어로 말하면 결과가 정확해집니다.</li>
+<li>브라우저는 HTML·CSS·JS만 알아듣습니다. 파이썬으로 웹을 만들려면 웹 프레임워크(Flask, Django, Streamlit 등)로 서버를 띄우고 배포까지 해야 합니다.</li>
+<li>비유: HTML은 <b>매장 진열대</b>, 파이썬은 <b>주방</b>.</li>
+<li>오늘 배운 변수·조건·반복·리스트·random은 JS에도 똑같이 있습니다. 화면 프로토타입을 AI에게 요청할 때도 같은 단어로 말하면 됩니다.</li>
 </ul>
 
-<h2>6. 자율 학습·실습 과제 (3시간)</h2>
+<h2>7. 자율 학습·실습 과제 (3시간)</h2>
 <div class="tbl-wrap"><table>
 <tr><th>과제</th><th>시간</th><th>내용</th><th>자료</th></tr>
-<tr><td>1. 복습 타이핑</td><td>40분</td><td>Part 2 코드를 새 노트에 직접 타이핑해서 실행, 값 하나씩 바꿔 보기</td><td>-</td></tr>
+<tr><td>1. 복습 타이핑</td><td>40분</td><td>Part 2 코드를 새 노트에 직접 타이핑, 셀마다 Gemini 설명을 텍스트 셀에 요약</td><td>-</td></tr>
 <tr><td>2. 개념 설명문</td><td>20분</td><td>"파이썬으로 웹을 바로 못 만드는 이유"를 동료 PM에게 설명하듯 5줄로</td><td>-</td></tr>
-<tr><td>3. 버그 찾기</td><td>50분</td><td>배송비 계산 코드의 논리 오류 2개를 기대값 테스트로 찾고 수정</td><td><a href="homework/03_bug_shipping.py">03_bug_shipping.py</a></td></tr>
-<tr><td>4. 데이터에게 질문하기</td><td>70분</td><td>가상 주문 300건으로 채널·요일·상품별 분석, 검증 방법까지 기록</td><td><a href="homework/04_orders.csv">04_orders.csv</a> · <a href="homework/04_orders_guide.md">안내</a></td></tr>
+<tr><td>3. 버그 찾기</td><td>50분</td><td>배송비 계산 코드의 논리 오류 2개를 기대값 테스트로 찾기. Gemini가 버그를 찾았는지도 기록</td><td><a href="homework/03_bug_shipping.py">03_bug_shipping.py</a></td></tr>
+<tr><td>4. 데이터에게 질문하기</td><td>70분</td><td>Gemini 데이터 분석으로 주문 300건 분석 → 직접 쓴 코드로 숫자 검증</td><td><a href="homework/04_orders.csv">04_orders.csv</a> · <a href="homework/04_orders_guide.md">안내</a></td></tr>
 </table></div>
 <div class="box"><b>제출:</b> Colab 노트북 → 공유 → "링크가 있는 모든 사용자(뷰어)" → 링크 제출</div>
 
-<h2>7. 강사 체크리스트</h2>
+<h2>8. 강사 체크리스트</h2>
 <ul>
-<li>정답: <code>homework/03_bug_shipping_answer.py</code>, <code>homework/04_orders_answer.md</code> (수강생 배포 전 공개 여부 결정)</li>
-<li>Part 4에서 ChatGPT가 틀린 답을 주는 사례 1개 준비</li>
-<li>수업 직전 Colab AI 기능·ChatGPT 무료 플랜 화면 재확인 후 스크린샷 교체</li>
+<li>수업 직전 Colab 화면·Gemini 메뉴 명칭 확인 후 📷 스크린샷 교체</li>
+<li>출강 기관 PC·계정에서 Colab·Gemini·ChatGPT 접속 가능 여부 사전 확인</li>
+<li>Gemini가 틀린 답을 주는 사례 1개 준비</li>
+<li>과제 정답은 레포에 올리지 않고 별도 보관</li>
 </ul>
 
 </div></body></html>
