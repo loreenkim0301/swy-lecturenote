@@ -232,6 +232,24 @@ td .tag{margin-bottom:2px}
 #bar{flex:none;display:flex;align-items:center;justify-content:center;gap:16px;padding:8px;background:#111a2e;color:#cbd5e7;font-size:14px}
 #bar button{border:1px solid rgb(97,112,141);background:transparent;color:#fff;border-radius:8px;padding:6px 14px;font:700 14px var(--font-sans);cursor:pointer}
 @media print{#slideBtn,#deck{display:none!important}}
+
+aside nav .nav-title{padding:6px 10px 10px;font-size:12px;font-weight:800;letter-spacing:.12em;color:rgb(130,145,177)}
+aside nav .grp{margin-top:20px;padding-top:12px;border-top:1px solid rgb(45,56,80)}
+aside nav .nav-title+.grp{margin-top:0;border-top:0;padding-top:0}
+aside nav .grp-label{padding:0 10px 4px;font-size:11px;font-weight:800;letter-spacing:.1em;color:rgb(130,145,177)}
+aside nav a.l2{margin-top:0;padding:6px 10px;color:#fff;font-size:15px;font-weight:800;border-left:3px solid transparent}
+aside nav a.l3{margin-left:12px;padding:5px 10px 5px 14px;font-size:14px;border-left:1px solid rgb(45,56,80)}
+aside nav a.l4{display:none;margin-left:12px;padding:3px 10px 3px 30px;font-size:12.5px;color:rgb(150,162,186);border-left:1px solid rgb(45,56,80)}
+aside nav a.l4.show{display:block}
+aside nav a.active{border-left-color:var(--blue)}
+.dh{margin:30px 0 8px;padding:2px 0 2px 12px;border-left:4px solid var(--blue)}
+.dh b{font-size:1.06em}
+#slide .dh{margin:12px 0 8px}
+#slide .eb{margin:0 0 4px;font-size:14px;font-weight:800;letter-spacing:.06em;color:var(--blue)}
+#slide .outline{columns:2;column-gap:56px;font-size:16px;line-height:1.5}
+#slide .outline .og{break-inside:avoid;margin-bottom:12px}
+#slide .outline b{display:block;font-size:17px}
+#slide .outline span{display:block;padding-left:14px;color:var(--muted);font-size:14.5px}
 </style>
 
 </head>
@@ -245,34 +263,7 @@ td .tag{margin-bottom:2px}
       <div class="side-sub">10.14(수) · 10:00–17:00</div>
     </div>
     <nav>
-<a class="major" href="#overview">교육 개요</a>
-<a class="major" href="#prep">0. 수업 전 준비</a>
-<a href="#prep-1">실습 파일</a>
-<a class="major" href="#timetable">1. 타임테이블</a>
-<a class="major" href="#s1">세션 1. 생성형 AI로 데이터 분석 '워크플로우' 만들기</a>
-<a href="#s1-1">1-1. 내 업무를 스케치하고 5단계로 쪼개기</a>
-<a href="#s1-2">1-2. 프롬프트 엔지니어링: ChatGPT에 잘 요청하는 법</a>
-<a href="#s1-3">1-3. Napkin 업무 흐름을 그림으로 바꿔 보기</a>
-<a class="major" href="#s2">세션 2. 생성형 AI 활용한 함수 생성</a>
-<a href="#s2-1">2-1. 해결할 문제와 프롬프트 세트</a>
-<a href="#s2-2">2-2. 먼저 데이터 파악하기 (P1)</a>
-<a href="#s2-3">2-3. 함수 받아 내기 (P2)</a>
-<a href="#s2-4">2-4. 틀린 수식 고치기 (P3)</a>
-<a class="major" href="#s3">세션 3. 프롬프트 활용한 데이터 가공하기</a>
-<a href="#s3-1">3-1. 정리 규칙서 만들기 (P4)</a>
-<a href="#s3-2">3-2. 규칙 적용하기: 두 가지 방법</a>
-<a href="#s3-3">3-3. 검증 체크 (P5)</a>
-<a class="major" href="#s4">세션 4. AI로 데이터 분석하기</a>
-<a href="#s4-1">4-1. 자주 쓰는 분석 4가지 (P6)</a>
-<a href="#s4-2">4-2. 검증용 자료와 보고용 자료 만들기 (P7)</a>
-<a href="#s4-3">4-3. 시각화: ChatGPT 차트와 Napkin 도식</a>
-<a class="major" href="#s5">세션 5. 문제 이해와 인사이트 도출</a>
-<a href="#s5-1">5-1. 숫자에서 질문 뽑기</a>
-<a href="#s5-2">5-2. 글 데이터 자동 분류·요약 (P8)</a>
-<a href="#s5-3">5-3. 숫자와 글을 연결해 한 장으로 Napkin</a>
-<a class="major" href="#s6">세션 6. 리포트 자동화 구현</a>
-<a href="#s6-1">6-1. 나만의 리포트 지시문 만들기 (P9)</a>
-<a href="#s6-2">6-2. 내 업무에 옮기기</a>
+<div class="nav-title">전체 목차</div><div class="grp"><div class="grp-label">교육 안내</div><a class="l2" href="#overview">교육 개요</a><a class="l2" href="#prep">수업 전 준비</a><a class="l3" href="#prep-1">실습 파일</a><a class="l2" href="#timetable">타임테이블</a></div><div class="grp"><div class="grp-label">세션 1</div><a class="l2" href="#s1">생성형 AI로 데이터 분석 '워크플로우' 만들기</a><a class="l3" href="#s1-1">1-1. 내 업무를 스케치하고 5단계로 쪼개기</a><a class="l3" href="#s1-2">1-2. 프롬프트 엔지니어링: ChatGPT에 잘 요청하는 법</a><a class="l3" href="#s1-3">1-3. Napkin 업무 흐름을 그림으로 바꿔 보기</a></div><div class="grp"><div class="grp-label">세션 2</div><a class="l2" href="#s2">생성형 AI 활용한 함수 생성</a><a class="l3" href="#s2-1">2-1. 해결할 문제와 프롬프트 세트</a><a class="l3" href="#s2-2">2-2. 먼저 데이터 파악하기 (P1)</a><a class="l3" href="#s2-3">2-3. 함수 받아 내기 (P2)</a><a class="l3" href="#s2-4">2-4. 틀린 수식 고치기 (P3)</a></div><div class="grp"><div class="grp-label">세션 3</div><a class="l2" href="#s3">프롬프트 활용한 데이터 가공하기</a><a class="l3" href="#s3-1">3-1. 정리 규칙서 만들기 (P4)</a><a class="l3" href="#s3-2">3-2. 규칙 적용하기: 두 가지 방법</a><a class="l3" href="#s3-3">3-3. 검증 체크 (P5)</a></div><div class="grp"><div class="grp-label">세션 4</div><a class="l2" href="#s4">AI로 데이터 분석하기</a><a class="l3" href="#s4-1">4-1. 자주 쓰는 분석 4가지 (P6)</a><a class="l3" href="#s4-2">4-2. 검증용 자료와 보고용 자료 만들기 (P7)</a><a class="l3" href="#s4-3">4-3. 시각화: ChatGPT 차트와 Napkin 도식</a></div><div class="grp"><div class="grp-label">세션 5</div><a class="l2" href="#s5">문제 이해와 인사이트 도출</a><a class="l3" href="#s5-1">5-1. 숫자에서 질문 뽑기</a><a class="l3" href="#s5-2">5-2. 글 데이터 자동 분류·요약 (P8)</a><a class="l3" href="#s5-3">5-3. 숫자와 글을 연결해 한 장으로 Napkin</a></div><div class="grp"><div class="grp-label">세션 6</div><a class="l2" href="#s6">리포트 자동화 구현</a><a class="l3" href="#s6-1">6-1. 나만의 리포트 지시문 만들기 (P9)</a><a class="l3" href="#s6-2">6-2. 내 업무에 옮기기</a></div>
     </nav>
     <div class="side-foot">ChatGPT · Napkin AI · 엑셀 · 가상 데이터로 실습</div>
   </aside>
@@ -624,6 +615,24 @@ A 주문번호 / B 주문일 / C 지역 / D 채널 / E 담당자 / F 상품코�
   </div></div>
   <div id="bar"><button id="exit" type="button">✕ 닫기 (Esc)</button></div>
 </div>
+<script type="text/javascript">
+(function(){
+  var re=/^(STEP|방법 [A-C]|워밍업|[①-⑤] |\(선택\)|완성한|결과를 보고|버전|두 결과)/;
+  var nav=document.querySelector('aside nav');
+  document.querySelectorAll('main .topic').forEach(function(t){
+    var parent=nav.querySelector('a.l3[href="#'+t.id+'"]'),last=parent,n=0;
+    if(!parent)return;
+    t.querySelectorAll(':scope > p').forEach(function(p){
+      var b=p.firstElementChild;
+      if(!b||b.tagName!=='B'||p.children.length!==1||p.textContent.trim()!==b.textContent.trim()||!re.test(b.textContent.trim()))return;
+      p.classList.add('dh');p.id='d-'+t.id+'-'+(++n);
+      var a=document.createElement('a');a.className='l4';a.href='#'+p.id;a.setAttribute('data-p',t.id);
+      a.textContent=b.textContent.replace(/[:：]\s*.*$/,'').trim();
+      last.parentNode.insertBefore(a,last.nextSibling);last=a;
+    });
+  });
+})();
+</script>
 <script>
 (function(){
 var main=document.querySelector('main'),deck=document.getElementById('deck'),box=document.getElementById('slide'),pgEl=document.getElementById('pg'),prog=document.getElementById('prog'),pages=[],i=0;
@@ -648,6 +657,7 @@ function build(){
   pages=[];var L=logical(),count,sl;
   function head(cont){
     box.innerHTML='';
+    if(sl.title&&sl.sect&&sl.sect!==sl.title){var eb=document.createElement('div');eb.className='eb';eb.textContent=sl.sect;box.appendChild(eb);}
     if(sl.title){var h=document.createElement('h3');h.className='st';h.textContent=sl.title;
       if(cont){var c=document.createElement('span');c.className='cont';c.textContent='(이어서)';h.appendChild(c);}
       box.appendChild(h);}
@@ -674,6 +684,7 @@ function build(){
       var hasHead=rows&&rows.length>3&&Array.prototype.every.call(rows[0].cells,function(c){return c.tagName==='TH';})
         &&!rows.some(function(r){return Array.prototype.some.call(r.cells,function(c){return c.rowSpan>1;});});
       var listy=(el.tagName==='UL'||el.tagName==='OL'||(el.classList&&(el.classList.contains('procedure')||el.classList.contains('resource-list'))))&&el.children.length>1;
+      if(el.classList&&el.classList.contains('dh')&&count>1&&box.scrollHeight>box.clientHeight*0.5){flush();head(false);}
       var c=el.cloneNode(true);box.appendChild(c);
       if(over()&&count>0){box.removeChild(c);flush();head(true);box.appendChild(c);}
       if(over()){
@@ -709,6 +720,14 @@ function build(){
     });
     flush();
   });
+  var o='<h3 class="st">전체 목차</h3><div class="outline">';
+  Array.prototype.forEach.call(document.querySelectorAll('aside nav .grp'),function(g){
+    o+='<div class="og"><b>'+g.querySelector('.grp-label').textContent+(g.querySelector('.l2')&&g.querySelector('.grp-label').textContent.indexOf('세션')===0?' · '+g.querySelector('.l2').textContent:'')+'</b>';
+    var guide=g.querySelector('.grp-label').textContent==='교육 안내';
+    Array.prototype.forEach.call(g.querySelectorAll(guide?'a.l2,a.l3':'a.l3'),function(a){o+='<span>'+a.textContent+'</span>';});
+    o+='</div>';
+  });
+  pages.splice(1,0,{html:o+'</div>',sect:'목차'});
 }
 function show(n){
   i=Math.max(0,Math.min(pages.length-1,n));var p=pages[i];
@@ -747,6 +766,9 @@ document.addEventListener('click',function(e){
     var y=window.scrollY+120, cur=-1;
     targets.forEach(function(el,i){ if(el && el.getBoundingClientRect().top+window.scrollY<=y) cur=i; });
     links.forEach(function(a,i){ a.classList.toggle('active', i===cur); });
+    var cp=null;
+    if(cur>=0){ var ca=links[cur]; cp=ca.classList.contains('l4')?ca.getAttribute('data-p'):(ca.getAttribute('href').slice(1)); }
+    links.forEach(function(a){ if(a.classList.contains('l4')) a.classList.toggle('show', a.getAttribute('data-p')===cp); });
     if(cur>=0){ var a=links[cur], box=a.closest('aside'), r=a.getBoundingClientRect();
       if(r.top<120||r.bottom>window.innerHeight-20) box.scrollTop+=r.top-window.innerHeight/2; }
   }
