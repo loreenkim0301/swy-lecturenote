@@ -684,7 +684,7 @@ function build(){
       var hasHead=rows&&rows.length>3&&Array.prototype.every.call(rows[0].cells,function(c){return c.tagName==='TH';})
         &&!rows.some(function(r){return Array.prototype.some.call(r.cells,function(c){return c.rowSpan>1;});});
       var listy=(el.tagName==='UL'||el.tagName==='OL'||(el.classList&&(el.classList.contains('procedure')||el.classList.contains('resource-list'))))&&el.children.length>1;
-      if(el.classList&&el.classList.contains('dh')&&count>1&&box.scrollHeight>box.clientHeight*0.5){flush();head(true);}
+      if(el.classList&&el.classList.contains('dh')&&count>1&&box.scrollHeight>box.clientHeight*0.5){flush();head(false);}
       var c=el.cloneNode(true);box.appendChild(c);
       if(over()&&count>0){box.removeChild(c);flush();head(true);box.appendChild(c);}
       if(over()){
