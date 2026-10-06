@@ -185,6 +185,15 @@ body.nav-hidden .nav-toggle { left: 14px; }
   
 <style>
 .tt{margin:0;padding-left:1.1em}.tt li{margin:2px 0}
+.dl-list{display:grid;gap:10px;margin:18px 0}
+.dl-card{display:flex;align-items:center;gap:14px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:#fff;text-decoration:none;color:var(--ink)}
+.dl-card:hover{border-color:var(--blue);background:var(--soft)}
+.dl-ico{flex:none;display:grid;place-items:center;width:44px;height:52px;border-radius:8px;background:rgb(237,242,255);color:var(--blue);font-size:11px;font-weight:800}
+.dl-body{flex:1}.dl-body b{display:block;font-size:16px}.dl-body span{display:block;font-size:13px;color:var(--muted)}
+.dl-btn{flex:none;padding:8px 14px;border-radius:8px;background:var(--blue);color:#fff;font-size:13px;font-weight:800}
+@media(max-width:680px){.dl-card{flex-wrap:wrap}}
+#slide .sample-shot{margin:8px 0}#slide .sample-shot img{max-height:330px;width:auto;max-width:100%;margin:0 auto}#slide .sample-shot figcaption{margin-top:4px;font-size:13px;text-align:center}
+#slide .dl-card{padding:10px 14px}
 .todo{color:#b42318;font-weight:700}
 main,#slide{word-break:keep-all;overflow-wrap:break-word}
 h1,h2,h3,.hero p,.lead{text-wrap:balance}
@@ -196,7 +205,7 @@ td .tag{margin-bottom:2px}
 .resource-card .small{display:block;margin-bottom:6px}
 .resource-card a{display:inline-block;margin:2px 0}
 .copybox pre{background:none;color:inherit}
-.hero-grid{grid-template-columns:repeat(4,1fr)}
+.hero-grid{grid-template-columns:repeat(3,1fr)}
 .sample-link .resource-link{margin:0 6px 0 0}
 .sample-link{flex-wrap:wrap;justify-content:flex-start;gap:6px}
 #slideBtn{position:fixed;right:16px;bottom:16px;z-index:30;background:var(--blue);color:#fff;border:0;border-radius:999px;padding:12px 20px;font:700 15px var(--font-sans);cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.25)}
@@ -233,19 +242,18 @@ td .tag{margin-bottom:2px}
     <div class="side-head">
       <div class="brand">SELECTWAY · LECTURE NOTE</div>
       <h1>생성형 AI 활용한 데이터 분석 및 스마트 시트 구현</h1>
-      <div class="side-sub">10.14(수) · 10:00–17:00 · 기업 출강</div>
+      <div class="side-sub">10.14(수) · 10:00–17:00</div>
     </div>
     <nav>
 <a class="major" href="#overview">교육 개요</a>
 <a class="major" href="#prep">0. 수업 전 준비</a>
-<a href="#prep-1">설치·가입·참고 링크</a>
-<a href="#prep-2">실습 파일</a>
+<a href="#prep-1">실습 파일</a>
 <a class="major" href="#timetable">1. 타임테이블</a>
 <a class="major" href="#s1">세션 1. 생성형 AI로 데이터 분석 '워크플로우' 만들기</a>
 <a href="#s1-1">1-1. 내 업무를 스케치하고 5단계로 쪼개기</a>
-<a href="#s1-2">1-2. 프롬프트 입력 구조: 5칸 채우기</a>
-<a href="#s1-3">1-3. 오늘 쓸 프롬프트 세트</a>
-<a href="#s1-4">1-4. Napkin 첫 사용: 내 워크플로우를 그림으로</a>
+<a href="#s1-2">1-2. 프롬프트 엔지니어링: ChatGPT에 잘 요청하는 법</a>
+<a href="#s1-3">1-3. 오늘 쓸 프롬프트 모음 (프롬프트 세트)</a>
+<a href="#s1-4">1-4. Napkin 업무 흐름을 그림으로 바꿔 보기</a>
 <a class="major" href="#s2">세션 2. 생성형 AI 활용한 함수 생성</a>
 <a href="#s2-1">2-1. 먼저 데이터 파악하기 (P1)</a>
 <a href="#s2-2">2-2. 함수 받아 내기 (P2)</a>
@@ -270,18 +278,16 @@ td .tag{margin-bottom:2px}
   </aside>
   <main>
     <header class="hero">
-      <div class="kicker">기업 출강 · AI DATA WORKFLOW · 초벌 교안 v0.2 · 2026.10.14 (수) 강의</div>
+      <div class="kicker">AI DATA WORKFLOW · 초벌 교안 v0.2 · 2026.10.14 (수) 강의</div>
       <h1>생성형 AI로<br><em>데이터를 정리하고, 분석하고, 보고</em>까지</h1>
       <p>오늘은 AI와 함께 데이터 업무를 처음부터 끝까지 해 보는 날이에요. 실무처럼 정리가 필요한 시트 한 장을 받아서 정리하고, 집계하고, 분석 질문을 던지고, 보고서 한 장으로 마무리해 볼 거예요. 하루 동안 같은 데이터 하나를 끝까지 끌고 가면서, 여러분의 업무에 그대로 옮겨 쓸 수 있는 프롬프트 세트와 검증 습관을 가져가시면 됩니다.</p>
       <div class="hero-grid">
         <div><b>일정</b><span>10월 14일(수) 10:00–17:00</span></div>
-        <div><b>대상</b><span>데이터를 다루는 실무자</span></div>
         <div><b>도구</b><span>ChatGPT · Napkin AI · 엑셀</span></div>
         <div><b>실습 데이터</b><span>주문 125행 + 고객 문의 45건</span></div>
       </div>
     </header>
     <section class="section" id="overview"><div class="section-label">OVERVIEW</div><h2>교육 개요</h2><div class="table-wrap"><table>
-<tr><th>대상</th><td>엑셀로 데이터를 다루는 실무자 (기업 출강)</td></tr>
 <tr><th>시간</th><td>10:00–17:00 (점심 12:30–13:30, 실습 6시간)</td></tr>
 <tr><th>도구</th><td><span class="tag tag-req">ChatGPT</span>프롬프트 작성, 함수 생성, 파일 분석<br/><span class="tag tag-req nap">Napkin AI</span>텍스트를 도식·인포그래픽으로 시각화<br/><span class="tag tag-req sheet">엑셀</span>함수·수식 적용, 정리, 집계</td></tr>
 <tr><th>교육 목표</th><td>AI를 활용해 데이터 시트를 분석하고 함수·수식·정리 규칙을 생성하여, 데이터 정리 → 요약 → 분석 질문 → 결과 정리까지 AI 중심 워크플로우로 수행할 수 있다</td></tr>
@@ -289,15 +295,28 @@ td .tag{margin-bottom:2px}
 </table></div></section>
 
 <section class="section" id="prep"><div class="section-label">PREPARE</div><h2>수업 전 준비</h2><p>오늘 수업은 브라우저와 엑셀로 진행해요. 아래 세 가지만 미리 준비해 오시면 됩니다.</p><ul>
-<li><b>ChatGPT 계정:</b> 로그인된 상태로 와 주세요. 무료 플랜으로도 충분히 따라올 수 있어요. 파일 업로드·데이터 분석 횟수에 한도가 있어서, 한도에 도달하면 표를 텍스트로 붙여넣는 방식으로 이어가면 됩니다.</li>
+<li><b>ChatGPT 계정:</b> <a href="https://chatgpt.com" rel="noopener" target="_blank">chatgpt.com</a>에서 로그인된 상태로 와 주세요. 무료 플랜으로도 충분히 따라올 수 있어요. 파일 업로드·데이터 분석 횟수에 한도가 있어서, 한도에 도달하면 표를 텍스트로 붙여넣는 방식으로 이어가면 됩니다.</li>
 <li><b>Napkin AI 계정:</b> <a href="https://www.napkin.ai" rel="noopener" target="_blank">napkin.ai</a>에서 가입하고 로그인해 주세요. ChatGPT와는 별도 사이트라서 로그인이 따로 필요해요.</li>
-<li><b>엑셀:</b> Microsoft 365를 권장해요. 다운로드한 CSV 파일은 엑셀로 열면 됩니다.</li>
-</ul><div class="topic" id="prep-1"><h3>설치·가입·참고 링크</h3><p>수업 전에 미리 열어 두면 좋은 링크예요. 가입이 필요한 도구는 수업 전에 로그인까지 해 주세요.</p><div class="resource-list"><div class="resource-card"><b>ChatGPT</b><span class="small">가입·로그인과 데스크톱 앱 다운로드</span><br/><a href="https://chatgpt.com" rel="noopener" target="_blank">chatgpt.com</a><br/><a href="https://openai.com/chatgpt/download/" rel="noopener" target="_blank">데스크톱 앱 다운로드</a><br/></div><div class="resource-card"><b>Napkin AI</b><span class="small">가입·로그인 후 사용</span><br/><a href="https://www.napkin.ai" rel="noopener" target="_blank">napkin.ai</a><br/></div><div class="resource-card"><b>Microsoft Excel</b><span class="small">Microsoft 365 설치·구독 안내</span><br/><a href="https://www.microsoft.com/microsoft-365/excel" rel="noopener" target="_blank">microsoft.com/microsoft-365/excel</a><br/></div><div class="resource-card"><b>엑셀 함수 도움말</b><span class="small">함수 이름으로 검색해 사용법 확인</span><br/><a href="https://support.microsoft.com/ko-kr/excel" rel="noopener" target="_blank">support.microsoft.com</a><br/></div><div class="resource-card"><b>ChatGPT 도움말 센터</b><span class="small">파일 업로드·플랜별 기능 안내</span><br/><a href="https://help.openai.com" rel="noopener" target="_blank">help.openai.com</a><br/></div><div class="resource-card"><b>실습 파일 (CSV)</b><span class="small">클릭하면 바로 내려받기</span><br/><a href="https://loreenkim0301.github.io/swy-lecturenote/261014-ai-data-sheet/data/orders_raw.csv" rel="noopener" target="_blank">orders_raw.csv</a><br/><a href="https://loreenkim0301.github.io/swy-lecturenote/261014-ai-data-sheet/data/products.csv" rel="noopener" target="_blank">products.csv</a><br/><a href="https://loreenkim0301.github.io/swy-lecturenote/261014-ai-data-sheet/data/voc.csv" rel="noopener" target="_blank">voc.csv</a><br/></div></div></div><div class="topic" id="prep-2"><h3>실습 파일</h3><p>오늘 실습은 가상의 온라인 생활용품 쇼핑몰 "셀렉트마켓"의 2026년 3분기(7~9월) 데이터로 해요. 실제 업무 파일처럼 정리할 거리가 곳곳에 들어 있어요.</p><div class="sample-link"><a class="resource-link" download="" href="./data/orders_raw.csv" target="_blank">orders_raw.csv</a><a class="resource-link" download="" href="./data/products.csv" target="_blank">products.csv</a><a class="resource-link" download="" href="./data/voc.csv" target="_blank">voc.csv</a></div><div class="table-wrap"><table>
-<tr><th>파일</th><th>내용</th><th>쓰는 세션</th></tr>
-<tr><td>orders_raw.csv</td><td>주문 내역 125행. 열: 주문번호, 주문일, 지역, 채널, 담당자, 상품코드, 수량, 단가, 결제상태</td><td>세션 2~6</td></tr>
-<tr><td>products.csv</td><td>상품 마스터 6행. 열: 상품코드, 상품명, 카테고리, 정가</td><td>세션 2 (조회 함수)</td></tr>
-<tr><td>voc.csv</td><td>고객 문의·리뷰 45건. 열: 접수번호, 접수일, 접수경로, 내용</td><td>세션 5~6 (분류·요약)</td></tr>
-</table></div><div class="notice"><b>파일 여는 법:</b> 다운로드한 파일은 엑셀로 열어 주세요. <code class="inline">orders_raw.csv</code>와 <code class="inline">products.csv</code>를 한 파일의 시트 두 개(<code class="inline">orders</code>, <code class="inline">products</code>)로 만들어 두고 시작할게요.</div></div></section>
+<li><b>엑셀:</b> <a href="https://www.microsoft.com/microsoft-365/excel" rel="noopener" target="_blank">Microsoft 365</a>를 권장해요. 다운로드한 CSV 파일은 엑셀로 열면 됩니다.</li>
+</ul><div class="topic" id="prep-1"><h3>실습 파일</h3><p>오늘 실습은 가상의 온라인 생활용품 쇼핑몰 "셀렉트마켓"의 2026년 3분기(7~9월) 데이터로 해요. 실제 업무 파일처럼 정리할 거리가 곳곳에 들어 있어요. 아래 3개의 파일을 다운로드해 주세요.</p><div class="dl-list">
+<a class="dl-card" download="" href="./data/orders_raw.csv"><span class="dl-ico">CSV</span><span class="dl-body"><b>orders_raw.csv</b><span>주문 내역 125행 · 주문번호, 주문일, 지역, 채널, 담당자, 상품코드, 수량, 단가, 결제상태</span><span>세션 2~6에서 사용</span></span><span class="dl-btn">⬇ 다운로드</span></a>
+<a class="dl-card" download="" href="./data/products.csv"><span class="dl-ico">CSV</span><span class="dl-body"><b>products.csv</b><span>상품 목록 6행 · 상품코드, 상품명, 카테고리, 정가</span><span>세션 2에서 사용</span></span><span class="dl-btn">⬇ 다운로드</span></a>
+<a class="dl-card" download="" href="./data/voc.csv"><span class="dl-ico">CSV</span><span class="dl-body"><b>voc.csv</b><span>고객 문의·리뷰 45건 · 접수번호, 접수일, 접수경로, 내용</span><span>세션 5~6에서 사용</span></span><span class="dl-btn">⬇ 다운로드</span></a>
+</div><div class="notice"><b>파일 열어서 살펴보기</b><br/>바탕화면(또는 다운로드 폴더)에서 방금 받은 파일을 찾아 더블클릭해 주세요. 엑셀이 설치되어 있으면 자동으로 엑셀로 열려요. 열렸다면 어떤 데이터가 들어 있는지 천천히 훑어보세요.</div><p>엑셀에서 쓰는 단어를 먼저 알아 둘게요. 이 단어들은 오늘 계속 나와요.</p><div class="table-wrap"><table>
+<tr><th>용어</th><th>뜻</th><th>화면에서는</th></tr>
+<tr><td>열</td><td>세로로 이어진 칸의 줄</td><td>위쪽의 A, B, C… 글자가 열 이름이에요</td></tr>
+<tr><td>행</td><td>가로로 이어진 칸의 줄</td><td>왼쪽의 1, 2, 3… 숫자가 행 번호예요. 주문 한 건이 한 행이에요</td></tr>
+<tr><td>셀</td><td>칸 하나</td><td>열과 행을 합쳐 C5처럼 불러요</td></tr>
+<tr><td>머리글</td><td>맨 첫 행에 적힌 열 제목</td><td>주문번호, 주문일, 지역…</td></tr>
+<tr><td>시트</td><td>엑셀 파일 안의 한 장</td><td>화면 아래쪽 탭으로 보여요</td></tr>
+</table></div><p>용어를 알았다면, 아래 내용을 하나씩 확인하면서 <code class="inline">orders_raw.csv</code>를 살펴보세요. 확인한 내용은 세션 2에서 AI와 함께 정리해요.</p><ul class="checklist">
+<li>열 이름(머리글)에는 어떤 것들이 있나요?</li>
+<li>행은 모두 몇 개인가요? 맨 아래로 내려가 행 번호를 확인해 보세요.</li>
+<li>비어 있는 칸이 있나요? 수량 열을 위에서 아래로 훑어보세요.</li>
+<li>같은 뜻인데 다르게 적힌 값이 있나요? 지역 열을 살펴보세요.</li>
+<li>날짜(주문일)가 모두 같은 모양인가요?</li>
+<li>숫자 열(수량, 단가)에 "개", "원" 같은 글자가 섞여 있나요?</li>
+</ul><div class="notice"><code class="inline">orders_raw.csv</code>와 <code class="inline">products.csv</code>는 세션 2에서 한 엑셀 파일 안의 시트 두 개(<code class="inline">orders</code>, <code class="inline">products</code>)로 합쳐서 쓸 거예요. 지금은 열어서 살펴보기만 하면 돼요.</div></div></section>
 <section class="section" id="timetable"><div class="section-label">TIMETABLE</div><h2>타임테이블</h2><p>오전에는 일하는 방식(워크플로우)과 함수 생성을, 오후에는 같은 데이터를 가공하고 분석해서 보고서로 만드는 흐름으로 진행해요. Napkin AI는 오전에 한 번 가볍게 써 보고, 오후 보고 단계에서 본격적으로 사용할 거예요.</p><div class="table-wrap"><table>
 <tr><th>시간</th><th>세션</th><th>내용</th><th>도구</th></tr>
 <tr><td>10:00–11:00</td><td>1. 생성형 AI로 데이터 분석 '워크플로우' 만들기</td><td><ul class="tt"><li>반복 분석 업무 패턴 파악</li><li>프롬프트 입력 구조</li><li>프롬프트 세트 배포</li><li>워크플로우 도식화</li></ul></td><td><span class="tag tag-req">ChatGPT</span><span class="tag tag-req nap">Napkin</span></td></tr>
@@ -308,30 +327,58 @@ td .tag{margin-bottom:2px}
 <tr><td>15:30–16:30</td><td>5. 문제 이해와 인사이트 도출</td><td><ul class="tt"><li>분석 결과에서 개선 포인트 찾기</li><li>텍스트 데이터 자동 분류·요약</li><li>한 장 요약</li></ul></td><td><span class="tag tag-req">ChatGPT</span><span class="tag tag-req nap">Napkin</span></td></tr>
 <tr><td>16:30–17:00</td><td>6. 리포트 자동화 구현</td><td><ul class="tt"><li>분류·요약·초안 생성을 묶어 개인 업무 자동화 설계</li></ul></td><td><span class="tag tag-req">ChatGPT</span></td></tr>
 </table></div></section>
-<section class="section session" id="s1"><div class="session-head"><div class="eyebrow">SESSION 1 · 10:00–11:00</div><h2>생성형 AI로 데이터 분석 '워크플로우' 만들기</h2><p>이 시간에는 먼저 <b>내 업무를 스케치</b>하고, 그 업무를 5가지 단계(파악 · 정리 · 요약 · 분석 · 보고)로 쪼개서 살펴봐요. 어떤 단계에서 데이터 분석이 일어나는지 확인하면서, 내 업무 방식을 <b>하나의 프로세스</b>로 정의해 볼 거예요. 이렇게 정의해 두면 AI에게 "무엇을, 어느 단계에서 부탁할지"가 분명해져요. 그다음에 프롬프트 쓰는 틀을 잡습니다.</p></div><div class="topic" id="s1-1"><h3>1-1. 내 업무를 스케치하고 5단계로 쪼개기</h3><p>세 단계로 진행해요. 먼저 메모장에 내 업무를 자유롭게 적고, 그중에서 데이터를 다루는 일을 찾은 다음, 그 일을 5단계로 쪼개 봅니다.</p><p><b>STEP 1. 메모장에 내 업무 스케치하기 (5분)</b></p><div class="procedure"><div>메모장(또는 빈 문서)을 열어요.</div><div>하루를 <b>타임라인 순서</b>로 적어요. 출근해서 퇴근할 때까지 한 일을 시간 순서대로 써 보세요. 하루가 매번 다르다면 월~금 <b>요일 순서</b>로 써도 좋아요.</div><div>적은 일 중에서 <b>엑셀 파일이나 숫자, 표를 다루는 일</b>에 별표(★)를 쳐요. 이 별표가 바로 오늘 AI와 함께 풀어 볼 "데이터 업무"예요.</div></div><div class="notice"><b>이렇게 적어요 (예시)</b><br/>월요일 09:30 주문 엑셀 내려받기 ★<br/>월요일 10:00 팀 회의<br/>월요일 11:00 지난주 지역별 매출 합계 만들기 ★<br/>월요일 14:00 팀장님께 주간 매출 보고 ★</div><p><b>STEP 2. 별표 업무를 5단계로 쪼개기 (10분)</b></p><p>별표 친 업무 중 하나를 골라서, 아래 표의 5단계에 맞춰 내 업무를 다시 적어 봐요. 표의 예시는 오늘 실습할 "셀렉트마켓" 주문 데이터로 적었어요.</p><div class="table-wrap"><table>
+<section class="section session" id="s1"><div class="session-head"><div class="eyebrow">SESSION 1 · 10:00–11:00</div><h2>생성형 AI로 데이터 분석 '워크플로우' 만들기</h2><p>이 시간에는 먼저 <b>내 업무를 스케치</b>하고, 그 업무를 5가지 단계(파악 · 정리 · 요약 · 분석 · 보고)로 쪼개서 살펴봐요. 어떤 단계에서 데이터 분석이 일어나는지 확인하면서, 내 업무 방식을 <b>하나의 프로세스</b>로 정의해 볼 거예요. 이렇게 정의해 두면 AI에게 "무엇을, 어느 단계에서 부탁할지"가 분명해져요. 그다음에 프롬프트 쓰는 틀을 잡습니다.</p></div><div class="topic" id="s1-1"><h3>1-1. 내 업무를 스케치하고 5단계로 쪼개기</h3><p>네 단계로 진행해요. 먼저 메모장에 내 업무를 자유롭게 적고, 그중에서 데이터를 다루는 일을 찾아요. 그다음 그 일을 내 손으로 직접 풀어서 써 보고, 마지막에 AI와 함께 표로 정리해서 파일로 저장합니다.</p><p><b>STEP 1. 메모장에 내 업무 스케치하기</b></p><div class="procedure"><div>메모장(또는 빈 문서)을 열어요.</div><div>하루를 <b>타임라인 순서</b>로 적어요. 출근해서 퇴근할 때까지 한 일을 시간 순서대로 써 보세요. 하루가 매번 다르다면 월~금 <b>요일 순서</b>로 써도 좋아요.</div><div>적은 일 중에서 <b>엑셀 파일이나 숫자, 표를 다루는 일</b>에 별표(★)를 쳐요. 이 별표가 바로 오늘 AI와 함께 풀어 볼 "데이터 업무"예요.</div></div><div class="notice"><b>이렇게 적어요 (예시)</b><br/>월요일 09:30 주문 엑셀 내려받기 ★<br/>월요일 10:00 팀 회의<br/>월요일 11:00 지난주 지역별 매출 합계 만들기 ★<br/>월요일 14:00 팀장님께 주간 매출 보고 ★</div><p><b>STEP 2. 3가지 업무를 풀어서 직접 써 보기</b></p><p>이 수업에서는 아래 세 가지 업무를 예로 들게요. 내 업무에 별표 친 일이 있다면 그 일로 바꿔도 좋아요.</p><ul>
+<li>① 주문 엑셀 내려받기</li>
+<li>② 지역별 매출 합계 만들기</li>
+<li>③ 주간 매출 보고하기</li>
+</ul><p>이 세 가지를 내가 실제로 어떻게 진행하는지, 어디를 누르고 무엇을 입력하는지를 <b>줄줄이 풀어서 직접 써 보세요.</b> 여기서는 AI를 쓰지 않고 내 손으로 써야 해요. 내가 어떻게 일하는지는 나만 알고 있기 때문이에요.</p><div class="notice"><b>이렇게 풀어서 써요 (① 예시)</b><br/>1. 쇼핑몰 관리자 페이지에 로그인한다.<br/>2. 왼쪽 메뉴에서 [주문 관리]를 누른다.<br/>3. 기간을 지난주 월요일~일요일로 바꾸고 [검색]을 누른다.<br/>4. 오른쪽 위의 [엑셀 다운로드]를 눌러 바탕화면에 저장한다.<br/>5. 저장한 파일을 열어 맨 위 열 이름과 행 개수를 확인한다.</div><p>글을 쓰다가 참고가 될 만한 자료가 있으면 메모장에 같이 모아 두세요.</p><ul>
+<li>내가 로그인하는 관리자 페이지 주소(링크)</li>
+<li>엑셀을 내려받는 화면을 캡처한 이미지</li>
+<li>지금 쓰고 있는 보고서 양식 파일</li>
+</ul><p>이 자료들은 다음 단계에서 AI에게 내 업무를 정확히 알려 주는 재료가 돼요.</p><p><b>STEP 3. AI로 표 만들기</b></p><p>이제 AI를 쓸 차례예요. STEP 2에서 쓴 글을 ChatGPT에게 보여 주고, 표로 정리해 달라고 요청해요. 아래 프롬프트를 복사해서 ChatGPT에 붙여 넣고, [ ] 부분을 내 내용으로 바꿔 보내세요.</p><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>나는 [직무]이고, 아래는 내가 하는 업무 3가지를 직접 풀어서 쓴 글이야.
+[STEP 2에서 쓴 글 붙여넣기]
+
+이 3가지 업무를 하나의 표로 정리해 줘.
+- 행: 업무 3가지 (주문 엑셀 내려받기 / 지역별 매출 합계 만들기 / 주간 매출 보고하기)
+- 열: 해당 단계(파악·정리·요약·분석·보고 중 하나) / 내가 하는 일(순서대로) / 사용하는 화면이나 도구 / 결과물
+내가 쓴 글에 없는 내용은 새로 만들지 말고, 글에 없는 칸은 '내용 없음'으로 적어 줘.</pre></div><p><b>그러면 ChatGPT가 이런 표를 만들어 줘요 (예시)</b></p><div class="table-wrap"><table>
+<tr><th>업무</th><th>해당 단계</th><th>내가 하는 일 (순서대로)</th><th>화면·도구</th><th>결과물</th></tr>
+<tr><td>주문 엑셀 내려받기</td><td>① 파악</td><td>1) 관리자 페이지에 로그인<br/>2) [주문 관리] 클릭<br/>3) 지난주 기간으로 [검색]<br/>4) [엑셀 다운로드]로 저장<br/>5) 열 이름과 행 개수 확인</td><td>쇼핑몰 관리자 페이지, 엑셀</td><td>지난주 주문 엑셀 파일</td></tr>
+<tr><td>지역별 매출 합계 만들기</td><td>③ 요약</td><td>1) 지역 열과 금액 열 확인<br/>2) 지역별로 금액을 더함<br/>3) 합계를 표로 정리</td><td>엑셀</td><td>지역별 매출 합계표</td></tr>
+<tr><td>주간 매출 보고하기</td><td>⑤ 보고</td><td>1) 합계표에서 결론 한 줄 정하기<br/>2) 근거 숫자 3개 고르기<br/>3) 한 장으로 정리해 팀장님께 보고</td><td>엑셀, 보고서 양식</td><td>주간 매출 보고서 한 장</td></tr>
+</table></div><p>위 표는 예시이고, 내가 쓴 글에 따라 내용이 달라져요. 표가 나오면 내가 쓴 글과 하나씩 비교하며 확인하세요. 내가 쓰지 않은 내용이 들어갔거나 빠진 내용이 있으면 ChatGPT에게 다시 고쳐 달라고 해요. 빠진 단계가 없는지는 ChatGPT가 알 수 없어요. 내 업무를 아는 사람은 나뿐이라서, 이 확인은 내가 해야 해요.</p><p>표의 "해당 단계"가 무슨 뜻인지 궁금하다면, 5단계를 아래 표로 정리해 두었으니 참고하세요.</p><div class="table-wrap"><table>
 <tr><th>단계</th><th>이 단계에서 하는 일</th><th>실습 방법</th><th>예시 (주문 데이터)</th></tr>
 <tr><td>① 파악</td><td>파일을 열어 어떤 열이 있고, 어떤 값이 들어 있는지 훑어봐요</td><td>1) 열 이름을 모두 적어요<br/>2) 맨 위 10행과 맨 아래 10행을 봐요<br/>3) 열마다 필터 화살표를 눌러 어떤 값이 섞여 있는지 확인해요</td><td>"지역" 열의 필터를 열었더니 서울, 서울시, seoul이 따로 나온다</td></tr>
 <tr><td>② 정리</td><td>같은 뜻인데 다르게 적힌 값을 맞추고, 중복·빈칸을 처리해요</td><td>1) 원본 열은 그대로 두고 오른쪽에 새 열을 만들어요<br/>2) 통일 규칙을 정해 새 열에 적용해요</td><td>서울시, seoul → 서울로 통일<br/>똑같은 주문 5건 삭제</td></tr>
 <tr><td>③ 요약</td><td>기준을 하나 정해서 합계·건수를 구해요</td><td>1) 기준 열을 정해요(지역, 채널, 월 등)<br/>2) 그 기준으로 합계를 구해요</td><td>지역별 매출 합계</td></tr>
 <tr><td>④ 분석</td><td>요약한 숫자를 비교하며 질문을 던지고 의미를 찾아요</td><td>1) 궁금한 질문을 하나 정해요<br/>2) 비교 대상을 정해요(지난달, 1위와 꼴찌 등)</td><td>8월 매출이 7월의 2배가 넘는데, 왜일까?</td></tr>
 <tr><td>⑤ 보고</td><td>결과를 읽는 사람이 한눈에 알 수 있게 한 장으로 정리해요</td><td>1) 결론을 한 줄로 써요<br/>2) 근거가 되는 숫자 3개를 골라요</td><td>"3분기 매출의 약 절반(50%)이 앱 채널에서 나왔다"</td></tr>
-</table></div><p>5단계에서 AI는 수식을 만들고, 초안을 쓰고, 그림을 그리는 일을 도와줘요. 무엇을 정리할지, 어떤 질문을 던질지, 결론을 뭐라고 할지는 우리가 정해요.</p><p><b>STEP 3. ChatGPT와 함께 내 업무 프로세스 정의하기 (10분)</b></p><p>STEP 1에서 적은 메모와 STEP 2에서 쪼갠 내용을 ChatGPT에게 보여 주고, 빠진 단계가 없는지 확인해 봐요.</p><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>나는 [직무]이고, 아래는 내가 하루 동안 하는 일을 시간 순서로 적은 메모야.
-(★ 표시는 엑셀이나 숫자, 표를 다루는 일이야.)
-[메모장에 적은 내용 붙여넣기]
-
-★ 표시한 일 중에서 [업무 이름]을 "파악 → 정리 → 요약 → 분석 → 보고" 5단계로 나눠 줘.
-단계마다 아래 세 가지를 표로 정리해 줘.
-1) 지금 내가 하는 일
-2) AI에게 맡길 수 있는 일
-3) 내가 직접 확인해야 하는 일
-내가 빠뜨린 단계가 있으면 알려 줘.</pre></div><div class="notice"><b>이렇게 정의하면 완성이에요 (예시)</b><br/>"주문 엑셀 내려받기 → 지역·상태 표기 통일 → 지역별 매출 합계 → 전월과 비교 → 팀장님께 한 장 보고"<br/>이렇게 내 업무를 한 줄로 이어서 적으면, 내 업무 방식이 하나의 프로세스로 정의된 거예요. 이 프로세스에서 데이터 분석이 일어나는 단계(③ 요약, ④ 분석)에 ◎ 표시를 해 두세요.</div></div><div class="topic" id="s1-2"><h3>1-2. 프롬프트 입력 구조: 5칸 채우기</h3><p>오늘 쓰는 모든 프롬프트는 같은 다섯 칸으로 되어 있어요. 다섯 칸을 모두 채우면 AI가 추측하지 않고 내 상황에 맞는 답을 줍니다.</p><div class="table-wrap"><table>
-<tr><th>칸</th><th>적는 내용</th><th>예시</th></tr>
-<tr><td>① 맥락</td><td>나의 역할, 이 작업의 목적</td><td>온라인 쇼핑몰 운영 담당, 분기 매출 보고용</td></tr>
-<tr><td>② 데이터</td><td>열 이름, 예시 행, 사용하는 도구</td><td>A열 주문번호, B열 주문일 … / 엑셀 365</td></tr>
-<tr><td>③ 요청</td><td>해 달라는 일 한 가지</td><td>지역 표기를 5개로 통일하는 수식</td></tr>
-<tr><td>④ 출력 형식</td><td>답을 받고 싶은 모양</td><td>수식 1개 + 한 줄 설명 + 적용 순서</td></tr>
-<tr><td>⑤ 검증</td><td>맞는지 확인할 방법까지 요청</td><td>수식이 틀렸을 때 나타나는 증상과 확인 방법</td></tr>
-</table></div><div class="notice"><b>비교해 볼까요?</b> "지역 정리하는 함수 알려 줘"(③만 있는 요청)와, 같은 요청에 ②(열 위치, 도구, 값의 예시)를 더한 요청을 나란히 비교해 볼게요. ②를 더하는 것만으로 바로 쓸 수 있는 수식을 받을 수 있어요.</div></div><div class="topic" id="s1-3"><h3>1-3. 오늘 쓸 프롬프트 세트</h3><p>아래 표가 오늘의 지도예요. 각 프롬프트의 전체 내용은 해당 세션에 있고, 수업이 끝나면 여러분의 업무에 맞게 바꿔 쓰시면 됩니다.</p><div class="table-wrap"><table>
+</table></div><p><b>STEP 4. 만들어진 결과를 문서로 다운받아 볼까요?</b></p><p>ChatGPT가 만든 표는 대화창 안에만 있어요. 이 표를 동료에게 보내거나 보고에 쓰려면 파일로 받아 두면 편해요. 같은 표를 <b>Word 문서, 엑셀 파일, .html 파일</b> 세 가지로 받아 보면서 프롬프트로 파일을 요청하는 연습을 해 볼게요. 세 가지를 모두 해 봐도 좋고, 내 업무에 필요한 것만 골라도 좋아요. 모든 방법은 STEP 3에서 표를 만든 같은 대화창에서 이어서 요청해요.</p><p><b>방법 A. Word 문서(.docx)로 받기</b></p><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>방금 만든 표를 Word 문서(.docx) 파일로 만들어 줘.
+- 제목은 '내 업무 프로세스'로 해 줘
+- 표 아래에 전체 흐름을 한 줄로 요약해서 넣어 줘
+- 다운로드할 수 있는 파일로 줘</pre></div><div class="procedure"><div>ChatGPT가 다운로드 링크를 주면 링크를 눌러 파일을 저장해요.</div><div>저장한 파일을 더블클릭해 Word로 열어요.</div><div>표가 그대로 들어갔는지, 한글이 잘 보이는지 확인해요.</div></div><p><b>방법 B. 엑셀 파일(.xlsx)로 받기</b></p><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>방금 만든 표를 엑셀(.xlsx) 파일로 만들어 줘.
+- 시트 이름은 '업무프로세스'로 해 줘
+- 첫 행은 열 제목으로 하고, 열 너비는 내용에 맞게 조절해 줘
+- 다운로드할 수 있는 파일로 줘</pre></div><div class="procedure"><div>다운로드 링크를 눌러 파일을 저장해요.</div><div>저장한 파일을 더블클릭해 엑셀로 열어요.</div><div>열 제목이 첫 행에 있고, 칸마다 내용이 나뉘어 들어갔는지 확인해요.</div></div><p><b>방법 C. 웹문서(.html)로 받기</b></p><p><code class="inline">.html</code> 파일은 크롬 같은 웹 브라우저로 여는 문서예요. 웹페이지처럼 열려서 보기 좋게 공유하기 좋아요.</p><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>방금 만든 표를 .html 파일 하나로 만들어 줘.
+- 맨 위에 제목: '내 업무 프로세스'
+- 표는 깔끔한 디자인으로, 단계별로 다른 색 띠를 넣어 줘
+- 한글이 깨지지 않도록 UTF-8로 작성해 줘
+- 다운로드할 수 있는 파일로 줘. 파일로 줄 수 없으면 코드 전체를 코드 블록 하나로 줘.</pre></div><p>ChatGPT가 다운로드 링크를 주면, 링크를 눌러 저장하고 저장된 파일을 더블클릭하면 브라우저에서 열려요. 코드 블록으로 주면 아래 순서대로 .html 파일을 만들어요.</p><div class="procedure"><div>코드 블록 오른쪽 위의 [복사] 버튼을 눌러요.</div><div>메모장(Windows) 또는 텍스트 편집기(Mac)를 열고 붙여넣어요. Mac은 메뉴에서 [포맷 → 일반 텍스트 만들기]를 먼저 선택해요.</div><div>[파일 → 저장]을 눌러 파일 이름을 <code class="inline">내업무프로세스.html</code>로 적어요. 끝의 <code class="inline">.html</code>까지 꼭 써야 해요. Windows는 파일 형식을 '모든 파일'로, 인코딩을 UTF-8로 골라 주세요.</div><div>저장한 파일을 더블클릭해요. 크롬 같은 브라우저가 열리면서 표가 보이면 성공이에요.</div></div><div class="table-wrap"><table>
+<tr><th>파일 종류</th><th>이럴 때 좋아요</th></tr>
+<tr><td>Word (.docx)</td><td>글로 정리해서 공유하거나, 문장을 고쳐서 문서로 쓸 때</td></tr>
+<tr><td>엑셀 (.xlsx)</td><td>표를 이어서 계산하거나 정리할 때</td></tr>
+<tr><td>웹문서 (.html)</td><td>브라우저에서 보기 좋게 바로 열어 보여 줄 때</td></tr>
+</table></div><div class="notice">파일로 만들 수 없다고 답하거나 다운로드 링크가 나오지 않으면, 표를 복사해서 Word나 엑셀에 직접 붙여 넣어도 돼요. 이 파일이 1-1의 결과물이에요.</div></div><div class="topic" id="s1-2"><h3>1-2. 프롬프트 엔지니어링: ChatGPT에 잘 요청하는 법</h3><p>방금 STEP 3과 STEP 4에서 ChatGPT에게 요청을 여러 번 했어요. 이렇게 AI에게 주는 요청 글을 <b>프롬프트</b>라고 하고, 원하는 결과가 나오도록 프롬프트를 설계하고 다듬는 일을 <b>프롬프트 엔지니어링</b>이라고 해요. 어렵게 들리지만 사람에게 일을 부탁하는 것과 같아요. 처음 만난 동료에게 "자료 정리해 줘"라고만 하면 무엇을 어떻게 정리할지 몰라서 엉뚱한 결과가 나오죠. AI도 마찬가지예요.</p><p>그래서 요청을 쓸 때 빠뜨리지 않으면 좋은 다섯 칸이 있어요. 하나씩 직접 해 보면서 익혀 볼게요. 오늘 오후에 쓰는 프롬프트도 모두 이 다섯 칸으로 되어 있어요. 연습에는 하나의 문제를 계속 써요. 주문 데이터의 <b>지역 열에 같은 지역이 다르게 적혀 있는 것</b>(서울, 서울시, 서울특별시, seoul)을 하나로 맞추는 일이에요.</p><p><b>연습 0. 요청만 있는 프롬프트</b></p><p>먼저 가장 간단한 프롬프트를 ChatGPT에 보내고, 어떤 답이 나오는지 눈여겨보세요. 나중에 비교할 거예요.</p><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>지역 정리하는 함수 알려 줘</pre></div><p>어떤 엑셀인지, 지역이 어떻게 적혀 있는지 모르니 일반적인 설명이 나올 거예요. 이제 칸을 하나씩 채워 볼게요.</p><p><b>① 맥락: 나는 누구이고, 왜 하는 일인가</b></p><p><b>개념</b> AI는 나를 모르기 때문에, 내 역할과 이 일의 목적을 알려 주면 답의 수준과 방향이 맞춰져요.<br/><b>쓰는 법</b> "나는 ~이고, ~하려고 한다"로 한두 문장 써요.<br/><b>연습</b> 연습 0의 프롬프트 앞에 아래 문장을 붙여서 다시 보내 보세요.</p><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>[맥락] 나는 온라인 쇼핑몰 운영 담당자이고, 3분기 매출 보고서를 만들려고 한다.</pre></div><p><b>② 데이터: 무엇을 가지고 있는가</b></p><p><b>개념</b> AI는 내 파일을 볼 수 없어요. 열 이름과 실제 값의 예시, 사용하는 도구를 알려 주어야 내 파일에 딱 맞는 수식이 나와요.<br/><b>쓰는 법</b> 열 이름, 예시 값 2~3개, 도구(엑셀 365 등)를 써요.<br/><b>연습</b> ① 아래에 이어서 붙여 보세요.</p><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>[데이터] 엑셀 365를 쓴다. C열 '지역'에 서울, 서울시, 서울특별시, seoul이 섞여 있다.</pre></div><p><b>③ 요청: 해 달라는 일 한 가지</b></p><p><b>개념</b> 한 번에 한 가지만 부탁해요. 여러 가지를 한꺼번에 시키면 답이 흐려져요.<br/><b>쓰는 법</b> "~를 하는 수식(또는 표, 글)을 만들어 줘"처럼 결과물이 보이게 써요.<br/><b>연습</b> ② 아래에 이어서 붙여 보세요.</p><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>[요청] 이 값들을 모두 '서울'로 통일하는 수식을 D2 셀에 넣고 싶다.</pre></div><p><b>④ 출력 형식: 어떤 모양으로 받고 싶은가</b></p><p><b>개념</b> 답의 모양을 정해 주면 바로 쓸 수 있는 형태로 받아요. 정하지 않으면 AI가 긴 설명을 쓰기도 해요.<br/><b>쓰는 법</b> "수식 1개와 한 줄 설명", "표로", "3줄 이내"처럼 써요.<br/><b>연습</b> ③ 아래에 이어서 붙여 보세요.</p><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>[출력 형식] 수식 1개와 한 줄 설명으로 알려 줘.</pre></div><p><b>⑤ 검증: 맞는지 확인할 방법까지</b></p><p><b>개념</b> AI는 틀린 답도 자신 있게 말해요. 그래서 확인할 방법을 같이 요청해 두면 내가 바로 맞는지 볼 수 있어요.<br/><b>쓰는 법</b> "테스트해 볼 값과 기대 결과도 알려 줘", "틀릴 수 있는 경우를 알려 줘"처럼 써요.<br/><b>연습</b> ④ 아래에 이어서 붙여 보세요.</p><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>[검증] 이 수식을 테스트해 볼 값 3개와 기대 결과를 함께 알려 줘.</pre></div><p><b>완성한 프롬프트로 비교해 보기</b></p><p>다섯 칸을 모두 이어 붙이면 아래 프롬프트가 돼요. 새 대화창에서 이 프롬프트를 보내고, 연습 0의 답과 비교해 보세요. 수식을 바로 복사해 쓸 수 있고, 맞는지 확인할 테스트 값까지 받을 수 있어요.</p><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>[맥락] 나는 온라인 쇼핑몰 운영 담당자이고, 3분기 매출 보고서를 만들려고 한다.
+[데이터] 엑셀 365를 쓴다. C열 '지역'에 서울, 서울시, 서울특별시, seoul이 섞여 있다.
+[요청] 이 값들을 모두 '서울'로 통일하는 수식을 D2 셀에 넣고 싶다.
+[출력 형식] 수식 1개와 한 줄 설명으로 알려 줘.
+[검증] 이 수식을 테스트해 볼 값 3개와 기대 결과를 함께 알려 줘.</pre></div><p>방금 STEP 3에서 쓴 프롬프트도 이 틀로 쓴 거예요.</p><ul>
+<li>① 맥락: "나는 [직무]이고, 아래는 내가 하는 업무 3가지를 직접 풀어서 쓴 글이야."</li>
+<li>② 데이터: "[STEP 2에서 쓴 글 붙여넣기]"</li>
+<li>③ 요청: "이 3가지 업무를 하나의 표로 정리해 줘."</li>
+<li>④ 출력 형식: "행은 업무 3가지, 열은 해당 단계 / 내가 하는 일 / 사용하는 화면이나 도구 / 결과물"</li>
+<li>⑤ 검증: "내가 쓴 글에 없는 내용은 새로 만들지 말고, 없는 칸은 '내용 없음'으로 적어 줘."</li>
+</ul></div><div class="topic" id="s1-3"><h3>1-3. 오늘 쓸 프롬프트 모음 (프롬프트 세트)</h3><p>오늘 오후에는 ChatGPT에게 요청할 일이 많아요. 그때마다 1-2의 다섯 칸을 처음부터 채우면 힘드니까, 미리 만들어 둔 프롬프트를 P1~P9로 번호를 붙여 드릴게요. 이 모음을 <b>프롬프트 세트</b>라고 불러요. 수업이 끝난 뒤에도 그대로 가져가서 쓰실 수 있어요.</p><p>사용법은 세 단계예요.</p><div class="procedure"><div>해당 세션에서 번호에 맞는 프롬프트 박스를 찾아 [복사]를 눌러요.</div><div>ChatGPT에 붙여넣고, [ ] 안의 내용을 내 업무에 맞게 바꿔요.</div><div>결과가 나오면 프롬프트에 적힌 검증 방법대로 확인해요.</div></div><div class="table-wrap"><table>
 <tr><th>번호</th><th>이름</th><th>언제 쓰나</th><th>세션</th></tr>
 <tr><td>P1</td><td>데이터 파악</td><td>처음 받은 파일의 구조와 정리 항목을 훑을 때</td><td>2</td></tr>
 <tr><td>P2</td><td>함수 생성</td><td>필요한 수식을 말로 설명해 받을 때</td><td>2</td></tr>
@@ -342,7 +389,19 @@ td .tag{margin-bottom:2px}
 <tr><td>P7</td><td>보고 포맷</td><td>결과를 정해진 틀로 정리할 때</td><td>4</td></tr>
 <tr><td>P8</td><td>텍스트 분류·요약</td><td>문의·리뷰 같은 글 데이터를 다룰 때</td><td>5</td></tr>
 <tr><td>P9</td><td>리포트 자동화</td><td>위 과정을 한 번에 돌릴 때</td><td>6</td></tr>
-</table></div></div><div class="topic" id="s1-4"><h3>1-4. <span class="tag tag-req nap">Napkin</span> 첫 사용: 내 워크플로우를 그림으로</h3><p>Napkin AI는 글을 붙여 넣으면 그 내용에 맞는 도식·인포그래픽을 만들어 주는 도구예요. ChatGPT가 글과 숫자를 만든다면, Napkin은 그 글을 "보여 줄 수 있는 그림"으로 바꿔 줘요. 오후 보고서 작성에 쓰기 위해, 지금 먼저 한 번 써 볼게요.</p><div class="procedure"><div><a href="https://www.napkin.ai" rel="noopener" target="_blank">napkin.ai</a> 접속 → 가입·로그인</div><div>새 문서(New Napkin)를 만들고, 1-1에서 ChatGPT가 정리해 준 5단계 워크플로우 글을 붙여 넣어 보세요</div><div>문단 옆에 나타나는 생성 아이콘을 눌러 시각화 후보를 보고, 마음에 드는 형태를 선택하세요</div><div>글자·색·아이콘을 직접 수정한 뒤 이미지(PNG)로 내보내 보세요</div></div><div class="notice"><b>ChatGPT에게 Napkin용 글을 받는 요령:</b> Napkin은 구조가 분명한 짧은 글에서 좋은 그림을 만들어요. "위 내용을 Napkin AI에 넣어 도식으로 만들 거야. 단계 이름은 6자 이내, 단계별 설명은 한 줄로, 번호 목록 형태로 다시 써 줘."라고 요청한 뒤 붙여 넣어 보세요.</div></div></section>
+</table></div></div><div class="topic" id="s1-4"><h3>1-4. <span class="tag tag-req nap">Napkin</span> 업무 흐름을 그림으로 바꿔 보기</h3><p>방금 표로 정리한 내 업무 순서를 이번에는 그림으로 바꿔 볼게요. 그림으로 보면 순서와 흐름이 한눈에 들어와요. 이렇게 업무 순서를 그림으로 그리는 일을 도식화라고 해요. 먼저 오늘 자주 나올 용어를 정리하고, 그다음 Napkin AI를 직접 써 봅니다.</p><div class="table-wrap"><table>
+<tr><th>용어</th><th>뜻</th><th>오늘 수업에서는</th></tr>
+<tr><td>워크플로우 (workflow)</td><td>일이 시작해서 끝나기까지 흐르는 순서</td><td>파악 → 정리 → 요약 → 분석 → 보고</td></tr>
+<tr><td>프로세스</td><td>일을 진행하는 방식과 절차. 워크플로우와 거의 같은 뜻으로 써요</td><td>1-1에서 정의한 내 업무 방식</td></tr>
+<tr><td>도식화</td><td>글이나 표를 도형과 화살표로 한눈에 보이게 그리는 것</td><td>내 업무 순서를 그림으로 그리기</td></tr>
+<tr><td>시각화</td><td>글이나 숫자를 그림·차트로 바꿔 보여 주는 것</td><td>세션 4에서 매출 차트 만들기</td></tr>
+<tr><td>인포그래픽</td><td>정보를 그림과 짧은 글로 정리한 한 장짜리 그림</td><td>Napkin이 만들어 주는 결과물</td></tr>
+</table></div><p>Napkin AI는 글을 붙여 넣으면 그 내용에 맞는 그림을 만들어 주는 도구예요. 짧고 구조가 분명한 글에서 그림을 잘 만들어요. 3가지 업무를 이어서 아래처럼 한 글로 정리해 보았어요. 이 글을 메모장에 복사해 두고 따라 해 보세요.</p><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>주간 매출 보고 업무 흐름
+1. 파악: 쇼핑몰 관리자에서 주문 엑셀을 내려받아 열 이름과 값을 훑어본다
+2. 정리: 지역과 결제상태 표기를 통일하고 중복 주문을 지운다
+3. 요약: 지역별 매출 합계를 만든다
+4. 분석: 지난주와 비교해 늘어난 지역과 줄어든 지역을 찾는다
+5. 보고: 결론 한 줄과 근거 숫자 3개로 한 장 보고서를 만든다</pre></div><p><b>① 로그인하기</b> <a href="https://www.napkin.ai" rel="noopener" target="_blank">napkin.ai</a>에 접속해 [로그인]을 누르고 [Google로 로그인]을 선택해요. 구글 계정에 이미 로그인되어 있으면 바로 들어가져요.</p><figure class="sample-shot narrow"><img alt="Napkin 로그인 화면" height="399" src="./images/napkin-1.jpg" width="756"/><figcaption>Napkin 로그인 화면</figcaption></figure><p><b>② 새 Napkin 만들기</b> 왼쪽 위의 [새 Napkin +]을 누르고 [비주얼]을 선택해요.</p><figure class="sample-shot narrow"><img alt="비주얼과 슬라이드 중 비주얼 선택" height="638" src="./images/napkin-2.jpg" width="1210"/><figcaption>[비주얼]을 선택해요</figcaption></figure><p><b>③ 만드는 방식 고르기</b> [내 텍스트를 붙여넣어서]를 선택해요.</p><figure class="sample-shot narrow"><img alt="만드는 방식 선택 화면" height="638" src="./images/napkin-3.jpg" width="1210"/><figcaption>[내 텍스트를 붙여넣어서]를 선택해요</figcaption></figure><p><b>④ 글 붙여넣기</b> 입력창에 글을 붙여 넣어요. Mac은 ⌘+V, Windows는 Ctrl+V예요. 이 입력창은 직접 타이핑이 아니라 붙여넣기만 되니까, 글을 먼저 복사해 두세요.</p><figure class="sample-shot narrow"><img alt="텍스트 붙여넣기 입력창" height="638" src="./images/napkin-4.jpg" width="1210"/><figcaption>붙여넣기 입력창</figcaption></figure><p><b>⑤ 안내 창이 뜨면</b> 처음 쓰면 "Napkin 개선에 도움을 주시겠어요?"라는 창이 뜰 수 있어요. 내가 만든 비주얼을 Napkin이 학습에 쓰도록 허용할지 묻는 창이에요. 오늘은 [괜찮습니다]를 눌러요. 나중에 설정에서 바꿀 수 있어요.</p><figure class="sample-shot narrow"><img alt="Napkin 개선 도움 안내 창" height="638" src="./images/napkin-5.jpg" width="1210"/><figcaption>학습 허용 여부를 묻는 창</figcaption></figure><p><b>⑥ 번개 아이콘 누르기</b> 글이 들어가면 왼쪽에 번개 모양 아이콘이 나타나요. 이 아이콘을 눌러요.</p><figure class="sample-shot narrow"><img alt="글 왼쪽의 번개 아이콘" height="638" src="./images/napkin-6.jpg" width="1210"/><figcaption>글 왼쪽의 번개 아이콘</figcaption></figure><p><b>⑦ 마음에 드는 모양 고르기</b> AI가 만든 그림 후보가 왼쪽에 나타나요. 계단 모양, 단계 카드 모양 등 여러 가지가 보여요. 내 업무 흐름이 가장 잘 보이는 모양을 골라요. 모양을 고르면 색 스타일도 고를 수 있어요.</p><figure class="sample-shot narrow"><img alt="AI 추천 시각화 후보 목록" height="638" src="./images/napkin-7.jpg" width="1210"/><figcaption>AI 추천 후보 목록</figcaption></figure><p><b>⑧ 완성한 그림 확인하기</b> 아래가 완성된 모습이에요. 오른쪽의 아이콘들로 색과 글자를 고칠 수 있고, 위쪽의 [내보내기]를 누르면 이미지 파일로 저장할 수 있어요.</p><figure class="sample-shot narrow"><img alt="Napkin이 만든 5단계 업무 흐름 그림" height="638" src="./images/napkin-8.jpg" width="1210"/><figcaption>완성한 5단계 업무 흐름 그림</figcaption></figure><div class="warning"><b>꼭 확인하세요:</b> AI가 그림을 만들면서 단계 이름을 조금 바꾸기도 해요. 위 결과에서도 "파악"이 "주문 데이터 파악"으로, "보고"가 "보고서 작성"으로 바뀌었어요. 내가 쓴 글과 뜻이 같은지 꼭 확인하고, 다르면 그림 속 글자를 직접 고쳐요.</div><div class="notice"><b>ChatGPT에게 Napkin용 글을 받는 요령:</b> Napkin은 구조가 분명한 짧은 글에서 좋은 그림을 만들어요. "위 내용을 Napkin AI에 넣어 도식으로 만들 거야. 단계 이름은 6자 이내, 단계별 설명은 한 줄로, 번호 목록 형태로 다시 써 줘."라고 요청한 뒤 붙여 넣어 보세요.</div></div></section>
 <section class="section session" id="s2"><div class="session-head"><div class="eyebrow">SESSION 2 · 11:00–12:30</div><h2>생성형 AI 활용한 함수 생성</h2><p>이 시간의 핵심은 <b>원하는 결과를 정확히 설명하는 것</b>이에요. "이 열이 지금 이렇게 생겼는데, 이렇게 바뀌었으면 좋겠다"를 말로 설명하면 수식은 AI가 만들어 줘요. 우리는 그 수식이 맞는지 확인하는 역할을 맡습니다.</p></div><div class="topic" id="s2-1"><h3>2-1. 먼저 데이터 파악하기 (P1)</h3><p><code class="inline">orders_raw.csv</code>를 ChatGPT에 올리고(업로드 한도에 도달하면 위 20행을 복사해 붙여넣어 주세요) 아래 프롬프트를 입력해 보세요.</p><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>[맥락] 나는 온라인 쇼핑몰 운영 담당자이고, 이 파일로 3분기 매출 보고서를 만들어야 한다.
 [데이터] 첨부한 파일은 주문 내역이다.
 [요청] 먼저 데이터는 그대로 두고, 분석 전에 정리할 항목을 모두 찾아 줘.
