@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>데이터 스튜디오 자동 보고서 예시 · 세션 6 (2)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{--ink:#172033;--muted:#657086;--line:#dfe4ed;--soft:#f5f7fb;--blue:#2457f5;--nav:#111a2e;--green:#16a36b;--warn:#ffad22;--font-sans:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--ink);font:17px/1.7 var(--font-sans);word-break:keep-all;overflow-wrap:break-word}
+header.top{background:var(--nav);color:#fff;padding:40px 16px 36px}
+.wrap{max-width:960px;margin:0 auto;padding:0 16px}
+header.top .eyebrow{font-size:13px;font-weight:800;letter-spacing:.08em;color:#8fb0ff}
+header.top h1{margin:8px 0 10px;font-size:clamp(26px,4vw,38px);line-height:1.25}
+header.top p{margin:0;color:#c9d3e8}
+main section{padding:36px 0;border-bottom:1px solid var(--line)}
+h2{font-size:24px;margin:0 0 14px}
+h3{font-size:18px;margin:22px 0 8px}
+a{color:var(--blue)}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0;padding:0;list-style:none;counter-reset:f}
+.flow li{border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--soft);counter-increment:f}
+.flow li::before{content:counter(f);display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--blue);color:#fff;font-size:12px;font-weight:900;margin-right:6px}
+.flow b{display:block;margin-top:6px}.flow small{color:var(--muted);font-size:14px}
+ol.steps{padding-left:22px}ol.steps li{margin:8px 0}
+.table-wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0}
+th,td{border-bottom:1px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top}
+th{background:var(--nav);color:#fff;font-weight:700}
+code{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:.92em}
+pre{background:#0f172a;color:#e5ecff;border-radius:12px;padding:16px 18px;white-space:pre-wrap;font:15px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;margin:10px 0}
+.notice{border-left:4px solid var(--blue);background:#eef3ff;padding:12px 16px;border-radius:0 10px 10px 0;margin:14px 0}
+.warning{border-left:4px solid var(--warn);background:#fff7e8;padding:12px 16px;border-radius:0 10px 10px 0;margin:14px 0}
+footer{padding:28px 0 48px;color:var(--muted);font-size:14px}
+@media (max-width:720px){.flow{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+<div class="eyebrow">SESSION 6 · 리포트 자동화 (2) · 예시</div>
+<h1>데이터를 바꿔 끼워도 다시 쓰는<br>데이터 스튜디오 자동 보고서</h1>
+<p>ChatGPT가 정리한 결과 파일을 구글 시트에 넣고, 그 시트에 연결한 데이터 스튜디오 보고서를 매달 그대로 다시 쓰는 방법이에요. 교안 <a href="./#s6" style="color:#8fb0ff">세션 6</a>의 리포트 지시 프롬프트 다음 단계예요.</p>
+</div></header>
+
+<main class="wrap">
+<section id="flow" aria-labelledby="flow-h">
+<h2 id="flow-h">전체 흐름</h2>
+<ol class="flow">
+<li><b>ChatGPT</b><small>6-1 지시문으로 정리한 결과를 CSV 파일로 받기</small></li>
+<li><b>다운로드</b><small>파일 카드에서 CSV 내려받기</small></li>
+<li><b>구글 시트</b><small>정해 둔 시트의 <code>data</code> 탭 내용을 새 파일로 덮어쓰기</small></li>
+<li><b>데이터 스튜디오</b><small>같은 보고서를 열면 새 데이터로 다시 계산</small></li>
+</ol>
+<p>핵심은 <b>보고서가 "파일"이 아니라 "시트의 data 탭"을 보고 있다</b>는 점이에요. 탭의 자리와 열 구성만 그대로면, 안에 든 데이터를 바꿔 끼워도 보고서는 다시 만들 필요가 없어요.</p>
+</section>
+
+<section id="rules" aria-labelledby="rules-h">
+<h2 id="rules-h">바꿔 끼워도 깨지지 않게 하는 규칙 4가지</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>규칙</th><th>이유</th></tr></thead>
+<tbody>
+<tr><td>① 시트 파일과 <code>data</code> 탭은 그대로 두고 <b>내용만</b> 바꿔요</td><td>새 시트 파일을 만들거나 탭을 지우고 새로 만들면 보고서와의 연결이 끊겨요.</td></tr>
+<tr><td>② 1행의 <b>열 이름과 순서</b>를 매달 똑같이 해요</td><td>보고서의 차트는 열 이름(필드)을 기준으로 그려져요. 이름이 바뀌면 그 차트가 오류를 내요.</td></tr>
+<tr><td>③ 값의 <b>형식</b>을 고정해요</td><td>날짜는 <code>2026-07-01</code>, 금액·수량은 숫자만(원·쉼표 없이), 집계대상은 <code>Y</code>/<code>N</code>. 형식이 섞이면 합계나 기간 필터가 틀어져요.</td></tr>
+<tr><td>④ 합계·비율 계산은 <b>보고서에서</b> 해요</td><td>시트에는 행 단위 데이터만 두고, 보고서에서 "집계대상 = Y" 필터와 합계를 걸어 두면 데이터만 바꿔도 숫자가 다시 계산돼요.</td></tr>
+</tbody></table></div>
+</section>
+
+<section id="columns" aria-labelledby="columns-h">
+<h2 id="columns-h">고정할 열 구성 (예시 데이터 기준)</h2>
+<p>예시 파일 <a href="./data/orders_clean.csv" download>orders_clean.csv</a>는 실습 파일 <code>orders_raw.csv</code>를 3-1 규칙서대로 정리한 120행이에요. 1행은 아래 13개 열이에요.</p>
+<pre>주문번호,주문일,월,지역,채널,담당자,상품코드,수량,단가,금액,결제상태,집계대상,비고</pre>
+<p>6-1에서 받은 지시문의 형식 줄에 아래 문장을 덧붙이면, ChatGPT가 매달 같은 모양의 파일을 만들어 줘요.</p>
+<pre>형식: (기존 내용에 이어서) 정리한 행 단위 데이터를 CSV 파일로도 만들어 줘. 열은 주문번호, 주문일, 월, 지역, 채널, 담당자, 상품코드, 수량, 단가, 금액, 결제상태, 집계대상, 비고 순서 그대로 쓰고, 주문일은 YYYY-MM-DD, 월은 YYYY-MM, 수량·단가·금액은 숫자만, 집계대상은 Y 또는 N으로 적어 줘.</pre>
+<div class="table-wrap"><table>
+<thead><tr><th>확인 항목</th><th>예시 데이터의 기준값 (교안 3-2와 같음)</th></tr></thead>
+<tbody>
+<tr><td>행 수</td><td>120</td></tr>
+<tr><td>결제상태별 건수</td><td>결제완료 103 / 취소 11 / 환불 6</td></tr>
+<tr><td>집계대상 = Y</td><td>97건</td></tr>
+<tr><td>집계대상 = Y의 금액 합계</td><td>4,357,000원</td></tr>
+</tbody></table></div>
+</section>
+
+<section id="build" aria-labelledby="build-h">
+<h2 id="build-h">처음 한 번: 시트와 보고서 연결하기</h2>
+<ol class="steps">
+<li>구글 시트를 새로 만들고, 탭 이름을 <code>data</code>로 바꿔요. 예시 CSV를 가져와 <code>data</code> 탭에 넣어요.</li>
+<li><a href="https://datastudio.google.com/navigation/reporting" target="_blank" rel="noopener">데이터 스튜디오</a>에서 빈 보고서를 만들고, 데이터 추가에서 Google Sheets → 방금 만든 시트 → <code>data</code> 탭을 고르면 연결돼요.</li>
+<li>보고서에 아래 구성요소를 넣어요.</li>
+</ol>
+<div class="table-wrap"><table>
+<thead><tr><th>구성요소</th><th>측정기준(무엇별)</th><th>측정항목(무엇을)</th><th>필터</th></tr></thead>
+<tbody>
+<tr><td>스코어카드: 매출 합계</td><td>없음</td><td>금액 (합계)</td><td>집계대상 = Y</td></tr>
+<tr><td>스코어카드: 집계 대상 건수</td><td>없음</td><td>Record Count</td><td>집계대상 = Y</td></tr>
+<tr><td>막대 차트: 지역별 매출</td><td>지역</td><td>금액 (합계)</td><td>집계대상 = Y</td></tr>
+<tr><td>표: 월별·채널별 매출</td><td>월, 채널</td><td>금액 (합계)</td><td>집계대상 = Y</td></tr>
+<tr><td>표: 검토 필요 목록</td><td>주문번호, 비고</td><td>수량</td><td>비고에 값이 있는 행</td></tr>
+</tbody></table></div>
+<div class="notice">필터 "집계대상 = Y"는 보고서 전체에 한 번만 걸어 두면 편해요. 검토 필요 목록 표에는 걸지 말고 따로 필터를 줘요.</div>
+</section>
+
+<section id="swap" aria-labelledby="swap-h">
+<h2 id="swap-h">다음 달부터: 데이터만 바꿔 끼우기</h2>
+<ol class="steps">
+<li>새 달 원본 파일과 저장해 둔 지시문으로 ChatGPT에게 정리를 맡기고, 결과 CSV를 내려받아요.</li>
+<li>검증용 요약(행 수, 집계 대상 건수, 매출 합계)을 먼저 확인해요. 숫자가 이상하면 시트에 넣기 전에 멈춰요.</li>
+<li>구글 시트 <code>data</code> 탭을 열고, 기존 내용을 지운 뒤 새 CSV 내용을 A1부터 붙여 넣어요. <b>탭은 지우지 않아요.</b></li>
+<li>데이터 스튜디오 보고서를 다시 열어 숫자가 새 달 기준으로 바뀌었는지, 스코어카드 합계가 ChatGPT 검증용 요약과 같은지 확인해요.</li>
+</ol>
+<div class="warning"><b>이럴 때 차트가 깨져요:</b> 열 이름을 바꿨을 때(예: 금액 → 매출액), 새 시트 파일에 붙여 넣었을 때, 금액에 "원"이나 쉼표가 들어갔을 때. 이때는 파일을 고쳐 다시 붙여 넣고 보고서를 새로 만들지 않아요.</div>
+</section>
+</main>
+
+<footer class="wrap">예시 데이터는 교안 실습 파일을 정리한 것이며 실제 회사 데이터가 아니에요. 화면 이름은 2026년 10월 기준이고, 데이터 스튜디오는 이전 이름이 Looker Studio예요.</footer>
+</body>
+</html>
