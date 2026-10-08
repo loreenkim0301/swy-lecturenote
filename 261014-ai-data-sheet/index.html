@@ -299,7 +299,7 @@ aside nav a.active{border-left-color:var(--blue)}
 </table></div></section>
 
 <section class="section" id="prep"><div class="section-label">PREPARE</div><h2>수업 전 준비</h2><p>오늘 수업은 브라우저에서 진행해요. 아래 세 가지만 미리 준비해 오시면 됩니다.</p><ul>
-<li><b>ChatGPT 계정:</b> <a href="https://chatgpt.com" rel="noopener" target="_blank">chatgpt.com</a>에서 유료 계정으로 미리 로그인해 두세요. 오늘 모든 실습은 ChatGPT 유료 계정으로 진행해요.</li>
+<li><b>ChatGPT 계정:</b> <a href="https://chatgpt.com" rel="noopener" target="_blank">chatgpt.com</a>에서 유료 계정으로 미리 로그인해 두세요. 오늘 모든 실습은 ChatGPT 유료 계정으로 진행해요. 모델은 입력창 오른쪽 모델 메뉴에서 <b>GPT-5.6 Sol</b>을 골라 주세요. 이 모델에서는 ChatGPT가 만든 파일이 대화창 오른쪽 시트 화면으로 바로 열려요.<figure class="sample-shot small"><img alt="ChatGPT 입력창 모델 메뉴에서 GPT-5.6 Sol을 선택한 모습" height="180" src="./images/s0-model-menu.jpg" width="419"/><figcaption>입력창 오른쪽 메뉴에서 GPT-5.6 Sol 선택 (2026년 10월 화면 기준)</figcaption></figure></li>
 <li><b>NotebookLM 계정:</b> <a href="https://notebooklm.google.com" rel="noopener" target="_blank">notebooklm.google.com</a>에 구글 계정으로 로그인해 주세요. ChatGPT와는 별도 사이트라서 로그인이 따로 필요해요.</li>
 </ul><div class="topic" id="prep-1"><h3>실습 파일</h3><p>오늘 실습은 가상의 온라인 생활용품 쇼핑몰 "셀렉트마켓"의 2026년 3분기(7~9월) 데이터로 해요. 실제 업무 파일처럼 정리할 거리가 곳곳에 들어 있어요. 아래 네 단계로 파일을 준비해요.</p><h4 class="block-title">1. 파일 다운로드</h4><p>아래 3개의 파일을 다운로드해 주세요.</p><div class="dl-list">
 <a class="dl-card" download="" href="./data/orders_raw.csv"><span class="dl-ico">CSV</span><span class="dl-body"><b>orders_raw.csv</b><span>주문 내역 125행 · 주문번호, 주문일, 지역, 채널, 담당자, 상품코드, 수량, 단가, 결제상태</span><span>세션 2~6에서 사용</span></span><span class="dl-btn">⬇ 다운로드</span></a>
@@ -364,7 +364,7 @@ aside nav a.active{border-left-color:var(--blue)}
 </table></div><p><b>STEP 4. 만들어진 결과를 파일로 열어 볼까요?</b></p><p>ChatGPT가 만든 표는 대화창 안에만 있어요. 이 표를 동료에게 보내거나 보고에 쓰려면 파일로 받아 두면 편해요. STEP 3에서 표를 만든 같은 대화창에서 이어서 요청해요.</p><p><b>ChatGPT 채팅 화면에서 파일로 열기</b></p><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>방금 만든 표를 CSV(.csv) 파일로 만들어 줘.
 - 파일 이름은 '업무프로세스'로 해 줘
 - 첫 행은 열 제목으로 해 줘
-- 다운로드할 수 있는 파일로 줘</pre></div><div class="procedure"><div>ChatGPT가 파일을 만들어 주면, 대화창 안에서 바로 열어 볼 수 있어요. ChatGPT 유료 계정의 채팅 화면에서 열려요.</div><div>표를 확대해 전체 화면으로 확인하세요. 열 제목이 첫 행에 있고, 칸마다 내용이 나뉘어 들어갔는지 살펴봐요.</div></div></div><div class="topic" id="s1-2"><h3>1-2. 프롬프트 엔지니어링: ChatGPT에 잘 요청하는 법</h3><p class="base"><b>사용 파일</b> 제공 파일 없이, 아래의 연습용 데이터 10행으로 실습해요.</p><p>ChatGPT에게 일을 시킬 때 쓰는 요청 글을 <b>프롬프트</b>라고 해요. 원하는 결과가 나오도록 프롬프트를 설계하고 다듬는 일은 <b>프롬프트 엔지니어링</b>이라고 해요. 목표와 기준이 분명하지 않으면 ChatGPT는 내 상황을 추측해서 답해요. 그래서 오늘은 프롬프트를 아래 세 줄로 써요.</p><ul>
+- 다운로드할 수 있는 파일로 줘</pre></div><div class="procedure"><div>ChatGPT가 파일을 만들어 주면 대화창에 파일 카드(스프레드시트)가 붙고, 오른쪽에 시트 화면이 열려요. 시트 화면이 닫혀 있으면 파일 카드를 눌러요.</div><div>파일 카드 없이 다운로드 링크만 나오면, 입력창 오른쪽 모델이 GPT-5.6 Sol인지 확인하고 같은 요청을 다시 보내요.</div><div>표를 확대해 전체 화면으로 확인하세요. 열 제목이 첫 행에 있고, 칸마다 내용이 나뉘어 들어갔는지 살펴봐요.</div></div><figure class="sample-shot"><img alt="ChatGPT가 만든 CSV 파일 카드와 오른쪽 시트 화면" height="330" src="./images/s1-1-file-sheet.jpg" width="1151"/><figcaption>왼쪽은 ChatGPT가 만든 파일 카드, 오른쪽은 자동으로 열린 시트 화면 (GPT-5.6 Sol, 2026년 10월 화면 예시)</figcaption></figure></div><div class="topic" id="s1-2"><h3>1-2. 프롬프트 엔지니어링: ChatGPT에 잘 요청하는 법</h3><p class="base"><b>사용 파일</b> 제공 파일 없이, 아래의 연습용 데이터 10행으로 실습해요.</p><p>ChatGPT에게 일을 시킬 때 쓰는 요청 글을 <b>프롬프트</b>라고 해요. 원하는 결과가 나오도록 프롬프트를 설계하고 다듬는 일은 <b>프롬프트 엔지니어링</b>이라고 해요. 목표와 기준이 분명하지 않으면 ChatGPT는 내 상황을 추측해서 답해요. 그래서 오늘은 프롬프트를 아래 세 줄로 써요.</p><ul>
 <li><b>요청:</b> 무엇을 해 달라는지</li>
 <li><b>내용:</b> 무엇을 줬는지 (파일, 데이터, 상황)</li>
 <li><b>형식:</b> 어떤 모양으로 받을지 (표, 수식 1개 등)</li>
