@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>3분기 매출 인터랙티브 보고서</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--text:#17191c;--muted:#6f7782;--line:#e7e9ed;--bar:#38485a;--bar2:#718096;--active:#111827}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",Arial,sans-serif}
+main{width:min(100%,520px);margin:0 auto;padding:24px 16px 40px}.eyebrow{font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--muted);margin-bottom:7px}h1{font-size:25px;line-height:1.25;margin:0 0 7px}.sub{font-size:14px;color:var(--muted);margin:0 0 18px}.summary{background:#18202a;color:white;border-radius:18px;padding:18px;margin-bottom:14px}.summary span{font-size:13px;opacity:.72}.summary strong{display:block;font-size:28px;margin-top:4px;letter-spacing:-.02em}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin-top:14px}.head{display:flex;justify-content:space-between;gap:12px;align-items:end;margin-bottom:18px}.head h2{font-size:18px;margin:0}.head p{font-size:12px;color:var(--muted);margin:0;text-align:right}.chart{display:flex;align-items:flex-end;gap:12px;height:220px;border-bottom:1px solid var(--line);padding:24px 4px 0}.col{height:100%;flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;min-width:0}.amount{font-size:12px;font-weight:700;margin-bottom:7px;min-height:18px;opacity:0;transform:translateY(4px);transition:.15s}.col.selected .amount{opacity:1;transform:none}.bar{width:100%;max-width:72px;border:0;border-radius:10px 10px 3px 3px;background:var(--bar);min-height:8px;cursor:pointer;transition:transform .12s,filter .12s;padding:0}.bar:active{transform:scale(.97)}.bar:focus-visible{outline:3px solid #aeb8c4;outline-offset:3px}.label{font-size:13px;font-weight:700;margin-top:9px;color:#444}.rows{display:flex;flex-direction:column;gap:12px}.row{display:grid;grid-template-columns:42px 1fr;gap:10px;align-items:center}.row-label{font-size:13px;font-weight:700}.track{height:38px;background:#f0f2f5;border-radius:10px;overflow:visible;position:relative}.hbar{height:100%;border:0;border-radius:10px;background:var(--bar2);cursor:pointer;min-width:12px;padding:0;display:block;position:relative}.hbar:focus-visible{outline:3px solid #aeb8c4;outline-offset:2px}.hval{position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:11px;font-weight:800;color:white;white-space:nowrap;opacity:0;pointer-events:none}.row.selected .hval{opacity:1}.hint{margin-top:14px;font-size:12px;color:var(--muted);text-align:center}.detail{margin-top:12px;border-radius:12px;background:#f5f6f8;padding:12px 14px;font-size:14px;min-height:44px;display:flex;align-items:center;justify-content:space-between;gap:12px}.detail strong{font-size:15px}.foot{font-size:11px;color:var(--muted);text-align:center;margin-top:18px}@media(max-width:360px){main{padding-left:12px;padding-right:12px}.card{padding:15px}.chart{gap:8px}.summary strong{font-size:25px}}
+</style>
+</head>
+<body>
+<main>
+<div class="eyebrow">2026 · 3분기 매출</div>
+<h1>매출 인터랙티브 보고서</h1>
+<p class="sub">막대를 누르면 해당 항목의 금액을 확인할 수 있습니다.</p>
+
+<section class="summary" aria-label="3분기 총매출">
+<span>7–9월 총매출</span><strong>4,357,000원</strong>
+</section>
+
+<section class="card">
+<div class="head"><h2>월별 매출</h2><p>막대를 탭해 금액 보기</p></div>
+<div class="chart" id="monthChart">
+<div class="col"><div class="amount">889,000원</div><button class="bar" style="height:44.1%" data-label="7월" data-value="889,000원" aria-label="7월 매출 889,000원"></button><div class="label">7월</div></div>
+<div class="col"><div class="amount">2,014,000원</div><button class="bar" style="height:100%" data-label="8월" data-value="2,014,000원" aria-label="8월 매출 2,014,000원"></button><div class="label">8월</div></div>
+<div class="col"><div class="amount">1,454,000원</div><button class="bar" style="height:72.2%" data-label="9월" data-value="1,454,000원" aria-label="9월 매출 1,454,000원"></button><div class="label">9월</div></div>
+</div>
+<div class="detail" id="monthDetail" aria-live="polite"><span>선택한 월</span><strong>막대를 눌러 주세요</strong></div>
+</section>
+
+<section class="card">
+<div class="head"><h2>지역별 매출</h2><p>매출 큰 순서</p></div>
+<div class="rows" id="regionChart">
+<div class="row"><div class="row-label">서울</div><div class="track"><button class="hbar" style="width:100%" data-label="서울" data-value="1,552,000원" aria-label="서울 매출 1,552,000원"><span class="hval">1,552,000원</span></button></div></div>
+<div class="row"><div class="row-label">대구</div><div class="track"><button class="hbar" style="width:56.6%" data-label="대구" data-value="879,000원" aria-label="대구 매출 879,000원"><span class="hval">879,000원</span></button></div></div>
+<div class="row"><div class="row-label">경기</div><div class="track"><button class="hbar" style="width:53.2%" data-label="경기" data-value="826,000원" aria-label="경기 매출 826,000원"><span class="hval">826,000원</span></button></div></div>
+<div class="row"><div class="row-label">부산</div><div class="track"><button class="hbar" style="width:49.7%" data-label="부산" data-value="772,000원" aria-label="부산 매출 772,000원"><span class="hval">772,000원</span></button></div></div>
+<div class="row"><div class="row-label">광주</div><div class="track"><button class="hbar" style="width:21.1%" data-label="광주" data-value="328,000원" aria-label="광주 매출 328,000원"><span class="hval">328,000원</span></button></div></div>
+</div>
+<div class="detail" id="regionDetail" aria-live="polite"><span>선택한 지역</span><strong>막대를 눌러 주세요</strong></div>
+<div class="hint">다른 막대를 누르면 선택 금액이 바뀝니다.</div>
+</section>
+<div class="foot">제공된 집계 결과만 사용 · 모바일 세로 화면 최적화</div>
+</main>
+<script>
+(function(){
+const monthChart=document.getElementById('monthChart'), monthDetail=document.getElementById('monthDetail');
+monthChart.querySelectorAll('.bar').forEach(btn=>btn.addEventListener('click',()=>{
+monthChart.querySelectorAll('.col').forEach(c=>c.classList.remove('selected'));
+btn.closest('.col').classList.add('selected');
+monthDetail.innerHTML='<span>'+btn.dataset.label+' 매출</span><strong>'+btn.dataset.value+'</strong>';
+}));
+const regionChart=document.getElementById('regionChart'), regionDetail=document.getElementById('regionDetail');
+regionChart.querySelectorAll('.hbar').forEach(btn=>btn.addEventListener('click',()=>{
+regionChart.querySelectorAll('.row').forEach(r=>r.classList.remove('selected'));
+btn.closest('.row').classList.add('selected');
+regionDetail.innerHTML='<span>'+btn.dataset.label+' 매출</span><strong>'+btn.dataset.value+'</strong>';
+}));
+})();
+</script>
+</body>
+</html>
