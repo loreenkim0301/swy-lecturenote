@@ -374,7 +374,16 @@ aside nav a.active{border-left-color:var(--blue)}
 - 지역 1위 서울 1,552,000원
 - 앱 채널 매출 2,183,000원, 전체의 약 50%
 - 팀장 요청: 4분기 판매 채널 전략 방향을 제안해 줘
-형식: 제목 / 요약 3줄 / 시장 배경 / 우리 실적 / 시사점 순서. 자료에 없는 숫자는 쓰지 말고, 문단마다 끝에 근거 자료 번호(①, ②)를 붙여 줘.</pre></div><figure class="sample-shot"><img alt="AI 문서 화면. 출력 형식 Word 선택, 입력창에 프롬프트, 오른쪽 보고서 및 분석 템플릿" height="775" loading="lazy" src="./images/g2-docs-prompt-templates.jpg" width="1470"/><figcaption>AI 문서: 출력 형식 Word를 고르고 프롬프트를 붙여 넣은 모습</figcaption></figure><figure class="sample-shot"><img alt="오른쪽에 Word 문서 미리보기. 제목, 요약, 시장 배경 표" height="775" loading="lazy" src="./images/g2-docs-report-result.jpg" width="1470"/><figcaption>결과(약 1분 30초): 오른쪽에 1페이지 Word 미리보기, 왼쪽에 다운로드 링크</figcaption></figure><p><b>결과 확인</b></p><ul class="checklist"><li>문단마다 근거 번호가 붙어 있나요?</li><li>②의 숫자(4,357,000원, 8월 2,014,000원 등)가 그대로 들어갔나요?</li><li>자료에 없던 숫자나 회사 이름이 새로 생기지 않았나요?</li><li>근거 번호가 그 문장을 실제로 받치나요? 실제 실행에서는 "서울 고객층을 타깃으로…" 문장에 ①(시장 자료)이 붙었는데, ①에는 서울 이야기가 없었어요.</li></ul></div></section>
+형식: 제목 / 요약 3줄 / 시장 배경 / 우리 실적 / 시사점 순서. 자료에 없는 숫자는 쓰지 말고, 문단마다 끝에 근거 자료 번호(①, ②)를 붙여 줘.</pre></div><figure class="sample-shot"><img alt="AI 문서 화면. 출력 형식 Word 선택, 입력창에 프롬프트, 오른쪽 보고서 및 분석 템플릿" height="775" loading="lazy" src="./images/g2-docs-prompt-templates.jpg" width="1470"/><figcaption>AI 문서: 출력 형식 Word를 고르고 프롬프트를 붙여 넣은 모습</figcaption></figure><figure class="sample-shot"><img alt="오른쪽에 Word 문서 미리보기. 제목, 요약, 시장 배경 표" height="775" loading="lazy" src="./images/g2-docs-report-result.jpg" width="1470"/><figcaption>결과(약 1분 30초): 오른쪽에 1페이지 Word 미리보기, 왼쪽에 다운로드 링크</figcaption></figure><p><b>결과 확인</b></p><ul class="checklist"><li>문단마다 근거 번호가 붙어 있나요?</li><li>②의 숫자(4,357,000원, 8월 2,014,000원 등)가 그대로 들어갔나요?</li><li>자료에 없던 숫자나 회사 이름이 새로 생기지 않았나요?</li><li>근거 번호가 그 문장을 실제로 받치나요? 실제 실행에서는 "서울 고객층을 타깃으로…" 문장에 ①(시장 자료)이 붙었는데, ①에는 서울 이야기가 없었어요.</li></ul><p><b>여러 형식으로 내보내기: Word 다음에 한글(HWP·HWPX), 엑셀</b></p><p>같은 AI 문서 대화창에서 이어서 요청하면 다른 파일 형식으로도 받을 수 있어요. 세 가지를 실제로 해 본 결과예요.</p><div class="table-wrap"><table>
+<tr><th>요청한 형식</th><th>실제로 받은 파일</th><th>걸린 시간</th><th>확인할 점</th></tr>
+<tr><td>한글 .hwp</td><td><b>.hwpx</b>로 바꿔서 만들어 줌</td><td>약 1분</td><td>.hwp는 만들지 않고 .hwpx로 대신했어요. 회사에서 .hwp만 받는다면 한글 프로그램에서 열어 .hwp로 다시 저장해요</td></tr>
+<tr><td>한글 .hwpx</td><td>.hwpx</td><td>약 1분</td><td>글머리표가 "• •"처럼 두 번 찍힌 줄이 있었어요. 한글에서 열어 모양을 한 번 확인해요</td></tr>
+<tr><td>엑셀 .xlsx</td><td>.xlsx (시트 2개: 요약, 근거 지표)</td><td>약 1분</td><td>숫자는 입력값과 같았어요. 근거 지표 시트의 값·단위·출처 번호 칸을 확인해요</td></tr>
+</table></div><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>요청: 이 리포트를 한글(.hwpx) 파일로도 만들어 줘.
+내용: 표는 표로 유지하고, 내용과 숫자는 바꾸지 마.
+형식: 내려받을 수 있는 .hwpx 파일 1개</pre></div><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>요청: 같은 리포트를 엑셀(.xlsx) 파일로 만들어 줘.
+내용: 시트 1 '요약'에는 핵심 결론과 요청 사항, 시트 2 '근거 지표'에는 숫자를 표로(항목 / 값 / 단위 / 출처 번호). 숫자는 바꾸지 마.
+형식: 내려받을 수 있는 .xlsx 파일 1개</pre></div><figure class="sample-shot"><img alt=".hwp를 요청했더니 대화창에 .hwpx 다운로드 링크가 나온 화면" height="823" loading="lazy" src="./images/g2-format-hwp.jpg" width="1456"/><figcaption>.hwp를 요청한 결과: .hwpx 다운로드 링크</figcaption></figure><figure class="sample-shot"><img alt=".hwpx 다운로드 링크와 리포트 내용 미리보기 글" height="823" loading="lazy" src="./images/g2-format-hwpx.jpg" width="1456"/><figcaption>.hwpx를 요청한 결과: 글머리표가 두 번 찍힌 줄("• •")이 보여요</figcaption></figure><figure class="sample-shot"><img alt="근거 지표 표: 구분, 항목, 값, 단위" height="823" loading="lazy" src="./images/g2-format-xlsx.jpg" width="1456"/><figcaption>.xlsx를 요청한 결과: 근거 지표 시트 미리보기</figcaption></figure><div class="notice"><b>오른쪽 미리보기는 Word 문서만 보여 줘요.</b> 한글·엑셀 파일은 대화창의 다운로드 링크로 내려받아 각 프로그램에서 열어 확인해요. 세 파일 모두 이번 실습에서는 무료 할당량으로 만들어졌어요.</div></div></section>
 <section class="section session" id="s3"><div class="session-head"><div class="eyebrow">SESSION 3 · 11:30–12:30</div><h2>Genspark 실전 활용 ②: 템플릿과 문서 스타일</h2><p>보고서와 기획서의 <b>기본 구조</b>를 익히고, AI 문서로 <b>템플릿</b>을 만든 뒤, 같은 내용을 <b>목적별 스타일</b>로 바꿔 봐요. 마지막으로 섹션 간 일관성을 점검해요.</p></div><div class="topic" id="s3-1"><h3>3-1. 보고서·기획서 기본 구조</h3><p>보고서는 <b>있었던 일을 근거로 전달</b>하고, 기획서는 <b>앞으로 할 일을 설득</b>해요. 목적이 다르니 뼈대도 달라요.</p><div class="table-wrap"><table>
 <tr><th>문서</th><th>구성</th><th>각 부분에 쓰는 것</th></tr>
 <tr><td>보고서</td><td>서론</td><td>왜 이 보고서를 쓰는지(목적), 무엇을 다루는지(범위·기간)</td></tr>
@@ -623,7 +632,7 @@ function show(n){
 }
 var stage=document.getElementById('stage'),vp=document.getElementById('viewport');
 function fit(){var k=Math.min(vp.clientWidth/1280,vp.clientHeight/720);stage.style.transform='translate(-50%,-50%) scale('+k+')';}
-function open(){deck.hidden=false;document.body.style.overflow='hidden';fit();var w=[].slice.call(main.querySelectorAll('img')).map(function(m){return m.complete?0:new Promise(function(r){m.onload=m.onerror=r;});});Promise.all(w).then(function(){build();show(0);});}
+function open(){deck.hidden=false;document.body.style.overflow='hidden';fit();var w=[].slice.call(main.querySelectorAll('img')).map(function(m){if(m.complete)return 0;m.loading='eager';return new Promise(function(r){m.onload=m.onerror=r;setTimeout(r,8000);});});Promise.all(w).then(function(){build();show(0);});}
 function close(){deck.hidden=true;document.body.style.overflow='';}
 window.addEventListener('resize',function(){if(!deck.hidden)fit();});
 document.getElementById('slideBtn').onclick=open;
