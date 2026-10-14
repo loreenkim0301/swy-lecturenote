@@ -182,7 +182,21 @@ body.nav-hidden .nav-toggle { left: 14px; }
   .session-head { margin-left: -20px; margin-right: -20px; padding-left: 20px; padding-right: 20px; }
   .section > h2, .session-head h2 { font-size: 30px; }
   .topic h3 { font-size: 24px; }
-}</style>
+}
+.qr-mini{display:flex;align-items:center;gap:12px;margin-top:14px;padding:10px;border-radius:10px;background:rgb(25,36,60)}
+.qr-mini button.qr-thumb{flex:none;padding:0;border:0;background:#fff;border-radius:6px;cursor:zoom-in;line-height:0}
+.qr-mini img{width:64px;height:64px;image-rendering:pixelated;border-radius:6px}
+.qr-mini .qr-text{min-width:0;font-size:12px;color:rgb(190,200,219);line-height:1.4}
+.qr-mini .qr-text b{display:block;color:#fff;font-size:13px;word-break:break-all}
+.qr-mini .qr-open{margin-top:6px;padding:5px 10px;border:0;border-radius:6px;background:var(--blue);color:#fff;font:inherit;font-size:12px;font-weight:700;cursor:pointer}
+dialog.qr-dialog{width:100vw;height:100vh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:#fff;color:var(--ink)}
+dialog.qr-dialog::backdrop{background:#fff}
+dialog.qr-dialog[open]{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(16px,3vh,36px);text-align:center}
+dialog.qr-dialog h2{margin:0;font-size:clamp(22px,3.6vh,44px);letter-spacing:-0.02em}
+dialog.qr-dialog img{width:min(62vh,80vw);height:min(62vh,80vw);image-rendering:pixelated}
+dialog.qr-dialog .qr-url{font-size:clamp(26px,5.5vh,72px);font-weight:800;letter-spacing:-0.01em;color:var(--blue);word-break:break-all}
+dialog.qr-dialog .qr-close{position:absolute;top:20px;right:24px;padding:10px 16px;border:1px solid var(--line);border-radius:8px;background:#fff;font:inherit;font-size:16px;cursor:pointer}
+</style>
   
 <style>
 .tt{margin:0;padding-left:1.1em}.tt li{margin:2px 0}
@@ -273,6 +287,7 @@ aside nav a.active{border-left-color:var(--blue)}
       <div class="brand">SELECTWAY · LECTURE NOTE</div>
       <h1>생성형 AI 활용한 데이터 분석 및 스마트 시트 구현</h1>
       <div class="side-sub">10.14(수) · 10:00–17:00</div>
+      <section class="qr-mini" aria-label="교안 바로가기 QR"><button type="button" class="qr-thumb" data-qr-open aria-label="QR 코드 크게 보기"><img src="./images/qr-lecturenote.png" alt="교안 주소 QR 코드" width="64" height="64"/></button><div class="qr-text">휴대폰으로 교안 열기<b>m.site.naver.com/2iz7L</b><button type="button" class="qr-open" data-qr-open>QR 크게 보기</button></div></section>
     </div>
     <nav>
 <div class="nav-title">전체 목차</div><div class="grp"><div class="grp-label">교육 안내</div><a class="l2" href="#overview">교육 개요</a><a class="l2" href="#timetable">타임테이블</a><a class="l2" href="#prep">수업 전 준비</a><a class="l3" href="#prep-1">실습 파일</a></div><div class="grp"><div class="grp-label">세션 1</div><a class="l2" href="#s1">생성형 AI로 데이터 분석 '워크플로우' 만들기</a><a class="l3" href="#s1-start">시작 전: ChatGPT 화면과 모델 맞추기</a><a class="l3" href="#s1-0">먼저, 워크플로우란?</a>
@@ -698,5 +713,7 @@ document.addEventListener('click',function(e){
   sync();
 })();
 </script>
+<dialog class="qr-dialog" id="qr-dialog" aria-labelledby="qr-dialog-title"><button type="button" class="qr-close" data-qr-close>닫기 (Esc)</button><h2 id="qr-dialog-title">휴대폰 카메라로 QR을 찍어 교안을 열어 주세요</h2><img src="./images/qr-lecturenote.png" alt="교안 주소 QR 코드" width="224" height="224"/><p class="qr-url">m.site.naver.com/2iz7L</p></dialog>
+<script>(function(){var d=document.getElementById("qr-dialog");if(!d)return;function open(){if(typeof d.showModal==="function")d.showModal();else d.setAttribute("open","");}function close(){if(typeof d.close==="function")d.close();else d.removeAttribute("open");}Array.prototype.forEach.call(document.querySelectorAll("[data-qr-open]"),function(b){b.addEventListener("click",open);});d.addEventListener("click",function(e){if(e.target===d||e.target.closest("[data-qr-close]"))close();});})();</script>
 </body>
 </html>
