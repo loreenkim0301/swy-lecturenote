@@ -558,6 +558,7 @@ aside nav a.active{border-left-color:var(--blue)}
 맥락: 위에서 만든 보고서를 부서장에게 올리기 전에 마지막으로 점검하려고 해.
 작업: ① 개요의 목적에 향후 계획이 답하는지 ② 문제점의 숫자가 현황과 같은지 ③ 같은 대상을 다른 이름으로 부른 곳이 있는지 ④ 숫자의 기준 날짜가 맞는지 점검해 줘. 문서는 고치지 말고 점검 결과만 알려 줘.
 형식: 기준 / 문제 위치 / 문제 내용 / 고칠 문장 제안 표</pre></div>
+<figure class="sample-shot"><img alt="점검 결과 표. 기준, 문제 위치, 문제 내용, 고칠 문장 제안 열" height="665" loading="lazy" src="./images/c3-consistency.jpg" width="1176"/><figcaption>결과: 기준마다 문제 위치와 고칠 문장 제안이 표로 나와요. 문서 원본은 그대로 두고 제안만 해요</figcaption></figure>
 <p>"문서는 고치지 말고"라고 쓰는 이유는, AI가 고치면서 숫자나 표현을 함께 바꿔 버리는 일이 있기 때문이에요. 제안을 보고 필요한 곳만 고쳐 달라고 다시 요청해요.</p>
 </div>
 </section>
@@ -598,6 +599,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td>전남광주통합특별시</td><td>187,268</td><td>6.0%</td></tr>
 <tr><td>경상남도</td><td>186,050</td><td>5.9%</td></tr>
 </table></div>
+<figure class="sample-shot"><img alt="시도별 사업자 수 상위 5 표. 경기도 832,486개 26.58% 등, 아래에 차트가 이어짐" height="665" loading="lazy" src="./images/c4-analysis1.jpg" width="1176"/><figcaption>분석 1 결과: 표 아래에 차트가 자동으로 붙기도 해요. 비중은 소수 둘째 자리(26.58%)까지 나와요</figcaption></figure>
 <p><b>분석 2. 추세: 전월·전년 동월보다 늘었나 줄었나</b></p>
 <div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>역할: 너는 데이터 분석 담당자야.
 맥락: 위에서 점검한 데이터를 그대로 써.
@@ -614,6 +616,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td>증가 상위 3</td><td>통신판매업 +33,434(+5.0%) · 실내장식가게 +4,132(+4.7%) · 펜션ㆍ게스트하우스 +3,854(+11.4%)</td></tr>
 <tr><td>감소 상위 3</td><td>한식음식점 −5,853(−1.4%) · 부동산중개업 −3,403(−2.4%) · 옷가게 −3,209(−4.0%)</td></tr>
 </table></div>
+<figure class="sample-shot"><img alt="전국 합계 증감 표와 업종 증가·감소 상위 3 표" height="665" loading="lazy" src="./images/c4-analysis2.jpg" width="1176"/><figcaption>분석 2 결과: 전국 합계 표와 업종 증가·감소 표 2개</figcaption></figure>
 <p><b>분석 3. 구성비: 어떤 업종이 대부분을 차지하나</b></p>
 <div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>역할: 너는 데이터 분석 담당자야.
 맥락: 위에서 점검한 데이터를 그대로 써.
@@ -627,6 +630,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td>미용실</td><td>118,591</td><td>3.8%</td><td>43.4%</td></tr>
 <tr><td>커피음료점</td><td>93,623</td><td>3.0%</td><td>46.4%</td></tr>
 </table></div>
+<figure class="sample-shot"><img alt="업종별 사업자 수 상위 표. 통신판매업 22.32%, 누적 비중 열" height="665" loading="lazy" src="./images/c4-analysis3.jpg" width="1176"/><figcaption>분석 3 결과: 비중과 누적 비중 열</figcaption></figure>
 <p><b>분석 4. 교차: 시도마다 업종 구성이 다른가</b></p>
 <div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>역할: 너는 데이터 분석 담당자야.
 맥락: 위에서 점검한 데이터를 그대로 써.
@@ -640,6 +644,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td>경상남도</td><td>6,336</td><td>3,233</td><td>32,833</td></tr>
 <tr><td>인천광역시</td><td>4,562</td><td>2,942</td><td>19,685</td></tr>
 </table></div>
+<figure class="sample-shot"><img alt="행은 시도, 열은 커피음료점·편의점·한식음식점인 교차표" height="665" loading="lazy" src="./images/c4-analysis4.jpg" width="1176"/><figcaption>분석 4 결과: 행은 시도, 열은 업종인 교차표</figcaption></figure>
 <p>숫자가 다르면 "계산에 쓴 행 수와 열 이름을 알려 줘"라고 물어보세요. 열 이름의 공백 때문에 '당월' 열을 못 찾거나 다른 열을 더한 경우가 많아요.</p>
 </div>
 
@@ -655,6 +660,7 @@ aside nav a.active{border-left-color:var(--blue)}
 맥락: 분석 1의 시도별 당월 사업자 수 상위 5개 결과로 보고서에 넣을 차트가 필요해.
 작업: 가로 막대 차트를 만들어 줘. 숫자는 분석 1 결과만 쓰고 바꾸지 마.
 형식: 제목 "시도별 생활업종 사업자 수(2026년 7월, 상위 5)", 막대 끝에 사업자 수 표시, 단위는 '개'로 통일, 이미지 파일로 저장</pre></div>
+<figure class="sample-shot"><img alt="시도별 생활업종 사업자 수 가로 막대 차트. 막대 끝에 832,486 등 숫자, 왼쪽 아래 편집 버튼" height="665" loading="lazy" src="./images/c4-chart.jpg" width="1176"/><figcaption>결과: 막대 끝에 숫자가 붙은 가로 막대 차트가 나와요. 막대 순서와 숫자를 분석 1 기준값과 대조해요</figcaption></figure>
 <div class="result-check"><b>보고서에 넣기 전 확인</b><ul class="checklist"><li>막대 순서와 막대 끝 숫자가 분석 1 기준값과 같나요?</li><li>한글이 깨지면 "한글이 보이도록 다시 그려 줘"라고 요청했나요?</li><li>축과 막대 숫자의 단위가 섞이지 않았나요? (예: 축은 '만 개', 막대는 '개')</li><li>표에는 단위와 기준 시점(2026년 7월), 출처(국세청)를 적었나요?</li></ul></div>
 </div>
 
@@ -665,6 +671,8 @@ aside nav a.active{border-left-color:var(--blue)}
 맥락: 위 분석 1~4 결과로 인포그래픽을 만들 거야. 그림 도구는 내가 넣은 글만 보고 그려.
 작업: 인포그래픽에 넣을 글을 만들어 줘. 숫자는 위 결과에 있는 것만 쓰고 바꾸지 마.
 형식: 제목 1줄, 핵심 메시지 3개(각 1줄 + 근거 숫자 1개), 마지막에 출처 1줄. 전체 10줄 이내</pre></div>
+<figure class="sample-shot"><img alt="글쓰기 블록에 제목, 핵심 메시지 3개와 근거 숫자, 출처 1줄" height="665" loading="lazy" src="./images/c4-infotext.jpg" width="1176"/><figcaption>결과: 글쓰기 블록으로 나와요. 오른쪽 위 복사 버튼으로 글 전체를 복사해 STEP 2에 붙여 넣어요</figcaption></figure>
+<p>근거 숫자가 위 기준값과 같은지 확인해요. 예를 들어 "수도권 비중 45.85%"는 경기도 26.58%와 서울특별시 19.27%를 더한 값이에요.</p>
 <p><b>STEP 2. NotebookLM에서 인포그래픽 만들기</b></p>
 <div class="procedure"><div><a href="https://notebooklm.google.com" rel="noopener" target="_blank">notebooklm.google.com</a>에서 [새 노트북 만들기]를 눌러요.</div><div>소스 추가에서 <b>[복사한 텍스트]</b>를 고르고 STEP 1의 글을 붙여 넣어요.</div><div>오른쪽 <b>Studio</b> 패널에서 [인포그래픽]을 누르고, 요청 칸에 "숫자와 단어는 원문 그대로 써 줘."라고 적은 뒤 만들어요.</div></div>
 <div class="shot-grid"><figure class="sample-shot"><img alt="NotebookLM 인포그래픽 설정 창. 방향, 자세한 정도, 요청 칸" loading="lazy" src="./images/s5-4-infographic-settings.jpg"/><figcaption>NotebookLM 인포그래픽 설정 (10/14 교안 실습 화면)</figcaption></figure><figure class="sample-shot"><img alt="NotebookLM이 만든 인포그래픽 예시" loading="lazy" src="./images/s5-4-infographic-result.jpg"/><figcaption>결과 예시 (10/14 교안 실습 화면, 다른 데이터)</figcaption></figure></div>
@@ -704,18 +712,21 @@ aside nav a.active{border-left-color:var(--blue)}
 맥락: [독자]에게 '[주제]' 기획서를 올리려고 해. 읽고 나서 [결정해야 할 것]을 정해야 해.
 작업: 최근 1년 안에 정부·공공기관이 발표한 관련 자료를 찾아 기획서 '추진 배경'에 쓸 핵심 내용을 5줄로 요약해 줘. 출처를 찾지 못한 내용은 쓰지 마.
 형식: 5줄 글머리표, 줄마다 (기관명, 발표일, 링크)</pre></div>
+<figure class="sample-shot"><img alt="웹 검색 결과. 5줄 글머리표와 줄마다 기관명, 발표일, 보도자료 링크" height="665" loading="lazy" src="./images/c5-step1.jpg" width="1176"/><figcaption>예시 결과 (주제: 민원 응대 생성형 AI 시범 운영). 기획서에 옮기기 전에 [보도자료] 링크를 하나씩 열어 숫자와 날짜를 확인해요</figcaption></figure>
 <p><b>Step 2. 기획서 초안</b> (보고서 작성실 프로젝트의 새 채팅)</p>
 <div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>역할: 너는 공공기관 기획부서의 기획서 작성 담당자야.
 맥락: 주제는 [주제], 독자는 [독자]야. Step 1에서 모은 자료는 아래와 같아.
 [Step 1 결과 붙여넣기]
 작업: '추진 배경 - 목표 - 추진 내용 - 기대 효과 - 추진 일정' 순서로 기획서 초안을 써 줘. 자료에 없는 숫자·예산·일정·담당자는 [확인 필요]로 남겨 줘.
 형식: 개조식, A4 2쪽 이내</pre></div>
+<figure class="sample-shot"><img alt="기획서 초안. 제목, 추진 배경 아래 ○ 항목과 출처 표시" height="665" loading="lazy" src="./images/c5-step2.jpg" width="1176"/><figcaption>Step 2 결과: 프로젝트 지침대로 □ ○ 기호와 '~함' 문체로 나와요. 답 화면에 **[확인 필요]**처럼 별표가 그대로 보일 수 있어요. 내려받은 파일에도 남았는지 확인해요</figcaption></figure>
 <p><b>Step 3. 문체·시각화 완성</b> (같은 대화에서 이어서)</p>
 <div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>역할: 너는 부서장 보고 전에 문서를 다듬는 담당자야.
 맥락: 위 기획서 초안의 [확인 필요]는 아래처럼 채웠어.
 [내가 확인한 숫자·일정·담당자]
 작업: 채운 내용을 반영하고, 핵심 숫자 1개를 보여 주는 표 1개를 '추진 배경'에 넣어 줘. 숫자는 바꾸지 마.
 형식: 내려받을 수 있는 Word(.docx) 파일 1개와 PDF 파일 1개</pre></div>
+<figure class="sample-shot"><img alt="Word 문서와 PDF 문서 다운로드 카드, 아래에 주요 반영 사항 목록" height="665" loading="lazy" src="./images/c5-step3.jpg" width="1176"/><figcaption>Step 3 결과: Word·PDF 카드 2개와 반영 사항 목록이 나와요. [다운로드]로 받은 뒤 3-4처럼 파일을 열어 확인해요</figcaption></figure>
 </div>
 
 <div class="topic" id="s5-4"><h3>5-4. 제출 전 체크리스트</h3>
