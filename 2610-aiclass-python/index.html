@@ -42,7 +42,7 @@ code{font-family:"JetBrains Mono",monospace}
 </head>
 <body><div class="wrap">
 
-<span class="draft">초벌 교안 v0.5 · 2026.10</span>
+<span class="draft">초벌 교안 v0.6 · 2026.10.22 기준</span>
 <h1>PM을 위한 프로그래밍의 이해<br><small style="font-size:.5em;color:var(--muted)">Colab + Gemini + ChatGPT로 파이썬 맛보기</small></h1>
 <p class="lead">이 수업은 개발자가 되기 위한 수업이 아닙니다. 코드가 어떤 원리로 돌아가는지 직접 실행해 보면서 이해하고, 최신 AI 도구를 끝까지 활용해 결과를 만들고 검증하는 경험을 하는 것이 목표입니다. 이 경험이 있으면 개발자나 AI에게 무엇을 요청해야 하는지, 받은 결과가 맞는지 판단할 수 있게 됩니다.</p>
 
@@ -56,8 +56,8 @@ code{font-family:"JetBrains Mono",monospace}
 <h2>0. 수업 전 준비</h2>
 <p>수업은 브라우저 하나로 진행합니다. 프로그램을 설치하지 않으므로, 계정 두 개만 미리 로그인해 오면 됩니다.</p>
 <ul>
-<li><b>구글 계정:</b> 개인 계정을 권장합니다. 회사 계정은 보안 정책 때문에 Colab이나 Gemini 기능이 막혀 있을 수 있습니다.</li>
-<li><b>ChatGPT 계정:</b> 무료 버전이어도 충분합니다. 수업 중에 문제가 생기거나, 궁금한 점을 묻고 싶거나, 코드를 개선하고 싶을 때 활용합니다.</li>
+<li><b>구글 계정:</b> 개인 계정을 권장합니다. 회사 계정은 보안 정책 때문에 Colab이나 Gemini 기능이 막혀 있을 수 있습니다. Colab 공식 FAQ에 따르면 Colab의 AI 기능은 <b>구글 계정 연령이 만 18세 이상</b>이어야 쓸 수 있습니다.</li>
+<li><b>ChatGPT 계정:</b> 무료 버전이어도 충분합니다. 수업 중에 문제가 생기거나, 궁금한 점을 묻고 싶거나, 코드를 개선하고 싶을 때 활용합니다. OpenAI 공식 도움말 기준 무료 버전에서도 최신 기본 모델(GPT-5.6 Luna), 웹 검색, 파일 분석을 쓸 수 있습니다.</li>
 <li><b>기기:</b> 크롬 브라우저가 설치된 노트북 (태블릿·휴대폰은 권장하지 않음)</li>
 </ul>
 
@@ -84,11 +84,11 @@ code{font-family:"JetBrains Mono",monospace}
 <div class="tbl-wrap"><table>
 <tr><th>항목</th><th>내용</th></tr>
 <tr><td>만든 곳</td><td>Google (Google Research)</td></tr>
-<tr><td>요금</td><td><b>기본 무료.</b> 구글 계정만 있으면 사용 가능. 더 좋은 컴퓨터 자원과 긴 실행 시간이 필요한 사람을 위한 유료 요금제(Colab Pro 등)가 따로 있음. 이 수업은 무료로 충분함</td></tr>
+<tr><td>요금</td><td><b>기본 무료.</b> 구글 계정만 있으면 사용 가능. 더 빠른 컴퓨터 자원이 필요한 사람을 위한 유료 요금제(Colab Pro 등)가 있고, 2026년 9월 22일부터는 Google AI 요금제 구독자에게도 Colab 프리미엄 혜택이 포함되기 시작함. 이 수업은 무료로 충분함</td></tr>
 <tr><td>저장 위치</td><td>내 구글 드라이브의 "Colab Notebooks" 폴더</td></tr>
 <tr><td>기반 기술</td><td>데이터 분석가들이 널리 쓰는 "주피터 노트북(Jupyter Notebook)"을 웹에서 쓸 수 있게 만든 것</td></tr>
 </table></div>
-<div class="box warn">유료 요금제의 가격과 구성은 자주 바뀌므로, 수강생이 물어보면 Colab 요금 안내 페이지에서 최신 정보를 함께 확인합니다.</div>
+<div class="box warn">요금제의 가격과 구성은 자주 바뀌므로, 수강생이 물어보면 Colab 공식 요금 안내 페이지에서 최신 정보를 함께 확인합니다.</div>
 
 <h3>0-2. 노트, 코드 셀, 텍스트 셀은 무슨 역할인가</h3>
 <p>Colab 파일 하나를 <b>노트(노트북)</b>라고 부릅니다. 노트는 칸(셀)들이 위에서 아래로 쌓인 문서입니다. 칸에는 두 종류가 있는데, 컴퓨터에게 시키는 일을 적는 <b>코드 셀</b>과 사람이 읽을 설명을 적는 <b>텍스트 셀</b>입니다. 이렇게 나누어 두는 이유는, 코드와 그 코드의 의도·결과 해석을 한 문서 안에서 함께 남길 수 있기 때문입니다. 나중에 내가 다시 보거나 동료에게 공유했을 때 "무엇을 왜 했는지"가 함께 전달됩니다.</p>
@@ -109,10 +109,12 @@ code{font-family:"JetBrains Mono",monospace}
 <tr><td>2025년 3월</td><td>Gemini 기반 "데이터 사이언스 에이전트" 무료 공개. 데이터를 올리고 분석 목표를 말하면 분석 노트를 자동으로 만들어 줌</td><td><a href="https://developers.googleblog.com/new-ai-first-google-colab-now-available-to-everyone/" target="_blank" rel="noopener">Google Developers Blog</a></td></tr>
 <tr><td>2025년 5월</td><td>Google I/O 2025에서 "AI 우선(AI-first) Colab" 공개</td><td><a href="https://developers.googleblog.com/en/fully-reimagined-ai-first-google-colab/" target="_blank" rel="noopener">Google Developers Blog</a></td></tr>
 <tr><td>2025년 6월 24일</td><td>AI 우선 Colab을 모든 사용자에게 공개. 대화로 코드 요청·설명, 자연어로 코드 수정, 오류 수정안을 비교 화면(diff)으로 제안</td><td><a href="https://developers.googleblog.com/new-ai-first-google-colab-now-available-to-everyone/" target="_blank" rel="noopener">Google Developers Blog</a></td></tr>
+<tr><td>2026년 4월 8일</td><td><b>학습 모드(Learn Mode)</b>와 맞춤 지침(Custom Instructions) 추가. 학습 모드를 켜면 Gemini가 정답 코드를 바로 주는 대신 단계별로 가르쳐 주는 코딩 튜터처럼 동작함</td><td><a href="https://blog.google/innovation-and-ai/technology/developers-tools/colab-updates/" target="_blank" rel="noopener">Google 공식 블로그</a></td></tr>
+<tr><td>2026년 9월 22일</td><td>Google AI 요금제에 Colab 프리미엄 혜택 포함 (더 빠른 GPU 우선 사용 등). 무료 사용자의 기본 기능은 그대로</td><td><a href="https://developers.googleblog.com/colab-is-now-part-of-your-google-ai-plan/" target="_blank" rel="noopener">Google Developers Blog</a></td></tr>
 </table></div>
-<p>아래는 Gemini가 들어간 Colab 화면의 구조를 단순하게 그린 예시입니다. 실제 버튼의 이름과 위치는 업데이트에 따라 조금씩 다를 수 있습니다.</p>
+<p>아래는 Gemini가 들어간 Colab 화면의 구조를 단순하게 그린 예시입니다. Colab 공식 FAQ에 따르면 Gemini 대화창은 <b>노트 화면 하단(푸터)의 Gemini 아이콘</b>으로 열고, AI 기능은 조건에 맞는 사용자에게 기본으로 켜져 있습니다. 실제 버튼의 이름과 위치는 업데이트에 따라 조금씩 다를 수 있습니다.</p>
 <div class="mock" role="img" aria-label="Gemini가 포함된 Colab 화면 구조 예시">
-  <div class="mock-top"><b>📒 PM파이썬_홍길동.ipynb</b><span class="sp"></span><span class="pill">✦ Gemini</span><span class="pill">공유</span><span class="pill">● 연결됨</span></div>
+  <div class="mock-top"><b>📒 PM파이썬_홍길동.ipynb</b><span class="sp"></span><span class="pill">공유</span><span class="pill">● 연결됨</span></div>
   <div class="mock-body">
     <div class="mock-main">
       <div class="cell text">📝 텍스트 셀: 오늘의 목표 - 매출 합계 계산해 보기</div>
@@ -122,18 +124,20 @@ code{font-family:"JetBrains Mono",monospace}
       </div>
       <div class="cell" style="color:var(--muted)">▶ ✦ 코드를 생성하거나 무엇이든 물어보세요…</div>
     </div>
-    <div class="mock-side"><b>✦ Gemini 패널</b>
+    <div class="mock-side"><b>✦ Gemini 대화창</b> <span class="pill" style="font-size:11px">학습 모드 ON</span>
       <div class="bubble"><span class="tag">나</span>이 에러가 왜 났어?</div>
-      <div class="bubble"><span class="tag">Gemini</span>문자열과 숫자는 바로 더할 수 없어요. <code>str(15000)</code>으로 바꾸면 됩니다. [수정안 적용]</div>
+      <div class="bubble"><span class="tag">Gemini</span>문자열과 숫자는 바로 더할 수 없어요. 15000을 글자로 바꾸려면 어떤 함수를 쓰면 될까요? 힌트: <code>str()</code></div>
     </div>
   </div>
+  <div class="mock-top" style="border-top:1px solid var(--line);border-bottom:0"><span class="pill">✦ Gemini</span><span class="sp"></span><span style="color:var(--muted)">하단 바</span></div>
 </div>
 <p class="cap">그림: Colab 화면 구조 예시 (강사 작성 도식, 실제 화면 아님). 📷 수업 직전 실제 화면 스크린샷으로 교체 예정</p>
 <div class="tbl-wrap"><table>
 <tr><th>Gemini 기능</th><th>무엇을 해 주나</th><th>언제 쓰나</th></tr>
 <tr><td>코드 생성</td><td>말로 요청하면 코드를 써 줌</td><td>"1부터 10까지 더하는 코드 써 줘"</td></tr>
 <tr><td>코드·오류 설명</td><td>코드가 무슨 뜻인지, 에러가 왜 났는지 설명하고 수정안을 제안</td><td>모르는 코드나 빨간 에러를 만났을 때</td></tr>
-<tr><td>Gemini 패널 (데이터 사이언스 에이전트)</td><td>노트 전체를 보고 대화. 데이터를 주고 분석 목표를 말하면 분석 단계를 계획하고 코드를 만들어 줌</td><td>Part 4 데이터 분석</td></tr>
+<tr><td>학습 모드</td><td>답을 바로 주지 않고 힌트와 단계별 설명으로 이끌어 줌</td><td>Part 3 기초 문법. 왕초보에게 가장 추천</td></tr>
+<tr><td>Gemini 대화창 (데이터 사이언스 에이전트)</td><td>노트 전체를 보고 대화. 데이터를 주고 분석 목표를 말하면 분석 단계를 계획하고 코드를 만들어 줌</td><td>Part 4 데이터 분석</td></tr>
 </table></div>
 
 <h3>0-4. ChatGPT와 함께 쓸 때 알아야 할 것</h3>
@@ -147,7 +151,7 @@ code{font-family:"JetBrains Mono",monospace}
 <tr><th></th><th>Colab Gemini</th><th>ChatGPT (무료)</th></tr>
 <tr><td>강점</td><td>지금 노트의 코드·오류를 직접 보고 답함</td><td>개념 설명, 비유, 다른 관점에서 교차 확인</td></tr>
 <tr><td>이 수업에서 쓰는 때</td><td>코드 생성, 오류 설명·수정, 데이터 분석</td><td>문제가 생겼을 때, 질문하고 싶을 때, 코드를 개선하고 싶을 때</td></tr>
-<tr><td>주의</td><td>수정안을 적용하기 전에 무엇이 바뀌는지 읽어 보기</td><td>코드와 에러를 텍스트로 붙여넣기 (무료 버전은 파일 업로드 횟수 제한)</td></tr>
+<tr><td>주의</td><td>수정안을 적용하기 전에 무엇이 바뀌는지 읽어 보기</td><td>코드와 에러를 텍스트로 붙여넣기 (무료 버전의 사용 한도는 OpenAI가 수시로 조정)</td></tr>
 </table></div>
 <div class="box warn"><b>검증 원칙:</b> 두 AI의 답이 다르면 그 차이 자체가 좋은 질문거리입니다. 최종 판단은 AI가 아니라 <b>실행 결과와 내가 기대한 값을 비교해서</b> 내립니다.</div>
 
@@ -159,12 +163,12 @@ total = price * 1.1                    # 처리 (부가세 10%)
 print("결제 금액:", int(total), "원")   # 출력</pre>
 <ul>
 <li><b>해 보기:</b> 실행한 뒤 가격을 바꿔 넣어 보고, 셋째 줄과 둘째 줄의 순서를 바꾸면 어떻게 되는지 확인합니다.</li>
-<li><b>AI 활용:</b> Gemini에게 "이 코드를 한 줄씩 비유로 설명해 줘"라고 요청해 내 이해와 비교합니다.</li>
+<li><b>AI 활용:</b> 하단 Gemini 아이콘으로 대화창을 열고 "이 코드를 한 줄씩 비유로 설명해 줘"라고 요청해 내 이해와 비교합니다.</li>
 </ul>
 <div class="box tip"><b>PM 포인트:</b> 기획서의 "사용자가 ○○하면 △△가 보인다"라는 문장이 곧 입력·처리·출력입니다. 처리 규칙이 모호하면 개발자도 AI도 추측해서 만듭니다.</div>
 
 <h2>4. Part 2. 파이썬은 무엇인가</h2>
-<p>파이썬은 1991년 네덜란드의 프로그래머 귀도 반 로섬이 발표한 프로그래밍 언어입니다. 문법이 영어 문장에 가깝고 간결해서 처음 배우는 사람에게 가장 많이 권하는 언어 중 하나이고, 동시에 데이터 분석, 업무 자동화, 인공지능 개발 같은 실무 현장에서도 가장 널리 쓰이는 언어입니다. 쉽게 시작할 수 있으면서 실무에서도 바로 쓰인다는 점이 파이썬의 가장 큰 특징입니다.</p>
+<p>파이썬은 1991년 네덜란드의 프로그래머 귀도 반 로섬이 발표한 프로그래밍 언어입니다. 지금도 계속 발전하고 있어서, 2026년 10월 기준 최신 버전은 파이썬 3.15입니다(3.15.0 정식판 10월 9일, 3.15.1 10월 21일 공개). 문법이 영어 문장에 가깝고 간결해서 처음 배우는 사람에게 가장 많이 권하는 언어 중 하나이고, 동시에 데이터 분석, 업무 자동화, 인공지능 개발 같은 실무 현장에서도 가장 널리 쓰이는 언어입니다. 쉽게 시작할 수 있으면서 실무에서도 바로 쓰인다는 점이 파이썬의 가장 큰 특징입니다.</p>
 <p>오늘 수업은 어렵게 하지 않습니다. 보통 개발자들은 파이썬을 배울 때 내 컴퓨터에 파이썬을 설치하고, 코드 편집 프로그램을 깔고, 여러 설정을 맞추는 것부터 시작합니다. 이 과정에서 많은 입문자가 첫 코드도 실행해 보기 전에 지칩니다. 우리는 이 과정을 <b>하지 않아도 됩니다.</b> Colab에 이미 모든 준비가 되어 있기 때문에, 브라우저를 열고 바로 코드를 실행합니다.</p>
 <div class="tbl-wrap"><table>
 <tr><th></th><th>일반적인 개발자의 시작</th><th>오늘 우리의 시작</th></tr>
@@ -172,10 +176,11 @@ print("결제 금액:", int(total), "원")   # 출력</pre>
 <tr><td>데이터 분석 도구</td><td>pandas 등 도구를 직접 설치</td><td>이미 설치되어 있음</td></tr>
 <tr><td>막혔을 때</td><td>검색, 커뮤니티 질문</td><td>Colab Gemini와 ChatGPT에게 바로 질문</td></tr>
 </table></div>
+<p>Colab에 설치된 파이썬 버전은 최신 버전보다 조금 늦게 따라가는 경우가 많습니다. 코드 셀에 <code>!python --version</code>을 입력해 실행하면 지금 쓰고 있는 버전을 확인할 수 있습니다. 오늘 배우는 기초 문법은 버전과 관계없이 똑같이 동작합니다.</p>
 <div class="box tip"><b>기억할 것:</b> 오늘의 목표는 문법을 외우는 것이 아니라 "코드가 이렇게 생겼고, 이렇게 실행되는구나"를 손으로 느껴 보는 것입니다.</div>
 
 <h2>5. Part 3. 기초 문법 맛보기</h2>
-<p>이 파트에서는 개념 설명을 먼저 듣지 않고, <b>코드를 먼저 실행해 본 다음</b> 방금 무슨 일이 일어났는지를 이해하는 순서로 진행합니다. 직접 결과를 본 뒤에 이름을 붙이면 훨씬 쉽게 기억에 남습니다. 각 문법마다 코드를 타이핑해서 실행하고, 값을 하나 바꿔 다시 실행해 본 뒤, 개념 설명을 읽습니다. 이해가 안 되는 부분은 Gemini에게 "왜 이렇게 나와?"라고 물어봅니다.</p>
+<p>이 파트에서는 개념 설명을 먼저 듣지 않고, <b>코드를 먼저 실행해 본 다음</b> 방금 무슨 일이 일어났는지를 이해하는 순서로 진행합니다. 직접 결과를 본 뒤에 이름을 붙이면 훨씬 쉽게 기억에 남습니다. 각 문법마다 코드를 타이핑해서 실행하고, 값을 하나 바꿔 다시 실행해 본 뒤, 개념 설명을 읽습니다. 이해가 안 되는 부분은 Gemini에게 "왜 이렇게 나와?"라고 물어봅니다. 이 파트에서는 Gemini 대화창의 <b>학습 모드를 켜 두는 것</b>을 권장합니다. 정답을 바로 받는 대신 힌트를 받으며 스스로 고치게 되어 실력이 남습니다.</p>
 
 <h3>3-1. 변수</h3>
 <p>먼저 아래 코드를 실행하고, <code>qty</code>의 값을 5로 바꿔 다시 실행해 보세요.</p>
@@ -347,10 +352,22 @@ assert pay(30000) == 27000   # 경계값 테스트에서 실패</pre>
 
 <h2>9. 강사 체크리스트</h2>
 <ul>
-<li>수업 직전 Colab 실제 화면으로 Gemini 버튼 이름·위치 확인 후 예시 도식을 스크린샷으로 교체</li>
+<li>수업 직전 Colab 실제 화면으로 Gemini 아이콘·학습 모드 메뉴 위치 확인 후 예시 도식을 스크린샷으로 교체</li>
+<li>수강생 구글 계정이 만 18세 이상으로 등록되어 있는지 사전 안내 (Colab AI 기능 이용 조건)</li>
 <li>출강 기관 PC·네트워크에서 Colab, Gemini, ChatGPT 접속 가능 여부 사전 확인</li>
 <li>Gemini와 ChatGPT가 서로 다른 답을 주는 사례, AI가 틀리는 사례 각 1개 준비</li>
 <li>과제 정답은 레포에 올리지 않고 별도 보관</li>
+</ul>
+
+<h2>10. 기준 자료 (2026년 10월 22일 KST 확인)</h2>
+<p>이 교안의 도구 정보는 아래 공식 발표와 공식 문서를 기준으로 작성했습니다. AI 도구는 기능과 한도가 자주 바뀌므로 수업 직전에 다시 확인합니다.</p>
+<ul>
+<li><a href="https://research.google.com/colaboratory/faq.html" target="_blank" rel="noopener">Google Colab 공식 FAQ</a>: 무료 이용, AI 기능 연령 조건, Gemini 아이콘 위치</li>
+<li><a href="https://developers.googleblog.com/new-ai-first-google-colab-now-available-to-everyone/" target="_blank" rel="noopener">Google Developers Blog: AI 우선 Colab 전체 공개 (2025.6.24)</a></li>
+<li><a href="https://blog.google/innovation-and-ai/technology/developers-tools/colab-updates/" target="_blank" rel="noopener">Google 공식 블로그: Colab 학습 모드 (2026.4.8)</a></li>
+<li><a href="https://developers.googleblog.com/colab-is-now-part-of-your-google-ai-plan/" target="_blank" rel="noopener">Google Developers Blog: Google AI 요금제에 Colab 포함 (2026.9.22)</a></li>
+<li><a href="https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq" target="_blank" rel="noopener">OpenAI 도움말: ChatGPT 무료 플랜 FAQ</a></li>
+<li><a href="https://www.python.org/downloads/" target="_blank" rel="noopener">python.org 다운로드 (Python 3.15.1, 2026.10.21)</a></li>
 </ul>
 
 </div></body></html>
