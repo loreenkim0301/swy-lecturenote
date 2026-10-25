@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet"/>
+<meta content="index, follow, noai, noimageai" name="robots"/>
+<title>생성형 AI를 활용한 보고서/기획서 제작</title>
+<style>:root { --ink: #172033; --muted: #657086; --line: #dfe4ed; --soft: #f5f7fb; --blue: #2457f5; --nav: #111a2e; --green: #16a36b; --warn: #ffad22; --page-pad: clamp(28px,5.8vw,82px); --font-sans: "Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; scroll-behavior: smooth; }
+* { box-sizing: border-box; }
+body { margin: 0px; background: rgb(238, 241, 246); color: var(--ink); font-family: var(--font-sans); line-height: 1.7; letter-spacing: -0.01em; }
+.app aside { position: fixed; inset: 0px auto 0px 0px; width: 310px; height: 100vh; padding: 0 16px 28px; background: var(--nav); color: rgb(255, 255, 255); overflow-y: auto; z-index: 10; }
+.app main { min-height: 100vh; margin-left: 310px; background: rgb(255, 255, 255); }
+.side-head { position: sticky; top: 0; z-index: 1; margin: 0 -16px; padding: 20px 26px 14px; background: var(--nav); border-bottom: 1px solid rgb(45, 56, 80); }
+.brand { font-size: 11px; font-weight: 800; letter-spacing: 0.14em; color: rgb(130, 145, 177); }
+aside h1 { margin: 6px 0 4px; font-size: 17px; line-height: 1.35; letter-spacing: -0.02em; }
+.side-sub, .side-foot { font-size: 12px; color: rgb(150, 162, 186); }
+aside nav { margin-top: 10px; }
+aside nav a { display: block; padding: 7px 10px 7px 22px; color: rgb(190, 200, 219); text-decoration: none; font-size: 14px; line-height: 1.45; border-left: 3px solid transparent; border-radius: 0 6px 6px 0; }
+aside nav a:hover { color: rgb(255, 255, 255); background: rgb(25, 36, 60); }
+aside nav .major { margin-top: 12px; padding-left: 10px; color: rgb(255, 255, 255); font-size: 15px; font-weight: 800; }
+aside nav a.active { color: rgb(255, 255, 255); background: rgb(30, 44, 74); border-left-color: var(--blue); font-weight: 700; }
+.side-foot { margin: 20px 10px 0; padding-top: 14px; border-top: 1px solid rgb(45, 56, 80); }
+.hero { padding: 86px var(--page-pad) 72px; background: linear-gradient(135deg, rgb(247, 249, 255), rgb(238, 243, 255) 58%, rgb(233, 255, 246)); border-bottom: 1px solid var(--line); }
+.kicker, .section-label, .topic-label, .eyebrow { font-size: 13px; font-weight: 800; letter-spacing: 0.13em; color: var(--blue); }
+.hero h1 { margin: 16px 0px; font-size: clamp(40px, 5vw, 70px); line-height: 1.08; letter-spacing: -0.055em; }
+.hero h1 em { color: var(--blue); font-style: normal; }
+.hero > p { max-width: 860px; color: rgb(79, 91, 114); font-size: 18px; }
+.hero-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 38px; background: rgb(220, 226, 237); border: 1px solid rgb(220, 226, 237); }
+.hero-grid div { background: rgb(255, 255, 255); padding: 16px; }
+.hero-grid b { display: block; font-size: 12px; color: rgb(125, 135, 153); }
+.hero-grid span { font-size: 14px; font-weight: 800; }
+.section { padding: 70px var(--page-pad); border-bottom: 1px solid var(--line); scroll-margin-top: 18px; }
+.section > h2, .session-head h2 { margin: 8px 0px 14px; font-size: 36px; letter-spacing: -0.04em; }
+.lead { font-size: 18px; max-width: 900px; }
+.three-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px 0px; }
+.three-cards article { padding: 20px; border: 1px solid var(--line); border-radius: 14px; background: rgb(255, 255, 255); }
+.three-cards article > span { font-size: 12px; font-weight: 800; color: var(--blue); }
+.three-cards h3 { margin: 8px 0px 5px; font-size: 20px; }
+.three-cards p, .caption { color: var(--muted); font-size: 14px; }
+.notice, .warning { margin: 22px 0px; padding: 16px 19px; }
+.notice { border-left: 4px solid var(--blue); background: rgb(234, 240, 255); }
+.warning { border-left: 4px solid var(--warn); background: rgb(255, 246, 230); }
+.schedule { margin-top: 30px; }
+.schedule div { display: grid; grid-template-columns: 48px 125px 1fr; align-items: center; padding: 13px 0px; border-top: 1px solid var(--line); }
+.schedule span.badge { display: grid; place-items: center; width: 29px; height: 29px; border-radius: 50%; background: var(--nav); color: rgb(255, 255, 255); font-size: 12px; }
+.schedule p { margin: 0px; }
+.session { padding-top: 0px; }
+.session-head { margin: 0 calc(var(--page-pad)*-1) 50px; padding: 52px var(--page-pad); background: var(--nav); color: rgb(255, 255, 255); }
+.session-head .eyebrow { color: rgb(125, 160, 255); }
+.session-head p { max-width: 900px; color: rgb(195, 204, 220); }
+.vibe-intro { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 28px; align-items: start; margin-top: 30px; padding-top: 28px; border-top: 1px solid rgb(45, 56, 80); }
+.vibe-quote { margin: 0; padding-left: 18px; border-left: 3px solid rgb(125, 160, 255); }
+.vibe-quote blockquote { margin: 0 0 10px; color: #fff; font-size: 21px; font-weight: 700; line-height: 1.5; letter-spacing: -0.03em; }
+.vibe-quote figcaption { color: rgb(160, 172, 196); font-size: 13px; }
+.vibe-meaning { margin: 18px 0 0; padding: 14px 16px; border-radius: 12px; background: rgb(25, 36, 60); color: rgb(215, 222, 236); font-size: 15px; }
+.vibe-meaning b { color: #fff; }
+.vibe-timeline { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.vibe-timeline li { display: grid; grid-template-columns: 74px 1fr; gap: 12px; padding: 12px 14px; border: 1px solid rgb(45, 56, 80); border-radius: 12px; background: rgba(255, 255, 255, 0.03); }
+.vibe-timeline time { color: rgb(125, 160, 255); font-size: 13px; font-weight: 800; letter-spacing: 0.02em; }
+.vibe-timeline b { display: block; color: #fff; font-size: 15px; }
+.vibe-timeline span { display: block; color: rgb(185, 195, 214); font-size: 14px; line-height: 1.55; }
+.vibe-sources { grid-column: 1 / -1; margin: 0; color: rgb(130, 145, 177); font-size: 12px; }
+.vibe-sources a { color: rgb(160, 180, 230); }
+@media (max-width: 1020px) { .vibe-intro { grid-template-columns: 1fr; } }
+.time { font-size: 13px; color: rgb(174, 185, 207); }
+.topic { margin-bottom: 70px; scroll-margin-top: 20px; }
+.topic h3 { margin: 8px 0px 12px; font-size: 28px; letter-spacing: -0.025em; }
+.flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 9px; margin: 18px 0px 26px; }
+.flow div { text-align: center; padding: 16px 12px; border-radius: 12px; background: rgb(237, 242, 255); }
+.flow span { display: block; font-size: 12px; font-weight: 800; color: var(--blue); }
+.flow b { display: block; }
+.flow small { display: block; margin-top: 5px; color: var(--muted); }
+.versus { display: grid; grid-template-columns: 1fr 54px 1fr; align-items: center; margin: 16px 0px 26px; }
+.versus > div { padding: 20px; border: 1px solid var(--line); border-radius: 13px; background: var(--soft); }
+.versus i { text-align: center; color: var(--blue); font-style: normal; font-weight: 900; }
+.table-wrap { overflow: auto; }
+table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 14px; }
+th { padding: 13px; text-align: left; color: rgb(255, 255, 255); background: var(--nav); }
+td { padding: 14px 13px; border-bottom: 1px solid var(--line); }
+.checklist { display: grid; gap: 7px; padding: 0px; list-style: none; }
+.checklist li { padding: 11px 14px; border-radius: 8px; background: var(--soft); }
+.checklist li::before { content: "✓"; margin-right: 8px; color: var(--blue); font-weight: 900; }
+.practice-brief { display: grid; gap: 8px; margin: 18px 0px; }
+.practice-brief > div { padding: 15px 18px; border: 1px solid rgb(200, 239, 221); border-radius: 12px; background: rgb(237, 255, 246); }
+.copybox { margin: 20px 0px; border: 1px solid rgb(207, 215, 230); border-radius: 12px; overflow: hidden; background: rgb(17, 26, 46); color: rgb(232, 238, 252); }
+.copyhead { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: rgb(30, 43, 71); font-size: 13px; font-weight: 800; }
+.copyhead button { padding: 5px 10px; border: 1px solid rgb(97, 112, 141); border-radius: 6px; background: transparent; color: rgb(255, 255, 255); cursor: pointer; }
+.copybox pre { white-space: pre-wrap; margin: 0px; padding: 20px; font: 13px / 1.72 ui-monospace, SFMono-Regular, Menlo, monospace; }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 18px 0px 26px; }
+.steps article { padding: 18px; border-top: 4px solid var(--blue); border-radius: 12px; }
+.steps strong { display: block; color: var(--blue); font-size: 12px; }
+.steps b { display: block; font-size: 18px; margin-top: 3px; }
+.sub-optional { margin-top: 10px; padding: 10px 12px; border: 1px dashed var(--line); border-radius: 10px; color: var(--muted); font-size: 14px; }
+.sub-optional .tag { margin-left: 0; }
+.steps .sub-optional b { display: inline; font-size: 14px; margin: 0 4px 0 2px; color: var(--muted); }
+.tag { display: inline-block; margin-left: 6px; padding: 1px 8px; border-radius: 999px; font-size: 11px; font-weight: 800; letter-spacing: 0; vertical-align: 1px; }
+.tag-req { background: var(--blue); color: #fff; }
+.tag-opt { border: 1px solid var(--line); background: #fff; color: var(--muted); font-weight: 700; }
+.final-box { padding: 28px; border-radius: 18px; background: linear-gradient(135deg, rgb(17, 26, 46), rgb(29, 47, 88)); color: rgb(255, 255, 255); }
+.final-box h3 { margin: 6px 0px 8px; font-size: 30px; }
+.final-box p { color: rgb(203, 213, 231); }
+code.inline { padding: 2px 6px; border-radius: 6px; background: rgb(238, 242, 248); font-family: ui-monospace, monospace; }
+.small { font-size: 13px; color: var(--muted); }
+.resource-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 18px 0px 28px; }
+.resource-card { padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--soft); }
+.resource-card b { display: block; margin-bottom: 4px; }
+.resource-card a { color: var(--blue); font-weight: 800; text-decoration: none; word-break: break-all; font-size: 13px; }
+.sample-link { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin: 22px 0; padding: 14px 18px; border: 1px solid rgb(203, 218, 255); border-radius: 12px; background: rgb(240, 245, 255); }
+.sample-link span { color: var(--muted); font-size: 14px; }
+.sample-link b { display: block; color: var(--ink); font-size: 15px; }
+.sample-link .resource-link { flex-shrink: 0; margin-top: 0; }
+@media (max-width: 680px) { .sample-link { flex-direction: column; align-items: flex-start; } }
+.resource-link { display: inline-block; margin-top: 8px; padding: 8px 12px; border: 1px solid rgb(203, 213, 225); border-radius: 8px; color: var(--blue); font-size: 13px; font-weight: 800; text-decoration: none; background: rgb(255, 255, 255); }
+.procedure { counter-reset: step 0; display: grid; gap: 10px; margin: 18px 0px 28px; }
+.procedure > div { position: relative; padding: 15px 16px 15px 54px; border: 1px solid var(--line); border-radius: 12px; background: rgb(255, 255, 255); }
+.procedure > div::before { counter-increment: step 1; content: counter(step); position: absolute; left: 16px; top: 15px; width: 26px; height: 26px; display: grid; place-items: center; border-radius: 50%; background: var(--blue); color: rgb(255, 255, 255); font-size: 12px; font-weight: 900; }
+.sample-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 18px 0px 28px; }
+.sample-grid article { padding: 18px; border: 1px solid var(--line); border-radius: 13px; background: var(--soft); }
+.term-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 22px 0px; }
+.term-grid article { padding: 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--soft); }
+.term-grid strong { display: block; color: var(--blue); font-size: 12px; letter-spacing: 0.08em; }
+.term-grid h4 { margin: 5px 0px 8px; font-size: 20px; }
+.talk { margin: 18px 0px; padding: 22px; border-left: 4px solid var(--green); background: rgb(241, 252, 247); }
+.talk p { margin: 0px 0px 14px; }
+.talk p:last-child { margin-bottom: 0px; }
+.example-flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 18px 0px 24px; }
+.example-flow div { padding: 14px 12px; border-radius: 10px; background: rgb(255, 248, 235); }
+.example-flow b, .example-flow span { display: block; }
+.example-flow span { margin-bottom: 3px; color: rgb(154, 100, 16); font-size: 12px; font-weight: 800; }
+details.optional { margin-top: 8px; padding: 0 22px 6px; border: 1px solid var(--line); border-radius: 14px; background: var(--soft); }
+details.optional > summary { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; padding: 20px 0; cursor: pointer; list-style: none; }
+details.optional > summary::-webkit-details-marker { display: none; }
+details.optional > summary::before { content: "▸"; color: var(--blue); font-weight: 900; }
+details.optional[open] > summary::before { content: "▾"; }
+details.optional .summary-title { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
+details.optional .summary-hint { font-size: 13px; color: var(--muted); }
+details.optional[open] .summary-hint { display: none; }
+.profile-card { display: grid; grid-template-columns: 1.6fr 1fr; gap: 20px; padding: 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--soft); }
+.profile-card h3 { margin: 0 0 6px; font-size: 22px; }
+.profile-card ul { margin: 10px 0 0; padding-left: 18px; }
+.profile-links { display: grid; gap: 8px; align-content: start; }
+.profile-links a { padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--blue); font-size: 14px; font-weight: 700; text-decoration: none; word-break: break-all; }
+.sample-shot { margin: 22px 0; }
+.sample-shot img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 12px; }
+.sample-shot.narrow img { max-width: 700px; margin: 0 auto; }
+.sample-shot.small img { max-width: 360px; }
+.sample-shot figcaption { margin-top: 10px; color: var(--muted); font-size: 14px; }
+@media (max-width: 680px) { .profile-card { grid-template-columns: 1fr; padding: 18px; } }
+.app aside { word-break: keep-all; }
+.topic .three-cards h3 { margin: 8px 0 5px; font-size: 20px; letter-spacing: -0.02em; }
+.block-title { margin: 34px 0 4px; font-size: 22px; letter-spacing: -0.02em; scroll-margin-top: 18px; }
+.break { padding: 54px var(--page-pad); background: rgb(246, 248, 252); border-bottom: 1px solid var(--line); }
+.break h2 { margin: 0px 0px 8px; font-size: 32px; }
+@media (max-width: 1020px) {
+  .app aside { display: none; }
+  .app main { margin-left: 0px; }
+  .hero-grid, .three-cards, .steps, .term-grid, .example-flow { grid-template-columns: 1fr 1fr; }
+  .flow { grid-template-columns: 1fr 1fr; }
+}
+.nav-toggle { position: fixed; top: 14px; left: 322px; z-index: 20; display: flex; align-items: center; gap: 6px; height: 36px; padding: 0 12px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255, 255, 255, 0.94); color: var(--ink); font: 700 13px/1 var(--font-sans); cursor: pointer; box-shadow: 0 4px 14px rgba(17, 26, 46, 0.12); transition: left .25s ease; }
+.nav-toggle:hover { border-color: var(--blue); color: var(--blue); }
+.nav-toggle svg { width: 16px; height: 16px; }
+.app aside { transition: transform .25s ease; }
+.app main { transition: margin-left .25s ease; }
+body.nav-hidden .app aside { transform: translateX(-100%); }
+body.nav-hidden .app main { margin-left: 0; }
+body.nav-hidden .nav-toggle { left: 14px; }
+@media (max-width: 1020px) {
+  .app aside { display: block; width: min(310px, calc(100vw - 64px)); transform: translateX(-100%); }
+  .nav-toggle { left: 14px; }
+  body.nav-open .app aside { transform: none; box-shadow: 8px 0 24px rgba(17, 26, 46, 0.25); }
+  body.nav-open .nav-toggle { left: auto; right: 10px; padding: 0 11px; }
+  body.nav-open .nav-toggle span { display: none; }
+}
+@media (max-width: 680px) {
+  .hero, .section, .break { padding-left: 20px; padding-right: 20px; }
+  .hero { padding-top: 54px; }
+  .hero-grid, .three-cards, .steps, .flow, .resource-list, .term-grid, .example-flow { grid-template-columns: 1fr; }
+  .schedule div { grid-template-columns: 38px 100px 1fr; }
+  .versus { grid-template-columns: 1fr; }
+  .versus i { padding: 8px 0px; }
+  .session-head { margin-left: -20px; margin-right: -20px; padding-left: 20px; padding-right: 20px; }
+  .section > h2, .session-head h2 { font-size: 30px; }
+  .topic h3 { font-size: 24px; }
+}</style>
+<style>
+.tt{margin:0;padding-left:1.1em}.tt li{margin:2px 0}
+.dl-list{display:grid;gap:10px;margin:18px 0}
+.dl-card{display:flex;align-items:center;gap:14px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:#fff;text-decoration:none;color:var(--ink)}
+.dl-card:hover{border-color:var(--blue);background:var(--soft)}
+.dl-ico{flex:none;display:grid;place-items:center;width:44px;height:52px;border-radius:8px;background:rgb(237,242,255);color:var(--blue);font-size:11px;font-weight:800}
+.dl-body{flex:1}.dl-body b{display:block;font-size:16px}.dl-body span{display:block;font-size:13px;color:var(--muted)}
+.dl-btn{flex:none;padding:8px 14px;border-radius:8px;background:var(--blue);color:#fff;font-size:13px;font-weight:800}
+@media(max-width:680px){.dl-card{flex-wrap:wrap}}
+#slide .sample-shot{margin:8px 0}#slide .sample-shot img{max-height:420px;width:auto;max-width:100%;margin:0 auto}#slide .sample-shot figcaption{margin-top:4px;font-size:13px;text-align:center}
+#slide .dl-card{padding:10px 14px}
+.todo{color:#b42318;font-weight:700}
+main,#slide{word-break:keep-all;overflow-wrap:break-word}
+h1,h2,h3,.hero p,.lead{text-wrap:balance}
+p,li,td{text-wrap:pretty}
+td .tag{margin-bottom:2px}
+.tag.nap{background:#7c3aed}.tag.sheet{background:var(--green)}
+.tag{margin-left:0;margin-right:4px}
+.topic .small{display:block}
+.resource-card .small{display:block;margin-bottom:6px}
+.resource-card a{display:inline-block;margin:2px 0}
+.copybox pre{background:none;color:inherit}
+.hero-grid{grid-template-columns:repeat(3,1fr)}
+.sample-link .resource-link{margin:0 6px 0 0}
+.sample-link{flex-wrap:wrap;justify-content:flex-start;gap:6px}
+#slideBtn{position:fixed;right:16px;bottom:16px;z-index:30;background:var(--blue);color:#fff;border:0;border-radius:999px;padding:12px 20px;font:700 15px var(--font-sans);cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+#deck{position:fixed;inset:0;z-index:100;background:#0b1220;display:flex;flex-direction:column}
+#deck[hidden]{display:none}
+#viewport{flex:1;min-height:0;position:relative;overflow:hidden}
+#stage{position:absolute;left:50%;top:50%;width:1280px;height:720px;background:#fff;display:flex;flex-direction:column;overflow:hidden;transform-origin:center center;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+#master{flex:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 96px;background:var(--nav);color:#fff;font-weight:800;font-size:15px}
+#master .m-brand{font-size:11px;letter-spacing:.14em;color:rgb(130,145,177);margin-right:12px}
+#mbar{flex:none;height:4px;background:var(--line)}#prog{display:block;height:100%;background:var(--blue);width:0}
+#slide{flex:1;min-height:0;overflow:hidden;padding:28px 96px 12px;font-size:19px;line-height:1.55}
+#slide h1{font-size:46px;line-height:1.15;margin:12px 0}#slide h1 em{color:var(--blue);font-style:normal}
+#slide h3.st{margin:0 0 14px;font-size:32px;letter-spacing:-.03em}
+#slide .cont{font-size:16px;color:var(--muted);font-weight:500;margin-left:10px}
+#slide table{font-size:16px;margin-top:6px}#slide th,#slide td{padding:9px 12px}
+#slide .copybox{margin:10px 0}#slide .copybox pre{font-size:15px;padding:14px 18px}
+#slide p,#slide .notice,#slide .warning{margin:8px 0}
+#slide .notice,#slide .warning{padding:12px 16px}
+#slide .procedure{gap:8px;margin:10px 0}#slide .procedure>div{padding:10px 14px 10px 50px}
+#slide .resource-list{grid-template-columns:repeat(3,1fr);margin:10px 0}
+#slide .hero-grid{margin-top:20px}#slide .flow{grid-template-columns:repeat(5,1fr);margin:12px 0 16px}#slide .flow div{padding:10px 8px}#slide .hero-grid{grid-template-columns:repeat(3,1fr)}
+#pager{flex:none;display:flex;align-items:center;justify-content:center;gap:14px;height:40px;border-top:1px solid var(--line);color:var(--muted);font-size:14px;font-weight:700}
+#pager button{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:6px;width:30px;height:26px;font-size:11px;cursor:pointer}
+#bar{flex:none;display:flex;align-items:center;justify-content:center;gap:16px;padding:8px;background:#111a2e;color:#cbd5e7;font-size:14px}
+#bar button{border:1px solid rgb(97,112,141);background:transparent;color:#fff;border-radius:8px;padding:6px 14px;font:700 14px var(--font-sans);cursor:pointer}
+@media print{#slideBtn,#deck{display:none!important}}
+
+aside nav .nav-title{padding:6px 10px 10px;font-size:12px;font-weight:800;letter-spacing:.12em;color:rgb(130,145,177)}
+aside nav .grp{margin-top:20px;padding-top:12px;border-top:1px solid rgb(45,56,80)}
+aside nav .nav-title+.grp{margin-top:0;border-top:0;padding-top:0}
+aside nav .grp-label{padding:0 10px 4px;font-size:11px;font-weight:800;letter-spacing:.1em;color:rgb(130,145,177)}
+aside nav a.l2{margin-top:0;padding:6px 10px;color:#fff;font-size:15px;font-weight:800;border-left:3px solid transparent}
+aside nav a.l3{margin-left:12px;padding:5px 10px 5px 14px;font-size:14px;border-left:1px solid rgb(45,56,80)}
+aside nav a.l4{display:none;margin-left:12px;padding:3px 10px 3px 30px;font-size:12.5px;color:rgb(150,162,186);border-left:1px solid rgb(45,56,80)}
+aside nav a.l4.show{display:block}
+aside nav a.active{border-left-color:var(--blue)}
+.dh{margin:30px 0 8px;padding:2px 0 2px 12px;border-left:4px solid var(--blue)}
+.dh b{font-size:1.06em}
+#slide .dh{margin:12px 0 8px}
+#slide .eb{margin:0 0 4px;font-size:14px;font-weight:800;letter-spacing:.06em;color:var(--blue)}
+#slide .outline{columns:2;column-gap:56px;font-size:16px;line-height:1.5}
+#slide .outline .og{break-inside:avoid;margin-bottom:12px}
+#slide .outline b{display:block;font-size:17px}
+#slide .outline span{display:block;padding-left:14px;color:var(--muted);font-size:14.5px}
+
+.base{margin:6px 0 14px;padding:8px 12px;border-left:4px solid var(--green);background:rgb(236,248,243);font-size:14.5px}
+.copybox pre{font:15px/1.8 var(--font-sans);letter-spacing:-.01em}
+.copybox pre.fmt{white-space:normal;padding:18px 20px}
+.pl{display:flex;gap:10px;margin:0 0 9px}.pl:last-child{margin-bottom:0}
+.pl .pk{flex:none;width:3.3em;color:rgb(140,180,255);font-weight:800}
+.pl.k2 .pk{color:rgb(110,220,180)}.pl.k3 .pk{color:rgb(255,200,110)}
+.pl .pt{flex:1;min-width:0}
+.pl.c{padding-left:calc(3.3em + 10px);margin-top:-5px}
+#slide .copybox pre.fmt{font-size:17px;padding:14px 18px}
+#slide .base{font-size:15px;padding:6px 12px}
+</style>
+</head>
+<body>
+<button aria-controls="side-nav" aria-expanded="true" class="nav-toggle" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" viewbox="0 0 16 16"><path d="M2 4h12M2 8h12M2 12h12"></path></svg><span>목차 숨기기</span></button>
+<div class="app">
+<aside id="side-nav">
+<div class="side-head">
+<div class="brand">SELECTWAY · LECTURE NOTE</div>
+<h1>생성형 AI를 활용한 보고서/기획서 제작</h1>
+<div class="side-sub">10.19(월) · 10.22(목) · 10:00–17:00</div>
+</div>
+<nav>
+<div class="nav-title">전체 목차</div><div class="grp"><div class="grp-label">교육 안내</div><a class="l2" href="#overview">교육 개요</a><a class="l2" href="#prep">수업 전 준비</a><a class="l3" href="#prep-1">실습 파일</a><a class="l2" href="#timetable">타임테이블</a></div><div class="grp"><div class="grp-label">세션 1</div><a class="l2" href="#s1">생성형 AI와 문서 자동화 개요</a><a class="l3" href="#s1-1">1-1. 시작 전: 젠스파크 화면 살펴보고 맞추기</a><a class="l3" href="#s1-2">1-2. 기존 문서 작성 vs AI 활용 비교</a><a class="l3" href="#s1-3">1-3. 내 업무를 스케치하고 5단계로 쪼개기</a><a class="l3" href="#s1-4">1-4. 업무 문서 제작에 쓰는 AI 도구</a></div><div class="grp"><div class="grp-label">세션 2</div><a class="l2" href="#s2">Genspark 실전 활용 ①: 자료 수집과 리포트</a><a class="l3" href="#s2-1">2-1. 딥 리서치로 웹 자료 자동 수집</a><a class="l3" href="#s2-2">2-2. 팩트 체크로 숫자 확인하기</a><a class="l3" href="#s2-3">2-3. 여러 자료로 리포트 만들기</a></div><div class="grp"><div class="grp-label">세션 3</div><a class="l2" href="#s3">Genspark 실전 활용 ②: 템플릿과 문서 스타일</a><a class="l3" href="#s3-1">3-1. 보고서·기획서 기본 구조</a><a class="l3" href="#s3-2">3-2. 템플릿 찾아 쓰기와 내 템플릿 만들기</a><a class="l3" href="#s3-3">3-3. 목적별 문서 스타일 변환</a><a class="l3" href="#s3-4">3-4. 섹션 간 일관성 점검</a></div><div class="grp"><div class="grp-label">세션 4</div><a class="l2" href="#s4">데이터 기반 보고서 제작</a><a class="l3" href="#s4-1">4-1. AI 시트에 실습 파일 올리기</a><a class="l3" href="#s4-2">4-2. 데이터 요약: 자주 쓰는 분석 4가지</a><a class="l3" href="#s4-3">4-3. 요약 → 시각화 자동 변환</a><a class="l3" href="#s4-4">4-4. 인사이트 중심 보고서 구성과 차트·표 삽입</a></div><div class="grp"><div class="grp-label">세션 5</div><a class="l2" href="#s5">미니 프로젝트: 실무 보고서/기획서 제작</a><a class="l3" href="#s5-1">5-1. 주제와 독자 정하기</a><a class="l3" href="#s5-2">5-2. 진행 순서 (90분)</a><a class="l3" href="#s5-3">5-3. 제출 전 체크리스트</a></div><div class="grp"><div class="grp-label">세션 6</div><a class="l2" href="#s6">발표 및 피드백</a><a class="l3" href="#s6-1">6-1. 3분 발표 구성</a><a class="l3" href="#s6-2">6-2. 피드백 기준</a></div>
+</nav>
+<div class="side-foot">Genspark Plus(유료) · 가상 데이터로 실습</div>
+</aside>
+<main>
+<header class="hero">
+<div class="kicker">GENSPARK REPORT WORKFLOW · 2026.10.19 (월) · 10.22 (목) 강의</div>
+<h1>생성형 AI로 자료를 조사하고, 분석하고, 보고서·기획서까지</h1>
+<p>오늘은 젠스파크(Genspark) 하나로 자료를 모으고, 데이터를 분석하고, 보고서·기획서까지 완성해 봐요. 오전에는 웹 자료 수집과 문서 템플릿·스타일 변환을, 오후에는 가상의 쇼핑몰 데이터로 데이터 기반 보고서를 만든 뒤 내 업무 주제로 미니 프로젝트를 진행해요. 모든 단계는 강사가 먼저 화면으로 보여 드리고, 같은 순서로 천천히 따라 해요.</p>
+<div class="hero-grid">
+<div><b>일정</b><span>10월 19일(월) · 10월 22일(목) 10:00–17:00</span></div>
+<div><b>도구</b><span>Genspark Plus(유료)</span></div>
+<div><b>실습 데이터</b><span>주문 125행 + 상품 6개</span></div>
+</div>
+</header>
+<section class="section" id="overview"><div class="section-label">OVERVIEW</div><h2>교육 개요</h2><div class="table-wrap"><table>
+<tr><th>시간</th><td>10:00–17:00 (점심 12:30–13:30, 실습 6시간)</td></tr>
+<tr><th>진행 방식</th><td>단계마다 강사가 먼저 시연하고, 같은 화면으로 천천히 따라 해요. 막히면 바로 손을 들어 주세요.</td></tr>
+<tr><th>도구</th><td>Genspark Plus(유료): 홈 입력창, 딥 리서치, 팩트 체크, AI 문서, AI 시트, AI 슬라이드</td></tr>
+<tr><th>교육 목표</th><td>생성형 AI를 활용해 보고서/기획서를 효과적으로 작성하는 방법을 알아보고, 자료를 수집·분석해 일관성 있는 보고서/기획서를 작성할 수 있다.</td></tr>
+<tr><th>주요 내용</th><td>① 서론·본론·결론(보고서), 목표·전략·제안(기획서)의 기본 구성 이해 ② 보고서·기획서의 각 부분을 AI로 작성하는 실습 ③ 섹션 간 논리적 연결과 일관성을 유지하는 방법</td></tr>
+<tr><th>수업이 끝나면</th><td>① 기존 문서 작성과 AI 활용 방식의 차이를 설명한다 ② 딥 리서치로 자료를 모으고 출처를 확인한다 ③ 템플릿과 스타일 변환으로 보고서·기획서 초안을 만든다 ④ 데이터를 요약·시각화해 인사이트 중심 보고서를 구성한다 ⑤ 내 업무 주제로 보고서/기획서를 완성해 발표한다</td></tr>
+</table></div></section>
+<section class="section" id="prep"><div class="section-label">PREPARE</div><h2>수업 전 준비</h2><p>오늘 수업은 브라우저에서 진행해요. 아래 두 가지만 미리 준비해 오시면 됩니다.</p><ul><li><b>Genspark 계정:</b> <a href="https://www.genspark.ai" rel="noopener" target="_blank">genspark.ai</a>에 로그인해 두세요. 오늘은 유료(Plus) 계정 기준으로 진행해요. 입력창 위 안내 줄의 [사용량 보기]를 누르면 남은 크레딧을 확인할 수 있어요.</li><li><b>실습 파일:</b> 아래 2개 파일을 내려받아 바탕화면에 저장해 두세요. 세션 4에서 사용해요.</li></ul><div class="topic" id="prep-1"><h3>실습 파일</h3><p>가상의 온라인 생활용품 쇼핑몰 "셀렉트마켓"의 2026년 3분기(7~9월) 데이터예요. 실제 업무 파일처럼 정리할 거리가 곳곳에 들어 있어요.</p><div class="dl-list">
+<a class="dl-card" download="" href="./data/orders_raw.csv"><span class="dl-ico">CSV</span><span class="dl-body"><b>orders_raw.csv</b><span>주문 내역 125행 · 주문번호, 주문일, 지역, 채널, 담당자, 상품코드, 수량, 단가, 결제상태</span><span>세션 4에서 사용</span></span><span class="dl-btn">⬇ 다운로드</span></a>
+<a class="dl-card" download="" href="./data/products.csv"><span class="dl-ico">CSV</span><span class="dl-body"><b>products.csv</b><span>상품 목록 6행 · 상품코드, 상품명, 카테고리, 정가</span><span>세션 4에서 사용</span></span><span class="dl-btn">⬇ 다운로드</span></a>
+</div><p>CSV는 쉼표(,)로 칸을 나눠 적은 텍스트 파일이에요. 한 줄이 표의 한 행이고, 쉼표와 쉼표 사이가 칸 하나예요.</p><div class="table-wrap"><table>
+<tr><th>파일</th><th>한 행이 뜻하는 것</th><th>첫 데이터 행의 값</th></tr>
+<tr><td><code class="inline">orders_raw.csv</code></td><td>주문 한 건</td><td>A1001 · 2026.7.1 · 경기 · 앱 · 이서연 · P001 · 2 · 15,000원 · 결제완료</td></tr>
+<tr><td><code class="inline">products.csv</code></td><td>상품 하나</td><td>P001 · 텀블러 500ml · 리빙 · 15000</td></tr>
+</table></div></div></section>
+<section class="section" id="timetable"><div class="section-label">TIMETABLE</div><h2>타임테이블</h2><p>오전에는 젠스파크로 자료를 모으고 보고서·기획서의 틀을 만들어요. 오후에는 데이터로 보고서의 근거를 만들고, 내 업무 주제로 직접 문서를 완성해 발표해요.</p><div class="table-wrap"><table>
+<tr><th>시간</th><th>세션</th><th>내용</th><th>Genspark 기능</th></tr>
+<tr><td>10:00–10:30</td><td>1. 생성형 AI와 문서 자동화 개요</td><td>젠스파크 화면 맞추기 · 기존 문서 작성 vs AI 활용 비교 · 내 업무 스케치 · 업무 문서용 AI 도구</td><td>홈 입력창</td></tr>
+<tr><td>10:30–11:30</td><td>2. Genspark 실전 활용 ①</td><td>웹 기반 자료 자동 수집 · 출처 확인 · 여러 자료로 리포트 만들기</td><td>딥 리서치, 팩트 체크, AI 문서</td></tr>
+<tr><td>11:30–12:30</td><td>3. Genspark 실전 활용 ②</td><td>보고서·기획서 기본 구조 · 템플릿 찾아 쓰기와 직접 만들어 저장·불러오기(보고서·기획서·회의록) · 목적별 문서 스타일 변환 · 섹션 간 일관성 점검</td><td>AI 문서, AI 슬라이드</td></tr>
+<tr><td>12:30–13:30</td><td>점심</td><td>(과정 진행에 따라 시간 변경 가능)</td><td></td></tr>
+<tr><td>13:30–14:30</td><td>4. 데이터 기반 보고서 제작</td><td>데이터 요약 → 시각화 · 인사이트 중심 보고서 구성 · 차트/표 문서 삽입</td><td>AI 시트, AI 문서</td></tr>
+<tr><td>14:30–16:00</td><td>5. 미니 프로젝트</td><td>자유 주제 선정 → 자료 조사 → 분석 → 보고서/기획서 제작</td><td>전체</td></tr>
+<tr><td>16:00–17:00</td><td>6. 발표 및 피드백</td><td>완성한 보고서/기획서 발표 · 사실·논리·실행 가능성 피드백</td><td>AI 슬라이드(선택)</td></tr>
+</table></div></section>
+<section class="section session" id="s1"><div class="session-head"><div class="eyebrow">SESSION 1 · 10:00–10:30</div><h2>생성형 AI와 문서 자동화 개요</h2><p>먼저 모두 <b>같은 젠스파크 화면과 설정</b>으로 맞춰요. 그다음 기존 방식과 AI 활용 방식을 비교하고, <b>내 업무를 스케치</b>해서 AI에게 맡길 단계를 찾아요.</p></div><div class="topic" id="s1-1"><h3>1-1. 시작 전: 젠스파크 화면 살펴보고 맞추기</h3><p>실습을 시작하기 전에 젠스파크 첫 화면에서 자주 쓰는 곳을 확인하고, 모두 같은 설정으로 맞춰요. 설정이 다르면 같은 프롬프트를 보내도 답의 모양과 차감되는 크레딧이 달라져요.</p><figure class="sample-shot"><img alt="젠스파크 첫 화면. 가운데 입력창과 아래 에이전트 바로가기 줄" height="775" loading="lazy" src="./images/g1-home.jpg" width="1470"/><figcaption>젠스파크 첫 화면 (2026년 10월 15일 Plus 계정 실제 실행 화면)</figcaption></figure><div class="table-wrap"><table>
+<tr><th>위치</th><th>이름</th><th>하는 일</th></tr>
+<tr><td>왼쪽 맨 위</td><td>+ New</td><td>새 작업을 열어요. 실습 주제가 바뀔 때 눌러요.</td></tr>
+<tr><td>가운데</td><td>입력창</td><td>프롬프트를 붙여 넣고 보내요. "무엇이든 물어보고 만들어보세요"라고 적혀 있어요.</td></tr>
+<tr><td>입력창 왼쪽 아래</td><td>+</td><td>[로컬 파일 찾기]로 내 컴퓨터의 파일을 올려요. [AI 드라이브에서 선택]으로 젠스파크에 저장한 파일도 고를 수 있어요.</td></tr>
+<tr><td>입력창 아래</td><td>표준 / Ultra</td><td>답을 만드는 모드예요. 오늘은 <b>표준</b>으로 맞춰요.</td></tr>
+<tr><td>입력창 위</td><td>사용량 보기</td><td>남은 무료 할당량과 크레딧을 확인해요.</td></tr>
+<tr><td>입력창 아래 줄</td><td>에이전트 바로가기</td><td>AI 슬라이드, AI 시트, AI 문서 같은 전문 도구를 바로 열어요. [모든 에이전트]에서 딥 리서치, 팩트 체크도 찾을 수 있어요.</td></tr>
+</table></div><p><b>표준 모드로 맞추기</b></p><div class="procedure"><div>입력창 아래 번개 모양 버튼(표준)을 눌러요.</div><div>목록에서 <b>표준</b>에 체크가 되어 있는지 확인해요. Ultra에 체크되어 있으면 표준을 눌러 바꿔요.<figure class="sample-shot"><img alt="모드 목록. 표준(무료 할당량 사용)에 체크, 아래 Ultra" height="775" loading="lazy" src="./images/g1-mode.jpg" width="1470"/><figcaption>표준에 체크, "무료 할당량 사용" 표시를 확인해요</figcaption></figure></div><div>입력창 왼쪽 [+]를 눌러 파일을 올리는 메뉴도 미리 봐 두세요.<figure class="sample-shot"><img alt="+ 메뉴. 로컬 파일 찾기, 폴더 추가, AI 드라이브에서 선택, 커넥터, 스킬, 개인화" height="775" loading="lazy" src="./images/g1-plus-menu.jpg" width="1470"/><figcaption>[+] 메뉴: 로컬 파일 찾기, AI 드라이브에서 선택 등</figcaption></figure></div></div><div class="notice"><b>표준과 Ultra는 무엇이 다른가요?</b><br/><b>표준</b>은 작업에 맞는 AI 모델을 자동으로 골라 조합해요. 화면에 "무료 할당량 사용"이라고 표시되면 크레딧이 차감되지 않아요.<br/><b>Ultra</b>는 복잡한 작업을 위해 가장 강력한 모델을 조합하는 모드예요. 메시지 한 번에 보통 100–600 크레딧이 들어요. 오늘 실습은 모두 표준으로 충분해요.</div><p><b>사용량 확인하기</b>: 입력창 위 [사용량 보기]를 누르면 이번 주 무료 할당량과 남은 크레딧이 보여요. "먼저 확인: 크레딧 사용 전 확인" 스위치를 켜 두면 크레딧이 드는 작업 전에 한 번 더 물어봐요.</p><figure class="sample-shot"><img alt="사용량 화면. 무료 할당량 86% 남음, 사용 가능한 크레딧 10,000" height="775" loading="lazy" src="./images/g1-usage.jpg" width="1470"/><figcaption>딥 리서치·팩트 체크·AI 문서 실습 뒤의 사용량 화면. 이 교안 실습 전체(딥 리서치, 팩트 체크, AI 문서 2회, AI 시트 2회, 차트)를 표준 모드로 해 본 결과 크레딧은 0, 주간 무료 할당량은 21% 사용됐어요 (2026-10-15 기준)</figcaption></figure><div class="warning"><b>AI 시트, AI 슬라이드 같은 에이전트 작업은 크레딧이 차감될 수 있어요.</b> 작업 전후로 [사용량 보기]에서 남은 크레딧을 확인하는 습관을 들여요.</div></div><div class="topic" id="s1-2"><h3>1-2. 기존 문서 작성 vs AI 활용 비교</h3><p>같은 보고서를 만들 때 일하는 순서가 어떻게 달라지는지 먼저 비교해 봐요.</p><div class="table-wrap"><table>
+<tr><th>단계</th><th>기존 방식</th><th>AI 활용 방식</th><th>사람이 꼭 할 일</th></tr>
+<tr><td>자료 조사</td><td>검색창에 여러 번 검색하고, 쓸 만한 자료를 직접 모아요</td><td>딥 리서치가 여러 출처를 찾아 읽고 요약해요</td><td>출처를 열어 보고, 숫자와 날짜가 맞는지 확인</td></tr>
+<tr><td>구성 잡기</td><td>예전 보고서를 열어 목차를 베껴요</td><td>AI 문서가 목적에 맞는 템플릿을 만들어요</td><td>우리 회사 양식과 독자에 맞는지 판단</td></tr>
+<tr><td>초안 작성</td><td>빈 화면에서 한 문장씩 써요</td><td>자료를 주면 서론·본론·결론 초안을 써 줘요</td><td>주장과 결론을 내가 정하기</td></tr>
+<tr><td>데이터 정리</td><td>함수와 피벗을 직접 만들어요</td><td>AI 시트에 말로 요청하면 표와 차트를 만들어요</td><td>기준값과 대조해 계산이 맞는지 확인</td></tr>
+<tr><td>다른 형식으로 바꾸기</td><td>보고서를 제안서·발표 자료로 다시 써요</td><td>같은 내용을 목적별 스타일로 변환해요</td><td>변환하면서 숫자가 바뀌지 않았는지 확인</td></tr>
+<tr><td>검토</td><td>선배나 팀장이 읽고 빨간 펜</td><td>팩트 체크와 일관성 점검 요청</td><td>최종 승인과 책임</td></tr>
+</table></div><div class="notice"><b>관리자에게 달라지는 일</b><br/>AI가 초안을 빠르게 만들어 줄수록, 관리자의 일은 두 가지로 모여요. 하나는 <b>무엇을, 누구에게, 왜 쓰는지 정하는 일</b>이고, 다른 하나는 <b>나온 결과가 맞는지 확인하고 승인하는 일</b>이에요. 팀원이 AI로 만든 보고서를 받을 때는 "출처는 어디인가요?", "이 숫자는 어떻게 계산했나요?", "AI가 쓴 부분 중 직접 고친 곳은 어디인가요?" 세 가지를 물어보세요. 회사 내부 자료나 개인 정보는 AI에 올리기 전에 회사 보안 기준을 먼저 확인해요.</div></div><div class="topic" id="s1-3"><h3>1-3. 내 업무를 스케치하고 5단계로 쪼개기</h3><p>내 업무를 쪼개 보기 전에 "워크플로우"라는 단어부터 풀어 볼게요.</p><p><b>워크플로우(workflow)</b>는 일(work)이 흐르는(flow) 순서를 뜻해요. 일이 시작해서 끝나기까지 어떤 단계를 거치는지를 순서대로 나열한 거예요. 점심을 주문하는 일도 "메뉴 고르기 → 주문하기 → 결제하기 → 받기"라는 워크플로우가 있어요. 데이터 업무에도 같은 흐름이 있어요. "주문 파일 내려받기 → 정리하기 → 합계 구하기 → 비교하기 → 보고하기" 같은 순서예요.</p><p>"AI로 만드는 워크플로우"는 이 순서 중에서 어느 단계를 AI에게 맡기고, 어느 단계를 내가 직접 확인할지 정해 둔 흐름이에요. 이렇게 정해 두면 AI에게 무엇을 어느 단계에서 부탁할지 분명해져요. 보고서·기획서를 만드는 업무도 대부분 아래 다섯 단계를 거쳐요.</p><div class="flow"><div><span>1</span><b>파악</b><small>어떤 데이터인지 훑어보기</small></div><div><span>2</span><b>정리</b><small>표기 통일, 중복·빈칸 처리</small></div><div><span>3</span><b>요약</b><small>기준별 합계 구하기</small></div><div><span>4</span><b>분석</b><small>비교하고 질문하기</small></div><div><span>5</span><b>보고</b><small>결과를 한 장으로 전달</small></div></div><p>"프로세스"라는 말도 자주 나와요. 프로세스는 일을 진행하는 방식과 절차를 뜻하고, 오늘은 워크플로우와 거의 같은 뜻으로 써요. 이제 내 업무로 이 워크플로우를 직접 만들어 볼게요.</p><p>세 단계로 진행해요. 먼저 메모장에 내 업무를 자유롭게 적고, 그중에서 자료와 숫자를 다루는 일을 찾아요. 그다음 그 일을 내 손으로 직접 풀어서 써 보고, 마지막에 젠스파크와 함께 표로 정리해요.</p><p><b>STEP 1. 메모장에 내 업무 스케치하기</b></p><div class="procedure"><div>메모장(또는 빈 문서)을 열어요.</div><div>하루를 <b>타임라인 순서</b>로 적어요. 출근해서 퇴근할 때까지 한 일을 시간 순서대로 써 보세요. 하루가 매번 다르다면 월~금 <b>요일 순서</b>로 써도 좋아요.</div><div>적은 일 중에서 <b>파일이나 숫자, 표를 다루는 일</b>에 별표(★)를 쳐요. 이 별표가 바로 오늘 AI와 함께 풀어 볼 "데이터 업무"예요.</div></div><div class="notice"><b>이렇게 적어요 (예시)</b><br/>월요일 09:30 주문 파일 내려받기 ★<br/>월요일 10:00 팀 회의<br/>월요일 11:00 지난주 지역별 매출 합계 만들기 ★<br/>월요일 14:00 팀장님께 주간 매출 보고 ★</div><p><b>STEP 2. 3가지 업무를 풀어서 직접 써 보기</b></p><p>이 수업에서는 아래 세 가지 업무를 예로 들게요. 내 업무에 별표 친 일이 있다면 그 일로 바꿔도 좋아요.</p><ul>
+<li>① 주문 파일 내려받기</li>
+<li>② 지역별 매출 합계 만들기</li>
+<li>③ 주간 매출 보고하기</li>
+</ul><p>이 세 가지를 내가 실제로 어떻게 진행하는지, 어디를 누르고 무엇을 입력하는지를 <b>줄줄이 풀어서 직접 써 보세요.</b> 여기서는 AI를 쓰지 않고 내 손으로 써야 해요. 내가 어떻게 일하는지는 나만 알고 있기 때문이에요.</p><div class="notice"><b>이렇게 풀어서 써요 (① 예시)</b><br/>1. 쇼핑몰 관리자 페이지에 로그인한다.<br/>2. 왼쪽 메뉴에서 [주문 관리]를 누른다.<br/>3. 기간을 지난주 월요일~일요일로 바꾸고 [검색]을 누른다.<br/>4. 오른쪽 위의 [파일 다운로드]를 눌러 바탕화면에 저장한다.<br/>5. 저장한 파일을 열어 맨 위 열 이름과 행 개수를 확인한다.</div><p>글을 쓰다가 참고가 될 만한 자료가 있으면 메모장에 같이 모아 두세요.</p><ul>
+<li>내가 로그인하는 관리자 페이지 주소(링크)</li>
+<li>주문 파일을 내려받는 화면을 캡처한 이미지</li>
+<li>지금 쓰고 있는 보고서 양식 파일</li>
+</ul><p>이 자료들은 다음 단계에서 AI에게 내 업무를 정확히 알려 주는 재료가 돼요.</p><p><b>STEP 3. AI로 표 만들기</b></p><p>이제 AI를 쓸 차례예요. STEP 2에서 쓴 글을 젠스파크에 보여 주고, 표로 정리해 달라고 요청해요. 아래 프롬프트를 복사해서 젠스파크 홈 입력창에 붙여 넣고, [ ] 부분을 내 내용으로 바꿔 보내세요.</p><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>나는 [직무]이고, 아래는 내가 하는 업무 3가지를 직접 풀어서 쓴 글이야.
+[STEP 2에서 쓴 글 붙여넣기]
+
+이 3가지 업무를 하나의 표로 정리해 줘.
+- 행: 업무 3가지 (주문 파일 내려받기 / 지역별 매출 합계 만들기 / 주간 매출 보고하기)
+- 열: 해당 단계(파악·정리·요약·분석·보고 중 하나) / 내가 하는 일(순서대로) / 사용하는 화면이나 도구 / 결과물
+내가 쓴 글에 없는 내용은 새로 만들지 말고, 글에 없는 칸은 '내용 없음'으로 적어 줘.</pre></div><p><b>그러면 젠스파크가 이런 표를 만들어 줘요 (예시)</b></p><div class="table-wrap"><table>
+<tr><th>업무</th><th>해당 단계</th><th>내가 하는 일 (순서대로)</th><th>화면·도구</th><th>결과물</th></tr>
+<tr><td>주문 파일 내려받기</td><td>① 파악</td><td>1) 관리자 페이지에 로그인<br/>2) [주문 관리] 클릭<br/>3) 지난주 기간으로 [검색]<br/>4) [파일 다운로드]로 저장<br/>5) 열 이름과 행 개수 확인</td><td>쇼핑몰 관리자 페이지, 스프레드시트</td><td>지난주 주문 파일</td></tr>
+<tr><td>지역별 매출 합계 만들기</td><td>③ 요약</td><td>1) 지역 열과 금액 열 확인<br/>2) 지역별로 금액을 더함<br/>3) 합계를 표로 정리</td><td>스프레드시트</td><td>지역별 매출 합계표</td></tr>
+<tr><td>주간 매출 보고하기</td><td>⑤ 보고</td><td>1) 합계표에서 결론 한 줄 정하기<br/>2) 근거 숫자 3개 고르기<br/>3) 한 장으로 정리해 팀장님께 보고</td><td>스프레드시트, 보고서 양식</td><td>주간 매출 보고서 한 장</td></tr>
+</table></div><p>위 표는 예시이고, 내가 쓴 글에 따라 내용이 달라져요. 표가 나오면 내가 쓴 글과 하나씩 비교하며 확인하세요. 내가 쓰지 않은 내용이 들어갔거나 빠진 내용이 있으면 젠스파크에 다시 고쳐 달라고 해요. 빠진 단계가 없는지는 AI가 알 수 없어요. 내 업무를 아는 사람은 나뿐이라서, 이 확인은 내가 해야 해요.</p></div><div class="topic" id="s1-4"><h3>1-4. 업무 문서 제작에 쓰는 AI 도구</h3><p>오늘은 젠스파크 안의 여러 에이전트를 단계에 맞게 골라 써요. 다른 도구도 함께 알아 두면 상황에 맞게 고를 수 있어요.</p><div class="table-wrap"><table>
+<tr><th>도구</th><th>이럴 때 써요</th><th>오늘 쓰는 세션</th></tr>
+<tr><td>Genspark 딥 리서치</td><td>여러 출처를 찾아 읽고 한 번에 정리할 때</td><td>세션 2, 5</td></tr>
+<tr><td>Genspark 팩트 체크</td><td>숫자나 주장이 사실인지 출처로 확인할 때</td><td>세션 2, 5</td></tr>
+<tr><td>Genspark AI 문서</td><td>보고서·기획서 초안, 템플릿, 문서 스타일 변환. Word(.docx), 웹 문서, Markdown으로 내보낼 수 있어요</td><td>세션 2, 3, 4, 5</td></tr>
+<tr><td>Genspark AI 시트</td><td>표 데이터를 정리·분석하고 차트를 만들 때</td><td>세션 4</td></tr>
+<tr><td>Genspark AI 슬라이드</td><td>보고서 내용을 발표 자료로 바꿀 때</td><td>세션 3, 6 (선택)</td></tr>
+<tr><td>ChatGPT</td><td>대화하며 글을 다듬거나 아이디어를 넓힐 때</td><td>소개만</td></tr>
+<tr><td>NotebookLM</td><td>내가 넣은 자료만 바탕으로 요약하거나 질문할 때</td><td>소개만</td></tr>
+<tr><td>Notion</td><td>팀이 함께 문서와 자료를 정리하고 공유할 때</td><td>소개만</td></tr>
+</table></div></div></section>
+<section class="section session" id="s2"><div class="session-head"><div class="eyebrow">SESSION 2 · 10:30–11:30</div><h2>Genspark 실전 활용 ①: 자료 수집과 리포트</h2><p>보고서의 근거가 되는 자료를 <b>딥 리서치</b>로 모으고, 숫자는 <b>팩트 체크</b>로 확인한 뒤, 여러 자료를 합쳐 <b>리포트 초안</b>까지 만들어요.</p></div><div class="topic" id="s2-1"><h3>2-1. 딥 리서치로 웹 자료 자동 수집</h3><p>보고서의 "배경"에 넣을 자료를 모아요. 오늘 예시는 셀렉트마켓 3분기 매출 보고서에 넣을 <b>시장 배경</b>이에요. 내 업무 주제가 있다면 [ ] 안을 바꿔서 해도 좋아요.</p><div class="procedure"><div>홈의 [모든 에이전트]에서 <b>딥 리서치</b>를 열어요.</div><div>아래 프롬프트를 붙여 넣고 보내요. 조사에는 5분 안팎이 걸려요. 기다리는 동안 화면에 어떤 검색어로 찾고 어떤 주소를 읽는지가 표시돼요.</div></div><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>요청: 국내 온라인 생활용품 시장의 최근 1년 동향을 조사해 줘.
+내용: 우리 회사는 생활용품을 파는 온라인 쇼핑몰 '셀렉트마켓'이고, 3분기 매출 보고서의 '시장 배경'에 넣을 자료가 필요해. 판매 채널(앱·웹·오프라인) 변화와 소비자 구매 방식 변화 위주로 찾아 줘.
+형식: 핵심 내용 5줄 요약. 줄마다 끝에 출처(기관명·발행일·링크)를 달고, 출처를 찾지 못한 내용은 '출처 없음'으로 표시해 줘.</pre></div><figure class="sample-shot"><img alt="딥 리서치 입력창에 프롬프트를 붙여 넣은 화면" height="775" loading="lazy" src="./images/g2-deep-research-prompt.jpg" width="1470"/><figcaption>딥 리서치 화면에 프롬프트를 붙여 넣은 모습</figcaption></figure><figure class="sample-shot"><img alt="병렬 검색과 병렬 읽기 항목이 이어서 표시되는 진행 화면" height="775" loading="lazy" src="./images/g2-deep-research-progress.jpg" width="1470"/><figcaption>진행 중: "병렬 검색", "병렬 읽기"로 여러 출처를 동시에 찾고 읽어요</figcaption></figure><figure class="sample-shot"><img alt="5줄 요약 결과. 줄마다 끝에 출처 링크" height="775" loading="lazy" src="./images/g2-deep-research-result.jpg" width="1470"/><figcaption>결과: 5줄 요약과 줄마다 출처 링크</figcaption></figure><figure class="sample-shot"><img alt="데이터 한계 및 주의사항 목록" height="775" loading="lazy" src="./images/g2-deep-research-limits.jpg" width="1470"/><figcaption>결과 아래 "데이터 한계 및 주의사항": 확인되지 않은 부분을 스스로 밝혀요</figcaption></figure><div class="notice"><b>결과에서 이런 점을 확인해요</b><br/>① 기간 표현과 숫자가 맞는지 봐요. 예: "3분기"라고 쓰고 실제로는 8월 한 달 숫자를 넣는 경우가 있어요.<br/>② 출처에 블로그가 섞여 있지 않은지 봐요. 보고서에는 기관 자료나 언론 기사처럼 원문이 분명한 출처만 남겨요.<br/>③ 자릿수가 이상한 숫자(예: "272조 3,98억원")가 없는지 봐요. 숫자는 출처 원문과 한 번 더 대조해요.</div><p><b>결과 확인</b></p><ul class="checklist"><li>출처 링크를 2개 이상 직접 열어 봤나요?</li><li>출처의 발행일이 1년 이내인가요?</li><li>요약의 숫자가 원문의 숫자와 같나요?</li><li>'출처 없음'으로 표시된 줄은 보고서에서 빼거나 따로 확인할 거리로 남겼나요?</li></ul></div><div class="topic" id="s2-2"><h3>2-2. 팩트 체크로 숫자 확인하기</h3><p>딥 리서치 요약에서 <b>숫자가 들어간 문장 하나</b>를 골라 사실인지 확인해요. 보고서에 들어가는 숫자는 한 번 더 확인하는 것이 원칙이에요.</p><div class="procedure"><div>[모든 에이전트]에서 <b>팩트 체크</b>를 열어요.</div><div>아래 프롬프트의 [ ] 안에 고른 문장을 붙여 넣고 보내요.</div></div><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>요청: 아래 문장이 사실인지 확인해 줘.
+내용: [딥 리서치 요약에서 고른, 숫자가 들어간 문장]
+형식: 판정(사실 / 일부 사실 / 확인 불가) 한 줄, 근거가 된 출처 2개 이상(기관명·발행일·링크)</pre></div><figure class="sample-shot"><img alt="팩트 체크 입력창에 확인할 문장을 넣은 화면" height="775" loading="lazy" src="./images/g2-fact-check-prompt.jpg" width="1470"/><figcaption>예시: 딥 리서치 1번 줄의 "8월 온라인쇼핑 거래액 24조 2,118억원, 7.3% 증가"를 확인</figcaption></figure><figure class="sample-shot"><img alt="판정 사실, 근거 출처 표(국가데이터처 공식 게시물, 연합뉴스, KBS, CBS 노컷뉴스)" height="775" loading="lazy" src="./images/g2-fact-check-result.jpg" width="1470"/><figcaption>결과: 판정 "사실", 근거 출처와 인용한 원문</figcaption></figure><p>결과 아래쪽에 "기관 원문을 직접 열어 보지 못했다"는 안내가 붙을 수 있어요. 판정이 "사실"이어도 보고서에 넣을 숫자는 기관 원문 링크를 직접 열어 확인하는 것이 안전해요.</p><p>판정이 "일부 사실"이나 "확인 불가"라면, 보고서에는 숫자를 빼고 쓰거나 확인된 출처의 숫자로 바꿔요.</p></div><div class="topic" id="s2-3"><h3>2-3. 여러 자료로 리포트 만들기</h3><p>웹에서 모은 자료와 우리 회사 메모를 합쳐 <b>1페이지 리포트 초안</b>을 만들어요. 자료가 여러 개일 때는 "자료에 없는 숫자는 쓰지 말라"고 꼭 알려 줘요.</p><div class="procedure"><div>홈의 <b>AI 문서</b>를 열고, 출력 형식은 <b>Word</b>를 골라요.</div><div>아래 프롬프트의 ① 자리에 2-1의 딥 리서치 요약을 붙여 넣고 보내요. ②는 그대로 써요.</div></div><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>요청: 아래 두 자료를 합쳐서 1페이지 리포트 초안을 만들어 줘.
+내용:
+① 시장 배경 자료: [2-1 딥 리서치 요약 붙여넣기]
+② [셀렉트마켓 3분기 메모]
+- 3분기(7~9월) 결제완료 매출 4,357,000원, 주문 97건
+- 월별 매출: 7월 889,000원 / 8월 2,014,000원 / 9월 1,454,000원
+- 지역 1위 서울 1,552,000원
+- 앱 채널 매출 2,183,000원, 전체의 약 50%
+- 팀장 요청: 4분기 판매 채널 전략 방향을 제안해 줘
+형식: 제목 / 요약 3줄 / 시장 배경 / 우리 실적 / 시사점 순서. 자료에 없는 숫자는 쓰지 말고, 문단마다 끝에 근거 자료 번호(①, ②)를 붙여 줘.</pre></div><figure class="sample-shot"><img alt="AI 문서 화면. 출력 형식 Word 선택, 입력창에 프롬프트, 오른쪽 보고서 및 분석 템플릿" height="775" loading="lazy" src="./images/g2-docs-prompt-templates.jpg" width="1470"/><figcaption>AI 문서: 출력 형식 Word를 고르고 프롬프트를 붙여 넣은 모습</figcaption></figure><figure class="sample-shot"><img alt="오른쪽에 Word 문서 미리보기. 제목, 요약, 시장 배경 표" height="775" loading="lazy" src="./images/g2-docs-report-result.jpg" width="1470"/><figcaption>결과: 오른쪽에 1페이지 Word 미리보기, 왼쪽에 다운로드 링크</figcaption></figure><p><b>결과 확인</b></p><ul class="checklist"><li>문단마다 근거 번호가 붙어 있나요?</li><li>②의 숫자(4,357,000원, 8월 2,014,000원 등)가 그대로 들어갔나요?</li><li>자료에 없던 숫자나 회사 이름이 새로 생기지 않았나요?</li><li>근거 번호가 그 문장을 실제로 받치나요? 예를 들어 서울 이야기가 없는 자료 번호가 "서울 고객층" 문장에 붙어 있지 않은지 봐요.</li></ul><p><b>여러 형식으로 내보내기: Word 다음에 PDF, 엑셀</b></p><div class="notice"><b>참고: 젠스파크가 공식으로 제공하는 내보내기 형식</b><br/>· <b>AI 문서</b>: Word, PDF, Markdown(Markdown 형식 문서만)으로 내보낼 수 있어요. 오른쪽 위 [보기 및 내보내기]에서 골라요. "별도 브라우저에서 열기"는 웹 페이지로 보여 주는 기능이고 파일로 받는 것은 아니에요.<br/>· <b>AI 시트</b>: 엑셀(.xlsx)로 내보낼 수 있어요. 편집기 왼쪽 위 [Export] → [Export as XLSX]를 눌러요.<br/>· <b>한글(.hwp, .hwpx)</b>: 공식 가이드에 지원 형식으로 나와 있지 않아요. 한글 문서가 필요하면 Word로 받은 뒤 한글 프로그램에서 열어 저장해요.<br/><small>출처: Genspark Help Center <a href="https://www.genspark.ai/helpcenter?doc=tutorials_AI_Docs" rel="noopener" target="_blank">AI Docs</a>(2026-09-24 갱신), <a href="https://www.genspark.ai/helpcenter?doc=tutorials_AI_Sheets" rel="noopener" target="_blank">AI Sheets</a> · 2026-10-15 확인</small></div><p>엑셀로 보내야 한다면, 대화창에서 아래처럼 요청해도 .xlsx 파일을 만들어 줘요. 숫자가 입력값과 같은지는 꼭 대조해요. 다만 이 방법은 AI가 대화 중에 파일을 만들어 주는 것이라, 표 데이터를 계속 다룰 파일이라면 AI 시트의 [Export as XLSX]로 받는 것이 공식 방법이에요.</p><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>요청: 같은 리포트를 엑셀(.xlsx) 파일로 만들어 줘.
+내용: 시트 1 '요약'에는 핵심 결론과 요청 사항, 시트 2 '근거 지표'에는 숫자를 표로(항목 / 값 / 단위 / 출처 번호). 숫자는 바꾸지 마.
+형식: 내려받을 수 있는 .xlsx 파일 1개</pre></div><figure class="sample-shot"><img alt="근거 지표 표: 구분, 항목, 값, 단위" height="823" loading="lazy" src="./images/g2-format-xlsx.jpg" width="1456"/><figcaption>.xlsx를 요청한 결과: 근거 지표 시트 미리보기. 오른쪽 미리보기는 Word 문서만 보여 주니 엑셀 파일은 내려받아 열어 확인해요</figcaption></figure></div></section>
+<section class="section session" id="s3"><div class="session-head"><div class="eyebrow">SESSION 3 · 11:30–12:30</div><h2>Genspark 실전 활용 ②: 템플릿과 문서 스타일</h2><p>보고서와 기획서의 <b>기본 구조</b>를 익히고, AI 문서로 <b>템플릿</b>을 만든 뒤, 같은 내용을 <b>목적별 스타일</b>로 바꿔 봐요. 마지막으로 섹션 간 일관성을 점검해요.</p></div><div class="topic" id="s3-1"><h3>3-1. 보고서·기획서 기본 구조</h3><p>보고서는 <b>있었던 일을 근거로 전달</b>하고, 기획서는 <b>앞으로 할 일을 설득</b>해요. 목적이 다르니 뼈대도 달라요.</p><div class="table-wrap"><table>
+<tr><th>문서</th><th>구성</th><th>각 부분에 쓰는 것</th></tr>
+<tr><td>보고서</td><td>서론</td><td>왜 이 보고서를 쓰는지(목적), 무엇을 다루는지(범위·기간)</td></tr>
+<tr><td></td><td>본론</td><td>자료와 분석 결과, 표·차트 같은 근거</td></tr>
+<tr><td></td><td>결론</td><td>핵심 결과 한 줄, 다음에 할 일 제안</td></tr>
+<tr><td>기획서</td><td>목표</td><td>무엇을 언제까지 얼마나 이루려는지</td></tr>
+<tr><td></td><td>전략</td><td>현황과 문제, 그래서 어떤 방향으로 갈지</td></tr>
+<tr><td></td><td>제안</td><td>실행 방안, 필요한 자원, 기대 효과와 일정</td></tr>
+</table></div><div class="notice"><b>섹션 간 논리 연결을 지키는 네 가지 기준</b><br/>① 서론에서 밝힌 목적에 결론이 직접 답하나요? ② 결론의 숫자가 본론의 표·차트 숫자와 같나요? ③ 같은 대상을 같은 이름으로 부르나요? (예: "앱 채널"과 "모바일"을 섞어 쓰지 않기) ④ 각 섹션 첫 문장이 앞 섹션과 이어지나요?</div></div><div class="topic" id="s3-2"><h3>3-2. 템플릿 찾아 쓰기와 내 템플릿 만들기</h3><p>보고서·기획서·회의록처럼 자주 쓰는 문서는 <b>틀(템플릿)</b>을 정해 두면 매번 처음부터 쓰지 않아도 돼요. 두 가지 방법을 차례로 해 봐요.</p><div class="flow"><div><span>1</span><b>찾기</b><small>템플릿 라이브러리에서 고르기</small></div><div><span>2</span><b>채우기</b><small>내 내용으로 바꾸기</small></div><div><span>3</span><b>만들기</b><small>맞는 틀이 없으면 직접</small></div><div><span>4</span><b>저장</b><small>이름 붙여 보관</small></div><div><span>5</span><b>불러와 쓰기</b><small>새 파일로 채우기</small></div></div><p><b>① 템플릿 라이브러리에서 찾아 쓰기</b></p><div class="procedure"><div>홈의 <b>AI 문서</b>를 열어요. 오른쪽에 템플릿 목록이 보이고, 위쪽 탭으로 분류를 바꿀 수 있어요(내 문서 · 모든 템플릿 · 교육 · 비즈니스 · 보고서 &amp; 분석 · 마케팅 · 경력 &amp; 포트폴리오 · 법률 &amp; 양식).<figure class="sample-shot"><img alt="AI 문서 템플릿 목록의 비즈니스 탭. 리더십 문서, 레터헤드, 콘퍼런스 포스터, Project Review Agenda 등 영문 템플릿" height="823" loading="lazy" src="./images/g3-tpl-business.jpg" width="1456"/><figcaption>[비즈니스] 탭. 영문 디자인 템플릿이 많아요</figcaption></figure></div><div>아래 표를 참고해 문서 종류에 맞는 분류를 열고, 가까운 템플릿을 하나 골라요. 고르면 왼쪽에 "템플릿 선택됨"이 뜨고 오른쪽에 편집 화면이 열려요.<figure class="sample-shot"><img alt="템플릿 선택됨 화면. 오른쪽에 Project Review AGENDA 템플릿과 편집 도구 모음" height="823" loading="lazy" src="./images/g3-tpl-selected.jpg" width="1456"/><figcaption>Project Review Agenda를 고른 화면. 출력 형식은 웹 문서(Web Doc)로 열려요</figcaption></figure></div><div>템플릿을 고른 뒤 아래 프롬프트로 내 내용을 채워 달라고 해요. 나온 문서는 직접 고치거나(수동 편집), 고칠 부분을 말로 요청해(AI 편집) 다듬어요.</div></div><div class="table-wrap"><table>
+<tr><th>문서</th><th>어디서 찾나요</th><th>고를 때 볼 점</th></tr>
+<tr><td>보고서</td><td>[보고서 &amp; 분석]</td><td>표·차트 자리가 있는지, 요약이 맨 앞에 있는지</td></tr>
+<tr><td>기획서</td><td>[비즈니스], 왼쪽 인기 작업의 "새로운 아이디어를 위한 사업 제안서"</td><td>목표 → 전략 → 제안 순서로 이어지는지</td></tr>
+<tr><td>회의록</td><td>[비즈니스]의 영문 "Project Review Agenda"처럼 회의 안건 템플릿을 골라 바꿔 써요</td><td>안건 · 결정 사항 · 할 일(담당자·기한) 칸이 있는지. 바꿔 쓰거나 ②로 직접 만들어요</td></tr>
+</table></div><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>요청: 고른 템플릿의 구성과 디자인은 그대로 두고, 내용만 아래 자료로 바꿔 줘.
+내용: [2-3에서 쓴 셀렉트마켓 3분기 메모 붙여넣기] 영어 제목과 안내 문구는 모두 한국어로 바꿔 줘. 자료에 없는 숫자는 쓰지 말고 [확인 필요]로 남겨 줘.
+형식: Word, A4 2쪽 이내</pre></div><div class="notice"><b>템플릿 라이브러리를 쓸 때 확인할 점</b><br/>기본 템플릿은 영문 디자인이 많아요. 제목·표 머리글이 영어로 남아 있지 않은지, 템플릿에 들어 있던 예시 숫자나 회사 이름이 그대로 남아 있지 않은지 꼭 확인해요.</div><p><b>예시: Project Review Agenda를 한국어 회의록으로 바꾸기</b> — 회의 메모를 붙여 넣고 "구성은 그대로, 내용만 이 메모로, 없는 칸은 [확인 필요]"로 요청해요.</p><figure class="sample-shot"><img alt="영문 템플릿을 한국어 회의록으로 바꾼 결과의 윗부분" height="823" loading="lazy" src="./images/g3-tpl-minutes-top.jpg" width="1456"/><figcaption>템플릿 디자인은 그대로, 내용만 한국어 회의록으로 바뀐 결과</figcaption></figure><figure class="sample-shot"><img alt="할 일 목록. 메모에 있던 2개 외에 세부 실행 일정 및 채널별 배포 계획 수립 [확인 필요]가 추가됨" height="823" loading="lazy" src="./images/g3-tpl-minutes-actions.jpg" width="1456"/><figcaption>할 일 3번째 줄은 메모에 없는 내용이에요. AI가 덧붙인 항목이 없는지 메모와 한 줄씩 대조해요</figcaption></figure><div class="warning"><b>AI가 메모에 없는 내용을 덧붙일 수 있어요.</b> 위 예시처럼 할 일 2개를 줬는데 3개가 나올 수 있어요. 프롬프트에 "메모에 없는 할 일은 추가하지 마"를 넣고, 결과는 원래 메모와 대조해요. 문서 이름이 템플릿 이름(Meeting agenda) 그대로 남아 있으면 연필 아이콘으로 바꿔요.</div><p><b>② 내 템플릿을 만들어 저장하고, 불러와 쓰기</b></p><p>회사 양식처럼 늘 같은 틀로 써야 하는 문서는 직접 만들어 두는 편이 빨라요. 내용을 넣을 자리는 <b>[ ]</b>로 비워 두는 것이 핵심이에요.</p><p><b>STEP 1. 템플릿 만들기</b> — AI 문서에서 [빈 문서]를 열거나 입력창에 바로 요청해요. 세 가지 중 내 업무에 필요한 것부터 만들어요.</p><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>요청: 분기 실적 보고서 템플릿을 만들어 줘.
+내용: 서론(목적·범위) / 본론(시장 배경·우리 실적·분석) / 결론(핵심 결과·제안) 구조로, 내용을 넣을 자리는 [ ]로 비워 두고 칸마다 무엇을 쓰는지 안내 문구를 넣어 줘. 표 1개, 차트 1개 자리를 본론에 비워 둬.
+형식: Word 문서 1개, A4 2쪽 이내</pre></div><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>요청: 사업 기획서 템플릿을 만들어 줘.
+내용: 목표 / 현황과 문제 / 전략 / 실행 방안 / 기대 효과·일정 구조로, 내용을 넣을 자리는 [ ]로 비워 두고 칸마다 무엇을 쓰는지 안내 문구를 넣어 줘.
+형식: Word 문서 1개, A4 2쪽 이내</pre></div><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>요청: 회의록 템플릿을 만들어 줘.
+내용: 회의명 · 일시 · 참석자 / 안건 / 논의 내용 / 결정 사항 / 할 일(내용 · 담당자 · 기한 표) / 다음 회의 순서로, 내용을 넣을 자리는 [ ]로 비워 둬.
+형식: Word 문서 1개, A4 1쪽</pre></div><figure class="sample-shot"><img alt="회의록 템플릿 결과. 회의명, 일시, 참석자 표와 안건, 논의, 결정, 할 일 표가 [ ] 빈칸으로 들어 있음" height="823" loading="lazy" src="./images/g3-mytpl-created.jpg" width="1456"/><figcaption>회의록 프롬프트 결과. 오른쪽 미리보기에서 [ ] 빈칸을 확인해요</figcaption></figure><p><b>STEP 2. 저장하기</b></p><div class="procedure"><div>화면 맨 위 문서 이름 옆 <b>연필 아이콘</b>을 눌러 [이름 변경] 창에서 <b>[템플릿] 회의록</b>처럼 바꾸고 [저장]을 눌러요. 앞에 [템플릿]을 붙이면 나중에 찾기 쉬워요.</div><div>AI 문서 홈 오른쪽 위 <b>[내 문서]</b> 탭을 열면 이름을 바꾼 템플릿이 카드로 보여요. 내가 만든 문서는 모두 여기에 모여요.<figure class="sample-shot"><img alt="내 문서 탭. [템플릿] 회의록, Meeting agenda, 셀렉트마켓 3분기 리포트 카드. 첫 카드의 메뉴에 이름 변경, 삭제" height="823" loading="lazy" src="./images/g3-mytpl-mydocs.jpg" width="1456"/><figcaption>[내 문서]의 [템플릿] 회의록 카드. ⋯ 메뉴에서 이름 변경과 삭제를 할 수 있어요</figcaption></figure></div><div>오른쪽 위 [보기 및 내보내기]에서 Word로도 내려받아 내 컴퓨터에 보관해 두면 젠스파크 밖에서도 쓸 수 있어요.</div></div><p><b>STEP 3. 불러와서 쓰기</b></p><div class="procedure"><div>[내 문서]에서 <b>[템플릿] 회의록</b> 카드를 눌러 열어요. 템플릿을 만들었던 대화가 그대로 열려요.</div><div>입력창에 아래 프롬프트를 보내요. 핵심은 첫 줄의 <b>"이 템플릿은 그대로 두고, 새 파일을 따로 만들어 줘"</b>예요.</div><div>미리보기 위쪽에 문서 탭이 2개로 늘어나요. 왼쪽 [회의록 템플릿]은 빈 틀 그대로, 오른쪽이 새로 채운 회의록이에요. 탭을 눌러 두 문서를 오가며 확인해요.</div></div><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>요청: 이 템플릿은 그대로 두고, 같은 양식으로 새 회의록 파일을 따로 만들어 줘.
+내용: 10월 15일 14시 셀렉트마켓 4분기 판매 채널 전략 회의, 참석 김팀장·이대리·박주임. 안건은 3분기 실적 공유와 4분기 채널 전략. 온라인 매출 비중이 늘었다는 의견. 결정: 4분기에 온라인 프로모션 1회 진행. 할 일: 프로모션 기획안 작성(이대리, 10/22). 템플릿 제목·순서·표는 바꾸지 마. 메모에 없는 칸은 [확인 필요]로 남기고, 메모에 없는 할 일은 추가하지 마.
+형식: Word, A4 1쪽</pre></div><figure class="sample-shot"><img alt="채워진 회의록. 위쪽에 회의록 템플릿과 셀렉트마켓 4분기 판매 채널 전략 탭 2개. 장소와 작성자는 [확인 필요], 할 일은 1개" height="823" loading="lazy" src="./images/g3-mytpl-filled.jpg" width="1456"/><figcaption>새 회의록은 별도 탭으로 생기고 [회의록 템플릿] 탭은 빈 틀 그대로예요. 메모에 없는 장소·작성자는 [확인 필요]로 표시돼요</figcaption></figure><div class="notice"><b>결과에서 꼭 볼 것</b><br/>메모에 "10월 15일"만 써도 결과에는 "2026년 10월 15일"처럼 연도가 붙을 수 있어요. 날짜·연도·숫자는 AI가 채워 넣을 수 있으니 메모와 대조해요.</div><div class="warning"><b>"새 파일을 따로 만들어 줘"를 빼먹지 마세요.</b> 이 말 없이 "채워 줘"만 보내면 템플릿 자체가 바뀔 수 있어요. 저장 지점으로 예전 버전으로 되돌릴 수는 있지만, 되돌리면 그 뒤에 바꾼 내용이 모두 지워져요.</div><div class="notice"><b>참고: 공식 가이드 기준</b><br/>· 템플릿 라이브러리에서 템플릿을 고르고 프롬프트로 내용을 바꿀 수 있어요. 고친 뒤에는 수동 편집, AI 편집으로 다듬어요.<br/>· 공식 가이드에는 문서를 새 프로젝트로 복제하는 사본 만들기(Make a Copy)도 나와 있어요. 메뉴에서 보이지 않으면 대화에서 "새 파일을 따로 만들어 줘"로 요청해요.<br/>· 저장 지점으로 이전 버전을 보고 되돌릴 수 있지만, 되돌리면 이후 변경은 지워져요.<br/>· 내가 만든 문서를 "템플릿으로 저장"하는 기능은 공식 가이드에 나와 있지 않아요. 그래서 이름에 [템플릿]을 붙여 [내 문서]에 보관해요.<br/><small>출처: Genspark Help Center <a href="https://www.genspark.ai/helpcenter?doc=tutorials_AI_Docs" rel="noopener" target="_blank">AI Docs</a> · 2026-10-15 확인</small></div></div><div class="topic" id="s3-3"><h3>3-3. 목적별 문서 스타일 변환</h3><p>2-3에서 만든 리포트를 <b>같은 내용, 다른 목적</b>의 문서로 바꿔요. 2-3 리포트가 열린 AI 문서 화면에서 이어서 요청해요.</p><p><b>① 보고서 → 기획서(제안서)</b></p><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>요청: 이 리포트를 4분기 판매 채널 전략 기획서로 바꿔 줘.
+내용: 3-2에서 만든 기획서 구조(목표 / 현황과 문제 / 전략 / 실행 방안 / 기대 효과·일정)를 따라 줘. 리포트에 있는 숫자는 그대로 쓰고, 새 숫자는 만들지 마. 목표 수치는 '[목표 입력]'으로 비워 둬.
+형식: Word 문서, A4 2쪽 이내</pre></div><p><b>② 보고서 → 1페이지 요약 보고</b></p><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>요청: 이 리포트를 바쁜 임원이 1분 안에 읽을 수 있는 요약 보고로 바꿔 줘.
+내용: 결론을 맨 위에 한 줄로, 근거 숫자 3개, 요청 사항 1개
+형식: A4 반 쪽 이내, 글머리표</pre></div><figure class="sample-shot"><img alt="임원 요약 보고로 바뀐 Word 미리보기. 핵심 결론, 핵심 근거 지표, 요청 사항" height="775" loading="lazy" src="./images/g3-style-summary.jpg" width="1470"/><figcaption>결과: 같은 문서가 "임원 요약 보고"로 바뀌어요. 위쪽 [저장 지점]에서 바뀌기 전 버전으로 돌아갈 수 있어요</figcaption></figure><details class="optional"><summary><span class="summary-title">(선택) 발표 자료로 바꾸기</span><span class="summary-hint">눌러서 펼쳐 보세요</span></summary><p>홈의 <b>AI 슬라이드</b>를 열고, 요약 보고 내용을 붙여 넣어 요청해요. 슬라이드 작업은 크레딧이 차감될 수 있어요.</p><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>요청: 아래 요약 보고로 발표 슬라이드를 만들어 줘.
+내용: [② 요약 보고 붙여넣기]
+형식: 5장 이내, 장마다 핵심 문장 1개와 근거 숫자, 글자는 크게</pre></div></details><p><b>변환 후 확인</b>: 세 문서의 숫자가 서로 같은지, 기획서에서 새로 생긴 숫자가 없는지 확인해요.</p></div><div class="topic" id="s3-4"><h3>3-4. 섹션 간 일관성 점검</h3><p>3-1의 네 가지 기준으로 AI에게 점검을 맡기고, 고칠지는 내가 정해요.</p><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>요청: 이 문서의 섹션 간 논리 연결과 일관성을 점검해 줘.
+내용: ① 서론의 목적에 결론이 답하는지 ② 결론의 숫자가 본론과 같은지 ③ 같은 대상을 다른 이름으로 부른 곳이 있는지 ④ 섹션 첫 문장이 앞 섹션과 이어지는지. 문서는 고치지 말고 점검 결과만 알려 줘.
+형식: 기준 / 문제 위치 / 문제 내용 / 고칠 문장 제안 표</pre></div><p>"문서는 고치지 말고"라고 쓰는 이유는, AI가 고치면서 숫자나 표현을 함께 바꿔 버리는 일이 있기 때문이에요. 제안을 보고 필요한 곳만 고쳐 달라고 다시 요청해요.</p></div></section>
+<section class="section session" id="s4"><div class="session-head"><div class="eyebrow">SESSION 4 · 13:30–14:30</div><h2>데이터 기반 보고서 제작</h2><p>셀렉트마켓 3분기 데이터를 <b>AI 시트</b>로 요약하고 <b>차트로 시각화</b>한 뒤, 결론부터 말하는 <b>인사이트 중심 보고서</b>에 표와 차트를 넣어 완성해요.</p></div><div class="topic" id="s4-1"><h3>4-1. AI 시트에 실습 파일 올리기</h3><div class="procedure"><div>홈의 <b>AI 시트</b>를 열어요. 왼쪽에 입력창, 오른쪽에 시트 캔버스가 보여요.</div><div>입력창 왼쪽 아래 [+]를 눌러 <b>로컬 파일 찾기</b>로 <code class="inline">orders_raw.csv</code>와 <code class="inline">products.csv</code>를 함께 올려요.<figure class="sample-shot"><img alt="AI 시트 [+] 메뉴. 로컬 파일 찾기, AI 드라이브에서 선택, 새 채팅" height="775" loading="lazy" src="./images/g4-plus-menu.jpg" width="1470"/><figcaption>AI 시트의 [+] 메뉴</figcaption></figure></div><div>두 파일이 입력창 위에 붙으면 4-2의 <b>준비</b> 프롬프트를 바로 보내요.<figure class="sample-shot"><img alt="입력창 위에 orders_raw.csv와 products.csv 파일 카드가 붙은 화면" height="775" loading="lazy" src="./images/g4-attached-prompt.jpg" width="1470"/><figcaption>두 파일이 붙은 모습</figcaption></figure></div></div><div class="warning"><b>"시트 캔버스에 표로 열어 줘"처럼 시트를 새로 만드는 요청은 "시트 작업 중"에서 오래 멈춰 있을 수 있어요.</b> 반면 4-2처럼 <b>숫자를 구해 달라는 요청</b>은 대체로 금방 답이 와요. 수업에서는 바로 4-2로 넘어가고, 오래 걸리면 입력창 오른쪽 [중지]를 눌러요.</div></div><div class="topic" id="s4-2"><h3>4-2. 데이터 요약: 자주 쓰는 분석 4가지</h3><p>같은 AI 시트 화면에서 이어서 요청해요. 요청마다 결과를 아래 <b>기준값</b>과 대조해 보세요. 답은 오른쪽 시트 캔버스가 아니라 <b>왼쪽 대화창</b>에 표로 나와요.</p><p><b>준비. 분석할 데이터 정하기</b></p><p>정리 전 파일이라 그대로는 집계할 수 없어요. 어떤 행을 쓸지 먼저 알려 줘요.</p><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>요청: 분석에 쓸 데이터를 준비해 줘.
+내용: 첨부한 orders_raw.csv는 정리 전 주문 내역(125행)이고, products.csv는 상품 목록이야. 상품명은 상품코드로 products.csv에서 찾아 줘. 중복 행은 1건만 남기고, 지역·결제상태 표기를 통일하고, 수량·단가는 숫자로 바꿔 줘. 금액은 수량 × 단가야. 결제완료 주문만 쓰고, 수량이 빈칸이거나 300, 250, -2인 행은 빼 줘.
+형식: 사용할 행 수 한 줄</pre></div><p>젠스파크가 알려 준 행 수가 <b>97행</b>이면 준비가 된 거예요. 이 97행의 매출 합계는 4,357,000원이에요.</p><figure class="sample-shot"><img alt="대화창에 계산 과정과 결과 97행" height="775" loading="lazy" src="./images/g4-prep-97.jpg" width="1470"/><figcaption>결과 예시: 원래 125행 → 중복 제거 120행 → 조건 적용 97행</figcaption></figure>
+<p><b>분석 1. 비교: 어느 지역이 많이 팔았나</b></p><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>요청: 지역별 매출, 주문 건수, 건당 평균 금액을 구해 줘.
+내용: 위에서 준비한 데이터
+형식: 매출 큰 순서의 표</pre></div><div class="table-wrap"><table>
+<tr><th>지역</th><th>매출(원)</th><th>주문 건수</th><th>건당 평균(원)</th></tr>
+<tr><td>서울</td><td>1,552,000</td><td>37</td><td>41,946</td></tr>
+<tr><td>대구</td><td>879,000</td><td>13</td><td>67,615</td></tr>
+<tr><td>경기</td><td>826,000</td><td>23</td><td>35,913</td></tr>
+<tr><td>부산</td><td>772,000</td><td>16</td><td>48,250</td></tr>
+<tr><td>광주</td><td>328,000</td><td>8</td><td>41,000</td></tr>
+</table></div><figure class="sample-shot"><img alt="대화창의 지역별 매출 표. 서울 1,552,000원 37건부터 합계 4,357,000원 97건" height="775" loading="lazy" src="./images/g4-analysis-region.jpg" width="1470"/><figcaption>결과 예시: 위 기준값과 같은지 대조해요</figcaption></figure><p><b>분석 2. 추세: 월별로 늘고 있나 줄고 있나</b></p><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>요청: 월별 매출과 전월 대비 증감률을 구해 줘.
+내용: 위에서 준비한 데이터
+형식: 표</pre></div><div class="table-wrap"><table>
+<tr><th>월</th><th>매출(원)</th><th>전월 대비</th></tr>
+<tr><td>7월</td><td>889,000</td><td>-</td></tr>
+<tr><td>8월</td><td>2,014,000</td><td>+126.6%</td></tr>
+<tr><td>9월</td><td>1,454,000</td><td>-27.8%</td></tr>
+</table></div><p><b>분석 3. 구성비: 무엇이 매출의 대부분을 차지하나</b></p><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>요청: 상품별 매출, 전체 대비 비중, 누적 비중을 구해 줘.
+내용: 위에서 준비한 데이터
+형식: 매출 큰 순서의 표</pre></div><div class="table-wrap"><table>
+<tr><th>상품</th><th>매출(원)</th><th>비중</th><th>누적 비중</th></tr>
+<tr><td>텀블러 500ml</td><td>1,065,000</td><td>24.4%</td><td>24.4%</td></tr>
+<tr><td>블루투스 스피커</td><td>1,035,000</td><td>23.8%</td><td>48.2%</td></tr>
+<tr><td>무선 충전기</td><td>841,000</td><td>19.3%</td><td>67.5%</td></tr>
+<tr><td>에코백</td><td>675,000</td><td>15.5%</td><td>83.0%</td></tr>
+<tr><td>머그컵</td><td>552,000</td><td>12.7%</td><td>95.7%</td></tr>
+<tr><td>노트 세트</td><td>189,000</td><td>4.3%</td><td>100.0%</td></tr>
+</table></div><p><b>분석 4. 교차: 지역마다 잘 팔리는 채널이 다른가</b></p><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>요청: 지역별·채널별 매출을 구해 줘.
+내용: 위에서 준비한 데이터
+형식: 행은 지역, 열은 채널인 교차표</pre></div><div class="table-wrap"><table>
+<tr><th>지역</th><th>앱</th><th>웹</th><th>오프라인</th></tr>
+<tr><td>서울</td><td>854,000</td><td>580,000</td><td>118,000</td></tr>
+<tr><td>대구</td><td>627,000</td><td>102,000</td><td>150,000</td></tr>
+<tr><td>경기</td><td>341,000</td><td>402,000</td><td>83,000</td></tr>
+<tr><td>부산</td><td>178,000</td><td>594,000</td><td>0</td></tr>
+<tr><td>광주</td><td>183,000</td><td>145,000</td><td>0</td></tr>
+</table></div><p>숫자가 다르다면 준비 단계에서 어떤 행을 뺐는지가 다른 거예요. "사용한 행 수와 뺀 행 수를 알려 줘"라고 물어보세요.</p></div><div class="topic" id="s4-3"><h3>4-3. 요약 → 시각화 자동 변환</h3><p>4-2의 결과로 보고서에 넣을 차트를 만들어요. 차트 종류는 <b>무엇을 보여 주고 싶은지</b>로 고르면 돼요. 차트는 <b>홈 입력창</b>에서 요청해요. AI 시트에서 차트를 요청하면 "시트 작업 중"에서 오래 멈출 수 있어서, 홈 입력창에서 차트 이미지로 받는 편이 빨라요.</p><div class="table-wrap"><table>
+<tr><th>보여 주고 싶은 것</th><th>어울리는 차트</th><th>오늘 예시</th></tr>
+<tr><td>시간에 따른 변화</td><td>세로 막대 또는 선</td><td>월별 매출</td></tr>
+<tr><td>항목끼리 크기 비교</td><td>가로 막대</td><td>지역별 매출</td></tr>
+<tr><td>전체 중 비중</td><td>누적 막대 또는 원</td><td>상품별 매출 비중</td></tr>
+</table></div><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>요청: 보고서에 넣을 차트를 만들어 줘.
+내용: 7월 889,000원 / 8월 2,014,000원 / 9월 1,454,000원
+형식: 막대 차트, 제목은 "3분기 월별 매출", 막대 위 금액 표시, 이미지 파일로 저장</pre></div><figure class="sample-shot"><img alt="3분기 월별 매출 막대 차트. 막대 위 889,000원, 2,014,000원, 1,454,000원, 세로축은 만원 단위" height="775" loading="lazy" src="./images/g4-chart-home.jpg" width="1470"/><figcaption>결과 예시: 차트가 이미지 파일(q3_sales_chart.png)로 저장돼요</figcaption></figure><p><b>결과 확인</b>: 막대 높이 순서와 막대 위 숫자가 4-2 기준값과 같은지 봐요. 위 예시처럼 세로축은 "만원", 막대 위 숫자는 "원"으로 단위가 섞일 수 있어요. 보고서에 넣기 전에 "단위를 원으로 통일해 줘"라고 고쳐 달라고 해요. 지역별 가로 막대, 상품별 비중도 같은 방법으로 하나씩 요청해요.</p></div><div class="topic" id="s4-4"><h3>4-4. 인사이트 중심 보고서 구성과 차트·표 삽입</h3><p>숫자를 나열하는 보고서와 인사이트 중심 보고서의 차이는 <b>순서</b>예요. 결론을 먼저 말하고, 근거로 표와 차트를 붙이고, 마지막에 제안해요.</p><div class="flow"><div><span>1</span><b>결론 한 줄</b><small>그래서 무엇이 중요한가</small></div><div><span>2</span><b>근거 3개</b><small>표·차트로 보여 주기</small></div><div><span>3</span><b>원인 추정</b><small>왜 그렇게 됐나</small></div><div><span>4</span><b>제안 1개</b><small>다음에 할 일</small></div></div><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>요청: 4-2, 4-3의 결과로 인사이트 중심의 3분기 매출 보고서를 만들어 줘.
+내용: 3-2에서 만든 분기 실적 보고서 구조를 따라 줘. 결론 한 줄을 맨 앞에 두고, 근거로 4-2의 표 2개와 4-3의 차트 2개를 본문에 넣어 줘. 표와 차트 아래에는 "무엇을 보여 주는지" 한 문장을 달아 줘. 숫자는 4-2 결과만 쓰고 새로 만들지 마.
+형식: Word 문서, A4 2쪽 이내</pre></div><p><b>결과 확인</b></p><ul class="checklist"><li>결론 한 줄이 맨 앞에 있나요?</li><li>표와 차트가 본문에 들어갔고, 아래에 설명 문장이 있나요?</li><li>보고서의 숫자가 4-2 기준값과 같나요?</li><li>제안이 근거에서 자연스럽게 이어지나요?</li></ul></div></section>
+<section class="section session" id="s5"><div class="session-head"><div class="eyebrow">SESSION 5 · 14:30–16:00</div><h2>미니 프로젝트: 실무 보고서/기획서 제작</h2><p>오전과 오후에 익힌 순서 그대로, <b>내 업무 주제</b>로 자료 조사 → 분석 → 보고서/기획서 제작 전 과정을 직접 해 봐요.</p></div><div class="topic" id="s5-1"><h3>5-1. 주제와 독자 정하기</h3><p>내 업무에서 실제로 써야 하는 문서를 하나 골라요. 정하기 어렵다면 아래 예시에서 골라도 좋아요.</p><div class="table-wrap"><table>
+<tr><th>문서 종류</th><th>주제 예시</th><th>독자</th></tr>
+<tr><td>보고서</td><td>우리 부서 3분기 업무 실적 보고</td><td>팀장, 부서장</td></tr>
+<tr><td>보고서</td><td>최근 고객 문의 유형 분석과 개선 방향</td><td>관련 부서</td></tr>
+<tr><td>기획서</td><td>우리 팀 업무에 생성형 AI 도입 제안</td><td>부서장, 경영진</td></tr>
+<tr><td>기획서</td><td>신규 교육 프로그램 운영 기획</td><td>인사·교육 담당</td></tr>
+</table></div><p>주제를 정했다면 메모장에 세 줄을 적어요: <b>① 누가 읽나 ② 읽고 나서 무엇을 결정해야 하나 ③ 꼭 들어가야 할 숫자나 자료</b></p><div class="warning"><b>회사 내부 자료와 개인 정보는 올리지 마세요.</b> 실제 업무 자료를 써야 한다면 이름·연락처·금액을 가상 값으로 바꿔서 올려요.</div></div><div class="topic" id="s5-2"><h3>5-2. 진행 순서 (90분)</h3><div class="table-wrap"><table>
+<tr><th>시간</th><th>할 일</th><th>쓰는 기능</th><th>참고</th></tr>
+<tr><td>14:30–14:40</td><td>주제·독자·목적 세 줄 정하기</td><td>메모장</td><td>5-1</td></tr>
+<tr><td>14:40–15:00</td><td>자료 조사와 숫자 확인</td><td>딥 리서치, 팩트 체크</td><td>2-1, 2-2</td></tr>
+<tr><td>15:00–15:15</td><td>(데이터가 있으면) 요약과 차트</td><td>AI 시트</td><td>4-2, 4-3</td></tr>
+<tr><td>15:15–15:45</td><td>템플릿 → 초안 → 스타일 맞추기</td><td>AI 문서</td><td>3-2, 3-3, 4-4</td></tr>
+<tr><td>15:45–16:00</td><td>일관성 점검, 발표 준비</td><td>AI 문서, AI 슬라이드(선택)</td><td>3-4</td></tr>
+</table></div><p>첫 프롬프트는 아래처럼 시작해 보세요. [ ] 안을 5-1에서 적은 세 줄로 바꿔요.</p><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>요청: [보고서 / 기획서] 초안을 만들어 줘.
+내용: 주제는 [주제]이고, 독자는 [독자]야. 읽고 나서 [결정해야 할 것]을 정할 수 있어야 해. 꼭 들어갈 자료는 [자료·숫자]야. 자료에 없는 숫자는 만들지 말고 '[확인 필요]'로 표시해 줘.
+형식: [보고서면 서론·본론·결론 / 기획서면 목표·전략·제안] 구조, A4 2쪽 이내</pre></div></div><div class="topic" id="s5-3"><h3>5-3. 제출 전 체크리스트</h3><ul class="checklist"><li>결론(보고서) 또는 제안(기획서)이 맨 앞이나 맨 끝에 분명하게 있나요?</li><li>모든 숫자에 출처가 있나요? '[확인 필요]'가 남아 있지 않나요?</li><li>팩트 체크를 한 번 이상 했나요?</li><li>3-1의 섹션 간 논리 연결 네 가지 기준을 통과했나요?</li><li>AI가 쓴 문장 중 내가 직접 고친 곳을 말할 수 있나요?</li></ul></div></section>
+<section class="section session" id="s6"><div class="session-head"><div class="eyebrow">SESSION 6 · 16:00–17:00</div><h2>발표 및 피드백</h2><p>완성한 보고서/기획서를 <b>3분</b> 동안 발표하고, <b>사실 · 논리 · 실행 가능성</b> 세 가지 기준으로 피드백을 나눠요.</p></div><div class="topic" id="s6-1"><h3>6-1. 3분 발표 구성</h3><div class="table-wrap"><table>
+<tr><th>순서</th><th>말할 것</th><th>시간</th></tr>
+<tr><td>1</td><td>주제와 독자: 누구에게 무엇을 결정하게 하려는 문서인가</td><td>30초</td></tr>
+<tr><td>2</td><td>핵심 결론 또는 제안 한 줄</td><td>30초</td></tr>
+<tr><td>3</td><td>근거: 자료와 숫자, 출처</td><td>1분</td></tr>
+<tr><td>4</td><td>AI를 어디에 썼고, 무엇을 직접 고쳤나</td><td>1분</td></tr>
+</table></div></div><div class="topic" id="s6-2"><h3>6-2. 피드백 기준</h3><p>다른 사람의 발표를 들으며 세 가지 기준으로 한 가지씩 피드백을 남겨요.</p><div class="table-wrap"><table>
+<tr><th>기준</th><th>확인할 질문</th></tr>
+<tr><td>사실</td><td>숫자와 출처가 맞나요? 확인하지 않은 내용이 섞여 있지 않나요?</td></tr>
+<tr><td>논리</td><td>결론이 근거에서 자연스럽게 나오나요? 섹션끼리 이어지나요?</td></tr>
+<tr><td>실행 가능성</td><td>제안대로 실제로 움직일 수 있나요? 누가, 언제, 무엇을 하나요?</td></tr>
+</table></div><p><b>오늘 쓴 프롬프트 남기기</b>: 잘 된 프롬프트는 메모장에 모아 두세요. 다음 달 보고서를 쓸 때 [ ] 안만 바꿔 다시 쓸 수 있어요.</p></div></section>
+</main>
+</div>
+<button id="slideBtn" type="button">▶ 슬라이드로 보기</button>
+<div hidden="" id="deck">
+<div id="viewport"><div id="stage">
+<div id="master"><span>생성형 AI를 활용한 보고서/기획서 제작</span></div>
+<div id="mbar"><i id="prog"></i></div>
+<div id="slide"></div>
+<div id="pager"><button aria-label="이전" id="prev" type="button">◀</button><span id="pg"></span><button aria-label="다음" id="next" type="button">▶</button></div>
+</div></div>
+<div id="bar"><button id="exit" type="button">✕ 닫기 (Esc)</button></div>
+</div>
+<script type="text/javascript">
+(function(){
+  var K={'요청':'','내용':' k2','형식':' k3'};
+  window.fmtPre=function(pr){
+    var t=pr.textContent;
+    if(!/^요청: /.test(t))return;
+    var lines=t.split('\n');pr.textContent='';pr.className='fmt';
+    lines.forEach(function(l,i){
+      var m=l.match(/^(요청|내용|형식): (.*)$/),d=document.createElement('div');
+      if(m){d.className='pl'+K[m[1]];var b=document.createElement('b');b.className='pk';b.textContent=m[1]+': ';var sp=document.createElement('span');sp.className='pt';sp.textContent=m[2];d.appendChild(b);d.appendChild(sp);}
+      else{d.className='pl c';var sp2=document.createElement('span');sp2.className='pt';sp2.textContent=l;d.appendChild(sp2);}
+      pr.appendChild(d);if(i<lines.length-1)pr.appendChild(document.createTextNode('\n'));
+    });
+  };
+  document.querySelectorAll('.copybox pre').forEach(window.fmtPre);
+})();
+</script>
+<script type="text/javascript">
+(function(){
+  var re=/^(STEP|준비|규칙서대로|분석 [1-4]|프롬프트 [AB]|프롬프트 쓰기|실습|방법 [A-C]|워밍업|[①-⑤] |\(선택\)|완성한|결과를 보고|버전|두 결과)/;
+  var nav=document.querySelector('aside nav');
+  document.querySelectorAll('main .topic').forEach(function(t){
+    var parent=nav.querySelector('a.l3[href="#'+t.id+'"]'),last=parent,n=0;
+    if(!parent)return;
+    t.querySelectorAll(':scope > p').forEach(function(p){
+      var b=p.firstElementChild;
+      if(!b||b.tagName!=='B'||p.children.length!==1||p.textContent.trim()!==b.textContent.trim()||!re.test(b.textContent.trim()))return;
+      p.classList.add('dh');p.id='d-'+t.id+'-'+(++n);
+      var a=document.createElement('a');a.className='l4';a.href='#'+p.id;a.setAttribute('data-p',t.id);
+      a.textContent=b.textContent.replace(/[:：]\s*.*$/,'').trim();
+      last.parentNode.insertBefore(a,last.nextSibling);last=a;
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+var main=document.querySelector('main'),deck=document.getElementById('deck'),box=document.getElementById('slide'),pgEl=document.getElementById('pg'),prog=document.getElementById('prog'),pages=[],i=0;
+function kids(el,skip){return Array.prototype.filter.call(el.children,function(c){return !skip(c);});}
+function logical(){
+  var out=[],hero=main.querySelector('.hero');
+  if(hero)out.push({sect:'표지',title:'',n:Array.prototype.slice.call(hero.children)});
+  Array.prototype.forEach.call(main.querySelectorAll(':scope > .section'),function(sec){
+    var h2=sec.querySelector('h2'),title=h2.textContent,head=sec.querySelector('.session-head'),n=[];
+    if(head)n=Array.prototype.slice.call(head.querySelectorAll('p'));
+    n=n.concat(kids(sec,function(c){return c.classList.contains('section-label')||c.tagName==='H2'||c.classList.contains('session-head')||c.classList.contains('topic');}));
+    if(n.length)out.push({sect:title,title:title,n:n});
+    Array.prototype.forEach.call(sec.querySelectorAll(':scope > .topic'),function(t){
+      var h3=t.querySelector('h3');
+      out.push({sect:title,title:h3.textContent,n:kids(t,function(c){return c===h3;})});
+    });
+  });
+  return out;
+}
+function over(){return box.scrollHeight>box.clientHeight+1;}
+function build(){
+  pages=[];var L=logical(),count,sl;L.forEach(function(x){var out=[];x.n.forEach(function(el){if(el.tagName==="DETAILS"){var t=el.querySelector(".summary-title");var h=document.createElement("p");h.innerHTML="<b>"+(t?t.textContent:"")+"</b>";out.push(h);Array.prototype.forEach.call(el.children,function(c){if(c.tagName!=="SUMMARY")out.push(c);});}else out.push(el);});x.n=out;});
+  function head(cont){
+    box.innerHTML='';
+    if(sl.title&&sl.sect&&sl.sect!==sl.title){var eb=document.createElement('div');eb.className='eb';eb.textContent=sl.sect;box.appendChild(eb);}
+    if(sl.title){var h=document.createElement('h3');h.className='st';h.textContent=sl.title;
+      if(cont){var c=document.createElement('span');c.className='cont';c.textContent='(이어서)';h.appendChild(c);}
+      box.appendChild(h);}
+    count=0;
+  }
+  function flush(){pages.push({html:box.innerHTML,sect:sl.sect});}
+  function addSplit(items,shellFn){
+    var shell=shellFn(),n=0;box.appendChild(shell.root);
+    items.forEach(function(it){
+      shell.add(it);n++;
+      if(over()&&(n>1||count>0)){
+        shell.remove();n--;
+        if(n===0)box.removeChild(shell.root);
+        flush();head(true);shell=shellFn();n=0;box.appendChild(shell.root);shell.add(it);n=1;
+      }
+    });
+    count++;
+  }
+  L.forEach(function(s){
+    sl=s;head(false);
+    s.n.forEach(function(el){
+      var tbl=el.classList&&el.classList.contains('table-wrap')&&el.querySelector('table');
+      var rows=tbl?Array.prototype.slice.call(tbl.rows):null;
+      var hasHead=rows&&rows.length>3&&Array.prototype.every.call(rows[0].cells,function(c){return c.tagName==='TH';})
+        &&!rows.some(function(r){return Array.prototype.some.call(r.cells,function(c){return c.rowSpan>1;});});
+      var listy=(el.tagName==='UL'||el.tagName==='OL'||(el.classList&&(el.classList.contains('procedure')||el.classList.contains('resource-list'))))&&el.children.length>1;
+      if(el.classList&&el.classList.contains('dh')&&count>1&&box.scrollHeight>box.clientHeight*0.5){flush();head(false);}
+      var c=el.cloneNode(true);box.appendChild(c);
+      if(over()&&count>0){var pv=c.previousElementSibling,lead=count>1&&pv&&pv.tagName==='P'&&pv.children.length===1&&pv.firstElementChild.tagName==='B'&&pv.textContent.trim()===pv.firstElementChild.textContent.trim();
+        box.removeChild(c);if(lead)box.removeChild(pv);flush();head(true);if(lead){box.appendChild(pv);count++;}box.appendChild(c);}
+      if(over()){
+        if(hasHead){
+          box.removeChild(c);
+          addSplit(rows.slice(1),function(){
+            var w=el.cloneNode(false),t=tbl.cloneNode(false),b=document.createElement('tbody');
+            t.appendChild(b);b.appendChild(rows[0].cloneNode(true));w.appendChild(t);
+            return {root:w,add:function(r){b.appendChild(r.cloneNode(true));},remove:function(){b.removeChild(b.lastChild);}};
+          });
+          return;
+        }
+        if(el.classList&&el.classList.contains('copybox')){
+          box.removeChild(c);
+          var lines=el.querySelector('pre').textContent.split('\n');
+          addSplit(lines,function(){
+            var w=el.cloneNode(false),hd=el.querySelector('.copyhead').cloneNode(true),pr=document.createElement('pre'),txt=[];
+            w.appendChild(hd);w.appendChild(pr);
+            return {root:w,add:function(l){txt.push(l);pr.className='';pr.textContent=txt.join('\n');window.fmtPre(pr);},remove:function(){txt.pop();pr.className='';pr.textContent=txt.join('\n');window.fmtPre(pr);}};
+          });
+          return;
+        }
+        if(listy){
+          box.removeChild(c);
+          addSplit(Array.prototype.slice.call(el.children),function(){
+            var u=el.cloneNode(false);
+            return {root:u,add:function(li){u.appendChild(li.cloneNode(true));},remove:function(){u.removeChild(u.lastChild);}};
+          });
+          return;
+        }
+      }
+      count++;
+    });
+    flush();
+  });
+  var o='<h3 class="st">전체 목차</h3><div class="outline">';
+  Array.prototype.forEach.call(document.querySelectorAll('aside nav .grp'),function(g){
+    o+='<div class="og"><b>'+g.querySelector('.grp-label').textContent+(g.querySelector('.l2')&&g.querySelector('.grp-label').textContent.indexOf('세션')===0?' · '+g.querySelector('.l2').textContent:'')+'</b>';
+    var guide=g.querySelector('.grp-label').textContent==='교육 안내';
+    Array.prototype.forEach.call(g.querySelectorAll(guide?'a.l2,a.l3':'a.l3'),function(a){o+='<span>'+a.textContent+'</span>';});
+    o+='</div>';
+  });
+  pages.splice(1,0,{html:o+'</div>',sect:'목차'});
+}
+function show(n){
+  i=Math.max(0,Math.min(pages.length-1,n));var p=pages[i];
+  box.innerHTML=p.html;box.scrollTop=0;
+  pgEl.textContent=(i+1)+' / '+pages.length;prog.style.width=((i+1)/pages.length*100)+'%';
+}
+var stage=document.getElementById('stage'),vp=document.getElementById('viewport');
+function fit(){var k=Math.min(vp.clientWidth/1280,vp.clientHeight/720);stage.style.transform='translate(-50%,-50%) scale('+k+')';}
+function open(){deck.hidden=false;document.body.style.overflow='hidden';fit();var w=[].slice.call(main.querySelectorAll('img')).map(function(m){if(m.complete)return 0;m.loading='eager';return new Promise(function(r){m.onload=m.onerror=r;setTimeout(r,8000);});});Promise.all(w).then(function(){build();show(0);});}
+function close(){deck.hidden=true;document.body.style.overflow='';}
+window.addEventListener('resize',function(){if(!deck.hidden)fit();});
+document.getElementById('slideBtn').onclick=open;
+document.getElementById('exit').onclick=close;
+document.getElementById('prev').onclick=function(){show(i-1)};
+document.getElementById('next').onclick=function(){show(i+1)};
+document.addEventListener('keydown',function(e){
+  if(deck.hidden)return;
+  if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ')show(i+1);
+  else if(e.key==='ArrowLeft'||e.key==='PageUp')show(i-1);
+  else if(e.key==='Escape')close();
+});
+document.addEventListener('click',function(e){
+  var b=e.target.closest&&e.target.closest('.copyhead button');if(!b)return;
+  var pre=b.closest('.copybox').querySelector('pre');
+  var done=function(){var t=b.textContent;b.textContent='복사됨';setTimeout(function(){b.textContent=t;},1200);};
+  if(navigator.clipboard)navigator.clipboard.writeText(pre.classList.contains('fmt')?pre.textContent:pre.innerText).then(done,done);else done();
+});
+})();
+</script>
+<script type="text/javascript">
+(function(){
+  var links=[].slice.call(document.querySelectorAll('aside nav a[href^="#"]'));
+  var targets=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));});
+  function update(){
+    var y=window.scrollY+120, cur=-1;
+    targets.forEach(function(el,i){ if(el && el.getBoundingClientRect().top+window.scrollY<=y) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('active', i===cur); });
+    var cp=null;
+    if(cur>=0){ var ca=links[cur]; cp=ca.classList.contains('l4')?ca.getAttribute('data-p'):(ca.getAttribute('href').slice(1)); }
+    links.forEach(function(a){ if(a.classList.contains('l4')) a.classList.toggle('show', a.getAttribute('data-p')===cp); });
+    if(cur>=0){ var a=links[cur], box=a.closest('aside'), r=a.getBoundingClientRect();
+      if(r.top<120||r.bottom>window.innerHeight-20) box.scrollTop+=r.top-window.innerHeight/2; }
+  }
+  window.addEventListener('scroll',update,{passive:true}); update();
+})();
+</script>
+<script type="text/javascript">
+(function(){
+  var btn=document.querySelector('.nav-toggle'), label=btn.querySelector('span'), body=document.body;
+  var mq=window.matchMedia('(max-width: 1020px)');
+  function isOpen(){ return mq.matches ? body.classList.contains('nav-open') : !body.classList.contains('nav-hidden'); }
+  function sync(){ var o=isOpen(); btn.setAttribute('aria-expanded',o); label.textContent=o?'목차 숨기기':'목차 보기'; }
+  try{ if(localStorage.getItem('navHidden')==='1') body.classList.add('nav-hidden'); }catch(e){}
+  btn.addEventListener('click',function(){
+    if(mq.matches){ body.classList.toggle('nav-open'); }
+    else{ var h=body.classList.toggle('nav-hidden'); try{ localStorage.setItem('navHidden',h?'1':'0'); }catch(e){} }
+    sync();
+  });
+  document.querySelectorAll('aside nav a').forEach(function(a){ a.addEventListener('click',function(){ if(mq.matches){ body.classList.remove('nav-open'); sync(); } }); });
+  if(mq.addEventListener) mq.addEventListener('change',sync);
+  sync();
+})();
+</script>
+</body>
+</html>
