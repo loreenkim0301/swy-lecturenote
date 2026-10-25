@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>김셀렉 | 포트폴리오 첫 페이지</title>
+<style>
+  /* 디자인 규칙: 색 2개(진한 남색, 포인트 주황) + 글꼴 크기 3단계(32px / 20px / 16px) */
+  :root { --main: #1f2a44; --point: #e8772e; --big: 32px; --mid: 20px; --base: 16px; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: sans-serif; font-size: var(--base); line-height: 1.7; color: var(--main); background: #ffffff; }
+  header { background: var(--main); color: #ffffff; padding: 48px 20px; text-align: center; }
+  header h1 { font-size: var(--big); margin: 0 0 8px; }
+  header p { margin: 0; }
+  main { max-width: 720px; margin: 0 auto; padding: 24px 20px 48px; }
+  section { border-top: 3px solid var(--point); padding: 20px 0; }
+  h2 { font-size: var(--mid); margin: 0 0 8px; }
+  ul { padding-left: 20px; margin: 0; }
+  a { color: var(--point); font-weight: bold; word-break: break-all; }
+  footer { text-align: center; padding: 20px; border-top: 1px solid var(--main); }
+  @media (max-width: 480px) { header { padding: 32px 16px; } main { padding: 16px; } }
+</style>
+</head>
+<body>
+  <header>
+    <h1>김셀렉</h1>
+    <p>현장의 불편을 서비스로 바꾸는 예비 서비스 기획자</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>안녕하세요</h2>
+      <p>생활용품 매장에서 12년 동안 고객 응대와 재고 관리를 해 왔어요.
+         지금은 AI 프로덕트 매니저 과정에서 기획과 만들기를 함께 배우고 있어요.</p>
+    </section>
+
+    <section>
+      <h2>경력에서 찾은 불편</h2>
+      <ul>
+        <li>"이 상품 언제 다시 들어와요?"라는 같은 질문에 하루 수십 번 답했어요.</li>
+        <li>재고 확인을 위해 매일 엑셀 파일 세 개를 번갈아 열어야 했어요.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>이 과정에서 만들 것</h2>
+      <p>4월에는 재입고 알림을 신청받는 작은 웹 서비스를 직접 기획하고 배포해,
+         그 주소와 기획 문서로 면접을 보는 것이 목표예요.</p>
+    </section>
+
+    <section>
+      <h2>연락 방법</h2>
+      <p>만든 결과물은 GitHub에 모아 두고 있어요.<br>
+         <a href="https://github.com/">github.com/[내 GitHub 아이디]</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <small>© 2026 김셀렉 · 이 페이지는 AI의 도움을 받아 만들었어요.</small>
+  </footer>
+</body>
+</html>
