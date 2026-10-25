@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif">
+<title>실행되는 곳이 언어를 정한다</title>
+<rect width="960" height="560" fill="#ffffff"/>
+<text x="480" y="48" text-anchor="middle" font-size="28" font-weight="800" fill="#172033">실행되는 곳이 언어를 정합니다</text>
+<text x="480" y="82" text-anchor="middle" font-size="17" fill="#657086">"이 프로그램은 어디에서 실행되는가?"를 먼저 묻고, 그다음 언어를 봅니다</text>
+<g font-size="17">
+  <!-- card template: x,y,w=280,h=190 -->
+  <g transform="translate(40,115)">
+    <rect width="280" height="190" rx="16" fill="#eef2ff" stroke="#2457f5" stroke-width="2"/>
+    <text x="24" y="44" font-size="22" font-weight="800" fill="#2a3fb0">브라우저</text>
+    <text x="24" y="72" fill="#657086">웹 화면, 크롬 확장 프로그램</text>
+    <text x="24" y="118" font-weight="700" fill="#172033">HTML · CSS · 자바스크립트</text>
+    <text x="24" y="150" fill="#172033">+ 확장 프로그램은 manifest.json</text>
+  </g>
+  <g transform="translate(340,115)">
+    <rect width="280" height="190" rx="16" fill="#e7f6ef" stroke="#16a36b" stroke-width="2"/>
+    <text x="24" y="44" font-size="22" font-weight="800" fill="#0d7a4f">서버 · 클라우드</text>
+    <text x="24" y="72" fill="#657086">로그인, 결제, 데이터 처리</text>
+    <text x="24" y="118" font-weight="700" fill="#172033">파이썬 · Node.js · Go 등</text>
+    <text x="24" y="150" fill="#172033">선택지가 가장 넓은 곳</text>
+  </g>
+  <g transform="translate(640,115)">
+    <rect width="280" height="190" rx="16" fill="#fff6e5" stroke="#ffad22" stroke-width="2"/>
+    <text x="24" y="44" font-size="22" font-weight="800" fill="#9a5b00">데이터베이스</text>
+    <text x="24" y="72" fill="#657086">주문, 회원 정보 저장·조회</text>
+    <text x="24" y="118" font-weight="700" fill="#172033">SQL</text>
+    <text x="24" y="150" fill="#172033">"9월 앱 주문만 보여 줘"</text>
+  </g>
+  <g transform="translate(40,330)">
+    <rect width="280" height="190" rx="16" fill="#f5f7fb" stroke="#657086" stroke-width="2"/>
+    <text x="24" y="44" font-size="22" font-weight="800" fill="#172033">스마트폰</text>
+    <text x="24" y="80" font-weight="700" fill="#172033">아이폰: Swift</text>
+    <text x="24" y="110" font-weight="700" fill="#172033">안드로이드: Kotlin</text>
+    <text x="24" y="146" fill="#172033">한 번에: Flutter(Dart),</text>
+    <text x="24" y="172" fill="#172033">React Native(자바스크립트)</text>
+  </g>
+  <g transform="translate(340,330)">
+    <rect width="280" height="190" rx="16" fill="#f5f7fb" stroke="#657086" stroke-width="2"/>
+    <text x="24" y="44" font-size="22" font-weight="800" fill="#172033">PC (윈도우 · 맥)</text>
+    <text x="24" y="80" font-weight="700" fill="#172033">윈도우: C# · 맥: Swift</text>
+    <text x="24" y="116" fill="#172033">웹 기술로 만들면: Electron</text>
+    <text x="24" y="146" fill="#657086">VS Code, Slack, Notion 등이</text>
+    <text x="24" y="172" fill="#657086">Electron으로 만든 PC 앱</text>
+  </g>
+  <g transform="translate(640,330)">
+    <rect width="280" height="190" rx="16" fill="#f5f7fb" stroke="#657086" stroke-width="2"/>
+    <text x="24" y="44" font-size="22" font-weight="800" fill="#172033">내 컴퓨터 · Colab</text>
+    <text x="24" y="80" font-weight="700" fill="#172033">데이터 분석·AI: 파이썬, R</text>
+    <text x="24" y="114" font-weight="700" fill="#172033">업무 자동화: 파이썬,</text>
+    <text x="24" y="142" font-weight="700" fill="#172033">Apps Script, 엑셀 VBA</text>
+    <text x="24" y="172" fill="#657086">← 오늘 배운 영역</text>
+  </g>
+</g>
+</svg>
