@@ -1,11 +1,11 @@
 # 과제 4. 데이터에게 질문하기
 
-데이터: `04_orders.csv` (가상의 굿즈 쇼핑몰, 2026년 9월 주문 300건, 금액 단위: 원)
+데이터: `04_orders.csv` (가상 쇼핑몰, 2026년 9월 주문 300건, 금액 단위: 원)
 
 ## Colab에서 불러오기
 ```python
 import pandas as pd
-url = "https://loreenkim0301.github.io/swy-lecturenote/2610-aiclass-python/homework/04_orders.csv"
+url = "https://loreenkim0301.github.io/swy-lecturenote/261026-ai-pm-week1/data/04_orders.csv"
 df = pd.read_csv(url)
 df.head()
 ```
