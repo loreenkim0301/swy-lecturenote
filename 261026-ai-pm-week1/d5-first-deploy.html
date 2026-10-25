@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet"/>
+<meta content="index, follow, noai, noimageai" name="robots"/>
+<title>AI 프로덕트 매니저 1주차 · DAY 5 첫 페이지 배포</title>
+<style>:root { --ink: #172033; --muted: #657086; --line: #dfe4ed; --soft: #f5f7fb; --blue: #2457f5; --nav: #111a2e; --green: #16a36b; --warn: #ffad22; --page-pad: clamp(28px,5.8vw,82px); --font-sans: "Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; scroll-behavior: smooth; }
+* { box-sizing: border-box; }
+body { margin: 0px; background: rgb(238, 241, 246); color: var(--ink); font-family: var(--font-sans); line-height: 1.7; letter-spacing: -0.01em; }
+.app aside { position: fixed; inset: 0px auto 0px 0px; width: 310px; height: 100vh; padding: 0 16px 28px; background: var(--nav); color: rgb(255, 255, 255); overflow-y: auto; z-index: 10; }
+.app main { min-height: 100vh; margin-left: 310px; background: rgb(255, 255, 255); }
+.side-head { position: sticky; top: 0; z-index: 1; margin: 0 -16px; padding: 20px 26px 14px; background: var(--nav); border-bottom: 1px solid rgb(45, 56, 80); }
+.brand { font-size: 11px; font-weight: 800; letter-spacing: 0.14em; color: rgb(130, 145, 177); }
+aside h1 { margin: 6px 0 4px; font-size: 17px; line-height: 1.35; letter-spacing: -0.02em; }
+.side-sub, .side-foot { font-size: 12px; color: rgb(150, 162, 186); }
+aside nav { margin-top: 10px; }
+aside nav a { display: block; padding: 7px 10px 7px 22px; color: rgb(190, 200, 219); text-decoration: none; font-size: 14px; line-height: 1.45; border-left: 3px solid transparent; border-radius: 0 6px 6px 0; }
+aside nav a:hover { color: rgb(255, 255, 255); background: rgb(25, 36, 60); }
+aside nav .major { margin-top: 12px; padding-left: 10px; color: rgb(255, 255, 255); font-size: 15px; font-weight: 800; }
+aside nav a.active { color: rgb(255, 255, 255); background: rgb(30, 44, 74); border-left-color: var(--blue); font-weight: 700; }
+.side-foot { margin: 20px 10px 0; padding-top: 14px; border-top: 1px solid rgb(45, 56, 80); }
+.hero { padding: 86px var(--page-pad) 72px; background: linear-gradient(135deg, rgb(247, 249, 255), rgb(238, 243, 255) 58%, rgb(233, 255, 246)); border-bottom: 1px solid var(--line); }
+.kicker, .section-label, .topic-label, .eyebrow { font-size: 13px; font-weight: 800; letter-spacing: 0.13em; color: var(--blue); }
+.hero h1 { margin: 16px 0px; font-size: clamp(40px, 5vw, 70px); line-height: 1.08; letter-spacing: -0.055em; }
+.hero h1 em { color: var(--blue); font-style: normal; }
+.hero > p { max-width: 860px; color: rgb(79, 91, 114); font-size: 18px; }
+.hero-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 38px; background: rgb(220, 226, 237); border: 1px solid rgb(220, 226, 237); }
+.hero-grid div { background: rgb(255, 255, 255); padding: 16px; }
+.hero-grid b { display: block; font-size: 12px; color: rgb(125, 135, 153); }
+.hero-grid span { font-size: 14px; font-weight: 800; }
+.section { padding: 70px var(--page-pad); border-bottom: 1px solid var(--line); scroll-margin-top: 18px; }
+.section > h2, .session-head h2 { margin: 8px 0px 14px; font-size: 36px; letter-spacing: -0.04em; }
+.lead { font-size: 18px; max-width: 900px; }
+.three-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px 0px; }
+.three-cards article { padding: 20px; border: 1px solid var(--line); border-radius: 14px; background: rgb(255, 255, 255); }
+.three-cards article > span { font-size: 12px; font-weight: 800; color: var(--blue); }
+.three-cards h3 { margin: 8px 0px 5px; font-size: 20px; }
+.three-cards p, .caption { color: var(--muted); font-size: 14px; }
+.notice, .warning { margin: 22px 0px; padding: 16px 19px; }
+.notice { border-left: 4px solid var(--blue); background: rgb(234, 240, 255); }
+.warning { border-left: 4px solid var(--warn); background: rgb(255, 246, 230); }
+.schedule { margin-top: 30px; }
+.schedule div { display: grid; grid-template-columns: 48px 125px 1fr; align-items: center; padding: 13px 0px; border-top: 1px solid var(--line); }
+.schedule span.badge { display: grid; place-items: center; width: 29px; height: 29px; border-radius: 50%; background: var(--nav); color: rgb(255, 255, 255); font-size: 12px; }
+.schedule p { margin: 0px; }
+.session { padding-top: 0px; }
+.session-head { margin: 0 calc(var(--page-pad)*-1) 50px; padding: 52px var(--page-pad); background: var(--nav); color: rgb(255, 255, 255); }
+.session-head .eyebrow { color: rgb(125, 160, 255); }
+.session-head p { max-width: 900px; color: rgb(195, 204, 220); }
+.vibe-intro { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 28px; align-items: start; margin-top: 30px; padding-top: 28px; border-top: 1px solid rgb(45, 56, 80); }
+.vibe-quote { margin: 0; padding-left: 18px; border-left: 3px solid rgb(125, 160, 255); }
+.vibe-quote blockquote { margin: 0 0 10px; color: #fff; font-size: 21px; font-weight: 700; line-height: 1.5; letter-spacing: -0.03em; }
+.vibe-quote figcaption { color: rgb(160, 172, 196); font-size: 13px; }
+.vibe-meaning { margin: 18px 0 0; padding: 14px 16px; border-radius: 12px; background: rgb(25, 36, 60); color: rgb(215, 222, 236); font-size: 15px; }
+.vibe-meaning b { color: #fff; }
+.vibe-timeline { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.vibe-timeline li { display: grid; grid-template-columns: 74px 1fr; gap: 12px; padding: 12px 14px; border: 1px solid rgb(45, 56, 80); border-radius: 12px; background: rgba(255, 255, 255, 0.03); }
+.vibe-timeline time { color: rgb(125, 160, 255); font-size: 13px; font-weight: 800; letter-spacing: 0.02em; }
+.vibe-timeline b { display: block; color: #fff; font-size: 15px; }
+.vibe-timeline span { display: block; color: rgb(185, 195, 214); font-size: 14px; line-height: 1.55; }
+.vibe-sources { grid-column: 1 / -1; margin: 0; color: rgb(130, 145, 177); font-size: 12px; }
+.vibe-sources a { color: rgb(160, 180, 230); }
+@media (max-width: 1020px) { .vibe-intro { grid-template-columns: 1fr; } }
+.time { font-size: 13px; color: rgb(174, 185, 207); }
+.topic { margin-bottom: 70px; scroll-margin-top: 20px; }
+.topic h3 { margin: 8px 0px 12px; font-size: 28px; letter-spacing: -0.025em; }
+.flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 9px; margin: 18px 0px 26px; }
+.flow div { text-align: center; padding: 16px 12px; border-radius: 12px; background: rgb(237, 242, 255); }
+.flow span { display: block; font-size: 12px; font-weight: 800; color: var(--blue); }
+.flow b { display: block; }
+.flow small { display: block; margin-top: 5px; color: var(--muted); }
+.versus { display: grid; grid-template-columns: 1fr 54px 1fr; align-items: center; margin: 16px 0px 26px; }
+.versus > div { padding: 20px; border: 1px solid var(--line); border-radius: 13px; background: var(--soft); }
+.versus i { text-align: center; color: var(--blue); font-style: normal; font-weight: 900; }
+.table-wrap { overflow: auto; }
+table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 14px; }
+th { padding: 13px; text-align: left; color: rgb(255, 255, 255); background: var(--nav); }
+td { padding: 14px 13px; border-bottom: 1px solid var(--line); }
+.checklist { display: grid; gap: 7px; padding: 0px; list-style: none; }
+.checklist li { padding: 11px 14px; border-radius: 8px; background: var(--soft); }
+.checklist li::before { content: "✓"; margin-right: 8px; color: var(--blue); font-weight: 900; }
+.practice-brief { display: grid; gap: 8px; margin: 18px 0px; }
+.practice-brief > div { padding: 15px 18px; border: 1px solid rgb(200, 239, 221); border-radius: 12px; background: rgb(237, 255, 246); }
+.copybox { margin: 20px 0px; border: 1px solid rgb(207, 215, 230); border-radius: 12px; overflow: hidden; background: rgb(17, 26, 46); color: rgb(232, 238, 252); }
+.copyhead { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: rgb(30, 43, 71); font-size: 13px; font-weight: 800; }
+.copyhead button { padding: 5px 10px; border: 1px solid rgb(97, 112, 141); border-radius: 6px; background: transparent; color: rgb(255, 255, 255); cursor: pointer; }
+.copybox pre { white-space: pre-wrap; margin: 0px; padding: 20px; font: 13px / 1.72 ui-monospace, SFMono-Regular, Menlo, monospace; }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 18px 0px 26px; }
+.steps article { padding: 18px; border-top: 4px solid var(--blue); border-radius: 12px; }
+.steps strong { display: block; color: var(--blue); font-size: 12px; }
+.steps b { display: block; font-size: 18px; margin-top: 3px; }
+.sub-optional { margin-top: 10px; padding: 10px 12px; border: 1px dashed var(--line); border-radius: 10px; color: var(--muted); font-size: 14px; }
+.sub-optional .tag { margin-left: 0; }
+.steps .sub-optional b { display: inline; font-size: 14px; margin: 0 4px 0 2px; color: var(--muted); }
+.tag { display: inline-block; margin-left: 6px; padding: 1px 8px; border-radius: 999px; font-size: 11px; font-weight: 800; letter-spacing: 0; vertical-align: 1px; }
+.tag-req { background: var(--blue); color: #fff; }
+.tag-opt { border: 1px solid var(--line); background: #fff; color: var(--muted); font-weight: 700; }
+.final-box { padding: 28px; border-radius: 18px; background: linear-gradient(135deg, rgb(17, 26, 46), rgb(29, 47, 88)); color: rgb(255, 255, 255); }
+.final-box h3 { margin: 6px 0px 8px; font-size: 30px; }
+.final-box p { color: rgb(203, 213, 231); }
+code.inline { padding: 2px 6px; border-radius: 6px; background: rgb(238, 242, 248); font-family: ui-monospace, monospace; }
+.small { font-size: 13px; color: var(--muted); }
+.resource-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 18px 0px 28px; }
+.resource-card { padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--soft); }
+.resource-card b { display: block; margin-bottom: 4px; }
+.resource-card a { color: var(--blue); font-weight: 800; text-decoration: none; word-break: break-all; font-size: 13px; }
+.sample-link { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin: 22px 0; padding: 14px 18px; border: 1px solid rgb(203, 218, 255); border-radius: 12px; background: rgb(240, 245, 255); }
+.sample-link span { color: var(--muted); font-size: 14px; }
+.sample-link b { display: block; color: var(--ink); font-size: 15px; }
+.sample-link .resource-link { flex-shrink: 0; margin-top: 0; }
+@media (max-width: 680px) { .sample-link { flex-direction: column; align-items: flex-start; } }
+.resource-link { display: inline-block; margin-top: 8px; padding: 8px 12px; border: 1px solid rgb(203, 213, 225); border-radius: 8px; color: var(--blue); font-size: 13px; font-weight: 800; text-decoration: none; background: rgb(255, 255, 255); }
+.procedure { counter-reset: step 0; display: grid; gap: 10px; margin: 18px 0px 28px; }
+.procedure > div { position: relative; padding: 15px 16px 15px 54px; border: 1px solid var(--line); border-radius: 12px; background: rgb(255, 255, 255); }
+.procedure > div::before { counter-increment: step 1; content: counter(step); position: absolute; left: 16px; top: 15px; width: 26px; height: 26px; display: grid; place-items: center; border-radius: 50%; background: var(--blue); color: rgb(255, 255, 255); font-size: 12px; font-weight: 900; }
+.sample-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 18px 0px 28px; }
+.sample-grid article { padding: 18px; border: 1px solid var(--line); border-radius: 13px; background: var(--soft); }
+.term-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 22px 0px; }
+.term-grid article { padding: 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--soft); }
+.term-grid strong { display: block; color: var(--blue); font-size: 12px; letter-spacing: 0.08em; }
+.term-grid h4 { margin: 5px 0px 8px; font-size: 20px; }
+.talk { margin: 18px 0px; padding: 22px; border-left: 4px solid var(--green); background: rgb(241, 252, 247); }
+.talk p { margin: 0px 0px 14px; }
+.talk p:last-child { margin-bottom: 0px; }
+.example-flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 18px 0px 24px; }
+.example-flow div { padding: 14px 12px; border-radius: 10px; background: rgb(255, 248, 235); }
+.example-flow b, .example-flow span { display: block; }
+.example-flow span { margin-bottom: 3px; color: rgb(154, 100, 16); font-size: 12px; font-weight: 800; }
+details.optional { margin-top: 8px; padding: 0 22px 6px; border: 1px solid var(--line); border-radius: 14px; background: var(--soft); }
+details.optional > summary { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; padding: 20px 0; cursor: pointer; list-style: none; }
+details.optional > summary::-webkit-details-marker { display: none; }
+details.optional > summary::before { content: "▸"; color: var(--blue); font-weight: 900; }
+details.optional[open] > summary::before { content: "▾"; }
+details.optional .summary-title { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
+details.optional .summary-hint { font-size: 13px; color: var(--muted); }
+details.optional[open] .summary-hint { display: none; }
+.profile-card { display: grid; grid-template-columns: 1.6fr 1fr; gap: 20px; padding: 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--soft); }
+.profile-card h3 { margin: 0 0 6px; font-size: 22px; }
+.profile-card ul { margin: 10px 0 0; padding-left: 18px; }
+.profile-links { display: grid; gap: 8px; align-content: start; }
+.profile-links a { padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--blue); font-size: 14px; font-weight: 700; text-decoration: none; word-break: break-all; }
+.sample-shot { margin: 22px 0; }
+.sample-shot img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 12px; }
+.sample-shot.narrow img { max-width: 700px; margin: 0 auto; }
+.sample-shot.small img { max-width: 360px; }
+.sample-shot figcaption { margin-top: 10px; color: var(--muted); font-size: 14px; }
+@media (max-width: 680px) { .profile-card { grid-template-columns: 1fr; padding: 18px; } }
+.app aside { word-break: keep-all; }
+.topic .three-cards h3 { margin: 8px 0 5px; font-size: 20px; letter-spacing: -0.02em; }
+.block-title { margin: 34px 0 4px; font-size: 22px; letter-spacing: -0.02em; scroll-margin-top: 18px; }
+.break { padding: 54px var(--page-pad); background: rgb(246, 248, 252); border-bottom: 1px solid var(--line); }
+.break h2 { margin: 0px 0px 8px; font-size: 32px; }
+@media (max-width: 1020px) {
+  .app aside { display: none; }
+  .app main { margin-left: 0px; }
+  .hero-grid, .three-cards, .steps, .term-grid, .example-flow { grid-template-columns: 1fr 1fr; }
+  .flow { grid-template-columns: 1fr 1fr; }
+}
+.nav-toggle { position: fixed; top: 14px; left: 322px; z-index: 20; display: flex; align-items: center; gap: 6px; height: 36px; padding: 0 12px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255, 255, 255, 0.94); color: var(--ink); font: 700 13px/1 var(--font-sans); cursor: pointer; box-shadow: 0 4px 14px rgba(17, 26, 46, 0.12); transition: left .25s ease; }
+.nav-toggle:hover { border-color: var(--blue); color: var(--blue); }
+.nav-toggle svg { width: 16px; height: 16px; }
+.app aside { transition: transform .25s ease; }
+.app main { transition: margin-left .25s ease; }
+body.nav-hidden .app aside { transform: translateX(-100%); }
+body.nav-hidden .app main { margin-left: 0; }
+body.nav-hidden .nav-toggle { left: 14px; }
+@media (max-width: 1020px) {
+  .app aside { display: block; width: min(310px, calc(100vw - 64px)); transform: translateX(-100%); }
+  .nav-toggle { left: 14px; }
+  body.nav-open .app aside { transform: none; box-shadow: 8px 0 24px rgba(17, 26, 46, 0.25); }
+  body.nav-open .nav-toggle { left: auto; right: 10px; padding: 0 11px; }
+  body.nav-open .nav-toggle span { display: none; }
+}
+@media (max-width: 680px) {
+  .hero, .section, .break { padding-left: 20px; padding-right: 20px; }
+  .hero { padding-top: 54px; }
+  .hero-grid, .three-cards, .steps, .flow, .resource-list, .term-grid, .example-flow { grid-template-columns: 1fr; }
+  .schedule div { grid-template-columns: 38px 100px 1fr; }
+  .versus { grid-template-columns: 1fr; }
+  .versus i { padding: 8px 0px; }
+  .session-head { margin-left: -20px; margin-right: -20px; padding-left: 20px; padding-right: 20px; }
+  .section > h2, .session-head h2 { font-size: 30px; }
+  .topic h3 { font-size: 24px; }
+}</style>
+<style>
+.tt{margin:0;padding-left:1.1em}.tt li{margin:2px 0}
+.dl-list{display:grid;gap:10px;margin:18px 0}
+.dl-card{display:flex;align-items:center;gap:14px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:#fff;text-decoration:none;color:var(--ink)}
+.dl-card:hover{border-color:var(--blue);background:var(--soft)}
+.dl-ico{flex:none;display:grid;place-items:center;width:44px;height:52px;border-radius:8px;background:rgb(237,242,255);color:var(--blue);font-size:11px;font-weight:800}
+.dl-body{flex:1}.dl-body b{display:block;font-size:16px}.dl-body span{display:block;font-size:13px;color:var(--muted)}
+.dl-btn{flex:none;padding:8px 14px;border-radius:8px;background:var(--blue);color:#fff;font-size:13px;font-weight:800}
+@media(max-width:680px){.dl-card{flex-wrap:wrap}}
+#slide .sample-shot{margin:8px 0}#slide .sample-shot img{max-height:420px;width:auto;max-width:100%;margin:0 auto}#slide .sample-shot figcaption{margin-top:4px;font-size:13px;text-align:center}
+#slide .dl-card{padding:10px 14px}
+.todo{color:#b42318;font-weight:700}
+main,#slide{word-break:keep-all;overflow-wrap:break-word}
+h1,h2,h3,.hero p,.lead{text-wrap:balance}
+p,li,td{text-wrap:pretty}
+td .tag{margin-bottom:2px}
+.tag.nap{background:#7c3aed}.tag.sheet{background:var(--green)}
+.tag{margin-left:0;margin-right:4px}
+.topic .small{display:block}
+.resource-card .small{display:block;margin-bottom:6px}
+.resource-card a{display:inline-block;margin:2px 0}
+.copybox pre{background:none;color:inherit}
+.hero-grid{grid-template-columns:repeat(3,1fr)}
+.sample-link .resource-link{margin:0 6px 0 0}
+.sample-link{flex-wrap:wrap;justify-content:flex-start;gap:6px}
+#slideBtn{position:fixed;right:16px;bottom:16px;z-index:30;background:var(--blue);color:#fff;border:0;border-radius:999px;padding:12px 20px;font:700 15px var(--font-sans);cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+#deck{position:fixed;inset:0;z-index:100;background:#0b1220;display:flex;flex-direction:column}
+#deck[hidden]{display:none}
+#viewport{flex:1;min-height:0;position:relative;overflow:hidden}
+#stage{position:absolute;left:50%;top:50%;width:1280px;height:720px;background:#fff;display:flex;flex-direction:column;overflow:hidden;transform-origin:center center;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+#master{flex:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 96px;background:var(--nav);color:#fff;font-weight:800;font-size:15px}
+#master .m-brand{font-size:11px;letter-spacing:.14em;color:rgb(130,145,177);margin-right:12px}
+#mbar{flex:none;height:4px;background:var(--line)}#prog{display:block;height:100%;background:var(--blue);width:0}
+#slide{flex:1;min-height:0;overflow:hidden;padding:28px 96px 12px;font-size:19px;line-height:1.55}
+#slide h1{font-size:46px;line-height:1.15;margin:12px 0}#slide h1 em{color:var(--blue);font-style:normal}
+#slide h3.st{margin:0 0 14px;font-size:32px;letter-spacing:-.03em}
+#slide .cont{font-size:16px;color:var(--muted);font-weight:500;margin-left:10px}
+#slide table{font-size:16px;margin-top:6px}#slide th,#slide td{padding:9px 12px}
+#slide .copybox{margin:10px 0}#slide .copybox pre{font-size:15px;padding:14px 18px}
+#slide p,#slide .notice,#slide .warning{margin:8px 0}
+#slide .notice,#slide .warning{padding:12px 16px}
+#slide .procedure{gap:8px;margin:10px 0}#slide .procedure>div{padding:10px 14px 10px 50px}
+#slide .resource-list{grid-template-columns:repeat(3,1fr);margin:10px 0}
+#slide .hero-grid{margin-top:20px}#slide .flow{grid-template-columns:repeat(5,1fr);margin:12px 0 16px}#slide .flow div{padding:10px 8px}#slide .hero-grid{grid-template-columns:repeat(3,1fr)}
+#pager{flex:none;display:flex;align-items:center;justify-content:center;gap:14px;height:40px;border-top:1px solid var(--line);color:var(--muted);font-size:14px;font-weight:700}
+#pager button{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:6px;width:30px;height:26px;font-size:11px;cursor:pointer}
+#bar{flex:none;display:flex;align-items:center;justify-content:center;gap:16px;padding:8px;background:#111a2e;color:#cbd5e7;font-size:14px}
+#bar button{border:1px solid rgb(97,112,141);background:transparent;color:#fff;border-radius:8px;padding:6px 14px;font:700 14px var(--font-sans);cursor:pointer}
+@media print{#slideBtn,#deck{display:none!important}}
+
+aside nav .nav-title{padding:6px 10px 10px;font-size:12px;font-weight:800;letter-spacing:.12em;color:rgb(130,145,177)}
+aside nav .grp{margin-top:20px;padding-top:12px;border-top:1px solid rgb(45,56,80)}
+aside nav .nav-title+.grp{margin-top:0;border-top:0;padding-top:0}
+aside nav .grp-label{padding:0 10px 4px;font-size:11px;font-weight:800;letter-spacing:.1em;color:rgb(130,145,177)}
+aside nav a.l2{margin-top:0;padding:6px 10px;color:#fff;font-size:15px;font-weight:800;border-left:3px solid transparent}
+aside nav a.l3{margin-left:12px;padding:5px 10px 5px 14px;font-size:14px;border-left:1px solid rgb(45,56,80)}
+aside nav a.l4{display:none;margin-left:12px;padding:3px 10px 3px 30px;font-size:12.5px;color:rgb(150,162,186);border-left:1px solid rgb(45,56,80)}
+aside nav a.l4.show{display:block}
+aside nav a.active{border-left-color:var(--blue)}
+.dh{margin:30px 0 8px;padding:2px 0 2px 12px;border-left:4px solid var(--blue)}
+.dh b{font-size:1.06em}
+#slide .dh{margin:12px 0 8px}
+#slide .eb{margin:0 0 4px;font-size:14px;font-weight:800;letter-spacing:.06em;color:var(--blue)}
+#slide .outline{columns:2;column-gap:56px;font-size:16px;line-height:1.5}
+#slide .outline .og{break-inside:avoid;margin-bottom:12px}
+#slide .outline b{display:block;font-size:17px}
+#slide .outline span{display:block;padding-left:14px;color:var(--muted);font-size:14.5px}
+
+.base{margin:6px 0 14px;padding:8px 12px;border-left:4px solid var(--green);background:rgb(236,248,243);font-size:14.5px}
+.copybox pre{font:15px/1.8 var(--font-sans);letter-spacing:-.01em}
+.copybox pre.fmt{white-space:normal;padding:18px 20px}
+.pl{display:flex;gap:10px;margin:0 0 9px}.pl:last-child{margin-bottom:0}
+.pl .pk{flex:none;width:3.3em;color:rgb(140,180,255);font-weight:800}
+.pl.k2 .pk{color:rgb(110,220,180)}.pl.k3 .pk{color:rgb(255,200,110)}
+.pl .pt{flex:1;min-width:0}
+.pl.c{padding-left:calc(3.3em + 10px);margin-top:-5px}
+#slide .copybox pre.fmt{font-size:17px;padding:14px 18px}
+#slide .base{font-size:15px;padding:6px 12px}
+</style>
+<style>.side-link{margin:16px 10px 0;padding:12px;border:1px solid rgb(45,56,80);border-radius:10px;font-size:12px;color:rgb(190,200,219)}.side-link b{display:block;color:#fff;font-size:12px;margin-bottom:4px}.side-link a{color:rgb(140,180,255);word-break:break-all}.day-nav{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}.day-nav a{padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:13px;font-weight:700;color:var(--ink);text-decoration:none}.day-nav a[aria-current]{background:var(--blue);border-color:var(--blue);color:#fff}main pre{white-space:pre-wrap;overflow-wrap:anywhere}main code.inline{overflow-wrap:break-word}.hero-grid code.inline,.hero-grid span{overflow-wrap:anywhere}</style>
+</head>
+<body>
+<button aria-controls="side-nav" aria-expanded="true" class="nav-toggle" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" viewbox="0 0 16 16"><path d="M2 4h12M2 8h12M2 12h12"></path></svg><span>목차 숨기기</span></button>
+<div class="app">
+<aside id="side-nav">
+<div class="side-head">
+<div class="brand">SELECTWAY · LECTURE NOTE</div>
+<h1>AI 프로덕트 매니저 1주차 · DAY 5 첫 페이지 배포</h1>
+<div class="side-sub">10.30(금) · 09:00–18:00 · 실시간 비대면</div>
+</div>
+<nav>
+<div class="nav-title">전체 목차</div><div class="grp"><div class="grp-label">교육 안내</div><a class="l2" href="#overview">교육 개요</a><a class="l2" href="#prep">수업 전 준비</a><a class="l2" href="#timetable">타임테이블</a></div><div class="grp"><div class="grp-label">SESSION 1</div><a class="l2" href="#s1">오늘의 지도와 화면 기획</a><a class="l3" href="#s1-1">1-1. 오늘 하루의 흐름</a><a class="l3" href="#s1-2">1-2. 내 페이지에 들어갈 재료 모으기</a><a class="l3" href="#s1-3">1-3. 종이에 화면 그리기</a></div><div class="grp"><div class="grp-label">SESSION 2</div><a class="l2" href="#s2">AI 채팅으로 index.html 만들기</a><a class="l3" href="#s2-1">2-1. 요청·내용·형식으로 프롬프트 쓰기</a><a class="l3" href="#s2-2">2-2. AI가 만들어 줄 결과의 예시</a><a class="l3" href="#s2-3">2-3. 메모장에 저장하고 브라우저로 열기</a></div><div class="grp"><div class="grp-label">SESSION 3</div><a class="l2" href="#s3">수정 요청 반복하기와 디자인 시스템 맛보기</a><a class="l3" href="#s3-1">3-1. 한 번에 하나만 고치기</a><a class="l3" href="#s3-2">3-2. 디자인 시스템이란</a><a class="l3" href="#s3-3">3-3. 내 규칙을 정해 AI에게 지키게 하기</a></div><div class="grp"><div class="grp-label">SESSION 4</div><a class="l2" href="#s4">GitHub에 올리기: 파일 업로드와 커밋 메시지 규칙</a><a class="l3" href="#s4-1">4-1. 커밋 메시지 규칙: Conventional Commits</a><a class="l3" href="#s4-2">4-2. 웹 화면에서 index.html 올리기</a><a class="l3" href="#s4-3">4-3. 출처</a></div><div class="grp"><div class="grp-label">SESSION 5</div><a class="l2" href="#s5">GitHub Pages로 배포하고 내 주소 열기</a><a class="l3" href="#s5-1">5-1. Pages 설정하기: Deploy from a branch</a><a class="l3" href="#s5-2">5-2. 내 주소 확인하고 열기</a><a class="l3" href="#s5-3">5-3. 결과 확인 체크리스트</a><a class="l3" href="#s5-4">5-4. 공개된다는 것의 의미</a></div><div class="grp"><div class="grp-label">SESSION 6</div><a class="l2" href="#s6">고치고 다시 올리기, 그리고 서로 피드백</a><a class="l3" href="#s6-1">6-1. 한 곳 고쳐서 다시 배포하기</a><a class="l3" href="#s6-2">6-2. 커밋 기록으로 이전 버전과 비교하기</a><a class="l3" href="#s6-3">6-3. 주소 공유하고 피드백 주고받기</a></div><div class="grp"><div class="grp-label">SESSION 7</div><a class="l2" href="#s7">1주차 회고(KPT)</a><a class="l3" href="#s7-1">7-1. KPT란</a><a class="l3" href="#s7-2">7-2. 나의 KPT 적고 나누기</a></div><div class="grp"><div class="grp-label">WRAP-UP</div><a class="l2" href="#wrap">오늘 정리와 과제</a></div>
+</nav>
+<div class="side-link"><b>이 교안 주소</b><a href="https://loreenkim0301.github.io/swy-lecturenote/261026-ai-pm-week1/d5-first-deploy.html">loreenkim0301.github.io/swy-lecturenote/261026-ai-pm-week1/d5-first-deploy.html</a></div>
+<div class="side-foot">강사 김수정 · 셀렉트웨이</div>
+</aside>
+<main>
+<header class="hero">
+<div class="kicker">AI 프로덕트 매니저 · 1주차 DAY 5 · 2026.10.30 (금)</div>
+<h1>AI와 함께 만든 첫 페이지를 <em>인터넷 주소로</em> 열어요</h1>
+<p>오늘은 나를 소개하는 한 페이지짜리 웹페이지를 AI 채팅에게 만들어 달라고 하고, 내 눈으로 확인하고 고친 뒤, GitHub에 올려 누구나 열 수 있는 주소로 배포해요. 프로그램 설치는 없어요. 브라우저, 메모장, 생성형 AI 채팅, GitHub 웹 화면만 써요.</p>
+<div class="hero-grid">
+<div><b>일정</b><span>10월 30일(금) 09:00–18:00 · 실시간 비대면</span></div>
+<div><b>도구</b><span>브라우저, 메모장, 생성형 AI 채팅(무료 플랜), GitHub 웹 화면</span></div>
+<div><b>오늘의 결과물</b><span>내 주소로 열리는 포트폴리오 첫 페이지 1개 + 커밋 기록 2개 이상</span></div>
+</div>
+<nav class="day-nav" aria-label="1주차 교안"><a href="./">1주차 홈</a><a href="./d1-ot.html">DAY 1 OT</a><a href="./d2-ai-governance.html">DAY 2 AI 특강</a><a href="./d3-github-agile.html">DAY 3 GitHub·방법론</a><a href="./d4-web-basics.html">DAY 4 웹의 동작 원리</a><a href="./d5-first-deploy.html" aria-current="page">DAY 5 첫 페이지 배포</a></nav>
+</header>
+
+<section class="section" id="overview"><div class="section-label">OVERVIEW</div><h2>교육 개요</h2>
+<div class="table-wrap"><table>
+<tr><th>시간</th><td>09:00–18:00 (점심 12:00–13:00, 수업 8시간)</td></tr>
+<tr><th>교과</th><td>[기본] AI 서비스 개발 2일차</td></tr>
+<tr><th>교육 목표</th><td>AI의 도움을 받아 비전공자가 웹의 동작 원리를 이해하고, 실제 서비스 배포까지 경험한다.</td></tr>
+<tr><th>주요 내용</th><td>① 화면 기획(섹션 나누기) ② AI 채팅으로 단일 index.html 만들기 ③ 수정 요청과 디자인 시스템 맛보기 ④ GitHub 웹 화면에서 파일 올리기와 커밋 메시지 규칙 ⑤ GitHub Pages로 배포하기 ⑥ 수정·재배포와 커밋 기록 비교 ⑦ 1주차 회고</td></tr>
+<tr><th>수업이 끝나면</th><td>① 내 페이지의 섹션 구성을 종이 한 장으로 그린다 ② AI가 만든 index.html을 저장해 브라우저로 열고 고칠 곳을 한 번에 하나씩 요청한다 ③ 색 2개·글꼴 크기 3단계 규칙을 정해 AI에게 지키게 한다 ④ 규칙에 맞는 커밋 메시지로 파일을 올린다 ⑤ <code class="inline">https://아이디.github.io/my-first-site/</code> 주소로 내 페이지를 연다</td></tr>
+</table></div>
+</section>
+
+<section class="section" id="prep"><div class="section-label">PREPARE</div><h2>수업 전 준비</h2>
+<ul>
+<li><b>GitHub 로그인:</b> DAY 3에 만든 GitHub 계정으로 로그인해 두고, Public 저장소 <code class="inline">my-first-site</code>가 보이는지 확인해요.</li>
+<li><b>생성형 AI 채팅 1개:</b> DAY 4에 정한 AI 채팅(무료 플랜)을 브라우저 탭에 열어 두세요.</li>
+<li><b>DAY 1 성장 로드맵:</b> <code class="inline">성장로드맵_이름_1026</code> 파일을 열어 두세요. 그 안의 <b>결과 이미지 두 문장</b>이 오늘 페이지의 재료예요.</li>
+<li><b>종이와 펜 또는 메모장:</b> 첫 세션에서 화면을 손으로 그려요.</li>
+<li><b>바탕화면에 폴더 하나:</b> 이름 예: <code class="inline">my-first-site</code>. 오늘 만드는 파일을 여기에 모아요.</li>
+</ul>
+<div class="warning"><b>오늘 만드는 페이지는 전 세계 누구나 볼 수 있어요.</b> 이름은 가명이어도 괜찮아요. 전화번호, 집 주소, 생년월일, 개인 이메일, 회사 내부 자료는 넣지 않아요. 연락 방법은 GitHub 주소로 대신해요.</div>
+</section>
+
+<section class="section" id="timetable"><div class="section-label">TIMETABLE</div><h2>타임테이블</h2>
+<div class="table-wrap"><table>
+<tr><th>시간</th><th>세션</th><th>내용</th></tr>
+<tr><td>09:00–10:00</td><td><a href="#s1">세션 1</a></td><td>오늘의 지도와 화면 기획: 섹션 3~4개 그리기</td></tr>
+<tr><td>10:00–12:00</td><td><a href="#s2">세션 2</a></td><td>AI 채팅으로 index.html 만들기 → 메모장에 저장 → 브라우저로 열기</td></tr>
+<tr><td>12:00–13:00</td><td>점심</td><td></td></tr>
+<tr><td>13:00–14:00</td><td><a href="#s3">세션 3</a></td><td>수정 요청 반복하기와 디자인 시스템 맛보기</td></tr>
+<tr><td>14:00–15:20</td><td><a href="#s4">세션 4</a></td><td>GitHub에 올리기: [Upload files]와 커밋 메시지 규칙</td></tr>
+<tr><td>15:20–16:30</td><td><a href="#s5">세션 5</a></td><td>GitHub Pages로 배포하고 내 주소 열기</td></tr>
+<tr><td>16:30–17:20</td><td><a href="#s6">세션 6</a></td><td>고치고 다시 올리기, 커밋 기록 비교, 주소 공유와 피드백</td></tr>
+<tr><td>17:20–18:00</td><td><a href="#s7">세션 7</a></td><td>1주차 회고(KPT)</td></tr>
+</table></div>
+</section>
+
+<section class="section session" id="s1">
+<div class="session-head"><div class="eyebrow">SESSION 1 · 09:00–10:00</div><h2>오늘의 지도와 화면 기획</h2><p>집을 지을 때 설계도를 먼저 그리듯, 웹페이지도 <b>무엇을 어떤 순서로 보여 줄지</b> 먼저 정해요. 기획이 분명할수록 AI도 원하는 결과를 더 잘 만들어요.</p></div>
+
+<div class="topic" id="s1-1"><h3>1-1. 오늘 하루의 흐름</h3>
+<div class="flow"><div><span>1</span><b>기획</b><small>종이에 섹션 그리기</small></div><div><span>2</span><b>만들기</b><small>AI 채팅으로 index.html</small></div><div><span>3</span><b>확인·수정</b><small>브라우저로 열고 하나씩 고치기</small></div><div><span>4</span><b>올리기</b><small>GitHub 저장소에 커밋</small></div><div><span>5</span><b>배포</b><small>GitHub Pages 주소로 열기</small></div></div>
+<p>DAY 4에 배운 것과 이어져요. 메모장으로 저장한 .html 파일은 <b>내 컴퓨터에서만</b> 열렸어요. 오늘은 그 파일을 GitHub에 올려서 <b>인터넷 주소로</b> 누구나 열 수 있게 만들어요. 이렇게 만든 결과물을 사람들이 볼 수 있는 곳에 내보내는 일을 <b>배포(Deployment)</b>라고 해요.</p>
+<div class="table-wrap"><table>
+<tr><th>용어</th><th>한 줄 풀이</th></tr>
+<tr><td>index.html</td><td>웹사이트 주소로 들어왔을 때 가장 먼저 보여 주는 첫 화면 파일 이름이에요.</td></tr>
+<tr><td>섹션(section)</td><td>페이지를 내용별로 나눈 덩어리예요. 예: 소개, 경력, 연락 방법</td></tr>
+<tr><td>커밋(commit)</td><td>파일을 바꾼 내용을 저장소에 "저장 기록"으로 남기는 일이에요. DAY 3에 README를 고칠 때 해 봤어요.</td></tr>
+<tr><td>배포(Deployment)</td><td>만든 결과물을 인터넷에 올려 다른 사람이 주소로 볼 수 있게 하는 일이에요.</td></tr>
+</table></div>
+</div>
+
+<div class="topic" id="s1-2"><h3>1-2. 내 페이지에 들어갈 재료 모으기</h3>
+<p>DAY 1에 만든 성장 로드맵에서 아래 재료를 메모장에 옮겨 적어요. <b>내가 실제로 겪은 일만</b> 적어요.</p>
+<div class="table-wrap"><table>
+<tr><th>재료</th><th>어디서 가져오나요</th><th>예시(가상 인물 김셀렉)</th></tr>
+<tr><td>한 줄 소개</td><td>성장 로드맵의 결과 이미지 두 문장</td><td>"현장의 불편을 서비스로 바꾸는 예비 서비스 기획자"</td></tr>
+<tr><td>해 온 일</td><td>DAY 1 3문장 자기소개 ①</td><td>"생활용품 매장에서 12년 동안 고객 응대와 재고 관리"</td></tr>
+<tr><td>경력에서 찾은 불편</td><td>DAY 1 3문장 자기소개 ②</td><td>"같은 재입고 문의에 하루 수십 번 답했어요"</td></tr>
+<tr><td>이 과정에서 만들 것</td><td>성장 로드맵의 결과 이미지</td><td>"재입고 알림 신청 웹 서비스를 기획하고 배포"</td></tr>
+<tr><td>연락 방법</td><td>내 GitHub 주소</td><td><code class="inline">https://github.com/[내 GitHub 아이디]</code></td></tr>
+</table></div>
+</div>
+
+<div class="topic" id="s1-3"><h3>1-3. 종이에 화면 그리기</h3>
+<p><span class="tag tag-req">실습</span> 종이 한 장(또는 메모장)에 위에서 아래로 상자 4개를 그리고, 상자마다 제목과 들어갈 문장을 적어요. 이렇게 손으로 그린 간단한 화면 설계를 <b>와이어프레임</b>이라고 해요.</p>
+<div class="procedure"><div>맨 위에 <b>이름(가명 가능)과 한 줄 소개</b> 상자를 그려요.</div><div>두 번째 상자: <b>소개</b> — 해 온 일 1~2문장</div><div>세 번째 상자: <b>경력에서 찾은 불편</b> — 불편 1~2개</div><div>네 번째 상자: <b>이 과정에서 만들 것</b> — 결과 이미지 문장</div><div>맨 아래: <b>연락 방법</b> — 이메일·전화번호 대신 GitHub 주소</div><div>다 그렸으면 사진을 찍지 않아도 괜찮아요. 상자 순서와 문장만 메모장에 옮겨 두면 다음 세션에서 그대로 써요.</div></div>
+<ul class="checklist"><li>섹션이 3~4개로 정리되었나요?</li><li>섹션마다 들어갈 문장이 내 말로 적혀 있나요?</li><li>전화번호, 주소, 개인 이메일이 빠져 있나요?</li></ul>
+</div>
+</section>
+
+<section class="section session" id="s2">
+<div class="session-head"><div class="eyebrow">SESSION 2 · 10:00–12:00</div><h2>AI 채팅으로 index.html 만들기</h2><p>와이어프레임을 AI 채팅에 설명해 웹페이지 코드를 받고, 메모장에 저장해서 브라우저로 열어요. 코드를 외울 필요는 없어요. <b>요청을 정확히 하고, 결과를 확인하는 것</b>이 우리의 일이에요.</p></div>
+
+<div class="topic" id="s2-1"><h3>2-1. 요청·내용·형식으로 프롬프트 쓰기</h3>
+<p><span class="tag tag-req">실습</span> 아래 프롬프트를 복사해 AI 채팅에 붙이고, [ ] 부분을 1-2·1-3의 메모로 바꿔요.</p>
+<div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>요청: 나를 소개하는 한 페이지짜리 포트폴리오 첫 페이지를 HTML과 CSS가 한 파일에 들어간 index.html 하나로 만들어 줘.
+내용: 이름 [이름 또는 가명] / 한 줄 소개 [결과 이미지 문장] / 소개 [해 온 일 1~2문장] / 경력에서 찾은 불편 [불편 1~2개] / 이 과정에서 만들 것 [결과 이미지 문장] / 연락 방법 [https://github.com/내 GitHub 아이디]. 섹션 순서는 위에 적은 순서 그대로야.
+형식: 코드 전체를 한 번에 보여 줘. 휴대폰 화면에서도 글자가 잘리지 않게 해 줘. 외부 라이브러리, 외부 글꼴, 이미지 파일은 쓰지 말아 줘. 내가 적지 않은 경력·숫자·연락처는 추가하지 말고, 비어 있는 칸은 [확인 필요]로 남겨 줘. 코드 아래에 각 부분이 무슨 역할인지 3줄로 설명해 줘.</pre></div>
+<div class="notice"><b>AI 채팅마다 화면과 답이 달라요</b><br/>같은 프롬프트라도 AI 채팅 종류와 그날 상황에 따라 결과 모양이 달라요. 무료 플랜은 하루 사용량에 제한이 있을 수 있으니, 같은 요청을 여러 번 새로 보내기보다 받은 결과를 고쳐 가며 쓰는 것이 좋아요. 답이 중간에 끊기면 "이어서 보여 줘"라고 요청해요.</div>
+</div>
+
+<div class="topic" id="s2-2"><h3>2-2. AI가 만들어 줄 결과의 예시</h3>
+<p>아래는 가상 인물 "김셀렉"의 메모로 만든 결과 예시예요. 여러분의 AI 결과와 똑같지 않아도 괜찮아요. 내 결과가 이상하게 보일 때 비교용으로 열어 보세요.</p>
+<div class="dl-list"><a class="dl-card" download href="./samples/d5-index.html"><span class="dl-ico">HTML</span><span class="dl-body"><b>예시 결과: 김셀렉 소개 페이지 (index.html)</b><span>HTML+CSS 한 파일 · 외부 자원 없음 · 휴대폰 화면 대응</span></span><span class="dl-btn">⬇ 다운로드</span></a></div>
+<p>예시 파일의 앞부분은 이렇게 생겼어요. DAY 4에 본 것처럼 <code class="inline">&lt;head&gt;</code>에는 페이지 정보와 꾸미기(CSS), <code class="inline">&lt;body&gt;</code>에는 화면에 보이는 내용이 들어가요.</p>
+<div class="copybox"><div class="copyhead"><span>예시 코드 일부 · 읽기용</span><button type="button">복사</button></div><pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="ko"&gt;
+&lt;head&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+&lt;title&gt;김셀렉 | 포트폴리오 첫 페이지&lt;/title&gt;
+&lt;style&gt; ...꾸미기 규칙... &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;&lt;h1&gt;김셀렉&lt;/h1&gt; ...&lt;/header&gt;
+  &lt;main&gt;
+    &lt;section&gt;&lt;h2&gt;안녕하세요&lt;/h2&gt; ...&lt;/section&gt;
+  &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre></div>
+<div class="table-wrap"><table>
+<tr><th>코드 조각</th><th>역할</th></tr>
+<tr><td><code class="inline">&lt;meta charset="UTF-8"&gt;</code></td><td>한글이 깨지지 않게 글자 방식을 알려 줘요.</td></tr>
+<tr><td><code class="inline">&lt;meta name="viewport" ...&gt;</code></td><td>휴대폰에서 화면 폭에 맞춰 보이게 해요.</td></tr>
+<tr><td><code class="inline">&lt;style&gt;</code></td><td>색, 글꼴 크기, 여백 같은 꾸미기 규칙(CSS)이 들어가요.</td></tr>
+<tr><td><code class="inline">&lt;section&gt;</code></td><td>1-3에서 그린 상자 하나하나예요.</td></tr>
+</table></div>
+</div>
+
+<div class="topic" id="s2-3"><h3>2-3. 메모장에 저장하고 브라우저로 열기</h3>
+<p>DAY 4에 해 본 방법 그대로예요.</p>
+<div class="procedure"><div>AI 답변의 코드 상자에서 복사 버튼을 누르거나, <code class="inline">&lt;!DOCTYPE html&gt;</code>부터 <code class="inline">&lt;/html&gt;</code>까지 빠짐없이 드래그해 복사해요.</div><div>DAY 4에 쓴 메모장 프로그램을 새로 열고 붙여 넣어요.</div><div>파일 이름을 정확히 <code class="inline">index.html</code>로 정해, 준비해 둔 <code class="inline">my-first-site</code> 폴더에 저장해요. Windows 메모장은 저장할 때 인코딩을 <b>UTF-8</b>로 골라요.</div><div>저장한 파일을 더블클릭하거나 브라우저 창으로 끌어다 놓아 열어요.</div><div>브라우저 창의 폭을 좁게 줄여 휴대폰 화면처럼 만들어 보고, 글자가 잘리거나 옆으로 넘치지 않는지 봐요.</div></div>
+<div class="warning"><b>파일 이름이 index.html.txt가 되지 않았나요?</b> 파일을 더블클릭했는데 메모장으로 열리면 이름 끝에 .txt가 붙었을 수 있어요. 파일 이름을 다시 확인하고, 막히면 채팅에 "막혔어요 2-3"을 남겨 주세요.</div>
+<ul class="checklist"><li>브라우저 주소창이 <code class="inline">file://</code>로 시작하고 내 페이지가 보이나요?</li><li>한글이 깨지지 않고 보이나요?</li><li>섹션 순서가 내가 그린 와이어프레임과 같나요?</li><li>AI가 내가 말하지 않은 경력, 숫자, 연락처를 지어내지 않았나요? 있으면 표시해 두세요. 다음 세션에서 고쳐요.</li><li>[확인 필요]로 남은 칸이 있다면 메모해 두었나요?</li></ul>
+</div>
+</section>
+
+<section class="section session" id="s3">
+<div class="session-head"><div class="eyebrow">SESSION 3 · 13:00–14:00</div><h2>수정 요청 반복하기와 디자인 시스템 맛보기</h2><p>AI에게 한 번에 많은 것을 고쳐 달라고 하면, 원하지 않는 곳까지 바뀌기 쉬워요. <b>한 번에 하나만 고치고, 고친 곳을 설명해 달라고</b> 하면 결과를 확인하기 쉬워요.</p></div>
+
+<div class="topic" id="s3-1"><h3>3-1. 한 번에 하나만 고치기</h3>
+<p><span class="tag tag-req">실습</span> 2-3 체크리스트에서 표시한 고칠 곳 중 <b>하나</b>만 골라 아래 프롬프트로 요청해요.</p>
+<div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>요청: 방금 만든 index.html에서 딱 한 곳만 고쳐 줘.
+내용: 고칠 곳 [예: '경력에서 찾은 불편' 섹션에 내가 말하지 않은 문장이 있어. 이 문장을 지우고 내 문장 '...'으로 바꿔 줘]. 다른 섹션의 글, 색, 순서는 그대로 둬.
+형식: 고친 index.html 코드 전체를 보여 주고, 코드 아래에 어느 줄을 무엇에서 무엇으로 바꿨는지 2줄로 설명해 줘. 요청하지 않은 기능이나 꾸미기는 추가하지 마.</pre></div>
+<div class="procedure"><div>AI가 준 새 코드 전체를 복사해요.</div><div>메모장의 기존 내용을 모두 지우고(전체 선택 후 삭제) 새 코드를 붙여 넣은 뒤 같은 이름으로 저장해요.</div><div>브라우저에서 새로고침해 바뀐 곳을 확인해요.</div><div>AI의 설명과 실제로 바뀐 곳이 같은지 비교해요. 다르면 "설명과 다르게 ○○도 바뀌었어. 원래대로 돌려 줘"라고 요청해요.</div></div>
+<div class="notice"><b>잘 된 버전은 따로 남겨 두세요</b><br/>수정하다 망가질 때를 대비해, 마음에 드는 상태가 되면 메모장에서 <code class="inline">index_백업1.html</code> 같은 이름으로 한 부 더 저장해 두세요. 오후에는 GitHub의 커밋 기록이 이 역할을 대신해 줘요.</div>
+</div>
+
+<div class="topic" id="s3-2"><h3>3-2. 디자인 시스템이란</h3>
+<p>디자인 시스템은 <b>색, 글꼴 크기, 여백, 버튼 모양 같은 꾸미기 규칙을 미리 정해 두고 모든 화면에서 똑같이 쓰는 약속</b>이에요. 큰 회사는 이 약속을 문서와 부품(컴포넌트) 모음으로 관리해요. 컴포넌트는 버튼, 카드처럼 여러 화면에서 다시 쓰는 화면 부품이에요.</p>
+<div class="three-cards">
+<article><span>규칙</span><h3>색</h3><p>주 색 1개 + 포인트 색 1개. 예: 진한 남색(글자·배경), 주황(강조·링크)</p></article>
+<article><span>규칙</span><h3>글꼴 크기 3단계</h3><p>큰 제목 32px / 섹션 제목 20px / 본문 16px. px는 화면의 점 크기 단위예요.</p></article>
+<article><span>효과</span><h3>왜 정하나요</h3><p>페이지가 늘어나도 같은 서비스처럼 보이고, AI에게 수정을 맡겨도 모양이 들쭉날쭉해지지 않아요.</p></article>
+</div>
+</div>
+
+<div class="topic" id="s3-3"><h3>3-3. 내 규칙을 정해 AI에게 지키게 하기</h3>
+<p><span class="tag tag-req">실습</span> 내 페이지에 쓸 색 2개와 글꼴 크기 3단계를 정하고, AI에게 이 규칙만 쓰도록 요청해요. 색 이름은 "진한 남색", "연한 회색"처럼 말로 적어도 괜찮아요.</p>
+<div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>요청: index.html의 꾸미기를 아래 디자인 규칙만 쓰도록 바꿔 줘.
+내용: 색은 주 색 [예: 진한 남색]과 포인트 색 [예: 주황] 두 가지만 쓰고, 배경은 흰색으로 해 줘. 글꼴 크기는 큰 제목 [32px], 섹션 제목 [20px], 본문 [16px] 세 단계만 써 줘. 이 규칙을 CSS 맨 위에 이름을 붙여 한곳에 모아 줘. 글 내용과 섹션 순서는 바꾸지 마.
+형식: 고친 index.html 코드 전체와, 규칙을 모아 둔 부분이 어디인지 2줄 설명. 규칙에 없는 색이나 글꼴 크기는 추가하지 마.</pre></div>
+<p>예시 파일에서는 이 규칙이 <code class="inline">:root</code>라는 곳에 이름표를 붙여 모여 있어요. 이름표 하나만 바꾸면 페이지 전체의 색이 함께 바뀌어요.</p>
+<div class="copybox"><div class="copyhead"><span>예시 코드 일부 · 읽기용</span><button type="button">복사</button></div><pre>:root { --main: #1f2a44; --point: #e8772e; --big: 32px; --mid: 20px; --base: 16px; }</pre></div>
+<ul class="checklist"><li>CSS 안에 색 2개와 글꼴 크기 3개가 한곳에 모여 있나요?</li><li>브라우저에서 보이는 색이 내가 정한 두 가지(와 흰 배경)뿐인가요?</li><li>글 내용과 섹션 순서가 그대로인가요?</li><li>창을 좁혀도 글자가 잘리지 않나요?</li></ul>
+</div>
+</section>
+
+<section class="section session" id="s4">
+<div class="session-head"><div class="eyebrow">SESSION 4 · 14:00–15:20</div><h2>GitHub에 올리기: 파일 업로드와 커밋 메시지 규칙</h2><p>DAY 3에 만든 <code class="inline">my-first-site</code> 저장소에 오늘 만든 index.html을 올려요. AI가 짠 코드도 <b>언제, 무엇을, 왜 바꿨는지</b> 기록으로 남겨 두면, 나중에 문제가 생겨도 이전 상태를 찾아볼 수 있어요.</p></div>
+
+<div class="topic" id="s4-1"><h3>4-1. 커밋 메시지 규칙: Conventional Commits</h3>
+<p>커밋 메시지는 "이번 저장에서 무엇을 했는지" 적는 한 줄 메모예요. 사람마다 제멋대로 쓰면 기록을 읽기 어려워서, 많은 팀이 <b>Conventional Commits</b>라는 공개 규칙을 써요. 기본 모양은 아래와 같아요.</p>
+<div class="copybox"><div class="copyhead"><span>기본 모양 · 읽기용</span><button type="button">복사</button></div><pre>&lt;type&gt;[optional scope]: &lt;description&gt;</pre></div>
+<p><code class="inline">type</code>은 변경의 종류, <code class="inline">[optional scope]</code>는 바꾼 범위(생략 가능), <code class="inline">description</code>은 짧은 설명이에요. 오늘은 scope 없이 <code class="inline">종류: 설명</code>만 써요.</p>
+<div class="table-wrap"><table>
+<tr><th>type</th><th>공식 사이트의 뜻</th><th>우리 반 예시</th></tr>
+<tr><td><code class="inline">feat</code></td><td>새 기능을 추가하는 커밋</td><td><code class="inline">feat: 첫 소개 페이지 추가</code></td></tr>
+<tr><td><code class="inline">fix</code></td><td>버그(잘못된 동작)를 고치는 커밋</td><td><code class="inline">fix: 모바일에서 잘리는 제목 수정</code></td></tr>
+<tr><td><code class="inline">docs</code> 등</td><td>공식 사이트는 feat·fix 외에 build, chore, ci, docs, style, refactor, perf, test 등의 종류도 쓸 수 있다고 안내하며, 이는 @commitlint/config-conventional(Angular 규칙 기반)의 권장이라고 소개해요.</td><td><code class="inline">docs: README에 페이지 주소 추가</code></td></tr>
+</table></div>
+<div class="notice"><b>우리 반 약속</b><br/>① 종류(type)는 영어 소문자로 쓰고, 콜론(:) 뒤에 한 칸 띄어요. ② 설명은 한국어로, 무엇을 했는지 짧게 써요. ③ 한 커밋에는 한 가지 변경만 담아요. 공식 사이트도 대소문자는 자유지만 <b>일관되게</b> 쓰라고 안내해요.</div>
+<ul class="checklist"><li>"수정", "ㅇㅇ", "final"처럼 무엇을 했는지 알 수 없는 메시지가 아닌가요?</li><li>type 뒤에 콜론(:)과 띄어쓰기가 있나요?</li></ul>
+</div>
+
+<div class="topic" id="s4-2"><h3>4-2. 웹 화면에서 index.html 올리기</h3>
+<p><span class="tag">강사 시연</span> 먼저 강사 화면으로 한 번 보고, <span class="tag tag-req">실습</span> 같은 순서로 따라 해요. 버튼 이름은 GitHub 공식 문서의 영문 표기를 따랐어요.</p>
+<p><b>STEP 1. 파일 올리기 화면 열기</b></p>
+<div class="procedure"><div>GitHub에 로그인하고 <code class="inline">my-first-site</code> 저장소의 첫 화면(main page)으로 가요.</div><div>파일 목록 위에 있는 [Add file] 메뉴를 열고 [Upload files]를 눌러요.</div><div>바탕화면의 <code class="inline">my-first-site</code> 폴더에서 <b>index.html 파일 하나만</b> 끌어다 놓거나, [choose your files]를 눌러 골라요. 백업 파일(index_백업1.html)은 올리지 않아요.</div></div>
+<p><b>STEP 2. 커밋 메시지 쓰고 저장하기</b></p>
+<div class="procedure"><div>[Commit message] 칸에 <code class="inline">feat: 첫 소개 페이지 추가</code>를 적어요.</div><div>아래에서 커밋을 <b>현재 브랜치(main)에 바로 추가하는 쪽</b>을 골라요. 새 브랜치를 만드는 쪽은 고르지 않아요.</div><div>맨 아래 초록색 커밋 버튼을 눌러요. 버튼 글자는 강사 시연 화면과 같은지 확인하며 눌러요.</div><div>저장소 첫 화면으로 돌아와 파일 목록에 <code class="inline">index.html</code>과 <code class="inline">README.md</code>가 함께 보이는지 확인해요.</div></div>
+<div class="notice"><b>브라우저로 올리는 파일 크기</b><br/>공식 문서에 따르면 브라우저로 저장소에 추가하는 파일은 파일 하나에 25 MiB까지예요. 오늘 만드는 index.html은 이보다 훨씬 작아요.</div>
+<ul class="checklist"><li>저장소 파일 목록 맨 위(최상단)에 <code class="inline">index.html</code>이 있나요? 폴더 안에 들어가 있으면 안 돼요.</li><li>파일 이름이 정확히 소문자 <code class="inline">index.html</code>인가요?</li><li>index.html을 눌러 열었을 때 내가 저장한 코드가 보이나요?</li><li>최근 커밋 메시지가 <code class="inline">feat: 첫 소개 페이지 추가</code>로 보이나요?</li></ul>
+</div>
+
+<div class="topic" id="s4-3"><h3>4-3. 출처</h3>
+<div class="resource-list"><a class="resource-card" href="https://docs.github.com/en/enterprise-server@3.19/repositories/working-with-files/managing-files/adding-a-file-to-a-repository" target="_blank" rel="noopener"><span class="small">GitHub Docs · 2026-10-26 확인</span><b>Adding a file to a repository</b></a><a class="resource-card" href="https://www.conventionalcommits.org/en/v1.0.0/" target="_blank" rel="noopener"><span class="small">Conventional Commits · 2026-10-26 확인</span><b>Conventional Commits 1.0.0</b></a></div>
+</div>
+</section>
+
+<section class="section session" id="s5">
+<div class="session-head"><div class="eyebrow">SESSION 5 · 15:20–16:30</div><h2>GitHub Pages로 배포하고 내 주소 열기</h2><p><b>GitHub Pages</b>는 GitHub 저장소에 있는 HTML 파일을 웹사이트로 보여 주는 GitHub의 기능이에요. 공식 문서에 따르면 GitHub Free 플랜에서도 <b>Public 저장소</b>라면 쓸 수 있어요. DAY 3에 저장소를 Public으로 만든 이유가 여기 있어요.</p></div>
+
+<div class="topic" id="s5-1"><h3>5-1. Pages 설정하기: Deploy from a branch</h3>
+<p><span class="tag">강사 시연</span> 강사 화면으로 먼저 보고, <span class="tag tag-req">실습</span> 같은 순서로 따라 해요.</p>
+<div class="procedure"><div><code class="inline">my-first-site</code> 저장소 이름 아래에 있는 [Settings]를 눌러요. [Settings]가 안 보이면 옆의 펼침 메뉴를 열고 [Settings]를 눌러요.</div><div>왼쪽 메뉴의 "Code, planning, and automation" 묶음에서 [Pages]를 눌러요.</div><div>"Build and deployment" 아래 "Source"에서 [Deploy from a branch]를 골라요.</div><div>브랜치 펼침 메뉴에서 <code class="inline">main</code>을 고르고, 폴더 펼침 메뉴는 <code class="inline">/(root)</code>로 둬요. root는 저장소의 맨 위 칸(최상단)이라는 뜻이에요.</div><div>[Save]를 눌러요.</div></div>
+<div class="notice"><b>왜 index.html을 맨 위에 두었나요?</b><br/>공식 문서에 따르면 GitHub Pages는 <code class="inline">index.html</code>, <code class="inline">index.md</code>, <code class="inline">README.md</code> 파일을 사이트의 첫 화면(entry file)으로 찾고, 브랜치와 폴더에서 배포할 때는 이 파일이 고른 폴더의 맨 위에 있어야 해요. 우리는 <code class="inline">/(root)</code>를 골랐으니 index.html이 저장소 맨 위에 있어야 해요.</div>
+</div>
+
+<div class="topic" id="s5-2"><h3>5-2. 내 주소 확인하고 열기</h3>
+<p>내 페이지 주소는 아래 모양이에요. <b>아이디</b> 자리에 내 GitHub 아이디를 넣어요.</p>
+<div class="copybox"><div class="copyhead"><span>내 페이지 주소 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>https://[내 GitHub 아이디].github.io/my-first-site/</pre></div>
+<div class="procedure"><div>[Save]를 누른 뒤 잠시 기다려요. 공식 문서는 변경 사항을 올린 뒤 사이트에 반영되기까지 <b>최대 10분</b>이 걸릴 수 있다고 안내해요.</div><div>[Settings] → [Pages] 화면을 다시 열어 [Visit site]가 보이면 눌러요. 또는 위 주소를 브라우저 주소창에 직접 넣어요.</div><div>휴대폰이 있다면 같은 주소를 휴대폰 브라우저로도 열어 봐요.</div><div>열린 주소를 메모장에 적어 두세요. 오늘 과제와 포트폴리오에 계속 써요.</div></div>
+<div class="warning"><b>404 화면이 보이면 이렇게 점검해요</b> ① 10분 정도 기다린 뒤 새로고침했나요? ② 파일 이름이 소문자 index.html이고 저장소 맨 위에 있나요? ③ [Pages] 설정이 <code class="inline">main</code> / <code class="inline">/(root)</code>로 저장되었나요? ④ 주소의 아이디와 저장소 이름 철자가 맞나요? 그래도 안 되면 채팅에 "막혔어요 5-2"와 내 주소를 남겨 주세요.</div>
+</div>
+
+<div class="topic" id="s5-3"><h3>5-3. 결과 확인 체크리스트</h3>
+<ul class="checklist"><li><code class="inline">https://아이디.github.io/my-first-site/</code> 주소로 내 페이지가 열리나요?</li><li>주소창이 <code class="inline">file://</code>이 아니라 <code class="inline">https://</code>로 시작하나요?</li><li>브라우저 창을 좁히거나 휴대폰으로 열었을 때 글자가 잘리거나 옆으로 넘치지 않나요?</li><li>AI가 지어낸 경력, 자격증, 숫자가 하나도 남아 있지 않나요?</li><li>[확인 필요] 같은 빈칸 표시가 화면에 남아 있지 않나요?</li><li>전화번호, 주소, 개인 이메일, 회사 내부 정보가 없나요?</li><li>연락 방법의 GitHub 주소를 누르면 내 GitHub로 가나요?</li></ul>
+</div>
+
+<div class="topic" id="s5-4"><h3>5-4. 공개된다는 것의 의미</h3>
+<div class="warning"><b>GitHub Pages 사이트는 인터넷에 공개돼요.</b> 공식 문서는 GitHub Pages 사이트가 저장소가 비공개(private)이더라도 인터넷에 공개된다고 안내하고, 배포 전에 민감한 정보를 저장소에서 지우라고 해요. 우리 저장소는 Public이라 <b>저장소 안의 파일과 커밋 기록까지</b> 누구나 볼 수 있어요. 한번 올린 내용은 나중에 지워도 이미 누군가 봤을 수 있어요. 처음부터 개인정보·비밀번호·회사 자료는 올리지 않아요.</div>
+<div class="resource-list"><a class="resource-card" href="https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site" target="_blank" rel="noopener"><span class="small">GitHub Docs · 2026-10-26 확인</span><b>Creating a GitHub Pages site</b></a><a class="resource-card" href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site" target="_blank" rel="noopener"><span class="small">GitHub Docs · 2026-10-26 확인</span><b>Configuring a publishing source for your GitHub Pages site</b></a></div>
+</div>
+</section>
+
+<section class="section session" id="s6">
+<div class="session-head"><div class="eyebrow">SESSION 6 · 16:30–17:20</div><h2>고치고 다시 올리기, 그리고 서로 피드백</h2><p>실제 서비스는 한 번 배포하고 끝나지 않아요. <b>고치고 → 다시 올리고 → 기록을 비교하는</b> 한 바퀴를 직접 돌려 봐요.</p></div>
+
+<div class="topic" id="s6-1"><h3>6-1. 한 곳 고쳐서 다시 배포하기</h3>
+<p><span class="tag tag-req">실습</span> 5-3 체크리스트에서 아쉬운 곳 하나를 골라 고쳐요. 없다면 "이 과정에서 만들 것" 섹션에 문장 하나를 더해요.</p>
+<div class="procedure"><div>3-1의 프롬프트로 AI에게 <b>한 곳만</b> 고쳐 달라고 요청해요.</div><div>메모장의 index.html을 새 코드로 바꿔 저장하고, 내 컴퓨터 브라우저에서 먼저 확인해요.</div><div>GitHub 저장소에서 4-2와 같은 방법으로 [Add file] → [Upload files]를 눌러 고친 index.html을 다시 올려요.</div><div>커밋 메시지는 바꾼 내용에 맞게 적어요. 예: <code class="inline">fix: 모바일에서 잘리는 제목 수정</code>, <code class="inline">feat: 만들 것 섹션에 목표 문장 추가</code></div><div>커밋 후 저장소의 index.html을 눌러 새 내용으로 바뀌었는지 확인해요. 파일 목록에 index.html이 하나만 있는지도 봐요.</div><div>몇 분 뒤 내 페이지 주소를 새로고침해 바뀐 내용이 보이는지 확인해요.</div></div>
+</div>
+
+<div class="topic" id="s6-2"><h3>6-2. 커밋 기록으로 이전 버전과 비교하기</h3>
+<p><span class="tag">강사 시연</span> 강사가 저장소 화면에서 커밋 기록을 여는 위치를 보여 드려요. 커밋 하나를 누르면 그 커밋에서 바뀐 내용(diff, 이전과 달라진 부분)을 볼 수 있어요.</p>
+<div class="procedure"><div>저장소의 커밋 기록을 열어 내 커밋이 2개 이상(첫 업로드 + 수정) 쌓여 있는지 확인해요.</div><div>두 번째 커밋을 눌러, 지워진 줄과 더해진 줄을 찾아봐요.</div><div>AI에게 받은 "바꾼 곳 설명"과 GitHub에 보이는 바뀐 줄이 같은지 비교해요.</div></div>
+<ul class="checklist"><li>커밋 메시지만 읽어도 무엇을 바꿨는지 알 수 있나요?</li><li>바뀐 줄이 내가 요청한 한 곳뿐인가요?</li></ul>
+<div class="resource-list"><a class="resource-card" href="https://docs.github.com/en/pull-requests/committing-changes-to-your-project/creating-and-editing-commits/about-commits" target="_blank" rel="noopener"><span class="small">GitHub Docs · 2026-10-26 확인</span><b>About commits</b></a></div>
+</div>
+
+<div class="topic" id="s6-3"><h3>6-3. 주소 공유하고 피드백 주고받기</h3>
+<p><span class="tag tag-req">실습</span> 내 페이지 주소를 수업 채팅에 올리고, 다른 수강생 두 명의 페이지를 열어 아래 형식으로 피드백을 남겨요.</p>
+<div class="copybox"><div class="copyhead"><span>피드백 형식 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>[받는 분 호칭]님 페이지
+좋았던 점: [한 가지]
+궁금한 점: [한 가지]
+휴대폰/좁은 화면에서: [잘 보여요 / ○○이 잘려요]</pre></div>
+<div class="notice"><b>피드백 약속</b><br/>사람이 아니라 페이지의 내용에 대해 말해요. 다른 사람의 페이지에서 개인정보처럼 보이는 내용을 발견하면 채팅 전체가 아니라 강사에게 개인 메시지로 알려 주세요.</div>
+</div>
+</section>
+
+<section class="section session" id="s7">
+<div class="session-head"><div class="eyebrow">SESSION 7 · 17:20–18:00</div><h2>1주차 회고(KPT)</h2><p>한 주 동안 OT, AI 특강, GitHub와 방법론, 웹의 동작 원리, 첫 배포까지 달려왔어요. DAY 3에 배운 애자일 방식처럼 한 주를 돌아보고 다음 주를 더 낫게 만들어요.</p></div>
+
+<div class="topic" id="s7-1"><h3>7-1. KPT란</h3>
+<div class="three-cards">
+<article><span>K · Keep</span><h3>계속할 것</h3><p>이번 주에 잘 되어서 다음 주에도 이어 갈 것</p></article>
+<article><span>P · Problem</span><h3>문제였던 것</h3><p>막히거나 아쉬웠던 것. 사람 탓이 아니라 상황과 방법을 적어요.</p></article>
+<article><span>T · Try</span><h3>시도할 것</h3><p>Problem을 줄이기 위해 다음 주에 해 볼 작은 행동 1가지</p></article>
+</div>
+</div>
+
+<div class="topic" id="s7-2"><h3>7-2. 나의 KPT 적고 나누기</h3>
+<div class="procedure"><div>5분: 메모장에 K·P·T를 각각 1~2줄씩 적어요.</div><div>10분: 소회의실에서 3~4명이 돌아가며 1분씩 나눠요.</div><div>10분: 전체 방으로 돌아와 채팅에 <b>Try 한 줄</b>만 남겨요. 강사가 비슷한 것끼리 묶어 다음 주 월요일 그라운드 룰 돌아보기 때 함께 봐요.</div><div>마지막으로 DAY 1에 남긴 한 단어 체크인을 떠올리며, 한 주를 마친 지금의 마음을 한 단어로 채팅에 남겨요.</div></div>
+<div class="table-wrap"><table>
+<tr><th>칸</th><th>예시</th></tr>
+<tr><td>Keep</td><td>"막힌 지 5분 지나면 바로 채팅에 물어본 것"</td></tr>
+<tr><td>Problem</td><td>"AI가 준 코드를 일부만 복사해서 페이지가 깨졌다"</td></tr>
+<tr><td>Try</td><td>"코드를 붙여 넣은 뒤 맨 끝이 &lt;/html&gt;로 끝나는지 먼저 보기"</td></tr>
+</table></div>
+<ul class="checklist"><li>Try가 다음 주에 바로 해 볼 수 있는 구체적인 행동인가요?</li><li>Problem이 사람이 아니라 상황·방법에 대한 내용인가요?</li></ul>
+</div>
+</section>
+
+<section class="section" id="wrap"><div class="section-label">WRAP-UP</div><h2>오늘 정리와 과제</h2>
+<ul>
+<li>웹페이지는 <b>기획(섹션 그리기) → AI로 만들기 → 확인·수정 → 올리기 → 배포</b> 순서로 만들어요.</li>
+<li>AI에게는 <b>한 번에 하나만</b> 고쳐 달라고 하고, 고친 곳의 설명을 받아 실제 결과와 비교해요.</li>
+<li>디자인 시스템은 색·글꼴 크기 같은 꾸미기 규칙을 정해 두고 계속 지키는 약속이에요.</li>
+<li>커밋 메시지는 <code class="inline">feat:</code>, <code class="inline">fix:</code>처럼 종류를 앞에 붙여 무엇을 했는지 한 줄로 남겨요.</li>
+<li>Public 저장소와 GitHub Pages는 누구나 볼 수 있어요. 개인정보와 비밀 정보는 처음부터 올리지 않아요.</li>
+</ul>
+<p><b>과제</b></p>
+<ul class="checklist"><li>내 페이지 주소(<code class="inline">https://아이디.github.io/my-first-site/</code>)를 성장 로드맵 파일 맨 아래에 적어 두세요.</li><li>주말 동안 내 페이지를 한 번 더 고쳐 규칙에 맞는 커밋 메시지로 올려 보세요. (선택)</li><li>KPT의 Try 한 줄을 다음 주 월요일 수업 전에 다시 읽어 보세요.</li></ul>
+</section>
+</main>
+</div>
+<button id="slideBtn" type="button">▶ 슬라이드로 보기</button>
+<div hidden="" id="deck">
+<div id="viewport"><div id="stage">
+<div id="master"><span>AI 프로덕트 매니저 1주차 · DAY 5 첫 페이지 배포</span></div>
+<div id="mbar"><i id="prog"></i></div>
+<div id="slide"></div>
+<div id="pager"><button aria-label="이전" id="prev" type="button">◀</button><span id="pg"></span><button aria-label="다음" id="next" type="button">▶</button></div>
+</div></div>
+<div id="bar"><button id="exit" type="button">✕ 닫기 (Esc)</button></div>
+</div>
+<script type="text/javascript">
+(function(){
+  var K={'요청':'','내용':' k2','형식':' k3'};
+  window.fmtPre=function(pr){
+    var t=pr.textContent;
+    if(!/^요청: /.test(t))return;
+    var lines=t.split('\n');pr.textContent='';pr.className='fmt';
+    lines.forEach(function(l,i){
+      var m=l.match(/^(요청|내용|형식): (.*)$/),d=document.createElement('div');
+      if(m){d.className='pl'+K[m[1]];var b=document.createElement('b');b.className='pk';b.textContent=m[1]+': ';var sp=document.createElement('span');sp.className='pt';sp.textContent=m[2];d.appendChild(b);d.appendChild(sp);}
+      else{d.className='pl c';var sp2=document.createElement('span');sp2.className='pt';sp2.textContent=l;d.appendChild(sp2);}
+      pr.appendChild(d);if(i<lines.length-1)pr.appendChild(document.createTextNode('\n'));
+    });
+  };
+  document.querySelectorAll('.copybox pre').forEach(window.fmtPre);
+})();
+</script>
+<script type="text/javascript">
+(function(){
+  var re=/^(STEP|준비|규칙서대로|분석 [1-4]|프롬프트 [AB]|프롬프트 쓰기|실습|방법 [A-C]|워밍업|[①-⑤] |\(선택\)|완성한|결과를 보고|버전|두 결과)/;
+  var nav=document.querySelector('aside nav');
+  document.querySelectorAll('main .topic').forEach(function(t){
+    var parent=nav.querySelector('a.l3[href="#'+t.id+'"]'),last=parent,n=0;
+    if(!parent)return;
+    t.querySelectorAll(':scope > p').forEach(function(p){
+      var b=p.firstElementChild;
+      if(!b||b.tagName!=='B'||p.children.length!==1||p.textContent.trim()!==b.textContent.trim()||!re.test(b.textContent.trim()))return;
+      p.classList.add('dh');p.id='d-'+t.id+'-'+(++n);
+      var a=document.createElement('a');a.className='l4';a.href='#'+p.id;a.setAttribute('data-p',t.id);
+      a.textContent=b.textContent.replace(/[:：]\s*.*$/,'').trim();
+      last.parentNode.insertBefore(a,last.nextSibling);last=a;
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+var main=document.querySelector('main'),deck=document.getElementById('deck'),box=document.getElementById('slide'),pgEl=document.getElementById('pg'),prog=document.getElementById('prog'),pages=[],i=0;
+function kids(el,skip){return Array.prototype.filter.call(el.children,function(c){return !skip(c);});}
+function logical(){
+  var out=[],hero=main.querySelector('.hero');
+  if(hero)out.push({sect:'표지',title:'',n:Array.prototype.slice.call(hero.children)});
+  Array.prototype.forEach.call(main.querySelectorAll(':scope > .section'),function(sec){
+    var h2=sec.querySelector('h2'),title=h2.textContent,head=sec.querySelector('.session-head'),n=[];
+    if(head)n=Array.prototype.slice.call(head.querySelectorAll('p'));
+    n=n.concat(kids(sec,function(c){return c.classList.contains('section-label')||c.tagName==='H2'||c.classList.contains('session-head')||c.classList.contains('topic');}));
+    if(n.length)out.push({sect:title,title:title,n:n});
+    Array.prototype.forEach.call(sec.querySelectorAll(':scope > .topic'),function(t){
+      var h3=t.querySelector('h3');
+      out.push({sect:title,title:h3.textContent,n:kids(t,function(c){return c===h3;})});
+    });
+  });
+  return out;
+}
+function over(){return box.scrollHeight>box.clientHeight+1;}
+function build(){
+  pages=[];var L=logical(),count,sl;L.forEach(function(x){var out=[];x.n.forEach(function(el){if(el.tagName==="DETAILS"){var t=el.querySelector(".summary-title");var h=document.createElement("p");h.innerHTML="<b>"+(t?t.textContent:"")+"</b>";out.push(h);Array.prototype.forEach.call(el.children,function(c){if(c.tagName!=="SUMMARY")out.push(c);});}else out.push(el);});x.n=out;});
+  function head(cont){
+    box.innerHTML='';
+    if(sl.title&&sl.sect&&sl.sect!==sl.title){var eb=document.createElement('div');eb.className='eb';eb.textContent=sl.sect;box.appendChild(eb);}
+    if(sl.title){var h=document.createElement('h3');h.className='st';h.textContent=sl.title;
+      if(cont){var c=document.createElement('span');c.className='cont';c.textContent='(이어서)';h.appendChild(c);}
+      box.appendChild(h);}
+    count=0;
+  }
+  function flush(){pages.push({html:box.innerHTML,sect:sl.sect});}
+  function addSplit(items,shellFn){
+    var shell=shellFn(),n=0;box.appendChild(shell.root);
+    items.forEach(function(it){
+      shell.add(it);n++;
+      if(over()&&(n>1||count>0)){
+        shell.remove();n--;
+        if(n===0)box.removeChild(shell.root);
+        flush();head(true);shell=shellFn();n=0;box.appendChild(shell.root);shell.add(it);n=1;
+      }
+    });
+    count++;
+  }
+  L.forEach(function(s){
+    sl=s;head(false);
+    s.n.forEach(function(el){
+      var tbl=el.classList&&el.classList.contains('table-wrap')&&el.querySelector('table');
+      var rows=tbl?Array.prototype.slice.call(tbl.rows):null;
+      var hasHead=rows&&rows.length>3&&Array.prototype.every.call(rows[0].cells,function(c){return c.tagName==='TH';})
+        &&!rows.some(function(r){return Array.prototype.some.call(r.cells,function(c){return c.rowSpan>1;});});
+      var listy=(el.tagName==='UL'||el.tagName==='OL'||(el.classList&&(el.classList.contains('procedure')||el.classList.contains('resource-list'))))&&el.children.length>1;
+      if(el.classList&&el.classList.contains('dh')&&count>1&&box.scrollHeight>box.clientHeight*0.5){flush();head(false);}
+      var c=el.cloneNode(true);box.appendChild(c);
+      if(over()&&count>0){var pv=c.previousElementSibling,lead=count>1&&pv&&pv.tagName==='P'&&pv.children.length===1&&pv.firstElementChild.tagName==='B'&&pv.textContent.trim()===pv.firstElementChild.textContent.trim();
+        box.removeChild(c);if(lead)box.removeChild(pv);flush();head(true);if(lead){box.appendChild(pv);count++;}box.appendChild(c);}
+      if(over()){
+        if(hasHead){
+          box.removeChild(c);
+          addSplit(rows.slice(1),function(){
+            var w=el.cloneNode(false),t=tbl.cloneNode(false),b=document.createElement('tbody');
+            t.appendChild(b);b.appendChild(rows[0].cloneNode(true));w.appendChild(t);
+            return {root:w,add:function(r){b.appendChild(r.cloneNode(true));},remove:function(){b.removeChild(b.lastChild);}};
+          });
+          return;
+        }
+        if(el.classList&&el.classList.contains('copybox')){
+          box.removeChild(c);
+          var lines=el.querySelector('pre').textContent.split('\n');
+          addSplit(lines,function(){
+            var w=el.cloneNode(false),hd=el.querySelector('.copyhead').cloneNode(true),pr=document.createElement('pre'),txt=[];
+            w.appendChild(hd);w.appendChild(pr);
+            return {root:w,add:function(l){txt.push(l);pr.className='';pr.textContent=txt.join('\n');window.fmtPre(pr);},remove:function(){txt.pop();pr.className='';pr.textContent=txt.join('\n');window.fmtPre(pr);}};
+          });
+          return;
+        }
+        if(listy){
+          box.removeChild(c);
+          addSplit(Array.prototype.slice.call(el.children),function(){
+            var u=el.cloneNode(false);
+            return {root:u,add:function(li){u.appendChild(li.cloneNode(true));},remove:function(){u.removeChild(u.lastChild);}};
+          });
+          return;
+        }
+      }
+      count++;
+    });
+    flush();
+  });
+  var o='<h3 class="st">전체 목차</h3><div class="outline">';
+  Array.prototype.forEach.call(document.querySelectorAll('aside nav .grp'),function(g){
+    o+='<div class="og"><b>'+g.querySelector('.grp-label').textContent+(g.querySelector('.l2')&&g.querySelector('.grp-label').textContent.indexOf('세션')===0?' · '+g.querySelector('.l2').textContent:'')+'</b>';
+    var guide=g.querySelector('.grp-label').textContent==='교육 안내';
+    Array.prototype.forEach.call(g.querySelectorAll(guide?'a.l2,a.l3':'a.l3'),function(a){o+='<span>'+a.textContent+'</span>';});
+    o+='</div>';
+  });
+  pages.splice(1,0,{html:o+'</div>',sect:'목차'});
+}
+function show(n){
+  i=Math.max(0,Math.min(pages.length-1,n));var p=pages[i];
+  box.innerHTML=p.html;box.scrollTop=0;
+  pgEl.textContent=(i+1)+' / '+pages.length;prog.style.width=((i+1)/pages.length*100)+'%';
+}
+var stage=document.getElementById('stage'),vp=document.getElementById('viewport');
+function fit(){var k=Math.min(vp.clientWidth/1280,vp.clientHeight/720);stage.style.transform='translate(-50%,-50%) scale('+k+')';}
+function open(){deck.hidden=false;document.body.style.overflow='hidden';fit();var w=[].slice.call(main.querySelectorAll('img')).map(function(m){if(m.complete)return 0;m.loading='eager';return new Promise(function(r){m.onload=m.onerror=r;setTimeout(r,8000);});});Promise.all(w).then(function(){build();show(0);});}
+function close(){deck.hidden=true;document.body.style.overflow='';}
+window.addEventListener('resize',function(){if(!deck.hidden)fit();});
+document.getElementById('slideBtn').onclick=open;
+document.getElementById('exit').onclick=close;
+document.getElementById('prev').onclick=function(){show(i-1)};
+document.getElementById('next').onclick=function(){show(i+1)};
+document.addEventListener('keydown',function(e){
+  if(deck.hidden)return;
+  if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ')show(i+1);
+  else if(e.key==='ArrowLeft'||e.key==='PageUp')show(i-1);
+  else if(e.key==='Escape')close();
+});
+document.addEventListener('click',function(e){
+  var b=e.target.closest&&e.target.closest('.copyhead button');if(!b)return;
+  var pre=b.closest('.copybox').querySelector('pre');
+  var done=function(){var t=b.textContent;b.textContent='복사됨';setTimeout(function(){b.textContent=t;},1200);};
+  if(navigator.clipboard)navigator.clipboard.writeText(pre.classList.contains('fmt')?pre.textContent:pre.innerText).then(done,done);else done();
+});
+})();
+</script>
+<script type="text/javascript">
+(function(){
+  var links=[].slice.call(document.querySelectorAll('aside nav a[href^="#"]'));
+  var targets=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));});
+  function update(){
+    var y=window.scrollY+120, cur=-1;
+    targets.forEach(function(el,i){ if(el && el.getBoundingClientRect().top+window.scrollY<=y) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('active', i===cur); });
+    var cp=null;
+    if(cur>=0){ var ca=links[cur]; cp=ca.classList.contains('l4')?ca.getAttribute('data-p'):(ca.getAttribute('href').slice(1)); }
+    links.forEach(function(a){ if(a.classList.contains('l4')) a.classList.toggle('show', a.getAttribute('data-p')===cp); });
+    if(cur>=0){ var a=links[cur], box=a.closest('aside'), r=a.getBoundingClientRect();
+      if(r.top<120||r.bottom>window.innerHeight-20) box.scrollTop+=r.top-window.innerHeight/2; }
+  }
+  window.addEventListener('scroll',update,{passive:true}); update();
+})();
+</script>
+<script type="text/javascript">
+(function(){
+  var btn=document.querySelector('.nav-toggle'), label=btn.querySelector('span'), body=document.body;
+  var mq=window.matchMedia('(max-width: 1020px)');
+  function isOpen(){ return mq.matches ? body.classList.contains('nav-open') : !body.classList.contains('nav-hidden'); }
+  function sync(){ var o=isOpen(); btn.setAttribute('aria-expanded',o); label.textContent=o?'목차 숨기기':'목차 보기'; }
+  try{ if(localStorage.getItem('navHidden')==='1') body.classList.add('nav-hidden'); }catch(e){}
+  btn.addEventListener('click',function(){
+    if(mq.matches){ body.classList.toggle('nav-open'); }
+    else{ var h=body.classList.toggle('nav-hidden'); try{ localStorage.setItem('navHidden',h?'1':'0'); }catch(e){} }
+    sync();
+  });
+  document.querySelectorAll('aside nav a').forEach(function(a){ a.addEventListener('click',function(){ if(mq.matches){ body.classList.remove('nav-open'); sync(); } }); });
+  if(mq.addEventListener) mq.addEventListener('change',sync);
+  sync();
+})();
+</script>
+</body>
+</html>
