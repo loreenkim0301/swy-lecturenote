@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet"/>
+<meta content="index, follow, noai, noimageai" name="robots"/>
+<title>AI 프로덕트 매니저 1주차 · DAY 1 OT</title>
+<style>:root { --ink: #172033; --muted: #657086; --line: #dfe4ed; --soft: #f5f7fb; --blue: #2457f5; --nav: #111a2e; --green: #16a36b; --warn: #ffad22; --page-pad: clamp(28px,5.8vw,82px); --font-sans: "Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; scroll-behavior: smooth; }
+* { box-sizing: border-box; }
+body { margin: 0px; background: rgb(238, 241, 246); color: var(--ink); font-family: var(--font-sans); line-height: 1.7; letter-spacing: -0.01em; }
+.app aside { position: fixed; inset: 0px auto 0px 0px; width: 310px; height: 100vh; padding: 0 16px 28px; background: var(--nav); color: rgb(255, 255, 255); overflow-y: auto; z-index: 10; }
+.app main { min-height: 100vh; margin-left: 310px; background: rgb(255, 255, 255); }
+.side-head { position: sticky; top: 0; z-index: 1; margin: 0 -16px; padding: 20px 26px 14px; background: var(--nav); border-bottom: 1px solid rgb(45, 56, 80); }
+.brand { font-size: 11px; font-weight: 800; letter-spacing: 0.14em; color: rgb(130, 145, 177); }
+aside h1 { margin: 6px 0 4px; font-size: 17px; line-height: 1.35; letter-spacing: -0.02em; }
+.side-sub, .side-foot { font-size: 12px; color: rgb(150, 162, 186); }
+aside nav { margin-top: 10px; }
+aside nav a { display: block; padding: 7px 10px 7px 22px; color: rgb(190, 200, 219); text-decoration: none; font-size: 14px; line-height: 1.45; border-left: 3px solid transparent; border-radius: 0 6px 6px 0; }
+aside nav a:hover { color: rgb(255, 255, 255); background: rgb(25, 36, 60); }
+aside nav .major { margin-top: 12px; padding-left: 10px; color: rgb(255, 255, 255); font-size: 15px; font-weight: 800; }
+aside nav a.active { color: rgb(255, 255, 255); background: rgb(30, 44, 74); border-left-color: var(--blue); font-weight: 700; }
+.side-foot { margin: 20px 10px 0; padding-top: 14px; border-top: 1px solid rgb(45, 56, 80); }
+.hero { padding: 86px var(--page-pad) 72px; background: linear-gradient(135deg, rgb(247, 249, 255), rgb(238, 243, 255) 58%, rgb(233, 255, 246)); border-bottom: 1px solid var(--line); }
+.kicker, .section-label, .topic-label, .eyebrow { font-size: 13px; font-weight: 800; letter-spacing: 0.13em; color: var(--blue); }
+.hero h1 { margin: 16px 0px; font-size: clamp(40px, 5vw, 70px); line-height: 1.08; letter-spacing: -0.055em; }
+.hero h1 em { color: var(--blue); font-style: normal; }
+.hero > p { max-width: 860px; color: rgb(79, 91, 114); font-size: 18px; }
+.hero-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 38px; background: rgb(220, 226, 237); border: 1px solid rgb(220, 226, 237); }
+.hero-grid div { background: rgb(255, 255, 255); padding: 16px; }
+.hero-grid b { display: block; font-size: 12px; color: rgb(125, 135, 153); }
+.hero-grid span { font-size: 14px; font-weight: 800; }
+.section { padding: 70px var(--page-pad); border-bottom: 1px solid var(--line); scroll-margin-top: 18px; }
+.section > h2, .session-head h2 { margin: 8px 0px 14px; font-size: 36px; letter-spacing: -0.04em; }
+.lead { font-size: 18px; max-width: 900px; }
+.three-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px 0px; }
+.three-cards article { padding: 20px; border: 1px solid var(--line); border-radius: 14px; background: rgb(255, 255, 255); }
+.three-cards article > span { font-size: 12px; font-weight: 800; color: var(--blue); }
+.three-cards h3 { margin: 8px 0px 5px; font-size: 20px; }
+.three-cards p, .caption { color: var(--muted); font-size: 14px; }
+.notice, .warning { margin: 22px 0px; padding: 16px 19px; }
+.notice { border-left: 4px solid var(--blue); background: rgb(234, 240, 255); }
+.warning { border-left: 4px solid var(--warn); background: rgb(255, 246, 230); }
+.schedule { margin-top: 30px; }
+.schedule div { display: grid; grid-template-columns: 48px 125px 1fr; align-items: center; padding: 13px 0px; border-top: 1px solid var(--line); }
+.schedule span.badge { display: grid; place-items: center; width: 29px; height: 29px; border-radius: 50%; background: var(--nav); color: rgb(255, 255, 255); font-size: 12px; }
+.schedule p { margin: 0px; }
+.session { padding-top: 0px; }
+.session-head { margin: 0 calc(var(--page-pad)*-1) 50px; padding: 52px var(--page-pad); background: var(--nav); color: rgb(255, 255, 255); }
+.session-head .eyebrow { color: rgb(125, 160, 255); }
+.session-head p { max-width: 900px; color: rgb(195, 204, 220); }
+.vibe-intro { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 28px; align-items: start; margin-top: 30px; padding-top: 28px; border-top: 1px solid rgb(45, 56, 80); }
+.vibe-quote { margin: 0; padding-left: 18px; border-left: 3px solid rgb(125, 160, 255); }
+.vibe-quote blockquote { margin: 0 0 10px; color: #fff; font-size: 21px; font-weight: 700; line-height: 1.5; letter-spacing: -0.03em; }
+.vibe-quote figcaption { color: rgb(160, 172, 196); font-size: 13px; }
+.vibe-meaning { margin: 18px 0 0; padding: 14px 16px; border-radius: 12px; background: rgb(25, 36, 60); color: rgb(215, 222, 236); font-size: 15px; }
+.vibe-meaning b { color: #fff; }
+.vibe-timeline { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.vibe-timeline li { display: grid; grid-template-columns: 74px 1fr; gap: 12px; padding: 12px 14px; border: 1px solid rgb(45, 56, 80); border-radius: 12px; background: rgba(255, 255, 255, 0.03); }
+.vibe-timeline time { color: rgb(125, 160, 255); font-size: 13px; font-weight: 800; letter-spacing: 0.02em; }
+.vibe-timeline b { display: block; color: #fff; font-size: 15px; }
+.vibe-timeline span { display: block; color: rgb(185, 195, 214); font-size: 14px; line-height: 1.55; }
+.vibe-sources { grid-column: 1 / -1; margin: 0; color: rgb(130, 145, 177); font-size: 12px; }
+.vibe-sources a { color: rgb(160, 180, 230); }
+@media (max-width: 1020px) { .vibe-intro { grid-template-columns: 1fr; } }
+.time { font-size: 13px; color: rgb(174, 185, 207); }
+.topic { margin-bottom: 70px; scroll-margin-top: 20px; }
+.topic h3 { margin: 8px 0px 12px; font-size: 28px; letter-spacing: -0.025em; }
+.flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 9px; margin: 18px 0px 26px; }
+.flow div { text-align: center; padding: 16px 12px; border-radius: 12px; background: rgb(237, 242, 255); }
+.flow span { display: block; font-size: 12px; font-weight: 800; color: var(--blue); }
+.flow b { display: block; }
+.flow small { display: block; margin-top: 5px; color: var(--muted); }
+.versus { display: grid; grid-template-columns: 1fr 54px 1fr; align-items: center; margin: 16px 0px 26px; }
+.versus > div { padding: 20px; border: 1px solid var(--line); border-radius: 13px; background: var(--soft); }
+.versus i { text-align: center; color: var(--blue); font-style: normal; font-weight: 900; }
+.table-wrap { overflow: auto; }
+table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 14px; }
+th { padding: 13px; text-align: left; color: rgb(255, 255, 255); background: var(--nav); }
+td { padding: 14px 13px; border-bottom: 1px solid var(--line); }
+.checklist { display: grid; gap: 7px; padding: 0px; list-style: none; }
+.checklist li { padding: 11px 14px; border-radius: 8px; background: var(--soft); }
+.checklist li::before { content: "✓"; margin-right: 8px; color: var(--blue); font-weight: 900; }
+.practice-brief { display: grid; gap: 8px; margin: 18px 0px; }
+.practice-brief > div { padding: 15px 18px; border: 1px solid rgb(200, 239, 221); border-radius: 12px; background: rgb(237, 255, 246); }
+.copybox { margin: 20px 0px; border: 1px solid rgb(207, 215, 230); border-radius: 12px; overflow: hidden; background: rgb(17, 26, 46); color: rgb(232, 238, 252); }
+.copyhead { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: rgb(30, 43, 71); font-size: 13px; font-weight: 800; }
+.copyhead button { padding: 5px 10px; border: 1px solid rgb(97, 112, 141); border-radius: 6px; background: transparent; color: rgb(255, 255, 255); cursor: pointer; }
+.copybox pre { white-space: pre-wrap; margin: 0px; padding: 20px; font: 13px / 1.72 ui-monospace, SFMono-Regular, Menlo, monospace; }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 18px 0px 26px; }
+.steps article { padding: 18px; border-top: 4px solid var(--blue); border-radius: 12px; }
+.steps strong { display: block; color: var(--blue); font-size: 12px; }
+.steps b { display: block; font-size: 18px; margin-top: 3px; }
+.sub-optional { margin-top: 10px; padding: 10px 12px; border: 1px dashed var(--line); border-radius: 10px; color: var(--muted); font-size: 14px; }
+.sub-optional .tag { margin-left: 0; }
+.steps .sub-optional b { display: inline; font-size: 14px; margin: 0 4px 0 2px; color: var(--muted); }
+.tag { display: inline-block; margin-left: 6px; padding: 1px 8px; border-radius: 999px; font-size: 11px; font-weight: 800; letter-spacing: 0; vertical-align: 1px; }
+.tag-req { background: var(--blue); color: #fff; }
+.tag-opt { border: 1px solid var(--line); background: #fff; color: var(--muted); font-weight: 700; }
+.final-box { padding: 28px; border-radius: 18px; background: linear-gradient(135deg, rgb(17, 26, 46), rgb(29, 47, 88)); color: rgb(255, 255, 255); }
+.final-box h3 { margin: 6px 0px 8px; font-size: 30px; }
+.final-box p { color: rgb(203, 213, 231); }
+code.inline { padding: 2px 6px; border-radius: 6px; background: rgb(238, 242, 248); font-family: ui-monospace, monospace; }
+.small { font-size: 13px; color: var(--muted); }
+.resource-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 18px 0px 28px; }
+.resource-card { padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--soft); }
+.resource-card b { display: block; margin-bottom: 4px; }
+.resource-card a { color: var(--blue); font-weight: 800; text-decoration: none; word-break: break-all; font-size: 13px; }
+.sample-link { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin: 22px 0; padding: 14px 18px; border: 1px solid rgb(203, 218, 255); border-radius: 12px; background: rgb(240, 245, 255); }
+.sample-link span { color: var(--muted); font-size: 14px; }
+.sample-link b { display: block; color: var(--ink); font-size: 15px; }
+.sample-link .resource-link { flex-shrink: 0; margin-top: 0; }
+@media (max-width: 680px) { .sample-link { flex-direction: column; align-items: flex-start; } }
+.resource-link { display: inline-block; margin-top: 8px; padding: 8px 12px; border: 1px solid rgb(203, 213, 225); border-radius: 8px; color: var(--blue); font-size: 13px; font-weight: 800; text-decoration: none; background: rgb(255, 255, 255); }
+.procedure { counter-reset: step 0; display: grid; gap: 10px; margin: 18px 0px 28px; }
+.procedure > div { position: relative; padding: 15px 16px 15px 54px; border: 1px solid var(--line); border-radius: 12px; background: rgb(255, 255, 255); }
+.procedure > div::before { counter-increment: step 1; content: counter(step); position: absolute; left: 16px; top: 15px; width: 26px; height: 26px; display: grid; place-items: center; border-radius: 50%; background: var(--blue); color: rgb(255, 255, 255); font-size: 12px; font-weight: 900; }
+.sample-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 18px 0px 28px; }
+.sample-grid article { padding: 18px; border: 1px solid var(--line); border-radius: 13px; background: var(--soft); }
+.term-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 22px 0px; }
+.term-grid article { padding: 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--soft); }
+.term-grid strong { display: block; color: var(--blue); font-size: 12px; letter-spacing: 0.08em; }
+.term-grid h4 { margin: 5px 0px 8px; font-size: 20px; }
+.talk { margin: 18px 0px; padding: 22px; border-left: 4px solid var(--green); background: rgb(241, 252, 247); }
+.talk p { margin: 0px 0px 14px; }
+.talk p:last-child { margin-bottom: 0px; }
+.example-flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 18px 0px 24px; }
+.example-flow div { padding: 14px 12px; border-radius: 10px; background: rgb(255, 248, 235); }
+.example-flow b, .example-flow span { display: block; }
+.example-flow span { margin-bottom: 3px; color: rgb(154, 100, 16); font-size: 12px; font-weight: 800; }
+details.optional { margin-top: 8px; padding: 0 22px 6px; border: 1px solid var(--line); border-radius: 14px; background: var(--soft); }
+details.optional > summary { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; padding: 20px 0; cursor: pointer; list-style: none; }
+details.optional > summary::-webkit-details-marker { display: none; }
+details.optional > summary::before { content: "▸"; color: var(--blue); font-weight: 900; }
+details.optional[open] > summary::before { content: "▾"; }
+details.optional .summary-title { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
+details.optional .summary-hint { font-size: 13px; color: var(--muted); }
+details.optional[open] .summary-hint { display: none; }
+.profile-card { display: grid; grid-template-columns: 1.6fr 1fr; gap: 20px; padding: 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--soft); }
+.profile-card h3 { margin: 0 0 6px; font-size: 22px; }
+.profile-card ul { margin: 10px 0 0; padding-left: 18px; }
+.profile-links { display: grid; gap: 8px; align-content: start; }
+.profile-links a { padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--blue); font-size: 14px; font-weight: 700; text-decoration: none; word-break: break-all; }
+.sample-shot { margin: 22px 0; }
+.sample-shot img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 12px; }
+.sample-shot.narrow img { max-width: 700px; margin: 0 auto; }
+.sample-shot.small img { max-width: 360px; }
+.sample-shot figcaption { margin-top: 10px; color: var(--muted); font-size: 14px; }
+@media (max-width: 680px) { .profile-card { grid-template-columns: 1fr; padding: 18px; } }
+.app aside { word-break: keep-all; }
+.topic .three-cards h3 { margin: 8px 0 5px; font-size: 20px; letter-spacing: -0.02em; }
+.block-title { margin: 34px 0 4px; font-size: 22px; letter-spacing: -0.02em; scroll-margin-top: 18px; }
+.break { padding: 54px var(--page-pad); background: rgb(246, 248, 252); border-bottom: 1px solid var(--line); }
+.break h2 { margin: 0px 0px 8px; font-size: 32px; }
+@media (max-width: 1020px) {
+  .app aside { display: none; }
+  .app main { margin-left: 0px; }
+  .hero-grid, .three-cards, .steps, .term-grid, .example-flow { grid-template-columns: 1fr 1fr; }
+  .flow { grid-template-columns: 1fr 1fr; }
+}
+.nav-toggle { position: fixed; top: 14px; left: 322px; z-index: 20; display: flex; align-items: center; gap: 6px; height: 36px; padding: 0 12px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255, 255, 255, 0.94); color: var(--ink); font: 700 13px/1 var(--font-sans); cursor: pointer; box-shadow: 0 4px 14px rgba(17, 26, 46, 0.12); transition: left .25s ease; }
+.nav-toggle:hover { border-color: var(--blue); color: var(--blue); }
+.nav-toggle svg { width: 16px; height: 16px; }
+.app aside { transition: transform .25s ease; }
+.app main { transition: margin-left .25s ease; }
+body.nav-hidden .app aside { transform: translateX(-100%); }
+body.nav-hidden .app main { margin-left: 0; }
+body.nav-hidden .nav-toggle { left: 14px; }
+@media (max-width: 1020px) {
+  .app aside { display: block; width: min(310px, calc(100vw - 64px)); transform: translateX(-100%); }
+  .nav-toggle { left: 14px; }
+  body.nav-open .app aside { transform: none; box-shadow: 8px 0 24px rgba(17, 26, 46, 0.25); }
+  body.nav-open .nav-toggle { left: auto; right: 10px; padding: 0 11px; }
+  body.nav-open .nav-toggle span { display: none; }
+}
+@media (max-width: 680px) {
+  .hero, .section, .break { padding-left: 20px; padding-right: 20px; }
+  .hero { padding-top: 54px; }
+  .hero-grid, .three-cards, .steps, .flow, .resource-list, .term-grid, .example-flow { grid-template-columns: 1fr; }
+  .schedule div { grid-template-columns: 38px 100px 1fr; }
+  .versus { grid-template-columns: 1fr; }
+  .versus i { padding: 8px 0px; }
+  .session-head { margin-left: -20px; margin-right: -20px; padding-left: 20px; padding-right: 20px; }
+  .section > h2, .session-head h2 { font-size: 30px; }
+  .topic h3 { font-size: 24px; }
+}</style>
+<style>
+.tt{margin:0;padding-left:1.1em}.tt li{margin:2px 0}
+.dl-list{display:grid;gap:10px;margin:18px 0}
+.dl-card{display:flex;align-items:center;gap:14px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:#fff;text-decoration:none;color:var(--ink)}
+.dl-card:hover{border-color:var(--blue);background:var(--soft)}
+.dl-ico{flex:none;display:grid;place-items:center;width:44px;height:52px;border-radius:8px;background:rgb(237,242,255);color:var(--blue);font-size:11px;font-weight:800}
+.dl-body{flex:1}.dl-body b{display:block;font-size:16px}.dl-body span{display:block;font-size:13px;color:var(--muted)}
+.dl-btn{flex:none;padding:8px 14px;border-radius:8px;background:var(--blue);color:#fff;font-size:13px;font-weight:800}
+@media(max-width:680px){.dl-card{flex-wrap:wrap}}
+#slide .sample-shot{margin:8px 0}#slide .sample-shot img{max-height:420px;width:auto;max-width:100%;margin:0 auto}#slide .sample-shot figcaption{margin-top:4px;font-size:13px;text-align:center}
+#slide .dl-card{padding:10px 14px}
+.todo{color:#b42318;font-weight:700}
+main,#slide{word-break:keep-all;overflow-wrap:break-word}
+h1,h2,h3,.hero p,.lead{text-wrap:balance}
+p,li,td{text-wrap:pretty}
+td .tag{margin-bottom:2px}
+.tag.nap{background:#7c3aed}.tag.sheet{background:var(--green)}
+.tag{margin-left:0;margin-right:4px}
+.topic .small{display:block}
+.resource-card .small{display:block;margin-bottom:6px}
+.resource-card a{display:inline-block;margin:2px 0}
+.copybox pre{background:none;color:inherit}
+.hero-grid{grid-template-columns:repeat(3,1fr)}
+.sample-link .resource-link{margin:0 6px 0 0}
+.sample-link{flex-wrap:wrap;justify-content:flex-start;gap:6px}
+#slideBtn{position:fixed;right:16px;bottom:16px;z-index:30;background:var(--blue);color:#fff;border:0;border-radius:999px;padding:12px 20px;font:700 15px var(--font-sans);cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+#deck{position:fixed;inset:0;z-index:100;background:#0b1220;display:flex;flex-direction:column}
+#deck[hidden]{display:none}
+#viewport{flex:1;min-height:0;position:relative;overflow:hidden}
+#stage{position:absolute;left:50%;top:50%;width:1280px;height:720px;background:#fff;display:flex;flex-direction:column;overflow:hidden;transform-origin:center center;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+#master{flex:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 96px;background:var(--nav);color:#fff;font-weight:800;font-size:15px}
+#master .m-brand{font-size:11px;letter-spacing:.14em;color:rgb(130,145,177);margin-right:12px}
+#mbar{flex:none;height:4px;background:var(--line)}#prog{display:block;height:100%;background:var(--blue);width:0}
+#slide{flex:1;min-height:0;overflow:hidden;padding:28px 96px 12px;font-size:19px;line-height:1.55}
+#slide h1{font-size:46px;line-height:1.15;margin:12px 0}#slide h1 em{color:var(--blue);font-style:normal}
+#slide h3.st{margin:0 0 14px;font-size:32px;letter-spacing:-.03em}
+#slide .cont{font-size:16px;color:var(--muted);font-weight:500;margin-left:10px}
+#slide table{font-size:16px;margin-top:6px}#slide th,#slide td{padding:9px 12px}
+#slide .copybox{margin:10px 0}#slide .copybox pre{font-size:15px;padding:14px 18px}
+#slide p,#slide .notice,#slide .warning{margin:8px 0}
+#slide .notice,#slide .warning{padding:12px 16px}
+#slide .procedure{gap:8px;margin:10px 0}#slide .procedure>div{padding:10px 14px 10px 50px}
+#slide .resource-list{grid-template-columns:repeat(3,1fr);margin:10px 0}
+#slide .hero-grid{margin-top:20px}#slide .flow{grid-template-columns:repeat(5,1fr);margin:12px 0 16px}#slide .flow div{padding:10px 8px}#slide .hero-grid{grid-template-columns:repeat(3,1fr)}
+#pager{flex:none;display:flex;align-items:center;justify-content:center;gap:14px;height:40px;border-top:1px solid var(--line);color:var(--muted);font-size:14px;font-weight:700}
+#pager button{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:6px;width:30px;height:26px;font-size:11px;cursor:pointer}
+#bar{flex:none;display:flex;align-items:center;justify-content:center;gap:16px;padding:8px;background:#111a2e;color:#cbd5e7;font-size:14px}
+#bar button{border:1px solid rgb(97,112,141);background:transparent;color:#fff;border-radius:8px;padding:6px 14px;font:700 14px var(--font-sans);cursor:pointer}
+@media print{#slideBtn,#deck{display:none!important}}
+
+aside nav .nav-title{padding:6px 10px 10px;font-size:12px;font-weight:800;letter-spacing:.12em;color:rgb(130,145,177)}
+aside nav .grp{margin-top:20px;padding-top:12px;border-top:1px solid rgb(45,56,80)}
+aside nav .nav-title+.grp{margin-top:0;border-top:0;padding-top:0}
+aside nav .grp-label{padding:0 10px 4px;font-size:11px;font-weight:800;letter-spacing:.1em;color:rgb(130,145,177)}
+aside nav a.l2{margin-top:0;padding:6px 10px;color:#fff;font-size:15px;font-weight:800;border-left:3px solid transparent}
+aside nav a.l3{margin-left:12px;padding:5px 10px 5px 14px;font-size:14px;border-left:1px solid rgb(45,56,80)}
+aside nav a.l4{display:none;margin-left:12px;padding:3px 10px 3px 30px;font-size:12.5px;color:rgb(150,162,186);border-left:1px solid rgb(45,56,80)}
+aside nav a.l4.show{display:block}
+aside nav a.active{border-left-color:var(--blue)}
+.dh{margin:30px 0 8px;padding:2px 0 2px 12px;border-left:4px solid var(--blue)}
+.dh b{font-size:1.06em}
+#slide .dh{margin:12px 0 8px}
+#slide .eb{margin:0 0 4px;font-size:14px;font-weight:800;letter-spacing:.06em;color:var(--blue)}
+#slide .outline{columns:2;column-gap:56px;font-size:16px;line-height:1.5}
+#slide .outline .og{break-inside:avoid;margin-bottom:12px}
+#slide .outline b{display:block;font-size:17px}
+#slide .outline span{display:block;padding-left:14px;color:var(--muted);font-size:14.5px}
+
+.base{margin:6px 0 14px;padding:8px 12px;border-left:4px solid var(--green);background:rgb(236,248,243);font-size:14.5px}
+.copybox pre{font:15px/1.8 var(--font-sans);letter-spacing:-.01em}
+.copybox pre.fmt{white-space:normal;padding:18px 20px}
+.pl{display:flex;gap:10px;margin:0 0 9px}.pl:last-child{margin-bottom:0}
+.pl .pk{flex:none;width:3.3em;color:rgb(140,180,255);font-weight:800}
+.pl.k2 .pk{color:rgb(110,220,180)}.pl.k3 .pk{color:rgb(255,200,110)}
+.pl .pt{flex:1;min-width:0}
+.pl.c{padding-left:calc(3.3em + 10px);margin-top:-5px}
+#slide .copybox pre.fmt{font-size:17px;padding:14px 18px}
+#slide .base{font-size:15px;padding:6px 12px}
+</style>
+<style>.side-link{margin:16px 10px 0;padding:12px;border:1px solid rgb(45,56,80);border-radius:10px;font-size:12px;color:rgb(190,200,219)}.side-link b{display:block;color:#fff;font-size:12px;margin-bottom:4px}.side-link a{color:rgb(140,180,255);word-break:break-all}.day-nav{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}.day-nav a{padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:13px;font-weight:700;color:var(--ink);text-decoration:none}.day-nav a[aria-current]{background:var(--blue);border-color:var(--blue);color:#fff}</style>
+</head>
+<body>
+<button aria-controls="side-nav" aria-expanded="true" class="nav-toggle" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" viewbox="0 0 16 16"><path d="M2 4h12M2 8h12M2 12h12"></path></svg><span>목차 숨기기</span></button>
+<div class="app">
+<aside id="side-nav">
+<div class="side-head">
+<div class="brand">SELECTWAY · LECTURE NOTE</div>
+<h1>AI 프로덕트 매니저 1주차 · DAY 1 OT</h1>
+<div class="side-sub">10.26(월) · 11:00–18:00 · 실시간 비대면</div>
+</div>
+<nav>
+<div class="nav-title">전체 목차</div><div class="grp"><div class="grp-label">교육 안내</div><a class="l2" href="#overview">교육 개요</a><a class="l2" href="#prep">수업 전 준비</a><a class="l2" href="#timetable">타임테이블</a></div><div class="grp"><div class="grp-label">SESSION 1</div><a class="l2" href="#s1">과정 안내: 5개월 반 로드맵</a><a class="l3" href="#s1-1">1-1. 과정 한눈에 보기</a><a class="l3" href="#s1-2">1-2. 이 과정에서 만드는 것</a><a class="l3" href="#s1-3">1-3. 수업은 이렇게 진행해요</a><a class="l3" href="#s1-4">1-4. 이번 주 미리 보기</a></div><div class="grp"><div class="grp-label">SESSION 2</div><a class="l2" href="#s2">아이스브레이킹 ① 워밍업</a><a class="l3" href="#s2-1">2-1. 화면 이름 바꾸기와 반응 연습</a><a class="l3" href="#s2-2">2-2. 한 단어 체크인</a></div><div class="grp"><div class="grp-label">SESSION 3</div><a class="l2" href="#s3">아이스브레이킹 ② 자기소개와 일하는 방식</a><a class="l3" href="#s3-1">3-1. 3문장 자기소개</a><a class="l3" href="#s3-2">3-2. 나의 일하는 방식 알아보기</a><a class="l3" href="#s3-3">3-3. 짝 인터뷰</a></div><div class="grp"><div class="grp-label">SESSION 4</div><a class="l2" href="#s4">아이스브레이킹 ③ 팀 미션: 셀렉트마켓의 불편 찾기</a><a class="l3" href="#s4-1">4-1. 미션 안내</a><a class="l3" href="#s4-2">4-2. 팀 발표와 돌아보기</a></div><div class="grp"><div class="grp-label">SESSION 5</div><a class="l2" href="#s5">그라운드 룰 정하기</a><a class="l3" href="#s5-1">5-1. 약속 후보 모으기</a><a class="l3" href="#s5-2">5-2. 다섯 가지로 정하고 기록하기</a></div><div class="grp"><div class="grp-label">SESSION 6</div><a class="l2" href="#s6">직무 이야기: AI 시대 PM·서비스 기획자는 무엇을 하나</a><a class="l3" href="#s6-1">6-1. PM·서비스 기획자가 하는 일</a><a class="l3" href="#s6-2">6-2. AI가 바꾼 것과 바꾸지 못한 것</a><a class="l3" href="#s6-3">6-3. 채용 공고 읽어 보기</a></div><div class="grp"><div class="grp-label">SESSION 7</div><a class="l2" href="#s7">나의 성장 로드맵과 KPI·결과 이미지</a><a class="l3" href="#s7-1">7-1. 결과 이미지와 KPI란</a><a class="l3" href="#s7-2">7-2. AI로 로드맵 초안 만들기</a><a class="l3" href="#s7-3">7-3. 나눔과 체크아웃</a></div><div class="grp"><div class="grp-label">WRAP-UP</div><a class="l2" href="#wrap">오늘 정리와 과제</a></div>
+</nav>
+<div class="side-link"><b>이 교안 주소</b><a href="https://loreenkim0301.github.io/swy-lecturenote/261026-ai-pm-week1/d1-ot.html">loreenkim0301.github.io/swy-lecturenote/261026-ai-pm-week1/d1-ot.html</a></div>
+<div class="side-foot">강사 김수정 · 셀렉트웨이</div>
+</aside>
+<main>
+<header class="hero">
+<div class="kicker">AI 프로덕트 매니저 · 1주차 DAY 1 · 2026.10.26 (월)</div>
+<h1>오늘부터 <em>AI로 일하는 기획자</em>로 출발해요</h1>
+<p>앞으로 약 5개월 반 동안 무엇을 배우고, 무엇을 만들어 취업·창업에 쓸지 함께 그려 봐요. 오늘은 코드도 도구도 어렵지 않아요. 서로를 알아 가고, 우리 반의 약속을 정하고, 과정이 끝났을 때의 내 모습을 한 장으로 정리해요.</p>
+<div class="hero-grid">
+<div><b>일정</b><span>10월 26일(월) 11:00–18:00 · 실시간 비대면</span></div>
+<div><b>준비물</b><span>카메라·마이크, 메모장, 생성형 AI 채팅 계정 1개</span></div>
+<div><b>오늘의 결과물</b><span>나의 성장 로드맵 1장 (결과 이미지 + 단위기간별 KPI)</span></div>
+</div>
+<nav class="day-nav" aria-label="1주차 교안"><a href="./">1주차 홈</a><a href="./d1-ot.html" aria-current="page">DAY 1 OT</a><a href="./d2-ai-governance.html">DAY 2 AI 특강</a><a href="./d3-github-agile.html">DAY 3 GitHub·방법론</a><a href="./d4-web-basics.html">DAY 4 웹의 동작 원리</a><a href="./d5-first-deploy.html">DAY 5 첫 페이지 배포</a></nav>
+</header>
+
+<section class="section" id="overview"><div class="section-label">OVERVIEW</div><h2>교육 개요</h2>
+<div class="table-wrap"><table>
+<tr><th>시간</th><td>11:00–18:00 (점심 12:30–13:30, 수업 6시간)</td></tr>
+<tr><th>진행 방식</th><td>실시간 비대면 수업이에요. 카메라를 켜고, 말하기 어려운 내용은 채팅으로 남겨도 괜찮아요.</td></tr>
+<tr><th>교육 목표</th><td>훈련 과정 전반을 이해하고, 수강생끼리 라포(rapport, 서로 믿고 편하게 대화할 수 있는 관계)를 쌓아 팀 프로젝트의 기반을 만든다.</td></tr>
+<tr><th>주요 내용</th><td>① 전체 커리큘럼 로드맵과 프로젝트 진행 방식 ② 아이스브레이킹(자기소개, 일하는 방식 알아보기) ③ 그라운드 룰 정하기 ④ AI 시대 PM·서비스 기획 직무 이야기 ⑤ 개인별 성장 로드맵과 KPI·결과 이미지</td></tr>
+<tr><th>수업이 끝나면</th><td>① 과정이 6개 단위기간으로 어떻게 이어지는지 설명한다 ② 팀원 2명 이상의 이름과 일하는 방식을 안다 ③ 우리 반 그라운드 룰 5가지를 함께 정한다 ④ 과정이 끝났을 때의 내 결과물과 단위기간별 KPI를 한 장으로 적는다</td></tr>
+</table></div>
+</section>
+
+<section class="section" id="prep"><div class="section-label">PREPARE</div><h2>수업 전 준비</h2>
+<ul>
+<li><b>카메라와 마이크:</b> 오늘은 대화가 많은 날이에요. 카메라를 켜고, 말하지 않을 때는 마이크를 꺼 두세요.</li>
+<li><b>메모장:</b> 컴퓨터 메모장이나 종이 한 장이면 충분해요. 오늘 적는 내용은 마지막 세션에서 성장 로드맵으로 모아요.</li>
+<li><b>생성형 AI 채팅 계정 1개:</b> ChatGPT, Claude, Gemini 중 이미 쓰고 있는 것 하나로 충분해요. 아직 계정이 없다면 오늘 마지막 세션 전까지 하나만 가입해 두세요. 무료 계정으로 충분해요.</li>
+</ul>
+<div class="notice"><b>이번 주에 가입할 계정 미리 보기</b><br/>DAY 3(수)에 <b>GitHub</b> 계정을 만들어요. 이메일 주소 하나를 정해 두면 이후 과정에서 계속 같은 계정으로 쓰기 편해요.</div>
+</section>
+
+<section class="section" id="timetable"><div class="section-label">TIMETABLE</div><h2>타임테이블</h2>
+<div class="table-wrap"><table>
+<tr><th>시간</th><th>세션</th><th>내용</th></tr>
+<tr><td>11:00–12:00</td><td><a href="#s1">세션 1</a></td><td>과정 안내: 5개월 반 로드맵, 프로젝트 진행 방식, 수업 운영</td></tr>
+<tr><td>12:00–12:30</td><td><a href="#s2">세션 2</a></td><td>아이스브레이킹 ① 워밍업: 비대면 수업에 익숙해지기</td></tr>
+<tr><td>12:30–13:30</td><td>점심</td><td></td></tr>
+<tr><td>13:30–15:00</td><td><a href="#s3">세션 3</a></td><td>아이스브레이킹 ② 자기소개와 일하는 방식 알아보기</td></tr>
+<tr><td>15:00–16:00</td><td><a href="#s4">세션 4</a></td><td>아이스브레이킹 ③ 팀 미션: 셀렉트마켓의 불편 찾기</td></tr>
+<tr><td>16:00–16:30</td><td><a href="#s5">세션 5</a></td><td>그라운드 룰 정하기</td></tr>
+<tr><td>16:30–17:20</td><td><a href="#s6">세션 6</a></td><td>직무 이야기: AI 시대 PM·서비스 기획자는 무엇을 하나</td></tr>
+<tr><td>17:20–18:00</td><td><a href="#s7">세션 7</a></td><td>나의 성장 로드맵과 KPI·결과 이미지 만들기</td></tr>
+</table></div>
+</section>
+
+<section class="section session" id="s1">
+<div class="session-head"><div class="eyebrow">SESSION 1 · 11:00–12:00</div><h2>과정 안내: 5개월 반 로드맵</h2><p>이 과정은 <b>AI의 도움으로 서비스를 기획하고, 직접 만들고, 출시하고, 숫자로 개선하는 사람</b>을 목표로 해요. 프로그래밍을 몰라도 괜찮아요. 코드는 AI가 쓰고, 우리는 <b>무엇을 만들지 정하고 결과가 맞는지 확인하는 역할</b>을 연습해요.</p></div>
+
+<div class="topic" id="s1-1"><h3>1-1. 과정 한눈에 보기</h3>
+<p>전체 과정은 6개 단위기간, 총 920시간이에요. 단위기간마다 배우는 것이 쌓여서 마지막 종합 프로젝트로 이어져요.</p>
+<div class="flow"><div><span>1</span><b>만들기 기초</b><small>웹의 원리, AI로 첫 서비스 만들기</small></div><div><span>2</span><b>기획</b><small>문제 정의, MVP 설계</small></div><div><span>3</span><b>출시·측정</b><small>배포, 데이터로 성과 보기</small></div><div><span>4</span><b>고도화</b><small>로그인·데이터 저장·관리자 페이지</small></div><div><span>5</span><b>프로젝트</b><small>팀으로 실제 서비스 완성</small></div></div>
+<div class="table-wrap"><table>
+<tr><th>단위기간</th><th>기간</th><th>주요 교과</th><th>이 기간이 끝나면</th></tr>
+<tr><td>1단위</td><td>10/26 – 11/25</td><td>OT, AI 특강, GitHub·프로젝트 방법론(1), [기본] AI 서비스 개발, 미니 프로젝트</td><td>AI와 함께 만든 웹페이지를 인터넷에 올려 주소로 보여 줄 수 있어요.</td></tr>
+<tr><td>2단위</td><td>11/26 – 12/25</td><td>[기본] AI 서비스 기획 및 MVP 전략 수립, 미니 프로젝트, [심화] MVP 출시 전략 및 성과 측정 설계</td><td>문제를 정의하고, 최소 기능 제품(MVP)의 범위와 화면 설계를 문서로 만들어요.</td></tr>
+<tr><td>3단위</td><td>12/26 – 1/25</td><td>성과 측정 설계(이어서), 미니 프로젝트, 업종/도메인 특강, [심화] AI 서비스 고도화 및 최적화</td><td>내 서비스에 방문자 데이터를 연결하고, 숫자를 보고 개선점을 말할 수 있어요.</td></tr>
+<tr><td>4단위</td><td>1/26 – 2/25</td><td>고도화(이어서), 미니 프로젝트, 프로젝트 방법론(2), 중간 프로젝트, 종합 프로젝트 시작</td><td>로그인·데이터 저장·관리자 화면이 있는 서비스를 팀으로 만들어요.</td></tr>
+<tr><td>5–6단위</td><td>2/26 – 4/9</td><td>종합 프로젝트</td><td>팀 서비스를 완성하고, 포트폴리오로 정리해 발표해요.</td></tr>
+</table></div>
+<div class="notice"><b>세부 일정은 운영 기관 안내가 기준이에요</b><br/>위 표는 커리큘럼 일정표를 단위기간별로 묶은 거예요. 휴강일, 출결, 평가 일정 같은 운영 규정은 운영 기관(시넥스)의 공식 안내를 따라 주세요.</div>
+</div>
+
+<div class="topic" id="s1-2"><h3>1-2. 이 과정에서 만드는 것</h3>
+<p>과정이 끝나면 취업·창업에 바로 보여 줄 수 있는 <b>결과물 꾸러미</b>가 남아요.</p>
+<div class="three-cards">
+<article><span>문서</span><h3>기획 문서</h3><p>문제 정의, 사용자(페르소나), 요구사항 정의서, MVP 범위, 화면 설계</p></article>
+<article><span>서비스</span><h3>동작하는 서비스</h3><p>인터넷 주소로 열리는 웹 서비스. 미니 프로젝트 → 중간 프로젝트 → 종합 프로젝트로 키워요.</p></article>
+<article><span>증거</span><h3>포트폴리오</h3><p>무엇을, 왜, 어떻게 만들었고 결과가 어땠는지를 숫자와 화면으로 정리한 자료</p></article>
+</div>
+</div>
+
+<div class="topic" id="s1-3"><h3>1-3. 수업은 이렇게 진행해요</h3>
+<div class="procedure"><div><b>강사 시연</b>: 새로운 단계는 강사가 먼저 화면으로 보여 드려요.</div><div><b>따라 하기</b>: 같은 순서로 천천히 따라 해요. 막히면 바로 채팅에 "막혔어요 + 단계 번호"를 남겨 주세요.</div><div><b>확인하기</b>: 실습마다 결과 확인 체크리스트가 있어요. 체크가 모두 되면 다음 단계로 넘어가요.</div><div><b>기록하기</b>: 잘 된 프롬프트와 결과물 주소는 나만의 메모에 모아 두세요. 나중에 포트폴리오의 재료가 돼요.</div></div>
+<div class="notice"><b>AI가 써 준 결과는 항상 확인해요</b><br/>AI는 그럴듯하지만 틀린 내용을 만들 때가 있어요. 이 과정에서 가장 많이 연습하는 것은 "AI에게 일을 맡기고, 결과가 맞는지 확인하는 일"이에요. 이것이 바로 앞으로 여러분이 현장에서 할 일이에요.</div>
+</div>
+
+<div class="topic" id="s1-4"><h3>1-4. 이번 주 미리 보기</h3>
+<div class="table-wrap"><table>
+<tr><th>날짜</th><th>교과</th><th>한 줄 요약</th></tr>
+<tr><td>10/26(월)</td><td>OT 및 아이스브레이킹</td><td>과정 이해, 서로 알기, 나의 성장 로드맵</td></tr>
+<tr><td>10/27(화)</td><td>AI 특강</td><td>AI 서비스를 만들 때 지켜야 할 법·윤리·보안</td></tr>
+<tr><td>10/28(수)</td><td>GitHub 및 프로젝트 방법론(1)</td><td>GitHub 계정과 첫 저장소, 애자일과 디자인 씽킹</td></tr>
+<tr><td>10/29(목)</td><td>[기본] AI 서비스 개발</td><td>웹은 어떻게 동작할까, AI 개발 환경 준비</td></tr>
+<tr><td>10/30(금)</td><td>[기본] AI 서비스 개발</td><td>AI와 함께 첫 웹페이지를 만들어 인터넷에 올리기</td></tr>
+</table></div>
+</div>
+</section>
+
+<section class="section session" id="s2">
+<div class="session-head"><div class="eyebrow">SESSION 2 · 12:00–12:30</div><h2>아이스브레이킹 ① 워밍업</h2><p>비대면 수업은 화면 너머의 사람과 이야기하는 데 조금 시간이 걸려요. 먼저 가볍게 몸을 풀어요.</p></div>
+<div class="topic" id="s2-1"><h3>2-1. 화면 이름 바꾸기와 반응 연습</h3>
+<div class="procedure"><div>화면에 보이는 내 이름을 <b>이름(불리고 싶은 호칭)</b> 형식으로 바꿔요. 예: 김수정(수정)</div><div>강사가 질문하면 채팅에 숫자 하나로 답해요. "오늘 컨디션은 1~5 중 몇인가요?"</div><div>소회의실(작은 대화방)로 나뉘어 2분 동안 옆 사람에게 "오늘 아침에 한 일 한 가지"를 말해요. 다시 전체 방으로 돌아오는 연습까지 해 봐요.</div></div>
+</div>
+<div class="topic" id="s2-2"><h3>2-2. 한 단어 체크인</h3>
+<p>지금 이 과정에 대한 내 마음을 <b>한 단어</b>로 채팅에 남겨요. 예: 설렘, 걱정, 기대, 막막함. 정답은 없어요. 마지막 날 같은 질문을 다시 할 거예요.</p>
+</div>
+</section>
+
+<section class="section session" id="s3">
+<div class="session-head"><div class="eyebrow">SESSION 3 · 13:30–15:00</div><h2>아이스브레이킹 ② 자기소개와 일하는 방식</h2><p>팀 프로젝트를 잘하려면 서로의 <b>경험</b>과 <b>일하는 방식</b>을 아는 것이 먼저예요. 여러분이 지금까지 쌓은 일의 경험은 서비스 기획에서 가장 큰 재료가 돼요.</p></div>
+<div class="topic" id="s3-1"><h3>3-1. 3문장 자기소개</h3>
+<p>아래 세 문장을 메모장에 먼저 써 보고, 한 사람씩 1분 안에 말해요.</p>
+<div class="table-wrap"><table>
+<tr><th>문장</th><th>예시</th></tr>
+<tr><td>① 나는 이런 일을 해 왔어요</td><td>"쇼핑몰에서 10년 동안 고객 상담과 주문 관리를 했어요."</td></tr>
+<tr><td>② 그 일에서 늘 불편했던 것은</td><td>"같은 질문에 하루 수십 번 똑같이 답하는 게 늘 아쉬웠어요."</td></tr>
+<tr><td>③ 이 과정이 끝나면 나는</td><td>"반복 문의를 줄여 주는 서비스를 기획하는 PM으로 일하고 싶어요."</td></tr>
+</table></div>
+<p>②번에 적은 <b>불편</b>은 그대로 버리지 말고 메모에 남겨 두세요. 앞으로 기획 수업에서 "풀어 볼 문제"의 후보가 돼요.</p>
+</div>
+<div class="topic" id="s3-2"><h3>3-2. 나의 일하는 방식 알아보기</h3>
+<p>아래 네 가지 질문에 내가 더 가까운 쪽을 골라요. 성격 검사가 아니라, <b>팀에서 서로 맞춰 가기 위한 대화 재료</b>예요. 어느 쪽도 더 좋은 답은 없어요.</p>
+<div class="table-wrap"><table>
+<tr><th>질문</th><th>A</th><th>B</th></tr>
+<tr><td>일을 시작할 때</td><td>계획을 먼저 세우고 시작해요</td><td>일단 해 보면서 방향을 잡아요</td></tr>
+<tr><td>정보를 받을 때</td><td>글과 표로 정리된 게 편해요</td><td>말로 듣고 대화하는 게 편해요</td></tr>
+<tr><td>결정할 때</td><td>근거와 숫자를 보고 정해요</td><td>사람들의 반응과 분위기를 보고 정해요</td></tr>
+<tr><td>막혔을 때</td><td>혼자 먼저 찾아보고 물어봐요</td><td>바로 주변에 물어보며 풀어요</td></tr>
+</table></div>
+<p>고른 답 네 개를 이어서 채팅에 남겨요. 예: <code class="inline">A-B-A-B</code></p>
+</div>
+<div class="topic" id="s3-3"><h3>3-3. 짝 인터뷰</h3>
+<p>소회의실에서 두 명씩 짝을 지어 서로 인터뷰해요. 한 사람당 7분이에요. 이 활동은 DAY 3에 배우는 디자인 씽킹의 첫 단계 <b>공감하기</b>를 미리 연습하는 거예요.</p>
+<div class="procedure"><div>질문하는 사람은 아래 질문 중 3개를 골라 물어봐요.<ul><li>지금까지 한 일 중 가장 뿌듯했던 순간은 언제였나요?</li><li>그 일에서 가장 시간을 많이 잡아먹은 일은 무엇이었나요?</li><li>그때 "이런 게 있었으면" 했던 도구나 서비스가 있나요?</li><li>이 과정에서 꼭 얻어 가고 싶은 한 가지는 무엇인가요?</li></ul></div><div>듣는 사람은 <b>들은 말 그대로</b> 메모해요. 내 생각이나 해석은 따로 표시해요.</div><div>역할을 바꿔서 한 번 더 해요.</div><div>전체 방으로 돌아와 짝을 1분 동안 소개해요. "제 짝 ○○님은 …"</div></div>
+<ul class="checklist"><li>짝이 한 말을 내 해석 없이 그대로 소개했나요?</li><li>짝이 겪은 불편 한 가지를 구체적으로 말할 수 있나요?</li></ul>
+</div>
+</section>
+
+<section class="section session" id="s4">
+<div class="session-head"><div class="eyebrow">SESSION 4 · 15:00–16:00</div><h2>아이스브레이킹 ③ 팀 미션: 셀렉트마켓의 불편 찾기</h2><p>4~5명씩 팀을 나눠, 가상의 온라인 생활용품 쇼핑몰 <b>셀렉트마켓</b>의 문제를 찾아봐요. 앞으로 과정 내내 실습 예시로 쓰는 회사예요. 오늘은 정답을 맞히는 게 아니라 <b>함께 일해 보는 경험</b>이 목표예요.</p></div>
+<div class="topic" id="s4-1"><h3>4-1. 미션 안내</h3>
+<div class="notice"><b>셀렉트마켓 상황</b><br/>셀렉트마켓은 직원 5명이 운영하는 작은 온라인 쇼핑몰이에요. 최근 이런 이야기가 들려요.<br/>· 고객: "배송이 언제 오는지 물어보려면 전화를 해야 해요."<br/>· 직원: "같은 질문에 답하느라 하루 2시간을 써요."<br/>· 대표: "광고비는 늘었는데, 무엇이 효과가 있는지 모르겠어요."</div>
+<div class="procedure"><div>팀에서 <b>진행자</b>, <b>기록자</b>, <b>시간 지킴이</b>, <b>발표자</b>를 정해요. 4명이 안 되면 한 사람이 두 역할을 맡아요.</div><div>10분: 각자 셀렉트마켓의 불편을 떠오르는 대로 3개씩 말하고, 기록자가 모두 적어요.</div><div>10분: 비슷한 것끼리 묶고, "가장 먼저 풀고 싶은 불편" 하나를 골라요.</div><div>10분: 고른 불편을 아래 문장으로 정리해요.</div></div>
+<div class="copybox"><div class="copyhead"><span>팀 정리 문장 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>[누가]는 [어떤 상황]에서 [어떤 불편]을 겪는다.
+그래서 [무엇이 낭비되거나 손해]가 생긴다.
+우리 팀은 이것을 [어떤 방법]으로 줄여 보고 싶다.</pre></div>
+</div>
+<div class="topic" id="s4-2"><h3>4-2. 팀 발표와 돌아보기</h3>
+<p>발표자가 팀 정리 문장을 2분 안에 소개해요. 발표가 끝나면 팀 안에서 한 가지만 이야기해요: <b>"오늘 우리 팀은 어떻게 일했나요? 다음에 더 잘하려면?"</b></p>
+<ul class="checklist"><li>팀의 네 가지 역할이 모두 정해졌나요?</li><li>팀 정리 문장의 [ ]가 모두 채워졌나요?</li><li>"어떤 방법"에 특정 기술 이름보다 사용자가 겪는 변화가 먼저 적혀 있나요?</li></ul>
+</div>
+</section>
+
+<section class="section session" id="s5">
+<div class="session-head"><div class="eyebrow">SESSION 5 · 16:00–16:30</div><h2>그라운드 룰 정하기</h2><p>그라운드 룰(Ground Rule)은 우리 반이 끝까지 함께 지킬 <b>약속</b>이에요. 강사가 정해 주는 규칙이 아니라 우리가 함께 정해요.</p></div>
+<div class="topic" id="s5-1"><h3>5-1. 약속 후보 모으기</h3>
+<p>아래 예시를 참고해, 각자 지키고 싶은 약속을 채팅에 1~2개 남겨요.</p>
+<div class="three-cards">
+<article><span>수업</span><h3>참여</h3><p>카메라를 켜고 참여해요. 자리를 비울 때는 채팅에 남겨요.</p></article>
+<article><span>질문</span><h3>막히면 바로</h3><p>막힌 지 5분이 지나면 혼자 붙잡지 말고 물어봐요.</p></article>
+<article><span>팀</span><h3>존중</h3><p>경력·나이와 상관없이 서로 "○○님"으로 불러요. 다른 의견은 사람이 아니라 내용에 대해 말해요.</p></article>
+</div>
+</div>
+<div class="topic" id="s5-2"><h3>5-2. 다섯 가지로 정하고 기록하기</h3>
+<div class="procedure"><div>강사가 채팅에 올라온 약속을 비슷한 것끼리 묶어 화면에 보여 줘요.</div><div>마음에 드는 약속에 반응(손 들기나 채팅 숫자)으로 투표해요.</div><div>표를 많이 받은 순서로 <b>5가지</b>를 정해요.</div><div>정한 약속은 강사가 정리해 공지로 올려요. 매주 월요일 첫 시간에 한 번씩 돌아봐요.</div></div>
+</div>
+</section>
+
+<section class="section session" id="s6">
+<div class="session-head"><div class="eyebrow">SESSION 6 · 16:30–17:20</div><h2>직무 이야기: AI 시대 PM·서비스 기획자는 무엇을 하나</h2><p>현업 PM·서비스 기획자로 일해 온 대표 멘토(김수정 강사)가 직무를 소개해요. 이 과정이 왜 이런 순서로 짜였는지도 함께 이해할 수 있어요.</p></div>
+<div class="topic" id="s6-1"><h3>6-1. PM·서비스 기획자가 하는 일</h3>
+<p>PM(Product Manager)과 서비스 기획자는 회사마다 부르는 이름과 범위가 조금씩 달라요. 공통으로 하는 일은 <b>"무엇을, 왜, 누구를 위해 만들지 정하고, 만든 것이 문제를 풀었는지 확인하는 일"</b>이에요.</p>
+<div class="flow"><div><span>1</span><b>문제 발견</b><small>사용자와 현장의 불편 찾기</small></div><div><span>2</span><b>기획</b><small>범위·우선순위·화면 정하기</small></div><div><span>3</span><b>만들기</b><small>개발·디자인과 함께 완성</small></div><div><span>4</span><b>출시</b><small>사용자에게 내보내기</small></div><div><span>5</span><b>측정·개선</b><small>숫자로 보고 다시 고치기</small></div></div>
+<p>이 다섯 단계가 이 과정의 교과 순서와 같아요. 기획(2단위) → 만들기(1·4단위) → 출시·측정(2·3단위) → 프로젝트로 다시 한 바퀴 돌아요.</p>
+</div>
+<div class="topic" id="s6-2"><h3>6-2. AI가 바꾼 것과 바꾸지 못한 것</h3>
+<div class="table-wrap"><table>
+<tr><th></th><th>AI가 빨라지게 한 일</th><th>여전히 사람이 책임지는 일</th></tr>
+<tr><td>기획</td><td>자료 조사, 문서 초안, 화면 시안</td><td>어떤 문제를 풀지, 무엇을 뺄지 정하기</td></tr>
+<tr><td>만들기</td><td>코드 작성, 오류 찾기</td><td>요구한 대로 동작하는지 확인하기</td></tr>
+<tr><td>출시·측정</td><td>데이터 요약, 리포트 초안</td><td>숫자가 맞는지, 무엇을 결정할지 판단하기</td></tr>
+</table></div>
+<div class="notice"><b>30~50대 경력이 강점이 되는 이유</b><br/>AI가 초안을 빨리 만들수록, "이 업무 현장에서 진짜 문제는 무엇인가"를 아는 사람이 중요해져요. 여러분이 쌓아 온 업무 경험과 고객을 대해 본 경험은 그대로 기획의 근거가 돼요.</div>
+</div>
+<div class="topic" id="s6-3"><h3>6-3. 채용 공고 읽어 보기</h3>
+<p><span class="tag tag-req">실습</span> 채용 사이트에서 "서비스 기획" 또는 "PM"으로 검색해 관심 가는 공고 1개를 열어요. 공고에서 요구하는 역량을 아래 세 칸으로 나눠 메모해요.</p>
+<div class="table-wrap"><table>
+<tr><th>칸</th><th>무엇을 적나요</th><th>예시</th></tr>
+<tr><td>이미 있는 것</td><td>내 경력으로 바로 증명할 수 있는 역량</td><td>고객 응대 경험, 협업 경험</td></tr>
+<tr><td>과정에서 채울 것</td><td>이 과정의 교과로 채울 수 있는 역량</td><td>요구사항 정의서, 데이터 분석, 프로토타입</td></tr>
+<tr><td>따로 준비할 것</td><td>과정 밖에서 준비해야 하는 것</td><td>특정 업종 지식, 자격 요건</td></tr>
+</table></div>
+<p>이 메모는 다음 세션의 성장 로드맵에 그대로 써요.</p>
+</div>
+</section>
+
+<section class="section session" id="s7">
+<div class="session-head"><div class="eyebrow">SESSION 7 · 17:20–18:00</div><h2>나의 성장 로드맵과 KPI·결과 이미지</h2><p>오늘 적은 메모를 모아, 과정이 끝났을 때의 나를 <b>한 장</b>으로 정리해요. 생성형 AI 채팅으로 초안을 만들고, 내가 직접 고쳐서 완성해요.</p></div>
+<div class="topic" id="s7-1"><h3>7-1. 결과 이미지와 KPI란</h3>
+<div class="three-cards">
+<article><span>결과 이미지</span><h3>끝났을 때 보여 줄 것</h3><p>"4월에 나는 이 서비스 주소와 이 포트폴리오를 보여 주며 면접을 본다"처럼 눈에 보이는 모습</p></article>
+<article><span>KPI</span><h3>중간 점검 숫자</h3><p>KPI(핵심 성과 지표)는 잘 가고 있는지 확인하는 숫자예요. 예: 11월까지 배포한 페이지 1개</p></article>
+<article><span>행동</span><h3>매주 할 일</h3><p>KPI를 채우기 위해 매주 지킬 작은 습관. 예: 매주 금요일 결과물 주소 기록하기</p></article>
+</div>
+</div>
+<div class="topic" id="s7-2"><h3>7-2. AI로 로드맵 초안 만들기</h3>
+<p><span class="tag tag-req">실습</span> 사용하는 생성형 AI 채팅을 열고, 아래 프롬프트의 [ ]를 오늘 메모로 바꿔 넣어요.</p>
+<div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>요청: 아래 내 메모로 국비 과정 'AI 프로덕트 매니저'(2026년 10월 26일~2027년 4월 9일) 동안의 개인 성장 로드맵 한 장을 정리해 줘.
+내용: 내 경력과 불편했던 점 [3-1 자기소개 세 문장] / 목표 직무 [취업할 직무 또는 창업 아이템] / 채용 공고 메모 [6-3 세 칸 메모] / 단위기간 1단위 10/26–11/25 첫 웹페이지 배포, 2단위 11/26–12/25 기획 문서, 3단위 12/26–1/25 데이터 측정, 4단위 1/26–2/25 로그인·관리자 기능, 5–6단위 2/26–4/9 종합 프로젝트와 포트폴리오
+형식: ① 결과 이미지 2문장 ② 단위기간별 KPI 표(단위기간 / KPI 숫자 1개 / 확인 방법) ③ 매주 지킬 행동 3가지. 내 메모에 없는 경력·자격증·숫자는 추가하지 말고, 모르는 칸은 [확인 필요]로 남겨 줘.</pre></div>
+<ul class="checklist"><li>AI가 내가 말하지 않은 경력이나 자격증을 지어내지 않았나요? 있으면 지워요.</li><li>KPI가 숫자로 확인할 수 있는 형태인가요? (예: "열심히 하기" ✕ → "배포한 페이지 1개" ○)</li><li>[확인 필요]로 남은 칸을 내 말로 채웠나요?</li><li>결과 이미지를 읽으면 4월의 내 모습이 그려지나요?</li></ul>
+</div>
+<div class="topic" id="s7-3"><h3>7-3. 나눔과 체크아웃</h3>
+<p>3명이 자원해 결과 이미지 두 문장을 읽어 줘요. 마지막으로 처음에 남긴 한 단어 체크인을 다시 떠올리고, 지금 마음을 다시 한 단어로 채팅에 남겨요.</p>
+</div>
+</section>
+
+<section class="section" id="wrap"><div class="section-label">WRAP-UP</div><h2>오늘 정리와 과제</h2>
+<ul>
+<li>과정은 6개 단위기간, 920시간이며 <b>기획 → 만들기 → 출시·측정 → 프로젝트</b> 흐름으로 이어져요.</li>
+<li>팀으로 일할 때는 역할을 나누고, 들은 말을 해석 없이 기록하는 것부터 시작해요.</li>
+<li>우리 반 그라운드 룰 5가지는 매주 월요일에 돌아봐요.</li>
+</ul>
+<p><b>과제</b></p>
+<ul class="checklist"><li>성장 로드맵 한 장을 완성해 파일로 저장해 두세요. 이름 예: <code class="inline">성장로드맵_이름_1026</code></li><li>DAY 3 수업 전까지 GitHub 가입에 쓸 이메일 주소를 정해 두세요.</li></ul>
+</section>
+</main>
+</div>
+<button id="slideBtn" type="button">▶ 슬라이드로 보기</button>
+<div hidden="" id="deck">
+<div id="viewport"><div id="stage">
+<div id="master"><span>AI 프로덕트 매니저 1주차 · DAY 1 OT</span></div>
+<div id="mbar"><i id="prog"></i></div>
+<div id="slide"></div>
+<div id="pager"><button aria-label="이전" id="prev" type="button">◀</button><span id="pg"></span><button aria-label="다음" id="next" type="button">▶</button></div>
+</div></div>
+<div id="bar"><button id="exit" type="button">✕ 닫기 (Esc)</button></div>
+</div>
+<script type="text/javascript">
+(function(){
+  var K={'요청':'','내용':' k2','형식':' k3'};
+  window.fmtPre=function(pr){
+    var t=pr.textContent;
+    if(!/^요청: /.test(t))return;
+    var lines=t.split('\n');pr.textContent='';pr.className='fmt';
+    lines.forEach(function(l,i){
+      var m=l.match(/^(요청|내용|형식): (.*)$/),d=document.createElement('div');
+      if(m){d.className='pl'+K[m[1]];var b=document.createElement('b');b.className='pk';b.textContent=m[1]+': ';var sp=document.createElement('span');sp.className='pt';sp.textContent=m[2];d.appendChild(b);d.appendChild(sp);}
+      else{d.className='pl c';var sp2=document.createElement('span');sp2.className='pt';sp2.textContent=l;d.appendChild(sp2);}
+      pr.appendChild(d);if(i<lines.length-1)pr.appendChild(document.createTextNode('\n'));
+    });
+  };
+  document.querySelectorAll('.copybox pre').forEach(window.fmtPre);
+})();
+</script>
+<script type="text/javascript">
+(function(){
+  var re=/^(STEP|준비|규칙서대로|분석 [1-4]|프롬프트 [AB]|프롬프트 쓰기|실습|방법 [A-C]|워밍업|[①-⑤] |\(선택\)|완성한|결과를 보고|버전|두 결과)/;
+  var nav=document.querySelector('aside nav');
+  document.querySelectorAll('main .topic').forEach(function(t){
+    var parent=nav.querySelector('a.l3[href="#'+t.id+'"]'),last=parent,n=0;
+    if(!parent)return;
+    t.querySelectorAll(':scope > p').forEach(function(p){
+      var b=p.firstElementChild;
+      if(!b||b.tagName!=='B'||p.children.length!==1||p.textContent.trim()!==b.textContent.trim()||!re.test(b.textContent.trim()))return;
+      p.classList.add('dh');p.id='d-'+t.id+'-'+(++n);
+      var a=document.createElement('a');a.className='l4';a.href='#'+p.id;a.setAttribute('data-p',t.id);
+      a.textContent=b.textContent.replace(/[:：]\s*.*$/,'').trim();
+      last.parentNode.insertBefore(a,last.nextSibling);last=a;
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+var main=document.querySelector('main'),deck=document.getElementById('deck'),box=document.getElementById('slide'),pgEl=document.getElementById('pg'),prog=document.getElementById('prog'),pages=[],i=0;
+function kids(el,skip){return Array.prototype.filter.call(el.children,function(c){return !skip(c);});}
+function logical(){
+  var out=[],hero=main.querySelector('.hero');
+  if(hero)out.push({sect:'표지',title:'',n:Array.prototype.slice.call(hero.children)});
+  Array.prototype.forEach.call(main.querySelectorAll(':scope > .section'),function(sec){
+    var h2=sec.querySelector('h2'),title=h2.textContent,head=sec.querySelector('.session-head'),n=[];
+    if(head)n=Array.prototype.slice.call(head.querySelectorAll('p'));
+    n=n.concat(kids(sec,function(c){return c.classList.contains('section-label')||c.tagName==='H2'||c.classList.contains('session-head')||c.classList.contains('topic');}));
+    if(n.length)out.push({sect:title,title:title,n:n});
+    Array.prototype.forEach.call(sec.querySelectorAll(':scope > .topic'),function(t){
+      var h3=t.querySelector('h3');
+      out.push({sect:title,title:h3.textContent,n:kids(t,function(c){return c===h3;})});
+    });
+  });
+  return out;
+}
+function over(){return box.scrollHeight>box.clientHeight+1;}
+function build(){
+  pages=[];var L=logical(),count,sl;L.forEach(function(x){var out=[];x.n.forEach(function(el){if(el.tagName==="DETAILS"){var t=el.querySelector(".summary-title");var h=document.createElement("p");h.innerHTML="<b>"+(t?t.textContent:"")+"</b>";out.push(h);Array.prototype.forEach.call(el.children,function(c){if(c.tagName!=="SUMMARY")out.push(c);});}else out.push(el);});x.n=out;});
+  function head(cont){
+    box.innerHTML='';
+    if(sl.title&&sl.sect&&sl.sect!==sl.title){var eb=document.createElement('div');eb.className='eb';eb.textContent=sl.sect;box.appendChild(eb);}
+    if(sl.title){var h=document.createElement('h3');h.className='st';h.textContent=sl.title;
+      if(cont){var c=document.createElement('span');c.className='cont';c.textContent='(이어서)';h.appendChild(c);}
+      box.appendChild(h);}
+    count=0;
+  }
+  function flush(){pages.push({html:box.innerHTML,sect:sl.sect});}
+  function addSplit(items,shellFn){
+    var shell=shellFn(),n=0;box.appendChild(shell.root);
+    items.forEach(function(it){
+      shell.add(it);n++;
+      if(over()&&(n>1||count>0)){
+        shell.remove();n--;
+        if(n===0)box.removeChild(shell.root);
+        flush();head(true);shell=shellFn();n=0;box.appendChild(shell.root);shell.add(it);n=1;
+      }
+    });
+    count++;
+  }
+  L.forEach(function(s){
+    sl=s;head(false);
+    s.n.forEach(function(el){
+      var tbl=el.classList&&el.classList.contains('table-wrap')&&el.querySelector('table');
+      var rows=tbl?Array.prototype.slice.call(tbl.rows):null;
+      var hasHead=rows&&rows.length>3&&Array.prototype.every.call(rows[0].cells,function(c){return c.tagName==='TH';})
+        &&!rows.some(function(r){return Array.prototype.some.call(r.cells,function(c){return c.rowSpan>1;});});
+      var listy=(el.tagName==='UL'||el.tagName==='OL'||(el.classList&&(el.classList.contains('procedure')||el.classList.contains('resource-list'))))&&el.children.length>1;
+      if(el.classList&&el.classList.contains('dh')&&count>1&&box.scrollHeight>box.clientHeight*0.5){flush();head(false);}
+      var c=el.cloneNode(true);box.appendChild(c);
+      if(over()&&count>0){var pv=c.previousElementSibling,lead=count>1&&pv&&pv.tagName==='P'&&pv.children.length===1&&pv.firstElementChild.tagName==='B'&&pv.textContent.trim()===pv.firstElementChild.textContent.trim();
+        box.removeChild(c);if(lead)box.removeChild(pv);flush();head(true);if(lead){box.appendChild(pv);count++;}box.appendChild(c);}
+      if(over()){
+        if(hasHead){
+          box.removeChild(c);
+          addSplit(rows.slice(1),function(){
+            var w=el.cloneNode(false),t=tbl.cloneNode(false),b=document.createElement('tbody');
+            t.appendChild(b);b.appendChild(rows[0].cloneNode(true));w.appendChild(t);
+            return {root:w,add:function(r){b.appendChild(r.cloneNode(true));},remove:function(){b.removeChild(b.lastChild);}};
+          });
+          return;
+        }
+        if(el.classList&&el.classList.contains('copybox')){
+          box.removeChild(c);
+          var lines=el.querySelector('pre').textContent.split('\n');
+          addSplit(lines,function(){
+            var w=el.cloneNode(false),hd=el.querySelector('.copyhead').cloneNode(true),pr=document.createElement('pre'),txt=[];
+            w.appendChild(hd);w.appendChild(pr);
+            return {root:w,add:function(l){txt.push(l);pr.className='';pr.textContent=txt.join('\n');window.fmtPre(pr);},remove:function(){txt.pop();pr.className='';pr.textContent=txt.join('\n');window.fmtPre(pr);}};
+          });
+          return;
+        }
+        if(listy){
+          box.removeChild(c);
+          addSplit(Array.prototype.slice.call(el.children),function(){
+            var u=el.cloneNode(false);
+            return {root:u,add:function(li){u.appendChild(li.cloneNode(true));},remove:function(){u.removeChild(u.lastChild);}};
+          });
+          return;
+        }
+      }
+      count++;
+    });
+    flush();
+  });
+  var o='<h3 class="st">전체 목차</h3><div class="outline">';
+  Array.prototype.forEach.call(document.querySelectorAll('aside nav .grp'),function(g){
+    o+='<div class="og"><b>'+g.querySelector('.grp-label').textContent+(g.querySelector('.l2')&&g.querySelector('.grp-label').textContent.indexOf('세션')===0?' · '+g.querySelector('.l2').textContent:'')+'</b>';
+    var guide=g.querySelector('.grp-label').textContent==='교육 안내';
+    Array.prototype.forEach.call(g.querySelectorAll(guide?'a.l2,a.l3':'a.l3'),function(a){o+='<span>'+a.textContent+'</span>';});
+    o+='</div>';
+  });
+  pages.splice(1,0,{html:o+'</div>',sect:'목차'});
+}
+function show(n){
+  i=Math.max(0,Math.min(pages.length-1,n));var p=pages[i];
+  box.innerHTML=p.html;box.scrollTop=0;
+  pgEl.textContent=(i+1)+' / '+pages.length;prog.style.width=((i+1)/pages.length*100)+'%';
+}
+var stage=document.getElementById('stage'),vp=document.getElementById('viewport');
+function fit(){var k=Math.min(vp.clientWidth/1280,vp.clientHeight/720);stage.style.transform='translate(-50%,-50%) scale('+k+')';}
+function open(){deck.hidden=false;document.body.style.overflow='hidden';fit();var w=[].slice.call(main.querySelectorAll('img')).map(function(m){if(m.complete)return 0;m.loading='eager';return new Promise(function(r){m.onload=m.onerror=r;setTimeout(r,8000);});});Promise.all(w).then(function(){build();show(0);});}
+function close(){deck.hidden=true;document.body.style.overflow='';}
+window.addEventListener('resize',function(){if(!deck.hidden)fit();});
+document.getElementById('slideBtn').onclick=open;
+document.getElementById('exit').onclick=close;
+document.getElementById('prev').onclick=function(){show(i-1)};
+document.getElementById('next').onclick=function(){show(i+1)};
+document.addEventListener('keydown',function(e){
+  if(deck.hidden)return;
+  if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ')show(i+1);
+  else if(e.key==='ArrowLeft'||e.key==='PageUp')show(i-1);
+  else if(e.key==='Escape')close();
+});
+document.addEventListener('click',function(e){
+  var b=e.target.closest&&e.target.closest('.copyhead button');if(!b)return;
+  var pre=b.closest('.copybox').querySelector('pre');
+  var done=function(){var t=b.textContent;b.textContent='복사됨';setTimeout(function(){b.textContent=t;},1200);};
+  if(navigator.clipboard)navigator.clipboard.writeText(pre.classList.contains('fmt')?pre.textContent:pre.innerText).then(done,done);else done();
+});
+})();
+</script>
+<script type="text/javascript">
+(function(){
+  var links=[].slice.call(document.querySelectorAll('aside nav a[href^="#"]'));
+  var targets=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));});
+  function update(){
+    var y=window.scrollY+120, cur=-1;
+    targets.forEach(function(el,i){ if(el && el.getBoundingClientRect().top+window.scrollY<=y) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('active', i===cur); });
+    var cp=null;
+    if(cur>=0){ var ca=links[cur]; cp=ca.classList.contains('l4')?ca.getAttribute('data-p'):(ca.getAttribute('href').slice(1)); }
+    links.forEach(function(a){ if(a.classList.contains('l4')) a.classList.toggle('show', a.getAttribute('data-p')===cp); });
+    if(cur>=0){ var a=links[cur], box=a.closest('aside'), r=a.getBoundingClientRect();
+      if(r.top<120||r.bottom>window.innerHeight-20) box.scrollTop+=r.top-window.innerHeight/2; }
+  }
+  window.addEventListener('scroll',update,{passive:true}); update();
+})();
+</script>
+<script type="text/javascript">
+(function(){
+  var btn=document.querySelector('.nav-toggle'), label=btn.querySelector('span'), body=document.body;
+  var mq=window.matchMedia('(max-width: 1020px)');
+  function isOpen(){ return mq.matches ? body.classList.contains('nav-open') : !body.classList.contains('nav-hidden'); }
+  function sync(){ var o=isOpen(); btn.setAttribute('aria-expanded',o); label.textContent=o?'목차 숨기기':'목차 보기'; }
+  try{ if(localStorage.getItem('navHidden')==='1') body.classList.add('nav-hidden'); }catch(e){}
+  btn.addEventListener('click',function(){
+    if(mq.matches){ body.classList.toggle('nav-open'); }
+    else{ var h=body.classList.toggle('nav-hidden'); try{ localStorage.setItem('navHidden',h?'1':'0'); }catch(e){} }
+    sync();
+  });
+  document.querySelectorAll('aside nav a').forEach(function(a){ a.addEventListener('click',function(){ if(mq.matches){ body.classList.remove('nav-open'); sync(); } }); });
+  if(mq.addEventListener) mq.addEventListener('change',sync);
+  sync();
+})();
+</script>
+</body>
+</html>
