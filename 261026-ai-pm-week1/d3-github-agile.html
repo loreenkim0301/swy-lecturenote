@@ -478,11 +478,12 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td><b>GitHub Mobile</b> (GitHub 공식 앱)</td><td>로그인할 때 휴대폰의 GitHub 앱으로 "승인" 알림이 와요.</td><td>아니요. 인증 앱이나 문자 메시지를 <b>먼저</b> 설정한 뒤에 추가로 쓸 수 있어요.</td></tr>
 <tr><td><b>패스키 · 보안 키</b></td><td>휴대폰·노트북의 지문·얼굴 인식이나 USB 보안 키로 확인해요.</td><td>아니요. 2단계 인증을 먼저 켠 뒤 추가해요.</td></tr>
 </table></div>
+<figure class="sample-shot"><img alt="Two-factor methods 목록. Authenticator app Configured, SMS/Text message Less secure, Security keys, GitHub Mobile Configured" height="660" loading="lazy" src="./images/d3-2fa-methods.jpg" width="850"/><figcaption>2단계 인증을 켠 뒤의 화면: 인증 앱(Authenticator app)이 먼저 설정돼 있고, GitHub Mobile은 추가로 연결돼 있어요. SMS에는 "Less secure"(덜 안전) 표시가 붙어요 (2026년 10월 28일 강사 계정 화면). 강사 계정은 이미 설정돼 있어 QR 코드 화면은 강사 시연으로 대신해요</figcaption></figure>
 <div class="resource-list"><a class="resource-card" href="https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication" target="_blank" rel="noopener"><span class="small">GitHub Docs · 2026-10-28 확인</span><b>Configuring two-factor authentication</b></a></div>
 <p><span class="tag tag-req">실습</span> 인증 앱으로 설정하는 순서예요. 휴대폰에 인증 앱을 먼저 설치해 두세요.</p>
 <div class="procedure">
-<div>오른쪽 위 내 프로필 사진을 누르고 [Settings]를 눌러요.</div>
-<div>왼쪽 메뉴의 "Access" 구역에서 [Password and authentication]을 눌러요.</div>
+<div>오른쪽 위 내 프로필 사진을 누르고 [Settings]를 눌러요.<figure class="sample-shot"><img alt="오른쪽 위 프로필 사진을 누르면 열리는 메뉴. Profile, Repositories, Settings, Sign out 등" height="540" loading="lazy" src="./images/d3-profile-menu.jpg" width="250"/><figcaption>프로필 메뉴에서 [Settings] (2026년 10월 28일 강사 계정 화면)</figcaption></figure></div>
+<div>왼쪽 메뉴의 "Access" 구역에서 [Password and authentication]을 눌러요.<figure class="sample-shot"><img alt="Settings 화면 왼쪽 메뉴의 Password and authentication이 선택되고, 오른쪽에 Sign in methods와 Two-factor authentication 구역" height="700" loading="lazy" src="./images/d3-settings-path.jpg" width="1140"/><figcaption>[Password and authentication] 화면: 아래쪽에 Two-factor authentication 구역이 있어요 (2026년 10월 28일 강사 계정 화면)</figcaption></figure></div>
 <div>"Two-factor authentication" 구역에서 [Enable two-factor authentication]을 눌러요.</div>
 <div>화면 안내에 따라 휴대폰 인증 앱으로 화면의 QR 코드를 찍고, 앱에 나온 숫자를 입력해요.</div>
 <div>"Save your recovery codes"(복구 코드 저장) 화면에서 [Download]를 눌러 복구 코드를 내려받아요.</div>
@@ -513,11 +514,11 @@ aside nav a.active{border-left-color:var(--blue)}
 </table></div>
 <p><b>실습 1. 저장소 만들기</b></p>
 <div class="procedure">
-<div>GitHub에 로그인하고 오른쪽 위 <b>[+]</b> 메뉴에서 <b>[New repository]</b>를 눌러요.</div>
+<div>GitHub에 로그인하고 오른쪽 위 <b>[+]</b> 메뉴에서 <b>[New repository]</b>를 눌러요.<figure class="sample-shot"><img alt="오른쪽 위 + 메뉴. New issue, New repository, Import repository 등" height="290" loading="lazy" src="./images/d3-plus-menu.jpg" width="190"/><figcaption>[+] 메뉴의 [New repository] (2026년 10월 28일 강사 계정 화면)</figcaption></figure></div>
 <div>[Owner]에서 내 사용자 이름이 골라져 있는지 확인해요.</div>
 <div>Repository name에 <code class="inline">my-first-site</code>를 적어요.</div>
 <div>공개 범위는 <b>[Public]</b>을 골라요.</div>
-<div><b>[Add README]</b>를 켜고 <b>[Create repository]</b>를 눌러요. 화면에 따라 "Add a README file" 체크 상자로 보일 수 있어요. 어느 쪽이든 README를 추가하는 선택지를 켜면 돼요.</div>
+<div><b>[Add README]</b>를 켜고 <b>[Create repository]</b>를 눌러요. 화면에 따라 "Add a README file" 체크 상자로 보일 수 있어요. 어느 쪽이든 README를 추가하는 선택지를 켜면 돼요.<figure class="sample-shot"><img alt="Create a new repository 화면. Repository name에 my-first-site, my-first-site is available, Public, Add README On, Create repository 버튼" height="750" loading="lazy" src="./images/d3-new-repo.jpg" width="690"/><figcaption>저장소 만들기 화면: 이름 칸 아래 "my-first-site is available"이 보이면 쓸 수 있는 이름이에요. [Public], [Add README] On을 확인하고 [Create repository] (2026년 10월 28일 강사 계정 화면), 만들기 직전 화면</figcaption></figure></div>
 </div>
 <div class="notice"><b>저장소 이름 규칙</b><br/>저장소 이름은 100자를 넘을 수 없고, 영문자·숫자와 <code class="inline">.</code> <code class="inline">-</code> <code class="inline">_</code> 만 쓸 수 있어요. 한글이나 띄어쓰기는 쓰지 않아요.</div>
 <div class="warning"><b>Public 저장소는 누구나 볼 수 있어요.</b> 내 전화번호, 주소, 주민등록번호, 복구 코드, 회사 내부 자료는 절대 올리지 마세요. 실습은 모두 가상 회사 셀렉트마켓 자료로 해요.</div>
@@ -532,10 +533,10 @@ aside nav a.active{border-left-color:var(--blue)}
 <p>내 컴퓨터에 있는 파일을 저장소에 올려요. 올리는 순간 "누가, 언제, 어떤 메모로 올렸는지"가 커밋으로 남아요.</p>
 <p><b>실습 2. sale.html 올리기</b></p>
 <div class="procedure">
-<div>저장소 화면에서 <b>[Add file]</b> → <b>[Upload files]</b>를 눌러요.</div>
+<div>저장소 화면에서 <b>[Add file]</b> → <b>[Upload files]</b>를 눌러요.<figure class="sample-shot"><img alt="저장소 화면의 Add file 메뉴. Create new file, Upload files" height="330" loading="lazy" src="./images/d3-add-file.jpg" width="830"/><figcaption>[Add file] 메뉴: [Upload files]는 내 파일 올리기, [Create new file]은 새 파일 바로 쓰기 (강사 교안 저장소 예시)</figcaption></figure></div>
 <div>수업 전에 내려받은 <code class="inline">sale.html</code>을 화면에 끌어다 놓거나, [choose your files]를 눌러 골라요.</div>
 <div>아래 Commit message 칸에 <code class="inline">셀렉트마켓 특가 페이지 첫 업로드</code>라고 적어요.</div>
-<div><code class="inline">main</code>에 바로 커밋하는 선택지를 그대로 두고, 아래 커밋 버튼을 눌러요.</div>
+<div><code class="inline">main</code>에 바로 커밋하는 선택지를 그대로 두고, 아래 커밋 버튼을 눌러요.<figure class="sample-shot"><img alt="Upload files 화면. Drag files here 영역, Commit changes 칸, Commit directly to the branch와 Create a new branch 선택지, Commit changes 버튼" height="600" loading="lazy" src="./images/d3-upload.jpg" width="1100"/><figcaption>업로드 화면: 위에 파일을 끌어다 놓고, 아래 첫 칸에 커밋 메시지를 적어요. "Commit directly to the main branch"가 골라져 있는지 확인하고 [Commit changes] (강사 저장소 예시라 브랜치 이름이 달라요)</figcaption></figure></div>
 </div>
 <div class="warning"><b>브라우저로 올릴 수 있는 크기</b><br/>브라우저 업로드는 파일 하나당 25MiB, 한 번에 100개까지예요. 동영상이나 큰 데이터 파일은 저장소에 넣지 않는 것이 좋아요.</div>
 <p><b>좋은 커밋 메시지</b>는 "무엇을 왜 바꿨는지" 한 줄로 알 수 있어야 해요. 나중에 기록을 다시 볼 사람(미래의 나, 동료, AI)을 위한 메모예요.</p>
@@ -567,7 +568,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <p><b>실습 3. README.md에 내 소개 쓰기</b></p>
 <div class="procedure">
 <div>파일 목록에서 <code class="inline">README.md</code> 를 눌러요.</div>
-<div>파일 화면 오른쪽 위의 <b>연필 모양 버튼</b>을 눌러 편집 화면을 열어요.</div>
+<div>파일 화면 오른쪽 위의 <b>연필 모양 버튼</b>을 눌러 편집 화면을 열어요.<figure class="sample-shot"><img alt="파일 편집 화면. 위에 Edit과 Preview 탭, 오른쪽 위 Cancel changes와 Commit changes 버튼" height="610" loading="lazy" src="./images/d3-edit.jpg" width="1150"/><figcaption>편집 화면: [Edit]에서 고치고 [Preview]로 미리 보고, 오른쪽 위 [Commit changes...]로 저장해요 (강사 저장소 예시)</figcaption></figure></div>
 <div>원래 있던 글 아래에 다음 내용을 [ ]만 바꿔 써요.<pre>## 소개
 - 이름: [불리고 싶은 이름]
 - 과정: AI 프로덕트 매니저 (2026.10 ~ 2027.04)
@@ -599,6 +600,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td><b>ZIP 내려받기</b></td><td>저장소 화면의 <b>[Code]</b> → <b>[Download ZIP]</b></td><td>오지 않아요. 지금 시점의 파일만 와요.</td><td>결과물만 전달하거나 한번 살펴볼 때</td></tr>
 <tr><td><b>클론(clone)</b></td><td>[Code]에 보이는 저장소 주소로 Git이나 AI 코딩 도구가 복사</td><td>모든 기록이 함께 와요.</td><td>이어서 고치고 다시 올릴 때 (설치가 필요해 오늘은 뜻만)</td></tr>
 </table></div>
+<figure class="sample-shot"><img alt="Code 버튼 메뉴. Local 탭의 Clone 주소, Open with GitHub Desktop, Download ZIP" height="330" loading="lazy" src="./images/d3-code-menu.jpg" width="380"/><figcaption>[Code] 메뉴: 맨 아래 [Download ZIP]은 파일만, 위의 Clone 주소는 기록째 가져갈 때 써요 (강사 저장소 예시)</figcaption></figure>
 <p><b>실습 5. ZIP으로 내려받아 비교하기</b></p>
 <p>[Code] → [Download ZIP]으로 내려받아 압축을 풀고, 안에 있는 <code class="inline">sale.html</code>을 브라우저로 열어 보세요. 제목이 실습 4에서 바꾼 문구로 보이면 성공이에요. 압축 파일 안에는 커밋 기록이 없다는 점도 확인해요.</p>
 <ul class="checklist"><li>내려받은 sale.html에 바뀐 제목이 보이나요?</li><li>ZIP에는 파일만 있고 커밋 기록은 없다는 것을 설명할 수 있나요?</li></ul>
@@ -616,7 +618,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="procedure">
 <div>저장소 첫 화면 파일 목록 위쪽의 <b>커밋 개수 표시(시계 모양 아이콘)</b>를 눌러 커밋 목록을 열어요.</div>
 <div>가장 위에 있는 커밋 메시지를 눌러요.</div>
-<div>빨간 줄은 <b>지워진 내용</b>, 초록 줄은 <b>새로 들어간 내용</b>이에요. 실습 4에서 바꾼 가격이 빨강 → 초록으로 보이는지 확인해요.</div>
+<div>빨간 줄은 <b>지워진 내용</b>, 초록 줄은 <b>새로 들어간 내용</b>이에요. 실습 4에서 바꾼 가격이 빨강 → 초록으로 보이는지 확인해요.<figure class="sample-shot"><img alt="커밋 하나를 연 화면. 커밋 메시지, 1 file changed, 빨간 줄(지운 줄)과 초록 줄(더한 줄)" height="700" loading="lazy" src="./images/d3-commit-diff.jpg" width="1440"/><figcaption>커밋 상세 화면: 커밋 메시지 아래에 바뀐 파일과 줄이 보여요. 빨간 줄이 예전, 초록 줄이 새 내용이에요 (강사 저장소 예시)</figcaption></figure></div>
 </div>
 <p><b>두 시점 비교하기:</b> 주소창에 <code class="inline">github.com/내아이디/my-first-site/compare</code>를 입력하면 두 브랜치나 두 커밋 사이에 바뀐 내용을 한 번에 볼 수 있어요. 커밋 번호(앞 7자리)를 <code class="inline">이전번호..이후번호</code> 형식으로 주소 뒤에 붙여도 돼요.</p>
 <p><b>파일 한 개의 기록:</b> 파일을 연 화면에서 그 파일을 바꾼 커밋만 모아 볼 수 있고, <b>[Blame]</b>을 누르면 줄마다 마지막으로 바꾼 커밋과 사람이 표시돼요.</p>
@@ -637,7 +639,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <div>실습 6처럼 커밋 목록에서 <code class="inline">특가 제목을 10월 마지막 주로 변경</code> 커밋을 열어 예전 문구(빨간 줄)를 확인해요.</div>
 <div><code class="inline">sale.html</code> 편집 화면에서 제목을 예전 문구 <code class="inline">이번 주 특가 3가지</code>로 다시 바꿔요.</div>
 <div>커밋 메시지 <code class="inline">특가 제목 되돌림: 이번 주 특가 3가지</code>로 커밋해요.</div>
-<div>커밋 목록에 바꾼 기록과 되돌린 기록이 <b>둘 다</b> 남아 있는지 확인해요.</div>
+<div>커밋 목록에 바꾼 기록과 되돌린 기록이 <b>둘 다</b> 남아 있는지 확인해요.<figure class="sample-shot"><img alt="병합된 PR 화면 아래쪽 merged commit 줄 오른쪽의 Revert 버튼" height="160" loading="lazy" src="./images/d3-revert.jpg" width="790"/><figcaption>참고: PR로 합친 변경은 PR 화면의 [Revert] 버튼으로 한 번에 되돌리는 PR을 만들 수도 있어요 (강사 저장소 예시)</figcaption></figure></div>
 </div>
 <ul class="checklist"><li>sale.html의 제목이 <code class="inline">이번 주 특가 3가지</code>로 돌아왔나요?</li><li>커밋 목록에 바꾼 기록과 되돌린 기록이 둘 다 있나요?</li></ul>
 <details class="optional"><summary><span class="summary-title">(참고) AI 코딩 도구에게 되돌리기를 시킬 때</span><span class="summary-hint">눌러서 펼쳐 보세요</span></summary>
@@ -762,7 +764,7 @@ aside nav a.active{border-left-color:var(--blue)}
 </div>
 <div class="topic" id="s5-2"><h3>5-2. Pages 설정하기: Deploy from a branch</h3>
 <p><span class="tag">강사 시연</span> 강사 화면으로 먼저 보고, <span class="tag tag-req">실습</span> 같은 순서로 따라 해요.</p>
-<div class="procedure"><div><code class="inline">my-first-site</code> 저장소 이름 아래에 있는 [Settings]를 눌러요. [Settings]가 안 보이면 옆의 펼침 메뉴를 열고 [Settings]를 눌러요.</div><div>왼쪽 메뉴의 "Code, planning, and automation" 묶음에서 [Pages]를 눌러요.</div><div>"Build and deployment" 아래 "Source"에서 [Deploy from a branch]를 골라요.</div><div>브랜치 펼침 메뉴에서 <code class="inline">main</code>을 고르고, 폴더 펼침 메뉴는 <code class="inline">/(root)</code>로 둬요. root는 저장소의 맨 위 칸이라는 뜻이에요.</div><div>[Save]를 눌러요.</div></div>
+<div class="procedure"><div><code class="inline">my-first-site</code> 저장소 이름 아래에 있는 [Settings]를 눌러요. [Settings]가 안 보이면 옆의 펼침 메뉴를 열고 [Settings]를 눌러요.</div><div>왼쪽 메뉴의 "Code, planning, and automation" 묶음에서 [Pages]를 눌러요.</div><div>"Build and deployment" 아래 "Source"에서 [Deploy from a branch]를 골라요.<figure class="sample-shot"><img alt="Settings의 Pages 화면. Your site is live at 주소, Build and deployment의 Source 펼침 메뉴에 GitHub Actions와 Deploy from a branch" height="400" loading="lazy" src="./images/d3-pages-source.jpg" width="840"/><figcaption>Pages 설정 화면: Source 펼침 메뉴에서 [Deploy from a branch]를 골라요. 위쪽 "Your site is live at" 줄에 공개 주소가 나와요 (강사 저장소는 GitHub Actions 방식이라 예시로만 봐요)</figcaption></figure></div><div>브랜치 펼침 메뉴에서 <code class="inline">main</code>을 고르고, 폴더 펼침 메뉴는 <code class="inline">/(root)</code>로 둬요. root는 저장소의 맨 위 칸이라는 뜻이에요.</div><div>[Save]를 눌러요.</div></div>
 <div class="notice"><b>왜 index.html을 맨 위에 두었나요?</b><br/>공식 문서에 따르면 GitHub Pages는 <code class="inline">index.html</code>, <code class="inline">index.md</code>, <code class="inline">README.md</code> 파일을 사이트의 첫 화면으로 찾고, 브랜치와 폴더에서 배포할 때는 이 파일이 고른 폴더의 맨 위에 있어야 해요. 우리는 <code class="inline">/(root)</code>를 골랐으니 index.html이 저장소 맨 위에 있어야 해요.</div>
 </div>
 <div class="topic" id="s5-3"><h3>5-3. 내 주소 확인하고 열기</h3>
