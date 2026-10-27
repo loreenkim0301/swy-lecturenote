@@ -532,7 +532,8 @@ aside nav a.active{border-left-color:var(--blue)}
 
 <div class="topic" id="s3-3"><h3>3-3. 실습 ③: 셀렉트마켓 고객 데이터 가명처리</h3>
 <p><b>실습 3. 배송 문의 분석용 데이터 만들기</b></p>
-<p><span class="tag tag-req">실습</span> 셀렉트마켓은 "어떤 고객이 배송 문의를 많이 하는지" 통계를 내려고 해요. 아래 <b>가상</b> 고객 표를 스프레드시트에 옮겨 적고, 분석에 필요한 정보만 남기도록 가명처리해요.</p>
+<p><span class="tag tag-req">실습</span> 셀렉트마켓은 "어떤 고객이 배송 문의를 많이 하는지" 통계를 내려고 해요. 아래 <b>가상</b> 고객 표를 스프레드시트에 옮겨 적고, 분석에 필요한 정보만 남기도록 가명처리해요. 직접 옮겨 적기 어려우면 아래 CSV 파일을 내려받아 구글 시트나 엑셀에서 열어요.</p>
+<div class="dl-list"><a class="dl-card" download="" href="./data/02_selectmarket_customers.csv"><span class="dl-ico">CSV</span><span class="dl-body"><b>02_selectmarket_customers.csv</b><span>셀렉트마켓 가상 고객 5명 (아래 표와 같은 내용)</span><span>실습 3</span></span><span class="dl-btn">⬇ 다운로드</span></a></div>
 <div class="table-wrap"><table>
 <tr><th>이름</th><th>전화번호</th><th>생년월일</th><th>주소</th><th>이메일</th><th>최근 구매</th><th>배송 문의 횟수</th></tr>
 <tr><td>김하늘</td><td>010-1234-5678</td><td>1982-03-14</td><td>서울시 마포구 가상로 12, 101동 202호</td><td>sky@example.com</td><td>주방용품</td><td>4</td></tr>
@@ -542,16 +543,17 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td>정유나</td><td>010-5678-9012</td><td>1998-09-09</td><td>서울시 강남구 모의대로 88, 3층</td><td>yuna@example.com</td><td>청소용품</td><td>3</td></tr>
 </table></div>
 <div class="procedure">
-<div><b>필요한 것 고르기</b>: "배송 문의가 많은 고객의 특징" 분석에 꼭 필요한 열과 필요 없는 열을 나눠요.</div>
-<div><b>삭제하기</b>: 분석에 필요 없는 열(이름, 전화번호, 이메일 등)은 지워요.</div>
-<div><b>대체하기</b>: 고객을 구분해야 하면 이름 대신 일련번호(C-001, C-002 …)로 바꿔요. 생년월일은 연령대(40대 등)로, 상세 주소는 시·도까지만 남겨요.</div>
-<div><b>추가 정보 분리하기</b>: 일련번호와 원래 이름을 연결한 표는 분석용 표와 <b>다른 파일</b>로 나눠 두고, 분석하는 사람에게는 주지 않아요.</div>
-<div><b>다시 알아볼 수 있는지 점검하기</b>: 남은 정보만 보고 특정 고객을 짐작할 수 있는지 짝과 서로 확인해요. 예: 표에 1명밖에 없는 조합(지역 + 연령대 + 구매 품목)이 있나요?</div>
+<div><b>필요한 것 고르기</b>: "배송 문의가 많은 고객의 특징" 분석에 꼭 필요한 열과 필요 없는 열을 나눠요.<figure class="sample-shot"><img alt="원본 표 열마다 삭제·대체·유지 표시" height="714" loading="lazy" src="./images/ps-1.jpg" width="2228"/><figcaption>① 열마다 삭제·대체·유지를 정해요. 배송 문의 분석에는 최근 구매와 배송 문의 횟수가 핵심이에요</figcaption></figure></div>
+<div><b>삭제하기</b>: 분석에 필요 없는 열(이름, 전화번호, 이메일 등)은 지워요.<figure class="sample-shot"><img alt="전화번호와 이메일 열을 지운 분석용 사본" height="714" loading="lazy" src="./images/ps-2.jpg" width="1410"/><figcaption>② 원본은 그대로 두고 <b>사본</b>을 만들어 지워요. 이름은 다음 단계에서 고객번호로 바꿔요</figcaption></figure></div>
+<div><b>대체하기</b>: 고객을 구분해야 하면 이름 대신 일련번호(C-001, C-002 …)로 바꿔요. 생년월일은 연령대(40대 등)로, 상세 주소는 시·도까지만 남겨요.<figure class="sample-shot"><img alt="고객번호, 연령대, 시·도, 최근 구매, 배송 문의 횟수만 남은 표" height="714" loading="lazy" src="./images/ps-3.jpg" width="1148"/><figcaption>③ 이름 → 고객번호, 생년월일 → 연령대(2026년 10월 27일 기준 만 나이), 주소 → 시·도로 바꾼 결과</figcaption></figure></div>
+<div><b>추가 정보 분리하기</b>: 일련번호와 원래 이름을 연결한 표는 분석용 표와 <b>다른 파일</b>로 나눠 두고, 분석하는 사람에게는 주지 않아요.<figure class="sample-shot"><img alt="분석용 파일과 고객번호-이름 연결표 보관용 파일 두 개" height="738" loading="lazy" src="./images/ps-4.jpg" width="1616"/><figcaption>④ 파일을 두 개로 나눠요. 왼쪽은 분석하는 사람에게, 오른쪽 연결표는 담당자만 따로 보관해요</figcaption></figure></div>
+<div><b>다시 알아볼 수 있는지 점검하기</b>: 남은 정보만 보고 특정 고객을 짐작할 수 있는지 짝과 서로 확인해요. 예: 표에 1명밖에 없는 조합(지역 + 연령대 + 구매 품목)이 있나요?<figure class="sample-shot"><img alt="연령대·시·도·최근 구매 조합이 5명 모두 하나뿐이라 빨갛게 표시된 표" height="714" loading="lazy" src="./images/ps-5.jpg" width="1578"/><figcaption>⑤ 이 표는 5명 모두 "연령대 + 시·도 + 최근 구매" 조합이 하나뿐이에요. 고객을 아는 사람이라면 누구인지 짐작할 수 있어요. 다음 단계에서 AI에게 고칠 방법을 물어봐요</figcaption></figure></div>
 </div>
 <p>스스로 해 본 다음, 생성형 AI에게 점검을 부탁해요. <b>가상 데이터</b>라서 붙여 넣어도 괜찮아요. 실제 고객 데이터는 절대 넣지 않아요.</p>
 <div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>요청: 내가 가명처리한 아래 가상 고객 표를 보고, 특정 개인을 다시 알아볼 위험이 남아 있는지 점검해 줘.
 내용: 분석 목적 [배송 문의가 많은 고객의 특징 통계] / 가명처리한 표 [내가 만든 표 붙여 넣기]
 형식: 위험이 남은 열과 이유를 표로 정리하고, 고칠 방법을 한 줄씩 제안해 줘. 표에 없는 열이나 데이터는 추가하지 말고, 판단하기 어려운 부분은 [확인 필요]로 남겨 줘.</pre></div>
+<figure class="sample-shot"><img alt="AI 점검 결과 표. 고객번호 높음, 연령대+시·도 결합 높음, 최근 구매 중간, 배송 문의 횟수 낮음~중간" height="485" loading="lazy" src="./images/k-privacy-check.jpg" width="760"/><figcaption>AI 점검 결과 예시: 5명 모두 조합이 하나뿐(k=1)이라 "시·도를 수도권·비수도권으로 묶기", "품목을 상위 범주로 묶기", "문의 횟수를 구간으로 나누기"를 제안해요. 제안을 그대로 따르기 전에 분석 목적에 맞는지 내가 판단해요 (2026년 10월 27일 Claude Sonnet 5.5 실제 실행 화면)</figcaption></figure>
 <ul class="checklist"><li>이름·전화번호·이메일처럼 바로 개인을 알아볼 수 있는 열이 남아 있지 않나요?</li><li>생년월일·상세 주소를 연령대·시도처럼 넓은 범위로 바꿨나요?</li><li>일련번호와 이름을 연결한 표를 분석용 표와 분리했나요?</li><li>AI의 점검 결과를 그대로 믿지 않고 내가 한 번 더 확인했나요?</li></ul>
 <p><b>원본 출처</b> (최근 발행·갱신 순)</p>
 <div class="resource-list">
