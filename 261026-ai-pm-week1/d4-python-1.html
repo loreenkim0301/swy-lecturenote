@@ -341,11 +341,13 @@ aside nav a.active{border-left-color:var(--blue)}
 </div>
 <div class="topic" id="s1-3"><h3>1-3. 실습 0: Colab 열고 첫 코드 실행하기</h3>
 <p><span class="tag tag-req">실습</span> 오늘 하루 동안 쓸 노트를 만들어요. 이후 모든 실습은 이 노트 하나에 셀을 추가하며 이어 가요.</p>
-<div class="procedure"><div>Chrome 주소창에 <code class="inline">colab.research.google.com</code>을 입력해 접속하고, Google 계정으로 로그인되어 있는지 확인해요.</div><div>새 노트를 만들어요.</div><div>노트 이름을 <code class="inline">PM파이썬_내이름</code>으로 바꿔요. 예: <code class="inline">PM파이썬_김수정</code>. 이름을 바꾸는 위치는 강사 화면에서 함께 확인해요.</div><div>아래 코드 상자의 [복사] 버튼을 눌러 코드를 복사해요.</div><div>Colab 코드 셀에 붙여 넣고 <kbd>Shift</kbd>+<kbd>Enter</kbd>로 실행해요.</div></div>
+<p><b>STEP 1. 검색해서 Colab 들어가기</b></p><div class="procedure"><div>Chrome에서 Google 검색창에 <code class="inline">구글 코랩</code>을 검색해요.</div><div>주소가 <code class="inline">colab.research.google.com</code>인 결과(①)를 눌러요. 주소창에 직접 입력해도 같은 곳으로 가요.</div></div><figure class="sample-shot"><img style="max-width:690px;margin:0 auto" alt="① colab.research.google.com 결과를 눌러요. ② 주소가 다른 colab.sandbox.google.com 결과는 설명에 "노트 로드 오류"가 보이니 누르지 않아요. (2026-10-29 검색 화면)" height="750" loading="lazy" src="./images/d4-search.jpg" width="690"/><figcaption>① colab.research.google.com 결과를 눌러요. ② 주소가 다른 colab.sandbox.google.com 결과는 설명에 "노트 로드 오류"가 보이니 누르지 않아요. (2026-10-29 검색 화면)</figcaption></figure><p><b>STEP 2. 새 노트 만들고 이름 바꾸기</b></p><div class="procedure"><div>Colab 시작 페이지에서 오른쪽 위 프로필 사진으로 Google 계정에 로그인되어 있는지 확인해요.</div><div><b>[+ 새 노트]</b>를 눌러요.</div><div>왼쪽 위 노트 이름(<code class="inline">Untitled0.ipynb</code> 같은 이름)을 눌러 <code class="inline">PM파이썬_내이름</code>으로 바꾸고 <kbd>Enter</kbd>를 눌러요. 예: <code class="inline">PM파이썬_김수정</code>. 뒤의 <code class="inline">.ipynb</code>는 Colab 노트 파일이라는 표시라 그대로 둬도 돼요.</div></div><figure class="sample-shot"><img alt="Colab 시작 페이지의 [+ 새 노트]. 아래 "최근" 목록에는 내가 열었던 노트가 보여요. (개인 목록은 흐리게 처리)" height="410" loading="lazy" src="./images/d4-start.jpg" width="1050"/><figcaption>Colab 시작 페이지의 [+ 새 노트]. 아래 "최근" 목록에는 내가 열었던 노트가 보여요. (개인 목록은 흐리게 처리)</figcaption></figure><figure class="sample-shot"><img style="max-width:760px;margin:0 auto" alt="노트 이름을 누르면 "노트 이름 변경" 입력 칸으로 바뀌어요." height="130" loading="lazy" src="./images/d4-rename.jpg" width="760"/><figcaption>노트 이름을 누르면 "노트 이름 변경" 입력 칸으로 바뀌어요.</figcaption></figure><p><b>STEP 3. 실습 전에 알아 둘 Colab 화면</b></p><figure class="sample-shot"><img alt="새 노트 화면 위쪽(①~⑤)" height="112" loading="lazy" src="./images/d4-ui.jpg" width="1470"/><figcaption>새 노트 화면 위쪽(①~⑤). 번호는 아래 표의 순서예요. (2026-10-29 화면)</figcaption></figure><figure class="sample-shot"><img alt="화면 하단 Gemini 아이콘(⑥)" height="67" loading="lazy" src="./images/d4-ui-foot.jpg" width="1470"/><figcaption>화면 아래쪽 가운데 ⑥ Gemini 아이콘</figcaption></figure><div class="table-wrap"><table><tr><th>번호</th><th>이름</th><th>무엇을 하나</th></tr><tr><td>①</td><td>노트 이름</td><td>눌러서 이름을 바꿔요. 이름 앞 Google Drive 아이콘은 이 노트가 <b>내 Google Drive</b>(Colab Notebooks 폴더)에 저장된다는 표시예요.</td></tr><tr><td>②</td><td>메뉴</td><td>파일·수정·보기·삽입·런타임·도구·도움말. 오늘은 거의 쓰지 않고, 셀이 이상하게 동작하면 [런타임]에서 다시 시작해요.</td></tr><tr><td>③</td><td>+ 코드 / + 텍스트</td><td>지금 선택한 셀 아래에 코드 셀·텍스트 셀을 추가해요.</td></tr><tr><td>④</td><td>연결 / RAM·디스크</td><td>처음엔 [연결]로 보이고, 코드를 실행하면 구글 서버(런타임)에 자동으로 연결돼요. 연결되면 ✓와 RAM·디스크 막대로 바뀌어요.</td></tr><tr><td>⑤</td><td>헤더 접기(⌄)</td><td>노트 이름·메뉴 줄을 접었다 펴요. 메뉴가 안 보이면 여기를 눌러요.</td></tr><tr><td>⑥</td><td>Gemini 아이콘</td><td>화면 하단 가운데. 누르면 오른쪽에 Gemini 대화창이 열려요. (세션 2)</td></tr><tr><td>-</td><td>셀 왼쪽 ▶</td><td>그 셀만 실행해요. 단축키 <kbd>Shift</kbd>+<kbd>Enter</kbd>는 실행 후 다음 셀로, <kbd>Ctrl</kbd>+<kbd>Enter</kbd>는 실행 후 그 셀에 머물러요.</td></tr></table></div><p><b>STEP 4. 첫 코드 실행하기</b></p><div class="procedure"><div>아래 코드 상자의 [복사] 버튼을 눌러 코드를 복사해요.</div><div>Colab 코드 셀에 붙여 넣고 <kbd>Shift</kbd>+<kbd>Enter</kbd>로 실행해요.</div><div>처음 실행하면 서버에 연결하느라 몇 초~수십 초 기다려요. 오른쪽 아래에 "런타임 할당 중"처럼 보이면 정상이에요.</div></div>
 <div class="copybox"><div class="copyhead"><span>코드 · 복사해서 Colab 코드 셀에 붙여 넣으세요</span><button type="button">복사</button></div><pre>print("안녕, 파이썬")   # 따옴표 안의 글자를 화면에 출력
 !python --version     # 지금 Colab에 설치된 파이썬 버전 확인</pre></div>
 <div class="copybox"><div class="copyhead"><span>실행 결과 · 이렇게 나오면 맞아요</span></div><pre>안녕, 파이썬
-Python 3.x.x   ← 숫자는 Colab 환경에 따라 달라요</pre></div>
+Python 3.13.18   ← 2026-10-29 강사 노트 기준. 숫자는 바뀔 수 있어요</pre></div>
+<figure class="sample-shot"><img alt="처음 실행하면 ① 연결 버튼이 "연결 중"으로, ② 오른쪽 아래에 런타임 할당 상태가 보여요." height="797" loading="lazy" src="./images/d4-connecting.jpg" width="1470"/><figcaption>처음 실행하면 오른쪽 위 [연결]이 "연결 중"으로 바뀌고, 화면 오른쪽 아래에도 런타임 할당 상태가 보여요.</figcaption></figure>
+<figure class="sample-shot"><img alt="실행 결과가 셀 아래에 나오고, 오른쪽 위가 ✓ RAM·디스크로 바뀌면 연결 완료예요." height="240" loading="lazy" src="./images/d4-p0.jpg" width="1470"/><figcaption>실행 결과가 셀 아래에 나오고, 오른쪽 위가 ✓ RAM·디스크로 바뀌면 연결 완료예요.</figcaption></figure>
 <p><b>방금 무슨 일이 일어났나</b><br/><code class="inline">print()</code>는 괄호 안의 내용을 화면에 보여 주는 명령이에요. 결과가 셀 바로 아래에 나타나면 Colab과 구글 서버가 정상적으로 연결된 거예요. 둘째 줄 맨 앞의 <code class="inline">!</code>는 파이썬 코드가 아니라 Colab 서버에 직접 내리는 명령이라는 표시예요.</p>
 <p><b>더 해 보기</b></p>
 <div class="procedure"><div>첫째 줄 따옴표 안의 글자를 <code class="inline">안녕, 나는 김수정</code>처럼 내 이름으로 바꾸고 다시 실행해요.</div><div>코드 셀 위에 <b>텍스트 셀</b>을 하나 추가하고 "실습 0. 첫 코드 실행 – 파이썬 버전: 3.○○"처럼 결과를 한 줄로 적어요.</div></div>
@@ -404,10 +406,11 @@ Python 3.x.x   ← 숫자는 Colab 환경에 따라 달라요</pre></div>
 <div class="topic" id="s2-3"><h3>2-3. 실습: 같은 코드를 Gemini와 ChatGPT·Claude에게 설명받기</h3>
 <p><span class="tag tag-req">실습</span> 실습 0의 코드를 두 곳에 설명받고, 설명이 실제 코드와 맞는지 비교해요.</p>
 <p><b>STEP 1. Gemini에게 묻기</b></p>
-<div class="procedure"><div>노트 화면 하단의 Gemini 아이콘을 눌러 Gemini 대화창을 열어요.</div><div>학습 모드가 보이면 켜 두세요. 보이지 않으면 그대로 진행해요.</div><div>아래 프롬프트를 복사해 Gemini 대화창에 보내요.</div></div>
+<div class="procedure"><div>노트 화면 하단의 Gemini 아이콘을 눌러 Gemini 대화창을 열어요.</div><div>입력창 왼쪽 아래 <b>요청 사항</b> 아이콘을 눌러 <b>학습 모드</b>를 골라요. 보이지 않으면 그대로 진행해요.</div><div>아래 프롬프트를 복사해 Gemini 대화창에 보내요.</div></div><figure class="sample-shot"><img style="max-width:770px;margin:0 auto" alt="하단 Gemini 아이콘을 누르면 오른쪽에 대화창이 열려요. 입력창 오른쪽에 사용 중인 모델이 보여요." height="737" loading="lazy" src="./images/d4-gemini.jpg" width="770"/><figcaption>하단 Gemini 아이콘을 누르면 오른쪽에 대화창이 열려요. 입력창 오른쪽에 사용 중인 모델이 보여요.</figcaption></figure><figure class="sample-shot"><img style="max-width:490px;margin:0 auto" alt="② 요청 사항 아이콘 → ① 기본 / 학습 모드 / 시각화 모드 중 학습 모드를 골라요." height="380" loading="lazy" src="./images/d4-gemini-mode.jpg" width="490"/><figcaption>② 요청 사항 아이콘 → ① 기본 / 학습 모드 / 시각화 모드 중 학습 모드를 골라요.</figcaption></figure><div class="notice"><b>모드를 바꾸면 새 채팅이 시작돼요</b><br/>대화 중에 요청 사항을 바꾸면 "요청 사항을 전환할 준비가 되셨나요?" 창이 떠요. [새 채팅 시작하기]를 누르면 이전 대화는 이어지지 않아요.</div><figure class="sample-shot"><img style="max-width:770px;margin:0 auto" alt="요청 사항을 바꿀 때 뜨는 창. [새 채팅 시작하기]를 눌러요." height="737" loading="lazy" src="./images/d4-gemini-newchat.jpg" width="770"/><figcaption>요청 사항을 바꿀 때 뜨는 창. [새 채팅 시작하기]를 눌러요.</figcaption></figure>
 <div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>요청: 이 노트의 첫 번째 코드 셀이 한 줄씩 무슨 일을 하는지 설명해 줘.
 내용: 나는 코드를 처음 배우는 비개발자야. 셀에는 print("안녕, 파이썬")과 !python --version 두 줄이 있어.
 형식: 줄마다 2문장 이내로 설명하고, 전문 용어는 괄호 안에 한 줄로 풀어 줘. 코드를 고치거나 새 코드는 추가하지 마. 확실하지 않은 내용은 [확인 필요]로 남겨 줘.</pre></div>
+<figure class="sample-shot"><img style="max-width:770px;margin:0 auto" alt="학습 모드에서 받은 답. print와 !python --version을 줄마다 설명했어요. (2026-10-29 강사 테스트)" height="737" loading="lazy" src="./images/d4-gemini-learn.jpg" width="770"/><figcaption>학습 모드에서 받은 답. print와 !python --version을 줄마다 설명했어요. (2026-10-29 강사 테스트)</figcaption></figure>
 <p><b>STEP 2. ChatGPT 또는 Claude에게 같은 질문하기</b></p>
 <div class="procedure"><div>ChatGPT나 Claude에서 새 채팅을 열어요. 과정용 계정인지 확인해요.</div><div>위 프롬프트를 그대로 붙여 넣되, 첫 줄의 "이 노트의 첫 번째 코드 셀이"를 "아래 파이썬 코드가"로 바꿔 보내요. 두 AI는 Colab 노트를 직접 보지 못하므로 내용 줄에 코드를 적어 둔 거예요.</div><div>두 설명을 나란히 놓고 아래 체크리스트로 비교해요.</div></div>
 <ul class="checklist"><li>두 AI 모두 <code class="inline">print()</code>를 "괄호 안의 내용을 화면에 보여 주는 명령"으로 설명했나요?</li><li>두 AI 모두 <code class="inline">!</code>를 "파이썬 코드가 아니라 Colab 서버에 내리는 명령"이라는 뜻으로 설명했나요?</li><li>코드에 없는 내용(예: 파일을 저장한다, 인터넷에 올린다)을 덧붙이지 않았나요?</li><li>두 설명에서 다른 점을 한 가지 찾아 채팅에 남겼나요?</li></ul>
@@ -435,6 +438,7 @@ Python 3.x.x   ← 숫자는 Colab 환경에 따라 달라요</pre></div>
 print("첫 번째 줄")   # 이 메모도 무시되고 print만 실행됩니다
 # print("이 줄은 실행될까요?")</pre></div>
 <div class="copybox"><div class="copyhead"><span>실행 결과 · 이렇게 나오면 맞아요</span></div><pre>첫 번째 줄</pre></div>
+<figure class="sample-shot"><img alt="실습 1-1 실행 화면. # 뒤의 주석은 출력되지 않아요." height="130" loading="lazy" src="./images/d4-p11.jpg" width="1340"/><figcaption>실습 1-1 실행 화면. # 뒤의 주석은 출력되지 않아요.</figcaption></figure>
 <p><b>방금 무슨 일이 일어났나</b><br/>출력은 한 줄뿐이에요. 셋째 줄은 <code class="inline">print</code>가 있지만 맨 앞에 <code class="inline">#</code>이 붙어 통째로 주석이 되었기 때문에 실행되지 않았어요.</p>
 <p><b>더 해 보기</b> 셋째 줄 맨 앞의 <code class="inline">#</code>을 지우고 다시 실행해요.</p>
 <ul class="checklist"><li>처음 실행했을 때 "첫 번째 줄" 한 줄만 나왔나요?</li><li><code class="inline">#</code>을 지운 뒤에는 "이 줄은 실행될까요?"까지 두 줄이 나왔나요?</li></ul>
@@ -447,12 +451,16 @@ total = price * 1.1                    # 처리: 부가세 10%를 더한 금액 
 print("결제 금액:", int(total), "원")   # 출력: 소수점을 버리고 화면에 표시</pre></div>
 <div class="copybox"><div class="copyhead"><span>실행 결과 · 이렇게 나오면 맞아요</span></div><pre>상품 가격(원): 10000
 결제 금액: 11000 원</pre></div>
+<figure class="sample-shot"><img alt="실행하면 셀 아래에 입력 칸이 생겨요. 여기를 눌러 10000을 입력하고 Enter." height="150" loading="lazy" src="./images/d4-p12-input.jpg" width="1340"/><figcaption>실행하면 셀 아래에 입력 칸이 생겨요. 여기를 눌러 10000을 입력하고 Enter.</figcaption></figure>
+<figure class="sample-shot"><img alt="입력 후 결과. 결제 금액: 11000 원" height="140" loading="lazy" src="./images/d4-p12-out.jpg" width="1340"/><figcaption>입력 후 결과. 결제 금액: 11000 원</figcaption></figure>
 <p><b>방금 무슨 일이 일어났나</b><br/>첫째 줄에서 입력받은 10000이 <code class="inline">price</code>에 저장되고, 둘째 줄에서 1.1을 곱해 <code class="inline">total</code>을 계산하고, 셋째 줄에서 결과를 출력했어요. <b>순서가 곧 로직</b>이에요.</p>
 <p><b>더 해 보기 ① 다른 값 넣기</b> 같은 셀을 다시 실행하고 <code class="inline">25000</code>을 입력해요. <code class="inline">결제 금액: 27500 원</code>이 나오면 맞아요.</p>
 <p><b>더 해 보기 ② 순서를 바꾸면?</b> 새 코드 셀에서 아래 코드를 실행해요. 아직 계산하지 않은 값을 먼저 출력하려는 코드예요.</p>
 <div class="copybox"><div class="copyhead"><span>코드 · 일부러 순서를 바꾼 코드예요</span><button type="button">복사</button></div><pre>print("결제 금액:", int(pay_total), "원")   # 아직 만들지 않은 이름을 먼저 출력하려고 함
 pay_total = 10000 * 1.1                    # 계산은 그다음 줄에 있음</pre></div>
 <div class="copybox"><div class="copyhead"><span>오류 메시지 · 맨 아래 줄만 보면 돼요</span></div><pre>NameError: name 'pay_total' is not defined</pre></div>
+<figure class="sample-shot"><img alt="실제 오류 화면. 맨 아래 NameError 줄을 읽고, [오류 설명] 버튼을 누르면 Gemini가 원인을 설명해 줘요." height="282" loading="lazy" src="./images/d4-nameerror.jpg" width="1340"/><figcaption>실제 오류 화면. 맨 아래 NameError 줄을 읽고, [오류 설명] 버튼을 누르면 Gemini가 원인을 설명해 줘요.</figcaption></figure>
+<p>오류 칸 아래 <b>[다음 단계: 오류 설명]</b> 버튼을 누르면 Gemini 대화창이 열리며 오류를 설명해 줘요. 설명을 읽은 뒤에도 최종 확인은 직접 다시 실행해서 해요.</p>
 <p>맨 아래 줄은 "<code class="inline">pay_total</code>이라는 이름이 아직 없다"는 뜻이에요. 뒤에 비슷한 이름을 제안하는 말이 붙을 수도 있어요. 컴퓨터는 위에서 아래로 한 줄씩 실행하기 때문에, 계산이 아래에 있으면 위에서는 쓸 수 없어요.</p>
 <div class="notice"><b>왜 새 이름(pay_total)을 썼을까요</b><br/>Colab은 한 번 실행한 셀의 값을 런타임이 끊길 때까지 기억해요. 위 실습 1-2에서 이미 <code class="inline">total</code>을 만들었기 때문에, 같은 이름으로 순서를 바꾸면 예전 값이 그대로 출력되어 오류가 나지 않아요. 노트에서 셀을 위아래로 옮겨 실행할 때 예상과 다른 결과가 나오면 이 점을 먼저 떠올려요.</div>
 <ul class="checklist"><li>10000을 넣었을 때 "결제 금액: 11000 원"이 나왔나요?</li><li>25000을 넣었을 때 "결제 금액: 27500 원"이 나왔나요?</li><li>순서를 바꾼 코드에서 <code class="inline">NameError</code>가 나왔나요?</li><li>세 줄 중 어느 줄이 입력·처리·출력인지 짚어 말할 수 있나요?</li></ul>
@@ -490,6 +498,7 @@ price = 15000        # 숫자는 따옴표 없이 저장
 qty = 3              # 수량
 print(product, price * qty, "원")   # 저장한 이름으로 값을 꺼내 계산하고 출력</pre></div>
 <div class="copybox"><div class="copyhead"><span>실행 결과 · 이렇게 나오면 맞아요</span></div><pre>텀블러 45000 원</pre></div>
+<figure class="sample-shot"><img alt="실습 3-1 ⓐ 실행 화면" height="142" loading="lazy" src="./images/d4-p31a.jpg" width="1340"/><figcaption>실습 3-1 ⓐ 실행 화면</figcaption></figure>
 <p><b>방금 무슨 일이 일어났나</b><br/><code class="inline">price = 15000</code>은 15000이라는 값에 <code class="inline">price</code>라는 이름표를 붙여 저장한 거예요. 이렇게 값에 이름을 붙여 저장해 두는 것을 <b>변수</b>라고 해요. <code class="inline">qty</code>를 5로 바꾸면 결과가 75000으로 바뀌어요. 값을 바꾸면 그 이름을 쓰는 모든 계산이 함께 바뀌어요.</p>
 <p><b>더 해 보기: 배송비 변수 더하기</b> 새 코드 셀에서 실행해요.</p>
 <div class="copybox"><div class="copyhead"><span>코드 · 복사해서 Colab 코드 셀에 붙여 넣으세요</span><button type="button">복사</button></div><pre>product = "텀블러"                    # 상품 이름
@@ -499,6 +508,7 @@ shipping = 3000                       # 배송비라는 새 변수
 total = price * qty + shipping        # 상품 금액에 배송비를 더해 total에 저장
 print(product, "결제 금액:", total, "원")</pre></div>
 <div class="copybox"><div class="copyhead"><span>실행 결과 · 이렇게 나오면 맞아요</span></div><pre>텀블러 결제 금액: 48000 원</pre></div>
+<figure class="sample-shot"><img alt="실습 3-1 ⓑ 실행 화면" height="180" loading="lazy" src="./images/d4-p31b.jpg" width="1340"/><figcaption>실습 3-1 ⓑ 실행 화면</figcaption></figure>
 <ul class="checklist"><li>첫 코드에서 "텀블러 45000 원"이 나왔나요?</li><li><code class="inline">qty</code>를 5로 바꾸자 75000으로 바뀌었나요?</li><li>배송비 코드에서 48000이 나왔나요? 15000 × 3 + 3000을 직접 계산해 맞는지 확인했나요?</li><li>글자는 따옴표로 감싸고 숫자는 따옴표 없이 쓴다는 차이를 말할 수 있나요?</li></ul>
 </div>
 <div class="topic" id="s4-2"><h3>실습 3-2. 조건</h3>
@@ -525,6 +535,7 @@ if order &gt;= 30000:           # 3만 원 "이상"이면 (&gt;= 는 크거나 �
 else:                        # 그렇지 않으면
     print("배송비 3,000원")</pre></div>
 <div class="copybox"><div class="copyhead"><span>실행 결과 · 이렇게 나오면 맞아요</span></div><pre>배송비 3,000원</pre></div>
+<figure class="sample-shot"><img alt="실습 3-2 ⓐ·ⓑ 실행 화면 (위: 품절 / 아래: 배송비 3,000원)" height="360" loading="lazy" src="./images/d4-p32.jpg" width="1340"/><figcaption>실습 3-2 ⓐ·ⓑ 실행 화면 (위: 품절 / 아래: 배송비 3,000원)</figcaption></figure>
 <p><code class="inline">order</code>를 <code class="inline">30000</code>으로 바꿔 실행하면 "무료배송"이 나와야 해요. 딱 경계에 있는 값(30000)을 넣어 보는 습관은 다음 수업의 오류 검증에서 다시 써요.</p>
 <ul class="checklist"><li>stock 0, 3, 10의 결과가 위 표와 같았나요?</li><li>order 28000은 "배송비 3,000원", 30000은 "무료배송"이 나왔나요?</li><li><code class="inline">if</code> 아래 줄의 들여쓰기를 지우면 어떻게 되는지 한 번 해 보고, 나온 오류의 맨 아래 줄을 채팅에 남겼나요?</li></ul>
 </div>
@@ -547,6 +558,7 @@ items.remove("에코백")     # 리스트에서 값 빼기
 print(items)</pre></div>
 <div class="copybox"><div class="copyhead"><span>실행 결과 · 이렇게 나오면 맞아요</span></div><pre>머그컵
 ['텀블러', '머그컵']</pre></div>
+<figure class="sample-shot"><img alt="실습 3-3 ⓐ·ⓑ 실행 화면" height="317" loading="lazy" src="./images/d4-p33.jpg" width="1340"/><figcaption>실습 3-3 ⓐ·ⓑ 실행 화면</figcaption></figure>
 <ul class="checklist"><li><code class="inline">menus[0]</code>이 "김치찌개", <code class="inline">menus[1]</code>이 "돈까스"로 나왔나요?</li><li>비빔밥을 추가한 뒤 개수가 4로 나왔나요?</li><li><code class="inline">items[-1]</code>이 "머그컵"으로 나왔나요?</li><li>에코백을 뺀 뒤 리스트에 두 개만 남았나요?</li></ul>
 </div>
 <div class="topic" id="s5-2"><h3>실습 3-4. 반복</h3>
@@ -567,6 +579,7 @@ print("장바구니 합계:", total, "원")
 print(sum(prices))              # 파이썬에 있는 합계 기능으로 다시 계산</pre></div>
 <div class="copybox"><div class="copyhead"><span>실행 결과 · 이렇게 나오면 맞아요</span></div><pre>장바구니 합계: 36000 원
 36000</pre></div>
+<figure class="sample-shot"><img alt="실습 3-4 ⓐ·ⓑ 실행 화면" height="353" loading="lazy" src="./images/d4-p34.jpg" width="1340"/><figcaption>실습 3-4 ⓐ·ⓑ 실행 화면</figcaption></figure>
 <p>같은 합계를 <b>두 가지 방법</b>(반복문으로 더하기, <code class="inline">sum()</code>)으로 구해 숫자가 같은지 비교했어요. 다른 방법으로 계산해 같은 숫자가 나오는지 보는 것은 가장 기본적인 검증 방법이에요.</p>
 <ul class="checklist"><li>할인가 세 줄이 나왔나요?</li><li>리스트에 가격을 하나 추가하자 결과도 한 줄 늘었나요?</li><li>반복문 합계와 <code class="inline">sum()</code> 결과가 모두 36000으로 같았나요?</li><li><code class="inline">for</code> 아래 줄이 들여쓰기되어 있다는 것을 확인했나요?</li></ul>
 </div>
@@ -579,6 +592,7 @@ print(sum(prices))              # 파이썬에 있는 합계 기능으로 다시
 menus = ["김치찌개", "돈까스", "쌀국수", "비빔밥"]
 print("오늘 점심은", random.choice(menus))   # 리스트에서 하나를 무작위로 골라 출력</pre></div>
 <div class="copybox"><div class="copyhead"><span>실행 결과 · 예시</span></div><pre>오늘 점심은 쌀국수   ← 실행할 때마다 달라져요</pre></div>
+<figure class="sample-shot"><img alt="실습 3-5 ⓐ·ⓑ 실행 화면. 결과는 실행할 때마다 달라요." height="226" loading="lazy" src="./images/d4-p35.jpg" width="1340"/><figcaption>실습 3-5 ⓐ·ⓑ 실행 화면. 결과는 실행할 때마다 달라요.</figcaption></figure>
 <p><b>방금 무슨 일이 일어났나</b><br/><code class="inline">import random</code>은 미리 만들어져 있는 기능 묶음을 불러온 것이고, <code class="inline">random.choice</code>는 리스트에서 하나를 무작위로 골라요. 결과가 매번 달라지는 것이 정상이에요. 이렇게 남이 만들어 둔 기능 묶음을 불러와 쓰는 방식은 다음 수업의 데이터 분석(pandas)에서도 똑같이 쓰여요.</p>
 <p><b>더 해 보기: 주사위 굴리기</b></p>
 <div class="copybox"><div class="copyhead"><span>코드 · 복사해서 Colab 코드 셀에 붙여 넣으세요</span><button type="button">복사</button></div><pre>import random                     # 무작위 기능 불러오기
@@ -603,6 +617,7 @@ print("오늘의 추천:", random.choice(products)["name"])   # 무작위 추천
 에코백 - 품절
 머그컵 - 12,000원
 오늘의 추천: 머그컵   ← 마지막 줄은 실행할 때마다 달라져요</pre></div>
+<figure class="sample-shot"><img alt="실습 3-6 실행 화면. 품절인 에코백도 "오늘의 추천"에 나올 수 있어요 → 실습 3-7에서 고쳐요." height="346" loading="lazy" src="./images/d4-p36.jpg" width="1340"/><figcaption>실습 3-6 실행 화면. 품절인 에코백도 "오늘의 추천"에 나올 수 있어요 → 실습 3-7에서 고쳐요.</figcaption></figure>
 <p><b>방금 무슨 일이 일어났나</b><br/>리스트로 데이터를 저장하고, 반복으로 하나씩 꺼내고, 조건으로 품절을 판단하고, random으로 추천했어요. 중괄호 <code class="inline">{ }</code> 안에 "이름: 값"을 묶은 것은 상품 한 개의 정보 카드라고 생각하면 돼요. 그런데 여러 번 실행해 보면 <b>품절인 에코백이 추천되는 경우</b>가 있어요. 이것이 세션 7에서 AI와 함께 고칠 "기획 의도와 다른 결과"예요.</p>
 <ul class="checklist"><li>상품 세 줄이 위 결과처럼 나왔나요? 에코백만 "품절"로 나왔나요?</li><li>5번 이상 실행해서 "오늘의 추천: 에코백"이 나오는 경우를 봤나요? 봤다면 채팅에 남겨요.</li><li>이 코드에서 변수·조건·리스트·반복·random이 각각 어느 줄에 있는지 짚을 수 있나요?</li></ul>
 </div>
@@ -632,8 +647,8 @@ print("오늘의 추천:", random.choice(products)["name"])   # 무작위 추천
 <section class="section session" id="s7">
 <div class="session-head"><div class="eyebrow">SESSION 7 · 16:00–17:30</div><h2>AI로 고치고 검증하기</h2><p>실습 3-6의 "품절 상품이 추천되는" 문제를 Gemini에게 고쳐 달라고 해요. AI가 고쳤다고 끝이 아니에요. <b>기대한 결과가 실제로 나오는지 실행해서 확인해야</b> 검증이 끝나요.</p></div>
 <div class="topic" id="s7-1"><h3>실습 3-7. AI로 고치고 검증하기</h3>
-<p><span class="tag tag-req">실습</span> Gemini 대화창에 아래처럼 요청하고, Gemini가 고친 코드를 실행해요. 이 상자는 코드가 아니라 Gemini에게 보낼 요청 문장이에요.</p>
-<div class="procedure"><div>실습 3-6 코드 셀이 노트에 있는지 확인해요.</div><div>노트 화면 하단의 Gemini 아이콘으로 대화창을 열고, 아래 프롬프트를 복사해 보내요.</div><div>Gemini가 제안한 수정안에서 <b>무엇이 바뀌는지</b> 먼저 읽어요. 바뀐 줄이 추천 부분인지 확인해요.</div><div>수정안을 새 코드 셀에 넣어 실행해요.</div><div>같은 셀을 <b>10번 정도</b> 실행하며 "오늘의 추천"에 에코백이 나오는지 세어요.</div></div>
+<p><span class="tag tag-req">실습</span> Gemini 대화창에 아래처럼 요청하면, Gemini가 <b>실습 3-6 셀 안에서 직접</b> 바꿀 부분을 보여 줘요. 이 상자는 코드가 아니라 Gemini에게 보낼 요청 문장이에요.</p>
+<div class="procedure"><div>실습 3-6 코드 셀이 노트에 있는지 확인해요.</div><div>하단 Gemini 아이콘으로 대화창을 열어요. 학습 모드가 켜져 있으면 요청 사항을 <b>기본</b>으로 바꾸고 [새 채팅 시작하기]를 눌러요. 학습 모드는 코드를 바로 고치기보다 설명 위주로 답해요.</div><div>아래 프롬프트를 복사해 보내요.</div><div>Gemini가 3-6 셀 안에 <b>빨간 줄(지울 줄)</b>과 <b>초록 줄(새로 넣을 줄)</b>을 보여 줘요. 바뀌는 줄이 추천 부분인지 먼저 읽어요.</div><div>괜찮으면 대화창의 <b>[수락 및 실행]</b>을 눌러요. 셀에 반영되고 바로 실행돼요. 마음에 들지 않으면 <b>[취소]</b>로 원래 코드로 돌려요.</div><div>셀을 선택하고 <kbd>Ctrl</kbd>+<kbd>Enter</kbd>로 <b>10번 정도</b> 다시 실행하며 "오늘의 추천"에 에코백이 나오는지 세어요.</div></div>
 <div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>요청: 실습 3-6 상품 목록 코드에서 품절 상품(stock이 0인 상품)은 "오늘의 추천"에 나오지 않게 고쳐 줘.
 내용: 상품은 텀블러(가격 15000, 재고 3), 에코백(가격 9000, 재고 0), 머그컵(가격 12000, 재고 5) 세 개야. 지금은 품절인 에코백도 추천될 때가 있어.
 형식: 고친 코드 전체를 보여 주고, 바꾼 줄에는 주석으로 설명을 달아 줘. 상품 목록 출력 부분은 바꾸지 말고, 새 상품이나 새 기능은 추가하지 마. 확실하지 않은 부분은 [확인 필요]로 남겨 줘.</pre></div>
@@ -641,8 +656,8 @@ print("오늘의 추천:", random.choice(products)["name"])   # 무작위 추천
 <tr><th>확인 항목</th><th>기대한 결과</th></tr>
 <tr><td>상품 목록 세 줄</td><td>텀블러 - 15,000원 / 에코백 - 품절 / 머그컵 - 12,000원 (고치기 전과 같아야 해요)</td></tr>
 <tr><td>오늘의 추천 (10번 실행)</td><td>텀블러 또는 머그컵만 나와요. 에코백은 <b>한 번도</b> 나오지 않아야 해요.</td></tr>
-</table></div>
-<ul class="checklist"><li>Gemini가 바꾼 줄이 추천 부분에만 있나요? 상품 목록 출력 줄은 그대로인가요?</li><li>10번 실행하는 동안 에코백이 한 번도 추천되지 않았나요?</li><li>Gemini가 묻지 않은 기능(예: 할인, 새 상품)을 덧붙이지 않았나요?</li><li>바뀐 줄의 주석을 읽고, 어떤 방법으로 품절 상품을 뺐는지 한 문장으로 말할 수 있나요?</li></ul>
+</table></div><figure class="sample-shot"><img alt="Gemini가 셀 안에 바뀔 부분을 빨강/초록으로 보여 줘요. 대화창의 [수락 및 실행]을 누르면 반영 후 실행돼요. (2026-10-29 강사 테스트)" height="737" loading="lazy" src="./images/d4-p37-diff.jpg" width="1470"/><figcaption>Gemini가 셀 안에 바뀔 부분을 빨강/초록으로 보여 줘요. 대화창의 [수락 및 실행]을 누르면 반영 후 실행돼요. (2026-10-29 강사 테스트)</figcaption></figure><figure class="sample-shot"><img alt="반영 후 결과. 재고가 0보다 큰 상품만 모은 available_products에서 추천해요." height="737" loading="lazy" src="./images/d4-p37-run.jpg" width="1470"/><figcaption>반영 후 결과. 재고가 0보다 큰 상품만 모은 available_products에서 추천해요.</figcaption></figure><div class="warning"><b>강사 테스트에서 실제로 생긴 일 (2026-10-29)</b><br/>① 10번 실행 결과: 텀블러 6번, 머그컵 4번, 에코백 0번. 기대한 결과와 같았어요.<br/>② 그런데 Gemini가 요청하지 않은 <code class="inline">if</code>/<code class="inline">else</code> 줄의 주석까지 지웠어요. 결과는 같아도 <b>묻지 않은 줄이 바뀌었는지</b> 빨간 줄을 꼭 확인해요.<br/>③ Gemini 답은 매번 조금씩 달라요. 내 화면의 수정안이 위 그림과 달라도, 표의 기대 결과가 나오면 통과예요.</div>
+<ul class="checklist"><li>Gemini가 바꾼 줄이 추천 부분에만 있나요? 상품 목록 출력 줄과 주석은 그대로인가요?</li><li>10번 실행하는 동안 에코백이 한 번도 추천되지 않았나요?</li><li>Gemini가 묻지 않은 기능(예: 할인, 새 상품)을 덧붙이지 않았나요?</li><li>바뀐 줄의 주석을 읽고, 어떤 방법으로 품절 상품을 뺐는지 한 문장으로 말할 수 있나요?</li></ul>
 </div>
 <div class="topic" id="s7-2"><h3>7-2. 새 대화창에서 교차 검토하기</h3>
 <p><span class="tag tag-req">실습</span> 세션 2에서 배운 원칙대로, 코드를 고친 Gemini 대화가 아니라 <b>ChatGPT나 Claude의 새 채팅</b>에서 검토를 받아요.</p>
