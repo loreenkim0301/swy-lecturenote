@@ -614,29 +614,30 @@ aside nav a.active{border-left-color:var(--blue)}
 
 <p><b>실습 4. Copilot으로 README를 이미지·표·링크로 꾸미기</b></p>
 <p>GitHub에는 AI 도우미 <b>GitHub Copilot</b>이 들어 있어요. 오른쪽 위 Copilot 아이콘이나 <a href="https://github.com/copilot" target="_blank" rel="noopener">github.com/copilot</a>에서 채팅으로 쓸 수 있어요. 강사 계정은 무료 요금제인 <b>Copilot Free</b>로 이 실습을 했어요. 처음 쓰는 계정은 시작 안내 화면이 먼저 나올 수 있으니 화면 안내를 따라요.</p>
-<div class="copybox"><div class="copyhead"><span>Copilot 프롬프트 · 복사해서 [ ]만 바꿔 쓰세요</span><button type="button">복사</button></div><pre>내 GitHub 저장소의 README.md를 꾸며 줘. 마크다운으로만 써 줘.
+<div class="copybox"><div class="copyhead"><span>Copilot 프롬프트 · 복사해서 [ ]만 바꿔 쓰세요</span><button type="button">복사</button></div><pre>내 GitHub 저장소의 README.md를 꾸며 줘. 마크다운으로 써 줘.
 ① 맨 위 제목: [내 이름]의 첫 저장소
-② 이미지 1개: https://octodex.github.com/images/original.png (대체 글자: 옥토캣)
+② 이미지 1개: https://octodex.github.com/images/original.png (대체 글자: 옥토캣). 화면에 너무 크게 보이지 않게 &lt;img&gt; 태그로 가로 200px로 넣어 줘.
 ③ 표 1개: 항목·내용 2열로 이름([내 이름]), 과정(AI 프로덕트 매니저, 2026.10~2027.04), 목표([내 목표 한 문장])
 ④ 링크 2개: 과정 교안 https://loreenkim0301.github.io/swy-lecturenote/261026-ai-pm-week1/ , GitHub 공식 문서 https://docs.github.com
 ⑤ 설명 없이 README 전체 내용만 코드 블록 하나로 줘.</pre></div>
 <div class="procedure">
-<div><a href="https://github.com/copilot" target="_blank" rel="noopener">github.com/copilot</a>을 열고, 위 프롬프트를 [ ]만 바꿔 붙여 넣어요. 아래 모드가 <b>[Ask]</b>(질문하기)인지 확인하고 보내요.<figure class="sample-shot"><img alt="Copilot 채팅 입력창에 README 꾸미기 프롬프트를 넣은 화면. 아래 Ask 모드와 보내기 버튼" height="287" loading="lazy" src="./images/d3-cp-prompt.jpg" width="795"/><figcaption>① 프롬프트 입력 ② 모드가 [Ask]인지 확인 ③ 보내기 (2026년 10월 28일 강사 계정, Copilot Free)</figcaption></figure></div>
-<div>Copilot이 마크다운 코드 블록을 답으로 줘요. 오른쪽 위 <b>복사 버튼</b>으로 통째로 복사해요.<figure class="sample-shot"><img alt="Copilot 답변. Markdown 코드 블록에 제목, 이미지, 표, 링크 마크다운" height="390" loading="lazy" src="./images/d3-cp-answer.jpg" width="785"/><figcaption>① Copilot이 만든 README 마크다운 ② 복사 버튼. 프롬프트의 ①~④가 모두 들어 있는지 먼저 눈으로 확인해요 (2026년 10월 28일 강사 계정 실제 답변)</figcaption></figure></div>
-<div>내 저장소의 README.md 편집 화면(연필 버튼)을 열고, 실습 3 내용을 모두 지운 뒤 붙여 넣어요. 그다음 [Preview] 탭을 눌러요.<figure class="sample-shot"><img alt="README 편집 화면에 Copilot 답을 붙여 넣은 상태" height="380" loading="lazy" src="./images/d3-cp-paste.jpg" width="1115"/><figcaption>① 붙여 넣은 마크다운 ② [Preview] 탭 ③ 확인이 끝나면 [Commit changes...] (강사 교안 저장소 예시 화면, 2026년 10월 28일). 강사는 교안 저장소라 커밋하지 않고 미리보기만 했어요</figcaption></figure></div>
-<div>미리보기에서 이미지·표·링크가 모두 보이는지 확인해요.<figure class="sample-shot"><img alt="Preview 탭에서 제목 김수정의 첫 저장소와 옥토캣 이미지가 크게 보이는 화면" height="670" loading="lazy" src="./images/d3-cp-preview1.jpg" width="1115"/><figcaption>미리보기 위쪽: 제목과 이미지(옥토캣). 이미지는 원래 크기대로 크게 나와요 (강사 교안 저장소 예시 화면, 2026년 10월 28일)</figcaption></figure><figure class="sample-shot"><img alt="Preview 아래쪽. 항목 내용 표와 과정 교안, GitHub 공식 문서 링크" height="340" loading="lazy" src="./images/d3-cp-preview2.jpg" width="1115"/><figcaption>미리보기 아래쪽: ① 표 ② 링크 2개. 링크 글자를 눌러 주소가 맞게 열리는지도 확인해요 (강사 교안 저장소 예시 화면, 2026년 10월 28일)</figcaption></figure></div>
+<div><a href="https://github.com/copilot" target="_blank" rel="noopener">github.com/copilot</a>을 열고, 위 프롬프트를 [ ]만 바꿔 붙여 넣어요. 아래 모드가 <b>[Ask]</b>(질문하기)인지 확인하고 보내요.<figure class="sample-shot"><img alt="Copilot 채팅 입력창에 README 꾸미기 프롬프트를 넣은 화면. 이미지를 img 태그 가로 200px로 넣어 달라는 줄 강조, Ask 모드와 보내기 버튼" height="302" loading="lazy" src="./images/d3-cp-prompt.jpg" width="785"/><figcaption>① 이미지 크기를 정해 주는 줄: 정하지 않으면 이미지가 원래 크기(가로 896px)로 크게 나와요 ② 모드가 [Ask]인지 확인 ③ 보내기 (2026년 10월 28일 강사 계정, Copilot Free)</figcaption></figure></div>
+<div>Copilot이 마크다운 코드 블록을 답으로 줘요. 오른쪽 위 <b>복사 버튼</b>으로 통째로 복사해요.<figure class="sample-shot"><img alt="Copilot 답변. Markdown 코드 블록에 제목, img 태그 width 200, 표, 링크" height="385" loading="lazy" src="./images/d3-cp-answer.jpg" width="770"/><figcaption>① Copilot이 이미지를 &lt;img … width="200"&gt; 태그로 넣었어요 ② 복사 버튼. 프롬프트의 ①~④가 모두 들어 있는지 먼저 눈으로 확인해요 (2026년 10월 28일 강사 계정 실제 답변)</figcaption></figure></div>
+<div>내 저장소의 README.md 편집 화면(연필 버튼)을 열고, 실습 3 내용을 모두 지운 뒤 붙여 넣어요. 그다음 [Preview] 탭을 눌러요.<figure class="sample-shot"><img alt="README 편집 화면에 Copilot 답을 붙여 넣은 상태" height="375" loading="lazy" src="./images/d3-cp-paste.jpg" width="1110"/><figcaption>① 붙여 넣은 이미지 줄(width="200") ② [Preview] 탭 ③ 확인이 끝나면 [Commit changes...] (강사 교안 저장소 예시 화면, 2026년 10월 28일). 강사는 교안 저장소라 커밋하지 않고 미리보기만 했어요</figcaption></figure></div>
+<div>미리보기에서 이미지·표·링크가 모두 보이는지 확인해요.<figure class="sample-shot"><img alt="Preview 탭. 제목, 가로 200px 옥토캣 이미지, 항목 내용 표, 링크 2개가 한 화면에 보임" height="690" loading="lazy" src="./images/d3-cp-preview.jpg" width="1110"/><figcaption>미리보기: ① 가로 200px로 줄어든 이미지 ② 표 ③ 링크 2개가 한 화면에 들어와요. 링크 글자를 눌러 주소가 맞게 열리는지도 확인해요 (강사 교안 저장소 예시 화면, 2026년 10월 28일)</figcaption></figure></div>
 <div>커밋 메시지 <code class="inline">README를 Copilot으로 꾸미기: 이미지·표·링크</code>로 <code class="inline">main</code>에 바로 커밋해요. 커밋 창에 Copilot이 영어 메시지를 미리 채워 넣으면 지우고 바꿔 적어요.</div>
 </div>
 <h4>Copilot이 쓴 기호 읽기: 이미지·표·링크</h4>
 <div class="table-wrap"><table>
 <tr><th>쓰는 법</th><th>결과</th></tr>
 <tr><td><code class="inline">![대체 글자](이미지 주소)</code></td><td>이미지. 맨 앞 <b>!</b>가 있으면 이미지, 없으면 링크예요. 대체 글자는 이미지가 안 보일 때 대신 나와요.</td></tr>
+<tr><td><code class="inline">&lt;img src="이미지 주소" alt="대체 글자" width="200"&gt;</code></td><td>크기를 정한 이미지. 마크다운 <code class="inline">![]()</code>로는 크기를 정할 수 없어서, 크기를 정할 때는 이 HTML 태그를 써요. <code class="inline">width="200"</code>은 가로 200px이라는 뜻이에요. 이번 실습에서 Copilot이 쓴 방식이에요.</td></tr>
 <tr><td><code class="inline">[보일 글자](주소)</code></td><td>링크. 대괄호 글자가 화면에 보이고, 누르면 괄호 안 주소로 가요.</td></tr>
 <tr><td><code class="inline">| 항목 | 내용 |</code><br/><code class="inline">| --- | --- |</code><br/><code class="inline">| 이름 | 김수정 |</code></td><td>표. 첫 줄이 제목 칸, 둘째 줄 <code class="inline">---</code>는 "여기까지가 제목"이라는 구분선이에요.</td></tr>
 </table></div>
-<div class="notice"><b>이미지가 너무 크다면</b><br/>마크다운만으로는 크기를 정할 수 없어요. Copilot에게 "이미지를 <code class="inline">&lt;img src="주소" width="200"&gt;</code> 태그로 바꿔서 가로 200px로 줄여 줘"라고 다시 요청해요. GitHub의 README는 이런 간단한 HTML 태그도 보여 줘요. <span class="small">(참고: <a href="https://thelinuxcode.com/how-to-resize-images-in-github-markdown-practical-guide-for-clean-readmes/" target="_blank" rel="noopener">How to Resize Images in GitHub Markdown</a>)</span></div>
+<div class="notice"><b>이미지 크기는 숫자로 조절해요</b><br/>README에서 이미지가 너무 크거나 작으면 <code class="inline">width="200"</code>의 숫자만 바꿔요. 처음에는 150~300 사이에서 바꿔 보고, 숫자를 바꿀 때마다 [Preview]로 다시 확인해요. <span class="small">(GitHub README의 HTML 이미지 태그 참고: <a href="https://thelinuxcode.com/how-to-resize-images-in-github-markdown-practical-guide-for-clean-readmes/" target="_blank" rel="noopener">How to Resize Images in GitHub Markdown</a>)</span></div>
 <div class="warning"><b>AI가 쓴 README도 확인은 사람이 해요.</b> 표의 숫자·기간이 맞는지, 링크 주소가 내가 준 주소 그대로인지 Preview에서 직접 눌러 확인한 뒤 커밋해요.</div>
-<ul class="checklist"><li>저장소 첫 화면에 이미지·표·링크가 모두 보이나요?</li><li>링크 두 개를 눌러 맞는 페이지가 열렸나요?</li><li>커밋 목록에 실습 3과 실습 4 커밋이 따로 쌓였나요?</li></ul>
+<ul class="checklist"><li>저장소 첫 화면에 이미지·표·링크가 모두 보이고, 이미지가 화면을 가득 채우지 않나요?</li><li>링크 두 개를 눌러 맞는 페이지가 열렸나요?</li><li>커밋 목록에 실습 3과 실습 4 커밋이 따로 쌓였나요?</li></ul>
 
 <p><b>실습 5. 올라간 파일의 이름 바꾸기</b></p>
 <p>연습용 파일을 하나 만들고 이름을 바꿔 봐요. <code class="inline">sale.html</code>은 뒤의 실습에서 계속 쓰니 건드리지 않아요.</p>
