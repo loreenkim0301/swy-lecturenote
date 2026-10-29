@@ -183,7 +183,8 @@ body.nav-hidden .nav-toggle { left: 14px; }
   .session-head { margin-left: -20px; margin-right: -20px; padding-left: 20px; padding-right: 20px; }
   .section > h2, .session-head h2 { font-size: 30px; }
   .topic h3 { font-size: 24px; }
-}</style>
+}.colab-open{margin:8px 0 14px}.colab-open a{display:inline-block;padding:6px 12px;border-radius:8px;background:#f9ab00;color:#1d2433;font-weight:700;text-decoration:none}.colab-open a:hover{filter:brightness(.95)}.colab-open .small{display:block;margin-top:6px}
+</style>
 <style>
 .tt{margin:0;padding-left:1.1em}.tt li{margin:2px 0}
 .dl-list{display:grid;gap:10px;margin:18px 0}
@@ -538,7 +539,7 @@ output.serve_kernel_port_as_iframe(8000)   # 런타임의 8000번 포트 화면�
 <section class="section session" id="s4">
 <div class="session-head"><div class="eyebrow">SESSION 4 · 13:00–14:00</div><h2>기초 문법 ① 변수와 조건</h2><p>지금부터는 개념 설명을 먼저 듣지 않고, <b>코드를 먼저 실행해 본 다음</b> 방금 무슨 일이 일어났는지 이해하는 순서로 진행해요. 직접 결과를 본 뒤에 이름을 붙이면 훨씬 쉽게 기억에 남아요. 모든 실습은 <b>복사 → 붙여 넣고 실행 → 결과 확인 → 설명 읽기</b> 네 단계로 하고, 마지막으로 값을 하나 바꿔 다시 실행해요.</p></div>
 <div class="topic" id="s4-0"><h3>4-0. 실습하는 방법</h3><div class="flow"><div><span>1</span><b>복사</b><small>코드 상자의 [복사]를 눌러요</small></div><div><span>2</span><b>붙여 넣고 실행</b><small>새 코드 셀에 붙여 넣고 Shift+Enter (Mac shift+return)</small></div><div><span>3</span><b>결과 확인</b><small>"실행 결과" 상자와 같은지 비교해요</small></div><div><span>4</span><b>설명 읽기</b><small>방금 무슨 일이 일어났는지 읽어요</small></div><div><span>5</span><b>더 해 보기</b><small>값을 하나 바꿔 다시 실행해요</small></div></div><div class="procedure"><div>노트 맨 아래 셀을 클릭하고 [+ 코드]로 <b>새 코드 셀</b>을 만들어요.</div><div>교안 코드 상자의 [복사]를 누르고, 새 셀을 클릭한 뒤 <kbd>Ctrl</kbd>+<kbd>V</kbd> (Mac <kbd>⌘</kbd>+<kbd>V</kbd>)로 붙여 넣어요.</div><div>▶ 또는 <kbd>Shift</kbd>+<kbd>Enter</kbd> (Mac <kbd>shift</kbd>+<kbd>return</kbd>)로 실행하고 "실행 결과" 상자와 비교해요.</div><div>값을 바꿔 볼 때는 <b>새 셀을 만들지 않고</b> 같은 셀 안의 숫자를 고친 뒤 다시 실행해요.</div></div><div class="warning"><b>⚠ 헷갈리기 쉬운 곳 · 복사·붙여넣기</b><ul><li>코드를 일부만 드래그해서 복사하면 들여쓰기가 깨져 <code class="inline">IndentationError</code>가 날 수 있어요. [복사] 버튼을 써요.</li><li>코드가 있는 셀에 붙여 넣으면 기존 코드 뒤에 이어 붙어요. 실습마다 빈 새 셀에 붙여 넣어요.</li><li>고치기만 하고 실행하지 않으면 결과 칸은 예전 그대로예요. 고친 뒤에는 꼭 다시 실행해요.</li><li>직접 타이핑하면 닫는 괄호·따옴표가 자동으로 생겨요(아래 그림). 줄 끝에 괄호가 남지 않았는지 봐요.</li></ul></div><figure class="sample-shot"><img style="max-width:660px;margin:0 auto" alt="print(&quot;hi 까지만 입력했는데 닫는 따옴표와 괄호가 자동으로 생겼어요." height="45" loading="lazy" src="./images/d4-autoclose.jpg" width="660"/><figcaption>print("hi 까지만 입력했는데 닫는 따옴표와 괄호가 자동으로 생겼어요.</figcaption></figure><p>이해가 안 되는 부분은 Gemini에게 "왜 이렇게 나와?"라고 물어봐요. 이 세션부터는 Gemini 대화창의 <b>학습 모드를 켜 두는 것</b>을 권장해요. 정답을 바로 받는 대신 힌트를 받으며 스스로 고치게 되어 실력이 남아요. 내 화면에 학습 모드가 보이지 않으면 Gemini에게 "정답 코드 말고 힌트만 단계별로 줘"라고 요청하면 같은 방식으로 연습할 수 있어요.</p><div class="notice"><b>학습 모드는 세션 6까지만</b><br/>세션 7(실습 7-1)처럼 Gemini가 코드를 직접 고치게 할 때는 기본 모드로 바꿔요.</div></div>
-<div class="topic" id="s4-1"><h3>4-1. 실습: 변수</h3>
+<div class="topic" id="s4-1"><h3>4-1. 실습: 변수</h3><p class="colab-open"><a href="https://colab.research.google.com/github/loreenkim0301/swy-lecturenote/blob/claude/hello-page-deploy-yqm9q5/261026-ai-pm-week1/colab/d4-4-1-variable.ipynb" rel="noopener" target="_blank">▶ Colab에서 실습 노트 열기 (4-1)</a> <span class="small">열린 노트에서 [파일] → [Drive에 사본 저장]을 누른 뒤 사본에서 실행하세요. 원본 노트는 고쳐도 저장되지 않아요.</span></p>
 <div class="notice"><b>🎮 게임 개발자는 변수를 이렇게 써요</b><br/>캐릭터의 이름·체력·돈을 변수에 저장해 두고, 싸울 때마다 값을 바꿔요. 오늘 실습은 모두 게임 개발자가 실제로 쓰는 모양의 코드로 해요.</div>
 <p><span class="tag tag-req">실습</span> 아래 코드를 새 코드 셀에 붙여 넣고 실행해요.</p>
 <div class="copybox"><div class="copyhead"><span>코드 · 복사해서 Colab 코드 셀에 붙여 넣으세요</span><button type="button">복사</button></div><pre>player_name = "용사"     # 캐릭터 이름 (글자는 따옴표로 감싸요)
@@ -569,7 +570,7 @@ print("포션", qty, "개 구매 / 쓴 돈:", cost, "/ 남은 골드:", gold)</p
 <figure class="sample-shot"><img alt="실습 4-1 ⓑ 실행 화면 (2026-10-29 강사 노트에서 실행)" height="188" loading="lazy" src="./images/d4-g41b.jpg" width="700"/><figcaption>실습 4-1 ⓑ 실행 화면 (2026-10-29 강사 노트에서 실행)</figcaption></figure><p><b>한 줄씩 따라가 보기</b></p><div class="table-wrap"><table><tr><th>줄</th><th>코드</th><th>이 줄에서 일어나는 일</th><th>실행 후 값</th></tr><tr><td>1</td><td><code class="inline">gold = 500</code></td><td>500을 gold에 저장</td><td>gold = 500</td></tr><tr><td>2</td><td><code class="inline">potion_price = 50</code></td><td>50을 potion_price에 저장</td><td>potion_price = 50</td></tr><tr><td>3</td><td><code class="inline">qty = 3</code></td><td>3을 qty에 저장</td><td>qty = 3</td></tr><tr><td>4</td><td><code class="inline">cost = potion_price * qty</code></td><td>50 × 3 = 150을 계산해 cost에 저장</td><td>cost = 150</td></tr><tr><td>5</td><td><code class="inline">gold = gold - cost</code></td><td>지금 gold(500) − cost(150) = 350을 계산해 다시 gold에 저장</td><td>gold = <b>350</b> (500에서 업데이트)</td></tr><tr><td>6</td><td><code class="inline">print("포션", qty, ...)</code></td><td>이 시점의 qty·cost·gold 값으로 출력</td><td>포션 3 개 구매 / 쓴 돈: 150 / 남은 골드: 350</td></tr></table></div><div class="notice">cost는 4번째 줄에서 처음 만들어져요. 그래서 5번째 줄에서 cost를 쓸 수 있어요. 5번째 줄을 4번째 줄보다 위로 올리면 아직 없는 이름을 쓰게 되어 NameError가 나요. <b>순서가 곧 로직</b>이에요.</div>
 <ul class="checklist"><li>첫 코드에서 "용사 남은 체력: 70 / 골드: 500"이 나왔나요?</li><li>피해를 50으로 바꾸자 남은 체력이 50으로 바뀌었나요?</li><li>포션 코드에서 남은 골드 350이 나왔나요? 500 − 50 × 3을 직접 계산해 맞는지 확인했나요?</li><li>글자는 따옴표로 감싸고 숫자는 따옴표 없이 쓴다는 차이를 말할 수 있나요?</li></ul>
 </div>
-<div class="topic" id="s4-2"><h3>4-2. 실습: 조건</h3>
+<div class="topic" id="s4-2"><h3>4-2. 실습: 조건</h3><p class="colab-open"><a href="https://colab.research.google.com/github/loreenkim0301/swy-lecturenote/blob/claude/hello-page-deploy-yqm9q5/261026-ai-pm-week1/colab/d4-4-2-condition.ipynb" rel="noopener" target="_blank">▶ Colab에서 실습 노트 열기 (4-2)</a> <span class="small">열린 노트에서 [파일] → [Drive에 사본 저장]을 누른 뒤 사본에서 실행하세요. 원본 노트는 고쳐도 저장되지 않아요.</span></p>
 <div class="notice"><b>🎮 게임 개발자는 조건을 이렇게 써요</b><br/>체력에 따라 게임 오버, 경고, 계속 진행 중 하나를 고르는 규칙을 if로 만들어요.</div>
 <p><span class="tag tag-req">실습</span> 아래 코드를 새 코드 셀에 붙여 넣고 실행해요.</p>
 <div class="copybox"><div class="copyhead"><span>코드 · 복사해서 Colab 코드 셀에 붙여 넣으세요</span><button type="button">복사</button></div><pre>hp = 15                  # 지금 체력
@@ -606,7 +607,7 @@ else:                        # 그렇지 않으면
 </section>
 <section class="section session" id="s5">
 <div class="session-head"><div class="eyebrow">SESSION 5 · 14:00–15:00</div><h2>기초 문법 ② 리스트와 반복</h2><p>값 하나가 아니라 <b>여러 값</b>을 한 번에 다루는 방법이에요. 게임의 인벤토리와 몬스터 목록, 서비스의 상품 목록처럼 화면에 여러 개가 나열되는 곳은 대부분 리스트와 반복으로 만들어져요.</p></div>
-<div class="topic" id="s5-1"><h3>5-1. 실습: 리스트</h3>
+<div class="topic" id="s5-1"><h3>5-1. 실습: 리스트</h3><p class="colab-open"><a href="https://colab.research.google.com/github/loreenkim0301/swy-lecturenote/blob/claude/hello-page-deploy-yqm9q5/261026-ai-pm-week1/colab/d4-5-1-list.ipynb" rel="noopener" target="_blank">▶ Colab에서 실습 노트 열기 (5-1)</a> <span class="small">열린 노트에서 [파일] → [Drive에 사본 저장]을 누른 뒤 사본에서 실행하세요. 원본 노트는 고쳐도 저장되지 않아요.</span></p>
 <div class="notice"><b>🎮 게임 개발자는 리스트를 이렇게 써요</b><br/>가방(인벤토리)의 아이템을 리스트 하나에 순서대로 담아요.</div>
 <p><span class="tag tag-req">실습</span> 아래 코드를 새 코드 셀에 붙여 넣고 실행해요.</p>
 <div class="copybox"><div class="copyhead"><span>코드 · 복사해서 Colab 코드 셀에 붙여 넣으세요</span><button type="button">복사</button></div><pre>inventory = ["포션", "나무 검", "방패"]   # 가방(인벤토리)
@@ -632,7 +633,7 @@ print(inventory)</pre></div>
 <figure class="sample-shot"><img alt="실습 5-1 ⓑ 실행 화면 (2026-10-29 강사 노트에서 실행)" height="166" loading="lazy" src="./images/d4-g51b.jpg" width="700"/><figcaption>실습 5-1 ⓑ 실행 화면 (2026-10-29 강사 노트에서 실행)</figcaption></figure>
 <ul class="checklist"><li>첫 번째 칸이 "포션", 아이템 개수가 4로 나왔나요?</li><li>inventory[1]로 바꿔 "나무 검"이 나오는 것을 확인했나요?</li><li>inventory[-1]이 "열쇠"로 나왔나요?</li><li>나무 검을 판 뒤 리스트에 세 개만 남았나요?</li></ul>
 </div>
-<div class="topic" id="s5-2"><h3>5-2. 실습: 반복</h3>
+<div class="topic" id="s5-2"><h3>5-2. 실습: 반복</h3><p class="colab-open"><a href="https://colab.research.google.com/github/loreenkim0301/swy-lecturenote/blob/claude/hello-page-deploy-yqm9q5/261026-ai-pm-week1/colab/d4-5-2-loop.ipynb" rel="noopener" target="_blank">▶ Colab에서 실습 노트 열기 (5-2)</a> <span class="small">열린 노트에서 [파일] → [Drive에 사본 저장]을 누른 뒤 사본에서 실행하세요. 원본 노트는 고쳐도 저장되지 않아요.</span></p>
 <div class="notice"><b>🎮 게임 개발자는 반복을 이렇게 써요</b><br/>몬스터 여러 마리에게 같은 공격을 하나씩 반복해요. 몬스터가 3마리든 300마리든 코드는 그대로예요.</div>
 <p><span class="tag tag-req">실습</span> 코드는 한 번만 썼는데 결과가 몇 줄 나오는지 보세요.</p>
 <div class="copybox"><div class="copyhead"><span>코드 · 복사해서 Colab 코드 셀에 붙여 넣으세요</span><button type="button">복사</button></div><pre>monsters = ["슬라임", "고블린", "오크"]   # 이번 웨이브의 몬스터
@@ -668,7 +669,7 @@ print(sum(exps))             # 합계 기능으로 다시 계산</pre></div>
 </section>
 <section class="section session" id="s6">
 <div class="session-head"><div class="eyebrow">SESSION 6 · 15:00–16:00</div><h2>기초 문법 ③ random과 종합하기</h2><p>남이 만들어 둔 기능 묶음을 불러와 쓰는 방법(<code class="inline">import</code>)을 익히고, 지금까지 배운 다섯 가지를 한 코드에 모아 전투 화면의 로직을 만들어요.</p></div>
-<div class="topic" id="s6-1"><h3>6-1. 실습: random</h3>
+<div class="topic" id="s6-1"><h3>6-1. 실습: random</h3><p class="colab-open"><a href="https://colab.research.google.com/github/loreenkim0301/swy-lecturenote/blob/claude/hello-page-deploy-yqm9q5/261026-ai-pm-week1/colab/d4-6-1-random.ipynb" rel="noopener" target="_blank">▶ Colab에서 실습 노트 열기 (6-1)</a> <span class="small">열린 노트에서 [파일] → [Drive에 사본 저장]을 누른 뒤 사본에서 실행하세요. 원본 노트는 고쳐도 저장되지 않아요.</span></p>
 <div class="notice"><b>🎮 게임 개발자는 random을 이렇게 써요</b><br/>공격 피해량과 아이템 드롭처럼 매번 결과가 달라야 하는 곳에 random을 써요.</div>
 <p><span class="tag tag-req">실습</span> 아래 코드를 새 코드 셀에 붙여 넣고, 같은 셀을 여러 번 실행해 보세요.</p>
 <div class="copybox"><div class="copyhead"><span>코드 · 복사해서 Colab 코드 셀에 붙여 넣으세요</span><button type="button">복사</button></div><pre>import random                               # 무작위 기능 묶음 불러오기
@@ -694,7 +695,7 @@ else:
 <figure class="sample-shot"><img alt="실습 6-1 ⓑ 실행 화면. 숫자가 20 이하일 때만 &quot;치명타&quot;가 나와요. (2026-10-29 강사 노트에서 실행)" height="185" loading="lazy" src="./images/d4-g61b.jpg" width="700"/><figcaption>실습 6-1 ⓑ 실행 화면. 숫자가 20 이하일 때만 "치명타"가 나와요. (2026-10-29 강사 노트에서 실행)</figcaption></figure>
 <ul class="checklist"><li>여러 번 실행했을 때 피해 숫자와 드롭 아이템이 바뀌었나요?</li><li>피해 숫자가 늘 10~20 사이였나요? 9나 21이 나오지 않는지 5번 이상 실행해 확인했나요?</li><li>치명타 코드에서 20 이하일 때만 "치명타!"가 나왔나요?</li></ul>
 </div>
-<div class="topic" id="s6-2"><h3>6-2. 실습: 종합하기</h3>
+<div class="topic" id="s6-2"><h3>6-2. 실습: 종합하기</h3><p class="colab-open"><a href="https://colab.research.google.com/github/loreenkim0301/swy-lecturenote/blob/claude/hello-page-deploy-yqm9q5/261026-ai-pm-week1/colab/d4-6-2-combine.ipynb" rel="noopener" target="_blank">▶ Colab에서 실습 노트 열기 (6-2)</a> <span class="small">열린 노트에서 [파일] → [Drive에 사본 저장]을 누른 뒤 사본에서 실행하세요. 원본 노트는 고쳐도 저장되지 않아요.</span></p>
 <p><span class="tag tag-req">실습</span> 지금까지의 다섯 가지를 한 번에 쓰면 전투 화면의 로직이 돼요. 몬스터 목록을 보여 주고, 이번에 공격할 몬스터를 무작위로 골라요.</p>
 <div class="copybox"><div class="copyhead"><span>코드 · 복사해서 Colab 코드 셀에 붙여 넣으세요</span><button type="button">복사</button></div><pre>import random                    # 무작위 기능 불러오기
 monsters = [                     # 몬스터 정보 묶음 여러 개
@@ -742,7 +743,7 @@ print("이번 공격 대상:", target["name"])</pre></div>
 </section>
 <section class="section session" id="s7">
 <div class="session-head"><div class="eyebrow">SESSION 7 · 16:00–17:30</div><h2>AI로 고치고 검증하기</h2><p>실습 6-2의 "쓰러진 몬스터가 공격 대상으로 뽑히는" 문제를 Gemini에게 고쳐 달라고 해요. AI가 고쳤다고 끝이 아니에요. <b>기대한 결과가 실제로 나오는지 실행해서 확인해야</b> 검증이 끝나요.</p></div>
-<div class="topic" id="s7-1"><h3>7-1. 실습: AI로 고치고 검증하기</h3><p><span class="tag tag-req">실습</span> Gemini에게 요청하면 <b>실습 6-2 셀 안에서 직접</b> 바꿀 부분을 보여 줘요. 고친 뒤에는 실행해서 기대한 결과와 비교해요.</p><p><b>STEP 1. 기대한 결과 먼저 확인하기</b></p><div class="procedure"><div>실습 6-2 코드 셀이 노트에 있는지 확인하고, 아래 표를 먼저 읽어요.</div></div><div class="table-wrap"><table>
+<div class="topic" id="s7-1"><h3>7-1. 실습: AI로 고치고 검증하기</h3><p><span class="tag tag-req">실습</span> Gemini에게 요청하면 <b>실습 6-2 셀 안에서 직접</b> 바꿀 부분을 보여 줘요. 고친 뒤에는 실행해서 기대한 결과와 비교해요.</p><p><b>STEP 1. 기대한 결과 먼저 확인하기</b></p><div class="procedure"><div>실습 6-2 코드 셀이 노트에 있는지 확인하고, 아래 표를 먼저 읽어요. 6-2 셀이 없으면 <a href="https://colab.research.google.com/github/loreenkim0301/swy-lecturenote/blob/claude/hello-page-deploy-yqm9q5/261026-ai-pm-week1/colab/d4-6-2-combine.ipynb" rel="noopener" target="_blank">6-2 실습 노트</a>를 열어 [파일] → [Drive에 사본 저장] 후 그 사본에서 진행해요.</div></div><div class="table-wrap"><table>
 <tr><th>확인 항목</th><th>기대한 결과</th></tr>
 <tr><td>몬스터 목록 세 줄</td><td>슬라임 - 체력 30 / 고블린 - 쓰러짐 / 오크 - 체력 50 (고치기 전과 같아야 해요)</td></tr>
 <tr><td>이번 공격 대상 (10번 실행)</td><td>슬라임 또는 오크만 나와요. 고블린은 <b>한 번도</b> 나오지 않아야 해요.</td></tr>
