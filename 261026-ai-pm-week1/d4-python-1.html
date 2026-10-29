@@ -798,7 +798,7 @@ print("이번 공격 대상:", target["name"])</pre></div>
 </script>
 <script type="text/javascript">
 (function(){
-  var re=/^(STEP|준비|규칙서대로|분석 [1-4]|프롬프트 [AB]|프롬프트 쓰기|실습|방법 [A-C]|워밍업|[①-⑤] |\(선택\)|완성한|결과를 보고|버전|두 결과)/;
+  var re=/^STEP\s*\d/;   // 하위 목차는 STEP만 표시
   var nav=document.querySelector('aside nav');
   document.querySelectorAll('main .topic').forEach(function(t){
     var parent=nav.querySelector('a.l3[href="#'+t.id+'"]'),last=parent,n=0;
