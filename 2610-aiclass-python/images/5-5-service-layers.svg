@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif">
+<title>실제 서비스는 여러 언어를 함께 쓴다</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#657086"/></marker></defs>
+<rect width="960" height="470" fill="#ffffff"/>
+<text x="480" y="48" text-anchor="middle" font-size="28" font-weight="800" fill="#172033">실제 서비스는 여러 언어를 함께 씁니다</text>
+<text x="480" y="82" text-anchor="middle" font-size="17" fill="#657086">셀렉트마켓에서 손님이 주문 버튼을 누르면</text>
+<g font-size="17">
+  <g transform="translate(40,120)">
+    <rect width="260" height="230" rx="16" fill="#eef2ff" stroke="#2457f5" stroke-width="2"/>
+    <text x="130" y="44" text-anchor="middle" font-size="22" font-weight="800" fill="#2a3fb0">홀 = 프론트엔드</text>
+    <text x="130" y="76" text-anchor="middle" fill="#657086">손님이 보는 화면</text>
+    <text x="130" y="128" text-anchor="middle" font-weight="700" fill="#172033">HTML · CSS</text>
+    <text x="130" y="156" text-anchor="middle" font-weight="700" fill="#172033">자바스크립트</text>
+    <text x="130" y="200" text-anchor="middle" fill="#172033">실행: 손님의 브라우저</text>
+  </g>
+  <g transform="translate(350,120)">
+    <rect width="260" height="230" rx="16" fill="#e7f6ef" stroke="#16a36b" stroke-width="2"/>
+    <text x="130" y="44" text-anchor="middle" font-size="22" font-weight="800" fill="#0d7a4f">주방 = 백엔드</text>
+    <text x="130" y="76" text-anchor="middle" fill="#657086">주문 확인, 결제, 계산</text>
+    <text x="130" y="128" text-anchor="middle" font-weight="700" fill="#172033">파이썬 · Node.js</text>
+    <text x="130" y="156" text-anchor="middle" font-weight="700" fill="#172033">Go 등</text>
+    <text x="130" y="200" text-anchor="middle" fill="#172033">실행: 회사 서버</text>
+  </g>
+  <g transform="translate(660,120)">
+    <rect width="260" height="230" rx="16" fill="#fff6e5" stroke="#ffad22" stroke-width="2"/>
+    <text x="130" y="44" text-anchor="middle" font-size="22" font-weight="800" fill="#9a5b00">창고 = 데이터베이스</text>
+    <text x="130" y="76" text-anchor="middle" fill="#657086">주문·회원 기록 보관</text>
+    <text x="130" y="142" text-anchor="middle" font-weight="700" fill="#172033">SQL</text>
+    <text x="130" y="200" text-anchor="middle" fill="#172033">실행: 데이터베이스 서버</text>
+  </g>
+  <line x1="304" y1="215" x2="344" y2="215" stroke="#657086" stroke-width="3" marker-end="url(#a)"/>
+  <line x1="614" y1="215" x2="654" y2="215" stroke="#657086" stroke-width="3" marker-end="url(#a)"/>
+  <line x1="344" y1="255" x2="304" y2="255" stroke="#657086" stroke-width="3" marker-end="url(#a)"/>
+  <line x1="654" y1="255" x2="614" y2="255" stroke="#657086" stroke-width="3" marker-end="url(#a)"/>
+  <text x="324" y="200" text-anchor="middle" font-size="14" fill="#657086">주문</text>
+  <text x="634" y="200" text-anchor="middle" font-size="14" fill="#657086">저장</text>
+  <text x="324" y="282" text-anchor="middle" font-size="14" fill="#657086">결과</text>
+  <text x="634" y="282" text-anchor="middle" font-size="14" fill="#657086">조회</text>
+</g>
+<rect x="40" y="380" width="880" height="62" rx="12" fill="#f5f7fb"/>
+<text x="480" y="418" text-anchor="middle" font-size="18" fill="#172033">AI에게 요청할 때도 <tspan font-weight="800">"화면만 필요한지, 주방과 창고까지 필요한지"</tspan>를 먼저 정합니다</text>
+</svg>

@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet"/>
+<meta content="index, follow, noai, noimageai" name="robots"/>
+<title>AI 프로덕트 매니저 1주차 · DAY 4 바이브코더를 위한 파이썬 ①</title>
+<style>:root { --ink: #172033; --muted: #657086; --line: #dfe4ed; --soft: #f5f7fb; --blue: #2457f5; --nav: #111a2e; --green: #16a36b; --warn: #ffad22; --page-pad: clamp(28px,5.8vw,82px); --font-sans: "Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; scroll-behavior: smooth; }
+* { box-sizing: border-box; }
+body { margin: 0px; background: rgb(238, 241, 246); color: var(--ink); font-family: var(--font-sans); line-height: 1.7; letter-spacing: -0.01em; }
+.app aside { position: fixed; inset: 0px auto 0px 0px; width: 310px; height: 100vh; padding: 0 16px 28px; background: var(--nav); color: rgb(255, 255, 255); overflow-y: auto; z-index: 10; }
+.app main { min-height: 100vh; margin-left: 310px; background: rgb(255, 255, 255); }
+.side-head { position: sticky; top: 0; z-index: 1; margin: 0 -16px; padding: 20px 26px 14px; background: var(--nav); border-bottom: 1px solid rgb(45, 56, 80); }
+.brand { font-size: 11px; font-weight: 800; letter-spacing: 0.14em; color: rgb(130, 145, 177); }
+aside h1 { margin: 6px 0 4px; font-size: 17px; line-height: 1.35; letter-spacing: -0.02em; }
+.side-sub, .side-foot { font-size: 12px; color: rgb(150, 162, 186); }
+aside nav { margin-top: 10px; }
+aside nav a { display: block; padding: 7px 10px 7px 22px; color: rgb(190, 200, 219); text-decoration: none; font-size: 14px; line-height: 1.45; border-left: 3px solid transparent; border-radius: 0 6px 6px 0; }
+aside nav a:hover { color: rgb(255, 255, 255); background: rgb(25, 36, 60); }
+aside nav .major { margin-top: 12px; padding-left: 10px; color: rgb(255, 255, 255); font-size: 15px; font-weight: 800; }
+aside nav a.active { color: rgb(255, 255, 255); background: rgb(30, 44, 74); border-left-color: var(--blue); font-weight: 700; }
+.side-foot { margin: 20px 10px 0; padding-top: 14px; border-top: 1px solid rgb(45, 56, 80); }
+.hero { padding: 86px var(--page-pad) 72px; background: linear-gradient(135deg, rgb(247, 249, 255), rgb(238, 243, 255) 58%, rgb(233, 255, 246)); border-bottom: 1px solid var(--line); }
+.kicker, .section-label, .topic-label, .eyebrow { font-size: 13px; font-weight: 800; letter-spacing: 0.13em; color: var(--blue); }
+.hero h1 { margin: 16px 0px; font-size: clamp(40px, 5vw, 70px); line-height: 1.08; letter-spacing: -0.055em; }
+.hero h1 em { color: var(--blue); font-style: normal; }
+.hero > p { max-width: 860px; color: rgb(79, 91, 114); font-size: 18px; }
+.hero-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 38px; background: rgb(220, 226, 237); border: 1px solid rgb(220, 226, 237); }
+.hero-grid div { background: rgb(255, 255, 255); padding: 16px; }
+.hero-grid b { display: block; font-size: 12px; color: rgb(125, 135, 153); }
+.hero-grid span { font-size: 14px; font-weight: 800; }
+.section { padding: 70px var(--page-pad); border-bottom: 1px solid var(--line); scroll-margin-top: 18px; }
+.section > h2, .session-head h2 { margin: 8px 0px 14px; font-size: 36px; letter-spacing: -0.04em; }
+.lead { font-size: 18px; max-width: 900px; }
+.three-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px 0px; }
+.three-cards article { padding: 20px; border: 1px solid var(--line); border-radius: 14px; background: rgb(255, 255, 255); }
+.three-cards article > span { font-size: 12px; font-weight: 800; color: var(--blue); }
+.three-cards h3 { margin: 8px 0px 5px; font-size: 20px; }
+.three-cards p, .caption { color: var(--muted); font-size: 14px; }
+.notice, .warning { margin: 22px 0px; padding: 16px 19px; }
+.notice { border-left: 4px solid var(--blue); background: rgb(234, 240, 255); }
+.warning { border-left: 4px solid var(--warn); background: rgb(255, 246, 230); }
+.schedule { margin-top: 30px; }
+.schedule div { display: grid; grid-template-columns: 48px 125px 1fr; align-items: center; padding: 13px 0px; border-top: 1px solid var(--line); }
+.schedule span.badge { display: grid; place-items: center; width: 29px; height: 29px; border-radius: 50%; background: var(--nav); color: rgb(255, 255, 255); font-size: 12px; }
+.schedule p { margin: 0px; }
+.session { padding-top: 0px; }
+.session-head { margin: 0 calc(var(--page-pad)*-1) 50px; padding: 52px var(--page-pad); background: var(--nav); color: rgb(255, 255, 255); }
+.session-head .eyebrow { color: rgb(125, 160, 255); }
+.session-head p { max-width: 900px; color: rgb(195, 204, 220); }
+.vibe-intro { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 28px; align-items: start; margin-top: 30px; padding-top: 28px; border-top: 1px solid rgb(45, 56, 80); }
+.vibe-quote { margin: 0; padding-left: 18px; border-left: 3px solid rgb(125, 160, 255); }
+.vibe-quote blockquote { margin: 0 0 10px; color: #fff; font-size: 21px; font-weight: 700; line-height: 1.5; letter-spacing: -0.03em; }
+.vibe-quote figcaption { color: rgb(160, 172, 196); font-size: 13px; }
+.vibe-meaning { margin: 18px 0 0; padding: 14px 16px; border-radius: 12px; background: rgb(25, 36, 60); color: rgb(215, 222, 236); font-size: 15px; }
+.vibe-meaning b { color: #fff; }
+.vibe-timeline { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.vibe-timeline li { display: grid; grid-template-columns: 74px 1fr; gap: 12px; padding: 12px 14px; border: 1px solid rgb(45, 56, 80); border-radius: 12px; background: rgba(255, 255, 255, 0.03); }
+.vibe-timeline time { color: rgb(125, 160, 255); font-size: 13px; font-weight: 800; letter-spacing: 0.02em; }
+.vibe-timeline b { display: block; color: #fff; font-size: 15px; }
+.vibe-timeline span { display: block; color: rgb(185, 195, 214); font-size: 14px; line-height: 1.55; }
+.vibe-sources { grid-column: 1 / -1; margin: 0; color: rgb(130, 145, 177); font-size: 12px; }
+.vibe-sources a { color: rgb(160, 180, 230); }
+@media (max-width: 1020px) { .vibe-intro { grid-template-columns: 1fr; } }
+.time { font-size: 13px; color: rgb(174, 185, 207); }
+.topic { margin-bottom: 70px; scroll-margin-top: 20px; }
+.topic h3 { margin: 8px 0px 12px; font-size: 28px; letter-spacing: -0.025em; }
+.flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 9px; margin: 18px 0px 26px; }
+.flow div { text-align: center; padding: 16px 12px; border-radius: 12px; background: rgb(237, 242, 255); }
+.flow span { display: block; font-size: 12px; font-weight: 800; color: var(--blue); }
+.flow b { display: block; }
+.flow small { display: block; margin-top: 5px; color: var(--muted); }
+.versus { display: grid; grid-template-columns: 1fr 54px 1fr; align-items: center; margin: 16px 0px 26px; }
+.versus > div { padding: 20px; border: 1px solid var(--line); border-radius: 13px; background: var(--soft); }
+.versus i { text-align: center; color: var(--blue); font-style: normal; font-weight: 900; }
+.table-wrap { overflow: auto; }
+table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 14px; }
+th { padding: 13px; text-align: left; color: rgb(255, 255, 255); background: var(--nav); }
+td { padding: 14px 13px; border-bottom: 1px solid var(--line); }
+.checklist { display: grid; gap: 7px; padding: 0px; list-style: none; }
+.checklist li { padding: 11px 14px; border-radius: 8px; background: var(--soft); }
+.checklist li::before { content: "✓"; margin-right: 8px; color: var(--blue); font-weight: 900; }
+.practice-brief { display: grid; gap: 8px; margin: 18px 0px; }
+.practice-brief > div { padding: 15px 18px; border: 1px solid rgb(200, 239, 221); border-radius: 12px; background: rgb(237, 255, 246); }
+.copybox { margin: 20px 0px; border: 1px solid rgb(207, 215, 230); border-radius: 12px; overflow: hidden; background: rgb(17, 26, 46); color: rgb(232, 238, 252); }
+.copyhead { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: rgb(30, 43, 71); font-size: 13px; font-weight: 800; }
+.copyhead button { padding: 5px 10px; border: 1px solid rgb(97, 112, 141); border-radius: 6px; background: transparent; color: rgb(255, 255, 255); cursor: pointer; }
+.copybox pre { white-space: pre-wrap; margin: 0px; padding: 20px; font: 13px / 1.72 ui-monospace, SFMono-Regular, Menlo, monospace; }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 18px 0px 26px; }
+.steps article { padding: 18px; border-top: 4px solid var(--blue); border-radius: 12px; }
+.steps strong { display: block; color: var(--blue); font-size: 12px; }
+.steps b { display: block; font-size: 18px; margin-top: 3px; }
+.sub-optional { margin-top: 10px; padding: 10px 12px; border: 1px dashed var(--line); border-radius: 10px; color: var(--muted); font-size: 14px; }
+.sub-optional .tag { margin-left: 0; }
+.steps .sub-optional b { display: inline; font-size: 14px; margin: 0 4px 0 2px; color: var(--muted); }
+.tag { display: inline-block; margin-left: 6px; padding: 1px 8px; border-radius: 999px; font-size: 11px; font-weight: 800; letter-spacing: 0; vertical-align: 1px; }
+.tag-req { background: var(--blue); color: #fff; }
+.tag-opt { border: 1px solid var(--line); background: #fff; color: var(--muted); font-weight: 700; }
+.final-box { padding: 28px; border-radius: 18px; background: linear-gradient(135deg, rgb(17, 26, 46), rgb(29, 47, 88)); color: rgb(255, 255, 255); }
+.final-box h3 { margin: 6px 0px 8px; font-size: 30px; }
+.final-box p { color: rgb(203, 213, 231); }
+code.inline { padding: 2px 6px; border-radius: 6px; background: rgb(238, 242, 248); font-family: ui-monospace, monospace; }
+.small { font-size: 13px; color: var(--muted); }
+.resource-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 18px 0px 28px; }
+.resource-card { padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--soft); }
+.resource-card b { display: block; margin-bottom: 4px; }
+.resource-card a { color: var(--blue); font-weight: 800; text-decoration: none; word-break: break-all; font-size: 13px; }
+.sample-link { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin: 22px 0; padding: 14px 18px; border: 1px solid rgb(203, 218, 255); border-radius: 12px; background: rgb(240, 245, 255); }
+.sample-link span { color: var(--muted); font-size: 14px; }
+.sample-link b { display: block; color: var(--ink); font-size: 15px; }
+.sample-link .resource-link { flex-shrink: 0; margin-top: 0; }
+@media (max-width: 680px) { .sample-link { flex-direction: column; align-items: flex-start; } }
+.resource-link { display: inline-block; margin-top: 8px; padding: 8px 12px; border: 1px solid rgb(203, 213, 225); border-radius: 8px; color: var(--blue); font-size: 13px; font-weight: 800; text-decoration: none; background: rgb(255, 255, 255); }
+.procedure { counter-reset: step 0; display: grid; gap: 10px; margin: 18px 0px 28px; }
+.procedure > div { position: relative; padding: 15px 16px 15px 54px; border: 1px solid var(--line); border-radius: 12px; background: rgb(255, 255, 255); }
+.procedure > div::before { counter-increment: step 1; content: counter(step); position: absolute; left: 16px; top: 15px; width: 26px; height: 26px; display: grid; place-items: center; border-radius: 50%; background: var(--blue); color: rgb(255, 255, 255); font-size: 12px; font-weight: 900; }
+.sample-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 18px 0px 28px; }
+.sample-grid article { padding: 18px; border: 1px solid var(--line); border-radius: 13px; background: var(--soft); }
+.term-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 22px 0px; }
+.term-grid article { padding: 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--soft); }
+.term-grid strong { display: block; color: var(--blue); font-size: 12px; letter-spacing: 0.08em; }
+.term-grid h4 { margin: 5px 0px 8px; font-size: 20px; }
+.talk { margin: 18px 0px; padding: 22px; border-left: 4px solid var(--green); background: rgb(241, 252, 247); }
+.talk p { margin: 0px 0px 14px; }
+.talk p:last-child { margin-bottom: 0px; }
+.example-flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 18px 0px 24px; }
+.example-flow div { padding: 14px 12px; border-radius: 10px; background: rgb(255, 248, 235); }
+.example-flow b, .example-flow span { display: block; }
+.example-flow span { margin-bottom: 3px; color: rgb(154, 100, 16); font-size: 12px; font-weight: 800; }
+details.optional { margin-top: 8px; padding: 0 22px 6px; border: 1px solid var(--line); border-radius: 14px; background: var(--soft); }
+details.optional > summary { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; padding: 20px 0; cursor: pointer; list-style: none; }
+details.optional > summary::-webkit-details-marker { display: none; }
+details.optional > summary::before { content: "▸"; color: var(--blue); font-weight: 900; }
+details.optional[open] > summary::before { content: "▾"; }
+details.optional .summary-title { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
+details.optional .summary-hint { font-size: 13px; color: var(--muted); }
+details.optional[open] .summary-hint { display: none; }
+.profile-card { display: grid; grid-template-columns: 1.6fr 1fr; gap: 20px; padding: 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--soft); }
+.profile-card h3 { margin: 0 0 6px; font-size: 22px; }
+.profile-card ul { margin: 10px 0 0; padding-left: 18px; }
+.profile-links { display: grid; gap: 8px; align-content: start; }
+.profile-links a { padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--blue); font-size: 14px; font-weight: 700; text-decoration: none; word-break: break-all; }
+.sample-shot { margin: 22px 0; }
+.sample-shot img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 12px; }
+.sample-shot.narrow img { max-width: 700px; margin: 0 auto; }
+.sample-shot.small img { max-width: 360px; }
+.sample-shot figcaption { margin-top: 10px; color: var(--muted); font-size: 14px; }
+@media (max-width: 680px) { .profile-card { grid-template-columns: 1fr; padding: 18px; } }
+.app aside { word-break: keep-all; }
+.topic .three-cards h3 { margin: 8px 0 5px; font-size: 20px; letter-spacing: -0.02em; }
+.block-title { margin: 34px 0 4px; font-size: 22px; letter-spacing: -0.02em; scroll-margin-top: 18px; }
+.break { padding: 54px var(--page-pad); background: rgb(246, 248, 252); border-bottom: 1px solid var(--line); }
+.break h2 { margin: 0px 0px 8px; font-size: 32px; }
+@media (max-width: 1020px) {
+  .app aside { display: none; }
+  .app main { margin-left: 0px; }
+  .hero-grid, .three-cards, .steps, .term-grid, .example-flow { grid-template-columns: 1fr 1fr; }
+  .flow { grid-template-columns: 1fr 1fr; }
+}
+.nav-toggle { position: fixed; top: 14px; left: 322px; z-index: 20; display: flex; align-items: center; gap: 6px; height: 36px; padding: 0 12px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255, 255, 255, 0.94); color: var(--ink); font: 700 13px/1 var(--font-sans); cursor: pointer; box-shadow: 0 4px 14px rgba(17, 26, 46, 0.12); transition: left .25s ease; }
+.nav-toggle:hover { border-color: var(--blue); color: var(--blue); }
+.nav-toggle svg { width: 16px; height: 16px; }
+.app aside { transition: transform .25s ease; }
+.app main { transition: margin-left .25s ease; }
+body.nav-hidden .app aside { transform: translateX(-100%); }
+body.nav-hidden .app main { margin-left: 0; }
+body.nav-hidden .nav-toggle { left: 14px; }
+@media (max-width: 1020px) {
+  .app aside { display: block; width: min(310px, calc(100vw - 64px)); transform: translateX(-100%); }
+  .nav-toggle { left: 14px; }
+  body.nav-open .app aside { transform: none; box-shadow: 8px 0 24px rgba(17, 26, 46, 0.25); }
+  body.nav-open .nav-toggle { left: auto; right: 10px; padding: 0 11px; }
+  body.nav-open .nav-toggle span { display: none; }
+}
+@media (max-width: 680px) {
+  .hero, .section, .break { padding-left: 20px; padding-right: 20px; }
+  .hero { padding-top: 54px; }
+  .hero-grid, .three-cards, .steps, .flow, .resource-list, .term-grid, .example-flow { grid-template-columns: 1fr; }
+  .schedule div { grid-template-columns: 38px 100px 1fr; }
+  .versus { grid-template-columns: 1fr; }
+  .versus i { padding: 8px 0px; }
+  .session-head { margin-left: -20px; margin-right: -20px; padding-left: 20px; padding-right: 20px; }
+  .section > h2, .session-head h2 { font-size: 30px; }
+  .topic h3 { font-size: 24px; }
+}</style>
+<style>
+.tt{margin:0;padding-left:1.1em}.tt li{margin:2px 0}
+.dl-list{display:grid;gap:10px;margin:18px 0}
+.dl-card{display:flex;align-items:center;gap:14px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:#fff;text-decoration:none;color:var(--ink)}
+.dl-card:hover{border-color:var(--blue);background:var(--soft)}
+.dl-ico{flex:none;display:grid;place-items:center;width:44px;height:52px;border-radius:8px;background:rgb(237,242,255);color:var(--blue);font-size:11px;font-weight:800}
+.dl-body{flex:1}.dl-body b{display:block;font-size:16px}.dl-body span{display:block;font-size:13px;color:var(--muted)}
+.dl-btn{flex:none;padding:8px 14px;border-radius:8px;background:var(--blue);color:#fff;font-size:13px;font-weight:800}
+@media(max-width:680px){.dl-card{flex-wrap:wrap}}
+#slide .sample-shot{margin:8px 0}#slide .sample-shot img{max-height:420px;width:auto;max-width:100%;margin:0 auto}#slide .sample-shot figcaption{margin-top:4px;font-size:13px;text-align:center}
+#slide .dl-card{padding:10px 14px}
+.todo{color:#b42318;font-weight:700}
+main,#slide{word-break:keep-all;overflow-wrap:break-word}
+h1,h2,h3,.hero p,.lead{text-wrap:balance}
+p,li,td{text-wrap:pretty}
+td .tag{margin-bottom:2px}
+.tag.nap{background:#7c3aed}.tag.sheet{background:var(--green)}
+.tag{margin-left:0;margin-right:4px}
+.topic .small{display:block}
+.resource-card .small{display:block;margin-bottom:6px}
+.resource-card a{display:inline-block;margin:2px 0}
+.copybox pre{background:none;color:inherit}
+.hero-grid{grid-template-columns:repeat(3,1fr)}
+.sample-link .resource-link{margin:0 6px 0 0}
+.sample-link{flex-wrap:wrap;justify-content:flex-start;gap:6px}
+#slideBtn{position:fixed;right:16px;bottom:16px;z-index:30;background:var(--blue);color:#fff;border:0;border-radius:999px;padding:12px 20px;font:700 15px var(--font-sans);cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+#deck{position:fixed;inset:0;z-index:100;background:#0b1220;display:flex;flex-direction:column}
+#deck[hidden]{display:none}
+#viewport{flex:1;min-height:0;position:relative;overflow:hidden}
+#stage{position:absolute;left:50%;top:50%;width:1280px;height:720px;background:#fff;display:flex;flex-direction:column;overflow:hidden;transform-origin:center center;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+#master{flex:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 96px;background:var(--nav);color:#fff;font-weight:800;font-size:15px}
+#master .m-brand{font-size:11px;letter-spacing:.14em;color:rgb(130,145,177);margin-right:12px}
+#mbar{flex:none;height:4px;background:var(--line)}#prog{display:block;height:100%;background:var(--blue);width:0}
+#slide{flex:1;min-height:0;overflow:hidden;padding:28px 96px 12px;font-size:19px;line-height:1.55}
+#slide h1{font-size:46px;line-height:1.15;margin:12px 0}#slide h1 em{color:var(--blue);font-style:normal}
+#slide h3.st{margin:0 0 14px;font-size:32px;letter-spacing:-.03em}
+#slide .cont{font-size:16px;color:var(--muted);font-weight:500;margin-left:10px}
+#slide table{font-size:16px;margin-top:6px}#slide th,#slide td{padding:9px 12px}
+#slide .copybox{margin:10px 0}#slide .copybox pre{font-size:15px;padding:14px 18px}
+#slide p,#slide .notice,#slide .warning{margin:8px 0}
+#slide .notice,#slide .warning{padding:12px 16px}
+#slide .procedure{gap:8px;margin:10px 0}#slide .procedure>div{padding:10px 14px 10px 50px}
+#slide .resource-list{grid-template-columns:repeat(3,1fr);margin:10px 0}
+#slide .hero-grid{margin-top:20px}#slide .flow{grid-template-columns:repeat(5,1fr);margin:12px 0 16px}#slide .flow div{padding:10px 8px}#slide .hero-grid{grid-template-columns:repeat(3,1fr)}
+#pager{flex:none;display:flex;align-items:center;justify-content:center;gap:14px;height:40px;border-top:1px solid var(--line);color:var(--muted);font-size:14px;font-weight:700}
+#pager button{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:6px;width:30px;height:26px;font-size:11px;cursor:pointer}
+#bar{flex:none;display:flex;align-items:center;justify-content:center;gap:16px;padding:8px;background:#111a2e;color:#cbd5e7;font-size:14px}
+#bar button{border:1px solid rgb(97,112,141);background:transparent;color:#fff;border-radius:8px;padding:6px 14px;font:700 14px var(--font-sans);cursor:pointer}
+@media print{#slideBtn,#deck{display:none!important}}
+
+aside nav .nav-title{padding:6px 10px 10px;font-size:12px;font-weight:800;letter-spacing:.12em;color:rgb(130,145,177)}
+aside nav .grp{margin-top:20px;padding-top:12px;border-top:1px solid rgb(45,56,80)}
+aside nav .nav-title+.grp{margin-top:0;border-top:0;padding-top:0}
+aside nav .grp-label{padding:0 10px 4px;font-size:11px;font-weight:800;letter-spacing:.1em;color:rgb(130,145,177)}
+aside nav a.l2{margin-top:0;padding:6px 10px;color:#fff;font-size:15px;font-weight:800;border-left:3px solid transparent}
+aside nav a.l3{margin-left:12px;padding:5px 10px 5px 14px;font-size:14px;border-left:1px solid rgb(45,56,80)}
+aside nav a.l4{display:none;margin-left:12px;padding:3px 10px 3px 30px;font-size:12.5px;color:rgb(150,162,186);border-left:1px solid rgb(45,56,80)}
+aside nav a.l4.show{display:block}
+aside nav a.active{border-left-color:var(--blue)}
+.dh{margin:30px 0 8px;padding:2px 0 2px 12px;border-left:4px solid var(--blue)}
+.dh b{font-size:1.06em}
+#slide .dh{margin:12px 0 8px}
+#slide .eb{margin:0 0 4px;font-size:14px;font-weight:800;letter-spacing:.06em;color:var(--blue)}
+#slide .outline{columns:2;column-gap:56px;font-size:16px;line-height:1.5}
+#slide .outline .og{break-inside:avoid;margin-bottom:12px}
+#slide .outline b{display:block;font-size:17px}
+#slide .outline span{display:block;padding-left:14px;color:var(--muted);font-size:14.5px}
+
+.base{margin:6px 0 14px;padding:8px 12px;border-left:4px solid var(--green);background:rgb(236,248,243);font-size:14.5px}
+.copybox pre{font:15px/1.8 var(--font-sans);letter-spacing:-.01em}
+.copybox pre.fmt{white-space:normal;padding:18px 20px}
+.pl{display:flex;gap:10px;margin:0 0 9px}.pl:last-child{margin-bottom:0}
+.pl .pk{flex:none;width:3.3em;color:rgb(140,180,255);font-weight:800}
+.pl.k2 .pk{color:rgb(110,220,180)}.pl.k3 .pk{color:rgb(255,200,110)}
+.pl .pt{flex:1;min-width:0}
+.pl.c{padding-left:calc(3.3em + 10px);margin-top:-5px}
+#slide .copybox pre.fmt{font-size:17px;padding:14px 18px}
+#slide .base{font-size:15px;padding:6px 12px}
+</style>
+<style>.side-link{margin:16px 10px 0;padding:12px;border:1px solid rgb(45,56,80);border-radius:10px;font-size:12px;color:rgb(190,200,219)}.side-link b{display:block;color:#fff;font-size:12px;margin-bottom:4px}.side-link a{color:rgb(140,180,255);word-break:break-all}.day-nav{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}.day-nav a{padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:13px;font-weight:700;color:var(--ink);text-decoration:none}.day-nav a[aria-current]{background:var(--blue);border-color:var(--blue);color:#fff}main pre{white-space:pre-wrap;overflow-wrap:anywhere}main code.inline{overflow-wrap:break-word}.hero-grid code.inline,.hero-grid span{overflow-wrap:anywhere}figure.voice{margin:18px 0;padding:16px 20px;border-left:4px solid var(--blue);background:var(--soft);border-radius:0 12px 12px 0}figure.voice blockquote{margin:0}figure.voice blockquote p{margin:0;font-size:18px;font-weight:700;line-height:1.55}figure.voice blockquote p.orig{margin-top:6px;font-size:14px;font-weight:500;color:var(--muted)}figure.voice figcaption{margin-top:10px;font-size:13px;color:var(--muted)}#slide figure.voice{margin:10px 0;padding:10px 16px}kbd{display:inline-block;padding:1px 6px;border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;background:#fff;font:600 13px var(--font-sans)}.source-note{font-size:13px;color:var(--muted)}.resource-list.news .resource-card{border-left:4px solid #e8a23a}.resource-list.news .resource-card>.small:first-child::before{content:"뉴스";display:inline-block;margin-right:6px;padding:0 6px;border-radius:4px;background:#fff3df;color:#9a5b00;font-weight:700}.resource-list.news .resource-card>.small:last-child{margin-top:6px;color:var(--muted)}</style>
+</head>
+<body>
+<button aria-controls="side-nav" aria-expanded="true" class="nav-toggle" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" viewbox="0 0 16 16"><path d="M2 4h12M2 8h12M2 12h12"></path></svg><span>목차 숨기기</span></button>
+<div class="app">
+<aside id="side-nav">
+<div class="side-head">
+<div class="brand">SELECTWAY · LECTURE NOTE</div>
+<h1>AI 프로덕트 매니저 1주차 · DAY 4 바이브코더를 위한 파이썬 ①</h1>
+<div class="side-sub">10.29(목) · 09:00–18:00 · 실시간 비대면</div>
+</div>
+<nav>
+<div class="nav-title">전체 목차</div><div class="grp"><div class="grp-label">교육 안내</div><a class="l2" href="#overview">교육 개요</a><a class="l2" href="#prep">수업 전 준비</a></div><div class="grp"><div class="grp-label">SESSION 1</div><a class="l2" href="#s1">Colab과 친해지기</a><a class="l3" href="#s1-1">1-1. Colab이란 무엇인가</a><a class="l3" href="#s1-2">1-2. 노트, 코드 셀, 텍스트 셀은 무슨 역할인가</a><a class="l3" href="#s1-3">1-3. 실습: Colab 열고 첫 코드 실행하기</a><a class="l3" href="#s1-4">1-4. 실습: Gemini에게 묻고, 코드 고치게 하기</a><a class="l3" href="#s1-5">1-5. 실습: 내 노트 공유하기</a><a class="l3" href="#s1-6">1-6. 실습: 디버깅이란 무엇인가</a></div><div class="grp"><div class="grp-label">SESSION 2</div><a class="l2" href="#s2">Colab 속 Gemini 쓰기</a><a class="l3" href="#s2-1">2-1. Colab 속 AI: Gemini</a><a class="l3" href="#s2-2">2-2. AI의 답을 믿기 전에 알아야 할 것</a><a class="l3" href="#s2-3">2-3. 실습: Gemini 학습 모드로 코드 설명받기</a></div><div class="grp"><div class="grp-label">SESSION 3</div><a class="l2" href="#s3">프로그래밍은 어떻게 동작하나</a><a class="l3" href="#s3-1">3-1. 입력, 처리, 출력</a><a class="l3" href="#s3-2">3-2. 주석이란 무엇인가</a><a class="l3" href="#s3-3">3-3. 실습: 입력, 처리, 출력 코드 실행하기</a><a class="l3" href="#s3-4">3-4. 파이썬은 무엇인가</a><a class="l3" href="#s3-5">3-5. Colab에서 파이썬으로 해 볼 수 있는 재밌는 예시</a></div><div class="grp"><div class="grp-label">SESSION 4</div><a class="l2" href="#s4">기초 문법 ① 변수와 조건</a><a class="l3" href="#s4-0">4-0. 실습하는 방법</a><a class="l3" href="#s4-1">4-1. 실습: 변수</a><a class="l3" href="#s4-2">4-2. 실습: 조건</a></div><div class="grp"><div class="grp-label">SESSION 5</div><a class="l2" href="#s5">기초 문법 ② 리스트와 반복</a><a class="l3" href="#s5-1">5-1. 실습: 리스트</a><a class="l3" href="#s5-2">5-2. 실습: 반복</a></div><div class="grp"><div class="grp-label">SESSION 6</div><a class="l2" href="#s6">기초 문법 ③ random과 종합하기</a><a class="l3" href="#s6-1">6-1. 실습: random</a><a class="l3" href="#s6-2">6-2. 실습: 종합하기</a><a class="l3" href="#s6-3">6-3. 개념 퀴즈: 다섯 단어로 말하기</a></div><div class="grp"><div class="grp-label">SESSION 7</div><a class="l2" href="#s7">AI로 고치고 검증하기</a><a class="l3" href="#s7-1">7-1. 실습: AI로 고치고 검증하기</a><a class="l3" href="#s7-2">7-2. 실습: 새 대화창에서 교차 검토하기</a></div><div class="grp"><div class="grp-label">WRAP-UP</div><a class="l2" href="#wrap">오늘 정리와 복습</a></div>
+</nav>
+<div class="side-link"><b>이 교안 주소</b><a href="https://loreenkim0301.github.io/swy-lecturenote/261026-ai-pm-week1/d4-python-1.html">loreenkim0301.github.io/swy-lecturenote/261026-ai-pm-week1/d4-python-1.html</a></div>
+<div class="side-foot">강사 김수정 · 셀렉트웨이</div>
+</aside>
+<main>
+<header class="hero">
+<div class="kicker">AI 프로덕트 매니저 · 1주차 DAY 4 · 2026.10.29 (목)</div>
+<h1>바이브코더를 위한 파이썬 ① <em>코드를 먼저 돌려 보고 이해해요</em></h1>
+<p>오늘부터 교과 [기본] AI 서비스 개발이 시작돼요(18일 중 1일차). 개발자가 되려는 수업이 아니에요. 코드가 어떤 원리로 돌아가는지 직접 실행해 보면서 이해하고, AI 도구로 결과를 만들고 검증하는 경험을 해요. 이 경험이 있으면 개발자나 AI에게 무엇을 요청해야 하는지, 받은 결과가 맞는지 판단할 수 있어요.</p>
+<div class="hero-grid">
+<div><b>일정</b><span>10월 29일(목) 09:00–18:00 · 실시간 비대면</span></div>
+<div><b>준비물</b><span>Chrome 브라우저, Google 계정(Colab·Gemini)</span></div>
+<div><b>오늘의 결과물</b><span>기초 문법 실습이 모두 담긴 Colab 노트 <code class="inline">PM파이썬_내이름</code> 1개</span></div>
+</div>
+<nav aria-label="1주차 교안" class="day-nav"><a href="./">1주차 홈</a><a href="./d1-ot.html">DAY 1 OT</a><a href="./d2-ai-governance.html">DAY 2 AI 특강</a><a href="./d3-github-agile.html">DAY 3 GitHub·방법론</a><a aria-current="page" href="./d4-python-1.html">DAY 4 파이썬 ①</a><a href="./d5-python-2.html">DAY 5 파이썬 ②</a></nav>
+</header>
+<section class="section" id="overview"><div class="section-label">OVERVIEW</div><h2>교육 개요</h2>
+<div class="table-wrap"><table>
+<tr><th>시간</th><td>09:00–18:00 (점심 12:00–13:00, 수업 8시간)</td></tr>
+<tr><th>교과</th><td>[기본] AI 서비스 개발 · 1일차 (총 18일). 이 교과 전체에서는 Python, FastAPI, 데이터베이스, 배포까지 다뤄요. 오늘과 다음 수업은 그 첫 단계인 <b>Python 서비스 개발 기초 문법</b>을 Colab에서 익혀요.</td></tr>
+<tr><th>교육 목표</th><td>AI의 도움을 받아 비전공자가 프로그램이 동작하는 원리를 이해하고, 파이썬 기초 문법을 직접 실행하며, AI가 고친 코드를 실행 결과로 검증하는 습관을 만든다.</td></tr>
+<tr><th>수업이 끝나면</th><td>① Colab과 내장 AI(Gemini)를 쓸 수 있다 ② 프로그램이 동작하는 원리(입력·처리·출력)를 설명할 수 있다 ③ 기초 문법 5가지(변수·조건·리스트·반복·random)를 직접 실행하고 개념을 말할 수 있다 ④ AI가 고친 코드를 기대한 결과와 비교해 검증할 수 있다</td></tr>
+</table></div>
+</section>
+<section class="section" id="prep"><div class="section-label">PREPARE</div><h2>수업 전 준비</h2>
+<p>수업은 브라우저 하나로 진행해요. 프로그램을 설치하지 않으니, 계정만 미리 로그인해 오면 돼요.</p>
+<ul>
+<li><b>Google 계정:</b> 개인 계정을 권장해요. 회사 계정은 보안 정책 때문에 Colab이나 Gemini 기능이 막혀 있을 수 있어요. Colab 공식 FAQ에 따르면 Colab의 AI 기능은 <b>구글 계정 연령이 만 18세 이상</b>이어야 쓸 수 있어요.</li>
+<li><b>기기:</b> Chrome 브라우저가 설치된 노트북 (태블릿·휴대폰은 권장하지 않아요)</li>
+</ul>
+<div class="notice"><b>실습에는 가상 자료만 넣어요</b><br/>오늘 코드와 질문에는 교안의 가상 상품·가격만 써요. 회사 자료나 개인 정보는 AI 대화창과 Colab 노트에 넣지 않아요.</div>
+<div class="resource-list">
+<a class="resource-card" href="https://research.google.com/colaboratory/faq.html" rel="noopener" target="_blank"><span class="small">Google Colab · 2026-10-22 확인</span><b>Google Colab 공식 FAQ (무료 이용, AI 기능 연령 조건, Gemini 아이콘 위치)</b></a>
+</div>
+</section>
+<section class="section session" id="s1">
+<div class="session-head"><div class="eyebrow">SESSION 1 · 09:00–10:00</div><h2>Colab과 친해지기</h2><p>오늘 수업의 모든 실습은 <b>Google Colab</b>에서 해요. 처음 보는 도구라 낯설 수 있지만, 꼭 필요한 개념은 몇 가지뿐이에요. Colab이 무엇인지, 화면의 기본 단위가 어떤 역할을 하는지 알고 첫 코드를 실행해요.</p></div>
+<div class="topic" id="s1-1"><h3>1-1. Colab이란 무엇인가</h3>
+<p>Colab(정식 이름 Colaboratory)은 구글이 만든 <b>온라인 코드 실행 노트</b>예요. 원래 구글 리서치 팀이 연구자들을 위해 만들었고, 2017년에 일반 사용자에게 공개되었어요. 파이썬 코드를 내 컴퓨터가 아니라 구글의 서버에서 실행해 주기 때문에, 브라우저만 있으면 설치 없이 바로 코딩을 시작할 수 있어요. 구글 문서처럼 구글 드라이브에 자동 저장되고, 링크로 공유할 수도 있어요.</p>
+<div class="table-wrap"><table>
+<tr><th>항목</th><th>내용</th></tr>
+<tr><td>만든 곳</td><td>Google (Google Research)</td></tr>
+<tr><td>요금</td><td><b>기본 무료.</b> 구글 계정만 있으면 쓸 수 있어요. 더 빠른 컴퓨터 자원이 필요한 사람을 위한 유료 요금제(Colab Pro 등)가 있고, 2026년 9월 22일부터는 Google AI 요금제 구독자에게도 Colab 프리미엄 혜택이 포함되기 시작했어요. 이 수업은 무료로 충분해요.</td></tr>
+<tr><td>저장 위치</td><td>내 구글 드라이브의 "Colab Notebooks" 폴더</td></tr>
+<tr><td>기반 기술</td><td>데이터 분석가들이 널리 쓰는 "주피터 노트북(Jupyter Notebook)"을 웹에서 쓸 수 있게 만든 것</td></tr>
+</table></div>
+<div class="notice"><b>요금제는 자주 바뀌어요</b><br/>요금제의 가격과 구성은 자주 바뀌어요. 유료 요금제가 궁금하면 Colab 공식 요금 안내 페이지에서 최신 정보를 확인해요. 오늘 실습은 모두 무료 기능으로 해요.</div>
+<div class="resource-list">
+<a class="resource-card" href="https://developers.googleblog.com/colab-is-now-part-of-your-google-ai-plan/" rel="noopener" target="_blank"><span class="small">Google Developers Blog · 2026-10-22 확인</span><b>Google AI 요금제에 Colab 포함 (2026.9.22)</b></a>
+</div>
+</div>
+<div class="topic" id="s1-2"><h3>1-2. 노트, 코드 셀, 텍스트 셀은 무슨 역할인가</h3>
+<p>Colab 파일 하나를 <b>노트(노트북)</b>라고 불러요. 노트는 칸(셀)들이 위에서 아래로 쌓인 문서예요. 칸에는 두 종류가 있어요. 컴퓨터에게 시키는 일을 적는 <b>코드 셀</b>, 사람이 읽을 설명을 적는 <b>텍스트 셀</b>이에요. 이렇게 나눠 두면 코드와 그 코드의 의도·결과 해석을 한 문서에 함께 남길 수 있어요. 나중에 내가 다시 보거나 동료에게 공유했을 때 "무엇을 왜 했는지"가 함께 전달돼요.</p>
+<div class="table-wrap"><table>
+<tr><th>구성 요소</th><th>역할</th><th>왜 필요한가</th></tr>
+<tr><td>노트</td><td>코드, 설명, 실행 결과를 한 파일에 담는 문서</td><td>작업 과정 전체를 하나의 기록으로 남기고 공유할 수 있어요. 기획서 한 장에 근거와 결론이 같이 있는 것과 비슷해요.</td></tr>
+<tr><td>코드 셀</td><td>컴퓨터에게 시킬 일을 적는 칸. 실행하면 결과가 칸 바로 아래에 나타나요.</td><td>한 칸씩 실행하고 확인할 수 있어서, 어디서 문제가 생겼는지 찾기 쉬워요.</td></tr>
+<tr><td>텍스트 셀</td><td>사람이 읽는 메모·설명을 적는 칸. 실행되지 않아요.</td><td>코드의 의도, 결과 해석, 다음 할 일을 기록해요. 과제 정리도 여기에 해요.</td></tr>
+<tr><td>런타임</td><td>코드를 실제로 실행해 주는 구글 서버와의 연결</td><td>오래 쓰지 않으면 연결이 끊기고 기억하던 값이 사라져요. 그럴 때는 위에서부터 다시 실행하면 돼요.</td></tr>
+</table></div>
+<div class="notice"><b>기본 조작은 두 가지만 기억해요</b><br/>코드 셀을 실행할 때는 셀 왼쪽의 ▶ 버튼을 누르거나 <kbd>Shift</kbd>+<kbd>Enter</kbd>를 눌러요. 노트를 공유할 때는 오른쪽 위 [공유]를 눌러요.</div>
+</div>
+<div class="topic" id="s1-3"><h3>1-3. 실습: Colab 열고 첫 코드 실행하기</h3><p><span class="tag tag-req">실습</span> 오늘 하루 동안 쓸 노트를 만들어요. 이후 모든 실습은 이 노트 하나에 셀을 추가하며 이어 가요.</p><p><b>STEP 1. 검색해서 Colab 들어가기</b></p><div class="procedure"><div>Chrome에서 Google 검색창에 <code class="inline">구글 코랩</code>을 검색해요.</div><div>주소가 <code class="inline">colab.research.google.com</code>인 결과(①)를 눌러요. 주소창에 직접 입력해도 같은 곳으로 가요.</div></div><figure class="sample-shot"><img style="max-width:690px;margin:0 auto" alt="① colab.research.google.com 결과를 눌러요. ② 주소가 다른 colab.sandbox.google.com 결과는 누르지 않아요. (2026-10-29 검색 화면)" height="750" loading="lazy" src="./images/d4-search.jpg" width="690"/><figcaption>① colab.research.google.com 결과를 눌러요. ② 주소가 다른 colab.sandbox.google.com 결과는 누르지 않아요. (2026-10-29 검색 화면)</figcaption></figure><div class="warning"><b>⚠ 헷갈리기 쉬운 곳 · Colab 들어가기</b><ul><li>주소가 다른 결과(②)는 설명에 "노트 로드 오류"가 보여요. 누르지 않아요.</li><li>Chrome에 Google 계정이 여러 개 로그인되어 있으면 노트가 다른 계정의 Drive에 저장될 수 있어요. 오른쪽 위 프로필 사진으로 과정용 계정인지 확인해요.</li><li>회사 계정은 관리자 정책으로 Colab이나 Gemini가 막혀 있을 수 있어요. 안 열리면 개인 Gmail 계정으로 바꿔요.</li></ul></div><p><b>STEP 2. 새 노트 만들기</b></p><div class="procedure"><div>Colab 시작 페이지에서 <b>[+ 새 노트]</b>를 눌러요.</div></div><figure class="sample-shot"><img alt="Colab 시작 페이지의 [+ 새 노트]. 아래 &quot;최근&quot; 목록에는 내가 열었던 노트가 보여요. (개인 목록은 흐리게 처리)" height="410" loading="lazy" src="./images/d4-start.jpg" width="1050"/><figcaption>Colab 시작 페이지의 [+ 새 노트]. 아래 "최근" 목록에는 내가 열었던 노트가 보여요. (개인 목록은 흐리게 처리)</figcaption></figure><p><b>STEP 3. 노트 이름 바꾸기</b></p><div class="procedure"><div>왼쪽 위 노트 이름(<code class="inline">Untitled0.ipynb</code> 같은 이름)을 눌러요.</div><div><code class="inline">PM파이썬_내이름</code>으로 바꾸고 <kbd>Enter</kbd>를 눌러요. 예: <code class="inline">PM파이썬_김수정</code>. 뒤의 <code class="inline">.ipynb</code>는 그대로 둬도 돼요.</div></div><figure class="sample-shot"><img style="max-width:760px;margin:0 auto" alt="노트 이름을 누르면 &quot;노트 이름 변경&quot; 입력 칸으로 바뀌어요." height="130" loading="lazy" src="./images/d4-rename.jpg" width="760"/><figcaption>노트 이름을 누르면 "노트 이름 변경" 입력 칸으로 바뀌어요.</figcaption></figure><div class="notice"><b>저장은 자동이에요</b><br/>이름 옆에 잠깐 "저장 중..."이 보였다가 사라지면 내 Google Drive의 Colab Notebooks 폴더에 저장된 거예요. 따로 저장 버튼을 누르지 않아도 돼요.</div><p><b>STEP 4. Colab 화면 둘러보기</b></p><div class="procedure"><div>아래 그림의 번호 위치를 내 화면에서 하나씩 찾아봐요.</div></div><figure class="sample-shot"><img alt="새 노트 화면 위쪽(①~⑤). 번호는 아래 표의 순서예요. (2026-10-29 화면)" height="112" loading="lazy" src="./images/d4-ui.jpg" width="1470"/><figcaption>새 노트 화면 위쪽(①~⑤). 번호는 아래 표의 순서예요. (2026-10-29 화면)</figcaption></figure><figure class="sample-shot"><img alt="화면 아래쪽 가운데 ⑥ Gemini 아이콘" height="67" loading="lazy" src="./images/d4-ui-foot.jpg" width="1470"/><figcaption>화면 아래쪽 가운데 ⑥ Gemini 아이콘</figcaption></figure><div class="table-wrap"><table><tr><th>번호</th><th>이름</th><th>무엇을 하나</th></tr><tr><td>①</td><td>노트 이름</td><td>눌러서 이름을 바꿔요. 앞의 Drive 아이콘은 내 Google Drive에 저장된다는 표시예요.</td></tr><tr><td>②</td><td>메뉴</td><td>파일·수정·보기·삽입·런타임·도구·도움말. 오늘은 거의 쓰지 않아요.</td></tr><tr><td>③</td><td>+ 코드 / + 텍스트</td><td>선택한 셀 아래에 코드 셀·텍스트 셀을 추가해요.</td></tr><tr><td>④</td><td>연결 / RAM·디스크</td><td>처음엔 [연결]로 보이고, 코드를 실행하면 자동으로 연결돼요. 연결되면 ✓와 RAM·디스크 막대로 바뀌어요.</td></tr><tr><td>⑤</td><td>헤더 접기(⌄)</td><td>노트 이름·메뉴 줄을 접었다 펴요. 메뉴가 안 보이면 여기를 눌러요.</td></tr><tr><td>⑥</td><td>Gemini 아이콘</td><td>누르면 오른쪽에 Gemini 대화창이 열려요. (실습 1-4)</td></tr></table></div><p><b>STEP 5. 첫 코드 실행하기</b></p><div class="procedure"><div>아래 코드 상자 오른쪽 위의 <b>[복사]</b>를 눌러요.</div><div>Colab의 빈 코드 셀(“코딩을 시작하거나 AI로 코드를 생성하세요”라고 흐리게 적힌 칸)을 클릭하고 <kbd>Ctrl</kbd>+<kbd>V</kbd> (Mac <kbd>⌘</kbd>+<kbd>V</kbd>)로 붙여 넣어요.</div><div>셀 왼쪽 ▶을 누르거나 <kbd>Shift</kbd>+<kbd>Enter</kbd> (Mac <kbd>shift</kbd>+<kbd>return</kbd>)로 실행해요.</div></div><div class="copybox"><div class="copyhead"><span>코드 · 복사해서 Colab 코드 셀에 붙여 넣으세요</span><button type="button">복사</button></div><pre>print("안녕, 파이썬")   # 따옴표 안의 글자를 화면에 출력
+!python --version     # 지금 Colab에 설치된 파이썬 버전 확인</pre></div><figure class="sample-shot"><img alt="처음 실행하면 오른쪽 위 [연결]이 &quot;연결 중&quot;으로 바뀌어요. 몇 초~수십 초 기다려요." height="240" loading="lazy" src="./images/d4-connecting.jpg" width="1470"/><figcaption>처음 실행하면 오른쪽 위 [연결]이 "연결 중"으로 바뀌어요. 몇 초~수십 초 기다려요.</figcaption></figure><div class="copybox"><div class="copyhead"><span>실행 결과 · 이렇게 나오면 맞아요</span></div><pre>안녕, 파이썬
+Python 3.13.18   ← 2026-10-29 강사 노트 기준. 숫자는 바뀔 수 있어요</pre></div><figure class="sample-shot"><img alt="① 결과가 셀 아래에 나오고 ② 오른쪽 위가 ✓ RAM·디스크로 바뀌면 연결 완료예요." height="240" loading="lazy" src="./images/d4-p0.jpg" width="1470"/><figcaption>① 결과가 셀 아래에 나오고 ② 오른쪽 위가 ✓ RAM·디스크로 바뀌면 연결 완료예요.</figcaption></figure><p><b>방금 무슨 일이 일어났나</b><br/><code class="inline">print()</code>는 괄호 안의 내용을 화면에 보여 주는 명령이에요. 둘째 줄 맨 앞의 <code class="inline">!</code>는 파이썬 코드가 아니라 Colab 서버에 직접 내리는 명령이라는 표시예요. 셀 왼쪽의 <code class="inline">[1]</code>은 "첫 번째로 실행했다"는 실행 번호예요.</p><div class="warning"><b>⚠ 헷갈리기 쉬운 곳 · 첫 실행</b><ul><li>빈 셀의 밑줄 친 <b>"생성"</b>을 누르면 Gemini 창이 열려요(아래 그림). 붙여 넣으려던 거라면 Gemini 창 ✕로 닫고 셀의 다른 곳을 클릭해요.</li><li>실행 중에는 셀 왼쪽 버튼이 빙글빙글 돌아요. 이때 다시 누르면 실행이 중단될 수 있으니 기다려요.</li><li>직접 타이핑하다 회색 글씨(AI 제안)가 보일 때 <kbd>Enter</kbd>를 누르면 그 제안이 들어가요(Colab 기본 설정). 원하지 않으면 <kbd>Esc</kbd>를 먼저 눌러요.</li></ul></div><figure class="sample-shot"><img alt="① 빈 셀의 &quot;생성&quot;을 누르면 ② Gemini 창이 열려요. (2026-10-29 강사 테스트)" height="225" loading="lazy" src="./images/d4-generate-link.jpg" width="1410"/><figcaption>① 빈 셀의 "생성"을 누르면 ② Gemini 창이 열려요. (2026-10-29 강사 테스트)</figcaption></figure><p><b>STEP 6. 텍스트 셀에 기록하기</b></p><div class="procedure"><div>첫째 줄 따옴표 안의 글자를 <code class="inline">안녕, 나는 김수정</code>처럼 내 이름으로 바꾸고 다시 실행해요.</div><div>도구 모음 <b>[+ 텍스트]</b>로 텍스트 셀을 추가하고 "실습 1-3. 첫 코드 실행 – 파이썬 버전: 3.○○"처럼 결과를 한 줄로 적어요.</div><div>왼쪽에 입력하면 오른쪽에 미리보기가 보여요. 다 적었으면 [닫기]를 눌러요. 다시 고치려면 텍스트 셀을 두 번 클릭해요.</div></div><p><b>STEP 7. 꼭 필요한 셀 조작 3가지</b></p><p>버튼으로 다 할 수 있어요. 단축키는 익숙해지면 쓰면 돼요.</p><div class="table-wrap"><table><tr><th>하고 싶은 일</th><th>버튼</th><th>단축키 Windows</th><th>단축키 Mac</th></tr><tr><td>셀 추가</td><td>도구 모음 [+ 코드]</td><td><kbd>Ctrl</kbd>+<kbd>M</kbd> 뗀 뒤 <kbd>B</kbd></td><td><kbd>control</kbd>+<kbd>M</kbd> 뗀 뒤 <kbd>B</kbd></td></tr><tr><td>셀 삭제</td><td>셀 오른쪽 위 휴지통</td><td><kbd>Ctrl</kbd>+<kbd>M</kbd> 뗀 뒤 <kbd>D</kbd></td><td><kbd>control</kbd>+<kbd>M</kbd> 뗀 뒤 <kbd>D</kbd></td></tr><tr><td>셀 복제</td><td>셀 ⋮ → [셀 복사] → <kbd>Esc</kbd> → 붙여넣기</td><td>붙여넣기 <kbd>Ctrl</kbd>+<kbd>V</kbd></td><td>붙여넣기 <kbd>⌘</kbd>+<kbd>V</kbd></td></tr></table></div><div class="procedure"><div>실습 1-3 셀을 클릭하고 [+ 코드]로 빈 셀을 하나 만들어요.</div></div><figure class="sample-shot"><img style="max-width:760px;margin:0 auto" alt="새 코드 셀이 생겼어요. 파란 테두리가 지금 선택된 셀이에요." height="140" loading="lazy" src="./images/d4-sc-add.jpg" width="760"/><figcaption>새 코드 셀이 생겼어요. 파란 테두리가 지금 선택된 셀이에요.</figcaption></figure><div class="procedure"><div>방금 만든 빈 셀의 휴지통 아이콘(②)을 눌러 지워요.</div><div>실습 1-3 셀의 ⋮ → [셀 복사](①)를 눌러요.</div></div><figure class="sample-shot"><img style="max-width:730px;margin:0 auto" alt="셀 오른쪽 위 ⋮ 메뉴. ① 셀 복사 ② 셀 삭제" height="537" loading="lazy" src="./images/d4-sc-menu.jpg" width="730"/><figcaption>셀 오른쪽 위 ⋮ 메뉴. ① 셀 복사 ② 셀 삭제</figcaption></figure><div class="procedure"><div><kbd>Esc</kbd>를 누른 뒤 <kbd>Ctrl</kbd>+<kbd>V</kbd> (Mac <kbd>⌘</kbd>+<kbd>V</kbd>)를 눌러 같은 셀이 하나 더 생기는지 확인하고, 확인했으면 복제된 셀은 지워요.</div></div><figure class="sample-shot"><img alt="같은 셀이 바로 아래에 하나 더 생겼어요. 실행 번호 칸이 [ ]이면 아직 실행 전이에요." height="315" loading="lazy" src="./images/d4-sc-dup.jpg" width="1380"/><figcaption>같은 셀이 바로 아래에 하나 더 생겼어요. 실행 번호 칸이 [ ]이면 아직 실행 전이에요.</figcaption></figure><div class="warning"><b>⚠ 헷갈리기 쉬운 곳 · 셀 조작</b><ul><li>Mac에서 <kbd>⌘</kbd>+<kbd>M</kbd>은 창 최소화예요. 셀 단축키는 <kbd>control</kbd>+<kbd>M</kbd>을 써요.</li><li>셀 안에 커서가 깜박이면 편집 중이라 <kbd>Ctrl</kbd>+<kbd>V</kbd>가 글자로 붙어요. <kbd>Esc</kbd>를 먼저 눌러요.</li><li>지운 셀을 되살리려면 [수정] → 셀 삭제 실행취소를 눌러요.</li></ul></div><ul class="checklist"><li>노트 이름이 <code class="inline">PM파이썬_내이름</code>으로 바뀌었나요?</li><li>"안녕, 파이썬"과 파이썬 버전 두 줄이 셀 아래에 나왔나요?</li><li>텍스트 셀에 실습 결과를 한 줄로 남겼나요?</li><li>셀 추가·삭제·복제를 한 번씩 해 봤나요?</li><li>파이썬 버전 숫자를 채팅에 남겼나요? (세션 3에서 최신 버전과 비교해요)</li></ul></div>
+<div class="topic" id="s1-4"><h3>1-4. 실습: Gemini에게 묻고, 코드 고치게 하기</h3><p><span class="tag tag-req">실습</span> 오늘 계속 쓸 Colab 속 Gemini를 먼저 짧게 써 봐요. <b>질문하기</b>와 <b>코드 고치게 하기</b> 두 가지만 해요.</p><p><b>STEP 1. Gemini 창 열기</b></p><div class="procedure"><div>화면 아래 가운데 Gemini 아이콘(1-3의 ⑥)을 눌러요. 오른쪽에 대화창이 열려요.</div><div>이전 대화가 남아 있으면 창 오른쪽 위 ⋮ → <b>[새 채팅]</b> → [예]를 눌러 새로 시작해요.</div></div><figure class="sample-shot"><img style="max-width:770px;margin:0 auto" alt="Gemini 대화창. 아래 입력창에 질문을 적어요." height="737" loading="lazy" src="./images/d4-gemini.jpg" width="770"/><figcaption>Gemini 대화창. 아래 입력창에 질문을 적어요.</figcaption></figure><figure class="sample-shot"><img style="max-width:520px;margin:0 auto" alt="① ⋮ 메뉴 → ② [새 채팅]" height="370" loading="lazy" src="./images/d4-gx-newchat.jpg" width="520"/><figcaption>① ⋮ 메뉴 → ② [새 채팅]</figcaption></figure><p><b>STEP 2. 질문하기</b></p><div class="procedure"><div>아래 프롬프트를 복사해 Gemini 입력창에 붙여 넣고 <kbd>Enter</kbd>를 눌러요.</div></div><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>첫 번째 코드 셀의 !python --version은 무슨 뜻이야? 비개발자가 알아듣게 2문장으로 설명해 줘. 코드는 바꾸지 마.</pre></div><figure class="sample-shot"><img style="max-width:520px;margin:0 auto" alt="Gemini의 답. 노트의 첫 번째 셀을 직접 보고 설명해 줘요. (2026-10-29 강사 테스트)" height="620" loading="lazy" src="./images/d4-gx-ask.jpg" width="520"/><figcaption>Gemini의 답. 노트의 첫 번째 셀을 직접 보고 설명해 줘요. (2026-10-29 강사 테스트)</figcaption></figure><p><b>STEP 3. 코드 고치게 하기</b></p><div class="procedure"><div>아래 프롬프트의 <code class="inline">김수정</code>을 내 이름으로 바꿔 보내요.</div><div>Gemini가 첫 번째 셀 안에 <b>빨간 줄(지울 줄)</b>과 <b>초록 줄(새 줄)</b>을 보여 줘요. 바뀌는 곳이 따옴표 안 글자뿐인지 확인해요.</div><div>대화창의 <b>[수락 및 실행]</b>을 눌러요. 셀이 바뀌고 바로 실행돼요. 마음에 들지 않으면 [취소]를 눌러요.</div></div><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>첫 번째 코드 셀의 "안녕, 파이썬"을 "안녕, 나는 김수정"으로 바꿔 줘. 다른 줄과 주석은 바꾸지 마.</pre></div><figure class="sample-shot"><img alt="① 빨간 줄 → 초록 줄로 바뀔 부분 ② [수락 및 실행]" height="630" loading="lazy" src="./images/d4-gx-diff.jpg" width="1400"/><figcaption>① 빨간 줄 → 초록 줄로 바뀔 부분 ② [수락 및 실행]</figcaption></figure><figure class="sample-shot"><img alt="수락 후 셀이 바뀌고 실행 결과도 &quot;안녕, 나는 김수정&quot;으로 바뀌었어요." height="140" loading="lazy" src="./images/d4-gx-done.jpg" width="880"/><figcaption>수락 후 셀이 바뀌고 실행 결과도 "안녕, 나는 김수정"으로 바뀌었어요.</figcaption></figure><div class="warning"><b>⚠ 헷갈리기 쉬운 곳 · Gemini</b><ul><li>Gemini가 고친 코드도 <b>실행 결과로 확인</b>해야 끝이에요. 결과 칸이 바뀌었는지 꼭 봐요.</li><li>Gemini 입력창 오른쪽의 % 숫자는 강사 테스트에서 질문할 때마다 올라갔어요(13% → 18%). 사용 한도로 보여요 [확인 필요]. 오늘 Gemini는 실습에 필요한 만큼만 써요.</li><li>Gemini 창이 열려 있으면 노트 영역이 좁아져요. 다 썼으면 창 오른쪽 위 ✕로 닫아요.</li></ul></div><ul class="checklist"><li>Gemini 답이 실제 코드(첫 번째 셀)에 대한 설명이었나요?</li><li>[수락 및 실행] 뒤 결과 칸이 내 이름으로 바뀌었나요?</li><li>바뀌면 안 되는 줄(둘째 줄, 주석)은 그대로인가요?</li></ul></div>
+<div class="topic" id="s1-5"><h3>1-5. 실습: 내 노트 공유하기</h3><p><span class="tag tag-req">실습</span> Colab 노트는 Google Drive 파일이라 링크로 공유해요. 과제를 내거나 서로 코드를 볼 때 써요.</p><p><b>STEP 1. 공유 창 열기</b></p><div class="procedure"><div>노트 화면 오른쪽 위 <b>[공유]</b>를 눌러요.</div></div><figure class="sample-shot"><img style="max-width:320px;margin:0 auto" alt="오른쪽 위 [공유] 버튼" height="64" loading="lazy" src="./images/d4-share-btn.jpg" width="320"/><figcaption>오른쪽 위 [공유] 버튼</figcaption></figure><p><b>STEP 2. 일반 액세스 바꾸기</b></p><div class="procedure"><div>공유 창의 일반 액세스가 <b>제한됨</b>(나만 열 수 있음)이에요. [제한됨]을 눌러요.</div></div><figure class="sample-shot"><img style="max-width:515px;margin:0 auto" alt="처음 공유 창. 일반 액세스가 &quot;제한됨&quot;이에요. (이메일은 흐리게 처리)" height="424" loading="lazy" src="./images/d4-share1.jpg" width="515"/><figcaption>처음 공유 창. 일반 액세스가 "제한됨"이에요. (이메일은 흐리게 처리)</figcaption></figure><div class="procedure"><div><b>링크가 있는 모든 사용자</b>를 골라요.</div></div><figure class="sample-shot"><img style="max-width:515px;margin:0 auto" alt="&quot;링크가 있는 모든 사용자&quot;를 골라요. 회사 계정이면 회사 이름 항목이 하나 더 보일 수 있어요." height="514" loading="lazy" src="./images/d4-share2.jpg" width="515"/><figcaption>"링크가 있는 모든 사용자"를 골라요. 회사 계정이면 회사 이름 항목이 하나 더 보일 수 있어요.</figcaption></figure><p><b>STEP 3. 권한 확인하고 링크 복사하기</b></p><div class="procedure"><div>오른쪽 권한이 <b>뷰어</b>인지 확인해요. 뷰어는 보기만 할 수 있어 내 원본이 바뀌지 않아요.</div><div><b>[링크 복사]</b> → [완료]를 누르고, 링크를 채팅에 붙여 넣어요.</div></div><figure class="sample-shot"><img style="max-width:515px;margin:0 auto" alt="① 링크가 있는 모든 사용자 · 뷰어 ② [링크 복사]" height="498" loading="lazy" src="./images/d4-share3.jpg" width="515"/><figcaption>① 링크가 있는 모든 사용자 · 뷰어 ② [링크 복사]</figcaption></figure><div class="warning"><b>⚠ 헷갈리기 쉬운 곳 · 공유</b><ul><li>"링크가 있는 모든 사용자"는 링크를 받은 누구나 열 수 있어요. 개인 정보나 회사 자료가 든 노트는 공유하지 않아요.</li><li>권한은 <b>편집자</b>가 아니라 <b>뷰어</b>로 둬요.</li></ul></div><p><b>강사 노트 열어 보기</b><br/>강사가 오늘 모든 실습을 직접 실행한 노트예요. 직접 실행해 보려면 열어서 [파일] → [Drive에 사본 저장]으로 내 Drive에 복사해서 써요.</p><div class="resource-list"><a class="resource-card" href="https://colab.research.google.com/drive/1gL-Y09Xnoun_NN1sTWK7p2mgwqhhoLjv?usp=sharing" rel="noopener" target="_blank"><span class="small">Google Colab · 뷰어 권한 공유 · 2026-10-29</span><b>강사 노트: PM파이썬_김수정.ipynb</b></a></div><ul class="checklist"><li>일반 액세스가 "링크가 있는 모든 사용자 · 뷰어"로 바뀌었나요?</li><li>내 노트 링크를 채팅에 올렸나요?</li><li>옆 사람 링크를 열었을 때 노트가 보였나요?</li></ul></div>
+<div class="topic" id="s1-6"><h3>1-6. 실습: 디버깅이란 무엇인가</h3><p>코드가 생각대로 동작하지 않는 원인을 <b>버그(bug)</b>, 원인을 찾아 고치는 일을 <b>디버깅(debugging)</b>이라고 해요. AI가 코드를 써 주는 바이브코딩에서도 똑같이 필요해요. 오류가 나면 무엇을 고쳐 달라고 할지 내가 알아야 하니까요.</p><div class="flow"><div><span>1</span><b>읽기</b><small>오류 메시지 맨 아래 줄을 읽어요</small></div><div><span>2</span><b>위치 찾기</b><small>몇 번째 줄인지 확인해요</small></div><div><span>3</span><b>한 곳만 고치기</b><small>한 번에 하나만 바꿔요</small></div><div><span>4</span><b>다시 실행</b><small>오류가 사라졌는지 확인해요</small></div></div><div class="table-wrap"><table><tr><th>오류 이름</th><th>뜻</th><th>흔한 원인</th></tr><tr><td><code class="inline">SyntaxError</code></td><td>문법이 틀려 실행을 시작하지 못했어요</td><td>따옴표·괄호를 닫지 않음</td></tr><tr><td><code class="inline">NameError</code></td><td>그런 이름이 없어요</td><td>철자·대소문자 틀림(<code class="inline">Print</code>), 만들기 전에 사용</td></tr><tr><td><code class="inline">IndentationError</code></td><td>들여쓰기가 맞지 않아요</td><td>if·for 아래 줄의 띄어쓰기가 다름</td></tr></table></div><p><span class="tag tag-req">실습</span> 아래 코드에는 <b>버그가 두 개</b> 있어요. 오류 메시지를 읽으며 하나씩 고쳐요.</p><p><b>STEP 1. 실행하고 첫 번째 오류 읽기</b></p><div class="procedure"><div>[+ 코드]로 새 셀을 만들고 아래 코드를 붙여 넣어 실행해요.</div><div>오류 메시지에서 <b>줄 번호</b>(①)와 <b>맨 아래 줄</b>(②)을 찾아요.</div></div><div class="copybox"><div class="copyhead"><span>코드 · 일부러 버그를 넣은 코드예요</span><button type="button">복사</button></div><pre>print("오늘의 할 일")
+Print("코랩 연습하기")
+print("디버깅 배우기)</pre></div><figure class="sample-shot"><img style="max-width:760px;margin:0 auto" alt="① line 3 ② SyntaxError: unterminated string literal (닫히지 않은 문자열)" height="240" loading="lazy" src="./images/d4-debug1.jpg" width="760"/><figcaption>① line 3 ② SyntaxError: unterminated string literal (닫히지 않은 문자열)</figcaption></figure><div class="procedure"><div>3번째 줄 끝에 <code class="inline">"</code>를 추가해 <code class="inline">print("디버깅 배우기")</code>로 고치고 다시 실행해요.</div></div><p><b>STEP 2. 두 번째 오류 읽기</b></p><figure class="sample-shot"><img style="max-width:760px;margin:0 auto" alt="① 화살표(---->)가 2번째 줄을 가리켜요 ② NameError: name 'Print' is not defined" height="330" loading="lazy" src="./images/d4-debug2.jpg" width="760"/><figcaption>① 화살표(---->)가 2번째 줄을 가리켜요 ② NameError: name 'Print' is not defined</figcaption></figure><div class="procedure"><div>3번째 줄을 고치자 이번에는 2번째 줄에서 오류가 났어요. 파이썬은 대문자와 소문자를 다르게 봐요.</div><div><code class="inline">Print</code>를 <code class="inline">print</code>로 고치고 다시 실행해요.</div></div><p><b>STEP 3. 다시 실행해서 확인하기</b></p><div class="copybox"><div class="copyhead"><span>실행 결과 · 이렇게 나오면 맞아요</span></div><pre>오늘의 할 일
+코랩 연습하기
+디버깅 배우기</pre></div><figure class="sample-shot"><img style="max-width:760px;margin:0 auto" alt="버그 두 개를 모두 고치면 세 줄이 모두 출력돼요." height="150" loading="lazy" src="./images/d4-debug3.jpg" width="760"/><figcaption>버그 두 개를 모두 고치면 세 줄이 모두 출력돼요.</figcaption></figure><div class="notice"><b>[오류 설명] 버튼은 언제 쓰나</b><br/>오류 칸 아래 [다음 단계: 오류 설명]을 누르면 Gemini가 원인을 설명해 줘요. 먼저 맨 아래 줄을 직접 읽어 보고, 그래도 모르겠을 때 눌러요. 고친 뒤에는 반드시 다시 실행해서 확인해요.</div><ul class="checklist"><li>1차 실행에서 줄 번호(line 3)와 SyntaxError를 찾았나요?</li><li>2차 실행에서 화살표가 가리키는 줄을 찾았나요?</li><li>한 번에 한 곳만 고치고 다시 실행했나요?</li><li>세 줄이 모두 출력되었나요?</li></ul><div class="notice"><b>PM 포인트</b><br/>개발자나 AI에게 "안 돼요"라고만 말하면 디버깅이 길어져요. <b>어떤 코드를 실행했고, 몇 번째 줄에서, 어떤 오류 메시지가 나왔는지</b> 세 가지를 함께 전달해요.</div></div>
+</section>
+<section class="section session" id="s2">
+<div class="session-head"><div class="eyebrow">SESSION 2 · 10:00–11:00</div><h2>Colab 속 Gemini 쓰기</h2><p>Colab 안에는 구글의 생성형 AI <b>Gemini</b>가 들어 있어요. 오늘 수업의 AI 실습은 모두 Colab 안의 Gemini로 해요. Gemini로 무엇을 할 수 있는지, AI의 답을 어떻게 판단하는지 정리해요.</p></div>
+<div class="topic" id="s2-1"><h3>2-1. Colab 속 AI: Gemini</h3>
+<p>따로 사이트를 열지 않아도, 지금 보고 있는 노트의 코드와 오류를 Gemini가 직접 읽고 설명하거나 고쳐 줘요. 이 기능은 한 번에 생긴 것이 아니라 몇 단계에 걸쳐 확대되었어요.</p>
+<div class="table-wrap"><table>
+<tr><th>시기</th><th>공식 발표 내용</th><th>출처</th></tr>
+<tr><td>2023년 5월</td><td>구글이 Colab에 AI 코드 생성·자동완성·코딩 도우미 기능을 넣겠다고 발표</td><td><a href="https://blog.google/technology/developers/google-colab-ai-coding-features/" rel="noopener" target="_blank">Google 공식 블로그</a></td></tr>
+<tr><td>2025년 3월</td><td>Gemini 기반 "데이터 사이언스 에이전트" 무료 공개. 데이터를 올리고 분석 목표를 말하면 분석 노트를 자동으로 만들어 줌</td><td><a href="https://developers.googleblog.com/new-ai-first-google-colab-now-available-to-everyone/" rel="noopener" target="_blank">Google Developers Blog</a></td></tr>
+<tr><td>2025년 5월</td><td>Google I/O 2025에서 "AI 우선(AI-first) Colab" 공개</td><td><a href="https://developers.googleblog.com/en/fully-reimagined-ai-first-google-colab/" rel="noopener" target="_blank">Google Developers Blog</a></td></tr>
+<tr><td>2025년 6월 24일</td><td>AI 우선 Colab을 모든 사용자에게 공개. 대화로 코드 요청·설명, 자연어로 코드 수정, 오류 수정안을 비교 화면(diff)으로 제안</td><td><a href="https://developers.googleblog.com/new-ai-first-google-colab-now-available-to-everyone/" rel="noopener" target="_blank">Google Developers Blog</a></td></tr>
+<tr><td>2026년 4월 8일</td><td><b>학습 모드(Learn Mode)</b>와 맞춤 지침(Custom Instructions) 추가. 학습 모드를 켜면 Gemini가 정답 코드를 바로 주는 대신 단계별로 가르쳐 주는 코딩 튜터처럼 동작함</td><td><a href="https://blog.google/innovation-and-ai/technology/developers-tools/colab-updates/" rel="noopener" target="_blank">Google 공식 블로그</a></td></tr>
+<tr><td>2026년 9월 22일</td><td>Google AI 요금제에 Colab 프리미엄 혜택 포함 (더 빠른 GPU 우선 사용 등). 무료 사용자의 기본 기능은 그대로</td><td><a href="https://developers.googleblog.com/colab-is-now-part-of-your-google-ai-plan/" rel="noopener" target="_blank">Google Developers Blog</a></td></tr>
+</table></div>
+<p><b>Gemini가 들어간 Colab 화면은 이렇게 나뉘어요</b></p>
+<div class="table-wrap"><table>
+<tr><th>화면 영역</th><th>무엇이 있나</th></tr>
+<tr><td>노트 영역(가운데)</td><td>텍스트 셀과 코드 셀이 위에서 아래로 쌓여 있어요. 코드 셀에서 오류가 나면 결과 칸에 오류 메시지와 함께 오류 설명 기능이 나타날 수 있어요.</td></tr>
+<tr><td>하단 바(푸터)</td><td>Colab 공식 FAQ에 따르면 Gemini 대화창은 <b>노트 화면 하단(푸터)의 Gemini 아이콘</b>으로 열어요.</td></tr>
+<tr><td>Gemini 대화창</td><td>지금 노트의 코드를 보고 대화해요. 학습 모드를 켤 수 있는 계정이면 여기서 켜요.</td></tr>
+</table></div>
+<p>Colab 공식 FAQ에 따르면 AI 기능은 조건에 맞는 사용자에게 기본으로 켜져 있어요. 실제 버튼의 이름과 위치는 업데이트에 따라 조금씩 다를 수 있으니, 강사 화면에서 위치를 함께 확인해요.</p>
+<div class="table-wrap"><table>
+<tr><th>Gemini 기능</th><th>무엇을 해 주나</th><th>언제 쓰나</th></tr>
+<tr><td>코드 생성</td><td>말로 요청하면 코드를 써 줘요.</td><td>"1부터 10까지 더하는 코드 써 줘"</td></tr>
+<tr><td>코드·오류 설명</td><td>코드가 무슨 뜻인지, 에러가 왜 났는지 설명하고 수정안을 제안해요.</td><td>모르는 코드나 빨간 에러를 만났을 때</td></tr>
+<tr><td>학습 모드</td><td>답을 바로 주지 않고 힌트와 단계별 설명으로 이끌어 줘요.</td><td>세션 4~6 기초 문법. 처음 배우는 사람에게 가장 추천해요. (계정·지역에 따라 메뉴가 보이지 않을 수 있어요)</td></tr>
+<tr><td>Gemini 대화창 (데이터 사이언스 에이전트)</td><td>노트 전체를 보고 대화해요. 데이터를 주고 분석 목표를 말하면 분석 단계를 계획하고 코드를 만들어 줘요.</td><td>다음 수업의 데이터 분석</td></tr>
+</table></div>
+<div class="resource-list">
+<a class="resource-card" href="https://research.google.com/colaboratory/faq.html" rel="noopener" target="_blank"><span class="small">Google Colab · 2026-10-22 확인</span><b>Google Colab 공식 FAQ</b></a>
+<a class="resource-card" href="https://developers.googleblog.com/new-ai-first-google-colab-now-available-to-everyone/" rel="noopener" target="_blank"><span class="small">Google Developers Blog · 2026-10-22 확인</span><b>AI 우선 Colab 전체 공개 (2025.6.24)</b></a>
+<a class="resource-card" href="https://blog.google/innovation-and-ai/technology/developers-tools/colab-updates/" rel="noopener" target="_blank"><span class="small">Google 공식 블로그 · 2026-10-22 확인</span><b>Colab 학습 모드 (2026.4.8)</b></a>
+</div>
+</div>
+<div class="topic" id="s2-2"><h3>2-2. AI의 답을 믿기 전에 알아야 할 것</h3>
+<p>Gemini는 지금 노트의 코드와 오류를 직접 보고 답할 수 있다는 장점이 있어요. 다만 같은 질문에도 답이 매번 달라질 수 있다는 점을 미리 알아 둬요.</p>
+<ul>
+<li><b>답이 다를 수 있는 이유:</b> Gemini가 <b>생성형 AI</b>이기 때문이에요. 생성형 AI는 정해진 정답을 찾아오는 것이 아니라, 그때그때 그럴듯한 답을 새로 만들어 내요. 그래서 같은 질문을 다시 해도 답이 달라질 수 있어요.</li>
+<li><b>AI도 실수해요:</b> 문법은 맞지만 결과가 틀린 코드를 자신 있게 내놓기도 해요. 그래서 AI가 준 코드는 반드시 실행해서 결과를 직접 확인해요.</li>
+<li><b>같은 대화 안에서 검증하면 AI는 자기 답을 옹호하는 경향이 있어요:</b> 코드를 만들어 준 그 대화창에 "이거 맞아?"라고 물으면, AI는 앞서 자신이 한 답에 맞춰 "맞다"고 하기 쉬워요. 검토를 맡길 때는 <b>새 채팅을 열어</b> 물어봐요.</li>
+</ul>
+<div class="warning"><b>검증 원칙:</b> 최종 판단은 AI가 아니라 <b>실행 결과와 내가 기대한 값을 비교해서</b> 내려요.</div>
+</div>
+<div class="topic" id="s2-3"><h3>2-3. 실습: Gemini 학습 모드로 코드 설명받기</h3><p><span class="tag tag-req">실습</span> 실습 1-3의 코드를 Gemini에게 설명받고, 설명이 실제 코드와 맞는지 확인해요.</p><p><b>STEP 1. Gemini를 학습 모드로 바꾸기</b></p><div class="procedure"><div>Gemini 창 입력칸 왼쪽 아래 <b>요청 사항</b> 아이콘(②)을 눌러요.</div><div><b>학습 모드</b>(①)를 골라요. 보이지 않으면 그대로 진행해요.</div></div><figure class="sample-shot"><img style="max-width:490px;margin:0 auto" alt="② 요청 사항 아이콘 → ① 기본 / 학습 모드 / 시각화 모드" height="380" loading="lazy" src="./images/d4-gemini-mode.jpg" width="490"/><figcaption>② 요청 사항 아이콘 → ① 기본 / 학습 모드 / 시각화 모드</figcaption></figure><div class="procedure"><div>"요청 사항을 전환할 준비가 되셨나요?" 창이 뜨면 [새 채팅 시작하기]를 눌러요.</div></div><figure class="sample-shot"><img style="max-width:770px;margin:0 auto" alt="모드를 바꾸면 이전 대화는 이어지지 않고 새 채팅이 시작돼요." height="737" loading="lazy" src="./images/d4-gemini-newchat.jpg" width="770"/><figcaption>모드를 바꾸면 이전 대화는 이어지지 않고 새 채팅이 시작돼요.</figcaption></figure><p><b>STEP 2. Gemini에게 묻기</b></p><div class="procedure"><div>아래 프롬프트를 복사해 Gemini 입력창에 보내요.</div></div><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>요청: 이 노트의 첫 번째 코드 셀이 한 줄씩 무슨 일을 하는지 설명해 줘.
+내용: 나는 코드를 처음 배우는 비개발자야. 셀에는 print("안녕, 파이썬")과 !python --version 두 줄이 있어.
+형식: 줄마다 2문장 이내로 설명하고, 전문 용어는 괄호 안에 한 줄로 풀어 줘. 코드를 고치거나 새 코드는 추가하지 마. 확실하지 않은 내용은 [확인 필요]로 남겨 줘.</pre></div><figure class="sample-shot"><img style="max-width:770px;margin:0 auto" alt="학습 모드에서 받은 답. 줄마다 설명했어요. (2026-10-29 강사 테스트)" height="737" loading="lazy" src="./images/d4-gemini-learn.jpg" width="770"/><figcaption>학습 모드에서 받은 답. 줄마다 설명했어요. (2026-10-29 강사 테스트)</figcaption></figure><div class="notice"><b>실습 1-4에서 첫 줄을 내 이름으로 바꿨다면</b><br/>Gemini는 지금 셀 내용을 보고 답해요. 프롬프트의 "안녕, 파이썬"과 셀 내용이 달라도 괜찮아요.</div><p><b>STEP 3. 설명이 코드와 맞는지 확인하기</b></p><ul class="checklist"><li>Gemini가 <code class="inline">print()</code>를 "괄호 안의 내용을 화면에 보여 주는 명령"으로 설명했나요?</li><li>Gemini가 <code class="inline">!</code>를 "Colab 서버에 내리는 명령"이라는 뜻으로 설명했나요?</li><li>코드에 없는 내용(예: 파일을 저장한다)을 덧붙이지 않았나요?</li><li>이해가 안 되는 설명을 한 가지 골라 Gemini에게 다시 물었나요?</li></ul></div>
+</section>
+<section class="section session" id="s3">
+<div class="session-head"><div class="eyebrow">SESSION 3 · 11:00–12:00</div><h2>프로그래밍은 어떻게 동작하나</h2><p>프로그램이 움직이는 기본 원리와, 앞으로 모든 실습 코드에 나오는 <b>주석</b>이 무엇인지 먼저 이해해요. 그다음 입력·처리·출력이 있는 짧은 코드를 실행하고, 오늘 쓰는 언어 파이썬이 어떤 언어인지 알아봐요.</p></div>
+<div class="topic" id="s3-1"><h3>3-1. 입력, 처리, 출력</h3>
+<p>프로그래밍은 컴퓨터에게 할 일을 순서대로 적어 주는 일이에요. 컴퓨터는 눈치를 보거나 빠진 부분을 알아서 채우지 않고, 적힌 그대로 위에서 아래로 한 줄씩 실행해요. 거의 모든 프로그램은 무언가를 받아서(<b>입력</b>), 정해진 규칙대로 계산하고(<b>처리</b>), 결과를 보여 주는(<b>출력</b>) 구조로 되어 있어요. 키오스크에서 메뉴를 고르면(입력) 금액이 계산되고(처리) 영수증이 나오는(출력) 것과 같아요.</p>
+<p>우리가 쓰는 코드는 사람이 읽을 수 있는 글이에요. 이 글을 컴퓨터가 알아듣도록 읽고 실행해 주는 프로그램을 <b>해석기</b>라고 불러요. Colab은 구글 서버에 이 해석기가 이미 준비되어 있는 환경이에요.</p>
+<div class="flow"><div><span>1</span><b>입력</b><small>메뉴를 고르고 수량을 넣어요</small></div><div><span>2</span><b>처리</b><small>가격 × 수량, 할인 규칙을 계산해요</small></div><div><span>3</span><b>출력</b><small>결제 금액을 화면에 보여 줘요</small></div></div>
+</div>
+<div class="topic" id="s3-2"><h3>3-2. 주석이란 무엇인가</h3>
+<p><b>주석</b>은 코드 안에 적어 두는 <b>사람을 위한 메모</b>예요. 파이썬에서는 <code class="inline">#</code> 기호 뒤에 쓴 내용이 주석이 되고, 컴퓨터는 실행할 때 이 부분을 완전히 무시해요. 그래서 주석에는 "이 줄이 무슨 일을 하는지", "왜 이렇게 했는지"를 한국어로 자유롭게 적을 수 있어요. 코드는 나중에 나 자신이나 동료가 다시 읽게 되므로, 주석은 기획서의 각주처럼 의도를 남기는 역할을 해요.</p>
+<div class="table-wrap"><table>
+<tr><th>구분</th><th>예시</th><th>컴퓨터가 실행하나?</th></tr>
+<tr><td>코드</td><td><code class="inline">price = 15000</code></td><td>실행해요</td></tr>
+<tr><td>주석</td><td><code class="inline"># 상품 가격을 저장</code></td><td>무시해요</td></tr>
+<tr><td>코드 + 주석</td><td><code class="inline">price = 15000  # 상품 가격을 저장</code></td><td><code class="inline">#</code> 앞까지만 실행해요</td></tr>
+</table></div>
+<div class="notice"><b>이 교안의 모든 실습 코드에는 줄마다 주석으로 설명을 달아 두었어요</b><br/>주석은 그대로 복사해 붙여 넣어도 실행에 영향을 주지 않아요. AI가 써 준 코드를 이해할 때도 "줄마다 주석을 달아 줘"라고 요청하면 큰 도움이 돼요.</div>
+<p><b>실습 3-2. 주석은 정말 무시될까?</b></p>
+<p><span class="tag tag-req">실습</span> 노트에 새 코드 셀을 추가하고, 아래 코드를 복사해 붙여 넣은 뒤 <kbd>Shift</kbd>+<kbd>Enter</kbd>로 실행해요.</p>
+<div class="copybox"><div class="copyhead"><span>코드 · 복사해서 Colab 코드 셀에 붙여 넣으세요</span><button type="button">복사</button></div><pre># 이 줄은 전체가 주석이라 아무 일도 일어나지 않습니다
+print("첫 번째 줄")   # 이 메모도 무시되고 print만 실행됩니다
+# print("이 줄은 실행될까요?")</pre></div>
+<div class="copybox"><div class="copyhead"><span>실행 결과 · 이렇게 나오면 맞아요</span></div><pre>첫 번째 줄</pre></div>
+<figure class="sample-shot"><img alt="실습 3-2 실행 화면. # 뒤의 주석은 출력되지 않아요." height="130" loading="lazy" src="./images/d4-p11.jpg" width="1340"/><figcaption>실습 3-2 실행 화면. # 뒤의 주석은 출력되지 않아요.</figcaption></figure>
+<p><b>방금 무슨 일이 일어났나</b><br/>출력은 한 줄뿐이에요. 셋째 줄은 <code class="inline">print</code>가 있지만 맨 앞에 <code class="inline">#</code>이 붙어 통째로 주석이 되었기 때문에 실행되지 않았어요.</p>
+<p><b>더 해 보기</b> 셋째 줄 맨 앞의 <code class="inline">#</code>을 지우고 다시 실행해요.</p>
+<ul class="checklist"><li>처음 실행했을 때 "첫 번째 줄" 한 줄만 나왔나요?</li><li><code class="inline">#</code>을 지운 뒤에는 "이 줄은 실행될까요?"까지 두 줄이 나왔나요?</li></ul>
+</div>
+<div class="topic" id="s3-3"><h3>3-3. 실습: 입력, 처리, 출력 코드 실행하기</h3><p><b>STEP 1. 실행하고 값 입력하기</b></p><div class="procedure"><div>[+ 코드]로 새 셀을 만들고 아래 코드를 붙여 넣어 <kbd>Shift</kbd>+<kbd>Enter</kbd> (Mac <kbd>shift</kbd>+<kbd>return</kbd>)로 실행해요.</div><div>셀 아래 생긴 입력 칸을 <b>클릭</b>하고 <code class="inline">10000</code>을 입력한 뒤 <kbd>Enter</kbd>를 눌러요.</div></div><div class="copybox"><div class="copyhead"><span>코드 · 복사해서 Colab 코드 셀에 붙여 넣으세요</span><button type="button">복사</button></div><pre>price = int(input("상품 가격(원): "))   # 입력: 숫자를 받아 price에 저장
+total = price * 1.1                    # 처리: 부가세 10%를 더한 금액 계산
+print("결제 금액:", int(total), "원")   # 출력: 소수점을 버리고 화면에 표시</pre></div><figure class="sample-shot"><img alt="실행하면 셀 아래에 입력 칸이 생겨요. 여기를 클릭하고 10000 입력 후 Enter" height="150" loading="lazy" src="./images/d4-p12-input.jpg" width="1340"/><figcaption>실행하면 셀 아래에 입력 칸이 생겨요. 여기를 클릭하고 10000 입력 후 Enter</figcaption></figure><div class="warning"><b>⚠ 헷갈리기 쉬운 곳 · 입력 칸</b><ul><li>입력 칸이 떠 있는 동안 셀은 계속 실행 중이에요. 이때 다른 셀을 실행하면 그 셀은 <b>기다려요</b>(아래 그림 ②). 입력하고 Enter를 누르면 이어서 실행돼요.</li><li><code class="inline">10,000</code>처럼 쉼표나 글자를 넣으면 <code class="inline">ValueError</code>가 나요. 숫자만 입력해요.</li></ul></div><figure class="sample-shot"><img alt="① 입력을 기다리는 칸 ② 아래 셀은 대기 중 ③ 화면 아래 &quot;실행 중&quot; 시간 (2026-10-29 강사 테스트)" height="679" loading="lazy" src="./images/d4-input-wait.jpg" width="1410"/><figcaption>① 입력을 기다리는 칸 ② 아래 셀은 대기 중 ③ 화면 아래 "실행 중" 시간 (2026-10-29 강사 테스트)</figcaption></figure><p><b>STEP 2. 결과 확인하기</b></p><div class="copybox"><div class="copyhead"><span>실행 결과 · 이렇게 나오면 맞아요</span></div><pre>상품 가격(원): 10000
+결제 금액: 11000 원</pre></div><figure class="sample-shot"><img alt="입력 후 결과. 결제 금액: 11000 원" height="140" loading="lazy" src="./images/d4-p12-out.jpg" width="1340"/><figcaption>입력 후 결과. 결제 금액: 11000 원</figcaption></figure><p><b>방금 무슨 일이 일어났나</b><br/>첫째 줄에서 입력받은 10000이 <code class="inline">price</code>에 저장되고, 둘째 줄에서 1.1을 곱해 <code class="inline">total</code>을 계산하고, 셋째 줄에서 결과를 출력했어요. <b>순서가 곧 로직</b>이에요.</p><div class="procedure"><div>같은 셀을 다시 실행하고 <code class="inline">25000</code>을 입력해요. <code class="inline">결제 금액: 27500 원</code>이 나오면 맞아요.</div></div><p><b>STEP 3. 순서를 바꾸면 어떻게 될까</b></p><div class="procedure"><div>새 셀에 아래 코드를 붙여 넣어 실행해요. 아직 계산하지 않은 값을 먼저 출력하려는 코드예요.</div></div><div class="copybox"><div class="copyhead"><span>코드 · 일부러 순서를 바꾼 코드예요</span><button type="button">복사</button></div><pre>print("결제 금액:", int(pay_total), "원")   # 아직 만들지 않은 이름을 먼저 출력하려고 함
+pay_total = 10000 * 1.1                    # 계산은 그다음 줄에 있음</pre></div><div class="copybox"><div class="copyhead"><span>오류 메시지 · 맨 아래 줄만 보면 돼요</span></div><pre>NameError: name 'pay_total' is not defined</pre></div><figure class="sample-shot"><img alt="실제 오류 화면. 맨 아래 NameError 줄을 읽어요. 아래 [오류 설명]을 누르면 Gemini가 설명해 줘요." height="282" loading="lazy" src="./images/d4-nameerror.jpg" width="1340"/><figcaption>실제 오류 화면. 맨 아래 NameError 줄을 읽어요. 아래 [오류 설명]을 누르면 Gemini가 설명해 줘요.</figcaption></figure><p>"<code class="inline">pay_total</code>이라는 이름이 아직 없다"는 뜻이에요. 컴퓨터는 위에서 아래로 한 줄씩 실행하기 때문에, 계산이 아래에 있으면 위에서는 쓸 수 없어요.</p><div class="notice"><b>왜 새 이름(pay_total)을 썼을까요</b><br/>Colab은 한 번 실행한 셀의 값을 런타임이 끊길 때까지 기억해요. 위에서 이미 <code class="inline">total</code>을 만들었기 때문에, 같은 이름으로 순서를 바꾸면 예전 값이 출력되어 오류가 나지 않아요.</div><div class="warning"><b>⚠ 헷갈리기 쉬운 곳 · 런타임이 끊겼을 때</b><ul><li>점심시간처럼 오래 쉬면 런타임이 끊겨 기억하던 값이 사라질 수 있어요. 그 뒤 아래쪽 셀만 실행하면 <code class="inline">NameError</code>가 나요. 도구 모음 [모두 실행]으로 위에서부터 다시 실행해요. 입력 칸(실습 3-3)에서 멈추면 값을 넣어 줘요.</li></ul></div><p><b>STEP 4. 셀 실행 순서 실험: 위 셀과 아래 셀</b></p><p>노트에는 셀이 위에서 아래로 놓여 있지만, Colab이 기억하는 건 <b>셀의 위치가 아니라 내가 실행한 순서</b>예요. 아래 두 셀로 직접 확인해요.</p><div class="procedure"><div>[+ 코드]로 새 셀 두 개를 만들고, 위 셀(셀 A)과 아래 셀(셀 B)에 각각 붙여 넣어요. <b>아직 실행하지 않아요.</b></div></div><div class="copybox"><div class="copyhead"><span>셀 A · 위 셀에 붙여 넣으세요</span><button type="button">복사</button></div><pre>discount = 1000   # 셀 A: 할인 금액을 discount에 저장</pre></div><div class="copybox"><div class="copyhead"><span>셀 B · 아래 셀에 붙여 넣으세요</span><button type="button">복사</button></div><pre>print("할인 후 가격:", 15000 - discount, "원")   # 셀 B: discount를 꺼내 계산</pre></div><p><b>① 아래 셀(B)부터 실행하면?</b></p><div class="procedure"><div>셀 B만 실행해요.</div></div><figure class="sample-shot"><img alt="① 셀 A는 실행 번호가 [ ]로 비어 있어요(아직 실행 전) ② 그래서 셀 B에서 NameError: discount가 아직 없어요" height="290" loading="lazy" src="./images/d4-order1.jpg" width="840"/><figcaption>① 셀 A는 실행 번호가 [ ]로 비어 있어요(아직 실행 전) ② 그래서 셀 B에서 NameError: discount가 아직 없어요</figcaption></figure><p>셀 A가 화면 위에 있어도, <b>실행하지 않았으면 Colab은 discount를 모르는</b> 상태예요.</p><p><b>② 위(A) → 아래(B) 순서로 실행하면?</b></p><div class="procedure"><div>셀 A를 실행하고, 이어서 셀 B를 실행해요.</div></div><figure class="sample-shot"><img alt="①② 실행 번호가 A [42] → B [43] 순서로 매겨졌고 ③ 할인 후 가격: 14000 원" height="135" loading="lazy" src="./images/d4-order2.jpg" width="840"/><figcaption>①② 실행 번호가 A [42] → B [43] 순서로 매겨졌고 ③ 할인 후 가격: 14000 원</figcaption></figure><p><b>③ 위 셀(A)을 고치기만 하고, 아래 셀(B)만 다시 실행하면?</b></p><div class="procedure"><div>셀 A의 <code class="inline">1000</code>을 <code class="inline">3000</code>으로 고치고 <b>셀 A는 실행하지 않아요.</b></div><div>셀 B만 다시 실행해요.</div></div><figure class="sample-shot"><img alt="① 셀 A는 3000으로 고쳤지만 실행 전이라 ✓ 표시가 없어요 ② 셀 B 결과는 여전히 14000 원" height="135" loading="lazy" src="./images/d4-order3.jpg" width="840"/><figcaption>① 셀 A는 3000으로 고쳤지만 실행 전이라 ✓ 표시가 없어요 ② 셀 B 결과는 여전히 14000 원</figcaption></figure><p>Colab이 기억하는 discount는 <b>마지막으로 실행한 셀 A의 값(1000)</b>이에요. 화면의 코드가 바뀌어도 실행하기 전까지는 반영되지 않아요.</p><p><b>④ 위 셀(A)만 다시 실행하면 아래 결과는 바뀔까?</b></p><div class="procedure"><div>셀 A를 실행해요. 셀 B는 아직 실행하지 않아요.</div></div><figure class="sample-shot"><img alt="① 셀 A는 [45]로 새로 실행됐지만 ② 셀 B는 [44] 그대로, 결과도 14000 원 그대로예요" height="135" loading="lazy" src="./images/d4-order4.jpg" width="840"/><figcaption>① 셀 A는 [45]로 새로 실행됐지만 ② 셀 B는 [44] 그대로, 결과도 14000 원 그대로예요</figcaption></figure><div class="procedure"><div>이제 셀 B를 실행해요.</div></div><figure class="sample-shot"><img alt="① 셀 B가 [46]으로 실행되자 ② 할인 후 가격: 12000 원으로 바뀌었어요" height="135" loading="lazy" src="./images/d4-order5.jpg" width="840"/><figcaption>① 셀 B가 [46]으로 실행되자 ② 할인 후 가격: 12000 원으로 바뀌었어요</figcaption></figure><div class="table-wrap"><table><tr><th>상황</th><th>셀 B 결과</th><th>이유</th></tr><tr><td>① B만 실행</td><td>NameError</td><td>A를 한 번도 실행하지 않아 discount가 없음</td></tr><tr><td>② A → B</td><td>14000 원</td><td>A에서 1000을 저장한 뒤 B가 꺼내 씀</td></tr><tr><td>③ A를 3000으로 고치고 B만 실행</td><td>14000 원</td><td>고친 A를 실행하지 않아 1000이 그대로 기억됨</td></tr><tr><td>④ A만 다시 실행</td><td>14000 원 (그대로)</td><td>값은 3000으로 바뀌었지만, B의 결과 칸은 B를 다시 실행해야 바뀜</td></tr><tr><td>④ 이어서 B 실행</td><td>12000 원</td><td>B가 새 값 3000을 꺼내 계산</td></tr></table></div><div class="warning"><b>⚠ 헷갈리기 쉬운 곳 · 셀 실행 순서</b><ul><li>결과 칸은 <b>그 셀을 마지막으로 실행했을 때</b>의 결과예요. 위 셀을 바꿨다면 아래 셀도 다시 실행해야 결과가 맞아요.</li><li>실행 번호 <code class="inline">[42]</code>, <code class="inline">[43]</code>…를 보면 어떤 순서로 실행했는지 알 수 있어요. 번호가 위아래로 뒤섞여 있으면 결과를 믿기 전에 위에서부터 다시 실행해요.</li><li>헷갈릴 때는 도구 모음 <b>[모두 실행]</b>으로 위에서 아래로 한 번에 다시 실행하는 게 가장 안전해요. 그래서 노트는 <b>위에서 아래로 읽히는 순서대로</b> 쓰고 실행해요.</li></ul></div><p><b>생각해 볼 질문</b></p><ul><li>셀 B를 셀 A보다 <b>위로</b> 옮겨도 A → B 순서로 실행하면 결과가 나올까요? (힌트: Colab은 위치가 아니라 실행 순서를 기억해요)</li><li>내일 노트를 다시 열어 셀 B만 실행하면 어떻게 될까요? (힌트: 런타임이 끊기면 기억하던 값이 사라져요)</li></ul><ul class="checklist"><li>10000을 넣었을 때 "결제 금액: 11000 원"이 나왔나요?</li><li>25000을 넣었을 때 "결제 금액: 27500 원"이 나왔나요?</li><li>순서를 바꾼 코드에서 <code class="inline">NameError</code>가 나왔나요?</li><li>셀 A를 고치고 셀 B만 실행했을 때 결과가 바뀌지 않는 이유를 말할 수 있나요?</li><li>세 줄 중 어느 줄이 입력·처리·출력인지 짚어 말할 수 있나요?</li></ul><div class="notice"><b>PM 포인트</b><br/>기획서의 "사용자가 ○○하면 △△가 보인다"라는 문장이 곧 입력·처리·출력이에요. 처리 규칙이 모호하면 개발자도 AI도 추측해서 만들어요.</div>
+
+</div>
+
+<div class="topic" id="s3-4"><h3>3-4. 파이썬은 무엇인가</h3>
+<p>파이썬은 1991년 네덜란드의 프로그래머 귀도 반 로섬이 발표한 프로그래밍 언어예요. 지금도 계속 발전하고 있어서, 2026년 10월 기준 최신 버전은 파이썬 3.15예요(3.15.0 정식판 10월 9일, 3.15.1 10월 21일 공개). 문법이 영어 문장에 가깝고 간결해서 처음 배우는 사람에게 가장 많이 권하는 언어 중 하나이고, 동시에 데이터 분석, 업무 자동화, 인공지능 개발 같은 실무 현장에서도 널리 쓰여요. 쉽게 시작할 수 있으면서 실무에서도 바로 쓰인다는 점이 파이썬의 가장 큰 특징이에요.</p>
+<p>보통 개발자들은 파이썬을 배울 때 <b>내 컴퓨터에 파이썬을 설치하고, 터미널(명령어를 입력하는 검은 창)에서 연습</b>하는 것부터 시작해요. 설치 경로 설정이나 버전 충돌 같은 문제로 첫 코드를 실행하기도 전에 막히는 입문자가 많아요. 오늘 우리는 Colab을 써서 이 단계를 건너뛰어요.</p><figure class="path-compare" style="margin:18px 0 22px"><figcaption style="font-weight:700;margin-bottom:4px">일반적인 시작: 내 컴퓨터에서 (7단계)</figcaption><ol style="display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:8px 0 18px"><li style="flex:1 1 88px;min-width:88px;background:var(--panel,#eef2ff);border-radius:10px;padding:10px 6px;list-style:none;text-align:center"><span style="display:block;font-size:12px;font-weight:800;color:var(--blue)">1</span><b style="display:block;font-size:14px">설치 파일 받기</b><small style="display:block;color:var(--muted);margin-top:4px">python.org</small></li><li style="flex:1 1 88px;min-width:88px;background:var(--panel,#eef2ff);border-radius:10px;padding:10px 6px;list-style:none;text-align:center"><span style="display:block;font-size:12px;font-weight:800;color:var(--blue)">2</span><b style="display:block;font-size:14px">파이썬 설치</b><small style="display:block;color:var(--muted);margin-top:4px">PATH 설정 포함</small></li><li style="flex:1 1 88px;min-width:88px;background:var(--panel,#eef2ff);border-radius:10px;padding:10px 6px;list-style:none;text-align:center"><span style="display:block;font-size:12px;font-weight:800;color:var(--blue)">3</span><b style="display:block;font-size:14px">터미널 열기</b><small style="display:block;color:var(--muted);margin-top:4px">python --version 확인</small></li><li style="flex:1 1 88px;min-width:88px;background:var(--panel,#eef2ff);border-radius:10px;padding:10px 6px;list-style:none;text-align:center"><span style="display:block;font-size:12px;font-weight:800;color:var(--blue)">4</span><b style="display:block;font-size:14px">편집기 설치</b><small style="display:block;color:var(--muted);margin-top:4px">VS Code 등</small></li><li style="flex:1 1 88px;min-width:88px;background:var(--panel,#eef2ff);border-radius:10px;padding:10px 6px;list-style:none;text-align:center"><span style="display:block;font-size:12px;font-weight:800;color:var(--blue)">5</span><b style="display:block;font-size:14px">파일 만들고 저장</b><small style="display:block;color:var(--muted);margin-top:4px">hello.py</small></li><li style="flex:1 1 88px;min-width:88px;background:var(--panel,#eef2ff);border-radius:10px;padding:10px 6px;list-style:none;text-align:center"><span style="display:block;font-size:12px;font-weight:800;color:var(--blue)">6</span><b style="display:block;font-size:14px">터미널에서 실행</b><small style="display:block;color:var(--muted);margin-top:4px">python hello.py</small></li><li style="flex:1 1 88px;min-width:88px;background:var(--panel,#eef2ff);border-radius:10px;padding:10px 6px;list-style:none;text-align:center"><span style="display:block;font-size:12px;font-weight:800;color:var(--blue)">7</span><b style="display:block;font-size:14px">도구 설치</b><small style="display:block;color:var(--muted);margin-top:4px">pip install pandas</small></li></ol><figcaption style="font-weight:700;margin-bottom:4px">오늘 우리의 시작: Colab에서 (3단계)</figcaption><ol style="display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:8px 0 18px"><li style="flex:1 1 88px;min-width:88px;background:var(--panel,#eef2ff);border-radius:10px;padding:10px 6px;list-style:none;text-align:center"><span style="display:block;font-size:12px;font-weight:800;color:var(--blue)">1</span><b style="display:block;font-size:14px">Colab 열기</b><small style="display:block;color:var(--muted);margin-top:4px">Google 로그인</small></li><li style="flex:1 1 88px;min-width:88px;background:var(--panel,#eef2ff);border-radius:10px;padding:10px 6px;list-style:none;text-align:center"><span style="display:block;font-size:12px;font-weight:800;color:var(--blue)">2</span><b style="display:block;font-size:14px">새 노트</b><small style="display:block;color:var(--muted);margin-top:4px">[+ 새 노트]</small></li><li style="flex:1 1 88px;min-width:88px;background:var(--panel,#eef2ff);border-radius:10px;padding:10px 6px;list-style:none;text-align:center"><span style="display:block;font-size:12px;font-weight:800;color:var(--blue)">3</span><b style="display:block;font-size:14px">셀에 쓰고 ▶</b><small style="display:block;color:var(--muted);margin-top:4px">바로 결과</small></li></ol><p class="small" style="margin:0">1~4와 7(설치·설정)은 Colab에 이미 되어 있고, 5~6(저장·실행)은 노트의 셀과 ▶ 버튼이 대신해요.</p></figure><div class="table-wrap"><table><tr><th></th><th>내 컴퓨터에서 시작</th><th>Colab에서 시작</th></tr><tr><td>파이썬 설치</td><td>직접 설치하고 경로 설정</td><td>이미 설치되어 있음</td></tr><tr><td>코드 쓰는 곳</td><td>편집기에서 파일로 저장</td><td>노트의 코드 셀</td></tr><tr><td>실행하는 곳</td><td><b>내 컴퓨터</b>의 터미널</td><td><b>구글 클라우드의 가상 컴퓨터</b>(런타임)</td></tr><tr><td>pandas 등 도구</td><td>직접 설치</td><td>자주 쓰는 도구는 이미 설치되어 있음</td></tr><tr><td>막혔을 때</td><td>검색, 커뮤니티 질문</td><td>Colab Gemini에게 바로 질문</td></tr></table></div><div class="notice"><b>런타임은 내 컴퓨터가 아니에요</b><br/>Colab에서 ▶를 누르면 코드는 내 노트북이 아니라 <b>구글 클라우드에 있는, 내 계정 전용 가상 컴퓨터</b>에서 실행돼요. 내 컴퓨터에는 아무것도 설치되지 않아요. 그래서 실습 1-3의 <code class="inline">!python --version</code>도 내 컴퓨터가 아니라 이 가상 컴퓨터의 파이썬 버전을 보여 준 거예요. 오래 쓰지 않으면 이 가상 컴퓨터가 정리되면서 런타임이 끊기고, 기억하던 값도 사라져요. 노트 파일(코드와 결과)은 Drive에 따로 저장되어 남아요. (내 컴퓨터를 런타임으로 연결하는 "로컬 런타임"도 있지만 오늘은 쓰지 않아요.)</div><p>Colab에 설치된 파이썬 버전은 최신 버전보다 조금 늦게 따라가는 경우가 많아요. 실습 1-3에서 확인한 버전이 최신이 아니어도 괜찮아요. 오늘 배우는 기초 문법은 버전과 관계없이 똑같이 동작해요.</p>
+<ul class="checklist"><li>실습 1-3에서 확인한 Colab의 파이썬 버전과 최신 버전(3.15)을 비교해 봤나요?</li></ul>
+<div class="notice"><b>기억할 것</b><br/>오늘의 목표는 문법을 외우는 것이 아니라 "코드가 이렇게 생겼고, 이렇게 실행되는구나"를 손으로 느껴 보는 거예요.</div>
+<details class="optional"><summary><span class="summary-title">오프더레코드 ① 파이썬은 크리스마스 휴가 때 "취미"로 시작했어요</span><span class="summary-hint">눌러서 펼쳐 보세요</span></summary><p>파이썬을 만든 귀도 반 로섬은 파이썬 책 서문에 이렇게 썼어요. 1989년 12월, <b>"크리스마스 주간에 할 '취미' 프로그래밍 프로젝트를 찾고 있었다"</b>. 지금은 AI 개발에 가장 많이 쓰이는 언어 중 하나가 휴가 때 심심풀이로 시작한 셈이에요.</p><p><b>이름은 뱀이 아니에요.</b> 같은 글에서 그는 "약간 장난스러운 기분이었고, 영국 코미디 프로그램 <b>Monty Python's Flying Circus</b>의 열렬한 팬이라서" 이름을 파이썬으로 지었다고 했어요. 로고에 뱀이 있지만 원래 뜻은 코미디 그룹 이름이에요.</p><p><b>Colab에서 직접 해 보기:</b> 새 셀에 <code class="inline">import this</code>를 실행하면 파이썬이 추구하는 원칙 19줄, <b>"파이썬의 선(The Zen of Python)"</b>이 나와요. 그중 한 줄은 "<i>Although that way may not be obvious at first unless you're Dutch.</i>"(처음엔 그 방법이 분명하지 않을 수 있어요. <b>네덜란드 사람이 아니라면요.</b>)예요. 네덜란드 사람인 귀도를 두고 한 농담이에요.</p><div class="copybox"><div class="copyhead"><span>코드 · 재미로 실행해 보세요</span><button type="button">복사</button></div><pre>import this   # 파이썬의 선(The Zen of Python) 출력</pre></div><p class="small">출처: <a href="https://www.python.org/doc/essays/foreword/" rel="noopener" target="_blank">Guido van Rossum, Foreword for "Programming Python" (python.org)</a> · <code class="inline">import this</code> 출력은 Python 3에서 직접 실행해 확인, 2026-10-29</p></details><details class="optional"><summary><span class="summary-title">오프더레코드 ② 귀도 반 로섬: "자비로운 종신 독재자"</span><span class="summary-hint">눌러서 펼쳐 보세요</span></summary><figure class="sample-shot"><img style="max-width:360px;margin:0 auto" alt="귀도 반 로섬 사진 (2014년, Dropbox 본사)" height="320" loading="lazy" src="./images/d4-guido.jpg" width="480"/><figcaption>귀도 반 로섬 (2014년, Dropbox 본사). 사진: Daniel Stroud, 보정: Deedub1983·HarJIT, <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="noopener" target="_blank">CC BY-SA 4.0</a>, <a href="https://commons.wikimedia.org/wiki/File:Guido-portrait-2014-drc.jpg" rel="noopener" target="_blank">Wikimedia Commons</a> (크기 축소)</figcaption></figure><div class="table-wrap"><table><tr><th>시기</th><th>이야기</th></tr><tr><td>1956년</td><td>네덜란드 헤이그에서 태어났어요.</td></tr><tr><td>오랫동안</td><td>파이썬 커뮤니티는 그를 <b>BDFL(Benevolent Dictator For Life, 자비로운 종신 독재자)</b>이라고 불렀어요. 의견이 갈릴 때 마지막 결정을 내리는 사람이라는 뜻의 애칭이에요.</td></tr><tr><td>2005~2012년</td><td>Google에서 일하며 근무 시간의 절반을 파이썬 개발에 썼어요.</td></tr><tr><td>2013~2019년</td><td>Dropbox에서 일했고, 2019년 10월 은퇴했어요.</td></tr><tr><td>2018년 7월 12일</td><td>"종신" 독재자 자리를 스스로 내려놓았어요. 이후 2019년까지 파이썬 운영위원회(Steering Council) 위원으로 활동했고, 2020년 선거에는 나서지 않았어요.</td></tr><tr><td>2020년 11월 12일</td><td>은퇴 1년 만에 <b>은퇴를 번복</b>하고 Microsoft 개발자 부서에 합류했어요.</td></tr></table></div><p><b>PM에게 주는 의미:</b> "종신 독재자"도 커뮤니티가 커지자 결정 구조를 바꿨어요. 제품이 커지면 <b>누가 최종 결정을 내리는지</b>도 다시 설계해야 해요.</p><p class="small">출처: <a href="https://en.wikipedia.org/wiki/Guido_van_Rossum" rel="noopener" target="_blank">Wikipedia: Guido van Rossum</a>, 2026-10-29 확인</p></details><div class="resource-list">
+<a class="resource-card" href="https://research.google.com/colaboratory/faq.html" rel="noopener" target="_blank"><span class="small">Google Colab · 2026-10-29 확인</span><b>Colab FAQ: 코드는 내 계정 전용 가상 컴퓨터에서 실행</b></a>
+<a class="resource-card" href="https://www.python.org/downloads/" rel="noopener" target="_blank"><span class="small">python.org · 2026-10-22 확인</span><b>Python 다운로드 (Python 3.15.1, 2026.10.21)</b></a>
+</div>
+</div>
+<div class="topic" id="s3-5"><h3>3-5. Colab에서 파이썬으로 해 볼 수 있는 재밌는 예시</h3>
+<p>Colab에서는 문법 연습 말고도 그래프, 웹 화면, 작은 서버까지 바로 띄워 볼 수 있어요. 아래 표는 2026-10-29 강사 노트에서 직접 실행해 확인한 범위예요.</p><div class="table-wrap"><table><tr><th>하고 싶은 것</th><th>Colab에서</th><th>설명</th></tr><tr><td>파이썬 문법 실행</td><td>✅ 돼요</td><td>오늘 실습 전체가 여기에 해당해요.</td></tr><tr><td>외부 라이브러리 + 데이터 시각화</td><td>✅ 돼요</td><td>pandas(표), matplotlib(그래프)처럼 자주 쓰는 도구는 이미 설치되어 있어 <code class="inline">import</code>만 하면 돼요. 없는 도구는 <code class="inline">!pip install 도구이름</code>으로 런타임에 설치해요. 다음 수업 데이터 분석이 이 방식이에요.</td></tr><tr><td>HTML 화면 보기</td><td>✅ 돼요</td><td>결과 칸에 HTML을 화면으로 그려 줘요. 버튼 클릭 같은 동작도 돼요.</td></tr><tr><td>프론트엔드 + 백엔드 "헬로 웹"</td><td>✅ 연습용으로 돼요</td><td>런타임(구글 클라우드의 가상 컴퓨터)에서 파이썬 웹 서버(Flask)를 실행하고, 그 화면을 결과 칸에 띄울 수 있어요. 버튼을 누르면 파이썬 서버가 답해요.</td></tr><tr><td>웹 서비스로 공개(배포)</td><td>❌ 안 돼요</td><td>런타임은 임시 컴퓨터라 끊기면 서버도 같이 꺼져요. 결과 칸의 화면은 노트를 실행 중인 화면 안에서 보는 것이지, 다른 사람에게 주소를 주고 서비스하는 용도가 아니에요. 공개하려면 DAY 3의 GitHub Pages나 별도 호스팅 서비스를 써요.</td></tr></table></div><div class="notice"><b>그럼 웹 개발도 되나요?</b><br/>웹 개발을 <b>연습하고 동작을 확인하는 것</b>까지는 돼요. 하지만 <b>여러 사람이 쓰는 서비스로 운영(배포)</b>하는 곳은 아니에요. Colab은 "실험실", GitHub Pages나 호스팅 서비스는 "매장"이라고 생각하면 쉬워요.</div><p><b>강사 실험 결과 (2026-10-29, 강사 노트에서 실행)</b> 아래 코드를 새 셀에 붙여 넣으면 같은 결과를 볼 수 있어요.</p><p><b>① 라이브러리로 그래프 그리기</b></p><div class="copybox"><div class="copyhead"><span>코드 · 새 셀에 붙여 넣고 실행</span><button type="button">복사</button></div><pre>import matplotlib.pyplot as plt   # 그래프 도구 불러오기
+import pandas as pd                # 표 데이터 도구 불러오기
+df = pd.DataFrame({"product": ["tumbler", "ecobag", "mug"], "sales": [30, 12, 21]})
+print(df)
+plt.bar(df["product"], df["sales"])
+plt.title("Sales by product")
+plt.show()</pre></div><figure class="sample-shot"><img alt="pandas로 표를 만들고 matplotlib으로 막대그래프를 그렸어요. 설치 없이 바로 실행돼요." height="500" loading="lazy" src="./images/d4-cap-chart.jpg" width="840"/><figcaption>pandas로 표를 만들고 matplotlib으로 막대그래프를 그렸어요. 설치 없이 바로 실행돼요.</figcaption></figure><p class="small">그래프 글자는 영어로 적었어요. 한글을 넣으면 글꼴 설정이 따로 필요할 수 있어요 [확인 필요].</p><p><b>② 결과 칸에 HTML 띄우기</b></p><div class="copybox"><div class="copyhead"><span>코드 · 새 셀에 붙여 넣고 실행</span><button type="button">복사</button></div><pre>from IPython.display import HTML   # 결과 칸에 HTML을 화면으로 보여 주는 도구
+HTML("""
+&lt;h2 style="color:#2a5bd7"&gt;안녕, 셀렉트마켓&lt;/h2&gt;
+&lt;button onclick="this.innerText='눌렀어요!'"&gt;눌러 보세요&lt;/button&gt;
+""")</pre></div><figure class="sample-shot"><img alt="실행하면 결과 칸에 제목과 [눌러 보세요] 버튼이 그려져요." height="205" loading="lazy" src="./images/d4-cap-html0.jpg" width="840"/><figcaption>실행하면 결과 칸에 제목과 [눌러 보세요] 버튼이 그려져요.</figcaption></figure><figure class="sample-shot"><img alt="버튼을 누르면 글자가 &quot;눌렀어요!&quot;로 바뀌어요. 결과 칸 안에서 HTML이 실제로 동작해요." height="205" loading="lazy" src="./images/d4-cap-html.jpg" width="840"/><figcaption>버튼을 누르면 글자가 "눌렀어요!"로 바뀌어요. 결과 칸 안에서 HTML이 실제로 동작해요.</figcaption></figure><p><b>③ 프론트엔드 + 백엔드 헬로 웹</b></p><div class="copybox"><div class="copyhead"><span>코드 · 새 셀에 붙여 넣고 실행</span><button type="button">복사</button></div><pre>from flask import Flask, jsonify   # 웹 서버(백엔드) 도구
+import threading
+
+app = Flask(__name__)
+
+@app.route("/")                 # 프론트엔드: 브라우저에 보낼 화면(HTML)
+def home():
+    return """
+    &lt;h1&gt;헬로 웹!&lt;/h1&gt;
+    &lt;button onclick="fetch('api/hello').then(r =&gt; r.json()).then(d =&gt; msg.innerText = d.message)"&gt;서버에 물어보기&lt;/button&gt;
+    &lt;p id="msg"&gt;&lt;/p&gt;
+    """
+
+@app.route("/api/hello")        # 백엔드: 버튼을 누르면 파이썬이 답하는 곳
+def hello():
+    return jsonify(message="파이썬 서버가 보낸 인사: 안녕!")
+
+threading.Thread(target=lambda: app.run(port=8000), daemon=True).start()   # 서버를 뒤에서 실행
+
+from google.colab import output
+output.serve_kernel_port_as_iframe(8000)   # 런타임의 8000번 포트 화면을 결과 칸에 표시</pre></div><figure class="sample-shot"><img alt="① 프론트엔드: 브라우저에 보낼 화면 ② 백엔드: 버튼을 누르면 답하는 곳 ③ 실행하면 결과 칸에 &quot;헬로 웹!&quot; 페이지가 떠요." height="495" loading="lazy" src="./images/d4-cap-webcode.jpg" width="1380"/><figcaption>① 프론트엔드: 브라우저에 보낼 화면 ② 백엔드: 버튼을 누르면 답하는 곳 ③ 실행하면 결과 칸에 "헬로 웹!" 페이지가 떠요.</figcaption></figure><figure class="sample-shot"><img alt="① [서버에 물어보기]를 누르면 ② 런타임의 파이썬 서버가 보낸 답이 화면에 나타나요." height="310" loading="lazy" src="./images/d4-cap-web.jpg" width="940"/><figcaption>① [서버에 물어보기]를 누르면 ② 런타임의 파이썬 서버가 보낸 답이 화면에 나타나요.</figcaption></figure><p class="small">이 서버는 런타임이 끊기면 함께 꺼져요. 다시 보려면 셀을 다시 실행해요.</p>
+</div>
+</section>
+<section class="section session" id="s4">
+<div class="session-head"><div class="eyebrow">SESSION 4 · 13:00–14:00</div><h2>기초 문법 ① 변수와 조건</h2><p>지금부터는 개념 설명을 먼저 듣지 않고, <b>코드를 먼저 실행해 본 다음</b> 방금 무슨 일이 일어났는지 이해하는 순서로 진행해요. 직접 결과를 본 뒤에 이름을 붙이면 훨씬 쉽게 기억에 남아요. 모든 실습은 <b>복사 → 붙여 넣고 실행 → 결과 확인 → 설명 읽기</b> 네 단계로 하고, 마지막으로 값을 하나 바꿔 다시 실행해요.</p></div>
+<div class="topic" id="s4-0"><h3>4-0. 실습하는 방법</h3><div class="flow"><div><span>1</span><b>복사</b><small>코드 상자의 [복사]를 눌러요</small></div><div><span>2</span><b>붙여 넣고 실행</b><small>새 코드 셀에 붙여 넣고 Shift+Enter (Mac shift+return)</small></div><div><span>3</span><b>결과 확인</b><small>"실행 결과" 상자와 같은지 비교해요</small></div><div><span>4</span><b>설명 읽기</b><small>방금 무슨 일이 일어났는지 읽어요</small></div><div><span>5</span><b>더 해 보기</b><small>값을 하나 바꿔 다시 실행해요</small></div></div><div class="procedure"><div>노트 맨 아래 셀을 클릭하고 [+ 코드]로 <b>새 코드 셀</b>을 만들어요.</div><div>교안 코드 상자의 [복사]를 누르고, 새 셀을 클릭한 뒤 <kbd>Ctrl</kbd>+<kbd>V</kbd> (Mac <kbd>⌘</kbd>+<kbd>V</kbd>)로 붙여 넣어요.</div><div>▶ 또는 <kbd>Shift</kbd>+<kbd>Enter</kbd> (Mac <kbd>shift</kbd>+<kbd>return</kbd>)로 실행하고 "실행 결과" 상자와 비교해요.</div><div>값을 바꿔 볼 때는 <b>새 셀을 만들지 않고</b> 같은 셀 안의 숫자를 고친 뒤 다시 실행해요.</div></div><div class="warning"><b>⚠ 헷갈리기 쉬운 곳 · 복사·붙여넣기</b><ul><li>코드를 일부만 드래그해서 복사하면 들여쓰기가 깨져 <code class="inline">IndentationError</code>가 날 수 있어요. [복사] 버튼을 써요.</li><li>코드가 있는 셀에 붙여 넣으면 기존 코드 뒤에 이어 붙어요. 실습마다 빈 새 셀에 붙여 넣어요.</li><li>고치기만 하고 실행하지 않으면 결과 칸은 예전 그대로예요. 고친 뒤에는 꼭 다시 실행해요.</li><li>직접 타이핑하면 닫는 괄호·따옴표가 자동으로 생겨요(아래 그림). 줄 끝에 괄호가 남지 않았는지 봐요.</li></ul></div><figure class="sample-shot"><img style="max-width:660px;margin:0 auto" alt="print(&quot;hi 까지만 입력했는데 닫는 따옴표와 괄호가 자동으로 생겼어요." height="45" loading="lazy" src="./images/d4-autoclose.jpg" width="660"/><figcaption>print("hi 까지만 입력했는데 닫는 따옴표와 괄호가 자동으로 생겼어요.</figcaption></figure><p>이해가 안 되는 부분은 Gemini에게 "왜 이렇게 나와?"라고 물어봐요. 이 세션부터는 Gemini 대화창의 <b>학습 모드를 켜 두는 것</b>을 권장해요. 정답을 바로 받는 대신 힌트를 받으며 스스로 고치게 되어 실력이 남아요. 내 화면에 학습 모드가 보이지 않으면 Gemini에게 "정답 코드 말고 힌트만 단계별로 줘"라고 요청하면 같은 방식으로 연습할 수 있어요.</p><div class="notice"><b>학습 모드는 세션 6까지만</b><br/>세션 7(실습 7-1)처럼 Gemini가 코드를 직접 고치게 할 때는 기본 모드로 바꿔요.</div></div>
+<div class="topic" id="s4-1"><h3>4-1. 실습: 변수</h3><div class="notice"><b>🎮 게임 개발자는 변수를 이렇게 써요</b><br/>캐릭터의 이름·체력·돈을 변수에 저장해 두고, 싸울 때마다 값을 바꿔요. 아래 코드를 새 셀에 붙여 넣고 실행해 봐요.</div><div class="copybox"><div class="copyhead"><span>코드 · 게임 속 변수 예시</span><button type="button">복사</button></div><pre>player_name = &quot;용사&quot;     # 캐릭터 이름
+hp = 100                 # 체력
+gold = 500               # 가진 돈
+hp = hp - 30             # 몬스터에게 30만큼 피해를 입음
+print(player_name, &quot;남은 체력:&quot;, hp, &quot;/ 골드:&quot;, gold)</pre></div><div class="copybox"><div class="copyhead"><span>실행 결과 · 예시</span></div><pre>용사 남은 체력: 70 / 골드: 500</pre></div><figure class="code-anatomy" style="margin:14px 0"><figcaption style="font-weight:700;margin-bottom:6px">코드 뜯어보기 · 노란 표시와 번호를 아래 표와 함께 봐요</figcaption><pre style="background:#f7f8fb;color:#1d2433;border:1px solid #dfe3ec;border-radius:10px;padding:14px 16px;line-height:1.9;white-space:pre;overflow-x:auto;font-size:14px"><span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">product</span><sup style="color:#e5262a;font-weight:800">①</sup> <span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">=</span><sup style="color:#e5262a;font-weight:800">②</sup> <span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">&quot;텀블러&quot;</span><sup style="color:#e5262a;font-weight:800">③</sup>   <span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px"># 글자(문자열)는 따옴표로 감싸서 저장</span><sup style="color:#e5262a;font-weight:800">④</sup>
+price = <span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">15000</span><sup style="color:#e5262a;font-weight:800">⑤</sup>        # 숫자는 따옴표 없이 저장
+qty = 3              # 수량
+<span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">print</span><sup style="color:#e5262a;font-weight:800">⑥</sup><span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">(</span><sup style="color:#e5262a;font-weight:800">⑦</sup>product<span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">,</span><sup style="color:#e5262a;font-weight:800">⑧</sup> price <span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">*</span><sup style="color:#e5262a;font-weight:800">⑨</sup> qty, &quot;원&quot;<span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">)</span><sup style="color:#e5262a;font-weight:800">⑦</sup>   # 저장한 이름으로 값을 꺼내 계산하고 출력</pre></figure><div class="table-wrap"><table><tr><th>번호</th><th>무엇</th><th>규칙과 주의</th></tr><tr><td style="color:#e5262a;font-weight:800">①</td><td>변수 이름</td><td>영어로 시작하고 <b>띄어쓰기 없이</b> 써요. 두 단어면 <code class="inline">product_name</code>처럼 밑줄로 이어요. 대문자와 소문자는 다른 이름이에요.</td></tr><tr><td style="color:#e5262a;font-weight:800">②</td><td>= (저장)</td><td>"같다"가 아니라 <b>오른쪽 값을 왼쪽 이름에 저장</b>하라는 뜻이에요. 양옆 띄어쓰기는 읽기 좋게 넣는 것이고, 없어도 동작해요.</td></tr><tr><td style="color:#e5262a;font-weight:800">③</td><td>따옴표</td><td>글자는 따옴표로 감싸요. <b>여는 따옴표와 닫는 따옴표가 짝</b>이 맞아야 해요. 하나라도 빠지면 SyntaxError예요(1-6 디버깅).</td></tr><tr><td style="color:#e5262a;font-weight:800">④</td><td># 주석</td><td># 뒤는 사람을 위한 메모라 실행되지 않아요(3-2).</td></tr><tr><td style="color:#e5262a;font-weight:800">⑤</td><td>숫자</td><td>숫자는 따옴표 없이, <b>쉼표 없이</b> 써요. <code class="inline">15,000</code>으로 쓰면 오류는 안 나지만 15와 0 두 개의 값이 묶인 전혀 다른 값이 돼요.</td></tr><tr><td style="color:#e5262a;font-weight:800">⑥</td><td>함수 이름</td><td>print는 "화면에 보여 줘"라는 기능(함수)이에요. <b>소문자</b>로 써요. <code class="inline">Print</code>는 NameError예요.</td></tr><tr><td style="color:#e5262a;font-weight:800">⑦</td><td>괄호 ( )</td><td>함수에 넘길 값을 괄호 안에 넣어요. 함수 이름 바로 뒤에 붙여 쓰고, <b>여는 괄호와 닫는 괄호가 짝</b>이어야 해요.</td></tr><tr><td style="color:#e5262a;font-weight:800">⑧</td><td>쉼표 ,</td><td>여러 값을 나열할 때 써요. print는 쉼표로 나눈 값 사이에 띄어쓰기 한 칸을 넣어 출력해요.</td></tr><tr><td style="color:#e5262a;font-weight:800">⑨</td><td>* (곱하기)</td><td>곱하기는 ×가 아니라 *예요. 더하기 +, 빼기 -, 나누기 /.</td></tr></table></div>
+<p><span class="tag tag-req">실습</span> 실행한 뒤 같은 셀에서 <code class="inline">qty = 3</code>의 3을 지우고 5로 바꿔 다시 실행해 보세요.</p>
+<div class="copybox"><div class="copyhead"><span>코드 · 복사해서 Colab 코드 셀에 붙여 넣으세요</span><button type="button">복사</button></div><pre>product = "텀블러"   # 글자(문자열)는 따옴표로 감싸서 저장
+price = 15000        # 숫자는 따옴표 없이 저장
+qty = 3              # 수량
+print(product, price * qty, "원")   # 저장한 이름으로 값을 꺼내 계산하고 출력</pre></div>
+<div class="copybox"><div class="copyhead"><span>실행 결과 · 이렇게 나오면 맞아요</span></div><pre>텀블러 45000 원</pre></div>
+<figure class="sample-shot"><img alt="실습 4-1 ⓐ 실행 화면" height="142" loading="lazy" src="./images/d4-p31a.jpg" width="1340"/><figcaption>실습 4-1 ⓐ 실행 화면</figcaption></figure>
+<p><b>방금 무슨 일이 일어났나</b><br/><code class="inline">price = 15000</code>은 15000이라는 값에 <code class="inline">price</code>라는 이름표를 붙여 저장한 거예요. 이렇게 값에 이름을 붙여 저장해 두는 것을 <b>변수</b>라고 해요. <code class="inline">qty</code>를 5로 바꾸면 결과가 75000으로 바뀌어요. 값을 바꾸면 그 이름을 쓰는 모든 계산이 함께 바뀌어요.</p><figure class="sample-shot"><img alt="같은 셀에서 qty를 5로 고치고 다시 실행하면 75000으로 바뀌어요. 실행 번호도 새 숫자로 바뀌어요." height="130" loading="lazy" src="./images/d4-p31-qty5.jpg" width="1340"/><figcaption>같은 셀에서 qty를 5로 고치고 다시 실행하면 75000으로 바뀌어요. 실행 번호도 새 숫자로 바뀌어요.</figcaption></figure>
+<p><b>더 해 보기: 배송비 변수 더하기</b> 새 코드 셀에서 실행해요.</p>
+<div class="copybox"><div class="copyhead"><span>코드 · 복사해서 Colab 코드 셀에 붙여 넣으세요</span><button type="button">복사</button></div><pre>product = "텀블러"                    # 상품 이름
+price = 15000                         # 상품 가격
+qty = 3                               # 수량
+shipping = 3000                       # 배송비라는 새 변수
+total = price * qty + shipping        # 상품 금액에 배송비를 더해 total에 저장
+print(product, "결제 금액:", total, "원")</pre></div>
+<div class="copybox"><div class="copyhead"><span>실행 결과 · 이렇게 나오면 맞아요</span></div><pre>텀블러 결제 금액: 48000 원</pre></div>
+<figure class="sample-shot"><img alt="실습 4-1 ⓑ 실행 화면" height="180" loading="lazy" src="./images/d4-p31b.jpg" width="1340"/><figcaption>실습 4-1 ⓑ 실행 화면</figcaption></figure>
+<ul class="checklist"><li>첫 코드에서 "텀블러 45000 원"이 나왔나요?</li><li><code class="inline">qty</code>를 5로 바꾸자 75000으로 바뀌었나요?</li><li>배송비 코드에서 48000이 나왔나요? 15000 × 3 + 3000을 직접 계산해 맞는지 확인했나요?</li><li>글자는 따옴표로 감싸고 숫자는 따옴표 없이 쓴다는 차이를 말할 수 있나요?</li></ul>
+</div>
+<div class="topic" id="s4-2"><h3>4-2. 실습: 조건</h3><div class="notice"><b>🎮 게임 개발자는 조건을 이렇게 써요</b><br/>체력에 따라 게임 오버, 경고, 계속 진행 중 하나를 고르는 규칙을 if로 만들어요. 아래 코드를 새 셀에 붙여 넣고 실행해 봐요.</div><div class="copybox"><div class="copyhead"><span>코드 · 게임 속 조건 예시</span><button type="button">복사</button></div><pre>hp = 15                  # 지금 체력
+if hp &lt;= 0:              # 체력이 0 이하이면
+    print(&quot;게임 오버&quot;)
+elif hp &lt; 20:            # 아니고, 20보다 적으면
+    print(&quot;체력이 부족해요! 포션을 마시세요&quot;)
+else:                    # 둘 다 아니면
+    print(&quot;모험을 계속해요&quot;)</pre></div><div class="copybox"><div class="copyhead"><span>실행 결과 · 예시</span></div><pre>체력이 부족해요! 포션을 마시세요</pre></div><p class="small">hp를 0이나 50으로 바꿔 실행하면 "게임 오버", "모험을 계속해요"가 나와요.</p><figure class="code-anatomy" style="margin:14px 0"><figcaption style="font-weight:700;margin-bottom:6px">코드 뜯어보기 · 노란 표시와 번호를 아래 표와 함께 봐요</figcaption><pre style="background:#f7f8fb;color:#1d2433;border:1px solid #dfe3ec;border-radius:10px;padding:14px 16px;line-height:1.9;white-space:pre;overflow-x:auto;font-size:14px">stock = 0                 # 재고 수량
+<span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">if</span><sup style="color:#e5262a;font-weight:800">①</sup> stock <span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">==</span><sup style="color:#e5262a;font-weight:800">②</sup> 0<span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">:</span><sup style="color:#e5262a;font-weight:800">③</sup>            # 만약 재고가 0과 같다면
+<span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">    </span><sup style="color:#e5262a;font-weight:800">④</sup>print(&quot;품절&quot;)
+<span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">elif</span><sup style="color:#e5262a;font-weight:800">⑤</sup> stock &lt; 5:           # 아니고, 만약 5보다 작다면
+    print(&quot;품절 임박&quot;)
+<span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">else:</span><sup style="color:#e5262a;font-weight:800">⑥</sup>                     # 둘 다 아니라면
+    print(&quot;구매 가능&quot;)</pre></figure><div class="table-wrap"><table><tr><th>번호</th><th>무엇</th><th>규칙과 주의</th></tr><tr><td style="color:#e5262a;font-weight:800">①</td><td>if</td><td>"만약 ~라면". 소문자로 쓰고, 뒤에 한 칸 띄운 다음 조건을 써요.</td></tr><tr><td style="color:#e5262a;font-weight:800">②</td><td>== (비교)</td><td>"같은가?"를 묻는 비교예요. 등호 <b>두 개</b>. 등호 하나(=)는 저장이라 뜻이 달라요. 그 밖의 비교: < 작다, > 크다, >= 크거나 같다, <= 작거나 같다, != 다르다.</td></tr><tr><td style="color:#e5262a;font-weight:800">③</td><td>콜론 :</td><td>조건 줄 끝에 <b>반드시</b> 붙여요. 빠지면 <code class="inline">SyntaxError: expected ':'</code>가 나요.</td></tr><tr><td style="color:#e5262a;font-weight:800">④</td><td>들여쓰기</td><td>콜론 다음 줄은 <b>4칸 들여써요</b>. 들여쓴 줄이 "조건이 맞을 때 할 일"이에요. 안 맞으면 <code class="inline">IndentationError</code>. Colab은 콜론 뒤 Enter를 치면 자동으로 들여써 줘요.</td></tr><tr><td style="color:#e5262a;font-weight:800">⑤</td><td>elif</td><td>"아니면, 만약 ~라면"(else if의 줄임). 위 조건이 틀렸을 때만 확인해요.</td></tr><tr><td style="color:#e5262a;font-weight:800">⑥</td><td>else:</td><td>"둘 다 아니라면". 뒤에 조건을 쓰지 않고 바로 콜론을 붙여요.</td></tr></table></div>
+<p><span class="tag tag-req">실습</span> 실행한 뒤 <code class="inline">stock</code>을 3, 10으로 바꿔 가며 결과를 비교해 보세요.</p>
+<div class="copybox"><div class="copyhead"><span>코드 · 복사해서 Colab 코드 셀에 붙여 넣으세요</span><button type="button">복사</button></div><pre>stock = 0                 # 재고 수량
+if stock == 0:            # 만약 재고가 0과 같다면 (== 는 "같다"는 비교)
+    print("품절")
+elif stock &lt; 5:           # 아니고, 만약 5보다 작다면
+    print("품절 임박")
+else:                     # 둘 다 아니라면
+    print("구매 가능")</pre></div>
+<div class="copybox"><div class="copyhead"><span>실행 결과 · 이렇게 나오면 맞아요</span></div><pre>품절</pre></div>
+<p><b>방금 무슨 일이 일어났나</b><br/>값에 따라 다른 문장이 출력돼요. stock이 3이면 "품절 임박", 10이면 "구매 가능"이 나와요. 이렇게 상황에 따라 다른 행동을 하게 만드는 것을 <b>조건문</b>이라고 해요. <code class="inline">if</code> 아래 줄이 안쪽으로 들어가 있는 것(<b>들여쓰기</b>)은 "이 조건일 때 실행할 부분"이라는 표시예요. <code class="inline">=</code>는 저장, <code class="inline">==</code>는 비교라는 점에 주의해요.</p>
+<div class="table-wrap"><table>
+<tr><th>stock 값</th><th>나와야 하는 결과</th></tr>
+<tr><td>0</td><td>품절</td></tr>
+<tr><td>3</td><td>품절 임박</td></tr>
+<tr><td>10</td><td>구매 가능</td></tr>
+</table></div>
+<p><b>더 해 보기: 무료배송 조건 만들기</b> 셀렉트마켓의 규칙은 "주문 금액 3만 원 <b>이상</b>이면 무료배송"이에요. "이상"은 <code class="inline">&gt;=</code>로 써요.</p>
+<div class="copybox"><div class="copyhead"><span>코드 · 복사해서 Colab 코드 셀에 붙여 넣으세요</span><button type="button">복사</button></div><pre>order = 28000                # 주문 금액
+if order &gt;= 30000:           # 3만 원 "이상"이면 (&gt;= 는 크거나 같다)
+    print("무료배송")
+else:                        # 그렇지 않으면
+    print("배송비 3,000원")</pre></div>
+<div class="copybox"><div class="copyhead"><span>실행 결과 · 이렇게 나오면 맞아요</span></div><pre>배송비 3,000원</pre></div>
+<figure class="sample-shot"><img alt="실습 4-2 ⓐ·ⓑ 실행 화면 (위: 품절 / 아래: 배송비 3,000원)" height="360" loading="lazy" src="./images/d4-p32.jpg" width="1340"/><figcaption>실습 4-2 ⓐ·ⓑ 실행 화면 (위: 품절 / 아래: 배송비 3,000원)</figcaption></figure>
+<p><code class="inline">order</code>를 <code class="inline">30000</code>으로 바꿔 실행하면 "무료배송"이 나와야 해요. 딱 경계에 있는 값(30000)을 넣어 보는 습관은 다음 수업의 오류 검증에서 다시 써요.</p>
+<ul class="checklist"><li>stock 0, 3, 10의 결과가 위 표와 같았나요?</li><li>order 28000은 "배송비 3,000원", 30000은 "무료배송"이 나왔나요?</li><li><code class="inline">if</code> 아래 줄의 들여쓰기를 지우면 어떻게 되는지 한 번 해 보고, 나온 오류의 맨 아래 줄을 채팅에 남겼나요?</li></ul>
+</div>
+</section>
+<section class="section session" id="s5">
+<div class="session-head"><div class="eyebrow">SESSION 5 · 14:00–15:00</div><h2>기초 문법 ② 리스트와 반복</h2><p>값 하나가 아니라 <b>여러 값</b>을 한 번에 다루는 방법이에요. 상품 목록, 주문 목록처럼 서비스에서 보는 대부분의 화면은 리스트와 반복으로 만들어져요.</p></div>
+<div class="topic" id="s5-1"><h3>5-1. 실습: 리스트</h3><div class="notice"><b>🎮 게임 개발자는 리스트를 이렇게 써요</b><br/>가방(인벤토리)의 아이템을 리스트 하나에 순서대로 담아요. 아래 코드를 새 셀에 붙여 넣고 실행해 봐요.</div><div class="copybox"><div class="copyhead"><span>코드 · 게임 속 리스트 예시</span><button type="button">복사</button></div><pre>inventory = [&quot;포션&quot;, &quot;나무 검&quot;, &quot;방패&quot;]   # 가방(인벤토리)
+inventory.append(&quot;열쇠&quot;)                 # 상자에서 열쇠를 얻어 가방 끝에 넣음
+print(&quot;첫 번째 칸:&quot;, inventory[0])
+print(&quot;아이템 개수:&quot;, len(inventory), inventory)</pre></div><div class="copybox"><div class="copyhead"><span>실행 결과 · 예시</span></div><pre>첫 번째 칸: 포션
+아이템 개수: 4 [&#x27;포션&#x27;, &#x27;나무 검&#x27;, &#x27;방패&#x27;, &#x27;열쇠&#x27;]</pre></div><figure class="code-anatomy" style="margin:14px 0"><figcaption style="font-weight:700;margin-bottom:6px">코드 뜯어보기 · 노란 표시와 번호를 아래 표와 함께 봐요</figcaption><pre style="background:#f7f8fb;color:#1d2433;border:1px solid #dfe3ec;border-radius:10px;padding:14px 16px;line-height:1.9;white-space:pre;overflow-x:auto;font-size:14px">menus = <span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">[</span><sup style="color:#e5262a;font-weight:800">①</sup><span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">&quot;김치찌개&quot;</span><sup style="color:#e5262a;font-weight:800">②</sup><span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">,</span><sup style="color:#e5262a;font-weight:800">③</sup> &quot;돈까스&quot;, &quot;쌀국수&quot;<span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">]</span><sup style="color:#e5262a;font-weight:800">①</sup>   # 대괄호 안에 여러 값을 순서대로 저장
+print(menus<span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">[0]</span><sup style="color:#e5262a;font-weight:800">④</sup>)            # 0번째 = 첫 번째 값 꺼내기
+menus<span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">.append</span><sup style="color:#e5262a;font-weight:800">⑤</sup>(&quot;비빔밥&quot;)     # 리스트 끝에 값 추가
+print(<span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">len(menus)</span><sup style="color:#e5262a;font-weight:800">⑥</sup>, menus)   # len()은 개수 세기</pre></figure><div class="table-wrap"><table><tr><th>번호</th><th>무엇</th><th>규칙과 주의</th></tr><tr><td style="color:#e5262a;font-weight:800">①</td><td>대괄호 [ ]</td><td>리스트는 <b>대괄호</b>로 감싸요. 소괄호 ( )와 헷갈리지 않게 해요.</td></tr><tr><td style="color:#e5262a;font-weight:800">②</td><td>값</td><td>글자 값은 하나하나 따옴표로 감싸요.</td></tr><tr><td style="color:#e5262a;font-weight:800">③</td><td>쉼표 ,</td><td>값과 값 사이를 쉼표로 나눠요. 빠지면 <code class="inline">SyntaxError ... Perhaps you forgot a comma?</code>가 나요.</td></tr><tr><td style="color:#e5262a;font-weight:800">④</td><td>[번호]</td><td>리스트 이름 <b>바로 뒤에</b> 대괄호로 칸 번호를 써요. 첫 칸은 1이 아니라 <b>0</b>이에요. -1은 맨 뒤 칸.</td></tr><tr><td style="color:#e5262a;font-weight:800">⑤</td><td>점 .</td><td>"menus가 가진 기능"이라는 뜻이에요. <code class="inline">menus.append(값)</code>은 "menus 끝에 값을 넣어".</td></tr><tr><td style="color:#e5262a;font-weight:800">⑥</td><td>len( )</td><td>괄호 안 리스트의 개수를 세는 함수예요.</td></tr></table></div>
+<p><span class="tag tag-req">실습</span> 여러 값을 한 번에 다루는 방법이에요.</p>
+<div class="copybox"><div class="copyhead"><span>코드 · 복사해서 Colab 코드 셀에 붙여 넣으세요</span><button type="button">복사</button></div><pre>menus = ["김치찌개", "돈까스", "쌀국수"]   # 대괄호 안에 여러 값을 순서대로 저장
+print(menus[0])            # 0번째 = 첫 번째 값 꺼내기
+menus.append("비빔밥")     # 리스트 끝에 값 추가
+print(len(menus), menus)   # len()은 개수 세기</pre></div>
+<div class="copybox"><div class="copyhead"><span>실행 결과 · 이렇게 나오면 맞아요</span></div><pre>김치찌개
+4 ['김치찌개', '돈까스', '쌀국수', '비빔밥']</pre></div>
+<p><b>방금 무슨 일이 일어났나</b><br/>여러 개의 값을 대괄호 안에 순서대로 묶어 하나의 이름으로 저장한 것을 <b>리스트</b>라고 해요. <code class="inline">menus[0]</code>이 첫 번째 값인 이유는 파이썬이 순서를 <b>0부터</b> 세기 때문이에요. <code class="inline">menus[1]</code>로 바꿔 실행하면 "돈까스"가 나와요.</p>
+<p><b>더 해 보기: 셀렉트마켓 상품 목록</b></p>
+<div class="copybox"><div class="copyhead"><span>코드 · 복사해서 Colab 코드 셀에 붙여 넣으세요</span><button type="button">복사</button></div><pre>items = ["텀블러", "에코백", "머그컵"]   # 셀렉트마켓 상품 리스트
+print(items[-1])           # -1은 맨 뒤 값
+items.remove("에코백")     # 리스트에서 값 빼기
+print(items)</pre></div>
+<div class="copybox"><div class="copyhead"><span>실행 결과 · 이렇게 나오면 맞아요</span></div><pre>머그컵
+['텀블러', '머그컵']</pre></div>
+<figure class="sample-shot"><img alt="실습 5-1 ⓐ·ⓑ 실행 화면" height="317" loading="lazy" src="./images/d4-p33.jpg" width="1340"/><figcaption>실습 5-1 ⓐ·ⓑ 실행 화면</figcaption></figure>
+<ul class="checklist"><li><code class="inline">menus[0]</code>이 "김치찌개", <code class="inline">menus[1]</code>이 "돈까스"로 나왔나요?</li><li>비빔밥을 추가한 뒤 개수가 4로 나왔나요?</li><li><code class="inline">items[-1]</code>이 "머그컵"으로 나왔나요?</li><li>에코백을 뺀 뒤 리스트에 두 개만 남았나요?</li></ul>
+</div>
+<div class="topic" id="s5-2"><h3>5-2. 실습: 반복</h3><div class="notice"><b>🎮 게임 개발자는 반복을 이렇게 써요</b><br/>몬스터 여러 마리에게 같은 공격을 하나씩 반복해요. 아래 코드를 새 셀에 붙여 넣고 실행해 봐요.</div><div class="copybox"><div class="copyhead"><span>코드 · 게임 속 반복 예시</span><button type="button">복사</button></div><pre>monsters = [&quot;슬라임&quot;, &quot;고블린&quot;, &quot;오크&quot;]   # 이번 웨이브의 몬스터
+for m in monsters:                       # 몬스터를 한 마리씩 꺼내
+    print(&quot;용사가&quot;, m, &quot;을(를) 공격했어요!&quot;)
+print(&quot;웨이브 클리어!&quot;)                   # 들여쓰지 않은 줄은 반복이 끝난 뒤 한 번</pre></div><div class="copybox"><div class="copyhead"><span>실행 결과 · 예시</span></div><pre>용사가 슬라임 을(를) 공격했어요!
+용사가 고블린 을(를) 공격했어요!
+용사가 오크 을(를) 공격했어요!
+웨이브 클리어!</pre></div><figure class="code-anatomy" style="margin:14px 0"><figcaption style="font-weight:700;margin-bottom:6px">코드 뜯어보기 · 노란 표시와 번호를 아래 표와 함께 봐요</figcaption><pre style="background:#f7f8fb;color:#1d2433;border:1px solid #dfe3ec;border-radius:10px;padding:14px 16px;line-height:1.9;white-space:pre;overflow-x:auto;font-size:14px">prices = [15000, 9000, 12000]   # 가격 리스트
+<span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">for</span><sup style="color:#e5262a;font-weight:800">①</sup> <span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">p</span><sup style="color:#e5262a;font-weight:800">②</sup> <span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">in prices</span><sup style="color:#e5262a;font-weight:800">③</sup><span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">:</span><sup style="color:#e5262a;font-weight:800">④</sup>                # 리스트에서 값을 하나씩 꺼내 p에 담고 아래를 반복
+<span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">    </span><sup style="color:#e5262a;font-weight:800">⑤</sup>print(p, &quot;원의 할인가는&quot;, int(p * 0.9), &quot;원&quot;)</pre></figure><div class="table-wrap"><table><tr><th>번호</th><th>무엇</th><th>규칙과 주의</th></tr><tr><td style="color:#e5262a;font-weight:800">①</td><td>for</td><td>"~마다 반복해". 소문자.</td></tr><tr><td style="color:#e5262a;font-weight:800">②</td><td>p</td><td>꺼낸 값을 잠시 담을 이름이에요. <b>내가 정하는 이름</b>이라 <code class="inline">price</code>로 바꿔도 돼요. 단, 아래 줄에서도 같은 이름을 써야 해요.</td></tr><tr><td style="color:#e5262a;font-weight:800">③</td><td>in 리스트</td><td>"어디에서 꺼낼지". 여기서는 prices 리스트.</td></tr><tr><td style="color:#e5262a;font-weight:800">④</td><td>콜론 :</td><td>조건과 마찬가지로 줄 끝에 꼭 붙여요.</td></tr><tr><td style="color:#e5262a;font-weight:800">⑤</td><td>들여쓰기</td><td>4칸 들여쓴 줄만 반복돼요. 들여쓰기 없이 쓴 줄은 반복이 끝난 뒤 한 번만 실행돼요(더 해 보기의 합계 출력 줄).</td></tr></table></div>
+<p><span class="tag tag-req">실습</span> 코드는 한 번만 썼는데 결과가 몇 줄 나오는지 보세요.</p>
+<div class="copybox"><div class="copyhead"><span>코드 · 복사해서 Colab 코드 셀에 붙여 넣으세요</span><button type="button">복사</button></div><pre>prices = [15000, 9000, 12000]   # 가격 리스트
+for p in prices:                # 리스트에서 값을 하나씩 꺼내 p에 담고 아래를 반복
+    print(p, "원의 할인가는", int(p * 0.9), "원")   # 10% 할인가 계산 후 출력</pre></div>
+<div class="copybox"><div class="copyhead"><span>실행 결과 · 이렇게 나오면 맞아요</span></div><pre>15000 원의 할인가는 13500 원
+9000 원의 할인가는 8100 원
+12000 원의 할인가는 10800 원</pre></div>
+<p><b>방금 무슨 일이 일어났나</b><br/>리스트에 든 값을 하나씩 꺼내 같은 일을 되풀이하게 하는 것을 <b>반복문</b>이라고 해요. 가격이 3개든 3,000개든 코드는 그대로예요. 리스트에 가격을 하나 추가해 실행하면 결과도 한 줄 늘어나요.</p>
+<p><b>더 해 보기: 장바구니 합계 구하기</b> 반복하면서 값을 하나씩 더해 가는 방법이에요.</p>
+<div class="copybox"><div class="copyhead"><span>코드 · 복사해서 Colab 코드 셀에 붙여 넣으세요</span><button type="button">복사</button></div><pre>prices = [15000, 9000, 12000]   # 장바구니에 담은 상품 가격
+total = 0                       # 합계를 담을 변수를 0으로 시작
+for p in prices:                # 가격을 하나씩 꺼내
+    total = total + p           # 지금까지의 합계에 더함
+print("장바구니 합계:", total, "원")
+print(sum(prices))              # 파이썬에 있는 합계 기능으로 다시 계산</pre></div>
+<div class="copybox"><div class="copyhead"><span>실행 결과 · 이렇게 나오면 맞아요</span></div><pre>장바구니 합계: 36000 원
+36000</pre></div>
+<figure class="sample-shot"><img alt="실습 5-2 ⓐ·ⓑ 실행 화면" height="353" loading="lazy" src="./images/d4-p34.jpg" width="1340"/><figcaption>실습 5-2 ⓐ·ⓑ 실행 화면</figcaption></figure>
+<p>같은 합계를 <b>두 가지 방법</b>(반복문으로 더하기, <code class="inline">sum()</code>)으로 구해 숫자가 같은지 비교했어요. 다른 방법으로 계산해 같은 숫자가 나오는지 보는 것은 가장 기본적인 검증 방법이에요.</p>
+<ul class="checklist"><li>할인가 세 줄이 나왔나요?</li><li>리스트에 가격을 하나 추가하자 결과도 한 줄 늘었나요?</li><li>반복문 합계와 <code class="inline">sum()</code> 결과가 모두 36000으로 같았나요?</li><li><code class="inline">for</code> 아래 줄이 들여쓰기되어 있다는 것을 확인했나요?</li></ul>
+</div>
+</section>
+<section class="section session" id="s6">
+<div class="session-head"><div class="eyebrow">SESSION 6 · 15:00–16:00</div><h2>기초 문법 ③ random과 종합하기</h2><p>남이 만들어 둔 기능 묶음을 불러와 쓰는 방법(<code class="inline">import</code>)을 익히고, 지금까지 배운 다섯 가지를 한 코드에 모아 상품 목록 화면의 로직을 만들어요.</p></div>
+<div class="topic" id="s6-1"><h3>6-1. 실습: random</h3><div class="notice"><b>🎮 게임 개발자는 random을 이렇게 써요</b><br/>공격 피해량과 아이템 드롭처럼 매번 결과가 달라야 하는 곳에 random을 써요. 아래 코드를 새 셀에 붙여 넣고 실행해 봐요.</div><div class="copybox"><div class="copyhead"><span>코드 · 게임 속 random 예시</span><button type="button">복사</button></div><pre>import random                                   # 무작위 기능 불러오기
+damage = random.randint(10, 20)                 # 공격할 때마다 10~20 사이 피해
+drop = random.choice([&quot;포션&quot;, &quot;금화&quot;, &quot;꽝&quot;])     # 몬스터가 떨어뜨리는 아이템
+print(&quot;피해:&quot;, damage, &quot;/ 드롭 아이템:&quot;, drop)</pre></div><div class="copybox"><div class="copyhead"><span>실행 결과 · 예시</span></div><pre>피해: 14 / 드롭 아이템: 꽝</pre></div><p class="small">실행할 때마다 숫자와 아이템이 달라져요.</p><figure class="code-anatomy" style="margin:14px 0"><figcaption style="font-weight:700;margin-bottom:6px">코드 뜯어보기 · 노란 표시와 번호를 아래 표와 함께 봐요</figcaption><pre style="background:#f7f8fb;color:#1d2433;border:1px solid #dfe3ec;border-radius:10px;padding:14px 16px;line-height:1.9;white-space:pre;overflow-x:auto;font-size:14px"><span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">import</span><sup style="color:#e5262a;font-weight:800">①</sup> <span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">random</span><sup style="color:#e5262a;font-weight:800">②</sup>                               # 파이썬에 들어 있는 &quot;무작위 기능 묶음&quot; 불러오기
+menus = [&quot;김치찌개&quot;, &quot;돈까스&quot;, &quot;쌀국수&quot;, &quot;비빔밥&quot;]
+print(&quot;오늘 점심은&quot;, <span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">random.</span><sup style="color:#e5262a;font-weight:800">③</sup><span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">choice</span><sup style="color:#e5262a;font-weight:800">④</sup><span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">(menus)</span><sup style="color:#e5262a;font-weight:800">⑤</sup>)   # 리스트에서 하나를 무작위로 골라 출력</pre></figure><div class="table-wrap"><table><tr><th>번호</th><th>무엇</th><th>규칙과 주의</th></tr><tr><td style="color:#e5262a;font-weight:800">①</td><td>import</td><td>"기능 묶음을 불러와". 보통 셀 맨 위에 써요. 한 번 실행하면 런타임이 끊기기 전까지 기억해요.</td></tr><tr><td style="color:#e5262a;font-weight:800">②</td><td>random</td><td>불러올 묶음 이름. 철자가 틀리면 <code class="inline">ModuleNotFoundError</code>가 나요.</td></tr><tr><td style="color:#e5262a;font-weight:800">③</td><td>random. (점)</td><td>"random 묶음 안의"라는 뜻이에요. 점 앞뒤에 띄어쓰기를 넣지 않아요.</td></tr><tr><td style="color:#e5262a;font-weight:800">④</td><td>choice</td><td>묶음 안의 기능 이름. "하나 골라". 주사위처럼 숫자를 뽑을 때는 <code class="inline">randint(1, 6)</code>.</td></tr><tr><td style="color:#e5262a;font-weight:800">⑤</td><td>(menus)</td><td>괄호 안에 고를 대상(리스트)을 넣어요.</td></tr></table></div>
+<p><span class="tag tag-req">실습</span> 같은 셀을 여러 번 실행해 보세요.</p>
+<div class="copybox"><div class="copyhead"><span>코드 · 복사해서 Colab 코드 셀에 붙여 넣으세요</span><button type="button">복사</button></div><pre>import random                               # 파이썬에 들어 있는 "무작위 기능 묶음" 불러오기
+menus = ["김치찌개", "돈까스", "쌀국수", "비빔밥"]
+print("오늘 점심은", random.choice(menus))   # 리스트에서 하나를 무작위로 골라 출력</pre></div>
+<div class="copybox"><div class="copyhead"><span>실행 결과 · 예시</span></div><pre>오늘 점심은 쌀국수   ← 실행할 때마다 달라져요</pre></div>
+<figure class="sample-shot"><img alt="실습 6-1 ⓐ·ⓑ 실행 화면. 결과는 실행할 때마다 달라요." height="226" loading="lazy" src="./images/d4-p35.jpg" width="1340"/><figcaption>실습 6-1 ⓐ·ⓑ 실행 화면. 결과는 실행할 때마다 달라요.</figcaption></figure>
+<p><b>방금 무슨 일이 일어났나</b><br/><code class="inline">import random</code>은 미리 만들어져 있는 기능 묶음을 불러온 것이고, <code class="inline">random.choice</code>는 리스트에서 하나를 무작위로 골라요. 결과가 매번 달라지는 것이 정상이에요. 이렇게 남이 만들어 둔 기능 묶음을 불러와 쓰는 방식은 다음 수업의 데이터 분석(pandas)에서도 똑같이 쓰여요.</p>
+<p><b>더 해 보기: 주사위 굴리기</b></p>
+<div class="copybox"><div class="copyhead"><span>코드 · 복사해서 Colab 코드 셀에 붙여 넣으세요</span><button type="button">복사</button></div><pre>import random                     # 무작위 기능 불러오기
+print(random.randint(1, 6))       # 1부터 6까지 정수 중 하나를 무작위로 고름</pre></div>
+<ul class="checklist"><li>여러 번 실행했을 때 점심 메뉴가 바뀌었나요?</li><li>주사위 결과가 늘 1~6 사이의 숫자였나요? 0이나 7이 나오지 않는지 5번 이상 실행해 확인했나요?</li></ul>
+</div>
+<div class="topic" id="s6-2"><h3>6-2. 실습: 종합하기</h3>
+<p><span class="tag tag-req">실습</span> 지금까지의 다섯 가지를 한 번에 쓰면 상품 목록 화면의 로직이 돼요.</p>
+<div class="copybox"><div class="copyhead"><span>코드 · 복사해서 Colab 코드 셀에 붙여 넣으세요</span><button type="button">복사</button></div><pre>import random                          # 무작위 기능 불러오기
+products = [                           # 리스트 안에 상품 정보 묶음을 여러 개 저장
+    {"name": "텀블러", "price": 15000, "stock": 3},
+    {"name": "에코백", "price": 9000,  "stock": 0},
+    {"name": "머그컵", "price": 12000, "stock": 5},
+]
+for p in products:                     # 상품을 하나씩 꺼내 반복
+    if p["stock"] == 0:                # 재고가 0이면
+        print(p["name"], "- 품절")
+    else:                              # 아니면 가격을 천 단위 쉼표로 표시
+        print(p["name"], "-", f'{p["price"]:,}원')
+print("오늘의 추천:", random.choice(products)["name"])   # 무작위 추천</pre></div>
+<div class="copybox"><div class="copyhead"><span>실행 결과 · 이렇게 나오면 맞아요</span></div><pre>텀블러 - 15,000원
+에코백 - 품절
+머그컵 - 12,000원
+오늘의 추천: 머그컵   ← 마지막 줄은 실행할 때마다 달라져요</pre></div>
+<figure class="sample-shot"><img alt="실습 6-2 실행 화면. 품절인 에코백도 "오늘의 추천"에 나올 수 있어요 → 실습 7-1에서 고쳐요." height="346" loading="lazy" src="./images/d4-p36.jpg" width="1340"/><figcaption>실습 6-2 실행 화면. 품절인 에코백도 "오늘의 추천"에 나올 수 있어요 → 실습 7-1에서 고쳐요.</figcaption></figure>
+<p><b>방금 무슨 일이 일어났나</b><br/>리스트로 데이터를 저장하고, 반복으로 하나씩 꺼내고, 조건으로 품절을 판단하고, random으로 추천했어요. 중괄호 <code class="inline">{ }</code> 안에 "이름: 값"을 묶은 것은 상품 한 개의 정보 카드라고 생각하면 돼요. 그런데 여러 번 실행해 보면 <b>품절인 에코백이 추천되는 경우</b>가 있어요. 이것이 세션 7에서 AI와 함께 고칠 "기획 의도와 다른 결과"예요.</p>
+<ul class="checklist"><li>상품 세 줄이 위 결과처럼 나왔나요? 에코백만 "품절"로 나왔나요?</li><li>5번 이상 실행해서 "오늘의 추천: 에코백"이 나오는 경우를 봤나요? 봤다면 채팅에 남겨요.</li><li>이 코드에서 변수·조건·리스트·반복·random이 각각 어느 줄에 있는지 짚을 수 있나요?</li></ul>
+</div>
+<div class="topic" id="s6-3"><h3>6-3. 개념 퀴즈: 다섯 단어로 말하기</h3>
+<p><span class="tag tag-req">실습</span> 채팅에 번호와 답만 남겨요.</p>
+<div class="table-wrap"><table>
+<tr><th>번호</th><th>질문</th></tr>
+<tr><td>Q1</td><td><code class="inline">price = 15000</code>과 <code class="inline">price == 15000</code>은 무엇이 다른가요?</td></tr>
+<tr><td>Q2</td><td><code class="inline">items = ["텀블러", "에코백", "머그컵"]</code>에서 <code class="inline">items[1]</code>은 무엇인가요?</td></tr>
+<tr><td>Q3</td><td><code class="inline">if</code>나 <code class="inline">for</code> 아래 줄을 안쪽으로 들여 쓰는 이유는 무엇인가요?</td></tr>
+<tr><td>Q4</td><td>"상품이 3개든 3,000개든 코드는 그대로"인 문법은 무엇인가요?</td></tr>
+<tr><td>Q5</td><td>"주문 금액 3만 원 이상"을 코드로 쓸 때 <code class="inline">&gt;</code>와 <code class="inline">&gt;=</code> 중 무엇을 써야 하나요?</td></tr>
+</table></div>
+<details class="optional"><summary><span class="summary-title">정답 확인</span><span class="summary-hint">눌러서 펼쳐 보세요</span></summary>
+<div class="table-wrap"><table>
+<tr><th>번호</th><th>정답</th><th>다시 볼 곳</th></tr>
+<tr><td>Q1</td><td><code class="inline">=</code>는 값을 저장, <code class="inline">==</code>는 같은지 비교</td><td><a href="#s4-2">실습 4-2</a></td></tr>
+<tr><td>Q2</td><td>"에코백" (순서를 0부터 세기 때문)</td><td><a href="#s5-1">실습 5-1</a></td></tr>
+<tr><td>Q3</td><td>"이 조건일 때(또는 반복할 때) 실행할 부분"이라는 표시</td><td><a href="#s4-2">실습 4-2</a></td></tr>
+<tr><td>Q4</td><td>반복문(for)</td><td><a href="#s5-2">실습 5-2</a></td></tr>
+<tr><td>Q5</td><td><code class="inline">&gt;=</code> ("크거나 같다"). <code class="inline">&gt;</code>는 "초과"</td><td><a href="#s4-2">실습 4-2 더 해 보기</a></td></tr>
+</table></div>
+</details>
+<ul class="checklist"><li>다섯 문제 중 네 개 이상 맞혔나요?</li><li>틀린 문제는 "다시 볼 곳"의 실습을 한 번 더 실행했나요?</li></ul>
+</div>
+</section>
+<section class="section session" id="s7">
+<div class="session-head"><div class="eyebrow">SESSION 7 · 16:00–17:30</div><h2>AI로 고치고 검증하기</h2><p>실습 6-2의 "품절 상품이 추천되는" 문제를 Gemini에게 고쳐 달라고 해요. AI가 고쳤다고 끝이 아니에요. <b>기대한 결과가 실제로 나오는지 실행해서 확인해야</b> 검증이 끝나요.</p></div>
+<div class="topic" id="s7-1"><h3>7-1. 실습: AI로 고치고 검증하기</h3><p><span class="tag tag-req">실습</span> Gemini에게 요청하면 <b>실습 6-2 셀 안에서 직접</b> 바꿀 부분을 보여 줘요. 고친 뒤에는 실행해서 기대한 결과와 비교해요.</p><p><b>STEP 1. 기대한 결과 먼저 확인하기</b></p><div class="procedure"><div>실습 6-2 코드 셀이 노트에 있는지 확인하고, 아래 표를 먼저 읽어요.</div></div><div class="table-wrap"><table>
+<tr><th>확인 항목</th><th>기대한 결과</th></tr>
+<tr><td>상품 목록 세 줄</td><td>텀블러 - 15,000원 / 에코백 - 품절 / 머그컵 - 12,000원 (고치기 전과 같아야 해요)</td></tr>
+<tr><td>오늘의 추천 (10번 실행)</td><td>텀블러 또는 머그컵만 나와요. 에코백은 <b>한 번도</b> 나오지 않아야 해요.</td></tr>
+</table></div><p><b>STEP 2. Gemini 준비하기</b></p><div class="procedure"><div>Gemini 창을 열어요. 학습 모드가 켜져 있으면 요청 사항을 <b>기본</b>으로 바꾸고 [새 채팅 시작하기]를 눌러요. 학습 모드는 코드를 바로 고치기보다 설명 위주로 답해요.</div></div><p><b>STEP 3. Gemini에게 고치게 하기</b></p><div class="procedure"><div>아래 프롬프트를 복사해 보내요.</div><div>6-2 셀 안의 빨간 줄(지울 줄)·초록 줄(새 줄)을 읽고, 바뀌는 줄이 추천 부분인지 확인해요.</div><div>괜찮으면 <b>[수락 및 실행]</b>, 아니면 [취소]를 눌러요.</div></div><div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>요청: 실습 6-2 상품 목록 코드에서 품절 상품(stock이 0인 상품)은 "오늘의 추천"에 나오지 않게 고쳐 줘.
+내용: 상품은 텀블러(가격 15000, 재고 3), 에코백(가격 9000, 재고 0), 머그컵(가격 12000, 재고 5) 세 개야. 지금은 품절인 에코백도 추천될 때가 있어.
+형식: 고친 코드 전체를 보여 주고, 바꾼 줄에는 주석으로 설명을 달아 줘. 상품 목록 출력 부분은 바꾸지 말고, 새 상품이나 새 기능은 추가하지 마. 확실하지 않은 부분은 [확인 필요]로 남겨 줘.</pre></div><figure class="sample-shot"><img alt="셀 안에 바뀔 부분이 빨강/초록으로 보여요. 대화창의 [수락 및 실행]을 눌러요. (2026-10-29 강사 테스트)" height="737" loading="lazy" src="./images/d4-p37-diff.jpg" width="1470"/><figcaption>셀 안에 바뀔 부분이 빨강/초록으로 보여요. 대화창의 [수락 및 실행]을 눌러요. (2026-10-29 강사 테스트)</figcaption></figure><figure class="sample-shot"><img alt="반영 후 결과. 재고가 0보다 큰 상품만 모은 available_products에서 추천해요." height="737" loading="lazy" src="./images/d4-p37-run.jpg" width="1470"/><figcaption>반영 후 결과. 재고가 0보다 큰 상품만 모은 available_products에서 추천해요.</figcaption></figure><p><b>STEP 4. 10번 실행해서 비교하기</b></p><div class="procedure"><div>6-2 셀을 클릭해 파란 테두리를 확인하고 ▶ 또는 <kbd>Shift</kbd>+<kbd>Enter</kbd> (Mac <kbd>shift</kbd>+<kbd>return</kbd>)로 10번 정도 다시 실행해요.</div><div>"오늘의 추천"에 에코백이 나오는지 세어요.</div></div><div class="warning"><b>강사 테스트에서 실제로 생긴 일 (2026-10-29)</b><br/>① 10번 실행 결과: 텀블러 6번, 머그컵 4번, 에코백 0번. 기대한 결과와 같았어요.<br/>② 그런데 Gemini가 요청하지 않은 <code class="inline">if</code>/<code class="inline">else</code> 줄의 주석까지 지웠어요. 결과는 같아도 <b>묻지 않은 줄이 바뀌었는지</b> 빨간 줄을 꼭 확인해요.<br/>③ Gemini 답은 매번 조금씩 달라요. 표의 기대 결과가 나오면 통과예요.<br/>④ Gemini 창에서 바로 단축키를 누르면 다른 셀이 실행될 수 있어요. 실행 전에 셀을 먼저 클릭해요.</div><ul class="checklist"><li>Gemini가 바꾼 줄이 추천 부분에만 있나요? 상품 목록 출력 줄과 주석은 그대로인가요?</li><li>10번 실행하는 동안 에코백이 한 번도 추천되지 않았나요?</li><li>Gemini가 묻지 않은 기능을 덧붙이지 않았나요?</li><li>어떤 방법으로 품절 상품을 뺐는지 한 문장으로 말할 수 있나요?</li></ul></div>
+<div class="topic" id="s7-2"><h3>7-2. 실습: 새 대화창에서 교차 검토하기</h3>
+<p><span class="tag tag-req">실습</span> 세션 2에서 배운 원칙대로, 코드를 고친 Gemini 대화가 아니라 <b>Gemini의 새 채팅</b>에서 검토를 받아요.</p>
+<div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>요청: 아래 파이썬 코드가 "품절 상품(stock이 0)은 오늘의 추천에서 빠진다"는 규칙을 지키는지 검토해 줘.
+내용: [Gemini가 고친 코드 전체를 여기에 붙여 넣기]
+형식: 판정(지킨다 / 지키지 않는다) 한 줄, 근거가 되는 코드 줄 1~2개, 직접 실행해 확인할 방법 1가지. 코드를 새로 고쳐 쓰거나 기능을 추가하지 말고, 확실하지 않으면 [확인 필요]로 남겨 줘.</pre></div>
+<div class="procedure"><div>Gemini 창에서 <b>새 채팅</b>을 열어요. 버튼 위치는 강사 화면에서 함께 확인해요.</div><div>Colab에서 7-1로 고친 6-2 셀 코드를 셀 안에서 전체 선택(<kbd>Ctrl</kbd>+<kbd>A</kbd>) → 복사(<kbd>Ctrl</kbd>+<kbd>C</kbd>)해요.</div><div>위 프롬프트를 붙여 넣고, 코드 자리에 복사한 코드를 붙여 넣어 보내요.</div><div>판정과 근거 줄을 내 10번 실행 결과와 비교해요.</div></div><ul class="checklist"><li>새 채팅에서 물었나요? (코드를 고친 대화가 아닌 곳)</li><li>검토 결과의 판정이 내가 10번 실행해 본 결과와 같은가요?</li><li>AI가 알려 준 "근거가 되는 코드 줄"이 실제 코드에 있는 줄인가요?</li><li>판정이 내 실행 결과와 다르면, 어느 쪽이 맞는지 실행 결과를 기준으로 판단했나요?</li></ul>
+</div>
+</section>
+<section class="section" id="wrap"><div class="section-label">WRAP-UP</div><h2>오늘 정리와 복습</h2>
+<ul>
+<li>Colab은 설치 없이 브라우저에서 파이썬을 실행하는 온라인 노트예요. 코드 셀은 실행하고, 텍스트 셀에는 의도와 결과를 기록해요.</li>
+<li>프로그램은 <b>입력 → 처리 → 출력</b> 순서로, 위에서 아래로 한 줄씩 실행돼요. 순서가 곧 로직이에요.</li>
+<li>기초 문법 다섯 가지: <b>변수</b>(값에 이름표), <b>조건</b>(상황에 따라 다르게), <b>리스트</b>(여러 값 묶음), <b>반복</b>(하나씩 꺼내 같은 일), <b>random</b>(불러와 쓰는 기능 묶음).</li>
+<li>AI가 고친 코드는 <b>기대한 결과를 먼저 적고, 실행해서 비교</b>해야 검증이 끝나요. 검토는 코드를 만든 대화가 아닌 새 채팅에 맡겨요.</li>
+</ul>
+<p><b>복습 (선택, 40분)</b></p>
+<ul class="checklist"><li>세션 4~6의 코드를 새 노트에 복사하지 말고 <b>직접 타이핑</b>해 실행해 보세요.</li><li>셀마다 Gemini 설명을 받아 텍스트 셀에 한 줄로 요약해 두세요.</li><li>오늘 노트 <code class="inline">PM파이썬_내이름</code>이 구글 드라이브의 "Colab Notebooks" 폴더에 저장되어 있는지 확인하세요.</li></ul>
+<div class="notice"><b>다음 수업 예고: 파이썬으로 데이터를 다루고, 웹과 연결해요</b><br/>오늘 배운 변수·조건·반복이 데이터 분석 도구 pandas에서 어떻게 쓰이는지 주문 데이터 300건으로 실습해요. 코드가 틀렸을 때 알아차리는 방법(기대값 테스트)을 익히고, 파이썬과 웹사이트가 어떻게 연결되는지 정리해요.</div>
+</section>
+</main>
+</div>
+<button id="slideBtn" type="button">▶ 슬라이드로 보기</button>
+<div hidden="" id="deck">
+<div id="viewport"><div id="stage">
+<div id="master"><span>AI 프로덕트 매니저 1주차 · DAY 4 바이브코더를 위한 파이썬 ①</span></div>
+<div id="mbar"><i id="prog"></i></div>
+<div id="slide"></div>
+<div id="pager"><button aria-label="이전" id="prev" type="button">◀</button><span id="pg"></span><button aria-label="다음" id="next" type="button">▶</button></div>
+</div></div>
+<div id="bar"><button id="exit" type="button">✕ 닫기 (Esc)</button></div>
+</div>
+<script type="text/javascript">
+(function(){
+  var K={'요청':'','내용':' k2','형식':' k3'};
+  window.fmtPre=function(pr){
+    var t=pr.textContent;
+    if(!/^요청: /.test(t))return;
+    var lines=t.split('\n');pr.textContent='';pr.className='fmt';
+    lines.forEach(function(l,i){
+      var m=l.match(/^(요청|내용|형식): (.*)$/),d=document.createElement('div');
+      if(m){d.className='pl'+K[m[1]];var b=document.createElement('b');b.className='pk';b.textContent=m[1]+': ';var sp=document.createElement('span');sp.className='pt';sp.textContent=m[2];d.appendChild(b);d.appendChild(sp);}
+      else{d.className='pl c';var sp2=document.createElement('span');sp2.className='pt';sp2.textContent=l;d.appendChild(sp2);}
+      pr.appendChild(d);if(i<lines.length-1)pr.appendChild(document.createTextNode('\n'));
+    });
+  };
+  document.querySelectorAll('.copybox pre').forEach(window.fmtPre);
+})();
+</script>
+<script type="text/javascript">
+(function(){
+  var re=/^(STEP|준비|규칙서대로|분석 [1-4]|프롬프트 [AB]|프롬프트 쓰기|실습|방법 [A-C]|워밍업|[①-⑤] |\(선택\)|완성한|결과를 보고|버전|두 결과)/;
+  var nav=document.querySelector('aside nav');
+  document.querySelectorAll('main .topic').forEach(function(t){
+    var parent=nav.querySelector('a.l3[href="#'+t.id+'"]'),last=parent,n=0;
+    if(!parent)return;
+    t.querySelectorAll(':scope > p').forEach(function(p){
+      var b=p.firstElementChild;
+      if(!b||b.tagName!=='B'||p.children.length!==1||p.textContent.trim()!==b.textContent.trim()||!re.test(b.textContent.trim()))return;
+      p.classList.add('dh');p.id='d-'+t.id+'-'+(++n);
+      var a=document.createElement('a');a.className='l4';a.href='#'+p.id;a.setAttribute('data-p',t.id);
+      a.textContent=b.textContent.replace(/[:：]\s*.*$/,'').trim();
+      last.parentNode.insertBefore(a,last.nextSibling);last=a;
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+var main=document.querySelector('main'),deck=document.getElementById('deck'),box=document.getElementById('slide'),pgEl=document.getElementById('pg'),prog=document.getElementById('prog'),pages=[],i=0;
+function kids(el,skip){return Array.prototype.filter.call(el.children,function(c){return !skip(c);});}
+function logical(){
+  var out=[],hero=main.querySelector('.hero');
+  if(hero)out.push({sect:'표지',title:'',n:Array.prototype.slice.call(hero.children)});
+  Array.prototype.forEach.call(main.querySelectorAll(':scope > .section'),function(sec){
+    var h2=sec.querySelector('h2'),title=h2.textContent,head=sec.querySelector('.session-head'),n=[];
+    if(head)n=Array.prototype.slice.call(head.querySelectorAll('p'));
+    n=n.concat(kids(sec,function(c){return c.classList.contains('section-label')||c.tagName==='H2'||c.classList.contains('session-head')||c.classList.contains('topic');}));
+    if(n.length)out.push({sect:title,title:title,n:n});
+    Array.prototype.forEach.call(sec.querySelectorAll(':scope > .topic'),function(t){
+      var h3=t.querySelector('h3');
+      out.push({sect:title,title:h3.textContent,n:kids(t,function(c){return c===h3;})});
+    });
+  });
+  return out;
+}
+function over(){return box.scrollHeight>box.clientHeight+1;}
+function build(){
+  pages=[];var L=logical(),count,sl;L.forEach(function(x){var out=[];x.n.forEach(function(el){if(el.tagName==="DETAILS"){var t=el.querySelector(".summary-title");var h=document.createElement("p");h.innerHTML="<b>"+(t?t.textContent:"")+"</b>";out.push(h);Array.prototype.forEach.call(el.children,function(c){if(c.tagName!=="SUMMARY")out.push(c);});}else out.push(el);});x.n=out;});
+  function head(cont){
+    box.innerHTML='';
+    if(sl.title&&sl.sect&&sl.sect!==sl.title){var eb=document.createElement('div');eb.className='eb';eb.textContent=sl.sect;box.appendChild(eb);}
+    if(sl.title){var h=document.createElement('h3');h.className='st';h.textContent=sl.title;
+      if(cont){var c=document.createElement('span');c.className='cont';c.textContent='(이어서)';h.appendChild(c);}
+      box.appendChild(h);}
+    count=0;
+  }
+  function flush(){pages.push({html:box.innerHTML,sect:sl.sect});}
+  function addSplit(items,shellFn){
+    var shell=shellFn(),n=0;box.appendChild(shell.root);
+    items.forEach(function(it){
+      shell.add(it);n++;
+      if(over()&&(n>1||count>0)){
+        shell.remove();n--;
+        if(n===0)box.removeChild(shell.root);
+        flush();head(true);shell=shellFn();n=0;box.appendChild(shell.root);shell.add(it);n=1;
+      }
+    });
+    count++;
+  }
+  L.forEach(function(s){
+    sl=s;head(false);
+    s.n.forEach(function(el){
+      var tbl=el.classList&&el.classList.contains('table-wrap')&&el.querySelector('table');
+      var rows=tbl?Array.prototype.slice.call(tbl.rows):null;
+      var hasHead=rows&&rows.length>3&&Array.prototype.every.call(rows[0].cells,function(c){return c.tagName==='TH';})
+        &&!rows.some(function(r){return Array.prototype.some.call(r.cells,function(c){return c.rowSpan>1;});});
+      var listy=(el.tagName==='UL'||el.tagName==='OL'||(el.classList&&(el.classList.contains('procedure')||el.classList.contains('resource-list'))))&&el.children.length>1;
+      if(el.classList&&el.classList.contains('dh')&&count>1&&box.scrollHeight>box.clientHeight*0.5){flush();head(false);}
+      var c=el.cloneNode(true);box.appendChild(c);
+      if(over()&&count>0){var pv=c.previousElementSibling,lead=count>1&&pv&&pv.tagName==='P'&&pv.children.length===1&&pv.firstElementChild.tagName==='B'&&pv.textContent.trim()===pv.firstElementChild.textContent.trim();
+        box.removeChild(c);if(lead)box.removeChild(pv);flush();head(true);if(lead){box.appendChild(pv);count++;}box.appendChild(c);}
+      if(over()){
+        if(hasHead){
+          box.removeChild(c);
+          addSplit(rows.slice(1),function(){
+            var w=el.cloneNode(false),t=tbl.cloneNode(false),b=document.createElement('tbody');
+            t.appendChild(b);b.appendChild(rows[0].cloneNode(true));w.appendChild(t);
+            return {root:w,add:function(r){b.appendChild(r.cloneNode(true));},remove:function(){b.removeChild(b.lastChild);}};
+          });
+          return;
+        }
+        if(el.classList&&el.classList.contains('copybox')){
+          box.removeChild(c);
+          var lines=el.querySelector('pre').textContent.split('\n');
+          addSplit(lines,function(){
+            var w=el.cloneNode(false),hd=el.querySelector('.copyhead').cloneNode(true),pr=document.createElement('pre'),txt=[];
+            w.appendChild(hd);w.appendChild(pr);
+            return {root:w,add:function(l){txt.push(l);pr.className='';pr.textContent=txt.join('\n');window.fmtPre(pr);},remove:function(){txt.pop();pr.className='';pr.textContent=txt.join('\n');window.fmtPre(pr);}};
+          });
+          return;
+        }
+        if(listy){
+          box.removeChild(c);
+          addSplit(Array.prototype.slice.call(el.children),function(){
+            var u=el.cloneNode(false);
+            return {root:u,add:function(li){u.appendChild(li.cloneNode(true));},remove:function(){u.removeChild(u.lastChild);}};
+          });
+          return;
+        }
+      }
+      count++;
+    });
+    flush();
+  });
+  var o='<h3 class="st">전체 목차</h3><div class="outline">';
+  Array.prototype.forEach.call(document.querySelectorAll('aside nav .grp'),function(g){
+    o+='<div class="og"><b>'+g.querySelector('.grp-label').textContent+(g.querySelector('.l2')&&g.querySelector('.grp-label').textContent.indexOf('세션')===0?' · '+g.querySelector('.l2').textContent:'')+'</b>';
+    var guide=g.querySelector('.grp-label').textContent==='교육 안내';
+    Array.prototype.forEach.call(g.querySelectorAll(guide?'a.l2,a.l3':'a.l3'),function(a){o+='<span>'+a.textContent+'</span>';});
+    o+='</div>';
+  });
+  pages.splice(1,0,{html:o+'</div>',sect:'목차'});
+}
+function show(n){
+  i=Math.max(0,Math.min(pages.length-1,n));var p=pages[i];
+  box.innerHTML=p.html;box.scrollTop=0;
+  pgEl.textContent=(i+1)+' / '+pages.length;prog.style.width=((i+1)/pages.length*100)+'%';
+}
+var stage=document.getElementById('stage'),vp=document.getElementById('viewport');
+function fit(){var k=Math.min(vp.clientWidth/1280,vp.clientHeight/720);stage.style.transform='translate(-50%,-50%) scale('+k+')';}
+function open(){deck.hidden=false;document.body.style.overflow='hidden';fit();var w=[].slice.call(main.querySelectorAll('img')).map(function(m){if(m.complete)return 0;m.loading='eager';return new Promise(function(r){m.onload=m.onerror=r;setTimeout(r,8000);});});Promise.all(w).then(function(){build();show(0);});}
+function close(){deck.hidden=true;document.body.style.overflow='';}
+window.addEventListener('resize',function(){if(!deck.hidden)fit();});
+document.getElementById('slideBtn').onclick=open;
+document.getElementById('exit').onclick=close;
+document.getElementById('prev').onclick=function(){show(i-1)};
+document.getElementById('next').onclick=function(){show(i+1)};
+document.addEventListener('keydown',function(e){
+  if(deck.hidden)return;
+  if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ')show(i+1);
+  else if(e.key==='ArrowLeft'||e.key==='PageUp')show(i-1);
+  else if(e.key==='Escape')close();
+});
+document.addEventListener('click',function(e){
+  var b=e.target.closest&&e.target.closest('.copyhead button');if(!b)return;
+  var pre=b.closest('.copybox').querySelector('pre');
+  var done=function(){var t=b.textContent;b.textContent='복사됨';setTimeout(function(){b.textContent=t;},1200);};
+  if(navigator.clipboard)navigator.clipboard.writeText(pre.classList.contains('fmt')?pre.textContent:pre.innerText).then(done,done);else done();
+});
+})();
+</script>
+<script type="text/javascript">
+(function(){
+  var links=[].slice.call(document.querySelectorAll('aside nav a[href^="#"]'));
+  var targets=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));});
+  function update(){
+    var y=window.scrollY+120, cur=-1;
+    targets.forEach(function(el,i){ if(el && el.getBoundingClientRect().top+window.scrollY<=y) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('active', i===cur); });
+    var cp=null;
+    if(cur>=0){ var ca=links[cur]; cp=ca.classList.contains('l4')?ca.getAttribute('data-p'):(ca.getAttribute('href').slice(1)); }
+    links.forEach(function(a){ if(a.classList.contains('l4')) a.classList.toggle('show', a.getAttribute('data-p')===cp); });
+    if(cur>=0){ var a=links[cur], box=a.closest('aside'), r=a.getBoundingClientRect();
+      if(r.top<120||r.bottom>window.innerHeight-20) box.scrollTop+=r.top-window.innerHeight/2; }
+  }
+  window.addEventListener('scroll',update,{passive:true}); update();
+})();
+</script>
+<script type="text/javascript">
+(function(){
+  var btn=document.querySelector('.nav-toggle'), label=btn.querySelector('span'), body=document.body;
+  var mq=window.matchMedia('(max-width: 1020px)');
+  function isOpen(){ return mq.matches ? body.classList.contains('nav-open') : !body.classList.contains('nav-hidden'); }
+  function sync(){ var o=isOpen(); btn.setAttribute('aria-expanded',o); label.textContent=o?'목차 숨기기':'목차 보기'; }
+  try{ if(localStorage.getItem('navHidden')==='1') body.classList.add('nav-hidden'); }catch(e){}
+  btn.addEventListener('click',function(){
+    if(mq.matches){ body.classList.toggle('nav-open'); }
+    else{ var h=body.classList.toggle('nav-hidden'); try{ localStorage.setItem('navHidden',h?'1':'0'); }catch(e){} }
+    sync();
+  });
+  document.querySelectorAll('aside nav a').forEach(function(a){ a.addEventListener('click',function(){ if(mq.matches){ body.classList.remove('nav-open'); sync(); } }); });
+  if(mq.addEventListener) mq.addEventListener('change',sync);
+  sync();
+})();
+</script>
+</body>
+</html>
