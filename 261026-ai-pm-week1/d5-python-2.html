@@ -183,7 +183,7 @@ body.nav-hidden .nav-toggle { left: 14px; }
   .session-head { margin-left: -20px; margin-right: -20px; padding-left: 20px; padding-right: 20px; }
   .section > h2, .session-head h2 { font-size: 30px; }
   .topic h3 { font-size: 24px; }
-}</style>
+}.colab-open{margin:8px 0 14px}.colab-open a{display:inline-block;padding:6px 12px;border-radius:8px;background:#f9ab00;color:#1d2433;font-weight:700;text-decoration:none}.colab-open a:hover{filter:brightness(.95)}.colab-open .small{display:block;margin-top:6px}</style>
 <style>
 .tt{margin:0;padding-left:1.1em}.tt li{margin:2px 0}
 .dl-list{display:grid;gap:10px;margin:18px 0}
@@ -328,7 +328,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <p>파일을 내려받지 않아도 돼요. 아래 실습 코드는 인터넷 주소로 바로 읽어 와요. 내려받은 파일은 숫자를 눈으로 확인하고 싶을 때 열어 봐요.</p>
 <div class="notice"><b>셀을 나눠서 하나씩 실행해요</b><br/>Colab의 코드 셀은 <b>마지막 줄의 결과만</b> 표로 보여 줘요. 그래서 아래 실습은 셀을 나눠 하나씩 실행해요.</div>
 </div>
-<div class="topic" id="s1-3"><h3>1-3. 실습: 데이터 불러오고 훑어보기</h3>
+<div class="topic" id="s1-3"><h3>1-3. 실습: 데이터 불러오고 훑어보기</h3><p class="colab-open"><a href="https://colab.research.google.com/github/loreenkim0301/swy-lecturenote/blob/claude/hello-page-deploy-yqm9q5/261026-ai-pm-week1/colab/d5-1-3-load.ipynb" rel="noopener" target="_blank">▶ Colab에서 실습 노트 열기 (1-3)</a> <span class="small">열린 노트에서 [파일] → [Drive에 사본 저장]을 누른 뒤 사본에서 실행하세요.</span></p>
 <p><span class="tag tag-req">실습</span> pandas를 불러오고, 인터넷에 있는 CSV 파일을 표로 읽어 와요. 노트에 새 코드 셀을 추가해 붙여 넣고 <kbd>Shift</kbd>+<kbd>Enter</kbd>로 실행해요.</p>
 <div class="copybox"><div class="copyhead"><span>코드 · 복사해서 Colab 코드 셀에 붙여 넣으세요</span><button type="button">복사</button></div><pre>import pandas as pd   # pandas를 불러오고 짧게 pd라고 부르기로 함
 url = "https://loreenkim0301.github.io/swy-lecturenote/261026-ai-pm-week1/data/04_orders.csv"   # 데이터 주소
@@ -358,9 +358,9 @@ df<span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:
 </section>
 <section class="section session" id="s2">
 <div class="session-head"><div class="eyebrow">SESSION 2 · 10:00–11:00</div><h2>데이터 분석 맛보기 ② 거르고, 묶고, 검증하기</h2><p>엑셀의 필터와 피벗 테이블을 코드 한 줄로 해요. 그리고 AI가 분석했든 내가 분석했든, <b>숫자가 맞는지 확인하는 습관</b>을 들여요.</p></div>
-<div class="topic" id="s2-1"><h3>2-1. 실습: 조건으로 걸러 보기 (필터)</h3>
+<div class="topic" id="s2-1"><h3>2-1. 실습: 조건으로 걸러 보기 (필터)</h3><p class="colab-open"><a href="https://colab.research.google.com/github/loreenkim0301/swy-lecturenote/blob/claude/hello-page-deploy-yqm9q5/261026-ai-pm-week1/colab/d5-2-1-filter.ipynb" rel="noopener" target="_blank">▶ Colab에서 실습 노트 열기 (2-1)</a> <span class="small">열린 노트에서 [파일] → [Drive에 사본 저장]을 누른 뒤 사본에서 실행하세요. 노트 맨 위 "준비" 셀(데이터 불러오기)을 먼저 실행해요.</span></p>
 <p><span class="tag tag-req">실습</span> 새 코드 셀에서 실행해요.</p>
-<div class="copybox"><div class="copyhead"><span>코드 · 복사해서 Colab 코드 셀에 붙여 넣으세요</span><button type="button">복사</button></div><pre>app = df[df["채널"] == "앱"]   # 채널이 "앱"인 행만 골라 app에 저장 (DAY 4 실습 2-1의 == 비교와 같음)
+<div class="copybox"><div class="copyhead"><span>코드 · 복사해서 Colab 코드 셀에 붙여 넣으세요</span><button type="button">복사</button></div><pre>app = df[df["채널"] == "앱"]   # 채널이 "앱"인 행만 골라 app에 저장 (DAY 4 실습 4-2의 == 비교와 같음)
 len(app)                        # 몇 건인지 세기</pre></div>
 <div class="copybox"><div class="copyhead"><span>실행 결과 · 이렇게 나오면 맞아요</span></div><pre>141</pre></div>
 <figure class="code-anatomy" style="margin:14px 0"><figcaption style="font-weight:700;margin-bottom:6px">코드 뜯어보기 · 노란 표시와 번호를 아래 표와 함께 봐요</figcaption><pre style="background:#f7f8fb;color:#1d2433;border:1px solid #dfe3ec;border-radius:10px;padding:14px 16px;line-height:1.9;white-space:pre;overflow-x:auto;font-size:14px">app = <span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">df[</span><sup style="color:#e5262a;font-weight:800">①</sup><span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">df[&quot;채널&quot;]</span><sup style="color:#e5262a;font-weight:800">②</sup> <span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">==</span><sup style="color:#e5262a;font-weight:800">③</sup> <span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">&quot;앱&quot;</span><sup style="color:#e5262a;font-weight:800">④</sup><span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">]</span><sup style="color:#e5262a;font-weight:800">①</sup>   # 채널이 &quot;앱&quot;인 행만 골라 app에 저장
@@ -375,7 +375,7 @@ len(app)                        # 몇 건인지 세기</pre></div>
 </table></div>
 <ul class="checklist"><li>앱 141건이 나왔나요?</li><li>웹·매장 건수가 위 표와 같나요?</li><li>세 채널 건수를 더하면 300이 되는지 계산해 봤나요?</li></ul>
 </div>
-<div class="topic" id="s2-2"><h3>2-2. 실습: 묶어서 합계 내기 (피벗)</h3>
+<div class="topic" id="s2-2"><h3>2-2. 실습: 묶어서 합계 내기 (피벗)</h3><p class="colab-open"><a href="https://colab.research.google.com/github/loreenkim0301/swy-lecturenote/blob/claude/hello-page-deploy-yqm9q5/261026-ai-pm-week1/colab/d5-2-2-groupby.ipynb" rel="noopener" target="_blank">▶ Colab에서 실습 노트 열기 (2-2)</a> <span class="small">열린 노트에서 [파일] → [Drive에 사본 저장]을 누른 뒤 사본에서 실행하세요. 노트 맨 위 "준비" 셀(데이터 불러오기)을 먼저 실행해요.</span></p>
 <p><span class="tag tag-req">실습</span> 새 코드 셀에서 실행해요.</p>
 <div class="copybox"><div class="copyhead"><span>코드 · 복사해서 Colab 코드 셀에 붙여 넣으세요</span><button type="button">복사</button></div><pre>df.groupby("채널")["매출"].sum()   # 채널별로 묶어서 매출을 모두 더하기</pre></div>
 <div class="copybox"><div class="copyhead"><span>실행 결과 · 이렇게 나오면 맞아요</span></div><pre>채널
@@ -397,7 +397,7 @@ Name: 매출, dtype: int64</pre></div>
 <p>코드의 <code class="inline">"수량"</code>을 <code class="inline">"매출"</code>로 바꾸면 순위가 달라져요. 수량 1위는 텀블러지만, 매출 1위는 단가가 높은 보조배터리(3,045,000원)예요. "가장 잘 팔린 상품"이라는 말이 수량인지 매출인지 정해야 하는 이유예요.</p>
 <ul class="checklist"><li>채널별 매출이 위 결과와 같나요?</li><li>상품별 수량 순위가 표와 같나요?</li><li>"수량"을 "매출"로 바꿨을 때 1위가 보조배터리로 바뀌었나요?</li></ul>
 </div>
-<div class="topic" id="s2-3"><h3>2-3. 실습: 검증하기</h3>
+<div class="topic" id="s2-3"><h3>2-3. 실습: 검증하기</h3><p class="colab-open"><a href="https://colab.research.google.com/github/loreenkim0301/swy-lecturenote/blob/claude/hello-page-deploy-yqm9q5/261026-ai-pm-week1/colab/d5-2-3-verify.ipynb" rel="noopener" target="_blank">▶ Colab에서 실습 노트 열기 (2-3)</a> <span class="small">열린 노트에서 [파일] → [Drive에 사본 저장]을 누른 뒤 사본에서 실행하세요. 노트 맨 위 "준비" 셀(데이터 불러오기)을 먼저 실행해요.</span></p>
 <p><span class="tag tag-req">실습</span> AI가 분석했든 내가 분석했든, 숫자가 맞는지 확인하는 습관을 들여요.</p>
 <div class="copybox"><div class="copyhead"><span>코드 · 복사해서 Colab 코드 셀에 붙여 넣으세요</span><button type="button">복사</button></div><pre>print(len(df))                                # 전체 행 수: 300이어야 함
 print(df["매출"].sum())                       # 전체 매출 합계
@@ -421,7 +421,7 @@ print(df.groupby("채널")["매출"].sum().sum())   # 채널별 합계를 다시
 </section>
 <section class="section session" id="s3">
 <div class="session-head"><div class="eyebrow">SESSION 3 · 11:00–12:00</div><h2>데이터 분석 맛보기 ③ Gemini에게 맡기고 검증하기</h2><p>이번에는 분석을 Gemini에게 맡겨요. Gemini가 만든 계획과 코드를 하나씩 읽으며 실행하고, 세션 2의 기준값 표와 대조해요.</p></div>
-<div class="topic" id="s3-1"><h3>3-1. 실습: Gemini에게 분석 맡기기</h3>
+<div class="topic" id="s3-1"><h3>3-1. 실습: Gemini에게 분석 맡기기</h3><p class="colab-open"><a href="https://colab.research.google.com/github/loreenkim0301/swy-lecturenote/blob/claude/hello-page-deploy-yqm9q5/261026-ai-pm-week1/colab/d5-3-1-gemini.ipynb" rel="noopener" target="_blank">▶ Colab에서 실습 노트 열기 (3-1)</a> <span class="small">열린 노트에서 [파일] → [Drive에 사본 저장]을 누른 뒤 사본에서 실행하세요. 노트 맨 위 "준비" 셀(데이터 불러오기)을 먼저 실행해요.</span></p>
 <p><span class="tag tag-req">실습</span> Gemini 대화창(데이터 사이언스 에이전트)에 아래처럼 요청하고, Gemini가 제안한 계획과 코드 셀을 하나씩 읽으며 실행해요. 이 상자는 코드가 아니라 Gemini에게 보낼 요청 문장이에요.</p>
 <div class="procedure"><div>세션 1~2의 코드 셀이 위에 있고, <code class="inline">df</code>가 불러와져 있는지 확인해요. 런타임이 끊겼다면 실습 1-3 셀부터 다시 실행해요.</div><div>노트 화면 하단의 Gemini 아이콘으로 대화창을 열어요. 이전 대화가 남아 있으면 ⋮ → [새 채팅]으로 새로 시작하고, 요청 사항이 <b>학습 모드</b>면 <b>기본</b>으로 바꿔요(DAY 4 7-1과 같아요).</div><div>아래 프롬프트를 보내요.</div><div>Gemini가 코드를 셀에 넣거나 바꾸려고 하면 빨간 줄·초록 줄로 먼저 보여 줘요. 읽어 보고 <b>[수락 및 실행]</b>을 눌러요(DAY 4 1-4에서 해 본 방식).</div><div>숫자가 나오는 셀마다 2-3의 기준값 표와 비교해요.</div></div>
 <div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>요청: df로 채널별, 요일별 매출 합계를 계산하고 각각 막대그래프로 그려 줘.
@@ -430,7 +430,7 @@ print(df.groupby("채널")["매출"].sum().sum())   # 채널별 합계를 다시
 <ul class="checklist"><li>Gemini 결과의 채널별 합계가 기준값(앱 3,417,500원 / 웹 2,667,000원 / 매장 1,762,000원)과 같은가요?</li><li>요일별 매출 1위가 토요일 1,420,000원인가요?</li><li>Gemini가 데이터에 없는 열(예: 이익, 고객 나이)이나 숫자를 만들어 내지 않았나요?</li><li>그래프의 막대 순서와 높이가 합계 숫자와 맞게 보이나요?</li></ul>
 <div class="warning"><b>⚠ 헷갈리기 쉬운 곳 · Gemini 분석</b><ul><li>Gemini의 답과 화면 흐름은 매번 조금씩 달라요. 단계가 다르게 보여도 <b>기준값과 숫자가 같으면</b> 통과예요.</li><li>Gemini 입력창 옆 % 숫자는 질문할수록 올라가요(DAY 4 강사 테스트). 사용 한도로 보여요 [확인 필요]. 막히면 옆 사람 화면이나 강사 시연으로 진행해요.</li><li>Gemini가 <code class="inline">df</code>를 새로 읽어 오거나 이름을 바꾸는 셀을 만들 수 있어요. 기준값과 다르면 그 셀부터 의심해요.</li></ul></div><div class="notice"><b>그래프의 한글이 □로 깨져 보이면</b><br/>Colab 기본 글꼴이 한글을 지원하지 않아서 생기는 현상이에요. 오류 해결 연습으로 활용해요. Gemini에게 "Colab 그래프에서 한글이 네모로 깨져. 고치는 방법을 단계별로 알려 줘"라고 물어보고, 알려 준 방법을 실행해 한글이 보이는지 확인해요.</div>
 </div>
-<div class="topic" id="s3-2"><h3>3-2. 실습: 숫자가 기준값과 다르면</h3>
+<div class="topic" id="s3-2"><h3>3-2. 실습: 숫자가 기준값과 다르면</h3><p class="colab-open"><a href="https://colab.research.google.com/github/loreenkim0301/swy-lecturenote/blob/claude/hello-page-deploy-yqm9q5/261026-ai-pm-week1/colab/d5-3-2-diff.ipynb" rel="noopener" target="_blank">▶ Colab에서 실습 노트 열기 (3-2)</a> <span class="small">열린 노트에서 [파일] → [Drive에 사본 저장]을 누른 뒤 사본에서 실행하세요. 노트 맨 위 "준비" 셀(데이터 불러오기)을 먼저 실행해요.</span></p>
 <p>AI의 숫자가 기준값과 다르면 "AI가 틀렸다"로 끝내지 않고, <b>어느 코드 줄에서 차이가 생겼는지</b> 물어요. 행을 일부 빼고 계산했거나, 다른 열을 더했거나, 그래프용으로 숫자를 바꿨을 수 있어요.</p>
 <div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 사용하세요</span><button type="button">복사</button></div><pre>요청: 방금 만든 분석의 [채널별 / 요일별] 매출 합계가 내가 직접 계산한 값과 다른 이유를 찾아 줘.
 내용: 내가 df.groupby로 직접 구한 값은 [기준값 표의 숫자]이고, 네 결과는 [Gemini 결과에서 다르게 나온 숫자]야. 전체 행 수는 300건, 전체 합계는 7,846,500원이야.
@@ -450,7 +450,7 @@ print(df.groupby("채널")["매출"].sum().sum())   # 채널별 합계를 다시
 <tr><td>논리 오류</td><td>멈추지 않지만 결과가 틀림</td><td>"이상"을 "초과"로 잘못 씀</td><td><b>잘 못 잡음. 기대값을 아는 사람이 잡아야 함</b></td></tr>
 </table></div>
 </div>
-<div class="topic" id="s4-2"><h3>4-2. 실습: 오류 메시지 읽는 법</h3>
+<div class="topic" id="s4-2"><h3>4-2. 실습: 오류 메시지 읽는 법</h3><p class="colab-open"><a href="https://colab.research.google.com/github/loreenkim0301/swy-lecturenote/blob/claude/hello-page-deploy-yqm9q5/261026-ai-pm-week1/colab/d5-4-2-error.ipynb" rel="noopener" target="_blank">▶ Colab에서 실습 노트 열기 (4-2)</a> <span class="small">열린 노트에서 [파일] → [Drive에 사본 저장]을 누른 뒤 사본에서 실행하세요.</span></p>
 <p>오류가 나면 셀 아래에 빨간 글씨로 긴 메시지가 나와요. 겁먹지 말고 <b>맨 아래 줄부터</b> 읽어요. 맨 아래 줄에 오류의 이름과 원인이 한 줄로 적혀 있고, 그 위에는 몇 번째 줄에서 문제가 생겼는지가 표시돼요. 그다음 Colab의 오류 설명 기능이나 Gemini에게 물어봐요. 같은 오류라도 오류 설명 기능과 Gemini 대화의 설명이 다를 수 있으니 비교해 보는 것도 좋은 공부예요.</p>
 <p><b>실습 4-2. 실행 오류 내고 읽기</b></p>
 <p><span class="tag tag-req">실습</span> 일부러 오류를 내 봐요.</p>
@@ -461,7 +461,7 @@ TypeError: can only concatenate str (not "int") to str</pre></div>
 <p><b>방금 무슨 일이 일어났나</b><br/>맨 아래 줄을 보면 <code class="inline">TypeError</code>, 즉 자료의 종류(타입)가 맞지 않는다는 오류예요. "글자(str)에는 숫자(int)가 아니라 글자만 이어 붙일 수 있다"는 뜻이에요. Colab 오류 설명과 Gemini의 설명을 비교한 뒤, <code class="inline">print("가격:" + str(15000))</code>처럼 숫자를 글자로 바꿔 다시 실행하면 <code class="inline">가격:15000</code>이 출력돼요.</p>
 <ul class="checklist"><li>오류 메시지의 맨 아래 줄에서 <code class="inline">TypeError</code>를 찾았나요?</li><li>Colab 오류 설명과 다른 AI의 설명에서 같은 점과 다른 점을 하나씩 찾았나요?</li><li><code class="inline">str(15000)</code>로 고쳐 "가격:15000"이 나왔나요?</li></ul>
 </div>
-<div class="topic" id="s4-3"><h3>4-3. 실습: 기대값 테스트로 논리 오류 잡기</h3>
+<div class="topic" id="s4-3"><h3>4-3. 실습: 기대값 테스트로 논리 오류 잡기</h3><p class="colab-open"><a href="https://colab.research.google.com/github/loreenkim0301/swy-lecturenote/blob/claude/hello-page-deploy-yqm9q5/261026-ai-pm-week1/colab/d5-4-3-assert.ipynb" rel="noopener" target="_blank">▶ Colab에서 실습 노트 열기 (4-3)</a> <span class="small">열린 노트에서 [파일] → [Drive에 사본 저장]을 누른 뒤 사본에서 실행하세요.</span></p>
 <p>논리 오류는 에러 메시지가 나오지 않으므로, "이 입력이면 이 결과가 나와야 한다"를 미리 정해 두고 비교해야 찾을 수 있어요. 파이썬에서는 <code class="inline">assert</code>로 이 비교를 적어 둘 수 있어요. 결과가 기대와 같으면 아무 일도 일어나지 않고, 다르면 오류를 내며 멈춰요. 기획서의 인수 조건("이 경우엔 이렇게 되어야 한다")과 같은 개념이에요.</p>
 <p><b>실습 4-3. 논리 오류를 기대값으로 잡기</b></p>
 <p><span class="tag tag-req">실습</span> 규칙은 "3만 원 이상이면 10% 할인"이에요. 에러 없이 실행되는 것처럼 보이지만 숨은 버그가 있어요.</p>
@@ -491,7 +491,7 @@ AssertionError: </pre></div><figure class="sample-shot"><img alt="실행 화면.
 <p><b>더 해 보기</b> 둘째 줄의 <code class="inline">&gt;</code>를 <code class="inline">&gt;=</code>로 고치고 다시 실행해요. 아무 메시지 없이 끝나면 모든 테스트를 통과했다는 뜻이에요.</p><figure class="sample-shot"><img alt="&amp;gt;를 &amp;gt;=로 고치고 실행한 화면. 결과 칸에 아무것도 나오지 않고 실행 번호 옆에 초록 체크가 보이면 세 테스트를 모두 통과한 거예요. (2026-10-30 강사 노트에서 실행)" height="220" loading="lazy" src="./images/d5-43-pass.jpg" width="720"/><figcaption>&gt;를 &gt;=로 고치고 실행한 화면. 결과 칸에 아무것도 나오지 않고 실행 번호 옆에 초록 체크가 보이면 세 테스트를 모두 통과한 거예요. (2026-10-30 강사 노트에서 실행)</figcaption></figure>
 <ul class="checklist"><li>고치기 전에는 셋째 <code class="inline">assert</code>(30000)에서 멈췄나요?</li><li><code class="inline">&gt;=</code>로 고친 뒤에는 아무 메시지 없이 끝났나요?</li><li>"아무 메시지가 없는 것"이 통과라는 뜻임을 말할 수 있나요?</li><li>기대값 표를 코드보다 먼저 적은 이유를 말할 수 있나요?</li></ul>
 </div>
-<div class="topic" id="s4-4"><h3>4-4. 실습: Gemini 새 채팅에 오류 묻기</h3>
+<div class="topic" id="s4-4"><h3>4-4. 실습: Gemini 새 채팅에 오류 묻기</h3><p class="colab-open"><a href="https://colab.research.google.com/github/loreenkim0301/swy-lecturenote/blob/claude/hello-page-deploy-yqm9q5/261026-ai-pm-week1/colab/d5-4-4-ask.ipynb" rel="noopener" target="_blank">▶ Colab에서 실습 노트 열기 (4-4)</a> <span class="small">열린 노트에서 [파일] → [Drive에 사본 저장]을 누른 뒤 사본에서 실행하세요.</span></p>
 <p><span class="tag tag-req">실습</span> 오류 코드와 기대값을 함께 주어야 정확한 답을 받을 수 있어요. 검토를 맡길 때는 코드를 만든 대화창이 아니라 <b>새 채팅</b>에서 물어요. 실습 4-3를 고치기 전 코드로 해 봐요.</p>
 <p><b>STEP 1. 고치기 전 코드로 되돌리고 실행하기</b></p>
 <div class="procedure"><div>4-3 셀의 둘째 줄을 다시 <code class="inline">if price &gt; 30000:</code>(초과)으로 바꿔요.</div><div>셀을 실행해서 7번째 줄에서 AssertionError가 나는 것을 확인해요. 이 화면이 Gemini에게 보여 줄 "실제 결과"예요.</div></div>
