@@ -445,7 +445,7 @@ print(df.groupby("채널")["매출"].sum().sum())   # 채널별 합계를 다시
 <tr><td>인터넷 주소의 데이터 읽기 (<code class="inline">pd.read_csv(url)</code>)</td><td>돼요</td><td><b>안 돼요.</b> 코드가 실행되는 곳이 인터넷이 막힌 공간이라 주소를 열지 못해요.</td></tr>
 <tr><td>내 데이터 파일 쓰기</td><td>주소·Drive·업로드</td><td>채팅창 [+] → [파일 업로드]로 CSV를 올려요.</td></tr>
 <tr><td>그래프</td><td>matplotlib 그림. 한글이 □로 깨질 수 있어요(3-1).</td><td>Gemini가 자체 차트로 다시 그려 줘요. 한글 이름도 보였어요.</td></tr>
-<tr><td>글꼴 바꾸기</td><td>코드로 한글 글꼴을 따로 설정해야 해요</td><td>요청해도 바뀌지 않았어요</td></tr>
+<tr><td>글꼴 바꾸기</td><td>코드로 한글 글꼴을 따로 설정해야 해요</td><td>결과가 들쭉날쭉해요. 수업 중에는 바뀌지 않았고, 강사 테스트에서는 깨진 그림 2장을 낸 뒤 세 번째에 나눔고딕이 적용됐어요.</td></tr>
 <tr><td>도구 설치 (<code class="inline">pip install</code>)</td><td><code class="inline">!pip install</code>로 돼요</td><td><b>안 돼요</b>(인터넷이 막혀 있어요)</td></tr>
 <tr><td>앞에서 만든 df 이어 쓰기</td><td>런타임이 끊기기 전까지 기억해요</td><td>같은 대화 안에서는 이어서 쓸 수 있었어요</td></tr>
 <tr><td>결과를 믿어도 되나</td><td>실행한 그대로 보여 줘요</td><td>실행하지 못했을 때 <b>예시 표나 그럴듯한 가짜 표</b>를 보여 줄 수 있어요 → 기준값 대조가 꼭 필요해요</td></tr></table></div>
@@ -485,7 +485,7 @@ plt.bar(df["채널"], df["매출"])
 plt.title("채널별 매출")
 plt.show()</pre></div>
 <figure class="sample-shot"><img alt="Colab에서는 matplotlib 그림으로 나오고 한글이 □로 깨질 수 있지만, Gemini 웹 채팅은 표와 함께 자체 차트로 그려 줬고 한글 이름(앱·웹·매장)도 보였어요. (2026-10-30 강사 계정 Gemini 웹 채팅)" height="740" loading="lazy" src="./images/d5-gweb-chart.jpg" width="570"/><figcaption>Colab에서는 matplotlib 그림으로 나오고 한글이 □로 깨질 수 있지만, Gemini 웹 채팅은 표와 함께 자체 차트로 그려 줬고 한글 이름(앱·웹·매장)도 보였어요. (2026-10-30 강사 계정 Gemini 웹 채팅)</figcaption></figure>
-<div class="procedure"><div>이어서 "그래프 글꼴을 나눔고딕으로 바꿔 줘", "막대 색을 빨간색으로 바꿔 줘"처럼 모양을 바꿔 달라고 해 봐요.</div><div>무엇이 바뀌고 무엇이 안 바뀌는지 채팅에 남겨요. (수업 중 테스트에서 글꼴은 바뀌지 않았어요.)</div></div>
+<div class="procedure"><div>이어서 "그래프 글꼴을 나눔고딕으로 바꿔 줘", "막대 색을 빨간색으로 바꿔 줘"처럼 모양을 바꿔 달라고 해 봐요.</div><div>무엇이 바뀌고 무엇이 안 바뀌는지 채팅에 남겨요. 글꼴은 바뀌지 않거나, 깨진 그림을 몇 장 낸 뒤에야 바뀌기도 해요(수업 중·강사 테스트 결과가 달랐어요).</div></div>
 <p><b>STEP 5. 이어서 실행하기와 도구 설치</b></p>
 <div class="copybox"><div class="copyhead"><span>프롬프트 · 복사해서 Gemini 웹 채팅에 붙여 넣으세요</span><button type="button">복사</button></div><pre>방금 만든 df에 이어서 아래 코드를 실행해줘. 코드는 고치지 마.
 
@@ -493,7 +493,21 @@ print(df.shape)
 import subprocess
 print(subprocess.run(["pip", "install", "koreanize-matplotlib"], capture_output=True, text=True).stdout[-300:])</pre></div>
 <figure class="sample-shot"><img alt="같은 대화에서 만든 df는 (3, 2)로 이어서 쓰였지만, pip install은 인터넷이 막혀 있어 설치되지 않았어요. (2026-10-30 강사 계정 Gemini 웹 채팅)" height="570" loading="lazy" src="./images/d5-gweb-state-pip.jpg" width="590"/><figcaption>같은 대화에서 만든 df는 (3, 2)로 이어서 쓰였지만, pip install은 인터넷이 막혀 있어 설치되지 않았어요. (2026-10-30 강사 계정 Gemini 웹 채팅)</figcaption></figure>
-<ul class="checklist"><li>STEP 1에서 나온 표가 우리 데이터(O1021로 시작, 300건)가 아니라는 것을 알아챘나요?</li><li>STEP 2의 숫자가 Colab과 같았나요?</li><li>파일을 올린 뒤 채널별 합계가 기준값과 같았나요?</li><li>Gemini 웹 채팅에서 되는 것 2가지, 안 되는 것 2가지를 Colab과 비교해 말할 수 있나요?</li></ul>
+<p><b>더 알아보기: 같은 코드를 ChatGPT·Claude 웹 채팅에 넣으면?</b></p>
+<p>2026-10-30 강사가 세 서비스 웹 채팅에 같은 코드를 넣어 비교했어요(Gemini는 Flash, ChatGPT는 Plus, Claude는 Max 계정). 수강생 계정·요금제에 따라 결과가 다를 수 있어요.</p>
+<div class="table-wrap"><table><tr><th>해 본 것</th><th>Gemini 웹 채팅</th><th>ChatGPT 웹 채팅</th><th>Claude 웹 채팅</th></tr>
+<tr><td>파이썬 실제 실행 (seed 42 확인)</td><td>✅ [82, 15, 4, 95, 36]</td><td>✅ [82, 15, 4, 95, 36]</td><td>✅ [82, 15, 4, 95, 36]</td></tr>
+<tr><td>1-3 코드 그대로 (주소에서 CSV 읽기)</td><td>코드 실행 공간에서 주소를 못 열어요. 예시 표를 보여 주거나, 가짜 표를 결과처럼 보여 준 적도 있어요.</td><td>실제 5행(O1021…)과 "300행, 8개 열"을 보여 줬어요. 코드 실행이 아니라 <b>웹 검색으로 파일을 읽어</b> 옮긴 것이고, 출처(GitHub)를 표시했어요.</td><td>"코드 실행 공간에서는 접속이 차단됐다"고 밝힌 뒤, 웹 가져오기로 읽은 실제 5행을 보여 줬어요. 300행이라는 숫자는 "검증되지 않았다"고 따로 적었어요.</td></tr>
+<tr><td>그래프 (한글 이름)</td><td>자체 차트로 그려 한글이 보였어요.</td><td>matplotlib 그림은 한글이 □로 깨졌고, 아래에 한글이 보이는 대화형 차트를 함께 보여 줬어요.</td><td>matplotlib PNG 파일로 만들었어요. 원래 코드 그대로는 한글이 □로 깨졌고, 한글 글꼴을 지정한 비교본을 함께 만들어 줬어요.</td></tr>
+<tr><td>한글 글꼴로 다시 그리기</td><td>깨진 그림 2장 뒤 세 번째에 적용</td><td>요청 한 번에 나눔고딕 적용</td><td>요청 전에 한글 글꼴 비교본을 먼저 줬어요</td></tr>
+<tr><td>결과 내려받기</td><td>코드 상자의 다운로드 아이콘</td><td>차트 오른쪽 위 다운로드 아이콘</td><td>그래프 PNG [모두 다운로드]</td></tr></table></div>
+<div class="table-wrap"><table><tr><th>공식 도움말 기준 (확인일 2026-10-30)</th><th>Gemini</th><th>ChatGPT</th><th>Claude</th></tr>
+<tr><td>파일 올리기</td><td>한 번에 최대 10개, 파일당 최대 100MB(동영상 제외)</td><td>.csv·.xlsx 등 지원. 개수·크기 한도는 요금제·설정마다 달라요</td><td>CSV·TSV 등 지원, 파일당 최대 30MB</td></tr>
+<tr><td>코드가 인터넷에 접속하나</td><td>도움말에 설명 없음 (강사 테스트에서는 차단)</td><td>분석용 파이썬 환경은 외부 웹 요청을 할 수 없다고 안내</td><td>요금제·설정에 따라 다름. Free·Pro·Max는 승인된 곳에서 패키지 설치만 기본으로 허용</td></tr>
+<tr><td>그래프</td><td>올린 스프레드시트로 차트를 만들고 종류·라벨을 바꿀 수 있다고 안내</td><td>그림 차트, 막대·선·파이·산점도는 대화형 차트로 전환 가능</td><td>PNG 그림, 엑셀 차트 등으로 만들어 내려받기</td></tr>
+<tr><td>출처</td><td><a href="https://support.google.com/gemini/answer/14903178" rel="noopener" target="_blank">Upload &amp; analyze files in Gemini Apps</a></td><td><a href="https://help.openai.com/en/articles/8437071-data-analysis-with-chatgpt" rel="noopener" target="_blank">Data analysis with ChatGPT</a></td><td><a href="https://support.claude.com/en/articles/12111783-create-and-edit-files-with-claude" rel="noopener" target="_blank">Create and edit files with Claude</a></td></tr></table></div>
+<div class="notice"><b>세 서비스 모두에 해당하는 원칙</b><br/>채팅에 코드를 넣으면 "실행한 결과"인지, "웹에서 읽어 옮긴 것"인지, "예시로 지어낸 것"인지가 화면만으로는 잘 구분되지 않아요. <b>답 아래의 코드 보기·출처 표시를 열어 보고, 기준값과 대조</b>한 뒤에만 숫자를 써요.</div>
+<ul class="checklist"><li>STEP 1에서 나온 표가 우리 데이터(O1021로 시작, 300건)가 아니라는 것을 알아챘나요?</li><li>STEP 2의 숫자가 Colab과 같았나요?</li><li>파일을 올린 뒤 채널별 합계가 기준값과 같았나요?</li><li>Gemini 웹 채팅에서 되는 것 2가지, 안 되는 것 2가지를 Colab과 비교해 말할 수 있나요?</li><li>같은 코드에 대해 Gemini·ChatGPT·Claude가 어떻게 다르게 답했는지 한 가지 말할 수 있나요?</li></ul>
 </div>
 </section>
 <section class="section session" id="s4">
