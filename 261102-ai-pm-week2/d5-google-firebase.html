@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet"/>
+<meta content="index, follow, noai, noimageai" name="robots"/>
+<title>AI 프로덕트 매니저 2주차 · DAY 5 구글 AI 스튜디오·Firebase</title>
+<style>:root { --ink: #172033; --muted: #657086; --line: #dfe4ed; --soft: #f5f7fb; --blue: #2457f5; --nav: #111a2e; --green: #16a36b; --warn: #ffad22; --page-pad: clamp(28px,5.8vw,82px); --font-sans: "Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; scroll-behavior: smooth; }
+* { box-sizing: border-box; }
+body { margin: 0px; background: rgb(238, 241, 246); color: var(--ink); font-family: var(--font-sans); line-height: 1.7; letter-spacing: -0.01em; }
+.app aside { position: fixed; inset: 0px auto 0px 0px; width: 310px; height: 100vh; padding: 0 16px 28px; background: var(--nav); color: rgb(255, 255, 255); overflow-y: auto; z-index: 10; }
+.app main { min-height: 100vh; margin-left: 310px; background: rgb(255, 255, 255); }
+.side-head { position: sticky; top: 0; z-index: 1; margin: 0 -16px; padding: 20px 26px 14px; background: var(--nav); border-bottom: 1px solid rgb(45, 56, 80); }
+.brand { font-size: 11px; font-weight: 800; letter-spacing: 0.14em; color: rgb(130, 145, 177); }
+aside h1 { margin: 6px 0 4px; font-size: 17px; line-height: 1.35; letter-spacing: -0.02em; }
+.side-sub, .side-foot { font-size: 12px; color: rgb(150, 162, 186); }
+aside nav { margin-top: 10px; }
+aside nav a { display: block; padding: 7px 10px 7px 22px; color: rgb(190, 200, 219); text-decoration: none; font-size: 14px; line-height: 1.45; border-left: 3px solid transparent; border-radius: 0 6px 6px 0; }
+aside nav a:hover { color: rgb(255, 255, 255); background: rgb(25, 36, 60); }
+aside nav .major { margin-top: 12px; padding-left: 10px; color: rgb(255, 255, 255); font-size: 15px; font-weight: 800; }
+aside nav a.active { color: rgb(255, 255, 255); background: rgb(30, 44, 74); border-left-color: var(--blue); font-weight: 700; }
+.side-foot { margin: 20px 10px 0; padding-top: 14px; border-top: 1px solid rgb(45, 56, 80); }
+.hero { padding: 86px var(--page-pad) 72px; background: linear-gradient(135deg, rgb(247, 249, 255), rgb(238, 243, 255) 58%, rgb(233, 255, 246)); border-bottom: 1px solid var(--line); }
+.kicker, .section-label, .topic-label, .eyebrow { font-size: 13px; font-weight: 800; letter-spacing: 0.13em; color: var(--blue); }
+.hero h1 { margin: 16px 0px; font-size: clamp(40px, 5vw, 70px); line-height: 1.08; letter-spacing: -0.055em; }
+.hero h1 em { color: var(--blue); font-style: normal; }
+.hero > p { max-width: 860px; color: rgb(79, 91, 114); font-size: 18px; }
+.hero-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 38px; background: rgb(220, 226, 237); border: 1px solid rgb(220, 226, 237); }
+.hero-grid div { background: rgb(255, 255, 255); padding: 16px; }
+.hero-grid b { display: block; font-size: 12px; color: rgb(125, 135, 153); }
+.hero-grid span { font-size: 14px; font-weight: 800; }
+.section { padding: 70px var(--page-pad); border-bottom: 1px solid var(--line); scroll-margin-top: 18px; }
+.section > h2, .session-head h2 { margin: 8px 0px 14px; font-size: 36px; letter-spacing: -0.04em; }
+.lead { font-size: 18px; max-width: 900px; }
+.three-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px 0px; }
+.three-cards article { padding: 20px; border: 1px solid var(--line); border-radius: 14px; background: rgb(255, 255, 255); }
+.three-cards article > span { font-size: 12px; font-weight: 800; color: var(--blue); }
+.three-cards h3 { margin: 8px 0px 5px; font-size: 20px; }
+.three-cards p, .caption { color: var(--muted); font-size: 14px; }
+.notice, .warning { margin: 22px 0px; padding: 16px 19px; }
+.notice { border-left: 4px solid var(--blue); background: rgb(234, 240, 255); }
+.warning { border-left: 4px solid var(--warn); background: rgb(255, 246, 230); }
+.schedule { margin-top: 30px; }
+.schedule div { display: grid; grid-template-columns: 48px 125px 1fr; align-items: center; padding: 13px 0px; border-top: 1px solid var(--line); }
+.schedule span.badge { display: grid; place-items: center; width: 29px; height: 29px; border-radius: 50%; background: var(--nav); color: rgb(255, 255, 255); font-size: 12px; }
+.schedule p { margin: 0px; }
+.session { padding-top: 0px; }
+.session-head { margin: 0 calc(var(--page-pad)*-1) 50px; padding: 52px var(--page-pad); background: var(--nav); color: rgb(255, 255, 255); }
+.session-head .eyebrow { color: rgb(125, 160, 255); }
+.session-head p { max-width: 900px; color: rgb(195, 204, 220); }
+.vibe-intro { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 28px; align-items: start; margin-top: 30px; padding-top: 28px; border-top: 1px solid rgb(45, 56, 80); }
+.vibe-quote { margin: 0; padding-left: 18px; border-left: 3px solid rgb(125, 160, 255); }
+.vibe-quote blockquote { margin: 0 0 10px; color: #fff; font-size: 21px; font-weight: 700; line-height: 1.5; letter-spacing: -0.03em; }
+.vibe-quote figcaption { color: rgb(160, 172, 196); font-size: 13px; }
+.vibe-meaning { margin: 18px 0 0; padding: 14px 16px; border-radius: 12px; background: rgb(25, 36, 60); color: rgb(215, 222, 236); font-size: 15px; }
+.vibe-meaning b { color: #fff; }
+.vibe-timeline { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.vibe-timeline li { display: grid; grid-template-columns: 74px 1fr; gap: 12px; padding: 12px 14px; border: 1px solid rgb(45, 56, 80); border-radius: 12px; background: rgba(255, 255, 255, 0.03); }
+.vibe-timeline time { color: rgb(125, 160, 255); font-size: 13px; font-weight: 800; letter-spacing: 0.02em; }
+.vibe-timeline b { display: block; color: #fff; font-size: 15px; }
+.vibe-timeline span { display: block; color: rgb(185, 195, 214); font-size: 14px; line-height: 1.55; }
+.vibe-sources { grid-column: 1 / -1; margin: 0; color: rgb(130, 145, 177); font-size: 12px; }
+.vibe-sources a { color: rgb(160, 180, 230); }
+@media (max-width: 1020px) { .vibe-intro { grid-template-columns: 1fr; } }
+.time { font-size: 13px; color: rgb(174, 185, 207); }
+.topic { margin-bottom: 70px; scroll-margin-top: 20px; }
+.topic h3 { margin: 8px 0px 12px; font-size: 28px; letter-spacing: -0.025em; }
+.flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 9px; margin: 18px 0px 26px; }
+.flow div { text-align: center; padding: 16px 12px; border-radius: 12px; background: rgb(237, 242, 255); }
+.flow span { display: block; font-size: 12px; font-weight: 800; color: var(--blue); }
+.flow b { display: block; }
+.flow small { display: block; margin-top: 5px; color: var(--muted); }
+.versus { display: grid; grid-template-columns: 1fr 54px 1fr; align-items: center; margin: 16px 0px 26px; }
+.versus > div { padding: 20px; border: 1px solid var(--line); border-radius: 13px; background: var(--soft); }
+.versus i { text-align: center; color: var(--blue); font-style: normal; font-weight: 900; }
+.table-wrap { overflow: auto; }
+table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 14px; }
+th { padding: 13px; text-align: left; color: rgb(255, 255, 255); background: var(--nav); }
+td { padding: 14px 13px; border-bottom: 1px solid var(--line); }
+.checklist { display: grid; gap: 7px; padding: 0px; list-style: none; }
+.checklist li { padding: 11px 14px; border-radius: 8px; background: var(--soft); }
+.checklist li::before { content: "✓"; margin-right: 8px; color: var(--blue); font-weight: 900; }
+.practice-brief { display: grid; gap: 8px; margin: 18px 0px; }
+.practice-brief > div { padding: 15px 18px; border: 1px solid rgb(200, 239, 221); border-radius: 12px; background: rgb(237, 255, 246); }
+.copybox { margin: 20px 0px; border: 1px solid rgb(207, 215, 230); border-radius: 12px; overflow: hidden; background: rgb(17, 26, 46); color: rgb(232, 238, 252); }
+.copyhead { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: rgb(30, 43, 71); font-size: 13px; font-weight: 800; }
+.copyhead button { padding: 5px 10px; border: 1px solid rgb(97, 112, 141); border-radius: 6px; background: transparent; color: rgb(255, 255, 255); cursor: pointer; }
+.copybox pre { white-space: pre-wrap; margin: 0px; padding: 20px; font: 13px / 1.72 ui-monospace, SFMono-Regular, Menlo, monospace; }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 18px 0px 26px; }
+.steps article { padding: 18px; border-top: 4px solid var(--blue); border-radius: 12px; }
+.steps strong { display: block; color: var(--blue); font-size: 12px; }
+.steps b { display: block; font-size: 18px; margin-top: 3px; }
+.sub-optional { margin-top: 10px; padding: 10px 12px; border: 1px dashed var(--line); border-radius: 10px; color: var(--muted); font-size: 14px; }
+.sub-optional .tag { margin-left: 0; }
+.steps .sub-optional b { display: inline; font-size: 14px; margin: 0 4px 0 2px; color: var(--muted); }
+.tag { display: inline-block; margin-left: 6px; padding: 1px 8px; border-radius: 999px; font-size: 11px; font-weight: 800; letter-spacing: 0; vertical-align: 1px; }
+.tag-req { background: var(--blue); color: #fff; }
+.tag-opt { border: 1px solid var(--line); background: #fff; color: var(--muted); font-weight: 700; }
+.final-box { padding: 28px; border-radius: 18px; background: linear-gradient(135deg, rgb(17, 26, 46), rgb(29, 47, 88)); color: rgb(255, 255, 255); }
+.final-box h3 { margin: 6px 0px 8px; font-size: 30px; }
+.final-box p { color: rgb(203, 213, 231); }
+code.inline { padding: 2px 6px; border-radius: 6px; background: rgb(238, 242, 248); font-family: ui-monospace, monospace; }
+.small { font-size: 13px; color: var(--muted); }
+.resource-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 18px 0px 28px; }
+.resource-card { padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--soft); }
+.resource-card b { display: block; margin-bottom: 4px; }
+.resource-card a { color: var(--blue); font-weight: 800; text-decoration: none; word-break: break-all; font-size: 13px; }
+.sample-link { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin: 22px 0; padding: 14px 18px; border: 1px solid rgb(203, 218, 255); border-radius: 12px; background: rgb(240, 245, 255); }
+.sample-link span { color: var(--muted); font-size: 14px; }
+.sample-link b { display: block; color: var(--ink); font-size: 15px; }
+.sample-link .resource-link { flex-shrink: 0; margin-top: 0; }
+@media (max-width: 680px) { .sample-link { flex-direction: column; align-items: flex-start; } }
+.resource-link { display: inline-block; margin-top: 8px; padding: 8px 12px; border: 1px solid rgb(203, 213, 225); border-radius: 8px; color: var(--blue); font-size: 13px; font-weight: 800; text-decoration: none; background: rgb(255, 255, 255); }
+.procedure { counter-reset: step 0; display: grid; gap: 10px; margin: 18px 0px 28px; }
+.procedure > div { position: relative; padding: 15px 16px 15px 54px; border: 1px solid var(--line); border-radius: 12px; background: rgb(255, 255, 255); }
+.procedure > div::before { counter-increment: step 1; content: counter(step); position: absolute; left: 16px; top: 15px; width: 26px; height: 26px; display: grid; place-items: center; border-radius: 50%; background: var(--blue); color: rgb(255, 255, 255); font-size: 12px; font-weight: 900; }
+.sample-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 18px 0px 28px; }
+.sample-grid article { padding: 18px; border: 1px solid var(--line); border-radius: 13px; background: var(--soft); }
+.term-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 22px 0px; }
+.term-grid article { padding: 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--soft); }
+.term-grid strong { display: block; color: var(--blue); font-size: 12px; letter-spacing: 0.08em; }
+.term-grid h4 { margin: 5px 0px 8px; font-size: 20px; }
+.talk { margin: 18px 0px; padding: 22px; border-left: 4px solid var(--green); background: rgb(241, 252, 247); }
+.talk p { margin: 0px 0px 14px; }
+.talk p:last-child { margin-bottom: 0px; }
+.example-flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 18px 0px 24px; }
+.example-flow div { padding: 14px 12px; border-radius: 10px; background: rgb(255, 248, 235); }
+.example-flow b, .example-flow span { display: block; }
+.example-flow span { margin-bottom: 3px; color: rgb(154, 100, 16); font-size: 12px; font-weight: 800; }
+details.optional { margin-top: 8px; padding: 0 22px 6px; border: 1px solid var(--line); border-radius: 14px; background: var(--soft); }
+details.optional > summary { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; padding: 20px 0; cursor: pointer; list-style: none; }
+details.optional > summary::-webkit-details-marker { display: none; }
+details.optional > summary::before { content: "▸"; color: var(--blue); font-weight: 900; }
+details.optional[open] > summary::before { content: "▾"; }
+details.optional .summary-title { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
+details.optional .summary-hint { font-size: 13px; color: var(--muted); }
+details.optional[open] .summary-hint { display: none; }
+.profile-card { display: grid; grid-template-columns: 1.6fr 1fr; gap: 20px; padding: 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--soft); }
+.profile-card h3 { margin: 0 0 6px; font-size: 22px; }
+.profile-card ul { margin: 10px 0 0; padding-left: 18px; }
+.profile-links { display: grid; gap: 8px; align-content: start; }
+.profile-links a { padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--blue); font-size: 14px; font-weight: 700; text-decoration: none; word-break: break-all; }
+.sample-shot { margin: 22px 0; }
+.sample-shot img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 12px; }
+.sample-shot.narrow img { max-width: 700px; margin: 0 auto; }
+.sample-shot.small img { max-width: 360px; }
+.sample-shot figcaption { margin-top: 10px; color: var(--muted); font-size: 14px; }
+@media (max-width: 680px) { .profile-card { grid-template-columns: 1fr; padding: 18px; } }
+.app aside { word-break: keep-all; }
+.topic .three-cards h3 { margin: 8px 0 5px; font-size: 20px; letter-spacing: -0.02em; }
+.block-title { margin: 34px 0 4px; font-size: 22px; letter-spacing: -0.02em; scroll-margin-top: 18px; }
+.break { padding: 54px var(--page-pad); background: rgb(246, 248, 252); border-bottom: 1px solid var(--line); }
+.break h2 { margin: 0px 0px 8px; font-size: 32px; }
+@media (max-width: 1020px) {
+  .app aside { display: none; }
+  .app main { margin-left: 0px; }
+  .hero-grid, .three-cards, .steps, .term-grid, .example-flow { grid-template-columns: 1fr 1fr; }
+  .flow { grid-template-columns: 1fr 1fr; }
+}
+.nav-toggle { position: fixed; top: 14px; left: 322px; z-index: 20; display: flex; align-items: center; gap: 6px; height: 36px; padding: 0 12px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255, 255, 255, 0.94); color: var(--ink); font: 700 13px/1 var(--font-sans); cursor: pointer; box-shadow: 0 4px 14px rgba(17, 26, 46, 0.12); transition: left .25s ease; }
+.nav-toggle:hover { border-color: var(--blue); color: var(--blue); }
+.nav-toggle svg { width: 16px; height: 16px; }
+.app aside { transition: transform .25s ease; }
+.app main { transition: margin-left .25s ease; }
+body.nav-hidden .app aside { transform: translateX(-100%); }
+body.nav-hidden .app main { margin-left: 0; }
+body.nav-hidden .nav-toggle { left: 14px; }
+@media (max-width: 1020px) {
+  .app aside { display: block; width: min(310px, calc(100vw - 64px)); transform: translateX(-100%); }
+  .nav-toggle { left: 14px; }
+  body.nav-open .app aside { transform: none; box-shadow: 8px 0 24px rgba(17, 26, 46, 0.25); }
+  body.nav-open .nav-toggle { left: auto; right: 10px; padding: 0 11px; }
+  body.nav-open .nav-toggle span { display: none; }
+}
+@media (max-width: 680px) {
+  .hero, .section, .break { padding-left: 20px; padding-right: 20px; }
+  .hero { padding-top: 54px; }
+  .hero-grid, .three-cards, .steps, .flow, .resource-list, .term-grid, .example-flow { grid-template-columns: 1fr; }
+  .schedule div { grid-template-columns: 38px 100px 1fr; }
+  .versus { grid-template-columns: 1fr; }
+  .versus i { padding: 8px 0px; }
+  .session-head { margin-left: -20px; margin-right: -20px; padding-left: 20px; padding-right: 20px; }
+  .section > h2, .session-head h2 { font-size: 30px; }
+  .topic h3 { font-size: 24px; }
+}.colab-open{margin:8px 0 14px}.colab-open a{display:inline-block;padding:6px 12px;border-radius:8px;background:#f9ab00;color:#1d2433;font-weight:700;text-decoration:none}.colab-open a:hover{filter:brightness(.95)}.colab-open .small{display:block;margin-top:6px}.deep-dive{margin:18px 0;padding:14px 18px;border:1px solid #dfe3ec;border-left:4px solid #f9ab00;border-radius:10px;background:rgba(249,171,0,.05)}
+</style>
+<style>
+.tt{margin:0;padding-left:1.1em}.tt li{margin:2px 0}
+.dl-list{display:grid;gap:10px;margin:18px 0}
+.dl-card{display:flex;align-items:center;gap:14px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:#fff;text-decoration:none;color:var(--ink)}
+.dl-card:hover{border-color:var(--blue);background:var(--soft)}
+.dl-ico{flex:none;display:grid;place-items:center;width:44px;height:52px;border-radius:8px;background:rgb(237,242,255);color:var(--blue);font-size:11px;font-weight:800}
+.dl-body{flex:1}.dl-body b{display:block;font-size:16px}.dl-body span{display:block;font-size:13px;color:var(--muted)}
+.dl-btn{flex:none;padding:8px 14px;border-radius:8px;background:var(--blue);color:#fff;font-size:13px;font-weight:800}
+@media(max-width:680px){.dl-card{flex-wrap:wrap}}
+#slide .sample-shot{margin:8px 0}#slide .sample-shot img{max-height:420px;width:auto;max-width:100%;margin:0 auto}#slide .sample-shot figcaption{margin-top:4px;font-size:13px;text-align:center}
+#slide .dl-card{padding:10px 14px}
+.todo{color:#b42318;font-weight:700}
+main,#slide{word-break:keep-all;overflow-wrap:break-word}
+h1,h2,h3,.hero p,.lead{text-wrap:balance}
+p,li,td{text-wrap:pretty}
+td .tag{margin-bottom:2px}
+.tag.nap{background:#7c3aed}.tag.sheet{background:var(--green)}
+.tag{margin-left:0;margin-right:4px}
+.topic .small{display:block}
+.resource-card .small{display:block;margin-bottom:6px}
+.resource-card a{display:inline-block;margin:2px 0}
+.copybox pre{background:none;color:inherit}
+.hero-grid{grid-template-columns:repeat(3,1fr)}
+.sample-link .resource-link{margin:0 6px 0 0}
+.sample-link{flex-wrap:wrap;justify-content:flex-start;gap:6px}
+#slideBtn{position:fixed;right:16px;bottom:16px;z-index:30;background:var(--blue);color:#fff;border:0;border-radius:999px;padding:12px 20px;font:700 15px var(--font-sans);cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+#deck{position:fixed;inset:0;z-index:100;background:#0b1220;display:flex;flex-direction:column}
+#deck[hidden]{display:none}
+#viewport{flex:1;min-height:0;position:relative;overflow:hidden}
+#stage{position:absolute;left:50%;top:50%;width:1280px;height:720px;background:#fff;display:flex;flex-direction:column;overflow:hidden;transform-origin:center center;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+#master{flex:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 96px;background:var(--nav);color:#fff;font-weight:800;font-size:15px}
+#master .m-brand{font-size:11px;letter-spacing:.14em;color:rgb(130,145,177);margin-right:12px}
+#mbar{flex:none;height:4px;background:var(--line)}#prog{display:block;height:100%;background:var(--blue);width:0}
+#slide{flex:1;min-height:0;overflow:hidden;padding:28px 96px 12px;font-size:19px;line-height:1.55}
+#slide h1{font-size:46px;line-height:1.15;margin:12px 0}#slide h1 em{color:var(--blue);font-style:normal}
+#slide h3.st{margin:0 0 14px;font-size:32px;letter-spacing:-.03em}
+#slide .cont{font-size:16px;color:var(--muted);font-weight:500;margin-left:10px}
+#slide table{font-size:16px;margin-top:6px}#slide th,#slide td{padding:9px 12px}
+#slide .copybox{margin:10px 0}#slide .copybox pre{font-size:15px;padding:14px 18px}
+#slide p,#slide .notice,#slide .warning{margin:8px 0}
+#slide .notice,#slide .warning{padding:12px 16px}
+#slide .procedure{gap:8px;margin:10px 0}#slide .procedure>div{padding:10px 14px 10px 50px}
+#slide .resource-list{grid-template-columns:repeat(3,1fr);margin:10px 0}
+#slide .hero-grid{margin-top:20px}#slide .flow{grid-template-columns:repeat(5,1fr);margin:12px 0 16px}#slide .flow div{padding:10px 8px}#slide .hero-grid{grid-template-columns:repeat(3,1fr)}
+#pager{flex:none;display:flex;align-items:center;justify-content:center;gap:14px;height:40px;border-top:1px solid var(--line);color:var(--muted);font-size:14px;font-weight:700}
+#pager button{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:6px;width:30px;height:26px;font-size:11px;cursor:pointer}
+#bar{flex:none;display:flex;align-items:center;justify-content:center;gap:16px;padding:8px;background:#111a2e;color:#cbd5e7;font-size:14px}
+#bar button{border:1px solid rgb(97,112,141);background:transparent;color:#fff;border-radius:8px;padding:6px 14px;font:700 14px var(--font-sans);cursor:pointer}
+@media print{#slideBtn,#deck{display:none!important}}
+
+aside nav .nav-title{padding:6px 10px 10px;font-size:12px;font-weight:800;letter-spacing:.12em;color:rgb(130,145,177)}
+aside nav .grp{margin-top:20px;padding-top:12px;border-top:1px solid rgb(45,56,80)}
+aside nav .nav-title+.grp{margin-top:0;border-top:0;padding-top:0}
+aside nav .grp-label{padding:0 10px 4px;font-size:11px;font-weight:800;letter-spacing:.1em;color:rgb(130,145,177)}
+aside nav a.l2{margin-top:0;padding:6px 10px;color:#fff;font-size:15px;font-weight:800;border-left:3px solid transparent}
+aside nav a.l3{margin-left:12px;padding:5px 10px 5px 14px;font-size:14px;border-left:1px solid rgb(45,56,80)}
+aside nav a.l4{display:none;margin-left:12px;padding:3px 10px 3px 30px;font-size:12.5px;color:rgb(150,162,186);border-left:1px solid rgb(45,56,80)}
+aside nav a.l4.show{display:block}
+aside nav a.active{border-left-color:var(--blue)}
+.dh{margin:30px 0 8px;padding:2px 0 2px 12px;border-left:4px solid var(--blue)}
+.dh b{font-size:1.06em}
+#slide .dh{margin:12px 0 8px}
+#slide .eb{margin:0 0 4px;font-size:14px;font-weight:800;letter-spacing:.06em;color:var(--blue)}
+#slide .outline{columns:2;column-gap:56px;font-size:16px;line-height:1.5}
+#slide .outline .og{break-inside:avoid;margin-bottom:12px}
+#slide .outline b{display:block;font-size:17px}
+#slide .outline span{display:block;padding-left:14px;color:var(--muted);font-size:14.5px}
+
+.base{margin:6px 0 14px;padding:8px 12px;border-left:4px solid var(--green);background:rgb(236,248,243);font-size:14.5px}
+.copybox pre{font:15px/1.8 var(--font-sans);letter-spacing:-.01em}
+.copybox pre.fmt{white-space:normal;padding:18px 20px}
+.pl{display:flex;gap:10px;margin:0 0 9px}.pl:last-child{margin-bottom:0}
+.pl .pk{flex:none;width:3.3em;color:rgb(140,180,255);font-weight:800}
+.pl.k2 .pk{color:rgb(110,220,180)}.pl.k3 .pk{color:rgb(255,200,110)}
+.pl .pt{flex:1;min-width:0}
+.pl.c{padding-left:calc(3.3em + 10px);margin-top:-5px}
+#slide .copybox pre.fmt{font-size:17px;padding:14px 18px}
+#slide .base{font-size:15px;padding:6px 12px}
+</style>
+<style>.side-link{margin:16px 10px 0;padding:12px;border:1px solid rgb(45,56,80);border-radius:10px;font-size:12px;color:rgb(190,200,219)}.side-link b{display:block;color:#fff;font-size:12px;margin-bottom:4px}.side-link a{color:rgb(140,180,255);word-break:break-all}.day-nav{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}.day-nav a{padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:13px;font-weight:700;color:var(--ink);text-decoration:none}.day-nav a[aria-current]{background:var(--blue);border-color:var(--blue);color:#fff}main pre{white-space:pre-wrap;overflow-wrap:anywhere}main code.inline{overflow-wrap:break-word}.hero-grid code.inline,.hero-grid span{overflow-wrap:anywhere}figure.voice{margin:18px 0;padding:16px 20px;border-left:4px solid var(--blue);background:var(--soft);border-radius:0 12px 12px 0}figure.voice blockquote{margin:0}figure.voice blockquote p{margin:0;font-size:18px;font-weight:700;line-height:1.55}figure.voice blockquote p.orig{margin-top:6px;font-size:14px;font-weight:500;color:var(--muted)}figure.voice figcaption{margin-top:10px;font-size:13px;color:var(--muted)}#slide figure.voice{margin:10px 0;padding:10px 16px}kbd{display:inline-block;padding:1px 6px;border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;background:#fff;font:600 13px var(--font-sans)}.source-note{font-size:13px;color:var(--muted)}.resource-list.news .resource-card{border-left:4px solid #e8a23a}.resource-list.news .resource-card>.small:first-child::before{content:"뉴스";display:inline-block;margin-right:6px;padding:0 6px;border-radius:4px;background:#fff3df;color:#9a5b00;font-weight:700}.resource-list.news .resource-card>.small:last-child{margin-top:6px;color:var(--muted)}</style>
+<style>.why-box{margin:14px 0 0;padding:12px 16px;border-left:4px solid #8fb0ff;background:rgba(255,255,255,.08);border-radius:0 10px 10px 0;color:#e6ebf5;max-width:900px}.why-box b{display:block;color:#a9c1ff;font-size:13px;margin-bottom:2px}.ok-line{margin:8px 0 0;font-size:14.5px}.ok-line b{display:inline-block;margin-right:8px;padding:1px 8px;border-radius:6px;background:#e7f7ef;color:#16a36b;font-size:12px}.goal-list li{margin-bottom:6px}</style><style>.shot{margin:14px 0 6px;max-width:760px}.shot img{display:block;width:100%;height:auto;border:1px solid #d9dde5;border-radius:10px;box-shadow:0 2px 10px rgba(20,30,60,.06)}.shot figcaption{font-size:12.5px;color:#6b7280;margin-top:6px}.stage{display:inline-block;margin-right:6px;padding:1px 8px;border-radius:999px;background:#eef2ff;color:#3b4ec8;font-size:12px;font-weight:700}.tpl td:empty::after{content:"\00a0";}.tpl td{height:30px}.result-box{border:1px solid #c9e9d9;background:#f2fbf6;border-radius:10px;padding:12px 16px;margin:10px 0}.result-box b{color:#16794f}.entry-box{border:1px solid #cfd9f3;background:#f5f8ff;border-radius:10px;padding:12px 16px;margin:12px 0}.entry-box>b{color:#2c48b8}.entry-box p{margin:6px 0}.entry-box .shot img{width:auto;max-width:100%}.ref-box{display:block;border:1px dashed #d9c27a;background:#fffbea;border-radius:10px;padding:12px 16px;margin:12px 0}.ref-box>b{color:#8a6a00}.ref-box p{margin:6px 0}.ref-box ul{margin:6px 0 0;padding-left:18px}.ref-kind{display:inline-block;font-size:12px;color:#6b5a1e;background:#f6ecc4;border-radius:6px;padding:1px 6px;margin-right:4px}</style></head>
+<body>
+<button aria-controls="side-nav" aria-expanded="true" class="nav-toggle" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" viewbox="0 0 16 16"><path d="M2 4h12M2 8h12M2 12h12"></path></svg><span>목차 숨기기</span></button>
+<div class="app">
+<aside id="side-nav">
+<div class="side-head">
+<div class="brand">SELECTWAY · LECTURE NOTE</div>
+<h1>AI 프로덕트 매니저 2주차 · DAY 5 구글 AI 스튜디오·Firebase</h1>
+<div class="side-sub">11.06(금) · 09:00–18:00 · 실시간 비대면</div>
+</div>
+<nav>
+<div class="nav-title">전체 목차</div><div class="grp"><div class="grp-label">교육 안내</div><a class="l2" href="#overview">교육 개요</a><a class="l2" href="#prep">수업 전 준비</a><a class="l2" href="#tt">타임테이블</a></div><div class="grp"><div class="grp-label">오늘의 단어</div><a class="l2" href="#words">오늘의 단어</a></div><div class="grp"><div class="grp-label">SESSION 1</div><a class="l2" href="#s1">구글 서비스 지도</a><a class="l3" href="#s1-1">1-1. 개념</a><a class="l3" href="#s1-2">1-2. 채워진 예시</a><a class="l3" href="#s1-3">1-3. 실습 템플릿</a><a class="l3" href="#s1-4">1-4. 프롬프트로 시작하기</a><a class="l3" href="#s1-5">1-5. 점검·피드백</a><a class="l3" href="#s1-6">1-6. 실패 케이스 만들어 보기</a><a class="l3" href="#s1-7">1-7. 결과 만들기</a></div><div class="grp"><div class="grp-label">SESSION 2</div><a class="l2" href="#s2">같은 요청서로 AI 스튜디오에서 만들기</a><a class="l3" href="#s2-1">2-1. 개념</a><a class="l3" href="#s2-2">2-2. 채워진 예시</a><a class="l3" href="#s2-3">2-3. 실습 템플릿</a><a class="l3" href="#s2-4">2-4. 프롬프트로 시작하기</a><a class="l3" href="#s2-5">2-5. 점검·피드백</a><a class="l3" href="#s2-6">2-6. 실패 케이스 만들어 보기</a><a class="l3" href="#s2-7">2-7. 결과 만들기</a></div><div class="grp"><div class="grp-label">SESSION 3</div><a class="l2" href="#s3">데이터 정의표를 Firestore 구조로 바꿔 저장하기</a><a class="l3" href="#s3-1">3-1. 개념</a><a class="l3" href="#s3-2">3-2. 채워진 예시</a><a class="l3" href="#s3-3">3-3. 실습 템플릿</a><a class="l3" href="#s3-4">3-4. 프롬프트로 시작하기</a><a class="l3" href="#s3-5">3-5. 점검·피드백</a><a class="l3" href="#s3-6">3-6. 실패 케이스 만들어 보기</a><a class="l3" href="#s3-7">3-7. 결과 만들기</a></div><div class="grp"><div class="grp-label">SESSION 4</div><a class="l2" href="#s4">배포하고 테스트 시나리오 다시 실행</a><a class="l3" href="#s4-1">4-1. 개념</a><a class="l3" href="#s4-2">4-2. 채워진 예시</a><a class="l3" href="#s4-3">4-3. 실습 템플릿</a><a class="l3" href="#s4-4">4-4. 프롬프트로 시작하기</a><a class="l3" href="#s4-5">4-5. 점검·피드백</a><a class="l3" href="#s4-6">4-6. 실패 케이스 만들어 보기</a><a class="l3" href="#s4-7">4-7. 결과 만들기</a></div><div class="grp"><div class="grp-label">SESSION 5</div><a class="l2" href="#s5">PRD v2와 한 주 회고</a><a class="l3" href="#s5-1">5-1. 개념</a><a class="l3" href="#s5-2">5-2. 채워진 예시</a><a class="l3" href="#s5-3">5-3. 실습 템플릿</a><a class="l3" href="#s5-4">5-4. 프롬프트로 시작하기</a><a class="l3" href="#s5-5">5-5. 점검·피드백</a><a class="l3" href="#s5-6">5-6. 실패 케이스 만들어 보기</a><a class="l3" href="#s5-7">5-7. 결과 만들기</a></div><div class="grp"><div class="grp-label">정리</div><a class="l2" href="#wrap">오늘 정리와 과제</a></div>
+</nav>
+<div class="side-link"><b>이 교안 주소</b><a href="https://loreenkim0301.github.io/swy-lecturenote/261102-ai-pm-week2/d5-google-firebase.html">loreenkim0301.github.io/swy-lecturenote/261102-ai-pm-week2/d5-google-firebase.html</a></div>
+<div class="side-foot">강사 김수정 · 셀렉트웨이</div>
+</aside>
+<main>
+<header class="hero">
+<div class="kicker">AI 프로덕트 매니저 · 2주차 DAY 5 · 2026.11.06 (금)</div>
+<h1>구글 AI 스튜디오와 Firebase로 모두의 신청을 한곳에 모아요</h1>
+<p>구글 서비스는 계정 하나로 이어져요. 오늘은 그 지도를 먼저 보고, 같은 요청서로 AI 스튜디오에서 페이지를 만든 뒤 프롬프트로 Firestore 저장을 붙이고 배포까지 해요. 마지막에 한 주의 결과를 PRD v2로 정리해요.</p>
+<div class="hero-grid">
+<div><b>일정</b><span>11월 6일(금) 09:00–18:00 · 실시간 비대면</span></div>
+<div><b>준비물</b><span>크롬, 구글 계정, 구글 AI 스튜디오, Firebase 콘솔, 휴대폰</span></div>
+<div><b>오늘의 결과물</b><span>구글 서비스 지도 + 도구 비교 결과표 + Firestore 구조표 + 배포 주소 + PRD v2</span></div>
+</div>
+<nav aria-label="2주차 교안" class="day-nav"><a href="./">2주차 홈</a><a href="./d1-problem-artifact.html">DAY 1 문제 정의·아티팩트</a><a href="./d2-claude-flow.html">DAY 2 시나리오·PRD·클로드 기능</a><a href="./d3-deploy-localdb.html">DAY 3 데이터 정의·배포 3가지</a><a href="./d4-vibe-tools-bolt.html">DAY 4 도구 비교·볼트</a><a aria-current="page" href="./d5-google-firebase.html">DAY 5 구글 AI 스튜디오·Firebase</a></nav>
+</header>
+<section class="section" id="overview"><div class="section-label">OVERVIEW</div><h2>교육 개요</h2>
+<div class="table-wrap"><table>
+<tr><th>시간</th><td>09:00–18:00 (점심 12:00–13:00, 수업 8시간)</td></tr>
+<tr><th>교과</th><td>[기본] AI 서비스 개발 · 6일차 (총 18일)</td></tr>
+<tr><th>교육 목표</th><td>구글 서비스의 역할을 구분하고, 데이터 정의표를 Firestore 구조로 바꿔 AI 스튜디오에 프롬프트로 저장을 연결한 뒤 배포하고, 한 주의 결과로 PRD를 갱신할 수 있다.</td></tr>
+<tr><th>세션마다 같은 순서</th><td>개념 → 예시 → 실습 템플릿 → 프롬프트로 시작하기 → 점검·피드백 → 실패 케이스 → 결과 만들기</td></tr>
+<tr><th>수업이 끝나면</th><td>① 구글 서비스 5개의 역할과 이벤트 페이지에서 쓰이는 곳을 말한다 ② 같은 요청서로 AI 스튜디오에서 페이지를 만들고 볼트와 비교한다 ③ 데이터 정의표를 컬렉션·문서·필드로 바꾼다 ④ 프롬프트로 Firestore 저장을 연결하고 콘솔에서 데이터를 눈으로 확인한다 ⑤ 배포 주소에서 테스트 시나리오를 다시 실행한다 ⑥ PRD v2와 한 주 회고를 쓴다</td></tr>
+</table></div>
+</section>
+<section class="section" id="prep"><div class="section-label">PREPARE</div><h2>수업 전 준비</h2>
+<ul><li><b>구글 계정:</b> 수업용 구글 계정으로 로그인해 두세요.</li><li><b>Firebase 콘솔:</b> console.firebase.google.com 에 들어갈 수 있는지 확인해요. 저장된 데이터를 눈으로 확인할 때 써요.</li><li><b>어제 결과:</b> 볼트 요청서와 테스트 시나리오 표를 열어 두세요.</li></ul>
+<div class="notice"><b>세션마다 이렇게 진행해요</b><br/>① 개념을 짧게 보고 ② 이커머스 셀렉트마켓으로 채운 예시를 봐요. ③ 빈 템플릿을 내 내용으로 채우고 ④ 같은 일을 프롬프트로 AI에게 시켜 봐요. ⑤ 결과를 점검 프롬프트로 피드백받고 ⑥ 일부러 실패해 본 뒤 ⑦ 오늘의 결과물로 남겨요. 프롬프트는 요청 / 내용 / 형식 3줄로 쓰고, 바꿔 넣을 자리는 [ ]로 표시했어요. 1주차 첫날 배운 4요소(역할·맥락·작업·형식)를 줄인 것이에요. 요청 = 작업, 내용 = 역할과 맥락, 형식 = 형식이에요.</div>
+</section>
+<section class="section" id="tt"><div class="section-label">TIMETABLE</div><h2>타임테이블</h2>
+<div class="table-wrap"><table><tr><th>시간</th><th>구분</th><th>내용</th></tr><tr><td>09:00–09:20</td><td>오늘의 단어</td><td><a href="#words">오늘의 단어</a></td></tr><tr><td>09:20–10:20</td><td>SESSION 1</td><td><a href="#s1">구글 서비스 지도</a></td></tr><tr><td>10:20–12:00</td><td>SESSION 2</td><td><a href="#s2">같은 요청서로 AI 스튜디오에서 만들기</a></td></tr><tr><td>12:00–13:00</td><td>점심</td><td></td></tr><tr><td>13:00–15:00</td><td>SESSION 3</td><td><a href="#s3">데이터 정의표를 Firestore 구조로 바꿔 저장하기</a></td></tr><tr><td>15:00–16:30</td><td>SESSION 4</td><td><a href="#s4">배포하고 테스트 시나리오 다시 실행</a></td></tr><tr><td>16:30–17:40</td><td>SESSION 5</td><td><a href="#s5">PRD v2와 한 주 회고</a></td></tr><tr><td>17:40–18:00</td><td>정리</td><td><a href="#wrap">오늘 정리와 과제</a></td></tr></table></div>
+</section>
+<section class="section session" id="words">
+<div class="session-head"><div class="eyebrow">단어 · 09:00–09:20</div><h2>오늘의 단어</h2><p>오늘 처음 나오는 말을 먼저 짧게 짚고 시작해요. 수업 중에 다시 나오면 이 표로 돌아와요.</p></div>
+<div class="table-wrap"><table><tr><th>단어</th><th>뜻</th></tr><tr><td><b>구글 AI 스튜디오</b></td><td>구글의 AI 모델로 앱을 만들어 보는 웹 도구</td></tr><tr><td><b>Firebase</b></td><td>구글의 &#x27;앱 뒷단&#x27; 서비스 묶음(데이터베이스·호스팅·로그인 등)</td></tr><tr><td><b>Firestore</b></td><td>Firebase 안의 데이터베이스</td></tr><tr><td><b>컬렉션</b></td><td>같은 종류의 문서를 모은 폴더</td></tr><tr><td><b>문서</b></td><td>데이터 한 건. 신청서 한 장</td></tr><tr><td><b>필드</b></td><td>문서 안의 칸(이름·연락처 등)</td></tr><tr><td><b>보안 규칙</b></td><td>누가 데이터를 읽고 쓸 수 있는지 정하는 규칙</td></tr></table></div></section><section class="section session" id="s1">
+<div class="session-head"><div class="eyebrow">SESSION 1 · 09:20–10:20</div><h2>구글 서비스 지도</h2>
+<div class="why-box"><b>왜 쓰나?</b>AI 스튜디오로 만들고, Firebase에 저장·배포하고, GA로 분석하고, 앱스스크립트로 자동화하고, 안티그래비티로 내 컴퓨터에서 작업해요.</div></div>
+<div class="topic" id="s1-1"><h3><span class="stage">개념</span>1-1. 개념</h3><p>AI 스튜디오로 만들고, Firebase에 저장·배포하고, GA로 분석하고, 앱스스크립트로 자동화하고, 안티그래비티로 내 컴퓨터에서 작업해요. 같은 구글 계정으로 이어지는 이 지도를 이벤트 페이지의 어느 부분에 쓰는지로 정리하면 앞으로 이어질 수업의 길이 보여요.</p></div><div class="topic" id="s1-2"><h3><span class="stage">예시</span>1-2. 채워진 예시</h3><p>이벤트 페이지 기준으로 정리한 예시예요.</p><div class="table-wrap"><table class=""><tr><th>서비스</th><th>하는 일</th><th>이벤트 페이지에서 쓰는 곳</th></tr><tr><td>구글 AI 스튜디오</td><td>말로 화면·앱 만들기, Firestore 연결, 배포</td><td>신청 페이지 만들기·저장·배포(오늘)</td></tr><tr><td>Firebase</td><td>데이터 저장·호스팅·로그인</td><td>신청 데이터 확인(오늘)</td></tr><tr><td>GA</td><td>방문·행동 측정</td><td>방문 대비 신청 완료율(가설 판정)</td></tr><tr><td>앱스스크립트</td><td>구글 문서·시트·메일 자동화</td><td>신청자에게 안내 메일</td></tr><tr><td>안티그래비티</td><td>내 컴퓨터에서 AI와 코딩</td><td>파일이 많아졌을 때 수정</td></tr></table></div></div><div class="topic" id="s1-3"><h3><span class="stage">실습 템플릿</span>1-3. 실습 템플릿</h3><p>예시를 보고 빈칸을 내 내용으로 채워요. 손으로 다 채우지 못해도 괜찮아요. 다음 단계에서 AI로 채우는 방법을 연습해요.</p><div class="table-wrap"><table class="tpl"><tr><th>서비스</th><th>하는 일</th><th>이벤트 페이지에서 쓰는 곳</th></tr><tr><td>구글 AI 스튜디오</td><td></td><td></td></tr><tr><td>Firebase</td><td></td><td></td></tr><tr><td>GA</td><td></td><td></td></tr><tr><td>앱스스크립트</td><td></td><td></td></tr><tr><td>안티그래비티</td><td></td><td></td></tr></table></div><div class="copybox"><div class="copyhead"><span>템플릿 · 복사해서 내 문서에 붙여 넣으세요</span><button type="button">복사</button></div><pre>서비스 | 하는 일 | 이벤트 페이지에서 쓰는 곳
+구글 AI 스튜디오 |  | 
+Firebase |  | 
+GA |  | 
+앱스스크립트 |  | 
+안티그래비티 |  | </pre></div></div><div class="topic" id="s1-4"><h3><span class="stage">프롬프트로 시작하기</span>1-4. 프롬프트로 시작하기</h3><p>템플릿을 손으로 채우는 대신 AI에게 초안을 받아요. [ ] 안은 이커머스 셀렉트마켓 예시 값이에요. 내 내용으로 바꿔 써요.</p><div class="copybox"><div class="copyhead"><span>프롬프트 1 · 복사해서 클로드에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 구글 서비스 5개를 기획자 관점에서 한 장으로 정리해 줘
+내용: 서비스: [구글 AI 스튜디오, Firebase, GA, 앱스스크립트, 안티그래비티] / 내 서비스: [이커머스 셀렉트마켓 연말 이벤트 사전 신청 페이지]
+형식: 표(하는 일 / 이벤트 페이지에서 쓰는 곳 / 무료로 되는 범위 [확인 필요] 허용)</pre></div><figure class="shot"><a href="images/d5-s1-start.png" target="_blank" rel="noopener"><img alt="실행 결과 · 위 프롬프트를 예시 값 그대로 클로드에서 실행한 결과예요(2026.11.01 실행)." loading="lazy" src="images/d5-s1-start.png"/></a><figcaption>실행 결과 · 위 프롬프트를 예시 값 그대로 클로드에서 실행한 결과예요(2026.11.01 실행). 이미지를 누르면 크게 보여요.</figcaption></figure></div><div class="topic" id="s1-5"><h3><span class="stage">점검·피드백</span>1-5. 점검·피드백</h3><p>AI가 만든 초안이나 내가 채운 템플릿을 그대로 쓰지 않고, 기준을 주고 점검받아요. 칭찬 말고 고칠 점을 받는 게 목적이에요.</p><div class="copybox"><div class="copyhead"><span>프롬프트 2 · 점검·피드백</span><button type="button">복사</button></div><pre>요청: 내 지도에서 역할이 겹치거나 헷갈린 곳을 찾아 줘
+내용: 내 표: [위 5줄]
+형식: 표(서비스 / 맞음·헷갈림 / 바로잡은 설명)</pre></div></div><div class="topic" id="s1-6"><h3><span class="stage">실패 케이스</span>1-6. 실패 케이스 만들어 보기</h3><p>일부러 틀리게 해 보고, 결과가 어떻게 달라지는지 확인해요.</p><div class="table-wrap"><table><tr><th>만들어 볼 실패</th><th>이렇게 해 봐요</th><th>무엇이 보이고, 어떻게 풀까</th></tr><tr><td><b>Firebase를 하나로 보기</b></td><td>&#x27;Firebase = 데이터베이스&#x27;라고만 적고 점검받아 봐요.</td><td>Firebase는 여러 서비스 묶음이고 데이터베이스는 그중 Firestore라고 나와요.</td></tr><tr><td><b>무료 범위 단정하기</b></td><td>무료 칸에 숫자를 확인 없이 적어 봐요.</td><td>점검에서 출처가 없다고 나와요. 공식 요금 페이지 확인 전에는 [확인 필요]로 둬요.</td></tr></table></div></div><div class="topic" id="s1-7"><h3><span class="stage">결과 만들기</span>1-7. 결과 만들기</h3><div class="result-box"><b>결과물</b> 구글 서비스 지도 1장</div><p class="ok-line"><b>이렇게 보이면 성공</b>5줄 모두 &#x27;이벤트 페이지에서 쓰는 곳&#x27;이 채워졌다</p><div class="ref-box" role="note" aria-label="참고 결과물"><b>참고 · 강사가 이 실습을 예시 값으로 해 본 결과물</b><p>링크가 있으면 누구나 볼 수 있어요(보기 전용, 편집 불가). AI가 만든 결과 그대로라 내 결과와 다를 수 있어요. 내 것을 먼저 만든 다음 비교해요.</p><ul><li><span class="ref-kind">구글 문서</span> <a href="https://docs.google.com/document/d/1ciMFZEEwU8zqyuFaankn-L1n32xTnnk4uv8Vrf4G89c/view" target="_blank" rel="noopener">구글 서비스 5종 정리</a></li></ul></div></div></section><section class="section session" id="s2">
+<div class="session-head"><div class="eyebrow">SESSION 2 · 10:20–12:00</div><h2>같은 요청서로 AI 스튜디오에서 만들기</h2>
+<div class="why-box"><b>왜 쓰나?</b>요구사항은 그대로 두고 도구만 바꿔요.</div></div>
+<div class="topic" id="s2-1"><h3><span class="stage">개념</span>2-1. 개념</h3><p>요구사항은 그대로 두고 도구만 바꿔요. 어제 볼트 요청서를 그대로 넣으면 도구의 성격 차이만 보여요. 결과를 도구 비교 결과표에 적어 &#x27;같은 요청, 다른 결과&#x27;를 기록해요.</p><div class="entry-box"><b>들어가는 길 · 구글 AI 스튜디오</b><p><a href="https://aistudio.google.com/apps" target="_blank" rel="noopener">https://aistudio.google.com/apps</a></p><p>왼쪽 Build의 &#x27;New app&#x27; 화면 가운데 입력창에 요청서를 넣고 보내요. 만든 앱은 왼쪽 &#x27;My apps&#x27;에 남아요.</p><figure class="shot"><a href="images/entry-aistudio.png" target="_blank" rel="noopener"><img alt="AI 스튜디오 Build 첫 화면(계정 정보는 가렸어요)" loading="lazy" src="images/entry-aistudio.png"/></a><figcaption>AI 스튜디오 Build 첫 화면(계정 정보는 가렸어요)</figcaption></figure></div></div><div class="topic" id="s2-2"><h3><span class="stage">예시</span>2-2. 채워진 예시</h3><p>같은 요청서를 세 도구에 넣은 결과 비교 예시예요.</p><div class="table-wrap"><table class=""><tr><th>기준</th><th>클로드 아티팩트</th><th>볼트</th><th>AI 스튜디오</th></tr><tr><td>요청서 항목이 다 들어갔나</td><td>예</td><td>예</td><td>확인</td></tr><tr><td>예외 문구가 들어갔나</td><td>요청 후 추가</td><td>예</td><td>확인</td></tr><tr><td>저장까지 됐나</td><td>아니오</td><td>예(내장 DB)</td><td>다음 세션</td></tr><tr><td>배포까지 됐나</td><td>파일로 꺼내 배포</td><td>예</td><td>다음 세션</td></tr><tr><td>다시 쓸 때</td><td>시안·문구 다듬기</td><td>빠른 배포 시안</td><td>구글 서비스와 연결</td></tr></table></div></div><div class="topic" id="s2-3"><h3><span class="stage">실습 템플릿</span>2-3. 실습 템플릿</h3><p>예시를 보고 빈칸을 내 내용으로 채워요. 손으로 다 채우지 못해도 괜찮아요. 다음 단계에서 AI로 채우는 방법을 연습해요.</p><div class="table-wrap"><table class="tpl"><tr><th>기준</th><th>클로드 아티팩트</th><th>볼트</th><th>AI 스튜디오</th></tr><tr><td>요청서 항목이 다 들어갔나</td><td></td><td></td><td></td></tr><tr><td>예외 문구가 들어갔나</td><td></td><td></td><td></td></tr><tr><td>저장까지 됐나</td><td></td><td></td><td></td></tr><tr><td>배포까지 됐나</td><td></td><td></td><td></td></tr><tr><td>다시 쓸 때</td><td></td><td></td><td></td></tr></table></div><div class="copybox"><div class="copyhead"><span>템플릿 · 복사해서 내 문서에 붙여 넣으세요</span><button type="button">복사</button></div><pre>기준 | 클로드 아티팩트 | 볼트 | AI 스튜디오
+요청서 항목이 다 들어갔나 |  |  | 
+예외 문구가 들어갔나 |  |  | 
+저장까지 됐나 |  |  | 
+배포까지 됐나 |  |  | 
+다시 쓸 때 |  |  | </pre></div></div><div class="topic" id="s2-4"><h3><span class="stage">프롬프트로 시작하기</span>2-4. 프롬프트로 시작하기</h3><p>템플릿을 손으로 채우는 대신 AI에게 초안을 받아요. [ ] 안은 이커머스 셀렉트마켓 예시 값이에요. 내 내용으로 바꿔 써요.</p><div class="copybox"><div class="copyhead"><span>프롬프트 3 · 복사해서 클로드에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 이커머스 셀렉트마켓 연말 이벤트 사전 신청 페이지를 만들어 줘
+내용: 요청서: [어제 볼트 요청서 그대로 — 만들 것: 소개·혜택 3가지·신청 폼·완료 안내 / 만들지 않을 것: 로그인·결제·관리자 화면 / 예외: 연락처 형식, 동의, 중복 신청, 12월 15일 마감] / 저장: [아직 연결하지 말 것]
+형식: 한 페이지, 휴대폰에서도 보이게</pre></div><figure class="shot"><a href="images/d5-s2-start.png" target="_blank" rel="noopener"><img alt="실행 결과 · 구글 AI 스튜디오의 Build 화면에 그대로 넣어 실행한 결과예요(2026.11.02 실행). 왼쪽 요약에 &#x27;브라우저 로컬 스토리지로 동작&#x27;이 보여요. &#x27;저장은 아직 연결하지 말 것&#x27;이라고 썼는데도 저장을 붙였고, 요청서에 없던 숫자(100대 브랜드, 30% 쿠폰팩, 행사 오픈 날짜)도 지어 넣었어요. 비교 결과표의 &#x27;요청서 항목이 다 들어갔나&#x27;뿐 아니라 &#x27;요청하지 않은 것이 들어갔나&#x27;도 함께 봐요." loading="lazy" src="images/d5-s2-start.png"/></a><figcaption>실행 결과 · 구글 AI 스튜디오의 Build 화면에 그대로 넣어 실행한 결과예요(2026.11.02 실행). 왼쪽 요약에 &#x27;브라우저 로컬 스토리지로 동작&#x27;이 보여요. &#x27;저장은 아직 연결하지 말 것&#x27;이라고 썼는데도 저장을 붙였고, 요청서에 없던 숫자(100대 브랜드, 30% 쿠폰팩, 행사 오픈 날짜)도 지어 넣었어요. 비교 결과표의 &#x27;요청서 항목이 다 들어갔나&#x27;뿐 아니라 &#x27;요청하지 않은 것이 들어갔나&#x27;도 함께 봐요. 이미지를 누르면 크게 보여요.</figcaption></figure></div><div class="topic" id="s2-5"><h3><span class="stage">점검·피드백</span>2-5. 점검·피드백</h3><p>AI가 만든 초안이나 내가 채운 템플릿을 그대로 쓰지 않고, 기준을 주고 점검받아요. 칭찬 말고 고칠 점을 받는 게 목적이에요.</p><div class="copybox"><div class="copyhead"><span>프롬프트 4 · 점검·피드백</span><button type="button">복사</button></div><pre>요청: 세 도구 결과를 내 비교 결과표로 정리해 줘
+내용: 관찰: [클로드는 예외 문구를 추가 요청해야 했다 / 볼트는 저장·배포까지 됐다 / AI 스튜디오는 ○○했다]
+형식: 표(기준 5개 × 도구 3개) + &#x27;이럴 때 이 도구&#x27; 한 줄씩. 내가 관찰하지 않은 칸은 [확인 필요]</pre></div></div><div class="topic" id="s2-6"><h3><span class="stage">실패 케이스</span>2-6. 실패 케이스 만들어 보기</h3><p>일부러 틀리게 해 보고, 결과가 어떻게 달라지는지 확인해요.</p><div class="table-wrap"><table><tr><th>만들어 볼 실패</th><th>이렇게 해 봐요</th><th>무엇이 보이고, 어떻게 풀까</th></tr><tr><td><b>요청서를 바꿔서 넣기</b></td><td>AI 스튜디오에만 &#x27;더 화려하게&#x27;를 덧붙여 봐요.</td><td>도구 차이인지 요청 차이인지 알 수 없어요. 요청서는 그대로 두고 비교해요.</td></tr><tr><td><b>저장까지 한 번에</b></td><td>&#x27;Firestore에 저장까지 해 줘&#x27;를 첫 요청에 넣어 봐요.</td><td>설정이 필요한 단계에서 막히거나 알 수 없는 설정이 생겨요. 화면 먼저, 저장은 다음 세션에서 나눠요.</td></tr></table></div></div><div class="topic" id="s2-7"><h3><span class="stage">결과 만들기</span>2-7. 결과 만들기</h3><div class="result-box"><b>결과물</b> AI 스튜디오 페이지 + 도구 비교 결과표</div><p class="ok-line"><b>이렇게 보이면 성공</b>세 도구의 &#x27;다시 쓸 때&#x27; 칸이 서로 다르다</p><div class="ref-box" role="note" aria-label="참고 결과물"><b>참고 · 강사가 이 실습을 예시 값으로 해 본 결과물</b><p>링크가 있으면 누구나 볼 수 있어요(보기 전용, 편집 불가). 구글 계정 로그인이 필요할 수 있어요. 미리보기 신청 폼에는 실제 이름·연락처 대신 가상의 정보만 넣어요.</p><ul><li><span class="ref-kind">구글 AI 스튜디오 앱</span> <a href="https://aistudio.google.com/apps/8bb8714a-7140-434e-a979-41be91ced15d" target="_blank" rel="noopener">AI 스튜디오로 만든 사전 신청 페이지</a></li></ul></div></div></section><section class="section session" id="s3">
+<div class="session-head"><div class="eyebrow">SESSION 3 · 13:00–15:00</div><h2>데이터 정의표를 Firestore 구조로 바꿔 저장하기</h2>
+<div class="why-box"><b>왜 쓰나?</b>Firestore는 컬렉션(폴더) 안에 문서(신청서 한 장)가 쌓이고, 문서 안에 필드(칸)가 있어요.</div></div>
+<div class="topic" id="s3-1"><h3><span class="stage">개념</span>3-1. 개념</h3><p>Firestore는 컬렉션(폴더) 안에 문서(신청서 한 장)가 쌓이고, 문서 안에 필드(칸)가 있어요. 수요일 데이터 정의표를 이 구조로 바꿔서 요청하면 AI가 정확히 만들어요. 구글 AI 스튜디오의 Build 모드는 Firestore를 직접 준비하고 그걸 쓰는 코드까지 써 줘요(구글 공식 문서). 그래서 필수 실습은 AI 스튜디오에 프롬프트로 요청하는 것이고, Firebase 콘솔에서 손으로 설정하는 방법은 (선택)으로 봐요. 어느 쪽이든 저장이 됐는지는 Firebase 콘솔의 Firestore 화면에서 내 눈으로 확인해요.</p><div class="entry-box"><b>들어가는 길 · Firebase 콘솔</b><p><a href="https://console.firebase.google.com" target="_blank" rel="noopener">https://console.firebase.google.com</a></p><p>AI 스튜디오가 Firestore를 연결하면 Firebase 프로젝트가 생겨요. 콘솔 첫 화면 오른쪽 프로젝트 목록에서 그 프로젝트를 찾아 들어가 Firestore Database → 데이터에서 신청을 확인해요. 직접 만들 때는 왼쪽 &#x27;새 Firebase 프로젝트 만들기&#x27;.</p><figure class="shot"><a href="images/entry-firebase-console.png" target="_blank" rel="noopener"><img alt="Firebase 콘솔 첫 화면(내 프로젝트 목록은 가렸어요)" loading="lazy" src="images/entry-firebase-console.png"/></a><figcaption>Firebase 콘솔 첫 화면(내 프로젝트 목록은 가렸어요)</figcaption></figure></div></div><div class="topic" id="s3-2"><h3><span class="stage">예시</span>3-2. 채워진 예시</h3><p>데이터 정의표를 Firestore 구조로 바꾼 예시예요.</p><div class="table-wrap"><table class=""><tr><th>데이터 정의표</th><th>Firestore</th><th>예시 값</th></tr><tr><td>신청 내역</td><td>컬렉션: applications</td><td>—</td></tr><tr><td>신청 1건</td><td>문서(자동 ID)</td><td>—</td></tr><tr><td>이름</td><td>필드 name (문자)</td><td>박지은</td></tr><tr><td>연락처</td><td>필드 phone (문자)</td><td>010-0000-0000</td></tr><tr><td>관심 선물 카테고리</td><td>필드 category (문자)</td><td>뷰티</td></tr><tr><td>개인정보 동의</td><td>필드 agreed (참·거짓)</td><td>true</td></tr><tr><td>신청 시각</td><td>필드 createdAt (시각)</td><td>2026-11-06 14:03</td></tr></table></div></div><div class="topic" id="s3-3"><h3><span class="stage">실습 템플릿</span>3-3. 실습 템플릿</h3><p>예시를 보고 빈칸을 내 내용으로 채워요. 손으로 다 채우지 못해도 괜찮아요. 다음 단계에서 AI로 채우는 방법을 연습해요.</p><div class="table-wrap"><table class="tpl"><tr><th>데이터 정의표</th><th>Firestore</th><th>예시 값</th></tr><tr><td></td><td>컬렉션:</td><td></td></tr><tr><td></td><td>문서</td><td></td></tr><tr><td></td><td>필드</td><td></td></tr><tr><td></td><td>필드</td><td></td></tr><tr><td></td><td>필드</td><td></td></tr><tr><td></td><td>필드</td><td></td></tr></table></div><div class="copybox"><div class="copyhead"><span>템플릿 · 복사해서 내 문서에 붙여 넣으세요</span><button type="button">복사</button></div><pre>데이터 정의표 | Firestore | 예시 값
+ | 컬렉션: | 
+ | 문서 | 
+ | 필드 | 
+ | 필드 | 
+ | 필드 | 
+ | 필드 | </pre></div></div><div class="topic" id="s3-4"><h3><span class="stage">프롬프트로 시작하기</span>3-4. 프롬프트로 시작하기</h3><p>템플릿을 손으로 채우는 대신 AI에게 초안을 받아요. [ ] 안은 이커머스 셀렉트마켓 예시 값이에요. 내 내용으로 바꿔 써요.</p><p class="ok-line"><b>필수</b>오전에 만든 AI 스튜디오 앱의 대화창(Make changes…)에 붙여 넣어요.</p><div class="copybox"><div class="copyhead"><span>프롬프트 5 · 복사해서 AI 스튜디오에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 이 앱에 Firestore를 연결해서 신청이 저장되게 해 줘. 지금 있는 브라우저 저장(로컬 스토리지)은 빼 줘. 다른 부분은 그대로 둬
+내용: 구조: [컬렉션 applications / 필드 name(문자)·phone(문자)·category(문자)·agreed(참·거짓)·createdAt(시각)] / 중복 신청 정책: [같은 연락처면 저장하지 않고 &#x27;이미 신청하셨어요&#x27;] / 보안: [아무나 읽기는 막고, 신청 추가만 허용]
+형식: 바꾼 부분 요약 3줄. 내가 직접 확인하거나 승인해야 하는 단계가 있으면 진행 전에 먼저 알려 줘</pre></div><figure class="shot"><a href="images/d5-s3-start.png" target="_blank" rel="noopener"><img alt="실행 결과 · AI 스튜디오 앱 대화창에서 실행한 결과예요(2026.11.02 실행). 왼쪽: 바로 진행하지 않고 &#x27;Enable Firebase Firestore&#x27; 승인 카드를 먼저 띄웠어요. 이 버튼을 누르면 Firebase 이용 약관에 동의하고 내 구글 계정에 Firebase 프로젝트가 만들어져요. 오른쪽: 승인 후 컬렉션·필드 연결, 읽기 차단·추가만 허용 규칙, 중복 신청 막기를 적용했다는 요약이에요." loading="lazy" src="images/d5-s3-start.png"/></a><figcaption>실행 결과 · AI 스튜디오 앱 대화창에서 실행한 결과예요(2026.11.02 실행). 왼쪽: 바로 진행하지 않고 &#x27;Enable Firebase Firestore&#x27; 승인 카드를 먼저 띄웠어요. 이 버튼을 누르면 Firebase 이용 약관에 동의하고 내 구글 계정에 Firebase 프로젝트가 만들어져요. 오른쪽: 승인 후 컬렉션·필드 연결, 읽기 차단·추가만 허용 규칙, 중복 신청 막기를 적용했다는 요약이에요. 이미지를 누르면 크게 보여요.</figcaption></figure><details class="optional"><summary><span class="summary-title">(선택) Firebase 콘솔에서 직접 설정하는 방법</span><span class="summary-hint">필요할 때 펼쳐 보세요</span></summary><p>AI 스튜디오가 아닌 다른 도구(클로드, 볼트 등)로 만든 페이지에 Firestore를 붙이거나, 설정이 어떻게 생겼는지 직접 보고 싶을 때 써요. AI가 대신 할 일(코드 연결)과 내가 콘솔에서 할 일을 나눠 달라고 요청해요.</p><ol><li>Firebase 콘솔(console.firebase.google.com)에서 프로젝트를 만들어요.</li><li>프로젝트 설정에서 웹 앱(&lt;/&gt; 모양)을 추가하고, 나오는 설정 코드(firebaseConfig)를 AI에게 넘겨요.</li><li>Firestore Database를 만들어요. 위치는 한 번 정하면 바꿀 수 없으니 안내를 읽고 골라요(Firebase 공식 문서).</li><li>규칙(Rules) 탭에 AI가 써 준 규칙을 붙여 넣고 게시해요. &#x27;아무나 다 쓰기&#x27;로 열어 두지 않아요.</li><li>페이지에서 신청하고 Data 탭에서 applications 컬렉션과 문서를 확인해요.</li></ol><div class="copybox"><div class="copyhead"><span>(선택) 프롬프트 · 복사해서 클로드에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 신청하면 Firestore에 저장되게 하려고 해. 내 데이터 정의표를 컬렉션·문서·필드 구조로 바꾸고, Firebase 설정이 필요한 단계에서는 멈추고 내가 할 일을 알려 줘
+내용: 데이터 정의표: [입력: 이름·연락처·관심 선물 카테고리·개인정보 동의 / 저장: 신청 내역 + 신청 시각] / 중복 신청 정책: [같은 연락처면 저장하지 않고 &#x27;이미 신청하셨어요&#x27;]
+형식: 표(데이터 / 컬렉션·필드 이름 / 형식) + 단계 목록(내가 할 일 · AI가 할 일 구분)</pre></div><figure class="shot"><a href="images/d5-s3-manual.png" target="_blank" rel="noopener"><img alt="실행 결과 · 클로드에서 실행한 결과예요. 구조표와 함께 &#x27;내가 할 일&#x27;과 &#x27;AI가 할 일&#x27;을 나눠 알려 줘요." loading="lazy" src="images/d5-s3-manual.png"/></a><figcaption>실행 결과 · 클로드에서 실행한 결과예요. 구조표와 함께 &#x27;내가 할 일&#x27;과 &#x27;AI가 할 일&#x27;을 나눠 알려 줘요. 이미지를 누르면 크게 보여요.</figcaption></figure></details></div><div class="topic" id="s3-5"><h3><span class="stage">점검·피드백</span>3-5. 점검·피드백</h3><p>AI가 만든 초안이나 내가 채운 템플릿을 그대로 쓰지 않고, 기준을 주고 점검받아요. 칭찬 말고 고칠 점을 받는 게 목적이에요.</p><div class="copybox"><div class="copyhead"><span>프롬프트 6 · 점검·피드백</span><button type="button">복사</button></div><pre>요청: Firebase 저장이 안 될 때 읽는 법을 연습하고 싶어. 아래 오류가 무슨 뜻인지, 내가 콘솔에서 확인할 것을 알려 줘
+내용: 오류: [FirebaseError: Missing or insufficient permissions.]
+형식: 원인 후보 + 콘솔에서 확인할 순서. 규칙을 모두 열어 두는 방법을 답으로 주지는 마</pre></div><figure class="shot"><a href="images/d5-s3-check.png" target="_blank" rel="noopener"><img alt="실행 결과 · 점검 프롬프트를 실행한 화면이에요." loading="lazy" src="images/d5-s3-check.png"/></a><figcaption>실행 결과 · 점검 프롬프트를 실행한 화면이에요. 이미지를 누르면 크게 보여요.</figcaption></figure></div><div class="topic" id="s3-6"><h3><span class="stage">실패 케이스</span>3-6. 실패 케이스 만들어 보기</h3><p>일부러 틀리게 해 보고, 결과가 어떻게 달라지는지 확인해요.</p><div class="table-wrap"><table><tr><th>만들어 볼 실패</th><th>이렇게 해 봐요</th><th>무엇이 보이고, 어떻게 풀까</th></tr><tr><td><b>구조 없이 &#x27;저장해 줘&#x27;만 하기</b></td><td>컬렉션·필드 이름 없이 &#x27;신청 저장되게 해 줘&#x27;만 보내 봐요.</td><td>AI가 이름을 마음대로 정해서 데이터 정의표와 달라져요. 구조를 같이 줘요.</td></tr><tr><td><b>보안 규칙 막힘</b></td><td>저장이 안 될 때 규칙을 &#x27;아무나 다 쓰기&#x27;로 바꿔 달라고 해 봐요.</td><td>저장은 되지만 누구나 데이터를 읽고 지울 수 있게 돼요. 오류 문장을 그대로 붙여 원인을 묻고, 신청 추가만 허용하는 규칙으로 고쳐요.</td></tr><tr><td><b>콘솔에서 확인 안 하기</b></td><td>화면에 &#x27;완료&#x27;가 떴다고 끝내 봐요.</td><td>Firestore 화면에 문서가 없을 수 있어요. 콘솔에서 컬렉션과 문서를 직접 열어요.</td></tr></table></div></div><div class="topic" id="s3-7"><h3><span class="stage">결과 만들기</span>3-7. 결과 만들기</h3><div class="result-box"><b>결과물</b> Firestore가 연결된 AI 스튜디오 앱 + 콘솔에 보이는 내 신청 문서 1개</div><p class="ok-line"><b>이렇게 보이면 성공</b>콘솔 applications 컬렉션에 문서가 보이고 필드 이름이 구조표와 같다</p><div class="ref-box" role="note" aria-label="참고 결과물"><b>참고 · 강사가 이 실습을 예시 값으로 해 본 결과물</b><p>링크가 있으면 누구나 볼 수 있어요(보기 전용, 편집 불가). 앱은 구글 계정 로그인이 필요할 수 있어요. 신청 폼에는 가상의 정보만 넣어요.</p><ul><li><span class="ref-kind">구글 AI 스튜디오 앱</span> <a href="https://aistudio.google.com/apps/8bb8714a-7140-434e-a979-41be91ced15d" target="_blank" rel="noopener">Firestore를 연결한 같은 앱</a></li><li><span class="ref-kind">구글 문서</span> <a href="https://docs.google.com/document/d/1TjAJ5m2hK_slB9S4PnmEg9d8QvmsiuGNVnaQ3XCB8DQ/view" target="_blank" rel="noopener">(선택 방법) Firestore 데이터 구조</a></li><li><span class="ref-kind">구글 문서</span> <a href="https://docs.google.com/document/d/1iN4p_jboZL0ahMvspZ3H4-62KRglU2muy48233IKBzg/view" target="_blank" rel="noopener">(점검·피드백) 권한 오류 점검 가이드</a></li></ul></div></div></section><section class="section session" id="s4">
+<div class="session-head"><div class="eyebrow">SESSION 4 · 15:00–16:30</div><h2>배포하고 테스트 시나리오 다시 실행</h2>
+<div class="why-box"><b>왜 쓰나?</b>AI 스튜디오에서 만든 앱은 오른쪽 위 Publish 버튼으로 구글 클라우드(Cloud Run)에 배포해요.</div></div>
+<div class="topic" id="s4-1"><h3><span class="stage">개념</span>4-1. 개념</h3><p>AI 스튜디오에서 만든 앱은 오른쪽 위 Publish 버튼으로 구글 클라우드(Cloud Run)에 배포해요. 배포하면 구글 클라우드 요금이 생길 수 있고, 배포한 앱을 쓰는 모든 사람의 Gemini 호출에 내 API 키가 쓰여요(구글 공식 문서). 그래서 누르기 전에 AI에게 경로와 주의점을 먼저 설명받아요. Firebase 호스팅으로 올리는 방법은 (선택)으로 봐요. 오늘의 목표 장면은 배포 주소에서 휴대폰과 컴퓨터로 신청하고, 두 신청이 내 콘솔에 함께 쌓이는 것이에요. 수요일의 &#x27;내 브라우저에만 저장&#x27;을 넘어선 거예요. 어제 테스트 시나리오 표를 그대로 다시 실행해 볼트판과 비교해요.</p></div><div class="topic" id="s4-2"><h3><span class="stage">예시</span>4-2. 채워진 예시</h3><p>배포 주소에서 다시 실행한 테스트 시나리오 예시예요.</p><div class="table-wrap"><table class=""><tr><th>번호</th><th>행동</th><th>기대 결과</th><th>볼트판</th><th>AI 스튜디오판</th></tr><tr><td>1</td><td>휴대폰에서 모든 칸 입력 후 신청</td><td>완료, 콘솔에 문서 1개</td><td>O</td><td>O</td></tr><tr><td>2</td><td>연락처 형식 오류</td><td>안내, 저장 안 됨</td><td>O</td><td>O</td></tr><tr><td>3</td><td>동의 없이 신청</td><td>안내, 저장 안 됨</td><td>O</td><td>O</td></tr><tr><td>4</td><td>같은 연락처로 다시 신청</td><td>&#x27;이미 신청하셨어요&#x27;</td><td>X→수정 후 O</td><td>O</td></tr><tr><td>5</td><td>컴퓨터에서 신청</td><td>콘솔에 휴대폰 신청과 함께</td><td>O</td><td>O</td></tr></table></div></div><div class="topic" id="s4-3"><h3><span class="stage">실습 템플릿</span>4-3. 실습 템플릿</h3><p>예시를 보고 빈칸을 내 내용으로 채워요. 손으로 다 채우지 못해도 괜찮아요. 다음 단계에서 AI로 채우는 방법을 연습해요.</p><div class="table-wrap"><table class="tpl"><tr><th>번호</th><th>행동</th><th>기대 결과</th><th>볼트판</th><th>AI 스튜디오판</th></tr><tr><td>1</td><td></td><td></td><td></td><td></td></tr><tr><td>2</td><td></td><td></td><td></td><td></td></tr><tr><td>3</td><td></td><td></td><td></td><td></td></tr><tr><td>4</td><td></td><td></td><td></td><td></td></tr><tr><td>5</td><td></td><td></td><td></td><td></td></tr></table></div><div class="copybox"><div class="copyhead"><span>템플릿 · 복사해서 내 문서에 붙여 넣으세요</span><button type="button">복사</button></div><pre>번호 | 행동 | 기대 결과 | 볼트판 | AI 스튜디오판
+1 |  |  |  | 
+2 |  |  |  | 
+3 |  |  |  | 
+4 |  |  |  | 
+5 |  |  |  | </pre></div></div><div class="topic" id="s4-4"><h3><span class="stage">프롬프트로 시작하기</span>4-4. 프롬프트로 시작하기</h3><p>템플릿을 손으로 채우는 대신 AI에게 초안을 받아요. [ ] 안은 이커머스 셀렉트마켓 예시 값이에요. 내 내용으로 바꿔 써요.</p><p class="ok-line"><b>필수</b>배포 버튼을 누르기 전에 클로드에게 경로를 먼저 물어요.</p><div class="copybox"><div class="copyhead"><span>프롬프트 7 · 복사해서 클로드에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 이 페이지를 Firebase 호스팅으로 배포하려고 해. 내가 할 일과 확인할 것을 순서대로 알려 줘
+내용: 현재: [AI 스튜디오에서 만든 페이지, Firestore 저장 연결 완료] / 주의: [로컬에서 직접 배포하는 명령은 이번엔 쓰지 않고, 화면에서 할 수 있는 방법 우선]
+형식: 단계 목록, 단계마다 &#x27;이렇게 보이면 성공&#x27;. 버튼 이름이 확실하지 않으면 [확인 필요]</pre></div><figure class="shot"><a href="images/d5-s4-start.png" target="_blank" rel="noopener"><img alt="실행 결과 · AI가 &#x27;화면만으로 하는 정적 Firebase 호스팅 배포는 공식 경로를 확인하지 못했다&#x27;며 AI 스튜디오 배포(Cloud Run)와 깃헙 연결 두 경로를 제시했어요. 조건(화면만)을 주면 AI가 맞지 않는 방법을 걸러 줘요. 수업에서는 첫 번째 경로(AI 스튜디오 Publish)로 해요." loading="lazy" src="images/d5-s4-start.png"/></a><figcaption>실행 결과 · AI가 &#x27;화면만으로 하는 정적 Firebase 호스팅 배포는 공식 경로를 확인하지 못했다&#x27;며 AI 스튜디오 배포(Cloud Run)와 깃헙 연결 두 경로를 제시했어요. 조건(화면만)을 주면 AI가 맞지 않는 방법을 걸러 줘요. 수업에서는 첫 번째 경로(AI 스튜디오 Publish)로 해요. 이미지를 누르면 크게 보여요.</figcaption></figure><details class="optional"><summary><span class="summary-title">(선택) Firebase 호스팅·App Hosting으로 올리는 방법</span><span class="summary-hint">필요할 때 펼쳐 보세요</span></summary><p>Firebase 호스팅은 정적 사이트(HTML 파일)를 올리는 곳이고, App Hosting은 Next.js·Angular 같은 풀스택 앱을 깃헙과 연결해 커밋할 때마다 자동으로 배포하는 곳이에요(Firebase 공식 문서). 둘 다 화면 버튼 하나로 끝나지 않아서 터미널 명령이나 깃헙 연결이 필요해요. 요금제 조건은 설정 화면 안내를 그대로 따라요.</p><ol><li>AI 스튜디오 Settings의 GitHub 탭에서 저장소를 만들거나 연결해 코드를 깃헙에 올려요(구글 공식 문서).</li><li>만든 앱이 어떤 종류(정적 HTML인지, Next.js·Angular인지)인지 AI에게 물어 호스팅과 App Hosting 중 하나를 골라요.</li><li>App Hosting이면 Firebase 콘솔에서 깃헙 저장소를 연결해요. 호스팅이면 터미널 명령으로 올려요(이후 수업에서 다뤄요).</li><li>배포 주소에서 테스트 시나리오를 다시 실행해요.</li></ol></details></div><div class="topic" id="s4-5"><h3><span class="stage">점검·피드백</span>4-5. 점검·피드백</h3><p>AI가 만든 초안이나 내가 채운 템플릿을 그대로 쓰지 않고, 기준을 주고 점검받아요. 칭찬 말고 고칠 점을 받는 게 목적이에요.</p><div class="copybox"><div class="copyhead"><span>프롬프트 8 · 점검·피드백</span><button type="button">복사</button></div><pre>요청: 두 버전의 테스트 결과를 비교해서 다음에 고칠 것 1개를 골라 줘
+내용: 결과: [볼트판 4번 X→수정 후 O / AI 스튜디오판 1~5 모두 O / 콘솔에 휴대폰·컴퓨터 신청 2건]
+형식: 표(번호 / 두 버전 차이 / 원인 추정) + 다음에 고칠 것 1개와 이유</pre></div></div><div class="topic" id="s4-6"><h3><span class="stage">실패 케이스</span>4-6. 실패 케이스 만들어 보기</h3><p>일부러 틀리게 해 보고, 결과가 어떻게 달라지는지 확인해요.</p><div class="table-wrap"><table><tr><th>만들어 볼 실패</th><th>이렇게 해 봐요</th><th>무엇이 보이고, 어떻게 풀까</th></tr><tr><td><b>시크릿 창만 확인</b></td><td>내 컴퓨터 시크릿 창에서만 신청해 봐요.</td><td>같은 기기라 &#x27;다른 기기 신청이 모이는지&#x27;를 확인하지 못해요. 휴대폰으로도 넣어요.</td></tr><tr><td><b>주의점 없이 배포</b></td><td>경로를 묻지 않고 Publish부터 눌러 봐요.</td><td>비용과 API 키 사용을 모른 채 공개돼요. 배포 전 AI에게 주의점을 먼저 물어요.</td></tr><tr><td><b>테스트 표 없이 배포 완료</b></td><td>주소가 열리는 것만 보고 끝내 봐요.</td><td>중복 신청 같은 예외가 맞는지 모른 채 넘어가요. 테스트 시나리오 5줄을 모두 실행해요.</td></tr></table></div></div><div class="topic" id="s4-7"><h3><span class="stage">결과 만들기</span>4-7. 결과 만들기</h3><div class="result-box"><b>결과물</b> 배포 주소 + 테스트 시나리오 두 버전 비교표</div><p class="ok-line"><b>이렇게 보이면 성공</b>콘솔에 휴대폰과 컴퓨터에서 넣은 신청 2건이 보인다</p></div></section><section class="section session" id="s5">
+<div class="session-head"><div class="eyebrow">SESSION 5 · 16:30–17:40</div><h2>PRD v2와 한 주 회고</h2>
+<div class="why-box"><b>왜 쓰나?</b>한 주 동안 같은 페이지가 문장 → 화면 → 배포 → 저장으로 자랐어요.</div></div>
+<div class="topic" id="s5-1"><h3><span class="stage">개념</span>5-1. 개념</h3><p>한 주 동안 같은 페이지가 문장 → 화면 → 배포 → 저장으로 자랐어요. 화요일 PRD v1의 &#x27;확인 필요&#x27; 칸은 이번 주 실습으로 많이 채워졌어요. 확인한 사실로 PRD를 v2로 갱신하고, 회고(계속할 것·문제였던 것·시도할 것)를 남기면 다음 주에 어디서부터 시작할지 분명해져요.</p></div><div class="topic" id="s5-2"><h3><span class="stage">예시</span>5-2. 채워진 예시</h3><p>PRD v1 → v2로 바뀐 칸과 회고 예시예요.</p><div class="table-wrap"><table class=""><tr><th>항목</th><th>v1</th><th>v2 (이번 주 확인한 사실)</th></tr><tr><td>IA</td><td>운영자: 신청 목록(확인 필요)</td><td>운영자: Firebase 콘솔에서 신청 확인</td></tr><tr><td>데이터 설계</td><td>—</td><td>applications 컬렉션, 필드 5개</td></tr><tr><td>배포</td><td>—</td><td>AI 스튜디오 배포 주소</td></tr><tr><td>확인 필요</td><td>알림 문자 발송 방법</td><td>알림 문자 발송 방법(그대로), 보안 규칙 운영 기준</td></tr><tr><td>회고</td><td>—</td><td>계속: 요청서 먼저 / 문제: 중복 신청 누락 / 시도: 테스트 표를 요청서에 붙이기</td></tr></table></div></div><div class="topic" id="s5-3"><h3><span class="stage">실습 템플릿</span>5-3. 실습 템플릿</h3><p>예시를 보고 빈칸을 내 내용으로 채워요. 손으로 다 채우지 못해도 괜찮아요. 다음 단계에서 AI로 채우는 방법을 연습해요.</p><div class="table-wrap"><table class="tpl"><tr><th>항목</th><th>v1</th><th>v2 (이번 주 확인한 사실)</th></tr><tr><td>IA</td><td></td><td></td></tr><tr><td>데이터 설계</td><td></td><td></td></tr><tr><td>배포</td><td></td><td></td></tr><tr><td>확인 필요</td><td></td><td></td></tr><tr><td>회고</td><td>—</td><td>계속: / 문제: / 시도:</td></tr></table></div><div class="copybox"><div class="copyhead"><span>템플릿 · 복사해서 내 문서에 붙여 넣으세요</span><button type="button">복사</button></div><pre>항목 | v1 | v2 (이번 주 확인한 사실)
+IA |  | 
+데이터 설계 |  | 
+배포 |  | 
+확인 필요 |  | 
+회고 | — | 계속: / 문제: / 시도:</pre></div></div><div class="topic" id="s5-4"><h3><span class="stage">프롬프트로 시작하기</span>5-4. 프롬프트로 시작하기</h3><p>템플릿을 손으로 채우는 대신 AI에게 초안을 받아요. [ ] 안은 이커머스 셀렉트마켓 예시 값이에요. 내 내용으로 바꿔 써요.</p><div class="copybox"><div class="copyhead"><span>프롬프트 9 · 복사해서 클로드에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 이번 주 결과로 내 PRD를 v2로 갱신해 줘. 내가 확인한 사실만 반영하고, 나머지는 v1 그대로 둬
+내용: PRD v1: [IA: 고객 이벤트 페이지(소개·혜택·신청 폼) → 신청 완료 / 운영자: 신청 목록(확인 필요) · 데이터 설계: 확인 필요 · 배포: 확인 필요 · 확인 필요: 신청 목록 보는 곳, 알림 문자 발송 방법] / 이번 주 확인한 사실: [저장: Firestore applications 컬렉션, 필드 name·phone·category·agreed·createdAt / 배포: AI 스튜디오 배포(Cloud Run) / 운영자 확인: Firebase 콘솔 / 중복 신청: 연락처 기준으로 막음]
+형식: 표(항목 / v1 / v2 / 바뀐 이유). 남은 &#x27;확인 필요&#x27;는 따로 목록</pre></div><figure class="shot"><a href="images/d5-s5-start.png" target="_blank" rel="noopener"><img alt="실행 결과 · 실행 결과예요. 캡처는 배포 칸을 &#x27;Firebase 호스팅&#x27;으로 넣어 실행한 화면이라 v2 표의 배포 칸이 그렇게 보여요. 내가 실제로 배포한 곳을 넣으면 돼요." loading="lazy" src="images/d5-s5-start.png"/></a><figcaption>실행 결과 · 실행 결과예요. 캡처는 배포 칸을 &#x27;Firebase 호스팅&#x27;으로 넣어 실행한 화면이라 v2 표의 배포 칸이 그렇게 보여요. 내가 실제로 배포한 곳을 넣으면 돼요. 이미지를 누르면 크게 보여요.</figcaption></figure></div><div class="topic" id="s5-5"><h3><span class="stage">점검·피드백</span>5-5. 점검·피드백</h3><p>AI가 만든 초안이나 내가 채운 템플릿을 그대로 쓰지 않고, 기준을 주고 점검받아요. 칭찬 말고 고칠 점을 받는 게 목적이에요.</p><div class="copybox"><div class="copyhead"><span>프롬프트 10 · 점검·피드백</span><button type="button">복사</button></div><pre>요청: 내 한 주 회고를 읽고 다음 주에 바로 할 행동 1개로 바꿔 줘. 칭찬은 빼고
+내용: 회고: [계속: 요청서를 먼저 쓴다 / 문제: 중복 신청을 테스트에서 늦게 발견 / 시도: 테스트 표를 요청서에 붙인다]
+형식: 행동 1개(언제·무엇을·어떻게 확인) + 그 행동이 회고의 어느 줄에서 나왔는지</pre></div></div><div class="topic" id="s5-6"><h3><span class="stage">실패 케이스</span>5-6. 실패 케이스 만들어 보기</h3><p>일부러 틀리게 해 보고, 결과가 어떻게 달라지는지 확인해요.</p><div class="table-wrap"><table><tr><th>만들어 볼 실패</th><th>이렇게 해 봐요</th><th>무엇이 보이고, 어떻게 풀까</th></tr><tr><td><b>AI가 PRD를 새로 쓰게 두기</b></td><td>&#x27;PRD 더 좋게 다시 써 줘&#x27;라고 해 봐요.</td><td>확인하지 않은 기능과 숫자가 들어가요. v1에서 바뀐 칸만 고치게 해요.</td></tr><tr><td><b>회고를 느낌으로 쓰기</b></td><td>&#x27;재밌었다, 어려웠다&#x27;로 써서 점검받아 봐요.</td><td>행동으로 바꿀 수 없다고 나와요. 무엇이 문제였는지 장면으로 적어요.</td></tr></table></div></div><div class="topic" id="s5-7"><h3><span class="stage">결과 만들기</span>5-7. 결과 만들기</h3><div class="result-box"><b>결과물</b> PRD v2 + 한 주 회고 3줄 + 다음 주 행동 1개</div><p class="ok-line"><b>이렇게 보이면 성공</b>PRD v2의 바뀐 칸마다 이번 주 실습 근거가 있다</p><div class="ref-box" role="note" aria-label="참고 결과물"><b>참고 · 강사가 이 실습을 예시 값으로 해 본 결과물</b><p>링크가 있으면 누구나 볼 수 있어요(보기 전용, 편집 불가). AI가 만든 결과 그대로예요. 배포 칸의 &#x27;Firebase 호스팅&#x27;은 캡처 설명처럼 실제 배포 방법에 맞게 고쳐서 봐요.</p><ul><li><span class="ref-kind">구글 문서</span> <a href="https://docs.google.com/document/d/19Fmc-g6lDBdm-0KpyC5luSF-h-lElhitxjNp7NC2A1E/view" target="_blank" rel="noopener">PRD v2</a></li></ul></div></div></section><section class="section session" id="wrap">
+<div class="session-head"><div class="eyebrow">정리 · 17:40–18:00</div><h2>오늘 정리와 과제</h2></div>
+<p><b>오늘의 규칙 3줄</b></p><ul class="checklist"><li>데이터 정의표를 컬렉션·문서·필드로 바꿔서 요청한다</li><li>AI가 할 일과 내가 콘솔에서 할 일을 나눈다</li><li>같은 테스트 시나리오로 버전을 비교한다</li></ul>
+<div class="notice"><b>오늘의 결과물</b><br/>구글 서비스 지도 + 도구 비교 결과표 + Firestore 구조표 + 배포 주소 + PRD v2</div>
+<div class="notice"><b>과제</b><br/>PRD v2와 배포 주소를 정리해 와요. 남은 &#x27;확인 필요&#x27; 하나를 골라 이유와 함께 적어요.</div></section>
+</main>
+</div>
+<button id="slideBtn" type="button">▶ 슬라이드로 보기</button>
+<div hidden="" id="deck">
+<div id="viewport"><div id="stage">
+<div id="master"><span>AI 프로덕트 매니저 2주차 · DAY 5 구글 AI 스튜디오·Firebase</span></div>
+<div id="mbar"><i id="prog"></i></div>
+<div id="slide"></div>
+<div id="pager"><button aria-label="이전" id="prev" type="button">◀</button><span id="pg"></span><button aria-label="다음" id="next" type="button">▶</button></div>
+</div></div>
+<div id="bar"><button id="exit" type="button">✕ 닫기 (Esc)</button></div>
+</div>
+<script type="text/javascript">
+(function(){
+  var K={'요청':'','내용':' k2','형식':' k3'};
+  window.fmtPre=function(pr){
+    var t=pr.textContent;
+    if(!/^요청: /.test(t))return;
+    var lines=t.split('\n');pr.textContent='';pr.className='fmt';
+    lines.forEach(function(l,i){
+      var m=l.match(/^(요청|내용|형식): (.*)$/),d=document.createElement('div');
+      if(m){d.className='pl'+K[m[1]];var b=document.createElement('b');b.className='pk';b.textContent=m[1]+': ';var sp=document.createElement('span');sp.className='pt';sp.textContent=m[2];d.appendChild(b);d.appendChild(sp);}
+      else{d.className='pl c';var sp2=document.createElement('span');sp2.className='pt';sp2.textContent=l;d.appendChild(sp2);}
+      pr.appendChild(d);if(i<lines.length-1)pr.appendChild(document.createTextNode('\n'));
+    });
+  };
+  document.querySelectorAll('.copybox pre').forEach(window.fmtPre);
+})();
+</script>
+<script type="text/javascript">
+(function(){
+  var re=/^(STEP|준비|규칙서대로|분석 [1-4]|프롬프트 [AB]|프롬프트 쓰기|실습|방법 [A-C]|워밍업|[①-⑤] |\(선택\)|완성한|결과를 보고|버전|두 결과)/;
+  var nav=document.querySelector('aside nav');
+  document.querySelectorAll('main .topic').forEach(function(t){
+    var parent=nav.querySelector('a.l3[href="#'+t.id+'"]'),last=parent,n=0;
+    if(!parent)return;
+    t.querySelectorAll(':scope > p').forEach(function(p){
+      var b=p.firstElementChild;
+      if(!b||b.tagName!=='B'||p.children.length!==1||p.textContent.trim()!==b.textContent.trim()||!re.test(b.textContent.trim()))return;
+      p.classList.add('dh');p.id='d-'+t.id+'-'+(++n);
+      var a=document.createElement('a');a.className='l4';a.href='#'+p.id;a.setAttribute('data-p',t.id);
+      a.textContent=b.textContent.replace(/[:：]\s*.*$/,'').trim();
+      last.parentNode.insertBefore(a,last.nextSibling);last=a;
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+var main=document.querySelector('main'),deck=document.getElementById('deck'),box=document.getElementById('slide'),pgEl=document.getElementById('pg'),prog=document.getElementById('prog'),pages=[],i=0;
+function kids(el,skip){return Array.prototype.filter.call(el.children,function(c){return !skip(c);});}
+function logical(){
+  var out=[],hero=main.querySelector('.hero');
+  if(hero)out.push({sect:'표지',title:'',n:Array.prototype.slice.call(hero.children)});
+  Array.prototype.forEach.call(main.querySelectorAll(':scope > .section'),function(sec){
+    var h2=sec.querySelector('h2'),title=h2.textContent,head=sec.querySelector('.session-head'),n=[];
+    if(head)n=Array.prototype.slice.call(head.querySelectorAll('p'));
+    n=n.concat(kids(sec,function(c){return c.classList.contains('section-label')||c.tagName==='H2'||c.classList.contains('session-head')||c.classList.contains('topic');}));
+    if(n.length)out.push({sect:title,title:title,n:n});
+    Array.prototype.forEach.call(sec.querySelectorAll(':scope > .topic'),function(t){
+      var h3=t.querySelector('h3');
+      out.push({sect:title,title:h3.textContent,n:kids(t,function(c){return c===h3;})});
+    });
+  });
+  return out;
+}
+function over(){return box.scrollHeight>box.clientHeight+1;}
+function build(){
+  pages=[];var L=logical(),count,sl;L.forEach(function(x){var out=[];x.n.forEach(function(el){if(el.tagName==="DETAILS"){var t=el.querySelector(".summary-title");var h=document.createElement("p");h.innerHTML="<b>"+(t?t.textContent:"")+"</b>";out.push(h);Array.prototype.forEach.call(el.children,function(c){if(c.tagName!=="SUMMARY")out.push(c);});}else out.push(el);});x.n=out;});
+  function head(cont){
+    box.innerHTML='';
+    if(sl.title&&sl.sect&&sl.sect!==sl.title){var eb=document.createElement('div');eb.className='eb';eb.textContent=sl.sect;box.appendChild(eb);}
+    if(sl.title){var h=document.createElement('h3');h.className='st';h.textContent=sl.title;
+      if(cont){var c=document.createElement('span');c.className='cont';c.textContent='(이어서)';h.appendChild(c);}
+      box.appendChild(h);}
+    count=0;
+  }
+  function flush(){pages.push({html:box.innerHTML,sect:sl.sect});}
+  function addSplit(items,shellFn){
+    var shell=shellFn(),n=0;box.appendChild(shell.root);
+    items.forEach(function(it){
+      shell.add(it);n++;
+      if(over()&&(n>1||count>0)){
+        shell.remove();n--;
+        if(n===0)box.removeChild(shell.root);
+        flush();head(true);shell=shellFn();n=0;box.appendChild(shell.root);shell.add(it);n=1;
+      }
+    });
+    count++;
+  }
+  L.forEach(function(s){
+    sl=s;head(false);
+    s.n.forEach(function(el){
+      var tbl=el.classList&&el.classList.contains('table-wrap')&&el.querySelector('table');
+      var rows=tbl?Array.prototype.slice.call(tbl.rows):null;
+      var hasHead=rows&&rows.length>3&&Array.prototype.every.call(rows[0].cells,function(c){return c.tagName==='TH';})
+        &&!rows.some(function(r){return Array.prototype.some.call(r.cells,function(c){return c.rowSpan>1;});});
+      var listy=(el.tagName==='UL'||el.tagName==='OL'||(el.classList&&(el.classList.contains('procedure')||el.classList.contains('resource-list'))))&&el.children.length>1;
+      if(el.classList&&el.classList.contains('dh')&&count>1&&box.scrollHeight>box.clientHeight*0.5){flush();head(false);}
+      var c=el.cloneNode(true);box.appendChild(c);
+      if(over()&&count>0){var pv=c.previousElementSibling,lead=count>1&&pv&&pv.tagName==='P'&&pv.children.length===1&&pv.firstElementChild.tagName==='B'&&pv.textContent.trim()===pv.firstElementChild.textContent.trim();
+        box.removeChild(c);if(lead)box.removeChild(pv);flush();head(true);if(lead){box.appendChild(pv);count++;}box.appendChild(c);}
+      if(over()){
+        if(hasHead){
+          box.removeChild(c);
+          addSplit(rows.slice(1),function(){
+            var w=el.cloneNode(false),t=tbl.cloneNode(false),b=document.createElement('tbody');
+            t.appendChild(b);b.appendChild(rows[0].cloneNode(true));w.appendChild(t);
+            return {root:w,add:function(r){b.appendChild(r.cloneNode(true));},remove:function(){b.removeChild(b.lastChild);}};
+          });
+          return;
+        }
+        if(el.classList&&el.classList.contains('copybox')){
+          box.removeChild(c);
+          var lines=el.querySelector('pre').textContent.split('\n');
+          addSplit(lines,function(){
+            var w=el.cloneNode(false),hd=el.querySelector('.copyhead').cloneNode(true),pr=document.createElement('pre'),txt=[];
+            w.appendChild(hd);w.appendChild(pr);
+            return {root:w,add:function(l){txt.push(l);pr.className='';pr.textContent=txt.join('\n');window.fmtPre(pr);},remove:function(){txt.pop();pr.className='';pr.textContent=txt.join('\n');window.fmtPre(pr);}};
+          });
+          return;
+        }
+        if(listy){
+          box.removeChild(c);
+          addSplit(Array.prototype.slice.call(el.children),function(){
+            var u=el.cloneNode(false);
+            return {root:u,add:function(li){u.appendChild(li.cloneNode(true));},remove:function(){u.removeChild(u.lastChild);}};
+          });
+          return;
+        }
+      }
+      count++;
+    });
+    flush();
+  });
+  var o='<h3 class="st">전체 목차</h3><div class="outline">';
+  Array.prototype.forEach.call(document.querySelectorAll('aside nav .grp'),function(g){
+    o+='<div class="og"><b>'+g.querySelector('.grp-label').textContent+(g.querySelector('.l2')&&g.querySelector('.grp-label').textContent.indexOf('세션')===0?' · '+g.querySelector('.l2').textContent:'')+'</b>';
+    var guide=g.querySelector('.grp-label').textContent==='교육 안내';
+    Array.prototype.forEach.call(g.querySelectorAll(guide?'a.l2,a.l3':'a.l3'),function(a){o+='<span>'+a.textContent+'</span>';});
+    o+='</div>';
+  });
+  pages.splice(1,0,{html:o+'</div>',sect:'목차'});
+}
+function show(n){
+  i=Math.max(0,Math.min(pages.length-1,n));var p=pages[i];
+  box.innerHTML=p.html;box.scrollTop=0;
+  pgEl.textContent=(i+1)+' / '+pages.length;prog.style.width=((i+1)/pages.length*100)+'%';
+}
+var stage=document.getElementById('stage'),vp=document.getElementById('viewport');
+function fit(){var k=Math.min(vp.clientWidth/1280,vp.clientHeight/720);stage.style.transform='translate(-50%,-50%) scale('+k+')';}
+function open(){deck.hidden=false;document.body.style.overflow='hidden';fit();var w=[].slice.call(main.querySelectorAll('img')).map(function(m){if(m.complete)return 0;m.loading='eager';return new Promise(function(r){m.onload=m.onerror=r;setTimeout(r,8000);});});Promise.all(w).then(function(){build();show(0);});}
+function close(){deck.hidden=true;document.body.style.overflow='';}
+window.addEventListener('resize',function(){if(!deck.hidden)fit();});
+document.getElementById('slideBtn').onclick=open;
+document.getElementById('exit').onclick=close;
+document.getElementById('prev').onclick=function(){show(i-1)};
+document.getElementById('next').onclick=function(){show(i+1)};
+document.addEventListener('keydown',function(e){
+  if(deck.hidden)return;
+  if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ')show(i+1);
+  else if(e.key==='ArrowLeft'||e.key==='PageUp')show(i-1);
+  else if(e.key==='Escape')close();
+});
+document.addEventListener('click',function(e){
+  var b=e.target.closest&&e.target.closest('.copyhead button');if(!b)return;
+  var pre=b.closest('.copybox').querySelector('pre');
+  var done=function(){var t=b.textContent;b.textContent='복사됨';setTimeout(function(){b.textContent=t;},1200);};
+  if(navigator.clipboard)navigator.clipboard.writeText(pre.classList.contains('fmt')?pre.textContent:pre.innerText).then(done,done);else done();
+});
+})();
+</script>
+<script type="text/javascript">
+(function(){
+  var links=[].slice.call(document.querySelectorAll('aside nav a[href^="#"]'));
+  var targets=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));});
+  function update(){
+    var y=window.scrollY+120, cur=-1;
+    targets.forEach(function(el,i){ if(el && el.getBoundingClientRect().top+window.scrollY<=y) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('active', i===cur); });
+    var cp=null;
+    if(cur>=0){ var ca=links[cur]; cp=ca.classList.contains('l4')?ca.getAttribute('data-p'):(ca.getAttribute('href').slice(1)); }
+    links.forEach(function(a){ if(a.classList.contains('l4')) a.classList.toggle('show', a.getAttribute('data-p')===cp); });
+    if(cur>=0){ var a=links[cur], box=a.closest('aside'), r=a.getBoundingClientRect();
+      if(r.top<120||r.bottom>window.innerHeight-20) box.scrollTop+=r.top-window.innerHeight/2; }
+  }
+  window.addEventListener('scroll',update,{passive:true}); update();
+})();
+</script>
+<script type="text/javascript">
+(function(){
+  var btn=document.querySelector('.nav-toggle'), label=btn.querySelector('span'), body=document.body;
+  var mq=window.matchMedia('(max-width: 1020px)');
+  function isOpen(){ return mq.matches ? body.classList.contains('nav-open') : !body.classList.contains('nav-hidden'); }
+  function sync(){ var o=isOpen(); btn.setAttribute('aria-expanded',o); label.textContent=o?'목차 숨기기':'목차 보기'; }
+  try{ if(localStorage.getItem('navHidden')==='1') body.classList.add('nav-hidden'); }catch(e){}
+  btn.addEventListener('click',function(){
+    if(mq.matches){ body.classList.toggle('nav-open'); }
+    else{ var h=body.classList.toggle('nav-hidden'); try{ localStorage.setItem('navHidden',h?'1':'0'); }catch(e){} }
+    sync();
+  });
+  document.querySelectorAll('aside nav a').forEach(function(a){ a.addEventListener('click',function(){ if(mq.matches){ body.classList.remove('nav-open'); sync(); } }); });
+  if(mq.addEventListener) mq.addEventListener('change',sync);
+  sync();
+})();
+</script>
+</body>
+</html>

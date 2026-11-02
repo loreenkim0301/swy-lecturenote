@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet"/>
+<meta content="index, follow, noai, noimageai" name="robots"/>
+<title>AI 프로덕트 매니저 2주차 · DAY 1 문제 정의·아티팩트</title>
+<style>:root { --ink: #172033; --muted: #657086; --line: #dfe4ed; --soft: #f5f7fb; --blue: #2457f5; --nav: #111a2e; --green: #16a36b; --warn: #ffad22; --page-pad: clamp(28px,5.8vw,82px); --font-sans: "Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; scroll-behavior: smooth; }
+* { box-sizing: border-box; }
+body { margin: 0px; background: rgb(238, 241, 246); color: var(--ink); font-family: var(--font-sans); line-height: 1.7; letter-spacing: -0.01em; }
+.app aside { position: fixed; inset: 0px auto 0px 0px; width: 310px; height: 100vh; padding: 0 16px 28px; background: var(--nav); color: rgb(255, 255, 255); overflow-y: auto; z-index: 10; }
+.app main { min-height: 100vh; margin-left: 310px; background: rgb(255, 255, 255); }
+.side-head { position: sticky; top: 0; z-index: 1; margin: 0 -16px; padding: 20px 26px 14px; background: var(--nav); border-bottom: 1px solid rgb(45, 56, 80); }
+.brand { font-size: 11px; font-weight: 800; letter-spacing: 0.14em; color: rgb(130, 145, 177); }
+aside h1 { margin: 6px 0 4px; font-size: 17px; line-height: 1.35; letter-spacing: -0.02em; }
+.side-sub, .side-foot { font-size: 12px; color: rgb(150, 162, 186); }
+aside nav { margin-top: 10px; }
+aside nav a { display: block; padding: 7px 10px 7px 22px; color: rgb(190, 200, 219); text-decoration: none; font-size: 14px; line-height: 1.45; border-left: 3px solid transparent; border-radius: 0 6px 6px 0; }
+aside nav a:hover { color: rgb(255, 255, 255); background: rgb(25, 36, 60); }
+aside nav .major { margin-top: 12px; padding-left: 10px; color: rgb(255, 255, 255); font-size: 15px; font-weight: 800; }
+aside nav a.active { color: rgb(255, 255, 255); background: rgb(30, 44, 74); border-left-color: var(--blue); font-weight: 700; }
+.side-foot { margin: 20px 10px 0; padding-top: 14px; border-top: 1px solid rgb(45, 56, 80); }
+.hero { padding: 86px var(--page-pad) 72px; background: linear-gradient(135deg, rgb(247, 249, 255), rgb(238, 243, 255) 58%, rgb(233, 255, 246)); border-bottom: 1px solid var(--line); }
+.kicker, .section-label, .topic-label, .eyebrow { font-size: 13px; font-weight: 800; letter-spacing: 0.13em; color: var(--blue); }
+.hero h1 { margin: 16px 0px; font-size: clamp(40px, 5vw, 70px); line-height: 1.08; letter-spacing: -0.055em; }
+.hero h1 em { color: var(--blue); font-style: normal; }
+.hero > p { max-width: 860px; color: rgb(79, 91, 114); font-size: 18px; }
+.hero-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 38px; background: rgb(220, 226, 237); border: 1px solid rgb(220, 226, 237); }
+.hero-grid div { background: rgb(255, 255, 255); padding: 16px; }
+.hero-grid b { display: block; font-size: 12px; color: rgb(125, 135, 153); }
+.hero-grid span { font-size: 14px; font-weight: 800; }
+.section { padding: 70px var(--page-pad); border-bottom: 1px solid var(--line); scroll-margin-top: 18px; }
+.section > h2, .session-head h2 { margin: 8px 0px 14px; font-size: 36px; letter-spacing: -0.04em; }
+.lead { font-size: 18px; max-width: 900px; }
+.three-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px 0px; }
+.three-cards article { padding: 20px; border: 1px solid var(--line); border-radius: 14px; background: rgb(255, 255, 255); }
+.three-cards article > span { font-size: 12px; font-weight: 800; color: var(--blue); }
+.three-cards h3 { margin: 8px 0px 5px; font-size: 20px; }
+.three-cards p, .caption { color: var(--muted); font-size: 14px; }
+.notice, .warning { margin: 22px 0px; padding: 16px 19px; }
+.notice { border-left: 4px solid var(--blue); background: rgb(234, 240, 255); }
+.warning { border-left: 4px solid var(--warn); background: rgb(255, 246, 230); }
+.schedule { margin-top: 30px; }
+.schedule div { display: grid; grid-template-columns: 48px 125px 1fr; align-items: center; padding: 13px 0px; border-top: 1px solid var(--line); }
+.schedule span.badge { display: grid; place-items: center; width: 29px; height: 29px; border-radius: 50%; background: var(--nav); color: rgb(255, 255, 255); font-size: 12px; }
+.schedule p { margin: 0px; }
+.session { padding-top: 0px; }
+.session-head { margin: 0 calc(var(--page-pad)*-1) 50px; padding: 52px var(--page-pad); background: var(--nav); color: rgb(255, 255, 255); }
+.session-head .eyebrow { color: rgb(125, 160, 255); }
+.session-head p { max-width: 900px; color: rgb(195, 204, 220); }
+.vibe-intro { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 28px; align-items: start; margin-top: 30px; padding-top: 28px; border-top: 1px solid rgb(45, 56, 80); }
+.vibe-quote { margin: 0; padding-left: 18px; border-left: 3px solid rgb(125, 160, 255); }
+.vibe-quote blockquote { margin: 0 0 10px; color: #fff; font-size: 21px; font-weight: 700; line-height: 1.5; letter-spacing: -0.03em; }
+.vibe-quote figcaption { color: rgb(160, 172, 196); font-size: 13px; }
+.vibe-meaning { margin: 18px 0 0; padding: 14px 16px; border-radius: 12px; background: rgb(25, 36, 60); color: rgb(215, 222, 236); font-size: 15px; }
+.vibe-meaning b { color: #fff; }
+.vibe-timeline { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.vibe-timeline li { display: grid; grid-template-columns: 74px 1fr; gap: 12px; padding: 12px 14px; border: 1px solid rgb(45, 56, 80); border-radius: 12px; background: rgba(255, 255, 255, 0.03); }
+.vibe-timeline time { color: rgb(125, 160, 255); font-size: 13px; font-weight: 800; letter-spacing: 0.02em; }
+.vibe-timeline b { display: block; color: #fff; font-size: 15px; }
+.vibe-timeline span { display: block; color: rgb(185, 195, 214); font-size: 14px; line-height: 1.55; }
+.vibe-sources { grid-column: 1 / -1; margin: 0; color: rgb(130, 145, 177); font-size: 12px; }
+.vibe-sources a { color: rgb(160, 180, 230); }
+@media (max-width: 1020px) { .vibe-intro { grid-template-columns: 1fr; } }
+.time { font-size: 13px; color: rgb(174, 185, 207); }
+.topic { margin-bottom: 70px; scroll-margin-top: 20px; }
+.topic h3 { margin: 8px 0px 12px; font-size: 28px; letter-spacing: -0.025em; }
+.flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 9px; margin: 18px 0px 26px; }
+.flow div { text-align: center; padding: 16px 12px; border-radius: 12px; background: rgb(237, 242, 255); }
+.flow span { display: block; font-size: 12px; font-weight: 800; color: var(--blue); }
+.flow b { display: block; }
+.flow small { display: block; margin-top: 5px; color: var(--muted); }
+.versus { display: grid; grid-template-columns: 1fr 54px 1fr; align-items: center; margin: 16px 0px 26px; }
+.versus > div { padding: 20px; border: 1px solid var(--line); border-radius: 13px; background: var(--soft); }
+.versus i { text-align: center; color: var(--blue); font-style: normal; font-weight: 900; }
+.table-wrap { overflow: auto; }
+table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 14px; }
+th { padding: 13px; text-align: left; color: rgb(255, 255, 255); background: var(--nav); }
+td { padding: 14px 13px; border-bottom: 1px solid var(--line); }
+.checklist { display: grid; gap: 7px; padding: 0px; list-style: none; }
+.checklist li { padding: 11px 14px; border-radius: 8px; background: var(--soft); }
+.checklist li::before { content: "✓"; margin-right: 8px; color: var(--blue); font-weight: 900; }
+.practice-brief { display: grid; gap: 8px; margin: 18px 0px; }
+.practice-brief > div { padding: 15px 18px; border: 1px solid rgb(200, 239, 221); border-radius: 12px; background: rgb(237, 255, 246); }
+.copybox { margin: 20px 0px; border: 1px solid rgb(207, 215, 230); border-radius: 12px; overflow: hidden; background: rgb(17, 26, 46); color: rgb(232, 238, 252); }
+.copyhead { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: rgb(30, 43, 71); font-size: 13px; font-weight: 800; }
+.copyhead button { padding: 5px 10px; border: 1px solid rgb(97, 112, 141); border-radius: 6px; background: transparent; color: rgb(255, 255, 255); cursor: pointer; }
+.copybox pre { white-space: pre-wrap; margin: 0px; padding: 20px; font: 13px / 1.72 ui-monospace, SFMono-Regular, Menlo, monospace; }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 18px 0px 26px; }
+.steps article { padding: 18px; border-top: 4px solid var(--blue); border-radius: 12px; }
+.steps strong { display: block; color: var(--blue); font-size: 12px; }
+.steps b { display: block; font-size: 18px; margin-top: 3px; }
+.sub-optional { margin-top: 10px; padding: 10px 12px; border: 1px dashed var(--line); border-radius: 10px; color: var(--muted); font-size: 14px; }
+.sub-optional .tag { margin-left: 0; }
+.steps .sub-optional b { display: inline; font-size: 14px; margin: 0 4px 0 2px; color: var(--muted); }
+.tag { display: inline-block; margin-left: 6px; padding: 1px 8px; border-radius: 999px; font-size: 11px; font-weight: 800; letter-spacing: 0; vertical-align: 1px; }
+.tag-req { background: var(--blue); color: #fff; }
+.tag-opt { border: 1px solid var(--line); background: #fff; color: var(--muted); font-weight: 700; }
+.final-box { padding: 28px; border-radius: 18px; background: linear-gradient(135deg, rgb(17, 26, 46), rgb(29, 47, 88)); color: rgb(255, 255, 255); }
+.final-box h3 { margin: 6px 0px 8px; font-size: 30px; }
+.final-box p { color: rgb(203, 213, 231); }
+code.inline { padding: 2px 6px; border-radius: 6px; background: rgb(238, 242, 248); font-family: ui-monospace, monospace; }
+.small { font-size: 13px; color: var(--muted); }
+.resource-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 18px 0px 28px; }
+.resource-card { padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--soft); }
+.resource-card b { display: block; margin-bottom: 4px; }
+.resource-card a { color: var(--blue); font-weight: 800; text-decoration: none; word-break: break-all; font-size: 13px; }
+.sample-link { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin: 22px 0; padding: 14px 18px; border: 1px solid rgb(203, 218, 255); border-radius: 12px; background: rgb(240, 245, 255); }
+.sample-link span { color: var(--muted); font-size: 14px; }
+.sample-link b { display: block; color: var(--ink); font-size: 15px; }
+.sample-link .resource-link { flex-shrink: 0; margin-top: 0; }
+@media (max-width: 680px) { .sample-link { flex-direction: column; align-items: flex-start; } }
+.resource-link { display: inline-block; margin-top: 8px; padding: 8px 12px; border: 1px solid rgb(203, 213, 225); border-radius: 8px; color: var(--blue); font-size: 13px; font-weight: 800; text-decoration: none; background: rgb(255, 255, 255); }
+.procedure { counter-reset: step 0; display: grid; gap: 10px; margin: 18px 0px 28px; }
+.procedure > div { position: relative; padding: 15px 16px 15px 54px; border: 1px solid var(--line); border-radius: 12px; background: rgb(255, 255, 255); }
+.procedure > div::before { counter-increment: step 1; content: counter(step); position: absolute; left: 16px; top: 15px; width: 26px; height: 26px; display: grid; place-items: center; border-radius: 50%; background: var(--blue); color: rgb(255, 255, 255); font-size: 12px; font-weight: 900; }
+.sample-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 18px 0px 28px; }
+.sample-grid article { padding: 18px; border: 1px solid var(--line); border-radius: 13px; background: var(--soft); }
+.term-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 22px 0px; }
+.term-grid article { padding: 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--soft); }
+.term-grid strong { display: block; color: var(--blue); font-size: 12px; letter-spacing: 0.08em; }
+.term-grid h4 { margin: 5px 0px 8px; font-size: 20px; }
+.talk { margin: 18px 0px; padding: 22px; border-left: 4px solid var(--green); background: rgb(241, 252, 247); }
+.talk p { margin: 0px 0px 14px; }
+.talk p:last-child { margin-bottom: 0px; }
+.example-flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 18px 0px 24px; }
+.example-flow div { padding: 14px 12px; border-radius: 10px; background: rgb(255, 248, 235); }
+.example-flow b, .example-flow span { display: block; }
+.example-flow span { margin-bottom: 3px; color: rgb(154, 100, 16); font-size: 12px; font-weight: 800; }
+details.optional { margin-top: 8px; padding: 0 22px 6px; border: 1px solid var(--line); border-radius: 14px; background: var(--soft); }
+details.optional > summary { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; padding: 20px 0; cursor: pointer; list-style: none; }
+details.optional > summary::-webkit-details-marker { display: none; }
+details.optional > summary::before { content: "▸"; color: var(--blue); font-weight: 900; }
+details.optional[open] > summary::before { content: "▾"; }
+details.optional .summary-title { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
+details.optional .summary-hint { font-size: 13px; color: var(--muted); }
+details.optional[open] .summary-hint { display: none; }
+.profile-card { display: grid; grid-template-columns: 1.6fr 1fr; gap: 20px; padding: 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--soft); }
+.profile-card h3 { margin: 0 0 6px; font-size: 22px; }
+.profile-card ul { margin: 10px 0 0; padding-left: 18px; }
+.profile-links { display: grid; gap: 8px; align-content: start; }
+.profile-links a { padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--blue); font-size: 14px; font-weight: 700; text-decoration: none; word-break: break-all; }
+.sample-shot { margin: 22px 0; }
+.sample-shot img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 12px; }
+.sample-shot.narrow img { max-width: 700px; margin: 0 auto; }
+.sample-shot.small img { max-width: 360px; }
+.sample-shot figcaption { margin-top: 10px; color: var(--muted); font-size: 14px; }
+@media (max-width: 680px) { .profile-card { grid-template-columns: 1fr; padding: 18px; } }
+.app aside { word-break: keep-all; }
+.topic .three-cards h3 { margin: 8px 0 5px; font-size: 20px; letter-spacing: -0.02em; }
+.block-title { margin: 34px 0 4px; font-size: 22px; letter-spacing: -0.02em; scroll-margin-top: 18px; }
+.break { padding: 54px var(--page-pad); background: rgb(246, 248, 252); border-bottom: 1px solid var(--line); }
+.break h2 { margin: 0px 0px 8px; font-size: 32px; }
+@media (max-width: 1020px) {
+  .app aside { display: none; }
+  .app main { margin-left: 0px; }
+  .hero-grid, .three-cards, .steps, .term-grid, .example-flow { grid-template-columns: 1fr 1fr; }
+  .flow { grid-template-columns: 1fr 1fr; }
+}
+.nav-toggle { position: fixed; top: 14px; left: 322px; z-index: 20; display: flex; align-items: center; gap: 6px; height: 36px; padding: 0 12px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255, 255, 255, 0.94); color: var(--ink); font: 700 13px/1 var(--font-sans); cursor: pointer; box-shadow: 0 4px 14px rgba(17, 26, 46, 0.12); transition: left .25s ease; }
+.nav-toggle:hover { border-color: var(--blue); color: var(--blue); }
+.nav-toggle svg { width: 16px; height: 16px; }
+.app aside { transition: transform .25s ease; }
+.app main { transition: margin-left .25s ease; }
+body.nav-hidden .app aside { transform: translateX(-100%); }
+body.nav-hidden .app main { margin-left: 0; }
+body.nav-hidden .nav-toggle { left: 14px; }
+@media (max-width: 1020px) {
+  .app aside { display: block; width: min(310px, calc(100vw - 64px)); transform: translateX(-100%); }
+  .nav-toggle { left: 14px; }
+  body.nav-open .app aside { transform: none; box-shadow: 8px 0 24px rgba(17, 26, 46, 0.25); }
+  body.nav-open .nav-toggle { left: auto; right: 10px; padding: 0 11px; }
+  body.nav-open .nav-toggle span { display: none; }
+}
+@media (max-width: 680px) {
+  .hero, .section, .break { padding-left: 20px; padding-right: 20px; }
+  .hero { padding-top: 54px; }
+  .hero-grid, .three-cards, .steps, .flow, .resource-list, .term-grid, .example-flow { grid-template-columns: 1fr; }
+  .schedule div { grid-template-columns: 38px 100px 1fr; }
+  .versus { grid-template-columns: 1fr; }
+  .versus i { padding: 8px 0px; }
+  .session-head { margin-left: -20px; margin-right: -20px; padding-left: 20px; padding-right: 20px; }
+  .section > h2, .session-head h2 { font-size: 30px; }
+  .topic h3 { font-size: 24px; }
+}.colab-open{margin:8px 0 14px}.colab-open a{display:inline-block;padding:6px 12px;border-radius:8px;background:#f9ab00;color:#1d2433;font-weight:700;text-decoration:none}.colab-open a:hover{filter:brightness(.95)}.colab-open .small{display:block;margin-top:6px}.deep-dive{margin:18px 0;padding:14px 18px;border:1px solid #dfe3ec;border-left:4px solid #f9ab00;border-radius:10px;background:rgba(249,171,0,.05)}
+</style>
+<style>
+.tt{margin:0;padding-left:1.1em}.tt li{margin:2px 0}
+.dl-list{display:grid;gap:10px;margin:18px 0}
+.dl-card{display:flex;align-items:center;gap:14px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:#fff;text-decoration:none;color:var(--ink)}
+.dl-card:hover{border-color:var(--blue);background:var(--soft)}
+.dl-ico{flex:none;display:grid;place-items:center;width:44px;height:52px;border-radius:8px;background:rgb(237,242,255);color:var(--blue);font-size:11px;font-weight:800}
+.dl-body{flex:1}.dl-body b{display:block;font-size:16px}.dl-body span{display:block;font-size:13px;color:var(--muted)}
+.dl-btn{flex:none;padding:8px 14px;border-radius:8px;background:var(--blue);color:#fff;font-size:13px;font-weight:800}
+@media(max-width:680px){.dl-card{flex-wrap:wrap}}
+#slide .sample-shot{margin:8px 0}#slide .sample-shot img{max-height:420px;width:auto;max-width:100%;margin:0 auto}#slide .sample-shot figcaption{margin-top:4px;font-size:13px;text-align:center}
+#slide .dl-card{padding:10px 14px}
+.todo{color:#b42318;font-weight:700}
+main,#slide{word-break:keep-all;overflow-wrap:break-word}
+h1,h2,h3,.hero p,.lead{text-wrap:balance}
+p,li,td{text-wrap:pretty}
+td .tag{margin-bottom:2px}
+.tag.nap{background:#7c3aed}.tag.sheet{background:var(--green)}
+.tag{margin-left:0;margin-right:4px}
+.topic .small{display:block}
+.resource-card .small{display:block;margin-bottom:6px}
+.resource-card a{display:inline-block;margin:2px 0}
+.copybox pre{background:none;color:inherit}
+.hero-grid{grid-template-columns:repeat(3,1fr)}
+.sample-link .resource-link{margin:0 6px 0 0}
+.sample-link{flex-wrap:wrap;justify-content:flex-start;gap:6px}
+#slideBtn{position:fixed;right:16px;bottom:16px;z-index:30;background:var(--blue);color:#fff;border:0;border-radius:999px;padding:12px 20px;font:700 15px var(--font-sans);cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+#deck{position:fixed;inset:0;z-index:100;background:#0b1220;display:flex;flex-direction:column}
+#deck[hidden]{display:none}
+#viewport{flex:1;min-height:0;position:relative;overflow:hidden}
+#stage{position:absolute;left:50%;top:50%;width:1280px;height:720px;background:#fff;display:flex;flex-direction:column;overflow:hidden;transform-origin:center center;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+#master{flex:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 96px;background:var(--nav);color:#fff;font-weight:800;font-size:15px}
+#master .m-brand{font-size:11px;letter-spacing:.14em;color:rgb(130,145,177);margin-right:12px}
+#mbar{flex:none;height:4px;background:var(--line)}#prog{display:block;height:100%;background:var(--blue);width:0}
+#slide{flex:1;min-height:0;overflow:hidden;padding:28px 96px 12px;font-size:19px;line-height:1.55}
+#slide h1{font-size:46px;line-height:1.15;margin:12px 0}#slide h1 em{color:var(--blue);font-style:normal}
+#slide h3.st{margin:0 0 14px;font-size:32px;letter-spacing:-.03em}
+#slide .cont{font-size:16px;color:var(--muted);font-weight:500;margin-left:10px}
+#slide table{font-size:16px;margin-top:6px}#slide th,#slide td{padding:9px 12px}
+#slide .copybox{margin:10px 0}#slide .copybox pre{font-size:15px;padding:14px 18px}
+#slide p,#slide .notice,#slide .warning{margin:8px 0}
+#slide .notice,#slide .warning{padding:12px 16px}
+#slide .procedure{gap:8px;margin:10px 0}#slide .procedure>div{padding:10px 14px 10px 50px}
+#slide .resource-list{grid-template-columns:repeat(3,1fr);margin:10px 0}
+#slide .hero-grid{margin-top:20px}#slide .flow{grid-template-columns:repeat(5,1fr);margin:12px 0 16px}#slide .flow div{padding:10px 8px}#slide .hero-grid{grid-template-columns:repeat(3,1fr)}
+#pager{flex:none;display:flex;align-items:center;justify-content:center;gap:14px;height:40px;border-top:1px solid var(--line);color:var(--muted);font-size:14px;font-weight:700}
+#pager button{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:6px;width:30px;height:26px;font-size:11px;cursor:pointer}
+#bar{flex:none;display:flex;align-items:center;justify-content:center;gap:16px;padding:8px;background:#111a2e;color:#cbd5e7;font-size:14px}
+#bar button{border:1px solid rgb(97,112,141);background:transparent;color:#fff;border-radius:8px;padding:6px 14px;font:700 14px var(--font-sans);cursor:pointer}
+@media print{#slideBtn,#deck{display:none!important}}
+
+aside nav .nav-title{padding:6px 10px 10px;font-size:12px;font-weight:800;letter-spacing:.12em;color:rgb(130,145,177)}
+aside nav .grp{margin-top:20px;padding-top:12px;border-top:1px solid rgb(45,56,80)}
+aside nav .nav-title+.grp{margin-top:0;border-top:0;padding-top:0}
+aside nav .grp-label{padding:0 10px 4px;font-size:11px;font-weight:800;letter-spacing:.1em;color:rgb(130,145,177)}
+aside nav a.l2{margin-top:0;padding:6px 10px;color:#fff;font-size:15px;font-weight:800;border-left:3px solid transparent}
+aside nav a.l3{margin-left:12px;padding:5px 10px 5px 14px;font-size:14px;border-left:1px solid rgb(45,56,80)}
+aside nav a.l4{display:none;margin-left:12px;padding:3px 10px 3px 30px;font-size:12.5px;color:rgb(150,162,186);border-left:1px solid rgb(45,56,80)}
+aside nav a.l4.show{display:block}
+aside nav a.active{border-left-color:var(--blue)}
+.dh{margin:30px 0 8px;padding:2px 0 2px 12px;border-left:4px solid var(--blue)}
+.dh b{font-size:1.06em}
+#slide .dh{margin:12px 0 8px}
+#slide .eb{margin:0 0 4px;font-size:14px;font-weight:800;letter-spacing:.06em;color:var(--blue)}
+#slide .outline{columns:2;column-gap:56px;font-size:16px;line-height:1.5}
+#slide .outline .og{break-inside:avoid;margin-bottom:12px}
+#slide .outline b{display:block;font-size:17px}
+#slide .outline span{display:block;padding-left:14px;color:var(--muted);font-size:14.5px}
+
+.base{margin:6px 0 14px;padding:8px 12px;border-left:4px solid var(--green);background:rgb(236,248,243);font-size:14.5px}
+.copybox pre{font:15px/1.8 var(--font-sans);letter-spacing:-.01em}
+.copybox pre.fmt{white-space:normal;padding:18px 20px}
+.pl{display:flex;gap:10px;margin:0 0 9px}.pl:last-child{margin-bottom:0}
+.pl .pk{flex:none;width:3.3em;color:rgb(140,180,255);font-weight:800}
+.pl.k2 .pk{color:rgb(110,220,180)}.pl.k3 .pk{color:rgb(255,200,110)}
+.pl .pt{flex:1;min-width:0}
+.pl.c{padding-left:calc(3.3em + 10px);margin-top:-5px}
+#slide .copybox pre.fmt{font-size:17px;padding:14px 18px}
+#slide .base{font-size:15px;padding:6px 12px}
+</style>
+<style>.side-link{margin:16px 10px 0;padding:12px;border:1px solid rgb(45,56,80);border-radius:10px;font-size:12px;color:rgb(190,200,219)}.side-link b{display:block;color:#fff;font-size:12px;margin-bottom:4px}.side-link a{color:rgb(140,180,255);word-break:break-all}.day-nav{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}.day-nav a{padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:13px;font-weight:700;color:var(--ink);text-decoration:none}.day-nav a[aria-current]{background:var(--blue);border-color:var(--blue);color:#fff}main pre{white-space:pre-wrap;overflow-wrap:anywhere}main code.inline{overflow-wrap:break-word}.hero-grid code.inline,.hero-grid span{overflow-wrap:anywhere}figure.voice{margin:18px 0;padding:16px 20px;border-left:4px solid var(--blue);background:var(--soft);border-radius:0 12px 12px 0}figure.voice blockquote{margin:0}figure.voice blockquote p{margin:0;font-size:18px;font-weight:700;line-height:1.55}figure.voice blockquote p.orig{margin-top:6px;font-size:14px;font-weight:500;color:var(--muted)}figure.voice figcaption{margin-top:10px;font-size:13px;color:var(--muted)}#slide figure.voice{margin:10px 0;padding:10px 16px}kbd{display:inline-block;padding:1px 6px;border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;background:#fff;font:600 13px var(--font-sans)}.source-note{font-size:13px;color:var(--muted)}.resource-list.news .resource-card{border-left:4px solid #e8a23a}.resource-list.news .resource-card>.small:first-child::before{content:"뉴스";display:inline-block;margin-right:6px;padding:0 6px;border-radius:4px;background:#fff3df;color:#9a5b00;font-weight:700}.resource-list.news .resource-card>.small:last-child{margin-top:6px;color:var(--muted)}</style>
+<style>.why-box{margin:14px 0 0;padding:12px 16px;border-left:4px solid #8fb0ff;background:rgba(255,255,255,.08);border-radius:0 10px 10px 0;color:#e6ebf5;max-width:900px}.why-box b{display:block;color:#a9c1ff;font-size:13px;margin-bottom:2px}.ok-line{margin:8px 0 0;font-size:14.5px}.ok-line b{display:inline-block;margin-right:8px;padding:1px 8px;border-radius:6px;background:#e7f7ef;color:#16a36b;font-size:12px}.goal-list li{margin-bottom:6px}</style><style>.shot{margin:14px 0 6px;max-width:760px}.shot img{display:block;width:100%;height:auto;border:1px solid #d9dde5;border-radius:10px;box-shadow:0 2px 10px rgba(20,30,60,.06)}.shot figcaption{font-size:12.5px;color:#6b7280;margin-top:6px}.stage{display:inline-block;margin-right:6px;padding:1px 8px;border-radius:999px;background:#eef2ff;color:#3b4ec8;font-size:12px;font-weight:700}.tpl td:empty::after{content:"\00a0";}.tpl td{height:30px}.result-box{border:1px solid #c9e9d9;background:#f2fbf6;border-radius:10px;padding:12px 16px;margin:10px 0}.result-box b{color:#16794f}.entry-box{border:1px solid #cfd9f3;background:#f5f8ff;border-radius:10px;padding:12px 16px;margin:12px 0}.entry-box>b{color:#2c48b8}.entry-box p{margin:6px 0}.entry-box .shot img{width:auto;max-width:100%}.ref-box{display:block;border:1px dashed #d9c27a;background:#fffbea;border-radius:10px;padding:12px 16px;margin:12px 0}.ref-box>b{color:#8a6a00}.ref-box p{margin:6px 0}.ref-box ul{margin:6px 0 0;padding-left:18px}.ref-kind{display:inline-block;font-size:12px;color:#6b5a1e;background:#f6ecc4;border-radius:6px;padding:1px 6px;margin-right:4px}</style></head>
+<body>
+<button aria-controls="side-nav" aria-expanded="true" class="nav-toggle" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" viewbox="0 0 16 16"><path d="M2 4h12M2 8h12M2 12h12"></path></svg><span>목차 숨기기</span></button>
+<div class="app">
+<aside id="side-nav">
+<div class="side-head">
+<div class="brand">SELECTWAY · LECTURE NOTE</div>
+<h1>AI 프로덕트 매니저 2주차 · DAY 1 문제 정의·아티팩트</h1>
+<div class="side-sub">11.02(월) · 09:00–18:00 · 실시간 비대면</div>
+</div>
+<nav>
+<div class="nav-title">전체 목차</div><div class="grp"><div class="grp-label">교육 안내</div><a class="l2" href="#overview">교육 개요</a><a class="l2" href="#prep">수업 전 준비</a><a class="l2" href="#tt">타임테이블</a></div><div class="grp"><div class="grp-label">오늘의 단어</div><a class="l2" href="#words">오늘의 단어</a></div><div class="grp"><div class="grp-label">SESSION 1</div><a class="l2" href="#s1">문제 발굴 3요소로 문제 정의하기</a><a class="l3" href="#s1-1">1-1. 개념</a><a class="l3" href="#s1-2">1-2. 퀴즈: 이 문장은 문제 정의일까?</a><a class="l3" href="#s1-3">1-3. 실습 템플릿</a><a class="l3" href="#s1-4">1-4. 프롬프트로 시작하기</a><a class="l3" href="#s1-5">1-5. 점검·피드백</a><a class="l3" href="#s1-6">1-6. 실패 케이스 만들어 보기</a><a class="l3" href="#s1-7">1-7. 결과 만들기</a></div><div class="grp"><div class="grp-label">SESSION 2</div><a class="l2" href="#s2">5 Whys로 진짜 원인 찾기</a><a class="l3" href="#s2-1">2-1. 개념</a><a class="l3" href="#s2-2">2-2. 채워진 예시</a><a class="l3" href="#s2-3">2-3. 실습 템플릿</a><a class="l3" href="#s2-4">2-4. 프롬프트로 시작하기</a><a class="l3" href="#s2-5">2-5. 점검·피드백</a><a class="l3" href="#s2-6">2-6. 실패 케이스 만들어 보기</a><a class="l3" href="#s2-7">2-7. 결과 만들기</a></div><div class="grp"><div class="grp-label">SESSION 3</div><a class="l2" href="#s3">가설과 지표 1개 정하기</a><a class="l3" href="#s3-1">3-1. 개념</a><a class="l3" href="#s3-2">3-2. 채워진 예시</a><a class="l3" href="#s3-3">3-3. 실습 템플릿</a><a class="l3" href="#s3-4">3-4. 프롬프트로 시작하기</a><a class="l3" href="#s3-5">3-5. 점검·피드백</a><a class="l3" href="#s3-6">3-6. 실패 케이스 만들어 보기</a><a class="l3" href="#s3-7">3-7. 결과 만들기</a></div><div class="grp"><div class="grp-label">SESSION 4</div><a class="l2" href="#s4">문제정의서로 이벤트 페이지 v1 만들기</a><a class="l3" href="#s4-1">4-1. 개념</a><a class="l3" href="#s4-2">4-2. 채워진 예시</a><a class="l3" href="#s4-3">4-3. 실습 템플릿</a><a class="l3" href="#s4-4">4-4. 프롬프트로 시작하기</a><a class="l3" href="#s4-5">4-5. 점검·피드백</a><a class="l3" href="#s4-6">4-6. 실패 케이스 만들어 보기</a><a class="l3" href="#s4-7">4-7. 결과 만들기</a></div><div class="grp"><div class="grp-label">SESSION 5</div><a class="l2" href="#s5">수정 요청서로 UX·UI 바꾸기</a><a class="l3" href="#s5-1">5-1. 개념</a><a class="l3" href="#s5-2">5-2. 채워진 예시</a><a class="l3" href="#s5-3">5-3. 실습 템플릿</a><a class="l3" href="#s5-4">5-4. 프롬프트로 시작하기</a><a class="l3" href="#s5-5">5-5. 점검·피드백</a><a class="l3" href="#s5-6">5-6. 실패 케이스 만들어 보기</a><a class="l3" href="#s5-7">5-7. 결과 만들기</a></div><div class="grp"><div class="grp-label">정리</div><a class="l2" href="#wrap">오늘 정리와 과제</a></div>
+</nav>
+<div class="side-link"><b>이 교안 주소</b><a href="https://loreenkim0301.github.io/swy-lecturenote/261102-ai-pm-week2/d1-problem-artifact.html">loreenkim0301.github.io/swy-lecturenote/261102-ai-pm-week2/d1-problem-artifact.html</a></div>
+<div class="side-foot">강사 김수정 · 셀렉트웨이</div>
+</aside>
+<main>
+<header class="hero">
+<div class="kicker">AI 프로덕트 매니저 · 2주차 DAY 1 · 2026.11.02 (월)</div>
+<h1>문제를 한 문장으로 정의하고, 그 문장으로 첫 화면을 만들어요</h1>
+<p>이번 주 내내 키울 &#x27;이커머스 셀렉트마켓 연말 이벤트 신청 페이지&#x27;의 출발점이에요. 화면보다 문장을 먼저 만들어요. 문제 정의 → 원인 → 가설·지표를 차례로 채우고, 그 문서를 근거로 클로드 아티팩트에서 첫 화면을 만들어요.</p>
+<div class="hero-grid">
+<div><b>일정</b><span>11월 2일(월) 09:00–18:00 · 실시간 비대면</span></div>
+<div><b>준비물</b><span>크롬, 클로드 유료 계정(웹)</span></div>
+<div><b>오늘의 결과물</b><span>문제정의서 1장(3요소·5 Whys·가설·지표) + 이벤트 페이지 v2 + 수정 기록표</span></div>
+</div>
+<nav aria-label="2주차 교안" class="day-nav"><a href="./">2주차 홈</a><a aria-current="page" href="./d1-problem-artifact.html">DAY 1 문제 정의·아티팩트</a><a href="./d2-claude-flow.html">DAY 2 시나리오·PRD·클로드 기능</a><a href="./d3-deploy-localdb.html">DAY 3 데이터 정의·배포 3가지</a><a href="./d4-vibe-tools-bolt.html">DAY 4 도구 비교·볼트</a><a href="./d5-google-firebase.html">DAY 5 구글 AI 스튜디오·Firebase</a></nav>
+</header>
+<section class="section" id="overview"><div class="section-label">OVERVIEW</div><h2>교육 개요</h2>
+<div class="table-wrap"><table>
+<tr><th>시간</th><td>09:00–18:00 (점심 12:00–13:00, 수업 8시간)</td></tr>
+<tr><th>교과</th><td>[기본] AI 서비스 개발 · 2일차 (총 18일)</td></tr>
+<tr><th>교육 목표</th><td>문제 발굴 3요소로 문제를 정의하고, 5 Whys로 원인을 찾고, 가설과 지표를 세운 뒤, 그 문서를 근거로 만든 프로토타입을 프롬프트로 다듬을 수 있다.</td></tr>
+<tr><th>세션마다 같은 순서</th><td>개념 → 예시 → 실습 템플릿 → 프롬프트로 시작하기 → 점검·피드백 → 실패 케이스 → 결과 만들기</td></tr>
+<tr><th>수업이 끝나면</th><td>① 타깃·현상·문제 3요소로 문제 정의 문장을 쓴다 ② 5 Whys로 바꿀 수 있는 원인까지 내려간다 ③ 가설 문장과 숫자 기준이 있는 지표 1개를 정한다 ④ 문제정의서를 근거로 아티팩트에서 이벤트 페이지 v1을 만든다 ⑤ 수정 요청서로 한 번에 하나씩 고치고 기록한다</td></tr>
+</table></div>
+</section>
+<section class="section" id="prep"><div class="section-label">PREPARE</div><h2>수업 전 준비</h2>
+<ul><li><b>클로드 로그인:</b> 웹 버전 클로드를 열어 두세요. 오늘은 클로드 하나만 써요.</li><li><b>문서 한 개:</b> 구글 문서나 메모장에 &#x27;문제정의서&#x27; 파일을 하나 만들어 두세요. 오늘 채우는 템플릿을 여기에 차례로 붙여 넣어요.</li></ul>
+<div class="notice"><b>세션마다 이렇게 진행해요</b><br/>① 개념을 짧게 보고 ② 이커머스 셀렉트마켓으로 채운 예시를 봐요. ③ 빈 템플릿을 내 내용으로 채우고 ④ 같은 일을 프롬프트로 AI에게 시켜 봐요. ⑤ 결과를 점검 프롬프트로 피드백받고 ⑥ 일부러 실패해 본 뒤 ⑦ 오늘의 결과물로 남겨요. 프롬프트는 요청 / 내용 / 형식 3줄로 쓰고, 바꿔 넣을 자리는 [ ]로 표시했어요. 1주차 첫날 배운 4요소(역할·맥락·작업·형식)를 줄인 것이에요. 요청 = 작업, 내용 = 역할과 맥락, 형식 = 형식이에요.</div>
+</section>
+<section class="section" id="tt"><div class="section-label">TIMETABLE</div><h2>타임테이블</h2>
+<div class="table-wrap"><table><tr><th>시간</th><th>구분</th><th>내용</th></tr><tr><td>09:00–09:30</td><td>오늘의 단어</td><td><a href="#words">오늘의 단어</a></td></tr><tr><td>09:30–10:40</td><td>SESSION 1</td><td><a href="#s1">문제 발굴 3요소로 문제 정의하기</a></td></tr><tr><td>10:40–12:00</td><td>SESSION 2</td><td><a href="#s2">5 Whys로 진짜 원인 찾기</a></td></tr><tr><td>12:00–13:00</td><td>점심</td><td></td></tr><tr><td>13:00–14:00</td><td>SESSION 3</td><td><a href="#s3">가설과 지표 1개 정하기</a></td></tr><tr><td>14:00–15:30</td><td>SESSION 4</td><td><a href="#s4">문제정의서로 이벤트 페이지 v1 만들기</a></td></tr><tr><td>15:30–17:30</td><td>SESSION 5</td><td><a href="#s5">수정 요청서로 UX·UI 바꾸기</a></td></tr><tr><td>17:30–18:00</td><td>정리</td><td><a href="#wrap">오늘 정리와 과제</a></td></tr></table></div>
+</section>
+<section class="section session" id="words">
+<div class="session-head"><div class="eyebrow">단어 · 09:00–09:30</div><h2>오늘의 단어</h2><p>오늘 처음 나오는 말을 먼저 짧게 짚고 시작해요. 수업 중에 다시 나오면 이 표로 돌아와요.</p></div>
+<div class="table-wrap"><table><tr><th>단어</th><th>뜻</th></tr><tr><td><b>문제 정의</b></td><td>누가, 무엇 때문에, 어떤 손해를 겪는지를 한 문장으로 쓴 것</td></tr><tr><td><b>타깃</b></td><td>문제를 겪는 사람. 나이보다 상황과 행동으로 좁혀요</td></tr><tr><td><b>5 Whys</b></td><td>&#x27;왜?&#x27;를 반복해 근본 원인을 찾는 방법</td></tr><tr><td><b>가설</b></td><td>&#x27;이렇게 하면 이렇게 바뀔 것이다&#x27;라는 검증할 문장</td></tr><tr><td><b>지표</b></td><td>가설이 맞았는지 판단하는 숫자</td></tr><tr><td><b>아티팩트</b></td><td>클로드 대화 옆에 화면이 바로 보이는 미리보기 창</td></tr><tr><td><b>v1</b></td><td>처음 만든 결과물. 이후 수정과 비교하는 기준</td></tr></table></div></section><section class="section session" id="s1">
+<div class="session-head"><div class="eyebrow">SESSION 1 · 09:30–10:40</div><h2>문제 발굴 3요소로 문제 정의하기</h2>
+<div class="why-box"><b>왜 쓰나?</b>AI는 화면을 10초 만에 만들어 주지만 무엇을 왜 만들지는 정해 주지 않아요.</div></div>
+<div class="topic" id="s1-1"><h3><span class="stage">개념</span>1-1. 개념</h3><p>AI는 화면을 10초 만에 만들어 주지만 무엇을 왜 만들지는 정해 주지 않아요. 좋은 문제 정의는 ① 타깃 + ② 타깃에게 일어나는 현상 + ③ 타깃이 겪는 문제가 한 문장에 합쳐질 때 만들어져요. 해결책은 먼저 적지 않아요.</p><div class="table-wrap"><table class=""><tr><th>구성요소</th><th>무엇을 적나</th><th>주의할 점</th></tr><tr><td>① 타깃</td><td>문제를 겪는 구체적인 상황과 행동</td><td>&#x27;20대&#x27;처럼 넓게 말고 &#x27;퇴근길에 휴대폰으로 장을 보는 고객&#x27;처럼 상황으로 좁혀요.</td></tr><tr><td>② 현상</td><td>눈에 보이는 불편 그 자체</td><td>&#x27;별로다&#x27; 같은 판단이 아니라 &#x27;~하기 어렵다&#x27; 같은 사실로 적어요.</td></tr><tr><td>③ 문제</td><td>그 현상 때문에 겪는 손해·위험</td><td>&#x27;~한다&#x27;, &#x27;~을 겪는다&#x27;처럼 서술형으로, 돈·시간·기회를 잃는 결과를 적어요.</td></tr></table></div><p class="source-note">출처: 김수정, 「AI 프로토타입으로 배우는 데이터 서비스기획」 <a href="https://loreenkim0301.github.io/swy-lecturenote/260831_%EB%B9%84%EA%B0%9C%EB%B0%9C%EC%9E%90%C2%B7%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%A5%BC%20%EC%9C%84%ED%95%9C%20AI%20%ED%94%84%EB%A1%9C%ED%86%A0%ED%83%80%EC%9D%B4%ED%95%91%20%EC%9E%85%EB%AC%B8/#s3-5">3.5.1 문제의 3구성요소</a></p></div><div class="topic" id="s1-2"><h3><span class="stage">예시</span>1-2. 퀴즈: 이 문장은 문제 정의일까?</h3><p>이커머스 셀렉트마켓 팀 회의에서 나온 문장 10개예요. 문장마다 <b>O(좋은 문제 정의) · △(일부만 있음) · X(문제 정의가 아님)</b> 중 하나를 고르고, 빠진 요소가 무엇인지 생각해 봐요.</p><div class="table-wrap"><table><tr><th>번호</th><th>회의에서 나온 문장</th><th>내 판정 (O·△·X)</th></tr><tr><td>1</td><td>이커머스 셀렉트마켓에 연말 이벤트 페이지가 없다.</td><td></td></tr><tr><td>2</td><td>20~30대 고객이 불편해한다.</td><td></td></tr><tr><td>3</td><td>상품 상세 페이지 디자인이 촌스럽다.</td><td></td></tr><tr><td>4</td><td>휴대폰으로 주문하는 기존 고객은 쿠폰 입력 칸을 결제 마지막 단계에서야 발견해, 쿠폰을 쓰지 못한 채 결제를 취소한다.</td><td></td></tr><tr><td>5</td><td>AI 챗봇을 도입해야 한다.</td><td></td></tr><tr><td>6</td><td>배송 문의가 많다.</td><td></td></tr><tr><td>7</td><td>선물용으로 주문하는 고객은 받는 사람 주소를 따로 입력할 수 없어, 본인에게 배송된 뒤 다시 보내는 번거로움을 겪는다.</td><td></td></tr><tr><td>8</td><td>재구매율이 떨어졌다.</td><td></td></tr><tr><td>9</td><td>고객들이 리뷰를 안 쓴다.</td><td></td></tr><tr><td>10</td><td>장바구니에 담아 두고 결제하지 않은 고객은 재입고 알림을 받을 방법이 없어, 다시 왔을 때 품절된 상품을 보고 구매 기회를 놓친다.</td><td></td></tr></table></div><div class="notice"><b>판정 힌트</b><br/>① 기능·페이지·버튼·도입 같은 해결책 단어가 있나요? ② 타깃이 나이·성별처럼 넓기만 한가요? ③ 현상에 '별로다' 같은 판단이 섞였나요? ④ 그래서 무엇을 잃는지가 있나요?</div><details class="optional"><summary><span class="summary-title">예시 답안 10개 펼치기</span><span class="summary-hint">내 답을 먼저 정한 다음 눌러요</span></summary><div class="table-wrap"><table><tr><th>번호</th><th>판정과 이유</th><th>3요소로 고친 문장</th></tr><tr><td>1</td><td><b>X 문제 정의가 아님</b><br/>해결책(페이지)을 문제로 적었어요. 이렇게 쓰면 &#x27;페이지를 만든다&#x27; 말고 다른 해결책을 검토할 기회가 사라져요.</td><td><b>타깃</b> 연말 선물을 고르는 기존 고객<br/><b>현상</b> 진행 중인 할인·혜택을 한곳에서 확인하기 어렵다<br/><b>문제</b> 혜택을 모른 채 다른 쇼핑몰에서 구매해 재구매가 줄어든다</td></tr><tr><td>2</td><td><b>X 문제 정의가 아님</b><br/>타깃이 나이로만 넓게 잡혀 있고, 무엇이 불편한지(현상)와 어떤 손해인지(문제)가 없어요.</td><td><b>타깃</b> 퇴근길에 휴대폰으로 장을 보는 기존 고객<br/><b>현상</b> 장바구니에 담은 상품의 재고가 결제 직전에야 품절로 바뀐다<br/><b>문제</b> 다시 상품을 찾다가 구매를 포기한다</td></tr><tr><td>3</td><td><b>X 문제 정의가 아님</b><br/>&#x27;촌스럽다&#x27;는 내 판단이에요. 현상은 눈에 보이는 사실로 적어요.</td><td><b>타깃</b> 휴대폰으로 상품을 처음 보는 신규 방문자<br/><b>현상</b> 상세 페이지에서 사이즈 정보를 찾으려면 끝까지 내려야 한다<br/><b>문제</b> 사이즈를 잘못 골라 교환·반품 비용이 생긴다</td></tr><tr><td>4</td><td><b>O 좋은 문제 정의</b><br/>타깃(휴대폰으로 주문하는 기존 고객), 현상(쿠폰 칸을 늦게 발견), 문제(결제 취소)가 모두 들어 있어요.</td><td>그대로 써도 돼요.</td></tr><tr><td>5</td><td><b>X 문제 정의가 아님</b><br/>해결책이에요. 챗봇이 필요한 이유, 즉 누가 무엇 때문에 어떤 손해를 보는지부터 적어요.</td><td><b>타깃</b> 주말에 주문 관련 질문이 생긴 고객<br/><b>현상</b> 고객센터가 평일에만 답변한다<br/><b>문제</b> 답을 기다리다 주문을 취소하거나 불만 후기를 남긴다</td></tr><tr><td>6</td><td><b>△ 일부만 있음</b><br/>현상의 일부만 있어요. 누가 문의하는지(타깃)와 그래서 어떤 손해가 생기는지(문제)가 빠졌어요.</td><td><b>타깃</b> 주문 후 배송을 기다리는 고객<br/><b>현상</b> 주문 내역에서 배송 상태를 직접 볼 수 없다<br/><b>문제</b> 고객센터 문의가 몰려 답변이 늦어지고 불만 후기가 늘어난다</td></tr><tr><td>7</td><td><b>O 좋은 문제 정의</b><br/>세 요소가 모두 있고, 해결책(주소 입력 칸을 만든다)을 미리 적지 않았어요.</td><td>그대로 써도 돼요.</td></tr><tr><td>8</td><td><b>△ 일부만 있음</b><br/>결과 숫자(지표)만 있어요. 숫자는 문제의 신호일 뿐, 누가 어떤 현상 때문에 다시 사지 않는지가 빠졌어요.</td><td><b>타깃</b> 첫 구매 후 한 달이 지난 고객<br/><b>현상</b> 첫 구매 뒤 다시 방문할 이유가 되는 안내(신상품·혜택 소식)를 받지 못한다<br/><b>문제</b> 필요할 때 셀렉트마켓을 떠올리지 못해 다른 쇼핑몰에서 산다</td></tr><tr><td>9</td><td><b>△ 일부만 있음</b><br/>현상은 있지만 &#x27;고객들&#x27;이 넓고, 리뷰가 없어서 생기는 손해가 빠졌어요.</td><td><b>타깃</b> 상품을 받은 지 일주일이 안 된 고객<br/><b>현상</b> 리뷰 작성 버튼이 주문 내역 깊은 곳에 있다<br/><b>문제</b> 리뷰가 적어 신규 방문자가 구매를 망설인다</td></tr><tr><td>10</td><td><b>O 좋은 문제 정의</b><br/>세 요소가 모두 있어요. &#x27;알림 기능을 만든다&#x27;는 해결책은 아직 적지 않았어요.</td><td>그대로 써도 돼요.</td></tr></table></div></details></div><div class="topic" id="s1-3"><h3><span class="stage">실습 템플릿</span>1-3. 실습 템플릿</h3><p>예시를 보고 빈칸을 내 내용으로 채워요. 손으로 다 채우지 못해도 괜찮아요. 다음 단계에서 AI로 채우는 방법을 연습해요.</p><div class="table-wrap"><table class="tpl"><tr><th>항목</th><th>내가 쓴 내용</th></tr><tr><td>① 타깃</td><td></td></tr><tr><td>② 현상</td><td></td></tr><tr><td>③ 문제</td><td></td></tr><tr><td>한 문장으로 잇기</td><td>[타깃]은 [현상] 때문에 [문제]를 겪는다.</td></tr></table></div><div class="copybox"><div class="copyhead"><span>템플릿 · 복사해서 내 문서에 붙여 넣으세요</span><button type="button">복사</button></div><pre>항목 | 내가 쓴 내용
+① 타깃 | 
+② 현상 | 
+③ 문제 | 
+한 문장으로 잇기 | [타깃]은 [현상] 때문에 [문제]를 겪는다.</pre></div></div><div class="topic" id="s1-4"><h3><span class="stage">프롬프트로 시작하기</span>1-4. 프롬프트로 시작하기</h3><p>템플릿을 손으로 채우는 대신 AI에게 초안을 받아요. [ ] 안은 이커머스 셀렉트마켓 예시 값이에요. 내 내용으로 바꿔 써요.</p><div class="copybox"><div class="copyhead"><span>프롬프트 1 · 복사해서 클로드에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 문제 정의 3요소를 표로 정리하고, 세 요소를 이은 문제 정의 문장 후보 3개를 만들어 줘. 후보마다 무엇을 강조했는지 한 줄씩 붙여 줘
+내용: 서비스: [이커머스 셀렉트마켓 연말 이벤트] / 내가 본 불편: [연말 할인·쿠폰·사은품 소식이 상품 상세, 배너, 문자에 흩어져 있어서 고객이 뭘 받을 수 있는지 모른다는 문의가 많다]
+형식: 표(타깃·현상·문제) + 문장 후보 3개. 타깃은 나이가 아니라 상황과 행동으로 좁히고, 현상은 판단이 아닌 사실로, 해결책(기능·페이지·버튼)은 넣지 마</pre></div><figure class="shot"><a href="images/d1-s1-start.png" target="_blank" rel="noopener"><img alt="실행 결과 · 위 프롬프트를 예시 값 그대로 클로드에서 실행한 결과예요(2026.11.01 실행)." loading="lazy" src="images/d1-s1-start.png"/></a><figcaption>실행 결과 · 위 프롬프트를 예시 값 그대로 클로드에서 실행한 결과예요(2026.11.01 실행). 이미지를 누르면 크게 보여요.</figcaption></figure></div><div class="topic" id="s1-5"><h3><span class="stage">점검·피드백</span>1-5. 점검·피드백</h3><p>AI가 만든 초안이나 내가 채운 템플릿을 그대로 쓰지 않고, 기준을 주고 점검받아요. 칭찬 말고 고칠 점을 받는 게 목적이에요.</p><div class="copybox"><div class="copyhead"><span>프롬프트 2 · 점검·피드백</span><button type="button">복사</button></div><pre>요청: 내 문제 정의를 3요소 기준으로 점검해 줘. 칭찬은 빼고 고칠 점만 말해 줘
+내용: 문제 정의: [연말 선물을 고르는 이커머스 셀렉트마켓 기존 고객은 진행 중인 연말 할인·혜택을 한곳에서 확인하기 어려워, 혜택을 모른 채 다른 쇼핑몰에서 선물을 사는 일을 겪는다.]
+형식: 표(타깃·현상·문제 각각 O/△/X와 이유) + 고친 문장 1개. 내가 주지 않은 숫자는 추가하지 마</pre></div><figure class="shot"><a href="images/d1-s1-check.png" target="_blank" rel="noopener"><img alt="실행 결과 · 점검 프롬프트를 실행한 화면이에요." loading="lazy" src="images/d1-s1-check.png"/></a><figcaption>실행 결과 · 점검 프롬프트를 실행한 화면이에요. 이미지를 누르면 크게 보여요.</figcaption></figure></div><div class="topic" id="s1-6"><h3><span class="stage">실패 케이스</span>1-6. 실패 케이스 만들어 보기</h3><p>일부러 틀리게 해 보고, 결과가 어떻게 달라지는지 확인해요.</p><div class="table-wrap"><table><tr><th>만들어 볼 실패</th><th>이렇게 해 봐요</th><th>무엇이 보이고, 어떻게 풀까</th></tr><tr><td><b>해결책을 문제로 쓰기</b></td><td>&#x27;연말 이벤트 페이지가 없다&#x27;를 그대로 점검 프롬프트에 넣어 봐요.</td><td>AI가 &#x27;해결책이 섞였다&#x27;고 지적해요. 페이지 대신 고객이 겪는 일을 적어요.</td></tr><tr><td><b>타깃을 넓게 쓰기</b></td><td>타깃에 &#x27;20~30대 고객&#x27;만 넣어 봐요.</td><td>문장 후보 3개가 서로 너무 비슷하거나 막연해져요. 상황(언제·어디서·무엇을 하다가)을 더해요.</td></tr></table></div></div><div class="topic" id="s1-7"><h3><span class="stage">결과 만들기</span>1-7. 결과 만들기</h3><div class="result-box"><b>결과물</b> 문제정의서 1번 칸: 문제 정의 문장 1개</div><p class="ok-line"><b>이렇게 보이면 성공</b>점검 프롬프트에서 세 칸 모두 O가 나왔다</p></div></section><section class="section session" id="s2">
+<div class="session-head"><div class="eyebrow">SESSION 2 · 10:40–12:00</div><h2>5 Whys로 진짜 원인 찾기</h2>
+<div class="why-box"><b>왜 쓰나?</b>눈에 보이는 현상만 고치면 같은 문제가 다시 생겨요.</div></div>
+<div class="topic" id="s2-1"><h3><span class="stage">개념</span>2-1. 개념</h3><p>눈에 보이는 현상만 고치면 같은 문제가 다시 생겨요. &#x27;왜 이런 일이 생길까?&#x27;를 반복해서 바꿀 수 있는 규칙·화면·정책까지 내려가요. 다섯 번을 꼭 채울 필요는 없고, &#x27;이걸 바꾸면 현상이 줄겠다&#x27;는 원인이 나오면 멈춰요. 사람 탓에서 멈추면 아직 덜 내려간 거예요.</p><p class="source-note">출처: 김수정, 「AI 프로토타입으로 배우는 데이터 서비스기획」 <a href="https://loreenkim0301.github.io/swy-lecturenote/260831_%EB%B9%84%EA%B0%9C%EB%B0%9C%EC%9E%90%C2%B7%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%A5%BC%20%EC%9C%84%ED%95%9C%20AI%20%ED%94%84%EB%A1%9C%ED%86%A0%ED%83%80%EC%9D%B4%ED%95%91%20%EC%9E%85%EB%AC%B8/#s3-5">3.5.2 진짜 문제 찾기 — 5 Whys</a></p></div><div class="topic" id="s2-2"><h3><span class="stage">예시</span>2-2. 채워진 예시</h3><p>이커머스 셀렉트마켓 문제 정의로 5 Whys를 해 본 예시예요. 첫 현상은 &#x27;다른 쇼핑몰에서 산다&#x27;였지만, 근본 원인은 &#x27;혜택을 한곳에 모으는 운영 규칙이 없다&#x27;에 가까워요. 그래서 해결 방향은 배너를 하나 더 다는 것이 아니라 혜택을 한 페이지에 모으는 것이 돼요.</p><div class="table-wrap"><table class=""><tr><th>단계</th><th>질문</th><th>답</th></tr><tr><td>WHY 1</td><td>왜 고객이 다른 쇼핑몰에서 선물을 살까?</td><td>셀렉트마켓의 연말 혜택을 몰랐다</td></tr><tr><td>WHY 2</td><td>왜 혜택을 몰랐을까?</td><td>혜택이 상품 상세·배너·문자에 흩어져 있어 한눈에 보이지 않는다</td></tr><tr><td>WHY 3</td><td>왜 흩어져 있을까?</td><td>할인은 영업팀, 쿠폰은 마케팅팀, 사은품은 MD팀이 각자 공지한다</td></tr><tr><td>WHY 4 · 근본 원인</td><td>왜 각자 공지할까?</td><td>연말 혜택을 한곳에 모아 알리는 운영 규칙(공지 창구)이 없다</td></tr><tr><td>해결 방향</td><td>—</td><td>연말 혜택을 한 페이지에 모으고, 미리 신청한 고객에게 알린다</td></tr></table></div></div><div class="topic" id="s2-3"><h3><span class="stage">실습 템플릿</span>2-3. 실습 템플릿</h3><p>예시를 보고 빈칸을 내 내용으로 채워요. 손으로 다 채우지 못해도 괜찮아요. 다음 단계에서 AI로 채우는 방법을 연습해요.</p><div class="table-wrap"><table class="tpl"><tr><th>단계</th><th>질문</th><th>답</th></tr><tr><td>WHY 1</td><td>왜 [문제]가 생길까?</td><td></td></tr><tr><td>WHY 2</td><td></td><td></td></tr><tr><td>WHY 3</td><td></td><td></td></tr><tr><td>WHY 4</td><td></td><td></td></tr><tr><td>WHY 5 (필요하면)</td><td></td><td></td></tr><tr><td>근본 원인</td><td>—</td><td></td></tr><tr><td>해결 방향</td><td>—</td><td></td></tr></table></div><div class="copybox"><div class="copyhead"><span>템플릿 · 복사해서 내 문서에 붙여 넣으세요</span><button type="button">복사</button></div><pre>단계 | 질문 | 답
+WHY 1 | 왜 [문제]가 생길까? | 
+WHY 2 |  | 
+WHY 3 |  | 
+WHY 4 |  | 
+WHY 5 (필요하면) |  | 
+근본 원인 | — | 
+해결 방향 | — | </pre></div></div><div class="topic" id="s2-4"><h3><span class="stage">프롬프트로 시작하기</span>2-4. 프롬프트로 시작하기</h3><p>템플릿을 손으로 채우는 대신 AI에게 초안을 받아요. [ ] 안은 이커머스 셀렉트마켓 예시 값이에요. 내 내용으로 바꿔 써요.</p><div class="copybox"><div class="copyhead"><span>프롬프트 3 · 복사해서 클로드에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 5 Whys를 진행해 줘. 한 번에 &#x27;왜?&#x27; 질문 하나만 하고 내 답을 기다려. 내 답이 추상적이면 실제 상황을 다시 물어봐. 바꿀 수 있는 원인이 나오면 다섯 번 전이라도 멈춰
+내용: 문제: [연말 선물을 고르는 이커머스 셀렉트마켓 기존 고객은 진행 중인 연말 할인·혜택을 한곳에서 확인하기 어려워, 혜택을 모른 채 다른 쇼핑몰에서 선물을 사는 일을 겪는다.]
+형식: 질문은 한 번에 하나. 마지막에 표(현상 / 원인 후보 / 근거 / 더 확인할 것)</pre></div><figure class="shot"><a href="images/d1-s2-start.png" target="_blank" rel="noopener"><img alt="실행 결과 · 위 프롬프트를 예시 값 그대로 클로드에서 실행한 결과예요(2026.11.01 실행)." loading="lazy" src="images/d1-s2-start.png"/></a><figcaption>실행 결과 · 위 프롬프트를 예시 값 그대로 클로드에서 실행한 결과예요(2026.11.01 실행). 이미지를 누르면 크게 보여요.</figcaption></figure></div><div class="topic" id="s2-5"><h3><span class="stage">점검·피드백</span>2-5. 점검·피드백</h3><p>AI가 만든 초안이나 내가 채운 템플릿을 그대로 쓰지 않고, 기준을 주고 점검받아요. 칭찬 말고 고칠 점을 받는 게 목적이에요.</p><div class="copybox"><div class="copyhead"><span>프롬프트 4 · 점검·피드백</span><button type="button">복사</button></div><pre>요청: 내 5 Whys 결과를 점검해 줘
+내용: WHY 1~4와 근본 원인: [다른 쇼핑몰에서 산다 → 혜택을 몰랐다 → 혜택이 흩어져 있다 → 팀마다 따로 공지한다 → 혜택을 한곳에 모으는 운영 규칙이 없다]
+형식: 표(단계 / 논리가 이어지나 O·△·X / 이유). 마지막 원인이 사람 탓인지, 바꿀 수 있는 것(화면·정보·정책)인지 판정</pre></div><figure class="shot"><a href="images/d1-s2-check.png" target="_blank" rel="noopener"><img alt="실행 결과 · 점검 프롬프트를 실행한 화면이에요." loading="lazy" src="images/d1-s2-check.png"/></a><figcaption>실행 결과 · 점검 프롬프트를 실행한 화면이에요. 이미지를 누르면 크게 보여요.</figcaption></figure></div><div class="topic" id="s2-6"><h3><span class="stage">실패 케이스</span>2-6. 실패 케이스 만들어 보기</h3><p>일부러 틀리게 해 보고, 결과가 어떻게 달라지는지 확인해요.</p><div class="table-wrap"><table><tr><th>만들어 볼 실패</th><th>이렇게 해 봐요</th><th>무엇이 보이고, 어떻게 풀까</th></tr><tr><td><b>AI에게 답까지 쓰게 하기</b></td><td>&#x27;5 Whys를 다 채워 줘&#x27;라고만 해 봐요.</td><td>AI가 그럴듯한 원인을 지어내요. 내 경험이 없는 원인은 근거 칸이 비어요. 질문만 받고 답은 내가 써요.</td></tr><tr><td><b>사람 탓에서 멈추기</b></td><td>마지막 답을 &#x27;고객이 꼼꼼히 안 봐서&#x27;로 끝내 봐요.</td><td>점검 프롬프트가 &#x27;바꿀 수 없는 원인&#x27;으로 판정해요. 한 번 더 &#x27;왜?&#x27;를 물어요.</td></tr></table></div></div><div class="topic" id="s2-7"><h3><span class="stage">결과 만들기</span>2-7. 결과 만들기</h3><div class="result-box"><b>결과물</b> 문제정의서 2번 칸: 5 Whys 표와 근본 원인 1줄</div><p class="ok-line"><b>이렇게 보이면 성공</b>근본 원인이 화면·정보·정책 중 하나다</p></div></section><section class="section session" id="s3">
+<div class="session-head"><div class="eyebrow">SESSION 3 · 13:00–14:00</div><h2>가설과 지표 1개 정하기</h2>
+<div class="why-box"><b>왜 쓰나?</b>가설이 있어야 &#x27;잘 됐다&#x27;를 판정할 수 있어요.</div></div>
+<div class="topic" id="s3-1"><h3><span class="stage">개념</span>3-1. 개념</h3><p>가설이 있어야 &#x27;잘 됐다&#x27;를 판정할 수 있어요. 가설은 &#x27;[타깃]이 [행동]한다면, [변화]가 생길 것이다. 왜냐하면 [근거] 때문이다&#x27; 형식으로 써요. 지표는 가설이 맞았는지 보여 주는 신호등이에요. 많을수록 좋은 게 아니라, 누가 봐도 명확한 하나가 더 강해요.</p><div class="table-wrap"><table class=""><tr><th>서비스</th><th>문제 상황</th><th>가설(요약)</th><th>핵심 지표</th></tr><tr><td>출석 체크 앱</td><td>출석을 수기로 관리해 누락이 잦다</td><td>QR로 출석하면 누락이 줄 것이다</td><td>출석 누락률</td></tr><tr><td>중고거래 플랫폼</td><td>상대를 믿을 수 없어 거래를 포기한다</td><td>후기·인증 배지를 보여 주면 거래 완료율이 오를 것이다</td><td>채팅 시작 대비 거래 완료율</td></tr><tr><td>온라인 강의</td><td>난이도를 몰라 맞지 않는 강의를 결제한다</td><td>난이도를 미리 보여 주면 환불이 줄 것이다</td><td>결제 후 7일 이내 환불률</td></tr></table></div><p class="source-note">출처: 김수정, 「AI 프로토타입으로 배우는 데이터 서비스기획」 <a href="https://loreenkim0301.github.io/swy-lecturenote/260831_%EB%B9%84%EA%B0%9C%EB%B0%9C%EC%9E%90%C2%B7%EA%B8%B0%ED%9A%8D%EC%9E%90%EB%A5%BC%20%EC%9C%84%ED%95%9C%20AI%20%ED%94%84%EB%A1%9C%ED%86%A0%ED%83%80%EC%9D%B4%ED%95%91%20%EC%9E%85%EB%AC%B8/#s3-5">3.5.3 문제정의를 가설과 지표로 정리하기</a></p></div><div class="topic" id="s3-2"><h3><span class="stage">예시</span>3-2. 채워진 예시</h3><p>이커머스 셀렉트마켓 예시예요. 처음에는 &#x27;방문 대비 신청 완료율&#x27; 하나만 골랐는데, 점검 프롬프트(아래 실행 결과)에서 &#x27;신청이라는 행동만 세고 구매 증가는 못 센다&#x27;는 이유로 약함 판정을 받았어요. 그래서 가설의 [변화]를 직접 세는 지표를 핵심으로 올리고, 신청 완료율은 보조로 내렸어요.</p><div class="table-wrap"><table class=""><tr><th>항목</th><th>작성 내용</th></tr><tr><td>가설</td><td>[연말 선물을 고르는 기존 고객]이 [한 페이지에서 연말 혜택을 확인하고 사전 신청]한다면, [이벤트 기간에 셀렉트마켓에서 선물을 사는 고객이 늘어날] 것이다. 왜냐하면 [혜택을 몰라 다른 쇼핑몰로 가던 이유가 사라지기] 때문이다.</td></tr><tr><td>핵심 지표(가설 판정)</td><td>사전 신청 고객 중 이벤트 기간에 실제로 구매한 비율</td></tr><tr><td>계산 방법</td><td>이벤트 기간 구매한 사전 신청 고객 수 ÷ 사전 신청 고객 수 (주문 데이터와 연결해야 셀 수 있음)</td></tr><tr><td>보조 지표(행동 확인)</td><td>이벤트 페이지 방문 대비 사전 신청 완료율 · 목표 20% (목표값, 근거는 이후 확인)</td></tr><tr><td>버린 후보와 이유</td><td>연말 매출: 이벤트 말고도 영향을 주는 게 많아 가설과 바로 이어지지 않는다</td></tr></table></div></div><div class="topic" id="s3-3"><h3><span class="stage">실습 템플릿</span>3-3. 실습 템플릿</h3><p>예시를 보고 빈칸을 내 내용으로 채워요. 손으로 다 채우지 못해도 괜찮아요. 다음 단계에서 AI로 채우는 방법을 연습해요.</p><div class="table-wrap"><table class="tpl"><tr><th>항목</th><th>작성 내용</th></tr><tr><td>가설</td><td>[타깃]이 [행동]한다면, [변화]가 생길 것이다. 왜냐하면 [근거] 때문이다.</td></tr><tr><td>핵심 지표(가설 판정)</td><td></td></tr><tr><td>계산 방법</td><td></td></tr><tr><td>보조 지표(행동 확인)·목표값</td><td></td></tr><tr><td>버린 후보와 이유</td><td></td></tr></table></div><div class="copybox"><div class="copyhead"><span>템플릿 · 복사해서 내 문서에 붙여 넣으세요</span><button type="button">복사</button></div><pre>항목 | 작성 내용
+가설 | [타깃]이 [행동]한다면, [변화]가 생길 것이다. 왜냐하면 [근거] 때문이다.
+핵심 지표(가설 판정) | 
+계산 방법 | 
+보조 지표(행동 확인)·목표값 | 
+버린 후보와 이유 | </pre></div></div><div class="topic" id="s3-4"><h3><span class="stage">프롬프트로 시작하기</span>3-4. 프롬프트로 시작하기</h3><p>템플릿을 손으로 채우는 대신 AI에게 초안을 받아요. [ ] 안은 이커머스 셀렉트마켓 예시 값이에요. 내 내용으로 바꿔 써요.</p><div class="copybox"><div class="copyhead"><span>프롬프트 5 · 복사해서 클로드에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 내 문제 정의를 가설 형식으로 바꾸고, 가설을 확인할 지표 후보 3개를 추천해 줘
+내용: 문제 정의: [연말 선물을 고르는 이커머스 셀렉트마켓 기존 고객은 진행 중인 연말 할인·혜택을 한곳에서 확인하기 어려워, 혜택을 모른 채 다른 쇼핑몰에서 선물을 사는 일을 겪는다.] / 근본 원인: [연말 혜택을 한곳에 모아 알리는 운영 규칙이 없다]
+형식: 가설 1문장(&#x27;[타깃]이 [행동]하면 [변화]할 것이다. 왜냐하면 [근거]&#x27;) + 표(지표 / 계산 방법 / 이벤트 페이지에서 실제로 셀 수 있는지 예·아니오). 숫자 목표는 추측하지 마</pre></div><figure class="shot"><a href="images/d1-s3-start.png" target="_blank" rel="noopener"><img alt="실행 결과 · 위 프롬프트를 예시 값 그대로 클로드에서 실행한 결과예요(2026.11.01 실행)." loading="lazy" src="images/d1-s3-start.png"/></a><figcaption>실행 결과 · 위 프롬프트를 예시 값 그대로 클로드에서 실행한 결과예요(2026.11.01 실행). 이미지를 누르면 크게 보여요.</figcaption></figure></div><div class="topic" id="s3-5"><h3><span class="stage">점검·피드백</span>3-5. 점검·피드백</h3><p>AI가 만든 초안이나 내가 채운 템플릿을 그대로 쓰지 않고, 기준을 주고 점검받아요. 칭찬 말고 고칠 점을 받는 게 목적이에요.</p><div class="copybox"><div class="copyhead"><span>프롬프트 6 · 점검·피드백</span><button type="button">복사</button></div><pre>요청: 내 가설과 지표가 직접 연결되는지 점검해 줘
+내용: 가설: [[연말 선물을 고르는 기존 고객]이 [한 페이지에서 연말 혜택을 확인하고 사전 신청]한다면, [이벤트 기간에 셀렉트마켓에서 선물을 사는 고객이 늘어날] 것이다. 왜냐하면 [혜택을 몰라 다른 쇼핑몰로 가던 이유가 사라지기] 때문이다.] / 지표: [이벤트 페이지 방문 대비 사전 신청 완료율]
+형식: 연결됨·약함·안 됨 판정 + 이유 2줄 + 이 지표로 가설이 틀렸다고 판단할 수 있는 상황 1개</pre></div><figure class="shot"><a href="images/d1-s3-check.png" target="_blank" rel="noopener"><img alt="실행 결과 · 점검 프롬프트를 실행한 화면이에요." loading="lazy" src="images/d1-s3-check.png"/></a><figcaption>실행 결과 · 점검 프롬프트를 실행한 화면이에요. 이미지를 누르면 크게 보여요.</figcaption></figure></div><div class="topic" id="s3-6"><h3><span class="stage">실패 케이스</span>3-6. 실패 케이스 만들어 보기</h3><p>일부러 틀리게 해 보고, 결과가 어떻게 달라지는지 확인해요.</p><div class="table-wrap"><table><tr><th>만들어 볼 실패</th><th>이렇게 해 봐요</th><th>무엇이 보이고, 어떻게 풀까</th></tr><tr><td><b>셀 수 없는 지표 고르기</b></td><td>지표를 &#x27;고객 만족도&#x27;로 넣고 점검해 봐요.</td><td>AI가 &#x27;이벤트 페이지에서 바로 셀 수 없다&#x27;고 판정해요. 버튼 클릭·신청 완료처럼 셀 수 있는 행동으로 바꿔요.</td></tr><tr><td><b>지표 여러 개 고르기</b></td><td>지표를 5개 넣어 봐요.</td><td>무엇이 성공인지 판단이 갈려요. 하나만 남기고 나머지는 &#x27;버린 후보&#x27; 칸으로 옮겨요.</td></tr></table></div></div><div class="topic" id="s3-7"><h3><span class="stage">결과 만들기</span>3-7. 결과 만들기</h3><div class="result-box"><b>결과물</b> 문제정의서 3번 칸: 가설 1문장 + 핵심 지표 1개(+보조 지표) + 목표값</div><p class="ok-line"><b>이렇게 보이면 성공</b>점검 프롬프트에서 &#x27;연결됨&#x27; 판정이 나왔다. &#x27;약함&#x27;이면 가설의 [변화]를 세는 지표로 바꿔 다시 점검했다</p></div></section><section class="section session" id="s4">
+<div class="session-head"><div class="eyebrow">SESSION 4 · 14:00–15:30</div><h2>문제정의서로 이벤트 페이지 v1 만들기</h2>
+<div class="why-box"><b>왜 쓰나?</b>이번엔 &#x27;예쁜 페이지 만들어 줘&#x27;가 아니라 문제정의서를 근거로 요청해요.</div></div>
+<div class="topic" id="s4-1"><h3><span class="stage">개념</span>4-1. 개념</h3><p>이번엔 &#x27;예쁜 페이지 만들어 줘&#x27;가 아니라 문제정의서를 근거로 요청해요. 근거가 있으면 AI 결과를 &#x27;맞다·틀리다&#x27;로 판단할 수 있어요. 요청서에는 문제·가설과 함께 &#x27;꼭 있어야 할 것&#x27;과 &#x27;넣지 말 것&#x27;을 적어요. 코드는 보지 않고 미리보기 화면만 보고 판단해요.</p><div class="entry-box"><b>들어가는 길 · 클로드 아티팩트</b><p><a href="https://claude.ai/new" target="_blank" rel="noopener">https://claude.ai/new</a></p><p>왼쪽 위 &#x27;새로 만들기&#x27;로 새 대화를 열고 가운데 입력창에 요청서를 붙여 넣어요. 화면을 요청하면 답변 옆에 아티팩트 창이 열려요.</p><figure class="shot"><a href="images/entry-claude-home.png" target="_blank" rel="noopener"><img alt="클로드 첫 화면. 왼쪽 메뉴는 이번 주에 차례로 써요(개인 목록은 가렸어요)." loading="lazy" src="images/entry-claude-home.png"/></a><figcaption>클로드 첫 화면. 왼쪽 메뉴는 이번 주에 차례로 써요(개인 목록은 가렸어요).</figcaption></figure></div></div><div class="topic" id="s4-2"><h3><span class="stage">예시</span>4-2. 채워진 예시</h3><p>문제정의서를 화면 요청서로 옮긴 예시예요. &#x27;넣지 말 것&#x27;이 있으면 AI가 멋대로 추가하는 일이 줄어요.</p><div class="table-wrap"><table class=""><tr><th>항목</th><th>작성 내용</th></tr><tr><td>문제 정의</td><td>연말 혜택을 한곳에서 확인하기 어려워 다른 쇼핑몰에서 선물을 산다</td></tr><tr><td>가설</td><td>한 페이지에서 혜택을 확인하고 사전 신청하면 이벤트 기간 구매가 늘 것이다</td></tr><tr><td>꼭 있어야 할 것</td><td>이벤트 소개 한 줄, 혜택 3가지(할인·쿠폰·사은품), 사전 신청 폼(이름·연락처·관심 선물 카테고리·개인정보 동의), 마감일 12월 15일</td></tr><tr><td>넣지 말 것</td><td>로그인, 결제, 실제 회사 로고, 지어낸 고객 후기</td></tr><tr><td>화면 조건</td><td>한 페이지, 휴대폰에서도 보이게</td></tr></table></div></div><div class="topic" id="s4-3"><h3><span class="stage">실습 템플릿</span>4-3. 실습 템플릿</h3><p>예시를 보고 빈칸을 내 내용으로 채워요. 손으로 다 채우지 못해도 괜찮아요. 다음 단계에서 AI로 채우는 방법을 연습해요.</p><div class="table-wrap"><table class="tpl"><tr><th>항목</th><th>작성 내용</th></tr><tr><td>문제 정의</td><td></td></tr><tr><td>가설</td><td></td></tr><tr><td>꼭 있어야 할 것</td><td></td></tr><tr><td>넣지 말 것</td><td></td></tr><tr><td>화면 조건</td><td></td></tr></table></div><div class="copybox"><div class="copyhead"><span>템플릿 · 복사해서 내 문서에 붙여 넣으세요</span><button type="button">복사</button></div><pre>항목 | 작성 내용
+문제 정의 | 
+가설 | 
+꼭 있어야 할 것 | 
+넣지 말 것 | 
+화면 조건 | </pre></div></div><div class="topic" id="s4-4"><h3><span class="stage">프롬프트로 시작하기</span>4-4. 프롬프트로 시작하기</h3><p>템플릿을 손으로 채우는 대신 AI에게 초안을 받아요. [ ] 안은 이커머스 셀렉트마켓 예시 값이에요. 내 내용으로 바꿔 써요.</p><div class="copybox"><div class="copyhead"><span>프롬프트 7 · 복사해서 클로드에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 연말 이벤트 사전 신청 페이지 한 장을 아티팩트로 만들어 줘. 코드 설명은 하지 말고 미리보기로 보여 줘
+내용: 문제 정의: [연말 혜택을 한곳에서 확인하기 어려워 다른 쇼핑몰에서 선물을 산다] / 가설: [한 페이지에서 혜택을 확인하고 사전 신청하면 이벤트 기간 구매가 늘 것이다] / 꼭 있어야 할 것: [이벤트 소개 한 줄, 혜택 3가지(할인·쿠폰·사은품), 사전 신청 폼(이름·연락처·관심 선물 카테고리·개인정보 동의), 마감일 12월 15일] / 넣지 말 것: [로그인, 결제, 실제 회사 로고, 지어낸 고객 후기]
+형식: 서비스 이름은 이커머스 셀렉트마켓, 한 페이지, 휴대폰에서도 보이게</pre></div><figure class="shot"><a href="images/d1-s4-start.png" target="_blank" rel="noopener"><img alt="실행 결과 · 위 프롬프트를 예시 값 그대로 클로드에서 실행한 결과예요(2026.11.01 실행)." loading="lazy" src="images/d1-s4-start.png"/></a><figcaption>실행 결과 · 위 프롬프트를 예시 값 그대로 클로드에서 실행한 결과예요(2026.11.01 실행). 이미지를 누르면 크게 보여요.</figcaption></figure></div><div class="topic" id="s4-5"><h3><span class="stage">점검·피드백</span>4-5. 점검·피드백</h3><p>AI가 만든 초안이나 내가 채운 템플릿을 그대로 쓰지 않고, 기준을 주고 점검받아요. 칭찬 말고 고칠 점을 받는 게 목적이에요.</p><div class="copybox"><div class="copyhead"><span>프롬프트 8 · 점검·피드백</span><button type="button">복사</button></div><pre>요청: 방금 만든 페이지를 내 요청서와 비교해서 점검해 줘. 화면은 고치지 말고 점검만 해
+내용: 요청서: [위에서 쓴 꼭 있어야 할 것 / 넣지 말 것]
+형식: 표(요청 항목 / 화면에 있음·없음·다름 / 위치). 요청에 없는데 추가된 것도 따로 적어</pre></div><figure class="shot"><a href="images/d1-s4-check.png" target="_blank" rel="noopener"><img alt="실행 결과 · 점검 프롬프트를 실행한 화면이에요." loading="lazy" src="images/d1-s4-check.png"/></a><figcaption>실행 결과 · 점검 프롬프트를 실행한 화면이에요. 이미지를 누르면 크게 보여요.</figcaption></figure></div><div class="topic" id="s4-6"><h3><span class="stage">실패 케이스</span>4-6. 실패 케이스 만들어 보기</h3><p>일부러 틀리게 해 보고, 결과가 어떻게 달라지는지 확인해요.</p><div class="table-wrap"><table><tr><th>만들어 볼 실패</th><th>이렇게 해 봐요</th><th>무엇이 보이고, 어떻게 풀까</th></tr><tr><td><b>근거 없이 요청하기</b></td><td>새 대화에서 &#x27;연말 이벤트 페이지 예쁘게 만들어 줘&#x27;만 보내 봐요.</td><td>혜택·신청 폼이 빠지거나 지어낸 후기가 들어가요. v1과 나란히 놓고 차이를 적어요.</td></tr><tr><td><b>코드부터 읽기</b></td><td>아티팩트의 코드 탭부터 열어 봐요.</td><td>무엇이 맞는지 판단할 수 없어요. 미리보기로 돌아와 요청서와 비교해요.</td></tr></table></div></div><div class="topic" id="s4-7"><h3><span class="stage">결과 만들기</span>4-7. 결과 만들기</h3><div class="result-box"><b>결과물</b> 이벤트 페이지 v1 아티팩트 + 화면 캡처 1장</div><p class="ok-line"><b>이렇게 보이면 성공</b>점검표에서 &#x27;없음&#x27;이 0개이거나, 없는 항목을 다음 수정 요청서에 옮겼다</p><div class="ref-box" role="note" aria-label="참고 결과물"><b>참고 · 강사가 이 실습을 예시 값으로 해 본 결과물</b><p>링크가 있으면 누구나 볼 수 있어요(보기 전용, 편집 불가). AI가 만든 결과 그대로라 내 결과와 다를 수 있어요. 내 것을 먼저 만든 다음 비교해요.</p><ul><li><span class="ref-kind">클로드 아티팩트</span> <a href="https://claude.ai/artifact/TQi3nHMZgPWHDrSfdmuox8" target="_blank" rel="noopener">이벤트 페이지 v1</a></li></ul></div></div></section><section class="section session" id="s5">
+<div class="session-head"><div class="eyebrow">SESSION 5 · 15:30–17:30</div><h2>수정 요청서로 UX·UI 바꾸기</h2>
+<div class="why-box"><b>왜 쓰나?</b>수정은 한 번에 하나씩 해야 무엇이 바뀌었는지 알 수 있어요.</div></div>
+<div class="topic" id="s5-1"><h3><span class="stage">개념</span>5-1. 개념</h3><p>수정은 한 번에 하나씩 해야 무엇이 바뀌었는지 알 수 있어요. 수정 요청서에는 &#x27;바꿀 것&#x27;, &#x27;바꾸는 이유(가설과 연결)&#x27;, &#x27;그대로 둘 것&#x27;을 적어요. 특히 &#x27;그대로 둘 것&#x27;을 쓰지 않으면 AI가 다른 곳까지 바꿔요. 요청과 결과를 표로 남기는 게 오늘의 진짜 결과물이에요.</p></div><div class="topic" id="s5-2"><h3><span class="stage">예시</span>5-2. 채워진 예시</h3><p>v1을 다섯 번 고친 수정 기록 예시예요. 순서는 정보 위치 → 상태 문구 → 휴대폰 → 색·글꼴처럼 가설에 가까운 것부터 해요.</p><div class="table-wrap"><table class=""><tr><th>번호</th><th>바꿀 것</th><th>이유(가설과 연결)</th><th>그대로 둘 것</th><th>결과</th></tr><tr><td>1</td><td>혜택 3가지를 첫 화면 위쪽으로</td><td>혜택을 먼저 봐야 신청한다</td><td>신청 폼 항목</td><td>의도대로</td></tr><tr><td>2</td><td>마감까지 남은 날짜 표시</td><td>미루지 않고 신청하게</td><td>나머지 전부</td><td>의도대로</td></tr><tr><td>3</td><td>빈칸·형식 오류·신청 완료 문구</td><td>실패해도 다시 신청하게</td><td>레이아웃</td><td>문구 1개 누락 → 재요청</td></tr><tr><td>4</td><td>폭 600px보다 좁을 때만 한 줄 배치</td><td>휴대폰 방문이 많다</td><td>넓은 화면</td><td>의도대로</td></tr><tr><td>5</td><td>주 색 1개, 보조 색 1개로 정리</td><td>혜택 강조</td><td>배치</td><td>의도대로</td></tr></table></div></div><div class="topic" id="s5-3"><h3><span class="stage">실습 템플릿</span>5-3. 실습 템플릿</h3><p>예시를 보고 빈칸을 내 내용으로 채워요. 손으로 다 채우지 못해도 괜찮아요. 다음 단계에서 AI로 채우는 방법을 연습해요.</p><div class="table-wrap"><table class="tpl"><tr><th>번호</th><th>바꿀 것</th><th>이유(가설과 연결)</th><th>그대로 둘 것</th><th>결과</th></tr><tr><td>1</td><td></td><td></td><td></td><td></td></tr><tr><td>2</td><td></td><td></td><td></td><td></td></tr><tr><td>3</td><td></td><td></td><td></td><td></td></tr><tr><td>4</td><td></td><td></td><td></td><td></td></tr><tr><td>5</td><td></td><td></td><td></td><td></td></tr></table></div><div class="copybox"><div class="copyhead"><span>템플릿 · 복사해서 내 문서에 붙여 넣으세요</span><button type="button">복사</button></div><pre>번호 | 바꿀 것 | 이유(가설과 연결) | 그대로 둘 것 | 결과
+1 |  |  |  | 
+2 |  |  |  | 
+3 |  |  |  | 
+4 |  |  |  | 
+5 |  |  |  | </pre></div></div><div class="topic" id="s5-4"><h3><span class="stage">프롬프트로 시작하기</span>5-4. 프롬프트로 시작하기</h3><p>템플릿을 손으로 채우는 대신 AI에게 초안을 받아요. [ ] 안은 이커머스 셀렉트마켓 예시 값이에요. 내 내용으로 바꿔 써요.</p><div class="copybox"><div class="copyhead"><span>프롬프트 9 · 복사해서 클로드에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 이 페이지에서 하나만 바꿔 줘. 다른 부분은 그대로 둬
+내용: 바꿀 것: [신청 폼에서 이름 빈칸, 연락처 형식 오류, 신청 완료일 때 보여 줄 안내 문구 추가] / 이유: [실패해도 고객이 다시 신청하게] / 그대로 둘 것: [레이아웃, 색, 혜택 영역]
+형식: 바꾼 부분 3줄 요약 + 미리보기</pre></div><figure class="shot"><a href="images/d1-s5-start.png" target="_blank" rel="noopener"><img alt="실행 결과 · 위 프롬프트를 예시 값 그대로 클로드에서 실행한 결과예요(2026.11.01 실행)." loading="lazy" src="images/d1-s5-start.png"/></a><figcaption>실행 결과 · 위 프롬프트를 예시 값 그대로 클로드에서 실행한 결과예요(2026.11.01 실행). 이미지를 누르면 크게 보여요.</figcaption></figure></div><div class="topic" id="s5-5"><h3><span class="stage">점검·피드백</span>5-5. 점검·피드백</h3><p>AI가 만든 초안이나 내가 채운 템플릿을 그대로 쓰지 않고, 기준을 주고 점검받아요. 칭찬 말고 고칠 점을 받는 게 목적이에요.</p><div class="copybox"><div class="copyhead"><span>프롬프트 10 · 점검·피드백</span><button type="button">복사</button></div><pre>요청: 방금 수정 전후를 비교해 줘
+내용: 요청한 것: [안내 문구 3개 추가] / 그대로 둘 것: [레이아웃, 색, 혜택 영역]
+형식: 표(요청한 변경 / 실제로 바뀐 것 / 바뀌면 안 되는데 바뀐 것). 마지막에 수정 기록표 한 줄</pre></div><figure class="shot"><a href="images/d1-s5-check.png" target="_blank" rel="noopener"><img alt="실행 결과 · 점검 프롬프트를 실행한 화면이에요." loading="lazy" src="images/d1-s5-check.png"/></a><figcaption>실행 결과 · 점검 프롬프트를 실행한 화면이에요. 이미지를 누르면 크게 보여요.</figcaption></figure></div><div class="topic" id="s5-6"><h3><span class="stage">실패 케이스</span>5-6. 실패 케이스 만들어 보기</h3><p>일부러 틀리게 해 보고, 결과가 어떻게 달라지는지 확인해요.</p><div class="table-wrap"><table><tr><th>만들어 볼 실패</th><th>이렇게 해 봐요</th><th>무엇이 보이고, 어떻게 풀까</th></tr><tr><td><b>한 번에 여러 개 고치기</b></td><td>색·배치·문구를 한 프롬프트로 바꿔 달라고 해 봐요.</td><td>무엇 때문에 좋아졌는지(또는 망가졌는지) 알 수 없어요. 되돌리고 하나씩 다시 해요.</td></tr><tr><td><b>&#x27;그대로 둘 것&#x27; 빼기</b></td><td>&#x27;휴대폰에서 보기 좋게 해 줘&#x27;만 보내 봐요.</td><td>넓은 화면까지 휴대폰처럼 바뀌어요. 폭 기준(600px 등)과 그대로 둘 것을 적어요.</td></tr></table></div></div><div class="topic" id="s5-7"><h3><span class="stage">결과 만들기</span>5-7. 결과 만들기</h3><div class="result-box"><b>결과물</b> 이벤트 페이지 v2 + 수정 기록표 5줄</div><p class="ok-line"><b>이렇게 보이면 성공</b>기록표의 &#x27;결과&#x27; 칸이 모두 채워졌다</p></div></section><section class="section session" id="wrap">
+<div class="session-head"><div class="eyebrow">정리 · 17:30–18:00</div><h2>오늘 정리와 과제</h2></div>
+<p><b>오늘의 규칙 3줄</b></p><ul class="checklist"><li>문제 정의에는 해결책을 쓰지 않는다</li><li>가설과 지표가 있어야 화면을 &#x27;맞다·틀리다&#x27;로 판단한다</li><li>수정은 한 번에 하나, &#x27;그대로 둘 것&#x27;을 함께 쓴다</li></ul>
+<div class="notice"><b>오늘의 결과물</b><br/>문제정의서 1장(3요소·5 Whys·가설·지표) + 이벤트 페이지 v2 + 수정 기록표</div>
+<div class="notice"><b>과제</b><br/>문제정의서에 오늘 고른 문제 정의를 넣고, 수정 기록표에 1줄을 더해 와요.</div></section>
+</main>
+</div>
+<button id="slideBtn" type="button">▶ 슬라이드로 보기</button>
+<div hidden="" id="deck">
+<div id="viewport"><div id="stage">
+<div id="master"><span>AI 프로덕트 매니저 2주차 · DAY 1 문제 정의·아티팩트</span></div>
+<div id="mbar"><i id="prog"></i></div>
+<div id="slide"></div>
+<div id="pager"><button aria-label="이전" id="prev" type="button">◀</button><span id="pg"></span><button aria-label="다음" id="next" type="button">▶</button></div>
+</div></div>
+<div id="bar"><button id="exit" type="button">✕ 닫기 (Esc)</button></div>
+</div>
+<script type="text/javascript">
+(function(){
+  var K={'요청':'','내용':' k2','형식':' k3'};
+  window.fmtPre=function(pr){
+    var t=pr.textContent;
+    if(!/^요청: /.test(t))return;
+    var lines=t.split('\n');pr.textContent='';pr.className='fmt';
+    lines.forEach(function(l,i){
+      var m=l.match(/^(요청|내용|형식): (.*)$/),d=document.createElement('div');
+      if(m){d.className='pl'+K[m[1]];var b=document.createElement('b');b.className='pk';b.textContent=m[1]+': ';var sp=document.createElement('span');sp.className='pt';sp.textContent=m[2];d.appendChild(b);d.appendChild(sp);}
+      else{d.className='pl c';var sp2=document.createElement('span');sp2.className='pt';sp2.textContent=l;d.appendChild(sp2);}
+      pr.appendChild(d);if(i<lines.length-1)pr.appendChild(document.createTextNode('\n'));
+    });
+  };
+  document.querySelectorAll('.copybox pre').forEach(window.fmtPre);
+})();
+</script>
+<script type="text/javascript">
+(function(){
+  var re=/^(STEP|준비|규칙서대로|분석 [1-4]|프롬프트 [AB]|프롬프트 쓰기|실습|방법 [A-C]|워밍업|[①-⑤] |\(선택\)|완성한|결과를 보고|버전|두 결과)/;
+  var nav=document.querySelector('aside nav');
+  document.querySelectorAll('main .topic').forEach(function(t){
+    var parent=nav.querySelector('a.l3[href="#'+t.id+'"]'),last=parent,n=0;
+    if(!parent)return;
+    t.querySelectorAll(':scope > p').forEach(function(p){
+      var b=p.firstElementChild;
+      if(!b||b.tagName!=='B'||p.children.length!==1||p.textContent.trim()!==b.textContent.trim()||!re.test(b.textContent.trim()))return;
+      p.classList.add('dh');p.id='d-'+t.id+'-'+(++n);
+      var a=document.createElement('a');a.className='l4';a.href='#'+p.id;a.setAttribute('data-p',t.id);
+      a.textContent=b.textContent.replace(/[:：]\s*.*$/,'').trim();
+      last.parentNode.insertBefore(a,last.nextSibling);last=a;
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+var main=document.querySelector('main'),deck=document.getElementById('deck'),box=document.getElementById('slide'),pgEl=document.getElementById('pg'),prog=document.getElementById('prog'),pages=[],i=0;
+function kids(el,skip){return Array.prototype.filter.call(el.children,function(c){return !skip(c);});}
+function logical(){
+  var out=[],hero=main.querySelector('.hero');
+  if(hero)out.push({sect:'표지',title:'',n:Array.prototype.slice.call(hero.children)});
+  Array.prototype.forEach.call(main.querySelectorAll(':scope > .section'),function(sec){
+    var h2=sec.querySelector('h2'),title=h2.textContent,head=sec.querySelector('.session-head'),n=[];
+    if(head)n=Array.prototype.slice.call(head.querySelectorAll('p'));
+    n=n.concat(kids(sec,function(c){return c.classList.contains('section-label')||c.tagName==='H2'||c.classList.contains('session-head')||c.classList.contains('topic');}));
+    if(n.length)out.push({sect:title,title:title,n:n});
+    Array.prototype.forEach.call(sec.querySelectorAll(':scope > .topic'),function(t){
+      var h3=t.querySelector('h3');
+      out.push({sect:title,title:h3.textContent,n:kids(t,function(c){return c===h3;})});
+    });
+  });
+  return out;
+}
+function over(){return box.scrollHeight>box.clientHeight+1;}
+function build(){
+  pages=[];var L=logical(),count,sl;L.forEach(function(x){var out=[];x.n.forEach(function(el){if(el.tagName==="DETAILS"){var t=el.querySelector(".summary-title");var h=document.createElement("p");h.innerHTML="<b>"+(t?t.textContent:"")+"</b>";out.push(h);Array.prototype.forEach.call(el.children,function(c){if(c.tagName!=="SUMMARY")out.push(c);});}else out.push(el);});x.n=out;});
+  function head(cont){
+    box.innerHTML='';
+    if(sl.title&&sl.sect&&sl.sect!==sl.title){var eb=document.createElement('div');eb.className='eb';eb.textContent=sl.sect;box.appendChild(eb);}
+    if(sl.title){var h=document.createElement('h3');h.className='st';h.textContent=sl.title;
+      if(cont){var c=document.createElement('span');c.className='cont';c.textContent='(이어서)';h.appendChild(c);}
+      box.appendChild(h);}
+    count=0;
+  }
+  function flush(){pages.push({html:box.innerHTML,sect:sl.sect});}
+  function addSplit(items,shellFn){
+    var shell=shellFn(),n=0;box.appendChild(shell.root);
+    items.forEach(function(it){
+      shell.add(it);n++;
+      if(over()&&(n>1||count>0)){
+        shell.remove();n--;
+        if(n===0)box.removeChild(shell.root);
+        flush();head(true);shell=shellFn();n=0;box.appendChild(shell.root);shell.add(it);n=1;
+      }
+    });
+    count++;
+  }
+  L.forEach(function(s){
+    sl=s;head(false);
+    s.n.forEach(function(el){
+      var tbl=el.classList&&el.classList.contains('table-wrap')&&el.querySelector('table');
+      var rows=tbl?Array.prototype.slice.call(tbl.rows):null;
+      var hasHead=rows&&rows.length>3&&Array.prototype.every.call(rows[0].cells,function(c){return c.tagName==='TH';})
+        &&!rows.some(function(r){return Array.prototype.some.call(r.cells,function(c){return c.rowSpan>1;});});
+      var listy=(el.tagName==='UL'||el.tagName==='OL'||(el.classList&&(el.classList.contains('procedure')||el.classList.contains('resource-list'))))&&el.children.length>1;
+      if(el.classList&&el.classList.contains('dh')&&count>1&&box.scrollHeight>box.clientHeight*0.5){flush();head(false);}
+      var c=el.cloneNode(true);box.appendChild(c);
+      if(over()&&count>0){var pv=c.previousElementSibling,lead=count>1&&pv&&pv.tagName==='P'&&pv.children.length===1&&pv.firstElementChild.tagName==='B'&&pv.textContent.trim()===pv.firstElementChild.textContent.trim();
+        box.removeChild(c);if(lead)box.removeChild(pv);flush();head(true);if(lead){box.appendChild(pv);count++;}box.appendChild(c);}
+      if(over()){
+        if(hasHead){
+          box.removeChild(c);
+          addSplit(rows.slice(1),function(){
+            var w=el.cloneNode(false),t=tbl.cloneNode(false),b=document.createElement('tbody');
+            t.appendChild(b);b.appendChild(rows[0].cloneNode(true));w.appendChild(t);
+            return {root:w,add:function(r){b.appendChild(r.cloneNode(true));},remove:function(){b.removeChild(b.lastChild);}};
+          });
+          return;
+        }
+        if(el.classList&&el.classList.contains('copybox')){
+          box.removeChild(c);
+          var lines=el.querySelector('pre').textContent.split('\n');
+          addSplit(lines,function(){
+            var w=el.cloneNode(false),hd=el.querySelector('.copyhead').cloneNode(true),pr=document.createElement('pre'),txt=[];
+            w.appendChild(hd);w.appendChild(pr);
+            return {root:w,add:function(l){txt.push(l);pr.className='';pr.textContent=txt.join('\n');window.fmtPre(pr);},remove:function(){txt.pop();pr.className='';pr.textContent=txt.join('\n');window.fmtPre(pr);}};
+          });
+          return;
+        }
+        if(listy){
+          box.removeChild(c);
+          addSplit(Array.prototype.slice.call(el.children),function(){
+            var u=el.cloneNode(false);
+            return {root:u,add:function(li){u.appendChild(li.cloneNode(true));},remove:function(){u.removeChild(u.lastChild);}};
+          });
+          return;
+        }
+      }
+      count++;
+    });
+    flush();
+  });
+  var o='<h3 class="st">전체 목차</h3><div class="outline">';
+  Array.prototype.forEach.call(document.querySelectorAll('aside nav .grp'),function(g){
+    o+='<div class="og"><b>'+g.querySelector('.grp-label').textContent+(g.querySelector('.l2')&&g.querySelector('.grp-label').textContent.indexOf('세션')===0?' · '+g.querySelector('.l2').textContent:'')+'</b>';
+    var guide=g.querySelector('.grp-label').textContent==='교육 안내';
+    Array.prototype.forEach.call(g.querySelectorAll(guide?'a.l2,a.l3':'a.l3'),function(a){o+='<span>'+a.textContent+'</span>';});
+    o+='</div>';
+  });
+  pages.splice(1,0,{html:o+'</div>',sect:'목차'});
+}
+function show(n){
+  i=Math.max(0,Math.min(pages.length-1,n));var p=pages[i];
+  box.innerHTML=p.html;box.scrollTop=0;
+  pgEl.textContent=(i+1)+' / '+pages.length;prog.style.width=((i+1)/pages.length*100)+'%';
+}
+var stage=document.getElementById('stage'),vp=document.getElementById('viewport');
+function fit(){var k=Math.min(vp.clientWidth/1280,vp.clientHeight/720);stage.style.transform='translate(-50%,-50%) scale('+k+')';}
+function open(){deck.hidden=false;document.body.style.overflow='hidden';fit();var w=[].slice.call(main.querySelectorAll('img')).map(function(m){if(m.complete)return 0;m.loading='eager';return new Promise(function(r){m.onload=m.onerror=r;setTimeout(r,8000);});});Promise.all(w).then(function(){build();show(0);});}
+function close(){deck.hidden=true;document.body.style.overflow='';}
+window.addEventListener('resize',function(){if(!deck.hidden)fit();});
+document.getElementById('slideBtn').onclick=open;
+document.getElementById('exit').onclick=close;
+document.getElementById('prev').onclick=function(){show(i-1)};
+document.getElementById('next').onclick=function(){show(i+1)};
+document.addEventListener('keydown',function(e){
+  if(deck.hidden)return;
+  if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ')show(i+1);
+  else if(e.key==='ArrowLeft'||e.key==='PageUp')show(i-1);
+  else if(e.key==='Escape')close();
+});
+document.addEventListener('click',function(e){
+  var b=e.target.closest&&e.target.closest('.copyhead button');if(!b)return;
+  var pre=b.closest('.copybox').querySelector('pre');
+  var done=function(){var t=b.textContent;b.textContent='복사됨';setTimeout(function(){b.textContent=t;},1200);};
+  if(navigator.clipboard)navigator.clipboard.writeText(pre.classList.contains('fmt')?pre.textContent:pre.innerText).then(done,done);else done();
+});
+})();
+</script>
+<script type="text/javascript">
+(function(){
+  var links=[].slice.call(document.querySelectorAll('aside nav a[href^="#"]'));
+  var targets=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));});
+  function update(){
+    var y=window.scrollY+120, cur=-1;
+    targets.forEach(function(el,i){ if(el && el.getBoundingClientRect().top+window.scrollY<=y) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('active', i===cur); });
+    var cp=null;
+    if(cur>=0){ var ca=links[cur]; cp=ca.classList.contains('l4')?ca.getAttribute('data-p'):(ca.getAttribute('href').slice(1)); }
+    links.forEach(function(a){ if(a.classList.contains('l4')) a.classList.toggle('show', a.getAttribute('data-p')===cp); });
+    if(cur>=0){ var a=links[cur], box=a.closest('aside'), r=a.getBoundingClientRect();
+      if(r.top<120||r.bottom>window.innerHeight-20) box.scrollTop+=r.top-window.innerHeight/2; }
+  }
+  window.addEventListener('scroll',update,{passive:true}); update();
+})();
+</script>
+<script type="text/javascript">
+(function(){
+  var btn=document.querySelector('.nav-toggle'), label=btn.querySelector('span'), body=document.body;
+  var mq=window.matchMedia('(max-width: 1020px)');
+  function isOpen(){ return mq.matches ? body.classList.contains('nav-open') : !body.classList.contains('nav-hidden'); }
+  function sync(){ var o=isOpen(); btn.setAttribute('aria-expanded',o); label.textContent=o?'목차 숨기기':'목차 보기'; }
+  try{ if(localStorage.getItem('navHidden')==='1') body.classList.add('nav-hidden'); }catch(e){}
+  btn.addEventListener('click',function(){
+    if(mq.matches){ body.classList.toggle('nav-open'); }
+    else{ var h=body.classList.toggle('nav-hidden'); try{ localStorage.setItem('navHidden',h?'1':'0'); }catch(e){} }
+    sync();
+  });
+  document.querySelectorAll('aside nav a').forEach(function(a){ a.addEventListener('click',function(){ if(mq.matches){ body.classList.remove('nav-open'); sync(); } }); });
+  if(mq.addEventListener) mq.addEventListener('change',sync);
+  sync();
+})();
+</script>
+</body>
+</html>
