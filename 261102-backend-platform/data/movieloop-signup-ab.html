@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>무비루프 회원가입 | A/B 테스트 실습용</title>
+<meta name="robots" content="noindex">
+<!-- [1] GA4 태그: 아래 측정 ID만 본인 것으로 바꾸세요 -->
+<script>window.GA_ID = 'G-XXXXXXXXXX';</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  var debugOn = new URLSearchParams(location.search).get('debug') === '1';
+  gtag('config', window.GA_ID, debugOn ? { debug_mode: true } : {});
+</script>
+<style>
+  :root{--bg:#0f1115;--card:#1a1d24;--text:#f2f3f5;--muted:#a7adb8;--accent:#e8b33a;--line:#2c313b}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column}
+  header{padding:20px 24px;display:flex;justify-content:space-between;align-items:center}
+  .logo{font-weight:800;font-size:22px;letter-spacing:-.5px;color:var(--accent)}
+  .badge{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:4px 10px}
+  main{flex:1;display:flex;align-items:center;justify-content:center;padding:24px 16px}
+  .card{width:100%;max-width:440px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:32px 28px}
+  h1{font-size:26px;line-height:1.35;margin:0 0 10px}
+  .sub{color:var(--muted);margin:0 0 24px;line-height:1.6}
+  label{display:block;font-size:14px;margin-bottom:6px}
+  input{width:100%;padding:14px;border-radius:10px;border:1px solid var(--line);background:#11141a;color:var(--text);font-size:16px}
+  button{margin-top:14px;width:100%;padding:15px;border:0;border-radius:10px;background:var(--accent);color:#1a1300;font-size:17px;font-weight:700;cursor:pointer}
+  .done{display:none;text-align:center}
+  .done p{color:var(--muted)}
+  footer{padding:16px 24px;color:var(--muted);font-size:12px;line-height:1.6;text-align:center}
+  footer code{background:#11141a;padding:2px 6px;border-radius:6px}
+</style>
+</head>
+<body>
+<header>
+  <span class="logo">MovieLoop</span>
+  <span class="badge" id="variantBadge">A/B 실습</span>
+</header>
+
+<main>
+  <section class="card" aria-labelledby="headline">
+    <div id="formArea">
+      <h1 id="headline">영화와 시리즈를 무제한으로</h1>
+      <p class="sub" id="subcopy">이메일만 입력하면 바로 시작할 수 있어요.</p>
+      <form id="signupForm" novalidate>
+        <label for="email">이메일</label>
+        <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="off" required>
+        <button id="cta" type="submit">회원가입</button>
+      </form>
+    </div>
+    <div class="done" id="doneArea" role="status">
+      <h1>가입 완료!</h1>
+      <p>실습용 화면입니다. 입력한 이메일은 어디에도 저장·전송되지 않습니다.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>이 페이지는 셀렉트웨이 교안용 가상 서비스(MovieLoop)입니다. 실제 서비스가 아닙니다.</p>
+  <p>테스트용 주소: <code>?variant=A</code> 또는 <code>?variant=B</code>로 안을 고정, <code>?debug=1</code>로 GA4 DebugView 켜기</p>
+</footer>
+
+<!-- [2] A/B 나누기 + GA4 이벤트 -->
+<script>
+  var COPY = {
+    A: { headline: '영화와 시리즈를 무제한으로', sub: '이메일만 입력하면 바로 시작할 수 있어요.', cta: '회원가입' },
+    B: { headline: '오늘 밤 볼 영화, 지금 바로 고르세요', sub: '언제든 해지할 수 있어요. 가입은 30초면 끝나요.', cta: '지금 시작하기' }
+  };
+  var KEY = 'movieloop_signup_test';
+  var params = new URLSearchParams(location.search);
+  var forced = params.get('variant');
+  var v = (forced === 'A' || forced === 'B') ? forced : localStorage.getItem(KEY);
+  if (v !== 'A' && v !== 'B') { v = Math.random() < 0.5 ? 'A' : 'B'; }
+  localStorage.setItem(KEY, v);
+
+  document.getElementById('headline').textContent = COPY[v].headline;
+  document.getElementById('subcopy').textContent = COPY[v].sub;
+  document.getElementById('cta').textContent = COPY[v].cta;
+  document.getElementById('variantBadge').textContent = 'A/B 실습 · ' + v + '안';
+
+  gtag('set', 'user_properties', { ab_variant: v });
+  gtag('event', 'experiment_view', { experiment_id: 'signup_copy_1', variant: v });
+
+  var started = false;
+  document.getElementById('email').addEventListener('focus', function () {
+    if (!started) { started = true; gtag('event', 'signup_start', { variant: v }); }
+  });
+
+  document.getElementById('signupForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var email = document.getElementById('email');
+    if (!email.value || !email.checkValidity()) { email.focus(); return; }
+    // 개인정보 보호: 이메일 값은 GA4로 보내지 않습니다.
+    gtag('event', 'sign_up', { method: 'email', variant: v });
+    email.value = '';
+    document.getElementById('formArea').style.display = 'none';
+    document.getElementById('doneArea').style.display = 'block';
+  });
+</script>
+</body>
+</html>
