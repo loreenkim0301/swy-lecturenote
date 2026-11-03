@@ -297,14 +297,14 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="table-wrap"><table>
 <tr><th>시간</th><td>09:00–18:00 (점심 12:00–13:00, 수업 8시간)</td></tr>
 <tr><th>교과</th><td>[기본] AI 서비스 개발 · 6일차 (총 18일)</td></tr>
-<tr><th>교육 목표</th><td>구글 서비스가 각각 무슨 일을 하는지 구분할 수 있다. 데이터 정의표를 Firestore 구조로 바꾸고, AI 스튜디오에 프롬프트로 저장을 연결해 배포할 수 있다. 한 주 동안 확인한 사실로 PRD를 고칠 수 있다.</td></tr>
-<tr><th>세션 진행 방식</th><td>세션 종류에 따라 순서가 달라요. <b>기획 산출물</b>: 개념 → 예시 → 내 것 만들기 → 점검 → 결과 / <b>도구 실습</b>: 개념 → 따라 하기 → 막히면 → 결과 / <b>개념·판단</b>: 개념 → 예시 → 해 보기 → 결과</td></tr>
-<tr><th>수업이 끝나면</th><td>① 구글 서비스 5개의 역할과 이벤트 페이지에서 쓰이는 곳을 말한다 ② 같은 요청서로 AI 스튜디오에서 페이지를 만들고 볼트와 비교한다 ③ 데이터 정의표를 컬렉션·문서·필드로 바꾼다 ④ 프롬프트로 Firestore 저장을 연결하고 콘솔에서 데이터를 눈으로 확인한다 ⑤ 배포 주소에서 테스트 시나리오를 다시 실행한다 ⑥ PRD v2와 한 주 회고를 쓴다</td></tr>
+<tr><th>교육 목표</th><td>AI 스튜디오와 Firestore로 모두의 신청을 한곳에 모으고, PRD를 v2로 고친다.</td></tr>
+
+<tr><th>수업이 끝나면</th><td>① 구글 서비스 역할 구분하기<br/>② AI 스튜디오로 같은 페이지 만들기<br/>③ Firestore 구조표 쓰기<br/>④ 저장 연결하고 콘솔에서 확인하기<br/>⑤ 배포하고 PRD v2 쓰기</td></tr>
 </table></div>
 </section>
 <section class="section" id="prep"><div class="section-label">PREPARE</div><h2>수업 전 준비</h2>
-<ul><li><b>개인 구글 계정:</b> AI 스튜디오 배포는 회사·학교 계정보다 개인 계정을 권해요(구글 공식 코드랩). 결제 정보를 등록한 적 없는 개인 계정이면 앱 2개까지 결제 계정 없이 배포할 수 있어요(Starter Tier, 구글 공식 문서).</li><li><b>Firebase 콘솔:</b> console.firebase.google.com 에 같은 계정으로 들어갈 수 있는지 확인해요. 저장된 데이터를 눈으로 확인할 때 써요.</li><li><b>어제 결과:</b> 볼트 요청서와 테스트 시나리오 표를 열어 두세요.</li></ul>
-<div class="notice"><b>세션은 세 종류예요</b><br/><b>기획 산출물</b> · 개념 → 예시 → 내 것 만들기 → 점검 → 결과<br/><b>도구 실습</b> · 개념 → 따라 하기 → 막히면 → 결과<br/><b>개념·판단</b> · 개념 → 예시 → 해 보기 → 결과<br/>프롬프트는 요청 / 내용 / 형식 3줄로 쓰고, 바꿔 넣을 자리는 [ ]로 표시했어요. 1주차 첫날 배운 4요소(역할·맥락·작업·형식)를 줄인 것이에요. 요청 = 작업, 내용 = 역할과 맥락, 형식 = 형식이에요. 신청 폼 실습에는 실제 이름·연락처 대신 가상의 정보만 넣어요.</div>
+<ul><li><b>개인 구글 계정:</b> 회사·학교 계정 말고 개인 계정을 써요.</li><li><b>Firebase 콘솔:</b> 같은 계정으로 들어가지는지 봐요.</li><li><b>어제 결과:</b> 볼트 요청서와 테스트 표를 열어 둬요.</li></ul>
+<div class="notice">프롬프트는 요청·내용·형식 3줄이에요. [ ] 안을 내 내용으로 바꿔 써요. 신청 폼에는 가상의 정보만 넣어요.</div>
 </section>
 <section class="section" id="tt"><div class="section-label">TIMETABLE</div><h2>타임테이블</h2>
 <div class="table-wrap"><table><tr><th>시간</th><th>구분</th><th>내용</th></tr><tr><td>09:00–09:20</td><td>오늘의 단어</td><td><a href="#words">오늘의 단어</a></td></tr><tr><td>09:20–09:40</td><td>SESSION 1</td><td><a href="#s1">구글 서비스 지도</a></td></tr><tr><td>09:40–11:00</td><td>SESSION 2</td><td><a href="#s2">같은 요청서로 AI 스튜디오에서 만들기</a></td></tr><tr><td>11:00–12:00</td><td>SESSION 3</td><td><a href="#s3">데이터 정의표를 Firestore 구조표로 바꾸기</a></td></tr><tr><td>12:00–13:00</td><td>점심</td><td></td></tr><tr><td>13:00–14:40</td><td>SESSION 4</td><td><a href="#s4">AI 스튜디오에 Firestore 연결하고 콘솔에서 확인하기</a></td></tr><tr><td>14:40–16:10</td><td>SESSION 5</td><td><a href="#s5">Publish로 배포하고 테스트 시나리오 다시 실행</a></td></tr><tr><td>16:10–17:40</td><td>SESSION 6</td><td><a href="#s6">PRD v2와 한 주 회고</a></td></tr><tr><td>17:40–18:00</td><td>정리</td><td><a href="#wrap">오늘 정리와 과제</a></td></tr></table></div>
