@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>셀렉트마켓 연말 혜택 사전 신청</title>
+<meta name="description" content="셀렉트마켓 연말 할인·쿠폰·사은품을 한곳에서 확인하고 사전 신청하세요. (수업 실습용 예시 페이지)">
+<style>
+  :root{--red:#c8102e;--green:#1f5f46;--ink:#172033;--sub:#657086;--line:#d9dde5;--bg:#f7f7f4}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Pretendard','Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif;line-height:1.55}
+  header{background:#fff;border-bottom:1px solid var(--line)}
+  header .in{max-width:720px;margin:0 auto;padding:14px 20px;display:flex;justify-content:space-between;align-items:center}
+  header b{color:var(--red);font-size:18px}
+  header small{color:var(--sub);font-size:12px}
+  main{max-width:720px;margin:0 auto;padding:20px}
+  .hero{background:var(--green);color:#fff;border-radius:16px;padding:28px 24px}
+  .hero .due{display:inline-block;background:#ffd76a;color:#3a2a00;font-weight:800;font-size:13px;border-radius:999px;padding:3px 10px}
+  .hero h1{margin:12px 0 6px;font-size:26px;line-height:1.3}
+  .hero p{margin:0;opacity:.9}
+  h2{font-size:18px;margin:28px 0 12px}
+  .benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .benefit{background:#fff;border:2px solid var(--line);border-radius:12px;padding:16px}
+  .benefit b{display:block;font-size:16px;margin-bottom:4px}
+  .benefit span{font-size:13.5px;color:var(--sub)}
+  .benefit.sale{border-color:var(--red)}.benefit.sale b{color:var(--red)}
+  .benefit.coupon{border-color:#2457f5}.benefit.coupon b{color:#2457f5}
+  .benefit.gift{border-color:#16a36b}.benefit.gift b{color:#16a36b}
+  form,.done{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px}
+  label{display:block;font-weight:700;font-size:14px;margin:12px 0 6px}
+  input[type=text],input[type=tel],select{width:100%;padding:11px;border:1px solid var(--line);border-radius:8px;font:inherit}
+  .err{color:var(--red);font-size:13px;margin:4px 0 0;min-height:18px}
+  .agree{display:flex;gap:8px;align-items:flex-start;margin-top:14px;font-size:14px}
+  .agree a{color:var(--sub)}
+  button{font:inherit;cursor:pointer}
+  .submit{width:100%;margin-top:16px;padding:14px;border:0;border-radius:999px;background:var(--red);color:#fff;font-weight:800;font-size:16px}
+  .done{text-align:center}
+  .done h2{margin-top:6px}
+  .back{margin-top:12px;background:none;border:1px solid var(--line);border-radius:999px;padding:8px 16px}
+  details{margin-top:10px;font-size:13px;color:var(--sub)}
+  footer{max-width:720px;margin:24px auto 40px;padding:0 20px;font-size:12px;color:var(--sub)}
+  @media (max-width:560px){.benefits{grid-template-columns:1fr}.hero h1{font-size:22px}}
+</style>
+</head>
+<body>
+<header><div class="in"><b>셀렉트마켓</b><small>수업 실습용 예시 페이지</small></div></header>
+<main>
+  <section class="hero" aria-labelledby="t-hero">
+    <span class="due">12월 15일 마감</span>
+    <h1 id="t-hero">연말 선물, 혜택부터<br>한곳에서 확인하세요</h1>
+    <p>할인·쿠폰·사은품을 한 번에 보고, 사전 신청하면 혜택 시작일에 알려 드려요.</p>
+  </section>
+
+  <section aria-labelledby="t-benefit">
+    <h2 id="t-benefit">연말 혜택 3가지</h2>
+    <div class="benefits">
+      <article class="benefit sale"><b>할인</b><span>선물 카테고리 상품 연말 할인</span></article>
+      <article class="benefit coupon"><b>쿠폰</b><span>사전 신청자 전용 쿠폰</span></article>
+      <article class="benefit gift"><b>사은품</b><span>선착순 사은품 증정</span></article>
+    </div>
+  </section>
+
+  <section id="apply" aria-labelledby="t-apply">
+    <h2 id="t-apply">사전 신청</h2>
+    <form id="form" novalidate>
+      <label for="name">이름</label>
+      <input id="name" type="text" placeholder="이름을 입력해 주세요" autocomplete="off">
+      <p class="err" id="e-name"></p>
+      <label for="phone">연락처</label>
+      <input id="phone" type="tel" placeholder="010-0000-0000" autocomplete="off">
+      <p class="err" id="e-phone"></p>
+      <label for="cat">관심 카테고리</label>
+      <select id="cat"><option value="">선택해 주세요</option><option>패션</option><option>뷰티</option><option>식품</option><option>리빙</option></select>
+      <p class="err" id="e-cat"></p>
+      <div class="agree"><input id="agree" type="checkbox"><label for="agree" style="margin:0;font-weight:400">혜택 안내를 위해 개인정보 수집에 동의해요(필수)</label></div>
+      <details><summary>개인정보 수집 내용 보기</summary>수집 항목: 이름, 연락처, 관심 카테고리 · 목적: 연말 혜택 시작일 안내 · 보관: 이벤트 종료 후 파기 (수업 예시 문구예요)</details>
+      <p class="err" id="e-agree"></p>
+      <button class="submit" type="submit">사전 신청하기</button>
+    </form>
+    <div class="done" id="done" hidden>
+      <h2>사전 신청이 완료됐어요</h2>
+      <p>혜택이 시작되는 날 문자로 알려 드릴게요.</p>
+      <button class="back" type="button" id="back">이벤트 페이지로 돌아가기</button>
+    </div>
+  </section>
+</main>
+<footer>이 페이지는 AI PM 수업 실습용 예시예요. 셀렉트마켓은 가상의 회사이고, 입력한 정보는 어디에도 저장되지 않아요.</footer>
+<script>
+  const $ = (id) => document.getElementById(id);
+  function setErr(id, msg){ $(id).textContent = msg || ''; }
+  $('form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = $('name').value.trim(), phone = $('phone').value.trim(), cat = $('cat').value, agree = $('agree').checked;
+    setErr('e-name', name ? '' : '이름을 입력해 주세요.');
+    setErr('e-phone', /^010-\d{4}-\d{4}$/.test(phone) ? '' : '연락처를 010-0000-0000 형식으로 입력해 주세요.');
+    setErr('e-cat', cat ? '' : '관심 카테고리를 골라 주세요.');
+    setErr('e-agree', agree ? '' : '개인정보 수집에 동의해야 신청할 수 있어요.');
+    if (!name || !/^010-\d{4}-\d{4}$/.test(phone) || !cat || !agree) return;
+    $('form').hidden = true; $('done').hidden = false;
+  });
+  $('back').addEventListener('click', () => { $('form').reset(); $('done').hidden = true; $('form').hidden = false; window.scrollTo(0, 0); });
+</script>
+</body>
+</html>
