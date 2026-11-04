@@ -1116,6 +1116,29 @@ sale.html 맨 아래 (footer)
 <div class="warning"><b>웹에서 풀 수 있는 충돌은 간단한 것뿐이에요</b><br/>GitHub 웹에서는 줄 내용이 서로 다른 간단한 충돌만 풀 수 있고, 그 밖의 충돌은 명령줄에서 풀어야 해요. [Resolve conflicts] 버튼이 비활성화되어 있으면 AI 코딩 도구에게 "충돌 파일과 양쪽 내용을 보여 주고, 어느 쪽을 남길지 나에게 물어본 뒤 해결해 줘"라고 요청해요. 어느 쪽을 남길지는 <b>요구사항을 아는 사람</b>이 정해야 해요.</div>
 <div class="resource-list"><a class="resource-card" href="https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/resolving-a-merge-conflict-on-github" target="_blank" rel="noopener"><span class="small">GitHub Docs · 2026-10-26 확인</span><b>Resolving a merge conflict on GitHub</b></a></div>
 </details>
+<details class="optional"><summary><span class="summary-title">(선택) 같은 줄을 고친 적이 없는데 충돌이 날 때: PR 대상 브랜치(base) 바꾸기</span><span class="summary-hint">눌러서 펼쳐 보세요</span></summary>
+<p>내 브랜치는 최신본에서 시작했는데, PR을 <b>오래된 브랜치</b>로 보내면 충돌이 날 수 있어요. 이때는 내용을 고치지 않고 <b>PR이 합쳐질 대상(base)</b>만 바꾸면 풀려요. 강사가 실제로 겪은 사례예요. 이 저장소는 기본 브랜치가 main이 아닌데, PR을 main으로 보내서 충돌이 났어요.</p>
+<p><b>STEP 1. 이 상황인지 알아보기</b></p>
+<ul>
+<li>PR 제목 아래 "wants to merge <b>15 commits</b> into <b>main</b>"처럼, 내가 만든 것보다 커밋·파일 수가 훨씬 많아요. (실제로는 커밋 1개, 파일 17개)</li>
+<li>[Merge status]에 "This branch has conflicts that must be resolved"가 나오고, 충돌 파일이 내가 크게 고치지 않은 파일이에요.</li>
+<li>저장소 [Code] 탭의 브랜치 목록에서 <b>default</b> 표시가 붙은 브랜치가 PR의 대상과 달라요.</li>
+</ul>
+<figure class="sample-shot"><img alt="PR 화면. wants to merge 15 commits into main, Commits 15, Files changed 42" src="./images/d6-base-01-pr-main.jpg" width="1095" height="1092"/><figcaption>대상이 main이고 커밋 15개·파일 42개로 나와요 (2026년 11월 4일 강사 계정 실제 화면)</figcaption></figure>
+<figure class="sample-shot"><img alt="Merge status 패널. This branch has conflicts that must be resolved, 충돌 파일 index.html, 회색 Merge pull request 버튼" src="./images/d6-base-02-conflict.jpg" width="1095" height="1092"/><figcaption>[Merge status]를 누르면 충돌 파일과 꺼진 [Merge pull request]가 보여요</figcaption></figure>
+<p><b>STEP 2. 대상 브랜치 바꾸기</b></p>
+<div class="procedure">
+<div><b>①</b> PR 제목 옆 연필 아이콘(✏)을 눌러요. PR 본문 댓글의 [...] → [Edit]과 헷갈리지 않게 조심해요.</div>
+<div><b>②</b> 제목 아래 "into <b>main</b>"이 버튼으로 바뀌어요. 이 버튼을 눌러요.</div>
+<div><b>③</b> [Switch branches] 목록에서 <b>default</b> 표시가 붙은 브랜치를 골라요.</div>
+<div><b>④</b> "Are you sure you want to change the base?" 창에서 <b>[Change base]</b>를 눌러요.</div>
+<div><b>⑤</b> 커밋·파일 수가 내가 바꾼 만큼으로 줄었는지, 충돌 표시가 사라졌는지 확인하고 <b>[Merge pull request]</b>를 눌러요.</div>
+</div>
+<figure class="sample-shot"><img alt="PR 제목 편집 상태. 제목 입력칸 옆 Cancel, Save 버튼, 제목 아래 main 드롭다운 버튼" src="./images/d6-base-03-edit.jpg" width="1095" height="1092"/><figcaption>연필을 누르면 into 뒤의 main이 버튼으로 바뀌어요</figcaption></figure>
+<figure class="sample-shot"><img alt="Switch branches 목록. 맨 위 claude/hello-page-deploy-yqm9q5 옆에 default 표시" src="./images/d6-base-04-switch.jpg" width="1095" height="1092"/><figcaption>default 표시가 붙은 브랜치를 골라요</figcaption></figure>
+<figure class="sample-shot"><img alt="Are you sure you want to change the base 확인 창. Cancel과 초록 Change base 버튼" src="./images/d6-base-05-confirm.jpg" width="1095" height="1092"/><figcaption>[Change base]를 누르면 바뀌어요. 이전 대상의 커밋은 목록에서 빠질 수 있다는 안내예요</figcaption></figure>
+<div class="warning"><b>아무 브랜치로나 바꾸지 않아요</b><br/>대상은 "이 PR이 최종으로 들어가야 할 곳"이에요. 보통은 default 브랜치지만, 팀이 따로 정한 배포 브랜치가 있으면 그쪽이에요. 모르면 PR을 만든 사람이나 저장소 관리자에게 먼저 물어봐요. PR을 처음 만들 때 <b>base</b> 칸이 맞는지 확인하는 습관이 가장 좋은 예방이에요.</div>
+</details>
 <details class="optional"><summary><span class="summary-title">(선택) 협업 규칙 초안과 프로젝트 보드(GitHub Projects)</span><span class="summary-hint">눌러서 펼쳐 보세요</span></summary>
 <p>두 명만 되어도 약속이 없으면 금방 엉켜요. 짝과 아래 규칙 초안을 정해 README에 적어 커밋해 보세요.</p>
 <div class="copybox"><div class="copyhead"><span>README에 붙여 넣는 협업 규칙 초안</span><button type="button">복사</button></div><pre>## 협업 규칙
