@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>MovieLoop 특별 시사회</title>
+<style>
+:root{--bg:#0f0f12;--card:#1a1a20;--text:#f4f4f6;--muted:#a3a3ad;--accent:#e5484d;--line:#2c2c35}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;display:flex;flex-direction:column;align-items:center;padding:32px 16px}
+header{text-align:center;margin-bottom:24px;width:100%;max-width:440px}
+.brand{margin:0 0 8px;color:var(--accent);font-weight:700;letter-spacing:.15em;font-size:14px}
+h1{margin:0;font-size:clamp(24px,6vw,34px);line-height:1.3}
+.badge{display:inline-block;margin-top:12px;padding:4px 14px;border:1px solid var(--accent);border-radius:999px;color:var(--accent);font-weight:700;font-size:14px}
+main{width:100%;max-width:440px;display:grid;gap:16px}
+section{background:var(--card);border-radius:16px;padding:22px 24px}
+dl{margin:0;display:grid;gap:14px}dt{font-size:13px;color:var(--muted)}dd{margin:2px 0 0;font-size:18px;font-weight:700}
+h2{margin:0 0 14px;font-size:20px}
+label{display:block;margin:12px 0 6px;font-size:13px;color:var(--muted)}
+input,textarea{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;background:#24242c;color:var(--text);font-size:16px}
+textarea{min-height:90px;resize:vertical}
+button{font:inherit;cursor:pointer}
+.submit{margin-top:16px;width:100%;padding:14px;border:0;border-radius:10px;background:var(--accent);color:#fff;font-size:16px;font-weight:700}
+.msg{margin:12px 0 0;font-size:14px;color:var(--muted)}
+.auth{display:flex;gap:8px;justify-content:center;margin-top:14px}
+.auth button{padding:8px 14px;border:1px solid var(--line);border-radius:8px;background:transparent;color:var(--text);font-size:14px}
+.members{border:1px solid var(--accent)}.members small{color:var(--accent);font-weight:700;letter-spacing:.1em}
+footer{margin-top:24px;font-size:12px;color:var(--muted);text-align:center;line-height:1.6}
+[hidden]{display:none!important}
+</style>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+<header>
+<p class="brand">MovieLoop</p>
+<h1>MovieLoop 특별 시사회</h1>
+<p class="badge">선착순 50명</p>
+<nav class="auth" aria-label="회원 메뉴">
+<button type="button" id="btn-login">로그인</button>
+<button type="button" id="btn-signup">회원가입</button>
+<button type="button" id="btn-logout" hidden>로그아웃</button>
+</nav>
+<p class="msg" id="who" hidden></p>
+</header>
+<main>
+<section aria-labelledby="info-title">
+<h2 id="info-title" hidden>시사회 정보</h2>
+<dl>
+<div><dt>날짜</dt><dd><time datetime="2026-11-20T19:30+09:00">2026년 11월 20일(금) 오후 7시 30분</time></dd></div>
+<div><dt>장소</dt><dd>MovieLoop 시네마 1관 (서울)</dd></div>
+</dl>
+</section>
+<section class="members" id="members" hidden aria-labelledby="members-title">
+<small>MEMBERS ONLY</small>
+<h2 id="members-title">회원 전용 좌석 안내</h2>
+<p>회원은 앞쪽 중앙 좌석을 먼저 고를 수 있어요. 입장할 때 가입한 이메일을 알려 주세요.</p>
+</section>
+<section aria-labelledby="apply-title">
+<h2 id="apply-title">시사회 신청</h2>
+<form name="preview-apply" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="apply-form">
+<input type="hidden" name="form-name" value="preview-apply">
+<input type="hidden" name="subject" value="[MovieLoop] 새 시사회 신청">
+<p hidden><label>사람은 비워 두세요 <input name="bot-field"></label></p>
+<label for="name">이름</label>
+<input id="name" name="name" required>
+<label for="email">이메일</label>
+<input id="email" name="email" type="email" required>
+<label for="message">남기고 싶은 말</label>
+<textarea id="message" name="message"></textarea>
+<button class="submit" type="submit">신청하기</button>
+<p class="msg" id="form-msg" role="status"></p>
+</form>
+</section>
+</main>
+<footer><p>© MovieLoop · 셀렉트웨이 교안용 가상 서비스예요. 실제 행사가 아니에요.</p><p>입력한 내용은 실습용 Netlify 프로젝트에만 저장돼요. 실제 개인정보는 넣지 마세요.</p></footer>
+<script>
+document.getElementById('apply-form').addEventListener('submit', function (e) {
+  e.preventDefault();
+  var msg = document.getElementById('form-msg');
+  fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(this)).toString() })
+    .then(function (r) { if (!r.ok) throw new Error(); msg.textContent = '신청이 접수되었어요.'; e.target.reset(); })
+    .catch(function () { msg.textContent = '보내지 못했어요. 잠시 뒤 다시 시도해 주세요.'; });
+});
+var id = window.netlifyIdentity;
+function show(user) {
+  document.getElementById('members').hidden = !user;
+  document.getElementById('btn-login').hidden = !!user;
+  document.getElementById('btn-signup').hidden = !!user;
+  document.getElementById('btn-logout').hidden = !user;
+  var who = document.getElementById('who');
+  who.hidden = !user;
+  if (user) who.textContent = (user.user_metadata && user.user_metadata.full_name || user.email) + '님 로그인 중';
+}
+if (id) {
+  id.on('init', show); id.on('login', function (u) { show(u); id.close(); }); id.on('logout', function () { show(null); });
+  document.getElementById('btn-login').onclick = function () { id.open('login'); };
+  document.getElementById('btn-signup').onclick = function () { id.open('signup'); };
+  document.getElementById('btn-logout').onclick = function () { id.logout(); };
+}
+</script>
+</body>
+</html>
