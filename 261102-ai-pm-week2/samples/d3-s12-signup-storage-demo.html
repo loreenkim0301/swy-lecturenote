@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>셀렉트마켓 사전 신청 · 저장 실습 예시</title>
+<style>
+  :root{--ink:#172033;--sub:#657086;--line:#d9dde5;--red:#c8102e;--bg:#f5f7fb}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Pretendard','Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif}
+  header{padding:14px 20px;background:#fff;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+  header b{color:var(--red);font-size:17px}
+  .mode{font-size:12.5px;padding:4px 10px;border-radius:999px;font-weight:700}
+  .mode.memory{background:#fff4d6;color:#8a5a00}
+  .mode.local{background:#e6f4ea;color:#1e6b3a}
+  main{max-width:520px;margin:20px auto;padding:0 16px}
+  section{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;margin-bottom:14px}
+  h1{font-size:19px;margin:0 0 4px}
+  p.desc{margin:0 0 14px;color:var(--sub);font-size:13.5px}
+  label{display:block;font-size:13px;font-weight:700;margin:10px 0 4px}
+  input[type=text],input[type=tel],select{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;font:inherit}
+  .agree{display:flex;gap:6px;align-items:center;font-size:13px;margin-top:12px}
+  button{font:inherit;cursor:pointer}
+  .submit{width:100%;margin-top:14px;padding:12px;border:0;border-radius:999px;background:var(--red);color:#fff;font-weight:800}
+  .msg{min-height:20px;margin:10px 0 0;font-size:13px}
+  .msg.ok{color:#1e6b3a}.msg.err{color:var(--red)}
+  ul{list-style:none;margin:0;padding:0}
+  li{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:9px 0;border-top:1px solid #eef0f4;font-size:13.5px}
+  li small{color:var(--sub)}
+  .del{border:1px solid var(--line);background:#fff;border-radius:6px;padding:3px 8px;font-size:12px}
+  .empty{color:var(--sub);font-size:13px}
+  .note{font-size:12px;color:var(--sub)}
+</style>
+</head>
+<body>
+<header>
+  <b>셀렉트마켓</b>
+  <span id="mode" class="mode"></span>
+</header>
+<main>
+  <section aria-labelledby="t-form">
+    <h1 id="t-form">연말 혜택 사전 신청</h1>
+    <p class="desc">수업 실습용 예시예요. 가상의 이름과 연락처만 넣어 주세요.</p>
+    <form id="form" novalidate>
+      <label for="name">이름</label>
+      <input id="name" type="text" placeholder="홍길동" autocomplete="off">
+      <label for="phone">연락처</label>
+      <input id="phone" type="tel" placeholder="010-0000-0000" autocomplete="off">
+      <label for="cat">관심 카테고리</label>
+      <select id="cat"><option>패션</option><option>뷰티</option><option>식품</option><option>리빙</option></select>
+      <div class="agree"><input id="agree" type="checkbox"><label for="agree" style="margin:0;font-weight:400">혜택 안내를 위한 개인정보 수집에 동의해요(필수)</label></div>
+      <button class="submit" type="submit">사전 신청하기</button>
+      <p id="msg" class="msg" role="status"></p>
+    </form>
+  </section>
+  <section aria-labelledby="t-list">
+    <h2 id="t-list" style="font-size:15px;margin:0 0 6px">신청 목록 <small id="count" class="note"></small></h2>
+    <ul id="list"></ul>
+    <p class="note">실습용 목록이에요. 실제 서비스에서는 신청자가 다른 사람의 목록을 볼 수 없어요.</p>
+  </section>
+</main>
+<script>
+// ?mode=memory : 변수(메모리)에만 저장 → 새로고침하면 사라짐
+// ?mode=local  : 브라우저 저장(localStorage) → 새로고침해도 남음
+const MODE = new URLSearchParams(location.search).get('mode') === 'memory' ? 'memory' : 'local';
+const KEY = 'selectmarket-signups';
+const modeEl = document.getElementById('mode');
+modeEl.textContent = MODE === 'memory' ? '저장 방식: 메모리(새로고침하면 사라짐)' : '저장 방식: 브라우저 저장(localStorage)';
+modeEl.className = 'mode ' + MODE;
+
+let memory = [];
+function load() {
+  if (MODE === 'memory') return memory;
+  try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch (e) { console.error('[신청 목록 불러오기 실패]', e.message); return []; }
+}
+function save(items) {
+  if (MODE === 'memory') { memory = items; return; }
+  localStorage.setItem(KEY, JSON.stringify(items));
+}
+function render() {
+  const items = load();
+  const list = document.getElementById('list');
+  document.getElementById('count').textContent = '총 ' + items.length + '건';
+  list.innerHTML = items.length ? '' : '<li class="empty">아직 신청이 없어요.</li>';
+  items.forEach((it, i) => {
+    const li = document.createElement('li');
+    li.innerHTML = '<span>' + it.name + ' · ' + it.category + ' <small>' + it.createdAt + '</small></span>';
+    const b = document.createElement('button'); b.className = 'del'; b.textContent = '삭제';
+    b.onclick = () => { const next = load(); next.splice(i, 1); save(next); console.log('[신청 삭제] 남은 신청 ' + next.length + '건'); render(); };
+    li.appendChild(b); list.appendChild(li);
+  });
+}
+function show(text, ok) { const m = document.getElementById('msg'); m.textContent = text; m.className = 'msg ' + (ok ? 'ok' : 'err'); }
+
+document.getElementById('form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const name = document.getElementById('name').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const category = document.getElementById('cat').value;
+  const agree = document.getElementById('agree').checked;
+  // 로그에는 이름·연락처 같은 개인정보를 남기지 않아요. 결과와 이유만 남겨요.
+  if (!name) { console.error('[신청 저장 실패] 이유: 이름 빈칸'); return show('이름을 입력해 주세요.'); }
+  if (!/^010-\d{4}-\d{4}$/.test(phone)) { console.error('[신청 저장 실패] 이유: 연락처 형식 오류'); return show('연락처를 010-0000-0000 형식으로 입력해 주세요.'); }
+  if (!agree) { console.error('[신청 저장 실패] 이유: 개인정보 동의 안 함'); return show('개인정보 수집에 동의해야 신청할 수 있어요.'); }
+  const items = load();
+  if (items.some(it => it.phone === phone)) { console.warn('[신청 저장 실패] 이유: 같은 연락처로 이미 신청됨'); return show('이미 신청하셨어요.'); }
+  const now = new Date();
+  items.push({ name, phone, category, createdAt: now.toLocaleString('ko-KR', { hour12: false }) });
+  save(items);
+  console.log('[신청 저장 성공] 저장 방식: ' + (MODE === 'memory' ? '메모리' : 'localStorage') + ' · 저장된 신청 ' + items.length + '건');
+  show('사전 신청이 완료됐어요.', true);
+  e.target.reset();
+  render();
+});
+console.log('[페이지 열림] 저장 방식: ' + (MODE === 'memory' ? '메모리' : 'localStorage') + ' · 불러온 신청 ' + load().length + '건');
+render();
+</script>
+</body>
+</html>
