@@ -16,6 +16,9 @@
 - 구글 권한 승인 1장(d1-s3-allow, 주소 가림)
 - 3세션 데이터 정리 3장: 메뉴, 알림 창, 정리본 시트
   - 알림 창의 숫자는 원본 124줄 → 정리본 118줄, 확인 필요 18줄이에요. 교안의 기준값과 같아요.
+- 4-2 GA 연결 4장: 깃헙 편집 버튼, head 아래 Google 태그, 버셀 배포 Ready, GA 실시간 개요
+  - 백엔드 플랫폼 교안 실습 때 만든 저장소 swy-ab-practice, 버셀 프로젝트, GA 속성 swy-ab-practice-vercel에서 찍었어요. 저장소는 편집 화면만 열고 커밋하지 않았어요.
+  - 실제 화면에 맞춰 문장을 고쳤어요: [실시간] → [실시간 개요], 커밋 창 설명.
 - 해 보고 알게 된 것
   - 데모 계정은 보기 권한만 있어서 공유 메뉴에 '링크 공유'만 나와요. 그래서 예약 이메일은 관리자 권한이 있는 속성에서 했어요.
   - [이메일 보내기]로 테스트 메일을 보냈어요. 메일은 11/9 05:53에 왔어요.
@@ -26,9 +29,9 @@
 ![GA 예약](https://github.com/loreenkim0301/swy-lecturenote/blob/claude/ai-pm-week3-d1-followup/261109-ai-pm-week3/images/d1-ga-schedule-hl.png?raw=true)
 ![GA 태그 복사](https://github.com/loreenkim0301/swy-lecturenote/blob/claude/ai-pm-week3-d1-followup/261109-ai-pm-week3/images/d1-s6-tag-copy-hl.png?raw=true)
 
-## ③ 남은 캡처 자리 16개
+## ③ 남은 캡처 자리 12개
 - 복습 3·4의 웹 앱 화면 10개: 웹 앱을 '모든 사용자'로 배포한 뒤에 찍을 수 있어요. 배포 버튼은 로린 님이 눌러야 해요.
-- 4-2의 GA 연결 화면 5개: 2주차 페이지에 GA 태그를 넣고 다시 배포해야 찍을 수 있어요. 아직 승인받지 않았어요.
+- entry-ga 1개: [측정 시작] 버튼은 GA 계정이 하나도 없을 때만 나와요.
 - d1-s3-unverified 1개: 회사(Workspace) 계정에서는 '확인되지 않은 앱' 경고가 나오지 않아요. 개인 Gmail 계정으로 찍어야 해요.
 
 ## ④ 병합
