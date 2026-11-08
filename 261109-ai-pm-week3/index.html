@@ -283,8 +283,8 @@ aside nav a.active{border-left-color:var(--blue)}
 <main>
 <header class="hero">
 <div class="kicker">AI 프로덕트 매니저 · 3주차 · 2026.11.09 (월) – 11.13 (금)</div>
-<h1>3주차: <em>리서치의 핵심, 방대한 자료 찾아보기</em><br/>그리고 AI를 붙인 서비스 기획 시작하기</h1>
-<p>월·화요일에는 데이터를 모으고 정리해요. 구글 시트와 앱스스크립트로 신청을 받고, 웹에서 데이터를 모아 분석할 수 있게 다듬어요. 수요일부터는 AI API를 내 페이지에 붙여, 사용자의 입력에 AI가 답하는 기능을 만들어요.</p>
+<h1>3주차: <em>기획자에게 필요한 데이터 수집</em><br/>그리고 AI를 붙인 서비스 기획 시작하기</h1>
+<p>기획자는 두 가지 데이터를 모아요. 하나는 내 서비스를 쓰는 사용자의 데이터, 다른 하나는 서비스 밖에 있는 외부 데이터예요. 월요일에는 사용자가 직접 입력한 데이터를 시트에 모으고 GA를 연결해 사용자의 행동을 모아요. 화요일에는 웹 크롤링으로 외부 데이터를 모아요. 수요일부터는 AI API를 내 페이지에 붙여, 사용자의 입력에 AI가 답하는 서비스를 기획하고 만들어요.</p>
 <div class="hero-grid">
 <div><b>기간</b><span>11월 9일(월) – 13일(금) · 실시간 비대면</span></div>
 <div><b>시간</b><span>월–금 09:00–18:00 (8h) · 총 40시간</span></div>
@@ -296,13 +296,14 @@ aside nav a.active{border-left-color:var(--blue)}
 <section class="section" id="goal"><div class="section-label">GOAL</div><h2>이번 주 목표</h2>
 <p>이번 주는 세 가지를 목표로 해요.</p>
 <ol class="goal-list">
-<li><b>데이터를 모으는 길을 두 가지 익혀요.</b> 사람이 입력한 값은 구글 시트에 쌓고, 웹에 있는 정보는 파이썬으로 모아요.</li>
+<li><b>기획자에게 필요한 데이터를 두 갈래로 모아요.</b> ① 사용자의 데이터: 사용자가 직접 입력한 값은 구글 시트에 쌓고, GA를 연결해 방문·클릭 같은 행동을 모아요. ② 외부의 데이터: 웹에 있는 정보는 크롤링으로 모아요.</li>
 <li><b>모은 데이터를 쓸 수 있게 정리해요.</b> 원본은 그대로 두고, 빈칸·중복·형식을 규칙으로 정리한 정리본을 만들어요.</li>
 <li><b>AI API를 내 서비스에 붙여요.</b> API 키를 받고 무료 한도 안에서 호출해 보고, 목·금요일에는 클로드 코드로 챗봇 화면에 API를 연결해요.</li>
 </ol>
 <div class="table-wrap"><table>
 <tr><th>구분</th><th>2주차에 한 것</th><th>3주차에 하는 것</th></tr>
-<tr><td><b>데이터 모으기</b></td><td>신청 페이지 → 브라우저 저장·볼트 데이터베이스·Firestore</td><td>구글 시트 + 앱스스크립트 입력 화면, 파이썬 크롤링</td></tr>
+<tr><td><b>사용자의 데이터</b></td><td>신청 페이지 → 브라우저 저장·볼트 데이터베이스·Firestore</td><td>직접 입력된 데이터(구글 시트 + 앱스스크립트 입력 화면), 사용자 행동 데이터(GA 연결)</td></tr>
+<tr><td><b>외부의 데이터</b></td><td>—</td><td>웹 크롤링(파이썬, 클로드로 크롤링하는 실무 방법)</td></tr>
 <tr><td><b>데이터 다루기</b></td><td>저장된 이름이 콘솔에 보이는지 확인</td><td>원본과 정리본을 나누고 규칙으로 전처리</td></tr>
 <tr><td><b>AI 쓰는 법</b></td><td>AI가 화면과 코드를 만들어 줌</td><td>내 페이지가 AI API를 불러 사용자에게 답함</td></tr>
 <tr><td><b>도구</b></td><td>클로드, 넷리파이·버셀, 볼트, 구글 AI 스튜디오</td><td>클로드, 구글 시트·앱스스크립트, 코랩, 구글 AI 스튜디오, 클로드 코드(데스크톱 앱)</td></tr>
@@ -312,8 +313,8 @@ aside nav a.active{border-left-color:var(--blue)}
 <section class="section" id="days"><div class="section-label">DAYS</div><h2>날짜별 교안</h2>
 <div class="table-wrap"><table>
 <tr><th>날짜</th><th>교과</th><th>교안</th><th>오늘의 결과물</th></tr>
-<tr><td>11/09(월) 09:00–18:00</td><td>[기본] AI 서비스 개발 (7/18)</td><td><a href="./d1-sheet-appsscript.html">DAY 1 · 구글 시트를 데이터 창고로 쓰고, 쌓인 데이터를 정리해요</a></td><td>신청 명단 시트 + 웹 페이지 주소 + 시트에 쌓이는 입력 화면 + 정리본 시트</td></tr>
-<tr><td>11/10(화) 09:00–18:00</td><td>[기본] AI 서비스 개발 (8/18)</td><td>DAY 2 · 파이썬으로 웹 데이터 모으기(크롤링)와 클로드로 크롤링하는 실무 방법</td><td>크롤링한 데이터 원본·정리본</td></tr>
+<tr><td>11/09(월) 09:00–18:00</td><td>[기본] AI 서비스 개발 (7/18)</td><td><a href="./d1-sheet-appsscript.html">DAY 1 · 사용자의 데이터 모으기: 직접 입력된 데이터를 시트에 쌓고 정리해요</a> + GA 연결</td><td>신청 명단 시트 + 웹 페이지 주소 + 시트에 쌓이는 입력 화면 + 정리본 시트 + GA 연결</td></tr>
+<tr><td>11/10(화) 09:00–18:00</td><td>[기본] AI 서비스 개발 (8/18)</td><td>DAY 2 · 외부의 데이터 모으기: 파이썬 웹 크롤링과 클로드로 크롤링하는 실무 방법</td><td>크롤링한 데이터 원본·정리본</td></tr>
 <tr><td>11/11(수) 09:00–18:00</td><td>[기본] AI 서비스 개발 (9/18)</td><td>DAY 3 · Hello 페이지에 오늘의 감정을 넣으면 맞는 책 3권을 추천하는 화면(구글 AI 스튜디오)</td><td>감정 입력 → 책 3권 상품 카드가 나오는 Hello 페이지</td></tr>
 <tr><td>11/12(목) 09:00–18:00</td><td>[기본] AI 서비스 개발 (10/18)</td><td>DAY 4 · 클로드 코드로 챗봇 화면 만들기</td><td>챗봇 화면</td></tr>
 <tr><td>11/13(금) 09:00–18:00</td><td>[기본] AI 서비스 개발 (11/18)</td><td>DAY 5 · 챗봇 화면에 AI API 붙이기</td><td>AI가 답하는 챗봇</td></tr>
@@ -322,7 +323,7 @@ aside nav a.active{border-left-color:var(--blue)}
 
 <section class="section" id="flow"><div class="section-label">FLOW</div><h2>한 주의 흐름</h2>
 <p>앞에서 모으고 정리한 데이터와 화면을 다음 날 그대로 이어서 써요.</p>
-<div class="flow"><div><span>월</span><b>시트에 모으고 정리</b><small>앱스스크립트 웹 페이지·입력 화면, 정리본</small></div><div><span>화</span><b>웹에서 모으기</b><small>파이썬 크롤링, 클로드로 크롤링하는 법, 정리본</small></div><div><span>수</span><b>AI가 고르게 하기</b><small>감정 → 책 3권 추천, 무료 한도 안에서</small></div><div><span>목</span><b>챗봇 화면</b><small>클로드 코드(데스크톱 앱)로 만들기</small></div><div><span>금</span><b>챗봇에 API 연결</b><small>API 키, 테스트, 회고</small></div></div>
+<div class="flow"><div><span>월</span><b>사용자의 데이터</b><small>직접 입력(시트·앱스스크립트)·GA 연결, 정리본</small></div><div><span>화</span><b>외부의 데이터</b><small>웹 크롤링, 클로드로 크롤링하는 법, 정리본</small></div><div><span>수</span><b>AI가 고르게 하기</b><small>감정 → 책 3권 추천, 무료 한도 안에서</small></div><div><span>목</span><b>챗봇 화면</b><small>클로드 코드(데스크톱 앱)로 만들기</small></div><div><span>금</span><b>챗봇에 API 연결</b><small>API 키, 테스트, 회고</small></div></div>
 </section>
 
 <section class="section" id="ready"><div class="section-label">PREPARE</div><h2>이번 주 준비물</h2>
