@@ -369,7 +369,7 @@ aside nav a.active{border-left-color:var(--blue)}
 </section>
 
 <section class="section session" id="s1">
-<div class="session-head"><div class="eyebrow">SESSION 1 · 09:20–10:20</div><h2>모으기 전에 확인할 것</h2><p>월요일에는 사용자가 직접 넣은 데이터를 모았어요. 오늘은 다른 사람이 만든 웹 페이지에서 모아요. 그래서 모으기 전에 그 사이트가 정한 약속을 먼저 확인해요.</p>
+<div class="session-head"><div class="eyebrow">SESSION 1 · 09:20–10:20</div><h2>모으기 전에 확인할 것</h2><p>월요일에는 사용자가 직접 넣은 데이터를 모았어요. 오늘은 다른 사람이 만든 웹 페이지에서 모아요. 그래서 모으기 전에 그 사이트가 정한 약속을 확인해요.</p>
 <div class="why-box"><b>왜 하나?</b>크롤링 코드는 몇 줄이면 돼요. 그래서 더 조심해야 해요. 사이트가 막아 둔 곳을 모으거나 너무 자주 요청하면, 사이트에 부담을 주고 사이트가 정한 약속을 어기게 돼요.</div></div>
 
 <div class="topic" id="s1-1"><h3><span class="stage">개념</span>1-1. 크롤링이란?</h3>
@@ -390,7 +390,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td><b>개인정보</b></td><td>모으려는 페이지</td><td>이름·연락처·이메일·아이디처럼 사람을 알아볼 수 있는 정보가 섞여 있는지. 섞여 있으면 그 칸은 모으지 않아요.</td></tr>
 <tr><td><b>요청 간격</b></td><td>내가 짜는 코드</td><td>한 페이지를 연 뒤 쉬는 시간이 있는지. 수업에서는 1초 이상 쉬어요.</td></tr>
 </table></div>
-<p>robots.txt는 크롤러에게 하는 부탁이에요. 문을 잠그는 장치가 아니에요. 그래서 robots.txt가 열려 있다고 아무거나 모아도 된다는 뜻은 아니고, 지키는 것은 크롤링하는 사람의 몫이에요.</p>
+<p>robots.txt는 크롤러에게 하는 부탁이에요. 문을 잠그는 장치가 아니라서, 지키는 것은 크롤링하는 사람의 몫이에요. robots.txt에서 막지 않았다고 아무거나 모아도 된다는 뜻도 아니에요.</p>
 <p class="source-note">출처: Google 검색 센터 <a href="https://developers.google.com/search/docs/advanced/robots" target="_blank" rel="noopener">robots.txt 소개</a>("robots.txt 파일의 지시는 크롤러의 행동을 강제할 수 없으며, 지키는 것은 크롤러의 몫") · IETF <a href="https://datatracker.ietf.org/doc/html/rfc9309" target="_blank" rel="noopener">RFC 9309 Robots Exclusion Protocol</a>("이 규칙은 접근 허가의 한 형태가 아니다", User-agent: * 그룹, Disallow) (2026.11.08 확인)</p>
 </div>
 
@@ -456,7 +456,7 @@ aside nav a.active{border-left-color:var(--blue)}
 
 <section class="section session" id="s2">
 <div class="session-head"><div class="eyebrow">SESSION 2 · 10:30–11:10</div><h2>웹 페이지에서 모을 곳 찾기</h2><p>1주차 금요일에 개발자 도구를 처음 열어 봤던 것 기억하시나요? 오늘은 그 도구로 책 제목과 가격이 HTML의 어디에 들어 있는지 찾아요.</p>
-<div class="why-box"><b>왜 하나?</b>크롤링 코드는 "이 이름표가 붙은 상자의 글자를 가져와"처럼 위치로 정보를 찾아요. 책 한 권의 HTML을 클로드에게 보여 주면, 클로드가 그 위치를 보고 정확한 코드를 짜요.</div></div>
+<div class="why-box"><b>왜 하나?</b>크롤링 코드는 "이 이름표가 붙은 상자의 글자를 가져와"처럼 위치로 정보를 찾아요. 책 한 권의 HTML을 클로드에게 보여 주면, 클로드가 그 위치에 맞는 코드를 짜요.</div></div>
 
 <div class="topic" id="s2-1"><h3><span class="stage">개념</span>2-1. HTML 태그와 속성이란?</h3>
 <h4>HTML 태그와 속성이란?</h4><p>웹 페이지는 HTML 태그라는 상자로 만들어져요. 예를 들어 &lt;h3&gt;는 제목 상자, &lt;a&gt;는 링크 상자예요. 상자에는 class나 title 같은 이름표(속성)가 붙어 있어요.</p>
@@ -485,7 +485,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <li><p>개발자 도구에서 위로 한 줄씩 올라가며, 마우스를 올렸을 때 책 한 권(표지·제목·가격·버튼)이 통째로 표시되는 줄을 찾아요.</p></li>
 <li><p>그 줄 위에서 오른쪽 단추를 누르고 [Edit as HTML]을 눌러요. 상자 안이 글자 편집 칸으로 바뀌어요.</p></li>
 <li><p>편집 칸 안을 누르고 Ctrl+A(맥 Cmd+A)로 모두 고른 뒤 Ctrl+C(맥 Cmd+C)로 복사해요. 편집 칸 바깥을 누르면 편집이 끝나요. 아무것도 고치지 않았으면 페이지는 그대로예요.</p></li>
-<li><p>복사한 HTML을 클로드 대화창이나 메모장에 붙여 두어요. 3세션 프롬프트에 넣어요.</p></li>
+<li><p>복사한 HTML을 클로드 대화창이나 메모장에 붙여 두어요. 3세션에서 이 HTML을 프롬프트에 넣어요.</p></li>
 </ol>
 <p class="blk k-chk"><span>막히면</span></p>
 <div class="table-wrap"><table><tr><th>이렇게 보이면</th><th>이렇게 해요</th></tr>
@@ -506,7 +506,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="why-box"><b>왜 하나?</b>처음부터 1,000권을 모으면, 틀렸을 때 어디서 틀렸는지 찾기 어려워요. 한 페이지 20권으로 먼저 맞는지 보고 늘려요.</div></div>
 
 <div class="topic" id="s3-1"><h3><span class="stage">개념</span>3-1. 크롤링 코드의 짜임</h3>
-<p>크롤링 코드는 언제나 세 단계예요. 페이지를 열고(요청), HTML에서 찾고(찾기), 표로 저장해요(저장).</p>
+<p>오늘 크롤링 코드는 다섯 단계로 움직여요. 페이지를 열고(요청), HTML에서 찾고(찾기), 표로 만들어(표 만들기) CSV로 저장한 뒤(저장), 줄 수를 확인해요(확인).</p>
 <div class="flow">
 <div><span>1</span><b>요청</b><small>requests로 페이지 열기</small></div>
 <div><span>2</span><b>찾기</b><small>BeautifulSoup로 이름표 찾기</small></div>
@@ -563,7 +563,7 @@ aside nav a.active{border-left-color:var(--blue)}
 
 <section class="section session" id="s4">
 <div class="session-head"><div class="eyebrow">SESSION 4 · 13:00–14:20</div><h2>1,000권 모두 모으기</h2><p>3세션에서 첫 페이지 20권을 모은 코드를 이어서 써요. 페이지 50쪽을 차례로 돌며 1,000권을 모으고, 이것을 원본 CSV로 저장해요.</p>
-<div class="why-box"><b>왜 하나?</b>실무에서 모으는 데이터는 한 페이지로 끝나지 않아요. 여러 페이지를 돌 때는 사이트에 부담을 주지 않게 쉬어 가며 요청해야 해요.</div></div>
+<div class="why-box"><b>왜 하나?</b>책 1,000권은 50쪽에 나뉘어 있어요. 여러 페이지를 돌 때는 사이트에 부담을 주지 않게 쉬어 가며 요청해야 해요.</div></div>
 
 <div class="topic" id="s4-1"><h3><span class="stage">개념</span>4-1. 페이지 주소 규칙과 요청 간격</h3>
 <h4>페이지 주소 규칙이란?</h4><p>books.toscrape.com 첫 화면 아래쪽에는 'Page 1 of 50'과 [next] 링크가 있어요. [next]를 누르면 주소가 <code class="inline">https://books.toscrape.com/catalogue/page-2.html</code>로 바뀌어요. 숫자만 1부터 50까지 바꾸면 모든 페이지를 열 수 있어요.</p>
@@ -572,7 +572,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td><code class="inline">for page in range(1, 51):</code></td><td>page를 1부터 50까지 바꾸며 같은 일을 50번 해요. 1주차 목요일에 배운 반복문이에요.</td></tr>
 <tr><td><code class="inline">time.sleep(1)</code></td><td>코드를 1초 동안 멈춰요. 한 페이지를 연 뒤 1초 쉬고 다음 페이지를 열게 해요.</td></tr>
 </table></div>
-<h4>조심할 점</h4><p>쉬지 않고 50쪽을 한꺼번에 요청하면 사이트에 부담을 줘요. 1초씩 쉬면 50쪽을 모으는 데 1분 넘게 걸려요. 기다리는 시간이 요청 간격을 지킨 증거예요.</p>
+<h4>조심할 점</h4><p>쉬지 않고 50쪽을 한꺼번에 요청하면 사이트에 부담을 줘요. 1초씩 쉬면 50쪽을 모으는 데 1분 넘게 걸려요.</p>
 <p class="source-note">출처: Python 공식 문서 <a href="https://docs.python.org/3/library/time.html#time.sleep" target="_blank" rel="noopener">time.sleep</a> · books.toscrape.com 첫 화면의 'Page 1 of 50'과 다음 페이지 주소 (2026.11.08 확인)</p>
 </div>
 
@@ -587,7 +587,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <ol class="do-steps">
 <li><p>코랩 노트에서 3세션 셀 아래에 새 코드 셀을 만들고, 새 코드를 붙여 넣어 실행해요.</p></li>
 <li><p>10쪽마다 진행 상황이 나오는지 봐요. 끝날 때까지 1분 넘게 기다려요.</p></li>
-<li><p>끝나면 books_raw.csv가 내 컴퓨터의 다운로드 폴더에 내려받아졌는지 봐요.</p></li>
+<li><p>끝나면 내 컴퓨터의 다운로드 폴더에 books_raw.csv가 있는지 봐요.</p></li>
 </ol>
 <p class="blk k-chk"><span>기준값</span>books.toscrape.com 전체 (2026.11.08 확인)</p>
 <div class="table-wrap"><table><tr><th>항목</th><th>기준값</th></tr>
@@ -613,7 +613,7 @@ aside nav a.active{border-left-color:var(--blue)}
 
 <section class="section session" id="s5">
 <div class="session-head"><div class="eyebrow">SESSION 5 · 14:30–15:40</div><h2>원본은 두고 정리본 만들기</h2><p>월요일에 신청 명단의 원본은 그대로 두고 [정리본] 시트를 만들었던 것 기억하시나요? 4세션에서 모은 books_raw.csv에도 같은 규칙을 써요.</p>
-<div class="why-box"><b>왜 하나?</b>'£51.77'은 글자라서 시트가 숫자로 계산하지 못해요. 별점이 'Three'처럼 글자로 들어 있으면 평균을 낼 수 없어요. 정리본이 있어야 분석과 AI에 넣을 수 있어요.</div></div>
+<div class="why-box"><b>왜 하나?</b>'£51.77'은 글자라서 시트가 숫자로 계산하지 못해요. 별점이 'Three'처럼 글자로 들어 있으면 평균을 낼 수 없어요. 정리본이 있어야 계산해서 분석하거나 AI에 넣을 수 있어요.</div></div>
 
 <div class="topic" id="s5-1"><h3><span class="stage">실습</span>5-1. 크롤링 데이터의 정리 규칙 세우기</h3>
 <p><b>STEP 1. 원본에서 정리할 곳 찾기</b></p>
@@ -737,7 +737,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="table-wrap"><table><tr><th>기준</th><th>파이썬(코랩)</th><th>클로드 웹 가져오기 + 파일 만들기</th></tr>
 <tr><td><b>잘 맞는 양</b></td><td>여러 페이지, 수백~수천 줄</td><td>한두 페이지, 수십 줄</td></tr>
 <tr><td><b>다시 하기</b></td><td>같은 코드를 다시 실행하면 같은 규칙으로 또 모여요</td><td>매번 대화로 다시 요청해요</td></tr>
-<tr><td><b>요청 간격</b></td><td>코드에 내가 직접 정해요(time.sleep)</td><td>클로드가 페이지를 읽어요. 많은 페이지를 한꺼번에 맡기지 않아요</td></tr>
+<tr><td><b>요청 간격</b></td><td>코드에 내가 직접 정해요(time.sleep)</td><td>내가 정할 수 없어요. 그래서 많은 페이지를 한꺼번에 맡기지 않아요</td></tr>
 <tr><td><b>확인 방법</b></td><td>줄 수·기준값을 코드로 출력해 견주기</td><td>'페이지를 읽었는지'와 권수를 먼저 묻고, 기준값과 견주기</td></tr>
 <tr><td><b>사용량</b></td><td>코랩 무료 사용 범위</td><td>클로드 사용량 한도에 포함</td></tr>
 </table></div>
