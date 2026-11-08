@@ -28,6 +28,8 @@
 ![정리본](https://github.com/loreenkim0301/swy-lecturenote/blob/claude/ai-pm-week3-d1-followup/261109-ai-pm-week3/images/d1-s5-cleaned-sheet-hl.png?raw=true)
 ![GA 예약](https://github.com/loreenkim0301/swy-lecturenote/blob/claude/ai-pm-week3-d1-followup/261109-ai-pm-week3/images/d1-ga-schedule-hl.png?raw=true)
 ![GA 태그 복사](https://github.com/loreenkim0301/swy-lecturenote/blob/claude/ai-pm-week3-d1-followup/261109-ai-pm-week3/images/d1-s6-tag-copy-hl.png?raw=true)
+![깃헙 태그](https://github.com/loreenkim0301/swy-lecturenote/blob/claude/ai-pm-week3-d1-followup/261109-ai-pm-week3/images/d1-s6-github-paste-hl.png?raw=true)
+![GA 실시간](https://github.com/loreenkim0301/swy-lecturenote/blob/claude/ai-pm-week3-d1-followup/261109-ai-pm-week3/images/d1-s6-realtime-hl.png?raw=true)
 
 ## ③ 남은 캡처 자리 12개
 - 복습 3·4의 웹 앱 화면 10개: 웹 앱을 '모든 사용자'로 배포한 뒤에 찍을 수 있어요. 배포 버튼은 로린 님이 눌러야 해요.
