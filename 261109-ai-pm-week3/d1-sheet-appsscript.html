@@ -300,6 +300,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="grp"><div class="grp-label">SESSION 3</div><a class="l2" href="#s3">시트를 웹 페이지처럼 보여 주기</a><a class="l3" href="#s3-1">3-1. 웹 앱과 배포란?</a><a class="l3" href="#s3-2">3-2. 시트를 웹 페이지로 배포하기</a><a class="l3" href="#s3-3">3-3. 고치고 같은 주소로 다시 배포하기</a><a class="l3" href="#s3-4">3-4. 결과</a></div>
 <div class="grp"><div class="grp-label">SESSION 4</div><a class="l2" href="#s4">입력 화면을 만들고 시트에 쌓기</a><a class="l3" href="#s4-1">4-1. 화면에서 시트로 보내는 방법</a><a class="l3" href="#s4-2">4-2. 신청 입력 화면 만들기</a><a class="l3" href="#s4-3">4-3. 결과</a></div>
 <div class="grp"><div class="grp-label">SESSION 5</div><a class="l2" href="#s5">쌓인 신청 데이터 정리하기(전처리)</a><a class="l3" href="#s5-1">5-1. 전처리란?</a><a class="l3" href="#s5-2">5-2. 지저분한 명단에서 문제 찾기</a><a class="l3" href="#s5-3">5-3. 시트 기능으로 먼저 정리해 보기</a><a class="l3" href="#s5-4">5-4. 앱스스크립트로 정리 버튼 만들기</a><a class="l3" href="#s5-5">5-5. 결과</a></div>
+<div class="grp"><div class="grp-label">SESSION 6</div><a class="l2" href="#s6">GA를 연결해 사용자의 행동 모으기</a><a class="l3" href="#s6-1">6-1. GA란?</a><a class="l3" href="#s6-2">6-2. 이벤트 신청 페이지에 GA 붙이기</a><a class="l3" href="#s6-3">6-3. 결과</a></div>
 <div class="grp"><div class="grp-label">마무리</div><a class="l2" href="#wrap">오늘 정리와 과제</a></div>
 </nav>
 <div class="side-link"><b>이 교안 주소</b><a href="https://loreenkim0301.github.io/swy-lecturenote/261109-ai-pm-week3/d1-sheet-appsscript.html">loreenkim0301.github.io/swy-lecturenote/261109-ai-pm-week3/d1-sheet-appsscript.html</a></div>
@@ -308,12 +309,12 @@ aside nav a.active{border-left-color:var(--blue)}
 <main>
 <header class="hero">
 <div class="kicker">AI 프로덕트 매니저 · 3주차 DAY 1 · 2026.11.09 (월)</div>
-<h1>구글 시트를 <em>데이터 창고</em>로 쓰고, 쌓인 데이터를 정리해요</h1>
-<p>금요일 오후에 구글 시트를 웹 페이지처럼 만들어 봤던 것 기억하시나요? 오늘은 그 실습을 처음부터 끝까지 다시 해요. 빈 시트를 신청 명단으로 채우고, 앱스스크립트로 웹 페이지와 입력 화면을 만들어요. 마지막에는 쌓인 명단의 빈칸·중복·형식을 정리해요.</p>
+<h1><em>사용자의 데이터</em>를 모아요: 직접 입력은 시트에, 행동은 GA로</h1>
+<p>기획자에게 필요한 데이터 중 첫 번째, 사용자의 데이터를 모으는 날이에요. 지난주 금요일 오후에 구글 시트를 웹 페이지처럼 만들어 봤던 것 기억하시나요? 오늘은 그 실습을 처음부터 끝까지 다시 해요. 빈 시트를 신청 명단으로 채우고, 앱스스크립트로 웹 페이지와 입력 화면을 만들어요. 쌓인 명단의 빈칸·중복·형식을 정리하고, 마지막에는 배포한 페이지에 GA를 연결해 방문 데이터를 모아요.</p>
 <div class="hero-grid">
 <div><b>일정</b><span>11월 9일(월) 09:00–18:00 · 실시간 비대면</span></div>
-<div><b>준비물</b><span>크롬, 개인 지메일 계정, 구글 시트, 클로드, 휴대폰</span></div>
-<div><b>오늘의 결과물</b><span>신청 명단 시트 + 웹 페이지 주소(검색·필터) + 시트에 쌓이는 입력 화면 + '정리본' 시트</span></div>
+<div><b>준비물</b><span>크롬, 개인 지메일 계정, 구글 시트, 클로드, 깃헙·버셀 계정, 휴대폰</span></div>
+<div><b>오늘의 결과물</b><span>신청 명단 시트 + 웹 페이지 주소(검색·필터) + 시트에 쌓이는 입력 화면 + '정리본' 시트 + GA 실시간 보고서</span></div>
 </div>
 <nav aria-label="3주차 교안" class="day-nav"><a href="./">3주차 홈</a><a aria-current="page" href="./d1-sheet-appsscript.html">DAY 1 구글 시트·앱스스크립트</a></nav>
 </header>
@@ -322,8 +323,8 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="table-wrap"><table>
 <tr><th>시간</th><td>09:00–18:00 (점심 12:00–13:00, 수업 8시간)</td></tr>
 <tr><th>교과</th><td>[기본] AI 서비스 개발 · 7일차 (총 18일)</td></tr>
-<tr><th>교육 목표</th><td>구글 시트에 데이터를 모으는 화면을 앱스스크립트로 만들고, 모인 데이터를 분석에 쓸 수 있게 정리한다.</td></tr>
-<tr><th>수업이 끝나면</th><td>① 클로드로 연습용 데이터를 만들어 시트에 넣기<br/>② 시트를 웹 페이지로 배포하고 같은 주소로 다시 배포하기<br/>③ 입력 화면에서 넣은 값이 시트에 쌓이게 하기<br/>④ 정리 규칙을 세우고 원본은 둔 채 '정리본' 만들기</td></tr>
+<tr><th>교육 목표</th><td>사용자의 데이터를 두 가지로 모은다. 직접 입력된 데이터는 구글 시트에 쌓아 정리하고, 행동 데이터는 GA로 모은다.</td></tr>
+<tr><th>수업이 끝나면</th><td>① 클로드로 연습용 데이터를 만들어 시트에 넣기<br/>② 시트를 웹 페이지로 배포하고 같은 주소로 다시 배포하기<br/>③ 입력 화면에서 넣은 값이 시트에 쌓이게 하기<br/>④ 정리 규칙을 세우고 원본은 둔 채 '정리본' 만들기<br/>⑤ 배포한 페이지에 GA를 연결해 방문 데이터 확인하기</td></tr>
 </table></div>
 </section>
 
@@ -332,6 +333,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <li><b>개인 지메일 계정:</b> 회사·학교 계정은 관리자가 앱스스크립트를 막아 두었을 수 있어서 개인 지메일을 써요.</li>
 <li><b>크롬 창 하나에 계정 하나:</b> 여러 구글 계정에 로그인해 있다면 시크릿 창을 열어 수업용 계정 하나로만 로그인해요.</li>
 <li><b>클로드:</b> 새 대화를 하나 열어 둬요. 오늘 코드는 모두 클로드에게 받아요.</li>
+<li><b>깃헙·버셀:</b> 지난주 목요일에 버셀로 배포한 이벤트 신청 페이지 주소와 깃헙 저장소를 열어 둬요.</li>
 </ul>
 <div class="notice">프롬프트는 요청·내용·형식 3줄이에요. [ ] 안을 내 내용으로 바꿔 써요. 시트에는 가상의 정보만 넣어요.</div>
 </section>
@@ -346,8 +348,8 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td>12:00–13:00</td><td>점심</td><td></td></tr>
 <tr><td>13:00–14:30</td><td>SESSION 4</td><td><a href="#s4">입력 화면을 만들고 시트에 쌓기</a></td></tr>
 <tr><td>14:40–16:40</td><td>SESSION 5</td><td><a href="#s5">쌓인 신청 데이터 정리하기(전처리)</a></td></tr>
-<tr><td>16:40–17:00</td><td>정리</td><td><a href="#wrap">오늘 정리와 과제</a></td></tr>
-<tr><td>17:00–18:00</td><td>개인 실습·회고</td><td>막힌 단계 다시 하기, 회고 작성</td></tr>
+<tr><td>16:40–17:40</td><td>SESSION 6</td><td><a href="#s6">GA를 연결해 사용자의 행동 모으기</a></td></tr>
+<tr><td>17:40–18:00</td><td>정리·회고</td><td><a href="#wrap">오늘 정리와 과제</a></td></tr>
 </table></div>
 </section>
 
@@ -367,7 +369,7 @@ aside nav a.active{border-left-color:var(--blue)}
 </section>
 
 <section class="section session" id="s1">
-<div class="session-head"><div class="eyebrow">SESSION 1 · 09:20–09:50</div><h2>구글 시트를 데이터 창고로 쓰기</h2><p>금요일에 신청 페이지를 만들고 신청을 Firestore에 저장했던 것 기억하시나요? 오늘은 같은 일을 구글 시트로 해요.</p>
+<div class="session-head"><div class="eyebrow">SESSION 1 · 09:20–09:50</div><h2>구글 시트를 데이터 창고로 쓰기</h2><p>지난주 금요일에 신청 페이지를 만들고 신청을 Firestore에 저장했던 것 기억하시나요? 오늘은 같은 일을 구글 시트로 해요.</p>
 <div class="why-box"><b>왜 하나?</b>시트는 기획자·운영자가 매일 여는 도구예요. 신청이 시트에 바로 쌓이면 개발자 없이도 명단을 보고, 거르고, 정리할 수 있어요.</div></div>
 
 <div class="topic" id="s1-1"><h3><span class="stage">개념</span>1-1. 앱스스크립트란?</h3>
@@ -388,7 +390,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <div><span>화요일</span><b>웹에서 모으기</b><small>크롤링한 데이터도 같은 규칙으로</small></div>
 </div>
 <div class="table-wrap"><table>
-<tr><th>구분</th><th>금요일 Firestore</th><th>오늘 구글 시트</th></tr>
+<tr><th>구분</th><th>지난주 금요일 Firestore</th><th>오늘 구글 시트</th></tr>
 <tr><td><b>데이터를 보는 곳</b></td><td>Firebase 콘솔(개발자용 화면)</td><td>구글 시트(운영자가 매일 여는 화면)</td></tr>
 <tr><td><b>화면을 만드는 곳</b></td><td>구글 AI 스튜디오</td><td>클로드에게 코드를 받아 앱스스크립트에 붙여 넣기</td></tr>
 <tr><td><b>잘 맞는 경우</b></td><td>신청이 많고, 로그인·권한이 필요한 서비스</td><td>신청이 적고, 사람이 명단을 직접 보고 고치는 이벤트</td></tr>
@@ -452,7 +454,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <p><b>STEP 1. 앱스스크립트 열기</b></p>
 <p>신청 명단 시트에서 [확장 프로그램] → [Apps Script]를 눌러요. 새 탭에 앱스스크립트 편집기가 열리고, 왼쪽 [파일] 목록에 Code.gs가 보여요.</p><figure class="shot shot-todo" data-file="images/d1-s3-editor-hl.png"><div class="shot-ph" role="img" aria-label="처음 연 앱스스크립트 편집기"><b>캡처 자리</b><span class="ph-file">images/d1-s3-editor-hl.png</span><span class="ph-marks"><i class="ph-check">확인할 곳 · 왼쪽 [파일] 목록의 Code.gs</i></span></div><figcaption>처음 연 앱스스크립트 편집기 <span class="hl-leg hl-k">주황 점선 = 확인할 곳</span></figcaption></figure>
 <p><b>STEP 2. 클로드에게 코드 받기</b></p>
-<p>클로드에게 아래 프롬프트를 보내요. 금요일 오후에 쓴 프롬프트를 요청·내용·형식으로 나눈 것이에요.</p>
+<p>클로드에게 아래 프롬프트를 보내요. 지난주 금요일 오후에 쓴 프롬프트를 요청·내용·형식으로 나눈 것이에요.</p>
 <p class="blk k-pr"><span>프롬프트</span></p>
 <div class="copybox"><div class="copyhead"><span>프롬프트 2 · 복사해서 클로드 입력창에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 이 구글 시트를 웹 페이지처럼 보여 주는 앱스스크립트 코드를 짜 줘.
 내용: 시트 탭 이름은 [시트1]이고, 첫 줄은 열 이름(신청번호, 신청일시(KST), 이름, 연락처, 이메일, 참석유형, 유입경로, 마케팅수신동의, 상태), 그 아래 신청 100줄이 있어. 디자인을 입혀 주고, 100줄을 검색하고 참석유형·상태로 거를(필터) 수 있게 해 줘. 휴대폰에서도 보기 좋게(모바일 반응형) 해 줘.
@@ -682,16 +684,79 @@ aside nav a.active{border-left-color:var(--blue)}
 </div>
 </section>
 
+<section class="section session" id="s6">
+<div class="session-head"><div class="eyebrow">SESSION 6 · 16:40–17:40</div><h2>GA를 연결해 사용자의 행동 모으기</h2><p>지금까지는 사용자가 직접 입력한 데이터를 모았어요. 이번에는 사용자가 입력하지 않아도 남는 데이터, 곧 페이지를 열고 머문 기록을 GA로 모아요.</p>
+<div class="why-box"><b>왜 하나?</b>신청한 사람 수는 시트로 알 수 있지만, 페이지를 연 사람 중 몇 명이 신청했는지는 알 수 없어요. 방문 데이터가 있어야 "보고도 신청하지 않은 사람"이 보여요.</div></div>
+
+<div class="topic" id="s6-1"><h3><span class="stage">개념</span>6-1. GA란?</h3>
+<h4>GA란?</h4><p>GA(Google 애널리틱스)는 내 웹사이트를 몇 명이, 언제, 어떤 페이지로 열었는지 모아 보여 주는 구글의 무료 도구예요. 오늘 쓰는 버전은 GA4예요.</p>
+<h4>어떤 문제를 해결하나요?</h4><p>사용자는 방문했다고 직접 알려 주지 않아요. 페이지에 Google 태그(짧은 코드)를 넣어 두면, 사용자가 페이지를 열 때마다 GA로 기록이 보내져요.</p>
+<div class="table-wrap"><table><tr><th>구분</th><th>직접 입력된 데이터</th><th>행동 데이터</th></tr>
+<tr><td><b>예</b></td><td>이름, 연락처, 참석유형</td><td>페이지를 연 수, 머문 시간, 들어온 경로</td></tr>
+<tr><td><b>모으는 곳</b></td><td>구글 시트(1~5세션)</td><td>GA</td></tr>
+<tr><td><b>답할 수 있는 질문</b></td><td>누가 신청했나요?</td><td>몇 명이 보고, 그중 몇 명이 신청했나요?</td></tr>
+</table></div>
+<h4>조심할 점</h4><p>태그를 넣은 뒤 데이터가 모이기 시작하기까지 최대 30분이 걸릴 수 있어요. 이름·이메일 같은 개인 정보는 GA로 보내지 않아요. GA는 행동만, 시트는 신청 내용만 모아요.</p>
+<p class="source-note">출처: Google 애널리틱스 고객센터 <a href="https://support.google.com/analytics/answer/14183469?hl=ko" target="_blank" rel="noopener">웹사이트에 애널리틱스 설정하기(계정·속성·웹 데이터 스트림·Google 태그)</a> · <a href="https://support.google.com/analytics/answer/9271392?hl=ko" target="_blank" rel="noopener">실시간 보고서</a> (2026.11.08 확인)</p>
+<div class="entry-box"><b>들어가는 길 · Google 애널리틱스</b><p><a href="https://analytics.google.com/" target="_blank" rel="noopener">https://analytics.google.com/</a></p><p>처음이면 [측정 시작](①)을 눌러요. 다음에 들어올 때는 왼쪽 아래 [관리](톱니바퀴)에서 계정과 속성을 볼 수 있어요.</p><figure class="shot shot-todo" data-file="images/entry-ga-hl.png"><div class="shot-ph" role="img" aria-label="Google 애널리틱스 첫 화면(계정 정보는 가렸어요)"><b>캡처 자리</b><span class="ph-file">images/entry-ga-hl.png</span><span class="ph-marks"><i class="ph-click">누를 곳 · ① [측정 시작]</i></span></div><figcaption>Google 애널리틱스 첫 화면(계정 정보는 가렸어요) <span class="hl-leg">빨간 번호 = 누를 곳(순서)</span></figcaption></figure></div>
+</div>
+
+<div class="topic" id="s6-2"><h3><span class="stage">실습</span>6-2. 이벤트 신청 페이지에 GA 붙이기</h3>
+<p>지난주 목요일에 버셀로 이벤트 신청 페이지를 배포했던 것 기억하시나요? 그때 깃헙 저장소에 올린 index.html에 Google 태그를 넣어요. 깃헙에 저장하면 버셀이 다시 배포해 줘요.</p>
+<p><b>STEP 1. 계정과 속성 만들기</b></p>
+<ol class="do-steps">
+<li><p>analytics.google.com에서 [측정 시작]을 누르고, 계정 이름(①)에 [셀렉트마켓 수업용]을 써요. [다음](②)을 눌러요.</p><figure class="shot shot-todo" data-file="images/d1-s6-account-hl.png"><div class="shot-ph" role="img" aria-label="계정 만들기 화면"><b>캡처 자리</b><span class="ph-file">images/d1-s6-account-hl.png</span><span class="ph-marks"><i class="ph-click">누를 곳 · ① 계정 이름 ② [다음]</i></span></div><figcaption>계정 만들기 화면 <span class="hl-leg">빨간 번호 = 누를 곳(순서)</span></figcaption></figure></li>
+<li><p>속성 이름(①)에 [연말 이벤트 신청 페이지]를 쓰고, 보고 시간대(②)는 [대한민국], 통화는 [대한민국 원(₩)]으로 골라요. [다음]을 누르고, 업종·규모·사용 목적을 고른 뒤 [만들기](③)를 눌러요. 처음이면 약관에 동의해요.</p><figure class="shot shot-todo" data-file="images/d1-s6-property-hl.png"><div class="shot-ph" role="img" aria-label="속성 만들기 화면"><b>캡처 자리</b><span class="ph-file">images/d1-s6-property-hl.png</span><span class="ph-marks"><i class="ph-click">누를 곳 · ① 속성 이름 ② 보고 시간대·통화 ③ [만들기]</i></span></div><figcaption>속성 만들기 화면 <span class="hl-leg">빨간 번호 = 누를 곳(순서)</span></figcaption></figure></li>
+</ol>
+<p><b>STEP 2. 웹 데이터 스트림 만들기</b></p>
+<ol class="do-steps">
+<li><p>데이터를 모을 곳을 고르는 화면에서 [웹](①)을 눌러요.</p><figure class="shot shot-todo" data-file="images/d1-s6-platform-hl.png"><div class="shot-ph" role="img" aria-label="데이터 수집 플랫폼을 고르는 화면"><b>캡처 자리</b><span class="ph-file">images/d1-s6-platform-hl.png</span><span class="ph-marks"><i class="ph-click">누를 곳 · ① [웹]</i></span></div><figcaption>데이터 수집 플랫폼을 고르는 화면 <span class="hl-leg">빨간 번호 = 누를 곳(순서)</span></figcaption></figure></li>
+<li><p>웹사이트 URL(①)에 버셀 주소(예: [내프로젝트].vercel.app)를, 스트림 이름(②)에 [이벤트 신청 페이지]를 써요. 향상된 측정은 켠 채로 두고 [스트림 만들기](③)를 눌러요.</p><figure class="shot shot-todo" data-file="images/d1-s6-stream-hl.png"><div class="shot-ph" role="img" aria-label="웹 데이터 스트림 설정 화면"><b>캡처 자리</b><span class="ph-file">images/d1-s6-stream-hl.png</span><span class="ph-marks"><i class="ph-click">누를 곳 · ① 웹사이트 URL ② 스트림 이름 ③ [스트림 만들기]</i><i class="ph-check">확인할 곳 · 향상된 측정이 켜져 있는지</i></span></div><figcaption>웹 데이터 스트림 설정 화면 <span class="hl-leg">빨간 번호 = 누를 곳(순서)</span> <span class="hl-leg hl-k">주황 점선 = 확인할 곳</span></figcaption></figure></li>
+</ol>
+<p><b>STEP 3. Google 태그 복사하기</b></p>
+<ol class="do-steps">
+<li><p>스트림 상세 화면의 Google 태그 아래 [태그 안내 보기](①)를 눌러요. [직접 설치](②)를 고르면 코드가 나와요.</p><figure class="shot shot-todo" data-file="images/d1-s6-tag-hl.png"><div class="shot-ph" role="img" aria-label="Google 태그 설치 안내 화면"><b>캡처 자리</b><span class="ph-file">images/d1-s6-tag-hl.png</span><span class="ph-marks"><i class="ph-click">누를 곳 · ① [태그 안내 보기] ② [직접 설치]</i><i class="ph-check">확인할 곳 · G-로 시작하는 측정 ID</i></span></div><figcaption>Google 태그 설치 안내 화면 <span class="hl-leg">빨간 번호 = 누를 곳(순서)</span> <span class="hl-leg hl-k">주황 점선 = 확인할 곳</span></figcaption></figure></li>
+<li><p><code class="inline">&lt;!-- Google tag (gtag.js) --&gt;</code>부터 마지막 <code class="inline">&lt;/script&gt;</code>까지 통째로 복사해요. 복사 아이콘(①)을 눌러도 돼요.</p><figure class="shot shot-todo" data-file="images/d1-s6-tag-copy-hl.png"><div class="shot-ph" role="img" aria-label="복사할 Google 태그 코드"><b>캡처 자리</b><span class="ph-file">images/d1-s6-tag-copy-hl.png</span><span class="ph-marks"><i class="ph-click">누를 곳 · ① 복사 아이콘</i><i class="ph-check">확인할 곳 · 코드 처음과 끝</i></span></div><figcaption>복사할 Google 태그 코드 <span class="hl-leg">빨간 번호 = 누를 곳(순서)</span> <span class="hl-leg hl-k">주황 점선 = 확인할 곳</span></figcaption></figure></li>
+</ol>
+<p><b>STEP 4. index.html에 붙여 넣고 저장하기</b></p>
+<ol class="do-steps">
+<li><p>지난주 목요일에 버셀과 연결한 깃헙 저장소를 열고 index.html을 눌러요. 오른쪽 위 연필 아이콘(①)을 눌러 편집 화면을 열어요.</p><figure class="shot shot-todo" data-file="images/d1-s6-github-edit-hl.png"><div class="shot-ph" role="img" aria-label="깃헙에서 index.html을 편집하는 곳"><b>캡처 자리</b><span class="ph-file">images/d1-s6-github-edit-hl.png</span><span class="ph-marks"><i class="ph-click">누를 곳 · ① 연필 아이콘</i></span></div><figcaption>깃헙에서 index.html을 편집하는 곳 <span class="hl-leg">빨간 번호 = 누를 곳(순서)</span></figcaption></figure></li>
+<li><p><code class="inline">&lt;head&gt;</code> 줄(①) 바로 아래 새 줄에 복사한 코드를 붙여 넣어요. [Commit changes...](②)를 누르고, 메시지에 [GA 태그 추가]를 써서 한 번 더 [Commit changes](③)를 눌러요.</p><figure class="shot shot-todo" data-file="images/d1-s6-github-paste-hl.png"><div class="shot-ph" role="img" aria-label="head 바로 아래에 Google 태그를 붙여 넣은 화면"><b>캡처 자리</b><span class="ph-file">images/d1-s6-github-paste-hl.png</span><span class="ph-marks"><i class="ph-click">누를 곳 · ① &lt;head&gt; 줄 ② [Commit changes...] ③ [Commit changes]</i></span></div><figcaption>head 바로 아래에 Google 태그를 붙여 넣은 화면 <span class="hl-leg">빨간 번호 = 누를 곳(순서)</span></figcaption></figure></li>
+<li><p>버셀 대시보드에서 새 배포가 [Ready]가 되는지 봐요.</p><figure class="shot shot-todo" data-file="images/d1-s6-vercel-ready-hl.png"><div class="shot-ph" role="img" aria-label="커밋 뒤 버셀에 생긴 새 배포"><b>캡처 자리</b><span class="ph-file">images/d1-s6-vercel-ready-hl.png</span><span class="ph-marks"><i class="ph-check">확인할 곳 · 새 배포의 [Ready] 표시와 커밋 메시지</i></span></div><figcaption>커밋 뒤 버셀에 생긴 새 배포 <span class="hl-leg hl-k">주황 점선 = 확인할 곳</span></figcaption></figure></li>
+</ol>
+<p><b>STEP 5. 실시간 보고서에서 내 방문 확인하기</b></p>
+<ol class="do-steps">
+<li><p>버셀 주소를 PC와 휴대폰에서 각각 열어요.</p></li>
+<li><p>GA 왼쪽 메뉴에서 [보고서](①) → [실시간](②)을 눌러요. 지난 30분 동안의 방문이 보여요.</p><figure class="shot shot-todo" data-file="images/d1-s6-realtime-hl.png"><div class="shot-ph" role="img" aria-label="GA 실시간 보고서"><b>캡처 자리</b><span class="ph-file">images/d1-s6-realtime-hl.png</span><span class="ph-marks"><i class="ph-click">누를 곳 · ① [보고서] ② [실시간]</i><i class="ph-check">확인할 곳 · 지난 30분 동안의 사용자 수 · 기기(데스크톱·모바일)</i></span></div><figcaption>GA 실시간 보고서 <span class="hl-leg">빨간 번호 = 누를 곳(순서)</span> <span class="hl-leg hl-k">주황 점선 = 확인할 곳</span></figcaption></figure></li>
+</ol>
+<p class="blk k-chk"><span>확인할 점</span></p>
+<ul class="checklist"><li>index.html의 &lt;head&gt; 바로 아래에 Google 태그가 있다</li><li>버셀 새 배포가 Ready다</li><li>실시간 보고서에 사용자 수가 1 이상으로 보인다</li><li>시트에 쌓이는 신청 내용과 GA에 쌓이는 방문이 서로 다른 데이터라는 것을 말할 수 있다</li></ul>
+<p class="blk k-chk"><span>막히면</span></p>
+<div class="table-wrap"><table><tr><th>이렇게 보이면</th><th>이렇게 해요</th></tr>
+<tr><td><b>실시간 보고서가 0이에요</b></td><td>데이터가 모이기 시작하기까지 최대 30분이 걸릴 수 있어요. 페이지를 새로고침하고 몇 분 뒤에 다시 봐요. 광고 차단 확장 프로그램을 켜 두었다면 끄거나 휴대폰으로 열어 봐요.</td></tr>
+<tr><td><b>버셀 주소에 태그가 안 보여요</b></td><td>페이지에서 마우스 오른쪽 단추 → [페이지 소스 보기]를 열고 <code class="inline">gtag</code>를 찾아요. 없으면 버셀 새 배포가 끝났는지, 커밋한 브랜치가 버셀과 연결된 브랜치인지 봐요.</td></tr>
+<tr><td><b>지난주 목요일 버셀 배포가 없어요</b></td><td>GitHub Pages로 공개한 페이지에 같은 방법으로 넣어도 돼요. 웹사이트 URL만 그 주소로 써요.</td></tr>
+</table></div>
+</div>
+
+<div class="topic" id="s6-3"><h3><span class="stage">결과</span>6-3. 결과</h3>
+<div class="result-box"><b>결과물</b> Google 태그가 들어간 이벤트 신청 페이지 + GA 실시간 보고서에 잡힌 내 방문</div>
+<p class="ok-line"><b>이렇게 보이면 성공</b>PC와 휴대폰으로 연 방문이 실시간 보고서에 보인다</p>
+<p>방문 데이터로 보고서를 만들고 버튼 클릭 같은 이벤트를 따로 세는 방법은 12월 [심화] 교과에서 이어서 해요.</p>
+</div>
+</section>
+
 <section class="section session" id="wrap">
-<div class="session-head"><div class="eyebrow">정리 · 16:40–17:00</div><h2>오늘 정리와 과제</h2></div>
+<div class="session-head"><div class="eyebrow">정리 · 17:40–18:00</div><h2>오늘 정리와 과제</h2></div>
 <p><b>오늘의 규칙</b></p>
 <ul class="checklist">
 <li>연습 데이터는 실제와 같은 열 이름, 가상의 값으로 만든다</li>
 <li>코드를 고치면 [배포 관리]에서 새 버전으로 배포해야 같은 주소에 반영된다</li>
 <li>입력 화면에는 빈칸을 막는 규칙을 넣는다</li>
 <li>원본은 두고 정리본을 만든다. AI가 판단할 수 없는 줄은 지우지 않고 '확인 필요'로 표시한다</li>
+<li>입력한 내용은 시트에, 방문 같은 행동은 GA에 모은다. 개인 정보는 GA로 보내지 않는다</li>
 </ul>
-<div class="notice"><b>오늘의 결과물</b><br/>신청 명단 시트 + 웹 페이지 주소(검색·필터) + 시트에 쌓이는 입력 화면 + [정리본] 시트</div>
+<div class="notice"><b>오늘의 결과물</b><br/>신청 명단 시트 + 웹 페이지 주소(검색·필터) + 시트에 쌓이는 입력 화면 + [정리본] 시트 + GA 실시간 보고서</div>
 <div class="notice"><b>과제</b><br/>[정리본]의 '확인 필요' 18줄 중 '중복 신청 의심' 한 쌍을 골라, 두 줄 중 어느 줄을 남길지와 그 이유를 한 문장으로 적어 와요.</div>
 </section>
 </main>
