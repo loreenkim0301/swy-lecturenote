@@ -361,7 +361,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td><b>Code.gs</b></td><td>앱스스크립트에서 서버 쪽 코드를 넣는 파일. 시트를 읽고 쓰는 일을 해요.</td></tr>
 <tr><td><b>index.html</b></td><td>앱스스크립트에서 사람이 보는 화면을 넣는 파일</td></tr>
 <tr><td><b>웹 앱</b></td><td>앱스스크립트 코드를 인터넷 주소로 열 수 있게 만든 것</td></tr>
-<tr><td><b>배포 · 버전</b></td><td>배포는 코드를 주소로 내보내는 일, 버전은 그때 코드의 사진 한 장이에요.</td></tr>
+<tr><td><b>배포 · 버전</b></td><td>배포는 코드를 주소로 내보내는 일, 버전은 배포할 때의 코드를 저장해 둔 것이에요.</td></tr>
 <tr><td><b>CSV</b></td><td>표를 쉼표로 나눠 글자로 저장한 파일. 시트로 가져올 수 있어요.</td></tr>
 <tr><td><b>전처리</b></td><td>모은 데이터를 쓰기 전에 빈칸·중복·형식을 정리하는 일</td></tr>
 <tr><td><b>원본 · 정리본</b></td><td>처음 모은 그대로의 데이터와, 정리 규칙을 적용한 데이터</td></tr>
@@ -370,18 +370,17 @@ aside nav a.active{border-left-color:var(--blue)}
 
 <section class="section session" id="s1">
 <div class="session-head"><div class="eyebrow">SESSION 1 · 09:20–09:50</div><h2>구글 시트를 데이터 창고로 쓰기</h2><p>지난주 금요일에 신청 페이지를 만들고 신청을 Firestore에 저장했던 것 기억하시나요? 오늘은 같은 일을 구글 시트로 해요.</p>
-<div class="why-box"><b>왜 하나?</b>시트는 기획자·운영자가 매일 여는 도구예요. 신청이 시트에 바로 쌓이면 개발자 없이도 명단을 보고, 거르고, 정리할 수 있어요.</div></div>
+<div class="why-box"><b>왜 하나?</b>신청이 시트에 바로 쌓이면 개발자 없이도 명단을 보고, 거르고, 정리할 수 있어요.</div></div>
 
 <div class="topic" id="s1-1"><h3><span class="stage">개념</span>1-1. 앱스스크립트란?</h3>
 <h4>앱스스크립트란?</h4><p>앱스스크립트는 구글 시트·지메일·드라이브를 코드로 움직이게 하는 구글의 도구예요. 시트 메뉴에서 바로 열 수 있고, 따로 설치할 것이 없어요.</p>
 <h4>어떤 문제를 해결하나요?</h4><p>시트만으로는 다른 사람이 쓰기 좋은 화면을 만들기 어려워요. 앱스스크립트로 웹 앱을 만들면 시트 내용을 웹 페이지로 보여 주고, 입력 화면에서 받은 값을 시트에 쌓을 수 있어요.</p>
 <h4>조심할 점</h4><p>웹 앱을 '모든 사용자'에게 공개하면 주소를 아는 사람은 누구나 열 수 있어요. 실제 고객의 연락처가 든 시트는 이렇게 공개하지 않아요. 오늘은 가상 데이터만 써요.</p>
 <p class="source-note">출처: 구글 공식 문서 <a href="https://developers.google.com/apps-script?hl=ko" target="_blank" rel="noopener">Apps Script 개요</a> · <a href="https://developers.google.com/apps-script/guides/web?hl=ko" target="_blank" rel="noopener">웹 앱(Web Apps)</a> (2026.11.08 확인)</p>
-<div class="entry-box"><b>들어가는 길 · 앱스스크립트</b><p>구글 시트 위쪽 메뉴에서 [확장 프로그램](①) → [Apps Script](②)를 눌러요. 내가 만든 앱스스크립트 프로젝트는 <a href="https://script.google.com/home" target="_blank" rel="noopener">https://script.google.com/home</a> 에서 모아 볼 수 있어요.</p><figure class="shot"><a href="images/entry-appsscript-hl.png" target="_blank" rel="noopener"><img style="width:760px;max-width:100%" alt="구글 시트 메뉴에서 앱스스크립트를 여는 곳(계정 정보는 가렸어요)" loading="lazy" src="images/entry-appsscript-hl.png"/></a><figcaption>구글 시트 메뉴에서 앱스스크립트를 여는 곳(계정 정보는 가렸어요) <span class="hl-leg">빨간 번호 = 누를 곳(순서)</span></figcaption></figure></div>
+<div class="entry-box"><b>들어가는 길 · 앱스스크립트</b><p>구글 시트 위쪽 메뉴에서 [확장 프로그램](①) → [Apps Script](②)를 눌러요. 내가 만든 앱스스크립트 프로젝트는 <a href="https://script.google.com/home" target="_blank" rel="noopener">https://script.google.com/home</a> 에서 모아 볼 수 있어요.</p><figure class="shot"><a href="images/entry-appsscript-hl.png" target="_blank" rel="noopener"><img style="width:760px;max-width:100%" alt="구글 시트 메뉴에서 앱스스크립트를 여는 곳" loading="lazy" src="images/entry-appsscript-hl.png"/></a><figcaption>구글 시트 메뉴에서 앱스스크립트를 여는 곳 <span class="hl-leg">빨간 번호 = 누를 곳(순서)</span></figcaption></figure></div>
 </div>
 
 <div class="topic" id="s1-2"><h3><span class="stage">흐름</span>1-2. 오늘 만들 것 한눈에 보기</h3>
-<p>오늘은 신청 명단 하나를 네 번 키워요. 앞 단계의 결과를 다음 단계에서 그대로 써요.</p>
 <div class="flow">
 <div><span>SESSION 2</span><b>시트 채우기</b><small>클로드로 가상 명단 100줄</small></div>
 <div><span>SESSION 3</span><b>웹 페이지로 보기</b><small>검색·필터·휴대폰 화면</small></div>
@@ -391,7 +390,7 @@ aside nav a.active{border-left-color:var(--blue)}
 </div>
 <div class="table-wrap"><table>
 <tr><th>구분</th><th>지난주 금요일 Firestore</th><th>오늘 구글 시트</th></tr>
-<tr><td><b>데이터를 보는 곳</b></td><td>Firebase 콘솔(개발자용 화면)</td><td>구글 시트(운영자가 매일 여는 화면)</td></tr>
+<tr><td><b>데이터를 보는 곳</b></td><td>Firebase 콘솔(개발자용 화면)</td><td>구글 시트</td></tr>
 <tr><td><b>화면을 만드는 곳</b></td><td>구글 AI 스튜디오</td><td>클로드에게 코드를 받아 앱스스크립트에 붙여 넣기</td></tr>
 <tr><td><b>잘 맞는 경우</b></td><td>신청이 많고, 로그인·권한이 필요한 서비스</td><td>신청이 적고, 사람이 명단을 직접 보고 고치는 이벤트</td></tr>
 </table></div>
@@ -471,7 +470,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <li><p>오른쪽 위 [배포](①) → [새 배포](②)를 눌러요.</p><figure class="shot"><a href="images/d1-s3-deploy-menu-hl.png" target="_blank" rel="noopener"><img style="width:462px;max-width:100%" alt="배포 메뉴" loading="lazy" src="images/d1-s3-deploy-menu-hl.png"/></a><figcaption>배포 메뉴 <span class="hl-leg">빨간 번호 = 누를 곳(순서)</span></figcaption></figure></li>
 <li><p>[유형 선택] 옆 톱니바퀴(①)를 누르고 [웹 앱](②)을 골라요.</p><figure class="shot"><a href="images/d1-s3-deploy-type-hl.png" target="_blank" rel="noopener"><img style="width:550px;max-width:100%" alt="배포 유형을 고르는 곳" loading="lazy" src="images/d1-s3-deploy-type-hl.png"/></a><figcaption>배포 유형을 고르는 곳 <span class="hl-leg">빨간 번호 = 누를 곳(순서)</span></figcaption></figure></li>
 <li><p>설명(①)에는 [신청 명단 보기 1차]를 써요. [다음 사용자 인증 정보로 실행](②)은 [나(내 이메일)] 그대로 둬요. [액세스 권한이 있는 사용자](③)는 [나만], [○○의 모든 사용자](회사 계정일 때만 보여요), [Google 계정이 있는 모든 사용자], [모든 사용자] 중에서 골라요. 오늘은 가상 데이터라서 [모든 사용자]로 해요. 그다음 아래 [배포]를 눌러요.</p><figure class="shot"><a href="images/d1-s3-deploy-config-hl.png" target="_blank" rel="noopener"><img style="width:658px;max-width:100%" alt="웹 앱 배포 설정" loading="lazy" src="images/d1-s3-deploy-config-hl.png"/></a><figcaption>웹 앱 배포 설정 <span class="hl-leg">빨간 번호 = 누를 곳(순서)</span></figcaption></figure></li>
-<li><p>"웹 앱에서 내 데이터에 대한 액세스 권한 부여를 나에게 요청합니다."가 나오면 [액세스 승인](①)을 눌러요. 새 창이 뜨면 수업용 계정을 골라요.</p><figure class="shot"><a href="images/d1-s3-auth-hl.png" target="_blank" rel="noopener"><img style="width:760px;max-width:100%" alt="처음 배포할 때 나오는 권한 창(계정 정보는 가렸어요)" loading="lazy" src="images/d1-s3-auth-hl.png"/></a><figcaption>처음 배포할 때 나오는 권한 창(계정 정보는 가렸어요) <span class="hl-leg">빨간 번호 = 누를 곳(순서)</span></figcaption></figure></li>
+<li><p>"웹 앱에서 내 데이터에 대한 액세스 권한 부여를 나에게 요청합니다."가 나오면 [액세스 승인](①)을 눌러요. 새 창이 뜨면 수업용 계정을 골라요.</p><figure class="shot"><a href="images/d1-s3-auth-hl.png" target="_blank" rel="noopener"><img style="width:760px;max-width:100%" alt="처음 배포할 때 나오는 권한 창" loading="lazy" src="images/d1-s3-auth-hl.png"/></a><figcaption>처음 배포할 때 나오는 권한 창 <span class="hl-leg">빨간 번호 = 누를 곳(순서)</span></figcaption></figure></li>
 <li><p>"확인되지 않은 앱" 경고가 나오면 [고급](①)을 누르고 [(프로젝트 이름)(으)로 이동(안전하지 않음)](②)을 눌러요. 내가 만든 코드라서 넘어가도 돼요.</p><figure class="shot shot-todo" data-file="images/d1-s3-unverified-hl.png"><div class="shot-ph" role="img" aria-label="확인되지 않은 앱 경고 화면"><b>캡처 자리</b><span class="ph-file">images/d1-s3-unverified-hl.png</span><span class="ph-marks"><i class="ph-click">누를 곳 · ① [고급] ② [(프로젝트 이름)(으)로 이동(안전하지 않음)]</i></span></div><figcaption>확인되지 않은 앱 경고 화면 <span class="hl-leg">빨간 번호 = 누를 곳(순서)</span></figcaption></figure><p>앱스스크립트가 쓸 권한 목록이 나오면 [허용](①)을 눌러요.</p><figure class="shot shot-todo" data-file="images/d1-s3-allow-hl.png"><div class="shot-ph" role="img" aria-label="권한 목록 화면"><b>캡처 자리</b><span class="ph-file">images/d1-s3-allow-hl.png</span><span class="ph-marks"><i class="ph-click">누를 곳 · ① [허용]</i><i class="ph-check">확인할 곳 · 시트를 읽고 쓰는 권한이 목록에 있는지</i></span></div><figcaption>권한 목록 화면 <span class="hl-leg">빨간 번호 = 누를 곳(순서)</span> <span class="hl-leg hl-k">주황 점선 = 확인할 곳</span></figcaption></figure></li>
 <li><p>배포가 끝나면 [웹 앱] 아래 주소가 나와요. [복사](①)를 눌러 주소를 복사해요.</p><figure class="shot shot-todo" data-file="images/d1-s3-deploy-url-hl.png"><div class="shot-ph" role="img" aria-label="배포가 끝난 화면"><b>캡처 자리</b><span class="ph-file">images/d1-s3-deploy-url-hl.png</span><span class="ph-marks"><i class="ph-click">누를 곳 · ① [복사]</i><i class="ph-check">확인할 곳 · …/exec로 끝나는 웹 앱 주소</i></span></div><figcaption>배포가 끝난 화면 <span class="hl-leg">빨간 번호 = 누를 곳(순서)</span> <span class="hl-leg hl-k">주황 점선 = 확인할 곳</span></figcaption></figure></li>
 </ol>
@@ -525,7 +524,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="topic" id="s4-1"><h3><span class="stage">개념</span>4-1. 화면에서 시트로 보내는 방법</h3>
 <h4>이번 실습에서는 새로운 코드가 두 가지 나와요</h4>
 <div class="table-wrap"><table><tr><th>코드</th><th>있는 파일</th><th>하는 일</th></tr>
-<tr><td><code class="inline">google.script.run</code></td><td>index.html</td><td>화면에서 [신청하기]를 누르면 Code.gs의 함수를 불러요. 화면과 시트를 잇는 다리예요.</td></tr>
+<tr><td><code class="inline">google.script.run</code></td><td>index.html</td><td>화면에서 [신청하기]를 누르면 Code.gs의 함수를 불러요.</td></tr>
 <tr><td><code class="inline">sheet.appendRow([…])</code></td><td>Code.gs</td><td>시트의 마지막 줄 아래에 새 줄 하나를 붙여요.</td></tr>
 </table></div>
 <h4>조심할 점</h4><p>입력 화면은 누구나 값을 넣을 수 있어요. 빈칸이나 잘못된 형식이 그대로 쌓일 수 있으니, 저장하기 전에 빈칸을 막는 규칙을 프롬프트에 넣어요. 그래도 쌓이는 문제는 5세션에서 정리해요.</p><p>그리고 오늘 만드는 웹 앱은 입력 화면과 명단이 한 주소에 있어요. 액세스를 [모든 사용자]로 열면 신청한 사람도 명단 화면에서 다른 사람의 이름과 연락처를 볼 수 있어요. 실제 서비스에서는 신청 화면과 명단 화면을 나누고, 명단은 담당자만 보게 해요. 오늘은 가상 데이터라서 그대로 실습해요.</p>
@@ -574,8 +573,8 @@ aside nav a.active{border-left-color:var(--blue)}
 
 <div class="topic" id="s5-1"><h3><span class="stage">개념</span>5-1. 전처리란?</h3>
 <h4>전처리란?</h4><p>전처리는 모은 데이터를 쓰기 전에 빈칸·중복·형식을 정리하는 일이에요. 분석이나 AI에 넣기 전에 가장 먼저 해요.</p>
-<h4>어떤 문제를 해결하나요?</h4><p>같은 사람이 두 번 들어가 있거나, 연락처가 01012345678과 010-1234-5678로 섞여 있으면 인원도, 문자 발송 목록도 틀려져요. 전처리를 하면 같은 규칙으로 센 숫자를 얻어요.</p>
-<h4>조심할 점</h4><p>정리하다가 원본을 지우면 무엇을 바꿨는지 되돌릴 수 없어요. 그래서 원본은 그대로 두고 정리본을 새로 만들어요. 그리고 AI가 판단할 수 없는 줄(같은 사람의 두 번째 신청 등)은 지우지 않고 '확인 필요'로 표시해 사람이 결정해요.</p>
+<h4>어떤 문제를 해결하나요?</h4><p>같은 사람이 두 번 들어가 있거나, 연락처가 01012345678과 010-1234-5678로 섞여 있으면 인원도, 문자 발송 목록도 틀려요. 전처리를 하면 같은 규칙으로 센 숫자를 얻어요.</p>
+<h4>조심할 점</h4><p>정리하다가 원본을 지우면 무엇을 바꿨는지 되돌릴 수 없어요. 그래서 원본은 그대로 두고 정리본을 새로 만들어요. 그리고 규칙으로 판단할 수 없는 줄(같은 사람의 두 번째 신청 등)은 지우지 않고 '확인 필요'로 표시해 사람이 결정해요.</p>
 <div class="table-wrap"><table><tr><th>정리 방법</th><th>예</th><th>누가 정하나요</th></tr>
 <tr><td><b>지우기</b></td><td>모든 칸이 똑같은 줄(복사 실수)</td><td>규칙으로 바로 처리</td></tr>
 <tr><td><b>형식 맞추기</b></td><td>연락처 010-0000-0000, 'online' → '온라인'</td><td>규칙으로 바로 처리</td></tr>
@@ -591,11 +590,11 @@ aside nav a.active{border-left-color:var(--blue)}
 <li><p>이번에는 가져오기 위치를 [새 시트 삽입](①)으로 골라요. [텍스트를 숫자, 날짜, 수식으로 변환]의 체크를 해제(②)해요. 체크를 켜 두면 시트가 신청일시 같은 값을 날짜로 바꿔 원본과 모양이 달라져요(09:50 → 9:50). [데이터 가져오기](③)를 눌러요.</p><figure class="shot"><a href="images/d1-s5-import-newsheet-hl.png" target="_blank" rel="noopener"><img style="width:540px;max-width:100%" alt="실습 파일을 새 시트로 가져오는 창" loading="lazy" src="images/d1-s5-import-newsheet-hl.png"/></a><figcaption>실습 파일을 새 시트로 가져오는 창 <span class="hl-leg">빨간 번호 = 누를 곳(순서)</span></figcaption></figure></li><li><p>아래쪽에 새로 생긴 시트 탭(①, 이름은 'Untitled')을 두 번 눌러 이름을 [원본]으로 바꿔요.</p><figure class="shot"><a href="images/d1-s5-rename-tab-hl.png" target="_blank" rel="noopener"><img style="width:760px;max-width:100%" alt="새로 생긴 시트 탭" loading="lazy" src="images/d1-s5-rename-tab-hl.png"/></a><figcaption>새로 생긴 시트 탭 <span class="hl-leg">빨간 번호 = 누를 곳(순서)</span> <span class="hl-leg hl-k">주황 점선 = 확인할 곳</span></figcaption></figure></li>
 </ol>
 <p><b>STEP 2. 눈으로 문제 찾기</b></p>
-<p>[원본] 시트를 위에서 아래로 훑어보며, 같은 열인데 적는 방식이 다른 곳을 찾아요. 5분 동안 찾은 것을 클로드 대화창에 짧게 적어 두면 5-4 프롬프트를 고칠 때 써요.</p>
+<p>[원본] 시트를 위에서 아래로 훑어보며, 같은 열인데 적는 방식이 다른 곳을 찾아요. 5분 동안 찾은 것은 메모장에 짧게 적어 두고, 5-4에서 프롬프트를 고칠 때 써요.</p>
 <details class="res-toggle"><summary><span class="blk k-res"><span>정답 비교</span></span><span class="tg"></span></summary>
 <div class="table-wrap"><table><tr><th>열</th><th>이런 값이 섞여 있어요</th><th>찾아볼 신청번호</th></tr>
 <tr><td>연락처</td><td>01061748438, 010 1234 5678, 010.1234.5678, 빈칸</td><td>EVT-004 · EVT-066</td></tr>
-<tr><td>신청일시(KST)</td><td>2026-10-26 09:56 사이에 2026/10/27 9:05 같은 모양</td><td>열 전체를 훑어보기</td></tr>
+<tr><td>신청일시(KST)</td><td>2026-10-26 09:56 형식 사이에 섞인 2026/10/27 9:05</td><td>열 전체를 훑어보기</td></tr>
 <tr><td>이메일</td><td>빈칸, @가 없는 주소</td><td>EVT-007 · EVT-024</td></tr>
 <tr><td>참석유형</td><td>online, offline, 오프 라인</td><td>필터로 값 목록 보기</td></tr>
 <tr><td>마케팅수신동의</td><td>y, yes, n, no, 빈칸</td><td>필터로 값 목록 보기</td></tr>
@@ -607,7 +606,7 @@ aside nav a.active{border-left-color:var(--blue)}
 </div>
 
 <div class="topic" id="s5-3"><h3><span class="stage">실습</span>5-3. 시트 기능으로 먼저 정리해 보기</h3>
-<p>구글 시트에는 정리 기능이 이미 있어요. 메뉴로 되는 일과 안 되는 일을 먼저 나눠 봐요. 원본을 지키려고 사본에서 해요.</p>
+<p>구글 시트에는 정리 기능이 이미 있어요. 메뉴로 되는 일과 안 되는 일을 먼저 나눠 봐요. 원본은 그대로 두고 사본에서 해요.</p>
 <p><b>STEP 1. 연습용 사본 만들기</b></p>
 <p>[원본] 탭(①)을 마우스 오른쪽 단추로 누르고 [복사](②)를 눌러요. '원본의 사본' 탭이 생기면 이름을 [연습]으로 바꿔요.</p><figure class="shot"><a href="images/d1-s5-duplicate-tab-hl.png" target="_blank" rel="noopener"><img style="width:480px;max-width:100%" alt="시트 탭을 복제하는 메뉴" loading="lazy" src="images/d1-s5-duplicate-tab-hl.png"/></a><figcaption>시트 탭을 복제하는 메뉴 <span class="hl-leg">빨간 번호 = 누를 곳(순서)</span></figcaption></figure>
 <p><b>STEP 2. 중복 항목 삭제</b></p>
@@ -671,7 +670,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="table-wrap"><table><tr><th>이렇게 다르면</th><th>클로드에게 이렇게 물어요</th></tr>
 <tr><td>정리본이 118줄보다 적어요</td><td>"규칙 ⑦·⑧에 해당하는 줄을 지운 것 같아. 어떤 줄을 지웠는지 신청번호로 알려 주고, 지우지 않게 고쳐 줘."</td></tr>
 <tr><td>참석유형에 다른 값이 남았어요</td><td>"참석유형에 [남은 값]이 남았어. 대소문자와 띄어쓰기를 무시하고 온라인/오프라인으로 바꿔 줘."</td></tr>
-<tr><td>확인 필요가 18줄이 아니에요</td><td>"확인 필요 열을 이유별로 세어 줘. 기준은 중복 신청 의심 8, 이메일 없음 3, 이메일 형식 오류 2, 수신동의 비어 있음 3, 연락처 없음 2야. 다른 곳의 코드를 고쳐 줘."</td></tr>
+<tr><td>확인 필요가 18줄이 아니에요</td><td>"확인 필요 열을 이유별로 세어 줘. 기준은 중복 신청 의심 8, 이메일 없음 3, 이메일 형식 오류 2, 수신동의 비어 있음 3, 연락처 없음 2야. 기준과 다른 이유를 찾아 코드를 고쳐 줘."</td></tr>
 <tr><td>수신동의 빈칸이 N으로 바뀌었어요</td><td>"규칙 ⑥에 빈칸은 빈칸으로 두라고 했어. 값을 새로 채우지 않게 고쳐 줘."</td></tr>
 </table></div>
 <p class="blk k-chk"><span>이렇게 하면 결과가 틀어져요</span></p>
@@ -699,7 +698,7 @@ aside nav a.active{border-left-color:var(--blue)}
 </table></div>
 <h4>조심할 점</h4><p>태그를 넣은 뒤 데이터가 모이기 시작하기까지 최대 30분이 걸릴 수 있어요. 이름·이메일 같은 개인 정보는 GA로 보내지 않아요. GA는 행동만, 시트는 신청 내용만 모아요.</p>
 <p class="source-note">출처: Google 애널리틱스 고객센터 <a href="https://support.google.com/analytics/answer/14183469?hl=ko" target="_blank" rel="noopener">웹사이트에 애널리틱스 설정하기(계정·속성·웹 데이터 스트림·Google 태그)</a> · <a href="https://support.google.com/analytics/answer/9271392?hl=ko" target="_blank" rel="noopener">실시간 보고서</a> (2026.11.08 확인)</p>
-<div class="entry-box"><b>들어가는 길 · Google 애널리틱스</b><p><a href="https://analytics.google.com/" target="_blank" rel="noopener">https://analytics.google.com/</a></p><p>처음이면 [측정 시작](①)을 눌러요. 다음에 들어올 때는 왼쪽 아래 [관리](톱니바퀴)에서 계정과 속성을 볼 수 있어요.</p><figure class="shot shot-todo" data-file="images/entry-ga-hl.png"><div class="shot-ph" role="img" aria-label="Google 애널리틱스 첫 화면(계정 정보는 가렸어요)"><b>캡처 자리</b><span class="ph-file">images/entry-ga-hl.png</span><span class="ph-marks"><i class="ph-click">누를 곳 · ① [측정 시작]</i></span></div><figcaption>Google 애널리틱스 첫 화면(계정 정보는 가렸어요) <span class="hl-leg">빨간 번호 = 누를 곳(순서)</span></figcaption></figure></div>
+<div class="entry-box"><b>들어가는 길 · Google 애널리틱스</b><p><a href="https://analytics.google.com/" target="_blank" rel="noopener">https://analytics.google.com/</a></p><p>처음이면 [측정 시작](①)을 눌러요. 다음에 들어올 때는 왼쪽 아래 [관리](톱니바퀴)에서 계정과 속성을 볼 수 있어요.</p><figure class="shot shot-todo" data-file="images/entry-ga-hl.png"><div class="shot-ph" role="img" aria-label="Google 애널리틱스 첫 화면"><b>캡처 자리</b><span class="ph-file">images/entry-ga-hl.png</span><span class="ph-marks"><i class="ph-click">누를 곳 · ① [측정 시작]</i></span></div><figcaption>Google 애널리틱스 첫 화면 <span class="hl-leg">빨간 번호 = 누를 곳(순서)</span></figcaption></figure></div>
 </div>
 
 <div class="topic" id="s6-2"><h3><span class="stage">실습</span>6-2. 이벤트 신청 페이지에 GA 붙이기</h3>
@@ -754,7 +753,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <li>연습 데이터는 실제와 같은 열 이름, 가상의 값으로 만든다</li>
 <li>코드를 고치면 [배포 관리]에서 새 버전으로 배포해야 같은 주소에 반영된다</li>
 <li>입력 화면에는 빈칸을 막는 규칙을 넣는다</li>
-<li>원본은 두고 정리본을 만든다. AI가 판단할 수 없는 줄은 지우지 않고 '확인 필요'로 표시한다</li>
+<li>원본은 두고 정리본을 만든다. 규칙으로 판단할 수 없는 줄은 지우지 않고 '확인 필요'로 표시한다</li>
 <li>입력한 내용은 시트에, 방문 같은 행동은 GA에 모은다. 개인 정보는 GA로 보내지 않는다</li>
 </ul>
 <div class="notice"><b>오늘의 결과물</b><br/>신청 명단 시트 + 웹 페이지 주소(검색·필터) + 시트에 쌓이는 입력 화면 + [정리본] 시트 + GA 실시간 보고서</div>
