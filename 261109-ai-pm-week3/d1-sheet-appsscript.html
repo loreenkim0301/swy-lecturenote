@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet"/>
+<meta content="index, follow, noai, noimageai" name="robots"/>
+<title>AI 프로덕트 매니저 3주차 · DAY 1 구글 시트·앱스스크립트</title>
+<style>:root { --ink: #172033; --muted: #657086; --line: #dfe4ed; --soft: #f5f7fb; --blue: #2457f5; --nav: #111a2e; --green: #16a36b; --warn: #ffad22; --page-pad: clamp(28px,5.8vw,82px); --font-sans: "Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; scroll-behavior: smooth; }
+* { box-sizing: border-box; }
+body { margin: 0px; background: rgb(238, 241, 246); color: var(--ink); font-family: var(--font-sans); line-height: 1.7; letter-spacing: -0.01em; }
+.app aside { position: fixed; inset: 0px auto 0px 0px; width: 310px; height: 100vh; padding: 0 16px 28px; background: var(--nav); color: rgb(255, 255, 255); overflow-y: auto; z-index: 10; }
+.app main { min-height: 100vh; margin-left: 310px; background: rgb(255, 255, 255); }
+.side-head { position: sticky; top: 0; z-index: 1; margin: 0 -16px; padding: 20px 26px 14px; background: var(--nav); border-bottom: 1px solid rgb(45, 56, 80); }
+.brand { font-size: 11px; font-weight: 800; letter-spacing: 0.14em; color: rgb(130, 145, 177); }
+aside h1 { margin: 6px 0 4px; font-size: 17px; line-height: 1.35; letter-spacing: -0.02em; }
+.side-sub, .side-foot { font-size: 12px; color: rgb(150, 162, 186); }
+aside nav { margin-top: 10px; }
+aside nav a { display: block; padding: 7px 10px 7px 22px; color: rgb(190, 200, 219); text-decoration: none; font-size: 14px; line-height: 1.45; border-left: 3px solid transparent; border-radius: 0 6px 6px 0; }
+aside nav a:hover { color: rgb(255, 255, 255); background: rgb(25, 36, 60); }
+aside nav .major { margin-top: 12px; padding-left: 10px; color: rgb(255, 255, 255); font-size: 15px; font-weight: 800; }
+aside nav a.active { color: rgb(255, 255, 255); background: rgb(30, 44, 74); border-left-color: var(--blue); font-weight: 700; }
+.side-foot { margin: 20px 10px 0; padding-top: 14px; border-top: 1px solid rgb(45, 56, 80); }
+.hero { padding: 86px var(--page-pad) 72px; background: linear-gradient(135deg, rgb(247, 249, 255), rgb(238, 243, 255) 58%, rgb(233, 255, 246)); border-bottom: 1px solid var(--line); }
+.kicker, .section-label, .topic-label, .eyebrow { font-size: 13px; font-weight: 800; letter-spacing: 0.13em; color: var(--blue); }
+.hero h1 { margin: 16px 0px; font-size: clamp(40px, 5vw, 70px); line-height: 1.08; letter-spacing: -0.055em; }
+.hero h1 em { color: var(--blue); font-style: normal; }
+.hero > p { max-width: 860px; color: rgb(79, 91, 114); font-size: 18px; }
+.hero-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 38px; background: rgb(220, 226, 237); border: 1px solid rgb(220, 226, 237); }
+.hero-grid div { background: rgb(255, 255, 255); padding: 16px; }
+.hero-grid b { display: block; font-size: 12px; color: rgb(125, 135, 153); }
+.hero-grid span { font-size: 14px; font-weight: 800; }
+.section { padding: 70px var(--page-pad); border-bottom: 1px solid var(--line); scroll-margin-top: 18px; }
+.section > h2, .session-head h2 { margin: 8px 0px 14px; font-size: 36px; letter-spacing: -0.04em; }
+.lead { font-size: 18px; max-width: 900px; }
+.three-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px 0px; }
+.three-cards article { padding: 20px; border: 1px solid var(--line); border-radius: 14px; background: rgb(255, 255, 255); }
+.three-cards article > span { font-size: 12px; font-weight: 800; color: var(--blue); }
+.three-cards h3 { margin: 8px 0px 5px; font-size: 20px; }
+.three-cards p, .caption { color: var(--muted); font-size: 14px; }
+.notice, .warning { margin: 22px 0px; padding: 16px 19px; }
+.notice { border-left: 4px solid var(--blue); background: rgb(234, 240, 255); }
+.warning { border-left: 4px solid var(--warn); background: rgb(255, 246, 230); }
+.schedule { margin-top: 30px; }
+.schedule div { display: grid; grid-template-columns: 48px 125px 1fr; align-items: center; padding: 13px 0px; border-top: 1px solid var(--line); }
+.schedule span.badge { display: grid; place-items: center; width: 29px; height: 29px; border-radius: 50%; background: var(--nav); color: rgb(255, 255, 255); font-size: 12px; }
+.schedule p { margin: 0px; }
+.session { padding-top: 0px; }
+.session-head { margin: 0 calc(var(--page-pad)*-1) 50px; padding: 52px var(--page-pad); background: var(--nav); color: rgb(255, 255, 255); }
+.session-head .eyebrow { color: rgb(125, 160, 255); }
+.session-head p { max-width: 900px; color: rgb(195, 204, 220); }
+.vibe-intro { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 28px; align-items: start; margin-top: 30px; padding-top: 28px; border-top: 1px solid rgb(45, 56, 80); }
+.vibe-quote { margin: 0; padding-left: 18px; border-left: 3px solid rgb(125, 160, 255); }
+.vibe-quote blockquote { margin: 0 0 10px; color: #fff; font-size: 21px; font-weight: 700; line-height: 1.5; letter-spacing: -0.03em; }
+.vibe-quote figcaption { color: rgb(160, 172, 196); font-size: 13px; }
+.vibe-meaning { margin: 18px 0 0; padding: 14px 16px; border-radius: 12px; background: rgb(25, 36, 60); color: rgb(215, 222, 236); font-size: 15px; }
+.vibe-meaning b { color: #fff; }
+.vibe-timeline { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.vibe-timeline li { display: grid; grid-template-columns: 74px 1fr; gap: 12px; padding: 12px 14px; border: 1px solid rgb(45, 56, 80); border-radius: 12px; background: rgba(255, 255, 255, 0.03); }
+.vibe-timeline time { color: rgb(125, 160, 255); font-size: 13px; font-weight: 800; letter-spacing: 0.02em; }
+.vibe-timeline b { display: block; color: #fff; font-size: 15px; }
+.vibe-timeline span { display: block; color: rgb(185, 195, 214); font-size: 14px; line-height: 1.55; }
+.vibe-sources { grid-column: 1 / -1; margin: 0; color: rgb(130, 145, 177); font-size: 12px; }
+.vibe-sources a { color: rgb(160, 180, 230); }
+@media (max-width: 1020px) { .vibe-intro { grid-template-columns: 1fr; } }
+.time { font-size: 13px; color: rgb(174, 185, 207); }
+.topic { margin-bottom: 70px; scroll-margin-top: 20px; }
+.topic h3 { margin: 8px 0px 12px; font-size: 28px; letter-spacing: -0.025em; }
+.flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 9px; margin: 18px 0px 26px; }
+.flow div { text-align: center; padding: 16px 12px; border-radius: 12px; background: rgb(237, 242, 255); }
+.flow span { display: block; font-size: 12px; font-weight: 800; color: var(--blue); }
+.flow b { display: block; }
+.flow small { display: block; margin-top: 5px; color: var(--muted); }
+.versus { display: grid; grid-template-columns: 1fr 54px 1fr; align-items: center; margin: 16px 0px 26px; }
+.versus > div { padding: 20px; border: 1px solid var(--line); border-radius: 13px; background: var(--soft); }
+.versus i { text-align: center; color: var(--blue); font-style: normal; font-weight: 900; }
+.table-wrap { overflow: auto; }
+table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 14px; }
+th { padding: 13px; text-align: left; color: rgb(255, 255, 255); background: var(--nav); }
+td { padding: 14px 13px; border-bottom: 1px solid var(--line); }
+.checklist { display: grid; gap: 7px; padding: 0px; list-style: none; }
+.checklist li { padding: 11px 14px; border-radius: 8px; background: var(--soft); }
+.checklist li::before { content: "✓"; margin-right: 8px; color: var(--blue); font-weight: 900; }
+.practice-brief { display: grid; gap: 8px; margin: 18px 0px; }
+.practice-brief > div { padding: 15px 18px; border: 1px solid rgb(200, 239, 221); border-radius: 12px; background: rgb(237, 255, 246); }
+.copybox { margin: 20px 0px; border: 1px solid rgb(207, 215, 230); border-radius: 12px; overflow: hidden; background: rgb(17, 26, 46); color: rgb(232, 238, 252); }
+.copyhead { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: rgb(30, 43, 71); font-size: 13px; font-weight: 800; }
+.copyhead button { padding: 5px 10px; border: 1px solid rgb(97, 112, 141); border-radius: 6px; background: transparent; color: rgb(255, 255, 255); cursor: pointer; }
+.copybox pre { white-space: pre-wrap; margin: 0px; padding: 20px; font: 13px / 1.72 ui-monospace, SFMono-Regular, Menlo, monospace; }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 18px 0px 26px; }
+.steps article { padding: 18px; border-top: 4px solid var(--blue); border-radius: 12px; }
+.steps strong { display: block; color: var(--blue); font-size: 12px; }
+.steps b { display: block; font-size: 18px; margin-top: 3px; }
+.sub-optional { margin-top: 10px; padding: 10px 12px; border: 1px dashed var(--line); border-radius: 10px; color: var(--muted); font-size: 14px; }
+.sub-optional .tag { margin-left: 0; }
+.steps .sub-optional b { display: inline; font-size: 14px; margin: 0 4px 0 2px; color: var(--muted); }
+.tag { display: inline-block; margin-left: 6px; padding: 1px 8px; border-radius: 999px; font-size: 11px; font-weight: 800; letter-spacing: 0; vertical-align: 1px; }
+.tag-req { background: var(--blue); color: #fff; }
+.tag-opt { border: 1px solid var(--line); background: #fff; color: var(--muted); font-weight: 700; }
+.final-box { padding: 28px; border-radius: 18px; background: linear-gradient(135deg, rgb(17, 26, 46), rgb(29, 47, 88)); color: rgb(255, 255, 255); }
+.final-box h3 { margin: 6px 0px 8px; font-size: 30px; }
+.final-box p { color: rgb(203, 213, 231); }
+code.inline { padding: 2px 6px; border-radius: 6px; background: rgb(238, 242, 248); font-family: ui-monospace, monospace; }
+.small { font-size: 13px; color: var(--muted); }
+.resource-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 18px 0px 28px; }
+.resource-card { padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--soft); }
+.resource-card b { display: block; margin-bottom: 4px; }
+.resource-card a { color: var(--blue); font-weight: 800; text-decoration: none; word-break: break-all; font-size: 13px; }
+.sample-link { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin: 22px 0; padding: 14px 18px; border: 1px solid rgb(203, 218, 255); border-radius: 12px; background: rgb(240, 245, 255); }
+.sample-link span { color: var(--muted); font-size: 14px; }
+.sample-link b { display: block; color: var(--ink); font-size: 15px; }
+.sample-link .resource-link { flex-shrink: 0; margin-top: 0; }
+@media (max-width: 680px) { .sample-link { flex-direction: column; align-items: flex-start; } }
+.resource-link { display: inline-block; margin-top: 8px; padding: 8px 12px; border: 1px solid rgb(203, 213, 225); border-radius: 8px; color: var(--blue); font-size: 13px; font-weight: 800; text-decoration: none; background: rgb(255, 255, 255); }
+.procedure { counter-reset: step 0; display: grid; gap: 10px; margin: 18px 0px 28px; }
+.procedure > div { position: relative; padding: 15px 16px 15px 54px; border: 1px solid var(--line); border-radius: 12px; background: rgb(255, 255, 255); }
+.procedure > div::before { counter-increment: step 1; content: counter(step); position: absolute; left: 16px; top: 15px; width: 26px; height: 26px; display: grid; place-items: center; border-radius: 50%; background: var(--blue); color: rgb(255, 255, 255); font-size: 12px; font-weight: 900; }
+.sample-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 18px 0px 28px; }
+.sample-grid article { padding: 18px; border: 1px solid var(--line); border-radius: 13px; background: var(--soft); }
+.term-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 22px 0px; }
+.term-grid article { padding: 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--soft); }
+.term-grid strong { display: block; color: var(--blue); font-size: 12px; letter-spacing: 0.08em; }
+.term-grid h4 { margin: 5px 0px 8px; font-size: 20px; }
+.talk { margin: 18px 0px; padding: 22px; border-left: 4px solid var(--green); background: rgb(241, 252, 247); }
+.talk p { margin: 0px 0px 14px; }
+.talk p:last-child { margin-bottom: 0px; }
+.example-flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 18px 0px 24px; }
+.example-flow div { padding: 14px 12px; border-radius: 10px; background: rgb(255, 248, 235); }
+.example-flow b, .example-flow span { display: block; }
+.example-flow span { margin-bottom: 3px; color: rgb(154, 100, 16); font-size: 12px; font-weight: 800; }
+details.optional { margin-top: 8px; padding: 0 22px 6px; border: 1px solid var(--line); border-radius: 14px; background: var(--soft); }
+details.optional > summary { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; padding: 20px 0; cursor: pointer; list-style: none; }
+details.optional > summary::-webkit-details-marker { display: none; }
+details.optional > summary::before { content: "▸"; color: var(--blue); font-weight: 900; }
+details.optional[open] > summary::before { content: "▾"; }
+details.optional .summary-title { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
+details.optional .summary-hint { font-size: 13px; color: var(--muted); }
+details.optional[open] .summary-hint { display: none; }
+.profile-card { display: grid; grid-template-columns: 1.6fr 1fr; gap: 20px; padding: 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--soft); }
+.profile-card h3 { margin: 0 0 6px; font-size: 22px; }
+.profile-card ul { margin: 10px 0 0; padding-left: 18px; }
+.profile-links { display: grid; gap: 8px; align-content: start; }
+.profile-links a { padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--blue); font-size: 14px; font-weight: 700; text-decoration: none; word-break: break-all; }
+.sample-shot { margin: 22px 0; }
+.sample-shot img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 12px; }
+.sample-shot.narrow img { max-width: 700px; margin: 0 auto; }
+.sample-shot.small img { max-width: 360px; }
+.sample-shot figcaption { margin-top: 10px; color: var(--muted); font-size: 14px; }
+@media (max-width: 680px) { .profile-card { grid-template-columns: 1fr; padding: 18px; } }
+.app aside { word-break: keep-all; }
+.topic .three-cards h3 { margin: 8px 0 5px; font-size: 20px; letter-spacing: -0.02em; }
+.block-title { margin: 34px 0 4px; font-size: 22px; letter-spacing: -0.02em; scroll-margin-top: 18px; }
+.break { padding: 54px var(--page-pad); background: rgb(246, 248, 252); border-bottom: 1px solid var(--line); }
+.break h2 { margin: 0px 0px 8px; font-size: 32px; }
+@media (max-width: 1020px) {
+  .app aside { display: none; }
+  .app main { margin-left: 0px; }
+  .hero-grid, .three-cards, .steps, .term-grid, .example-flow { grid-template-columns: 1fr 1fr; }
+  .flow { grid-template-columns: 1fr 1fr; }
+}
+.nav-toggle { position: fixed; top: 14px; left: 322px; z-index: 20; display: flex; align-items: center; gap: 6px; height: 36px; padding: 0 12px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255, 255, 255, 0.94); color: var(--ink); font: 700 13px/1 var(--font-sans); cursor: pointer; box-shadow: 0 4px 14px rgba(17, 26, 46, 0.12); transition: left .25s ease; }
+.nav-toggle:hover { border-color: var(--blue); color: var(--blue); }
+.nav-toggle svg { width: 16px; height: 16px; }
+.app aside { transition: transform .25s ease; }
+.app main { transition: margin-left .25s ease; }
+body.nav-hidden .app aside { transform: translateX(-100%); }
+body.nav-hidden .app main { margin-left: 0; }
+body.nav-hidden .nav-toggle { left: 14px; }
+@media (max-width: 1020px) {
+  .app aside { display: block; width: min(310px, calc(100vw - 64px)); transform: translateX(-100%); }
+  .nav-toggle { left: 14px; }
+  body.nav-open .app aside { transform: none; box-shadow: 8px 0 24px rgba(17, 26, 46, 0.25); }
+  body.nav-open .nav-toggle { left: auto; right: 10px; padding: 0 11px; }
+  body.nav-open .nav-toggle span { display: none; }
+}
+@media (max-width: 680px) {
+  .hero, .section, .break { padding-left: 20px; padding-right: 20px; }
+  .hero { padding-top: 54px; }
+  .hero-grid, .three-cards, .steps, .flow, .resource-list, .term-grid, .example-flow { grid-template-columns: 1fr; }
+  .schedule div { grid-template-columns: 38px 100px 1fr; }
+  .versus { grid-template-columns: 1fr; }
+  .versus i { padding: 8px 0px; }
+  .session-head { margin-left: -20px; margin-right: -20px; padding-left: 20px; padding-right: 20px; }
+  .section > h2, .session-head h2 { font-size: 30px; }
+  .topic h3 { font-size: 24px; }
+}.colab-open{margin:8px 0 14px}.colab-open a{display:inline-block;padding:6px 12px;border-radius:8px;background:#f9ab00;color:#1d2433;font-weight:700;text-decoration:none}.colab-open a:hover{filter:brightness(.95)}.colab-open .small{display:block;margin-top:6px}.deep-dive{margin:18px 0;padding:14px 18px;border:1px solid #dfe3ec;border-left:4px solid #f9ab00;border-radius:10px;background:rgba(249,171,0,.05)}
+
+/* 블록 종류 표시 */
+.blk { margin: 22px 0 8px; font-size: 15px; font-weight: 700; }
+.blk span { display: inline-block; margin-right: 8px; padding: 2px 10px; border-radius: 999px; font-size: 12px; font-weight: 800; color: #fff; background: #657086; vertical-align: 1px; }
+.k-ex span { background: var(--blue); } .k-tpl span { background: var(--warn); color: #172033; } .k-pr span { background: var(--nav); } .k-res span { background: #6b4fd8; } .k-chk span { background: var(--green); }
+.step-h { margin: 34px 0 6px; padding-top: 18px; border-top: 1px dashed var(--line); font-size: 18px; }
+.block-legend { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 4px; } .block-legend .blk { margin: 0; }
+.hl-leg{display:inline-block;margin-left:4px;padding:1px 7px;border-radius:999px;background:#fff1f0;color:#b42318;font-weight:600;font-size:11.5px}
+
+/* 실행 결과 캡처 토글 */
+details.res-toggle { margin: 22px 0 8px; }
+details.res-toggle > summary { cursor: pointer; list-style: none; font-size: 15px; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; }
+details.res-toggle > summary::-webkit-details-marker { display: none; }
+details.res-toggle > summary .tg::after { content: "▸ 펼쳐 보기"; font-size: 13px; color: #6b4fd8; font-weight: 700; }
+details.res-toggle[open] > summary .tg::after { content: "▾ 접기"; }
+details.res-toggle > summary .blk { margin: 0; }
+</style>
+<style>
+.tt{margin:0;padding-left:1.1em}.tt li{margin:2px 0}
+.dl-list{display:grid;gap:10px;margin:18px 0}
+.dl-card{display:flex;align-items:center;gap:14px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:#fff;text-decoration:none;color:var(--ink)}
+.dl-card:hover{border-color:var(--blue);background:var(--soft)}
+.dl-ico{flex:none;display:grid;place-items:center;width:44px;height:52px;border-radius:8px;background:rgb(237,242,255);color:var(--blue);font-size:11px;font-weight:800}
+.dl-body{flex:1}.dl-body b{display:block;font-size:16px}.dl-body span{display:block;font-size:13px;color:var(--muted)}
+.dl-btn{flex:none;padding:8px 14px;border-radius:8px;background:var(--blue);color:#fff;font-size:13px;font-weight:800}
+@media(max-width:680px){.dl-card{flex-wrap:wrap}}
+#slide .sample-shot{margin:8px 0}#slide .sample-shot img{max-height:420px;width:auto;max-width:100%;margin:0 auto}#slide .sample-shot figcaption{margin-top:4px;font-size:13px;text-align:center}
+#slide .dl-card{padding:10px 14px}
+.todo{color:#b42318;font-weight:700}
+main,#slide{word-break:keep-all;overflow-wrap:break-word}
+h1,h2,h3,.hero p,.lead{text-wrap:balance}
+p,li,td{text-wrap:pretty}
+td .tag{margin-bottom:2px}
+.tag.nap{background:#7c3aed}.tag.sheet{background:var(--green)}
+.tag{margin-left:0;margin-right:4px}
+.topic .small{display:block}
+.resource-card .small{display:block;margin-bottom:6px}
+.resource-card a{display:inline-block;margin:2px 0}
+.copybox pre{background:none;color:inherit}
+.hero-grid{grid-template-columns:repeat(3,1fr)}
+.sample-link .resource-link{margin:0 6px 0 0}
+.sample-link{flex-wrap:wrap;justify-content:flex-start;gap:6px}
+#slideBtn{position:fixed;right:16px;bottom:16px;z-index:30;background:var(--blue);color:#fff;border:0;border-radius:999px;padding:12px 20px;font:700 15px var(--font-sans);cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+#deck{position:fixed;inset:0;z-index:100;background:#0b1220;display:flex;flex-direction:column}
+#deck[hidden]{display:none}
+#viewport{flex:1;min-height:0;position:relative;overflow:hidden}
+#stage{position:absolute;left:50%;top:50%;width:1280px;height:720px;background:#fff;display:flex;flex-direction:column;overflow:hidden;transform-origin:center center;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+#master{flex:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 96px;background:var(--nav);color:#fff;font-weight:800;font-size:15px}
+#master .m-brand{font-size:11px;letter-spacing:.14em;color:rgb(130,145,177);margin-right:12px}
+#mbar{flex:none;height:4px;background:var(--line)}#prog{display:block;height:100%;background:var(--blue);width:0}
+#slide{flex:1;min-height:0;overflow:hidden;padding:28px 96px 12px;font-size:19px;line-height:1.55}
+#slide h1{font-size:46px;line-height:1.15;margin:12px 0}#slide h1 em{color:var(--blue);font-style:normal}
+#slide h3.st{margin:0 0 14px;font-size:32px;letter-spacing:-.03em}
+#slide .cont{font-size:16px;color:var(--muted);font-weight:500;margin-left:10px}
+#slide table{font-size:16px;margin-top:6px}#slide th,#slide td{padding:9px 12px}
+#slide .copybox{margin:10px 0}#slide .copybox pre{font-size:15px;padding:14px 18px}
+#slide p,#slide .notice,#slide .warning{margin:8px 0}
+#slide .notice,#slide .warning{padding:12px 16px}
+#slide .procedure{gap:8px;margin:10px 0}#slide .procedure>div{padding:10px 14px 10px 50px}
+#slide .resource-list{grid-template-columns:repeat(3,1fr);margin:10px 0}
+#slide .hero-grid{margin-top:20px}#slide .flow{grid-template-columns:repeat(5,1fr);margin:12px 0 16px}#slide .flow div{padding:10px 8px}#slide .hero-grid{grid-template-columns:repeat(3,1fr)}
+#pager{flex:none;display:flex;align-items:center;justify-content:center;gap:14px;height:40px;border-top:1px solid var(--line);color:var(--muted);font-size:14px;font-weight:700}
+#pager button{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:6px;width:30px;height:26px;font-size:11px;cursor:pointer}
+#bar{flex:none;display:flex;align-items:center;justify-content:center;gap:16px;padding:8px;background:#111a2e;color:#cbd5e7;font-size:14px}
+#bar button{border:1px solid rgb(97,112,141);background:transparent;color:#fff;border-radius:8px;padding:6px 14px;font:700 14px var(--font-sans);cursor:pointer}
+@media print{#slideBtn,#deck{display:none!important}}
+
+aside nav .nav-title{padding:6px 10px 10px;font-size:12px;font-weight:800;letter-spacing:.12em;color:rgb(130,145,177)}
+aside nav .grp{margin-top:20px;padding-top:12px;border-top:1px solid rgb(45,56,80)}
+aside nav .nav-title+.grp{margin-top:0;border-top:0;padding-top:0}
+aside nav .grp-label{padding:0 10px 4px;font-size:11px;font-weight:800;letter-spacing:.1em;color:rgb(130,145,177)}
+aside nav a.l2{margin-top:0;padding:6px 10px;color:#fff;font-size:15px;font-weight:800;border-left:3px solid transparent}
+aside nav a.l3{margin-left:12px;padding:5px 10px 5px 14px;font-size:14px;border-left:1px solid rgb(45,56,80)}
+aside nav a.l4{display:none;margin-left:12px;padding:3px 10px 3px 30px;font-size:12.5px;color:rgb(150,162,186);border-left:1px solid rgb(45,56,80)}
+aside nav a.l4.show{display:block}
+aside nav a.active{border-left-color:var(--blue)}
+.dh{margin:30px 0 8px;padding:2px 0 2px 12px;border-left:4px solid var(--blue)}
+.dh b{font-size:1.06em}
+#slide .dh{margin:12px 0 8px}
+#slide .eb{margin:0 0 4px;font-size:14px;font-weight:800;letter-spacing:.06em;color:var(--blue)}
+#slide .outline{columns:2;column-gap:56px;font-size:16px;line-height:1.5}
+#slide .outline .og{break-inside:avoid;margin-bottom:12px}
+#slide .outline b{display:block;font-size:17px}
+#slide .outline span{display:block;padding-left:14px;color:var(--muted);font-size:14.5px}
+
+.base{margin:6px 0 14px;padding:8px 12px;border-left:4px solid var(--green);background:rgb(236,248,243);font-size:14.5px}
+.copybox pre{font:15px/1.8 var(--font-sans);letter-spacing:-.01em}
+.copybox pre.fmt{white-space:normal;padding:18px 20px}
+.pl{display:flex;gap:10px;margin:0 0 9px}.pl:last-child{margin-bottom:0}
+.pl .pk{flex:none;width:3.3em;color:rgb(140,180,255);font-weight:800}
+.pl.k2 .pk{color:rgb(110,220,180)}.pl.k3 .pk{color:rgb(255,200,110)}
+.pl .pt{flex:1;min-width:0}
+.pl.c{padding-left:calc(3.3em + 10px);margin-top:-5px}
+#slide .copybox pre.fmt{font-size:17px;padding:14px 18px}
+#slide .base{font-size:15px;padding:6px 12px}
+</style>
+<style>.side-link{margin:16px 10px 0;padding:12px;border:1px solid rgb(45,56,80);border-radius:10px;font-size:12px;color:rgb(190,200,219)}.side-link b{display:block;color:#fff;font-size:12px;margin-bottom:4px}.side-link a{color:rgb(140,180,255);word-break:break-all}.day-nav{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}.day-nav a{padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:13px;font-weight:700;color:var(--ink);text-decoration:none}.day-nav a[aria-current]{background:var(--blue);border-color:var(--blue);color:#fff}main pre{white-space:pre-wrap;overflow-wrap:anywhere}main code.inline{overflow-wrap:break-word}.hero-grid code.inline,.hero-grid span{overflow-wrap:anywhere}figure.voice{margin:18px 0;padding:16px 20px;border-left:4px solid var(--blue);background:var(--soft);border-radius:0 12px 12px 0}figure.voice blockquote{margin:0}figure.voice blockquote p{margin:0;font-size:18px;font-weight:700;line-height:1.55}figure.voice blockquote p.orig{margin-top:6px;font-size:14px;font-weight:500;color:var(--muted)}figure.voice figcaption{margin-top:10px;font-size:13px;color:var(--muted)}#slide figure.voice{margin:10px 0;padding:10px 16px}kbd{display:inline-block;padding:1px 6px;border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;background:#fff;font:600 13px var(--font-sans)}.source-note{font-size:13px;color:var(--muted)}.resource-list.news .resource-card{border-left:4px solid #e8a23a}.resource-list.news .resource-card>.small:first-child::before{content:"뉴스";display:inline-block;margin-right:6px;padding:0 6px;border-radius:4px;background:#fff3df;color:#9a5b00;font-weight:700}.resource-list.news .resource-card>.small:last-child{margin-top:6px;color:var(--muted)}</style>
+<style>.why-box{margin:14px 0 0;padding:12px 16px;border-left:4px solid #8fb0ff;background:rgba(255,255,255,.08);border-radius:0 10px 10px 0;color:#e6ebf5;max-width:900px}.why-box b{display:block;color:#a9c1ff;font-size:13px;margin-bottom:2px}.ok-line{margin:8px 0 0;font-size:14.5px}.ok-line b{display:inline-block;margin-right:8px;padding:1px 8px;border-radius:6px;background:#e7f7ef;color:#16a36b;font-size:12px}.goal-list li{margin-bottom:6px}</style><style>.shot{margin:14px 0 6px;max-width:760px}.shot img{display:block;width:100%;height:auto;border:1px solid #d9dde5;border-radius:10px;box-shadow:0 2px 10px rgba(20,30,60,.06)}.shot figcaption{font-size:12.5px;color:#6b7280;margin-top:6px}.stage{display:inline-block;margin-right:6px;padding:1px 8px;border-radius:999px;background:#eef2ff;color:#3b4ec8;font-size:12px;font-weight:700}.tpl td:empty::after{content:"\00a0";}.tpl td{height:30px}.result-box{border:1px solid #c9e9d9;background:#f2fbf6;border-radius:10px;padding:12px 16px;margin:10px 0}.result-box b{color:#16794f}.entry-box{border:1px solid #cfd9f3;background:#f5f8ff;border-radius:10px;padding:12px 16px;margin:12px 0}.entry-box>b{color:#2c48b8}.entry-box p{margin:6px 0}.entry-box .shot img{width:auto;max-width:100%}.ref-box{display:block;border:1px dashed #d9c27a;background:#fffbea;border-radius:10px;padding:12px 16px;margin:12px 0}.ref-box>b{color:#8a6a00}.ref-box p{margin:6px 0}.ref-box ul{margin:6px 0 0;padding-left:18px}h4{margin:16px 0 6px}ol.do-steps{padding-left:22px}ol.do-steps>li{margin-bottom:14px}ol.do-steps>li>p{margin:0 0 6px}.ref-kind{display:inline-block;font-size:12px;color:#6b5a1e;background:#f6ecc4;border-radius:6px;padding:1px 6px;margin-right:4px}</style></head>
+<body>
+<button aria-controls="side-nav" aria-expanded="true" class="nav-toggle" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" viewbox="0 0 16 16"><path d="M2 4h12M2 8h12M2 12h12"></path></svg><span>목차 숨기기</span></button>
+<div class="app">
+<aside id="side-nav">
+<div class="side-head">
+<div class="brand">SELECTWAY · LECTURE NOTE</div>
+<h1>AI 프로덕트 매니저 3주차 · DAY 1 구글 시트·앱스스크립트</h1>
+<div class="side-sub">11.09(월) · 09:00–18:00 · 실시간 비대면</div>
+</div>
+<nav>
+<div class="nav-title">전체 목차</div>
+<div class="grp"><div class="grp-label">교육 안내</div><a class="l2" href="#overview">교육 개요</a><a class="l2" href="#prep">수업 전 준비</a><a class="l2" href="#tt">타임테이블</a></div>
+<div class="grp"><div class="grp-label">오늘의 단어</div><a class="l2" href="#words">오늘의 단어</a></div>
+<div class="grp"><div class="grp-label">SESSION 1</div><a class="l2" href="#s1">구글 시트를 데이터 창고로 쓰기</a><a class="l3" href="#s1-1">1-1. 앱스스크립트란?</a><a class="l3" href="#s1-2">1-2. 오늘 만들 것 한눈에 보기</a></div>
+<div class="grp"><div class="grp-label">SESSION 2</div><a class="l2" href="#s2">빈 시트를 클로드로 채우기</a><a class="l3" href="#s2-1">2-1. 신청 명단 100줄을 만들어 시트에 넣기</a><a class="l3" href="#s2-2">2-2. 결과</a></div>
+<div class="grp"><div class="grp-label">SESSION 3</div><a class="l2" href="#s3">시트를 웹 페이지처럼 보여 주기</a><a class="l3" href="#s3-1">3-1. 웹 앱과 배포란?</a><a class="l3" href="#s3-2">3-2. 시트를 웹 페이지로 배포하기</a><a class="l3" href="#s3-3">3-3. 고치고 같은 주소로 다시 배포하기</a><a class="l3" href="#s3-4">3-4. 결과</a></div>
+<div class="grp"><div class="grp-label">SESSION 4</div><a class="l2" href="#s4">입력 화면을 만들고 시트에 쌓기</a><a class="l3" href="#s4-1">4-1. 화면에서 시트로 보내는 방법</a><a class="l3" href="#s4-2">4-2. 신청 입력 화면 만들기</a><a class="l3" href="#s4-3">4-3. 결과</a></div>
+<div class="grp"><div class="grp-label">SESSION 5</div><a class="l2" href="#s5">쌓인 신청 데이터 정리하기(전처리)</a><a class="l3" href="#s5-1">5-1. 전처리란?</a><a class="l3" href="#s5-2">5-2. 지저분한 명단에서 문제 찾기</a><a class="l3" href="#s5-3">5-3. 시트 기능으로 먼저 정리해 보기</a><a class="l3" href="#s5-4">5-4. 앱스스크립트로 정리 버튼 만들기</a><a class="l3" href="#s5-5">5-5. 결과</a></div>
+<div class="grp"><div class="grp-label">마무리</div><a class="l2" href="#wrap">오늘 정리와 과제</a></div>
+</nav>
+<div class="side-link"><b>이 교안 주소</b><a href="https://loreenkim0301.github.io/swy-lecturenote/261109-ai-pm-week3/d1-sheet-appsscript.html">loreenkim0301.github.io/swy-lecturenote/261109-ai-pm-week3/d1-sheet-appsscript.html</a></div>
+<div class="side-foot">강사 김수정 · 셀렉트웨이</div>
+</aside>
+<main>
+<header class="hero">
+<div class="kicker">AI 프로덕트 매니저 · 3주차 DAY 1 · 2026.11.09 (월)</div>
+<h1>구글 시트를 <em>데이터 창고</em>로 쓰고, 쌓인 데이터를 정리해요</h1>
+<p>금요일 오후에 구글 시트를 웹 페이지처럼 만들어 봤던 것 기억하시나요? 오늘은 그 실습을 처음부터 끝까지 다시 해요. 빈 시트를 신청 명단으로 채우고, 앱스스크립트로 웹 페이지와 입력 화면을 만들어요. 마지막에는 쌓인 명단의 빈칸·중복·형식을 정리해요.</p>
+<div class="hero-grid">
+<div><b>일정</b><span>11월 9일(월) 09:00–18:00 · 실시간 비대면</span></div>
+<div><b>준비물</b><span>크롬, 개인 지메일 계정, 구글 시트, 클로드, 휴대폰</span></div>
+<div><b>오늘의 결과물</b><span>신청 명단 시트 + 웹 페이지 주소(검색·필터) + 시트에 쌓이는 입력 화면 + '정리본' 시트</span></div>
+</div>
+<nav aria-label="3주차 교안" class="day-nav"><a href="./">3주차 홈</a><a aria-current="page" href="./d1-sheet-appsscript.html">DAY 1 구글 시트·앱스스크립트</a></nav>
+</header>
+
+<section class="section" id="overview"><div class="section-label">OVERVIEW</div><h2>교육 개요</h2>
+<div class="table-wrap"><table>
+<tr><th>시간</th><td>09:00–18:00 (점심 12:00–13:00, 수업 8시간)</td></tr>
+<tr><th>교과</th><td>[기본] AI 서비스 개발 · 7일차 (총 18일)</td></tr>
+<tr><th>교육 목표</th><td>구글 시트에 데이터를 모으는 화면을 앱스스크립트로 만들고, 모인 데이터를 분석에 쓸 수 있게 정리한다.</td></tr>
+<tr><th>수업이 끝나면</th><td>① 클로드로 연습용 데이터를 만들어 시트에 넣기<br/>② 시트를 웹 페이지로 배포하고 같은 주소로 다시 배포하기<br/>③ 입력 화면에서 넣은 값이 시트에 쌓이게 하기<br/>④ 정리 규칙을 세우고 원본은 둔 채 '정리본' 만들기</td></tr>
+</table></div>
+</section>
+
+<section class="section" id="prep"><div class="section-label">PREPARE</div><h2>수업 전 준비</h2>
+<ul>
+<li><b>개인 지메일 계정:</b> 회사·학교 계정은 관리자가 앱스스크립트를 막아 두었을 수 있어서 개인 지메일을 써요.</li>
+<li><b>크롬 창 하나에 계정 하나:</b> 여러 구글 계정에 로그인해 있다면 시크릿 창을 열어 수업용 계정 하나로만 로그인해요.</li>
+<li><b>클로드:</b> 새 대화를 하나 열어 둬요. 오늘 코드는 모두 클로드에게 받아요.</li>
+</ul>
+<div class="notice">프롬프트는 요청·내용·형식 3줄이에요. [ ] 안을 내 내용으로 바꿔 써요. 시트에는 가상의 정보만 넣어요.</div>
+</section>
+
+<section class="section" id="tt"><div class="section-label">TIMETABLE</div><h2>타임테이블</h2>
+<div class="table-wrap"><table>
+<tr><th>시간</th><th>구분</th><th>내용</th></tr>
+<tr><td>09:00–09:20</td><td>오늘의 단어</td><td><a href="#words">오늘의 단어</a></td></tr>
+<tr><td>09:20–09:50</td><td>SESSION 1</td><td><a href="#s1">구글 시트를 데이터 창고로 쓰기</a></td></tr>
+<tr><td>09:50–10:40</td><td>SESSION 2</td><td><a href="#s2">빈 시트를 클로드로 채우기</a></td></tr>
+<tr><td>10:50–12:00</td><td>SESSION 3</td><td><a href="#s3">시트를 웹 페이지처럼 보여 주기</a></td></tr>
+<tr><td>12:00–13:00</td><td>점심</td><td></td></tr>
+<tr><td>13:00–14:30</td><td>SESSION 4</td><td><a href="#s4">입력 화면을 만들고 시트에 쌓기</a></td></tr>
+<tr><td>14:40–16:40</td><td>SESSION 5</td><td><a href="#s5">쌓인 신청 데이터 정리하기(전처리)</a></td></tr>
+<tr><td>16:40–17:00</td><td>정리</td><td><a href="#wrap">오늘 정리와 과제</a></td></tr>
+<tr><td>17:00–18:00</td><td>개인 실습·회고</td><td>막힌 단계 다시 하기, 회고 작성</td></tr>
+</table></div>
+</section>
+
+<section class="section session" id="words">
+<div class="session-head"><div class="eyebrow">단어 · 09:00–09:20</div><h2>오늘의 단어</h2><p>오늘 처음 나오는 말을 먼저 짧게 짚고 시작해요. 수업 중에 다시 나오면 이 표로 돌아와요.</p></div>
+<div class="table-wrap"><table>
+<tr><th>단어</th><th>뜻</th></tr>
+<tr><td><b>앱스스크립트(Apps Script)</b></td><td>구글 시트·지메일·드라이브를 코드로 움직이게 하는 구글의 도구</td></tr>
+<tr><td><b>Code.gs</b></td><td>앱스스크립트에서 서버 쪽 코드를 넣는 파일. 시트를 읽고 쓰는 일을 해요.</td></tr>
+<tr><td><b>index.html</b></td><td>앱스스크립트에서 사람이 보는 화면을 넣는 파일</td></tr>
+<tr><td><b>웹 앱</b></td><td>앱스스크립트 코드를 인터넷 주소로 열 수 있게 만든 것</td></tr>
+<tr><td><b>배포 · 버전</b></td><td>배포는 코드를 주소로 내보내는 일, 버전은 그때 코드의 사진 한 장이에요.</td></tr>
+<tr><td><b>CSV</b></td><td>표를 쉼표로 나눠 글자로 저장한 파일. 시트로 가져올 수 있어요.</td></tr>
+<tr><td><b>전처리</b></td><td>모은 데이터를 쓰기 전에 빈칸·중복·형식을 정리하는 일</td></tr>
+<tr><td><b>원본 · 정리본</b></td><td>처음 모은 그대로의 데이터와, 정리 규칙을 적용한 데이터</td></tr>
+</table></div>
+</section>
+
+<section class="section session" id="s1">
+<div class="session-head"><div class="eyebrow">SESSION 1 · 09:20–09:50</div><h2>구글 시트를 데이터 창고로 쓰기</h2><p>금요일에 신청 페이지를 만들고 신청을 Firestore에 저장했던 것 기억하시나요? 오늘은 같은 일을 구글 시트로 해요.</p>
+<div class="why-box"><b>왜 하나?</b>시트는 기획자·운영자가 매일 여는 도구예요. 신청이 시트에 바로 쌓이면 개발자 없이도 명단을 보고, 거르고, 정리할 수 있어요.</div></div>
+
+<div class="topic" id="s1-1"><h3><span class="stage">개념</span>1-1. 앱스스크립트란?</h3>
+<h4>앱스스크립트란?</h4><p>앱스스크립트는 구글 시트·지메일·드라이브를 코드로 움직이게 하는 구글의 도구예요. 시트 메뉴에서 바로 열 수 있고, 따로 설치할 것이 없어요.</p>
+<h4>어떤 문제를 해결하나요?</h4><p>시트만으로는 다른 사람이 쓰기 좋은 화면을 만들기 어려워요. 앱스스크립트로 웹 앱을 만들면 시트 내용을 웹 페이지로 보여 주고, 입력 화면에서 받은 값을 시트에 쌓을 수 있어요.</p>
+<h4>조심할 점</h4><p>웹 앱을 '모든 사용자'에게 공개하면 주소를 아는 사람은 누구나 열 수 있어요. 실제 고객의 연락처가 든 시트는 이렇게 공개하지 않아요. 오늘은 가상 데이터만 써요.</p>
+<p class="source-note">출처: 구글 공식 문서 <a href="https://developers.google.com/apps-script?hl=ko" target="_blank" rel="noopener">Apps Script 개요</a> · <a href="https://developers.google.com/apps-script/guides/web?hl=ko" target="_blank" rel="noopener">웹 앱(Web Apps)</a> (2026.11.08 확인)</p>
+<div class="entry-box"><b>들어가는 길 · 앱스스크립트</b><p>구글 시트 위쪽 메뉴에서 [확장 프로그램] → [Apps Script]를 눌러요. 내가 만든 앱스스크립트 프로젝트는 <a href="https://script.google.com/home" target="_blank" rel="noopener">https://script.google.com/home</a> 에서 모아 볼 수 있어요.</p></div>
+</div>
+
+<div class="topic" id="s1-2"><h3><span class="stage">흐름</span>1-2. 오늘 만들 것 한눈에 보기</h3>
+<p>오늘은 신청 명단 하나를 네 번 키워요. 앞 단계의 결과를 다음 단계에서 그대로 써요.</p>
+<div class="flow">
+<div><span>SESSION 2</span><b>시트 채우기</b><small>클로드로 가상 명단 100줄</small></div>
+<div><span>SESSION 3</span><b>웹 페이지로 보기</b><small>검색·필터·휴대폰 화면</small></div>
+<div><span>SESSION 4</span><b>입력 화면</b><small>넣은 값이 시트에 쌓임</small></div>
+<div><span>SESSION 5</span><b>정리본 만들기</b><small>빈칸·중복·형식 정리</small></div>
+<div><span>화요일</span><b>웹에서 모으기</b><small>크롤링한 데이터도 같은 규칙으로</small></div>
+</div>
+<div class="table-wrap"><table>
+<tr><th>구분</th><th>금요일 Firestore</th><th>오늘 구글 시트</th></tr>
+<tr><td><b>데이터를 보는 곳</b></td><td>Firebase 콘솔(개발자용 화면)</td><td>구글 시트(운영자가 매일 여는 화면)</td></tr>
+<tr><td><b>화면을 만드는 곳</b></td><td>구글 AI 스튜디오</td><td>클로드에게 코드를 받아 앱스스크립트에 붙여 넣기</td></tr>
+<tr><td><b>잘 맞는 경우</b></td><td>신청이 많고, 로그인·권한이 필요한 서비스</td><td>신청이 적고, 사람이 명단을 직접 보고 고치는 이벤트</td></tr>
+</table></div>
+</div>
+</section>
+
+<section class="section session" id="s2">
+<div class="session-head"><div class="eyebrow">SESSION 2 · 09:50–10:40</div><h2>빈 시트를 클로드로 채우기</h2><p>연습할 데이터가 있어야 웹 페이지를 만들 수 있어요. 이커머스 셀렉트마켓 연말 이벤트 신청 명단 100줄을 클로드에게 만들게 해요.</p>
+<div class="why-box"><b>왜 하나?</b>실제 고객 명단으로 연습하면 개인정보가 새어 나갈 수 있어요. 열 이름은 실제와 같게, 값은 가상으로 만들어요.</div></div>
+
+<div class="topic" id="s2-1"><h3><span class="stage">실습</span>2-1. 신청 명단 100줄을 만들어 시트에 넣기</h3>
+<p><b>STEP 1. 빈 시트 만들기</b></p>
+<p>크롬 주소창에 <code class="inline">sheets.new</code> 를 입력해 빈 시트를 만들어요. 왼쪽 위 제목을 눌러 [셀렉트마켓 연말이벤트 신청]으로 바꿔요.</p>
+<p><b>STEP 2. 클로드에게 신청 명단 받기</b></p>
+<p>클로드 새 대화에 아래 프롬프트를 붙여 넣어요. 클로드가 CSV 파일을 만들면 내려받아요.</p>
+<p class="blk k-pr"><span>프롬프트</span></p>
+<div class="copybox"><div class="copyhead"><span>프롬프트 1 · 복사해서 클로드 입력창에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 이벤트 신청 연습용 가상 데이터 100줄을 CSV 파일로 만들어 줘.
+내용: 이커머스 셀렉트마켓 연말 이벤트 신청 명단이야. 열은 신청번호(EVT-001부터), 신청일시(KST), 이름, 연락처, 이메일, 참석유형(온라인/오프라인), 유입경로, 마케팅수신동의(Y/N), 상태(확정/취소) 9개야. 이름·연락처는 실제 사람이 아닌 가상 값으로, 이메일은 example.com 주소로만 만들어 줘.
+형식: 첫 줄은 열 이름, 그다음 100줄. 내려받을 수 있는 CSV 파일 하나로 줘.</pre></div>
+<p><b>STEP 3. 시트로 가져오기</b></p>
+<ol class="do-steps">
+<li><p>시트 위쪽 메뉴에서 [파일] → [가져오기]를 누르고 [업로드] 탭에서 내려받은 CSV 파일을 끌어다 놓아요.</p></li>
+<li><p>가져오기 위치는 [현재 시트 바꾸기]를 골라요. [데이터 가져오기]를 누르면 빈 시트가 명단으로 채워져요.</p></li>
+<li><p>아래쪽 시트 탭 이름이 [시트1]인지 확인해요. 다음 세션의 프롬프트에 이 이름을 써요.</p></li>
+</ol>
+<p class="blk k-chk"><span>확인할 점</span></p>
+<ul class="checklist"><li>첫 줄이 열 이름 9개이고, 그 아래가 100줄이다(마지막 줄 번호 101)</li><li>이메일이 모두 example.com으로 끝난다</li><li>참석유형에 '온라인'과 '오프라인' 말고 다른 값이 없다</li></ul>
+<p class="blk k-chk"><span>막히면</span></p>
+<div class="table-wrap"><table><tr><th>이렇게 보이면</th><th>이렇게 해요</th></tr>
+<tr><td><b>클로드가 파일 대신 표를 대화창에 보여 줘요</b></td><td>"이 표를 내려받을 수 있는 CSV 파일로 만들어 줘."라고 한 번 더 보내요.</td></tr>
+<tr><td><b>한글이 깨져 보여요</b></td><td>"UTF-8 CSV로 다시 만들어 줘."라고 보내고 다시 가져와요.</td></tr>
+<tr><td><b>100줄보다 적어요</b></td><td>"모자란 줄을 이어서 EVT-○○○부터 채워 줘."라고 보내요. 번호는 내 시트의 마지막 번호 다음으로 써요.</td></tr>
+</table></div>
+</div>
+
+<div class="topic" id="s2-2"><h3><span class="stage">결과</span>2-2. 결과</h3>
+<div class="result-box"><b>결과물</b> 가상 신청 명단 100줄이 든 구글 시트</div>
+<p class="ok-line"><b>이렇게 보이면 성공</b>[시트1]에 열 이름 9개와 신청 100줄이 보인다</p>
+<div class="ref-box" role="note" aria-label="참고 결과물"><b>참고 · 강사가 같은 열 이름으로 만든 연습 시트</b><p>링크가 있으면 누구나 볼 수 있어요(보기 전용, 편집 불가). 내 시트를 먼저 만든 다음 비교해요.</p><ul><li><span class="ref-kind">구글 시트</span> <a href="https://docs.google.com/spreadsheets/d/1xbXVj32KQ-M0vJv3FmASDnPChj4wDm-OCZ68yx1dhB8/edit?usp=sharing" target="_blank" rel="noopener">261106_구글 시트와 앱스스크립트 자동화 연습 시트</a></li></ul></div>
+</div>
+</section>
+
+<section class="section session" id="s3">
+<div class="session-head"><div class="eyebrow">SESSION 3 · 10:50–12:00</div><h2>시트를 웹 페이지처럼 보여 주기</h2><p>2세션에서 채운 신청 명단 시트를 열어요. 이 시트를 검색·필터가 되는 웹 페이지로 만들어 휴대폰에서도 열어 봐요.</p>
+<div class="why-box"><b>왜 하나?</b>시트를 그대로 공유하면 받는 사람이 실수로 칸을 지울 수 있어요. 웹 페이지로 보여 주면 보기만 하고 고칠 수는 없어요.</div></div>
+
+<div class="topic" id="s3-1"><h3><span class="stage">개념</span>3-1. 웹 앱과 배포란?</h3>
+<h4>웹 앱이란?</h4><p>웹 앱은 앱스스크립트 코드를 인터넷 주소로 열 수 있게 만든 것이에요. 주소는 <code class="inline">https://script.google.com/macros/s/…/exec</code> 모양이에요.</p>
+<h4>이번 실습에서는 새로운 코드가 몇 가지 나와요</h4><p>클로드가 준 코드에서 아래 세 가지를 찾아보면 코드가 하는 일을 알 수 있어요. 외우지 않아도 돼요.</p>
+<div class="table-wrap"><table><tr><th>코드</th><th>하는 일</th></tr>
+<tr><td><code class="inline">function doGet()</code></td><td>누군가 웹 앱 주소를 열면 가장 먼저 실행돼요. 웹 앱에는 이 함수가 꼭 있어야 해요.</td></tr>
+<tr><td><code class="inline">HtmlService.createHtmlOutputFromFile('index')</code></td><td>index.html 파일을 화면으로 만들어 보여 줘요.</td></tr>
+<tr><td><code class="inline">SpreadsheetApp…getDataRange().getValues()</code></td><td>시트의 표 전체를 읽어 와요.</td></tr>
+</table></div>
+<h4>조심할 점</h4><p>코드를 고치고 [저장]만 하면 웹 앱 주소에는 바뀐 화면이 나오지 않아요. 고친 코드는 새 버전으로 다시 배포해야 주소에 반영돼요. 3-3에서 해요.</p>
+<p class="source-note">출처: 구글 공식 문서 <a href="https://developers.google.com/apps-script/guides/web?hl=ko" target="_blank" rel="noopener">웹 앱(doGet, 배포)</a> · <a href="https://developers.google.com/apps-script/concepts/deployments?hl=ko" target="_blank" rel="noopener">배포 만들기와 관리(버전)</a> (2026.11.08 확인)</p>
+</div>
+
+<div class="topic" id="s3-2"><h3><span class="stage">실습</span>3-2. 시트를 웹 페이지로 배포하기</h3>
+<p><b>STEP 1. 앱스스크립트 열기</b></p>
+<p>신청 명단 시트에서 [확장 프로그램] → [Apps Script]를 눌러요. 새 탭에 앱스스크립트 편집기가 열리고, 왼쪽 [파일] 목록에 Code.gs가 보여요.</p>
+<p><b>STEP 2. 클로드에게 코드 받기</b></p>
+<p>클로드에게 아래 프롬프트를 보내요. 금요일 오후에 쓴 프롬프트를 요청·내용·형식으로 나눈 것이에요.</p>
+<p class="blk k-pr"><span>프롬프트</span></p>
+<div class="copybox"><div class="copyhead"><span>프롬프트 2 · 복사해서 클로드 입력창에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 이 구글 시트를 웹 페이지처럼 보여 주는 앱스스크립트 코드를 짜 줘.
+내용: 시트 탭 이름은 [시트1]이고, 첫 줄은 열 이름(신청번호, 신청일시(KST), 이름, 연락처, 이메일, 참석유형, 유입경로, 마케팅수신동의, 상태), 그 아래 신청 100줄이 있어. 디자인을 입혀 주고, 100줄을 검색하고 참석유형·상태로 거를(필터) 수 있게 해 줘. 휴대폰에서도 보기 좋게(모바일 반응형) 해 줘.
+형식: Code.gs와 index.html 두 파일로 나눠서, 파일마다 처음부터 끝까지 전체 코드를 줘. 붙여 넣는 곳과 배포 순서도 짧게 적어 줘.</pre></div>
+<p><b>STEP 3. 코드 붙여 넣고 저장하기</b></p>
+<ol class="do-steps">
+<li><p>Code.gs에 원래 있던 <code class="inline">function myFunction() {}</code>을 모두 지우고, 클로드가 준 Code.gs 코드를 통째로 붙여 넣어요.</p></li>
+<li><p>왼쪽 [파일] 옆 [+]를 누르고 [HTML]을 골라요. 이름 칸에 <code class="inline">index</code>만 쓰면 index.html이 만들어져요. 안의 내용을 지우고 클로드가 준 index.html 코드를 붙여 넣어요.</p></li>
+<li><p>위쪽 저장 아이콘(또는 Ctrl+S, 맥은 Cmd+S)을 눌러 두 파일을 모두 저장해요.</p></li>
+</ol>
+<p><b>STEP 4. 웹 앱으로 배포하기</b></p>
+<ol class="do-steps">
+<li><p>오른쪽 위 [배포] → [새 배포]를 눌러요.</p></li>
+<li><p>[유형 선택] 옆 톱니바퀴를 누르고 [웹 앱]을 골라요.</p></li>
+<li><p>설명에는 [신청 명단 보기 1차]를 써요. 실행 사용자는 [나], 액세스 권한이 있는 사용자는 [모든 사용자]를 골라요. 오늘은 가상 데이터라서 [모든 사용자]로 해요.</p></li>
+<li><p>[배포]를 누르면 권한을 묻는 창이 떠요. [액세스 승인]을 누르고 수업용 계정을 골라요.</p></li>
+<li><p>"확인되지 않은 앱" 경고가 나오면 [고급]을 누르고 [(프로젝트 이름)(으)로 이동(안전하지 않음)]을 눌러요. 내가 만든 코드라서 넘어가도 돼요. 그다음 [허용]을 눌러요.</p></li>
+<li><p>배포가 끝나면 [웹 앱] 아래 주소가 나와요. [복사]를 눌러 주소를 복사해요.</p></li>
+</ol>
+<p><b>STEP 5. 주소 열어 보기</b></p>
+<p>복사한 주소를 새 탭에 붙여 넣어 열어요. 카카오톡 '나에게 보내기'로 주소를 보내 휴대폰에서도 열어 봐요.</p>
+<p class="blk k-chk"><span>확인할 점</span></p>
+<ul class="checklist"><li>시트의 100줄이 웹 페이지에 모두 보인다</li><li>검색창에 이름 한 글자를 넣으면 맞는 줄만 남는다</li><li>참석유형·상태로 거르면 줄 수가 바뀐다</li><li>휴대폰에서 글자가 잘리지 않고 읽힌다</li></ul>
+<p class="blk k-chk"><span>막히면</span></p>
+<div class="table-wrap"><table><tr><th>이렇게 보이면</th><th>이렇게 해요</th></tr>
+<tr><td><b>로그인 화면이 계속 다시 나와요</b></td><td>시크릿 창을 열고 시트를 만든 계정 하나로만 로그인한 뒤 주소를 다시 열어요.</td></tr>
+<tr><td><b>"스크립트 함수를 찾을 수 없음: doGet"이 나와요</b></td><td>Code.gs에 <code class="inline">function doGet</code>이 있는지 봐요. 없으면 그 문장을 클로드에게 그대로 붙여 넣고 고쳐 달라고 해요.</td></tr>
+<tr><td><b>화면은 나오는데 표가 비어 있어요</b></td><td>시트 탭 이름이 코드 속 이름과 같은지 봐요. 다르면 "시트 탭 이름은 [내 탭 이름]이야."라고 클로드에게 보내요.</td></tr>
+<tr><td><b>다른 오류 문장이 나와요</b></td><td>오류 문장을 복사해 클로드에게 붙여 넣고, "이 오류를 고친 전체 코드를 줘."라고 보내요.</td></tr>
+</table></div>
+<p class="source-note">출처: 구글 공식 문서 <a href="https://developers.google.com/apps-script/api/troubleshoot-authentication-authorization" target="_blank" rel="noopener">인증·권한 문제 해결("This app isn't verified" → Advanced)</a> (2026.11.08 확인)</p>
+</div>
+
+<div class="topic" id="s3-3"><h3><span class="stage">실습</span>3-3. 고치고 같은 주소로 다시 배포하기</h3>
+<p>웹 앱 주소를 이미 다른 사람에게 보냈다면, 주소가 바뀌면 안 돼요. 고친 코드는 같은 배포를 새 버전으로 바꿔서 내보내요.</p>
+<p><b>STEP 1. 하나만 고쳐 달라고 하기</b></p>
+<p class="blk k-pr"><span>프롬프트</span></p>
+<div class="copybox"><div class="copyhead"><span>프롬프트 3 · 복사해서 클로드 입력창에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 웹 페이지 맨 위에 제목과 지금 보이는 신청 수를 넣어 줘.
+내용: 제목은 [셀렉트마켓 연말 이벤트 신청 명단]이야. 검색하거나 거르면 신청 수도 함께 바뀌게 해 줘. 다른 기능과 디자인은 바꾸지 마.
+형식: 바뀐 파일만, 처음부터 끝까지 전체 코드로 줘.</pre></div>
+<p><b>STEP 2. 새 버전으로 배포하기</b></p>
+<ol class="do-steps">
+<li><p>바뀐 파일의 코드를 통째로 바꿔 붙여 넣고 저장해요.</p></li>
+<li><p>[배포] → [배포 관리]를 누르고, 3-2에서 만든 배포를 골라 연필 모양 [수정]을 눌러요.</p></li>
+<li><p>[버전]에서 [새 버전]을 고르고, 설명에 [제목·신청 수 추가]를 써요. [배포]를 눌러요.</p></li>
+<li><p>3-2에서 복사한 주소를 새로고침해요. 주소는 그대로이고 화면만 바뀌었는지 봐요.</p></li>
+</ol>
+<p class="blk k-chk"><span>이렇게 하면 결과가 틀어져요</span></p>
+<div class="table-wrap"><table><tr><th>한 일</th><th>생기는 일</th></tr>
+<tr><td>저장만 하고 다시 배포하지 않음</td><td>주소에는 고치기 전 화면이 그대로 나와요.</td></tr>
+<tr><td>[배포 관리] 대신 [새 배포]를 누름</td><td>주소가 하나 더 생겨요. 이미 보낸 주소에는 반영되지 않아요.</td></tr>
+</table></div>
+<p class="source-note">출처: 구글 공식 문서 <a href="https://developers.google.com/apps-script/concepts/deployments?hl=ko" target="_blank" rel="noopener">배포 만들기와 관리</a> — 버전 배포를 수정하면 같은 주소(배포 ID)를 유지한 채 바뀐 코드가 반영돼요 (2026.11.08 확인)</p>
+</div>
+
+<div class="topic" id="s3-4"><h3><span class="stage">결과</span>3-4. 결과</h3>
+<div class="result-box"><b>결과물</b> 신청 명단 웹 페이지 주소(검색·필터·신청 수, 휴대폰 확인)</div>
+<p class="ok-line"><b>이렇게 보이면 성공</b>처음 받은 주소를 새로고침하면 제목과 신청 수가 보인다</p>
+</div>
+</section>
+
+<section class="section session" id="s4">
+<div class="session-head"><div class="eyebrow">SESSION 4 · 13:00–14:30</div><h2>입력 화면을 만들고 시트에 쌓기</h2><p>3세션에서 만든 신청 명단 웹 페이지를 이어서 써요. 구글 설문지처럼 신청을 받는 화면을 더하고, 입력한 값이 시트 맨 아래에 쌓이게 해요.</p>
+<div class="why-box"><b>왜 하나?</b>지금까지는 시트에 있는 데이터를 보여 주기만 했어요. 입력 화면이 있으면 데이터를 모으는 일까지 시트 하나로 끝나요.</div></div>
+
+<div class="topic" id="s4-1"><h3><span class="stage">개념</span>4-1. 화면에서 시트로 보내는 방법</h3>
+<h4>이번 실습에서는 새로운 코드가 두 가지 나와요</h4>
+<div class="table-wrap"><table><tr><th>코드</th><th>있는 파일</th><th>하는 일</th></tr>
+<tr><td><code class="inline">google.script.run</code></td><td>index.html</td><td>화면에서 [신청하기]를 누르면 Code.gs의 함수를 불러요. 화면과 시트를 잇는 다리예요.</td></tr>
+<tr><td><code class="inline">sheet.appendRow([…])</code></td><td>Code.gs</td><td>시트의 마지막 줄 아래에 새 줄 하나를 붙여요.</td></tr>
+</table></div>
+<h4>조심할 점</h4><p>입력 화면은 누구나 값을 넣을 수 있어요. 빈칸이나 잘못된 형식이 그대로 쌓일 수 있으니, 저장하기 전에 빈칸을 막는 규칙을 프롬프트에 넣어요. 그래도 쌓이는 문제는 5세션에서 정리해요.</p>
+<p class="source-note">출처: 구글 공식 문서 <a href="https://developers.google.com/apps-script/guides/html/communication?hl=ko" target="_blank" rel="noopener">HTML 서비스: 서버 함수와 통신(google.script.run)</a> (2026.11.08 확인)</p>
+</div>
+
+<div class="topic" id="s4-2"><h3><span class="stage">실습</span>4-2. 신청 입력 화면 만들기</h3>
+<p><b>STEP 1. 클로드에게 입력 화면 받기</b></p>
+<p>3세션에서 코드를 받았던 클로드 대화 기억하시나요? 같은 대화에 이어서 보내요. 그래야 클로드가 지금 코드를 알고 고쳐요.</p>
+<p class="blk k-pr"><span>프롬프트</span></p>
+<div class="copybox"><div class="copyhead"><span>프롬프트 4 · 복사해서 같은 클로드 대화에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 지금 웹 페이지에 신청 입력 화면을 더해 줘. 구글 설문지처럼 입력하면 [시트1] 맨 아래에 한 줄씩 쌓이게 해 줘.
+내용: 입력 칸은 이름, 연락처, 이메일, 참석유형(온라인/오프라인), 유입경로, 마케팅수신동의(Y/N)야. 신청번호(마지막 번호 다음 EVT 번호), 신청일시(KST, 2026-11-09 09:05 형식), 상태(확정)는 자동으로 넣어 줘. 빈칸이 있으면 저장하지 말고 어떤 칸이 비었는지 알려 줘. 저장되면 "신청이 접수됐어요"를 보여 줘. 기존 목록·검색·필터는 그대로 둬.
+형식: 바뀐 Code.gs와 index.html을 처음부터 끝까지 전체 코드로 줘. 새 버전으로 다시 배포하는 순서도 적어 줘.</pre></div>
+<p><b>STEP 2. 붙여 넣고 새 버전으로 배포하기</b></p>
+<ol class="do-steps">
+<li><p>Code.gs와 index.html을 각각 통째로 바꿔 붙여 넣고 저장해요.</p></li>
+<li><p>3-3처럼 [배포] → [배포 관리] → [수정] → [버전] [새 버전]으로 배포해요. 설명에는 [신청 입력 화면 추가]를 써요.</p></li>
+<li><p>시트에 새로 쓰는 권한이 필요하면 권한 창이 다시 떠요. 3-2 STEP 4처럼 승인해요.</p></li>
+</ol>
+<p><b>STEP 3. 휴대폰으로 신청해 보기</b></p>
+<ol class="do-steps">
+<li><p>휴대폰에서 웹 앱 주소를 열고 입력 화면에 가상의 정보로 한 번 신청해요.</p></li>
+<li><p>이번에는 이메일 칸을 비우고 [신청하기]를 눌러요. 저장되지 않고 안내 문구가 나오는지 봐요.</p></li>
+<li><p>시트 탭으로 돌아가 맨 아래 줄을 봐요.</p></li>
+</ol>
+<p class="blk k-chk"><span>확인할 점</span></p>
+<ul class="checklist"><li>① 입력 화면이 휴대폰에서 보이고 [신청하기]를 누를 수 있다</li><li>② 신청하면 시트 맨 아래에 새 줄이 생기고, 신청번호가 이어진다</li><li>빈칸으로 신청하면 시트에 줄이 생기지 않는다</li><li>웹 페이지 목록에도 방금 넣은 신청이 보인다</li></ul>
+<p class="blk k-chk"><span>막히면</span></p>
+<div class="table-wrap"><table><tr><th>이렇게 보이면</th><th>이렇게 해요</th></tr>
+<tr><td><b>"접수됐어요"는 나오는데 시트에 줄이 없어요</b></td><td>앱스스크립트 왼쪽 메뉴 [실행]을 눌러 실패한 기록을 열어요. 빨간 오류 문장을 복사해 클로드에게 붙여 넣어요.</td></tr>
+<tr><td><b>화면이 바뀌지 않았어요</b></td><td>저장만 하고 새 버전으로 배포하지 않았을 수 있어요. 3-3 STEP 2를 다시 해요.</td></tr>
+<tr><td><b>신청번호가 EVT-001부터 다시 시작해요</b></td><td>"신청번호는 시트의 마지막 신청번호 다음 숫자로 만들어 줘."라고 클로드에게 보내요.</td></tr>
+</table></div>
+<div class="notice"><b>참고 · 다른 연결 방법</b><br/>시트와 다른 서비스를 잇는 일은 코드 없이 Zapier 같은 자동화 도구로도 할 수 있어요. <a href="https://zapier.com/" target="_blank" rel="noopener">https://zapier.com/</a></div>
+</div>
+
+<div class="topic" id="s4-3"><h3><span class="stage">결과</span>4-3. 결과</h3>
+<div class="result-box"><b>결과물</b> 신청을 받아 시트에 쌓는 웹 페이지(같은 주소)</div>
+<p class="ok-line"><b>이렇게 보이면 성공</b>휴대폰에서 신청한 한 줄이 시트 맨 아래에 보인다</p>
+</div>
+</section>
+
+<section class="section session" id="s5">
+<div class="session-head"><div class="eyebrow">SESSION 5 · 14:40–16:40</div><h2>쌓인 신청 데이터 정리하기(전처리)</h2><p>입력 화면을 열어 두면 사람마다 다르게 적은 값이 쌓여요. 신청이 몇 주 쌓인 지저분한 명단을 받아, 원본은 그대로 두고 '정리본'을 만들어요.</p>
+<div class="why-box"><b>왜 하나?</b>'온라인'과 'online'이 섞여 있으면 온라인 신청이 몇 명인지 바로 셀 수 없어요. 정리하지 않은 데이터로 낸 숫자는 틀린 보고가 돼요.</div></div>
+
+<div class="topic" id="s5-1"><h3><span class="stage">개념</span>5-1. 전처리란?</h3>
+<h4>전처리란?</h4><p>전처리는 모은 데이터를 쓰기 전에 빈칸·중복·형식을 정리하는 일이에요. 분석이나 AI에 넣기 전에 가장 먼저 해요.</p>
+<h4>어떤 문제를 해결하나요?</h4><p>같은 사람이 두 번 들어가 있거나, 연락처가 01012345678과 010-1234-5678로 섞여 있으면 인원도, 문자 발송 목록도 틀려져요. 전처리를 하면 같은 규칙으로 센 숫자를 얻어요.</p>
+<h4>조심할 점</h4><p>정리하다가 원본을 지우면 무엇을 바꿨는지 되돌릴 수 없어요. 그래서 원본은 그대로 두고 정리본을 새로 만들어요. 그리고 AI가 판단할 수 없는 줄(같은 사람의 두 번째 신청 등)은 지우지 않고 '확인 필요'로 표시해 사람이 결정해요.</p>
+<div class="table-wrap"><table><tr><th>정리 방법</th><th>예</th><th>누가 정하나요</th></tr>
+<tr><td><b>지우기</b></td><td>모든 칸이 똑같은 줄(복사 실수)</td><td>규칙으로 바로 처리</td></tr>
+<tr><td><b>형식 맞추기</b></td><td>연락처 010-0000-0000, 'online' → '온라인'</td><td>규칙으로 바로 처리</td></tr>
+<tr><td><b>표시만 하기</b></td><td>이메일 없음, 같은 이메일로 두 번 신청</td><td>사람이 보고 결정</td></tr>
+</table></div>
+</div>
+
+<div class="topic" id="s5-2"><h3><span class="stage">실습</span>5-2. 지저분한 명단에서 문제 찾기</h3>
+<p><b>STEP 1. 실습 파일 받아 '원본' 시트 만들기</b></p>
+<div class="dl-list"><a class="dl-card" href="data/261109_셀렉트마켓_연말이벤트신청_원본.csv" download><span class="dl-ico">CSV</span><span class="dl-body"><b>셀렉트마켓 연말 이벤트 신청 원본</b><span>가상 데이터 · 열 9개 · 124줄 · UTF-8</span></span><span class="dl-btn">내려받기</span></a></div>
+<ol class="do-steps">
+<li><p>2세션에서 만든 신청 명단 시트에서 [파일] → [가져오기] → [업로드]로 이 파일을 올려요.</p></li>
+<li><p>이번에는 가져오기 위치를 [새 시트 삽입]으로 골라요. 새로 생긴 시트 탭 이름을 두 번 눌러 [원본]으로 바꿔요.</p></li>
+</ol>
+<p><b>STEP 2. 눈으로 문제 찾기</b></p>
+<p>[원본] 시트를 위에서 아래로 훑어보며, 같은 열인데 적는 방식이 다른 곳을 찾아요. 5분 동안 찾은 것을 클로드 대화창에 짧게 적어 두면 5-4 프롬프트를 고칠 때 써요.</p>
+<details class="res-toggle"><summary><span class="blk k-res"><span>정답 비교</span></span><span class="tg"></span></summary>
+<div class="table-wrap"><table><tr><th>열</th><th>이런 값이 섞여 있어요</th><th>찾아볼 신청번호</th></tr>
+<tr><td>연락처</td><td>01061748438, 010 1234 5678, 010.1234.5678, 빈칸</td><td>EVT-004 · EVT-066</td></tr>
+<tr><td>신청일시(KST)</td><td>2026-10-26 09:56 사이에 2026/10/27 9:05 같은 모양</td><td>열 전체를 훑어보기</td></tr>
+<tr><td>이름</td><td>앞뒤에 공백이 붙은 이름</td><td>칸을 눌러 위쪽 입력줄에서 보기</td></tr>
+<tr><td>이메일</td><td>빈칸, @가 없는 주소</td><td>EVT-007 · EVT-024</td></tr>
+<tr><td>참석유형</td><td>online, Online, offline, 오프 라인, '온라인 '(뒤에 공백)</td><td>필터로 값 목록 보기</td></tr>
+<tr><td>마케팅수신동의</td><td>y, yes, n, no, 빈칸</td><td>필터로 값 목록 보기</td></tr>
+<tr><td>줄 전체</td><td>모든 칸이 똑같은 줄 6개, 같은 이메일로 다시 신청한 줄</td><td>EVT-115 ~ EVT-118</td></tr>
+</table></div>
+</details>
+<p class="blk k-chk"><span>막히면</span></p>
+<p>열 머리를 누르고 [데이터] → [필터 만들기]를 눌러요. 열 이름 옆 필터 단추를 누르면 그 열에 들어 있는 값이 모두 목록으로 보여요.</p>
+</div>
+
+<div class="topic" id="s5-3"><h3><span class="stage">실습</span>5-3. 시트 기능으로 먼저 정리해 보기</h3>
+<p>구글 시트에는 정리 기능이 이미 있어요. 메뉴로 되는 일과 안 되는 일을 먼저 나눠 봐요. 원본을 지키려고 사본에서 해요.</p>
+<p><b>STEP 1. 연습용 사본 만들기</b></p>
+<p>[원본] 탭을 마우스 오른쪽 단추로 누르고 [복제]를 눌러요. 생긴 탭 이름을 [연습]으로 바꿔요.</p>
+<p><b>STEP 2. 공백 제거와 중복 항목 삭제</b></p>
+<ol class="do-steps">
+<li><p>[연습] 시트 왼쪽 위 빈 네모를 눌러 시트 전체를 골라요.</p></li>
+<li><p>[데이터] → [데이터 정리] → [공백 제거]를 눌러요(영어 화면: Data → Data cleanup → Trim whitespace).</p></li>
+<li><p>다시 시트 전체를 고른 채 [데이터] → [데이터 정리] → [중복 항목 삭제]를 눌러요(영어 화면: Remove duplicates). [데이터에 헤더 행 있음]에 체크하고, 모든 열을 고른 채 [중복 항목 삭제]를 눌러요.</p></li>
+</ol>
+<p class="source-note">출처: 구글 스프레드시트 고객센터 <a href="https://support.google.com/docs/answer/6325535?hl=ko" target="_blank" rel="noopener">텍스트 분할, 중복 항목 삭제, 공백 제거</a> (2026.11.08 확인)</p>
+<p class="blk k-chk"><span>확인할 점</span></p>
+<ul class="checklist"><li>중복 항목 삭제 뒤 남은 신청이 118줄이다(지워진 줄 6개)</li><li>'온라인 '처럼 뒤에 붙은 공백은 사라졌다</li><li>그래도 01061748438, online, yes처럼 모양이 다른 값은 그대로 남아 있다</li></ul>
+<div class="table-wrap"><table><tr><th>시트 메뉴로 되는 일</th><th>메뉴로 안 되는 일 → 5-4에서 앱스스크립트로</th></tr>
+<tr><td>앞뒤 공백 지우기, 모든 칸이 똑같은 줄 지우기</td><td>연락처·날짜 형식 맞추기, 'online'을 '온라인'으로 바꾸기, '확인 필요' 이유 적기, 매주 같은 정리를 버튼 하나로 다시 하기</td></tr>
+</table></div>
+</div>
+
+<div class="topic" id="s5-4"><h3><span class="stage">실습</span>5-4. 앱스스크립트로 정리 버튼 만들기</h3>
+<p>메뉴로 안 되는 정리를 규칙으로 적어 클로드에게 코드를 받아요. 시트 위쪽 메뉴에 [데이터 정리] 버튼이 생기면, 다음 주에 신청이 더 쌓여도 버튼 한 번으로 같은 정리를 다시 할 수 있어요.</p>
+<p><b>STEP 1. 정리 규칙 세우기</b></p>
+<p>5-2에서 찾은 문제를 아래 규칙과 견줘 봐요. 내가 찾았는데 규칙에 없는 것이 있으면 프롬프트의 규칙에 한 줄 더해요.</p>
+<p class="blk k-ex"><span>예시</span>정리 규칙 9가지</p>
+<div class="table-wrap"><table><tr><th>번호</th><th>규칙</th><th>정리 방법</th></tr>
+<tr><td>①</td><td>모든 칸의 앞뒤 공백 지우기</td><td>형식 맞추기</td></tr>
+<tr><td>②</td><td>모든 칸이 똑같은 줄은 하나만 남기기</td><td>지우기</td></tr>
+<tr><td>③</td><td>연락처는 010-0000-0000 형식</td><td>형식 맞추기</td></tr>
+<tr><td>④</td><td>신청일시는 2026-10-26 09:05 형식</td><td>형식 맞추기</td></tr>
+<tr><td>⑤</td><td>참석유형은 '온라인'이나 '오프라인' 둘 중 하나</td><td>형식 맞추기</td></tr>
+<tr><td>⑥</td><td>마케팅수신동의는 Y나 N(yes·y → Y, no·n → N), 비어 있으면 빈칸으로 두기</td><td>형식 맞추기 + 표시만 하기</td></tr>
+<tr><td>⑦</td><td>연락처나 이메일이 비었거나, 이메일에 @가 없으면 줄을 지우지 않기</td><td>표시만 하기</td></tr>
+<tr><td>⑧</td><td>같은 이메일이 두 줄 이상이면 지우지 않기</td><td>표시만 하기</td></tr>
+<tr><td>⑨</td><td>⑥~⑧에 해당하면 맨 오른쪽 '확인 필요' 열에 이유 적기</td><td>표시만 하기</td></tr>
+</table></div>
+<p><b>STEP 2. 클로드에게 정리 코드 받기</b></p>
+<p>이 코드는 웹 앱이 아니라 시트에 붙는 코드예요. 클로드 새 대화를 열어 보내요.</p>
+<p class="blk k-pr"><span>프롬프트</span></p>
+<div class="copybox"><div class="copyhead"><span>프롬프트 5 · 복사해서 클로드 새 대화에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 구글 시트의 [원본] 시트는 그대로 두고, 정리한 결과를 [정리본] 시트에 새로 만드는 앱스스크립트를 짜 줘. 시트 위쪽 메뉴에 [데이터 정리] 메뉴와 [정리본 만들기] 버튼도 만들어 줘.
+내용: 열은 신청번호, 신청일시(KST), 이름, 연락처, 이메일, 참석유형, 유입경로, 마케팅수신동의, 상태야. 정리 규칙은 ① 모든 칸 앞뒤 공백 지우기 ② 모든 칸이 똑같은 줄은 하나만 남기기 ③ 연락처는 010-0000-0000 형식 ④ 신청일시는 2026-10-26 09:05 형식 ⑤ 참석유형은 온라인/오프라인 둘 중 하나 ⑥ 마케팅수신동의는 Y/N, 비어 있으면 빈칸 ⑦ 연락처·이메일이 비었거나 이메일에 @가 없어도 줄을 지우지 않기 ⑧ 같은 이메일이 두 줄 이상이어도 지우지 않기 ⑨ ⑥~⑧에 해당하면 맨 오른쪽 '확인 필요' 열에 이유 적기야. [정리본]이 이미 있으면 지우고 새로 만들어 줘. 규칙에 없는 값은 바꾸거나 새로 채우지 마.
+형식: Code.gs 전체 코드와 실행 순서. 실행이 끝나면 '원본 ○줄 → 정리본 ○줄, 확인 필요 ○줄'을 알림 창으로 보여 줘.</pre></div>
+<p><b>STEP 3. 붙여 넣고 실행하기</b></p>
+<ol class="do-steps">
+<li><p>신청 명단 시트에서 [확장 프로그램] → [Apps Script]를 열어요. 3·4세션 코드가 든 Code.gs는 그대로 두고, [파일] 옆 [+] → [스크립트]로 새 파일을 만들어 이름을 <code class="inline">cleanup</code>으로 해요. 클로드가 준 코드를 붙여 넣고 저장해요.</p></li>
+<li><p>시트 탭으로 돌아가 새로고침해요. 위쪽 메뉴 끝에 [데이터 정리]가 생겼는지 봐요.</p></li>
+<li><p>[데이터 정리] → [정리본 만들기]를 눌러요. 처음에는 권한 창이 떠요. 3-2 STEP 4처럼 승인하고, 한 번 더 눌러요.</p></li>
+<li><p>알림 창의 숫자를 아래 기준값과 견줘요.</p></li>
+</ol>
+<p class="blk k-chk"><span>막히면</span></p>
+<div class="table-wrap"><table><tr><th>이렇게 보이면</th><th>이렇게 해요</th></tr>
+<tr><td><b>[데이터 정리] 메뉴가 안 보여요</b></td><td>시트 탭을 새로고침해요. 그래도 없으면 "onOpen 함수로 메뉴가 생기게 했는지 확인해 줘."라고 클로드에게 보내요.</td></tr>
+<tr><td><b>3·4세션 웹 앱이 망가졌어요</b></td><td>새 코드에 <code class="inline">doGet</code>이나 같은 이름의 함수가 또 있으면 서로 부딪혀요. "웹 앱 코드와 함수 이름이 겹치지 않게 바꿔 줘."라고 보내요.</td></tr>
+</table></div>
+<p><b>STEP 4. 기준값과 견주기</b></p>
+<p class="blk k-chk"><span>기준값</span>실습 파일(124줄)을 위 9가지 규칙으로 정리한 결과예요</p>
+<div class="table-wrap"><table><tr><th>항목</th><th>기준값</th></tr>
+<tr><td>원본 → 정리본</td><td>124줄 → 118줄 (똑같은 줄 6개 지움)</td></tr>
+<tr><td>형식을 맞춘 칸</td><td>연락처 12칸 · 신청일시 8칸</td></tr>
+<tr><td>참석유형</td><td>온라인 60 · 오프라인 58 (다른 값 0)</td></tr>
+<tr><td>마케팅수신동의</td><td>Y 60 · N 55 · 빈칸 3</td></tr>
+<tr><td>확인 필요</td><td>18줄 = 중복 신청 의심 8 (4명이 두 번씩) · 이메일 없음 3 · 이메일 형식 오류 2 · 수신동의 비어 있음 3 · 연락처 없음 2</td></tr>
+</table></div>
+<p class="blk k-chk"><span>숫자가 다르면</span></p>
+<div class="table-wrap"><table><tr><th>이렇게 다르면</th><th>클로드에게 이렇게 물어요</th></tr>
+<tr><td>정리본이 118줄보다 적어요</td><td>"규칙 ⑦·⑧에 해당하는 줄을 지운 것 같아. 어떤 줄을 지웠는지 신청번호로 알려 주고, 지우지 않게 고쳐 줘."</td></tr>
+<tr><td>참석유형에 다른 값이 남았어요</td><td>"참석유형에 [남은 값]이 남았어. 대소문자와 띄어쓰기를 무시하고 온라인/오프라인으로 바꿔 줘."</td></tr>
+<tr><td>확인 필요가 18줄이 아니에요</td><td>"확인 필요 열을 이유별로 세어 줘. 기준은 중복 신청 의심 8, 이메일 없음 3, 이메일 형식 오류 2, 수신동의 비어 있음 3, 연락처 없음 2야. 다른 곳의 코드를 고쳐 줘."</td></tr>
+<tr><td>수신동의 빈칸이 N으로 바뀌었어요</td><td>"규칙 ⑥에 빈칸은 빈칸으로 두라고 했어. 값을 새로 채우지 않게 고쳐 줘."</td></tr>
+</table></div>
+<p class="blk k-chk"><span>이렇게 하면 결과가 틀어져요</span></p>
+<p>규칙 ⑧ 없이 "중복을 정리해 줘."라고만 하면, AI가 같은 이메일의 두 번째 신청을 지워 버릴 수 있어요. 두 번째 신청이 참석유형을 바꾸려던 것이라면 바뀐 내용이 사라져요. 지울지 말지는 사람이 정해요.</p>
+</div>
+
+<div class="topic" id="s5-5"><h3><span class="stage">결과</span>5-5. 결과</h3>
+<div class="result-box"><b>결과물</b> [원본]은 그대로, [정리본] 시트(118줄 + 확인 필요 열)와 [데이터 정리] 버튼</div>
+<p class="ok-line"><b>이렇게 보이면 성공</b>알림 창에 '원본 124줄 → 정리본 118줄, 확인 필요 18줄'이 나온다</p>
+<p>화요일에는 웹에서 데이터를 모아요(크롤링). 모은 데이터도 오늘처럼 원본을 두고 규칙으로 정리본을 만들어요.</p>
+</div>
+</section>
+
+<section class="section session" id="wrap">
+<div class="session-head"><div class="eyebrow">정리 · 16:40–17:00</div><h2>오늘 정리와 과제</h2></div>
+<p><b>오늘의 규칙</b></p>
+<ul class="checklist">
+<li>연습 데이터는 실제와 같은 열 이름, 가상의 값으로 만든다</li>
+<li>코드를 고치면 [배포 관리]에서 새 버전으로 배포해야 같은 주소에 반영된다</li>
+<li>입력 화면에는 빈칸을 막는 규칙을 넣는다</li>
+<li>원본은 두고 정리본을 만든다. AI가 판단할 수 없는 줄은 지우지 않고 '확인 필요'로 표시한다</li>
+</ul>
+<div class="notice"><b>오늘의 결과물</b><br/>신청 명단 시트 + 웹 페이지 주소(검색·필터) + 시트에 쌓이는 입력 화면 + [정리본] 시트</div>
+<div class="notice"><b>과제</b><br/>[정리본]의 '확인 필요' 18줄 중 '중복 신청 의심' 한 쌍을 골라, 두 줄 중 어느 줄을 남길지와 그 이유를 한 문장으로 적어 와요.</div>
+</section>
+</main>
+</div>
+<button id="slideBtn" type="button">▶ 슬라이드로 보기</button>
+<div hidden="" id="deck">
+<div id="viewport"><div id="stage">
+<div id="master"><span>AI 프로덕트 매니저 3주차 · DAY 1 구글 시트·앱스스크립트</span></div>
+<div id="mbar"><i id="prog"></i></div>
+<div id="slide"></div>
+<div id="pager"><button aria-label="이전" id="prev" type="button">◀</button><span id="pg"></span><button aria-label="다음" id="next" type="button">▶</button></div>
+</div></div>
+<div id="bar"><button id="exit" type="button">✕ 닫기 (Esc)</button></div>
+</div>
+<script type="text/javascript">
+(function(){
+  var K={'요청':'','내용':' k2','형식':' k3'};
+  window.fmtPre=function(pr){
+    var t=pr.textContent;
+    if(!/^요청: /.test(t))return;
+    var lines=t.split('\n');pr.textContent='';pr.className='fmt';
+    lines.forEach(function(l,i){
+      var m=l.match(/^(요청|내용|형식): (.*)$/),d=document.createElement('div');
+      if(m){d.className='pl'+K[m[1]];var b=document.createElement('b');b.className='pk';b.textContent=m[1]+': ';var sp=document.createElement('span');sp.className='pt';sp.textContent=m[2];d.appendChild(b);d.appendChild(sp);}
+      else{d.className='pl c';var sp2=document.createElement('span');sp2.className='pt';sp2.textContent=l;d.appendChild(sp2);}
+      pr.appendChild(d);if(i<lines.length-1)pr.appendChild(document.createTextNode('\n'));
+    });
+  };
+  document.querySelectorAll('.copybox pre').forEach(window.fmtPre);
+})();
+</script>
+<script type="text/javascript">
+(function(){
+  var re=/^(STEP|준비|규칙서대로|분석 [1-4]|프롬프트 [AB]|프롬프트 쓰기|실습|방법 [A-C]|워밍업|[①-⑤] |\(선택\)|완성한|결과를 보고|버전|두 결과)/;
+  var nav=document.querySelector('aside nav');
+  document.querySelectorAll('main .topic').forEach(function(t){
+    var parent=nav.querySelector('a.l3[href="#'+t.id+'"]'),last=parent,n=0;
+    if(!parent)return;
+    t.querySelectorAll(':scope > p').forEach(function(p){
+      var b=p.firstElementChild;
+      if(!b||b.tagName!=='B'||p.children.length!==1||p.textContent.trim()!==b.textContent.trim()||!re.test(b.textContent.trim()))return;
+      p.classList.add('dh');p.id='d-'+t.id+'-'+(++n);
+      var a=document.createElement('a');a.className='l4';a.href='#'+p.id;a.setAttribute('data-p',t.id);
+      a.textContent=b.textContent.replace(/[:：]\s*.*$/,'').trim();
+      last.parentNode.insertBefore(a,last.nextSibling);last=a;
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+var main=document.querySelector('main'),deck=document.getElementById('deck'),box=document.getElementById('slide'),pgEl=document.getElementById('pg'),prog=document.getElementById('prog'),pages=[],i=0;
+function kids(el,skip){return Array.prototype.filter.call(el.children,function(c){return !skip(c);});}
+function logical(){
+  var out=[],hero=main.querySelector('.hero');
+  if(hero)out.push({sect:'표지',title:'',n:Array.prototype.slice.call(hero.children)});
+  Array.prototype.forEach.call(main.querySelectorAll(':scope > .section'),function(sec){
+    var h2=sec.querySelector('h2'),title=h2.textContent,head=sec.querySelector('.session-head'),n=[];
+    if(head)n=Array.prototype.slice.call(head.querySelectorAll('p'));
+    n=n.concat(kids(sec,function(c){return c.classList.contains('section-label')||c.tagName==='H2'||c.classList.contains('session-head')||c.classList.contains('topic');}));
+    if(n.length)out.push({sect:title,title:title,n:n});
+    Array.prototype.forEach.call(sec.querySelectorAll(':scope > .topic'),function(t){
+      var h3=t.querySelector('h3');
+      out.push({sect:title,title:h3.textContent,n:kids(t,function(c){return c===h3;})});
+    });
+  });
+  return out;
+}
+function over(){return box.scrollHeight>box.clientHeight+1;}
+function build(){
+  pages=[];var L=logical(),count,sl;L.forEach(function(x){var out=[];x.n.forEach(function(el){if(el.tagName==="DETAILS"){var t=el.querySelector(".summary-title");var h=document.createElement("p");h.innerHTML="<b>"+(t?t.textContent:"")+"</b>";out.push(h);Array.prototype.forEach.call(el.children,function(c){if(c.tagName!=="SUMMARY")out.push(c);});}else out.push(el);});x.n=out;});
+  function head(cont){
+    box.innerHTML='';
+    if(sl.title&&sl.sect&&sl.sect!==sl.title){var eb=document.createElement('div');eb.className='eb';eb.textContent=sl.sect;box.appendChild(eb);}
+    if(sl.title){var h=document.createElement('h3');h.className='st';h.textContent=sl.title;
+      if(cont){var c=document.createElement('span');c.className='cont';c.textContent='(이어서)';h.appendChild(c);}
+      box.appendChild(h);}
+    count=0;
+  }
+  function flush(){pages.push({html:box.innerHTML,sect:sl.sect});}
+  function addSplit(items,shellFn){
+    var shell=shellFn(),n=0;box.appendChild(shell.root);
+    items.forEach(function(it){
+      shell.add(it);n++;
+      if(over()&&(n>1||count>0)){
+        shell.remove();n--;
+        if(n===0)box.removeChild(shell.root);
+        flush();head(true);shell=shellFn();n=0;box.appendChild(shell.root);shell.add(it);n=1;
+      }
+    });
+    count++;
+  }
+  L.forEach(function(s){
+    sl=s;head(false);
+    s.n.forEach(function(el){
+      var tbl=el.classList&&el.classList.contains('table-wrap')&&el.querySelector('table');
+      var rows=tbl?Array.prototype.slice.call(tbl.rows):null;
+      var hasHead=rows&&rows.length>3&&Array.prototype.every.call(rows[0].cells,function(c){return c.tagName==='TH';})
+        &&!rows.some(function(r){return Array.prototype.some.call(r.cells,function(c){return c.rowSpan>1;});});
+      var listy=(el.tagName==='UL'||el.tagName==='OL'||(el.classList&&(el.classList.contains('procedure')||el.classList.contains('resource-list'))))&&el.children.length>1;
+      if(el.classList&&el.classList.contains('dh')&&count>1&&box.scrollHeight>box.clientHeight*0.5){flush();head(false);}
+      var c=el.cloneNode(true);box.appendChild(c);
+      if(over()&&count>0){var pv=c.previousElementSibling,lead=count>1&&pv&&pv.tagName==='P'&&pv.children.length===1&&pv.firstElementChild.tagName==='B'&&pv.textContent.trim()===pv.firstElementChild.textContent.trim();
+        box.removeChild(c);if(lead)box.removeChild(pv);flush();head(true);if(lead){box.appendChild(pv);count++;}box.appendChild(c);}
+      if(over()){
+        if(hasHead){
+          box.removeChild(c);
+          addSplit(rows.slice(1),function(){
+            var w=el.cloneNode(false),t=tbl.cloneNode(false),b=document.createElement('tbody');
+            t.appendChild(b);b.appendChild(rows[0].cloneNode(true));w.appendChild(t);
+            return {root:w,add:function(r){b.appendChild(r.cloneNode(true));},remove:function(){b.removeChild(b.lastChild);}};
+          });
+          return;
+        }
+        if(el.classList&&el.classList.contains('copybox')){
+          box.removeChild(c);
+          var lines=el.querySelector('pre').textContent.split('\n');
+          addSplit(lines,function(){
+            var w=el.cloneNode(false),hd=el.querySelector('.copyhead').cloneNode(true),pr=document.createElement('pre'),txt=[];
+            w.appendChild(hd);w.appendChild(pr);
+            return {root:w,add:function(l){txt.push(l);pr.className='';pr.textContent=txt.join('\n');window.fmtPre(pr);},remove:function(){txt.pop();pr.className='';pr.textContent=txt.join('\n');window.fmtPre(pr);}};
+          });
+          return;
+        }
+        if(listy){
+          box.removeChild(c);
+          addSplit(Array.prototype.slice.call(el.children),function(){
+            var u=el.cloneNode(false);
+            return {root:u,add:function(li){u.appendChild(li.cloneNode(true));},remove:function(){u.removeChild(u.lastChild);}};
+          });
+          return;
+        }
+      }
+      count++;
+    });
+    flush();
+  });
+  var o='<h3 class="st">전체 목차</h3><div class="outline">';
+  Array.prototype.forEach.call(document.querySelectorAll('aside nav .grp'),function(g){
+    o+='<div class="og"><b>'+g.querySelector('.grp-label').textContent+(g.querySelector('.l2')&&g.querySelector('.grp-label').textContent.indexOf('세션')===0?' · '+g.querySelector('.l2').textContent:'')+'</b>';
+    var guide=g.querySelector('.grp-label').textContent==='교육 안내';
+    Array.prototype.forEach.call(g.querySelectorAll(guide?'a.l2,a.l3':'a.l3'),function(a){o+='<span>'+a.textContent+'</span>';});
+    o+='</div>';
+  });
+  pages.splice(1,0,{html:o+'</div>',sect:'목차'});
+}
+function show(n){
+  i=Math.max(0,Math.min(pages.length-1,n));var p=pages[i];
+  box.innerHTML=p.html;box.scrollTop=0;
+  pgEl.textContent=(i+1)+' / '+pages.length;prog.style.width=((i+1)/pages.length*100)+'%';
+}
+var stage=document.getElementById('stage'),vp=document.getElementById('viewport');
+function fit(){var k=Math.min(vp.clientWidth/1280,vp.clientHeight/720);stage.style.transform='translate(-50%,-50%) scale('+k+')';}
+function open(){deck.hidden=false;document.body.style.overflow='hidden';fit();var w=[].slice.call(main.querySelectorAll('img')).map(function(m){if(m.complete)return 0;m.loading='eager';return new Promise(function(r){m.onload=m.onerror=r;setTimeout(r,8000);});});Promise.all(w).then(function(){build();show(0);});}
+function close(){deck.hidden=true;document.body.style.overflow='';}
+window.addEventListener('resize',function(){if(!deck.hidden)fit();});
+document.getElementById('slideBtn').onclick=open;
+document.getElementById('exit').onclick=close;
+document.getElementById('prev').onclick=function(){show(i-1)};
+document.getElementById('next').onclick=function(){show(i+1)};
+document.addEventListener('keydown',function(e){
+  if(deck.hidden)return;
+  if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ')show(i+1);
+  else if(e.key==='ArrowLeft'||e.key==='PageUp')show(i-1);
+  else if(e.key==='Escape')close();
+});
+document.addEventListener('click',function(e){
+  var b=e.target.closest&&e.target.closest('.copyhead button');if(!b)return;
+  var pre=b.closest('.copybox').querySelector('pre');
+  var done=function(){var t=b.textContent;b.textContent='복사됨';setTimeout(function(){b.textContent=t;},1200);};
+  if(navigator.clipboard)navigator.clipboard.writeText(pre.classList.contains('fmt')?pre.textContent:pre.innerText).then(done,done);else done();
+});
+})();
+</script>
+<script type="text/javascript">
+(function(){
+  var links=[].slice.call(document.querySelectorAll('aside nav a[href^="#"]'));
+  var targets=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));});
+  function update(){
+    var y=window.scrollY+120, cur=-1;
+    targets.forEach(function(el,i){ if(el && el.getBoundingClientRect().top+window.scrollY<=y) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('active', i===cur); });
+    var cp=null;
+    if(cur>=0){ var ca=links[cur]; cp=ca.classList.contains('l4')?ca.getAttribute('data-p'):(ca.getAttribute('href').slice(1)); }
+    links.forEach(function(a){ if(a.classList.contains('l4')) a.classList.toggle('show', a.getAttribute('data-p')===cp); });
+    if(cur>=0){ var a=links[cur], box=a.closest('aside'), r=a.getBoundingClientRect();
+      if(r.top<120||r.bottom>window.innerHeight-20) box.scrollTop+=r.top-window.innerHeight/2; }
+  }
+  window.addEventListener('scroll',update,{passive:true}); update();
+})();
+</script>
+<script type="text/javascript">
+(function(){
+  var btn=document.querySelector('.nav-toggle'), label=btn.querySelector('span'), body=document.body;
+  var mq=window.matchMedia('(max-width: 1020px)');
+  function isOpen(){ return mq.matches ? body.classList.contains('nav-open') : !body.classList.contains('nav-hidden'); }
+  function sync(){ var o=isOpen(); btn.setAttribute('aria-expanded',o); label.textContent=o?'목차 숨기기':'목차 보기'; }
+  try{ if(localStorage.getItem('navHidden')==='1') body.classList.add('nav-hidden'); }catch(e){}
+  btn.addEventListener('click',function(){
+    if(mq.matches){ body.classList.toggle('nav-open'); }
+    else{ var h=body.classList.toggle('nav-hidden'); try{ localStorage.setItem('navHidden',h?'1':'0'); }catch(e){} }
+    sync();
+  });
+  document.querySelectorAll('aside nav a').forEach(function(a){ a.addEventListener('click',function(){ if(mq.matches){ body.classList.remove('nav-open'); sync(); } }); });
+  if(mq.addEventListener) mq.addEventListener('change',sync);
+  sync();
+})();
+</script>
+</body>
+</html>
