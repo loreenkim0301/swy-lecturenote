@@ -315,7 +315,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <div><b>준비물</b><span>크롬, 지난주 금요일 AI 스튜디오 계정(개인 지메일), 클로드</span></div>
 <div><b>오늘의 결과물</b><span>감정 → 책 3권 상품 카드가 나오는 Hello 페이지 + 추천 확인표(고치기 전·후)</span></div>
 </div>
-<nav aria-label="3주차 교안" class="day-nav"><a href="./">3주차 홈</a><a href="./d1-sheet-appsscript.html">DAY 1 구글 시트·앱스스크립트</a><a href="./d2-web-crawling.html">DAY 2 웹 크롤링</a><a aria-current="page" href="./d3-ai-studio-books.html">DAY 3 감정 책 추천</a><a href="./d4-claude-code-chatbot.html">DAY 4 클로드 코드 챗봇 화면</a><a href="./d5-chatbot-api.html">DAY 5 챗봇에 AI API</a></nav>
+<nav aria-label="3주차 교안" class="day-nav"><a href="./">3주차 홈</a><a href="./d1-sheet-appsscript.html">DAY 1 사용자의 데이터·GA</a><a href="./d2-web-crawling.html">DAY 2 웹 크롤링</a><a aria-current="page" href="./d3-ai-studio-books.html">DAY 3 감정 책 추천</a><a href="./d4-claude-code-chatbot.html">DAY 4 클로드 코드 챗봇 화면</a><a href="./d5-chatbot-api.html">DAY 5 챗봇에 AI API</a></nav>
 </header>
 
 <section class="section" id="overview"><div class="section-label">OVERVIEW</div><h2>교육 개요</h2>
@@ -370,14 +370,14 @@ aside nav a.active{border-left-color:var(--blue)}
 
 <div class="topic" id="s1-1"><h3><span class="stage">개념</span>1-1. LLM이란?</h3>
 <h4>LLM이란?</h4><p>LLM(대규모 언어 모델)은 아주 많은 데이터로 학습한 언어 모델이에요. 글을 만들고, 번역하고, 요약하는 일을 해요. 클로드, 제미나이가 모두 LLM이에요.</p>
-<h4>어떤 문제를 해결하나요?</h4><p>사용자는 감정을 "설레요", "좀 지쳤어요"처럼 저마다 다르게 적어요. 규칙으로 만들면 감정 낱말마다 책 목록을 미리 짝지어 둬야 해요. LLM은 처음 보는 표현도 뜻을 읽고 맞는 답을 글로 만들어 줘요.</p>
+<h4>어떤 문제를 해결하나요?</h4><p>사용자는 감정을 "설레요", "좀 지쳤어요"처럼 저마다 다르게 적어요. 규칙으로 만들면 감정 낱말마다 책 목록을 미리 짝지어 둬야 해요. LLM은 처음 보는 표현도 뜻을 읽고 어울리는 답을 글로 만들어 줘요.</p>
 <h4>조심할 점</h4><p>LLM은 사실과 다르거나 주어진 내용과 맞지 않는 글을 만들 수 있어요. 이것을 환각이라고 해요. 책 추천에서는 이런 모양으로 나타날 수 있어요.</p>
 <div class="table-wrap"><table><tr><th>틀릴 수 있는 곳</th><th>예</th><th>사용자에게 생기는 일</th></tr>
 <tr><td><b>없는 책</b></td><td>그럴듯한 제목을 지어냄</td><td>검색해도 나오지 않아요</td></tr>
 <tr><td><b>저자 바꿔 쓰기</b></td><td>있는 책에 다른 저자 이름을 붙임</td><td>다른 책을 사게 돼요</td></tr>
 <tr><td><b>링크 지어내기</b></td><td>상품 번호를 지어낸 주소</td><td>없는 화면이나 엉뚱한 상품이 열려요</td></tr>
 </table></div>
-<p>공식 문서는 환각을 줄이는 방법으로 "모르면 모른다고 말해도 된다고 허락하기", "근거를 함께 내게 하기"를 들어요. 2세션과 4세션에서 이 방법을 화면 기획에 써요. 그리고 AI에 넣는 글에는 민감한 정보나 개인정보를 넣지 않아요.</p>
+<p>공식 문서는 환각을 줄이는 방법으로 "모르면 모른다고 말해도 된다고 허락하기", "근거를 함께 내게 하기"를 들어요. 2세션과 4세션에서 이 방법을 화면 기획에 써요.</p>
 <p class="source-note">출처: Google Cloud <a href="https://cloud.google.com/ai/llms" target="_blank" rel="noopener">대규모 언어 모델(LLM)이란?</a> · Anthropic 공식 문서 <a href="https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations" target="_blank" rel="noopener">환각 줄이기(Reduce hallucinations)</a> (2026.11.08 확인)</p>
 </div>
 
@@ -410,7 +410,7 @@ aside nav a.active{border-left-color:var(--blue)}
 
 <section class="section session" id="s2">
 <div class="session-head"><div class="eyebrow">SESSION 2 · 10:30–12:00</div><h2>책 추천 화면 기획하기</h2><p>1세션에서 본 문제를 화면 기획으로 막아요. AI에게 맡길 일과 코드가 할 일을 나누고, AI가 답할 모양을 정해요. 여기서 만든 기획표를 3세션 프롬프트에 그대로 넣어요.</p>
-<div class="why-box"><b>왜 하나?</b>AI가 아무리 좋아져도 틀릴 수 있어요. 그래서 기획자는 "틀리면 안 되는 값은 AI에게 맡기지 않는다"는 규칙을 화면에 넣어요.</div></div>
+<div class="why-box"><b>왜 하나?</b>AI가 아무리 좋아져도 틀릴 수 있어요. 그래서 기획자는 "틀리면 안 되는 값은 AI에게 맡기지 않는다"는 규칙을 화면 기획에 넣어요.</div></div>
 
 <div class="topic" id="s2-1"><h3><span class="stage">기획</span>2-1. 링크는 AI가 아니라 코드가 만들기</h3>
 <h4>검색 주소란?</h4><p>검색 주소는 검색어가 주소 안에 들어 있는 링크예요. YES24에서 책을 검색하면 주소가 아래 모양이 돼요. <code class="inline">query=</code> 뒤가 검색어예요.</p>
@@ -433,7 +433,7 @@ aside nav a.active{border-left-color:var(--blue)}
 </div>
 
 <div class="topic" id="s2-2"><h3><span class="stage">기획</span>2-2. AI에게 받을 답의 모양 정하기</h3>
-<h4>JSON으로 받는 이유</h4><p>AI가 긴 글로 답하면 코드는 어디가 제목이고 어디가 저자인지 알 수 없어요. 칸 이름을 정해 JSON으로 받으면, 코드가 칸마다 꺼내 카드에 넣어요. AI API를 부르는 코드는 대부분 이렇게 '보내는 말'과 '받는 모양'을 정해 두고 써요.</p>
+<h4>JSON으로 받는 이유</h4><p>AI가 긴 글로 답하면 코드는 어디가 제목이고 어디가 저자인지 알 수 없어요. 칸 이름을 정해 JSON으로 받으면, 코드가 칸마다 꺼내 카드에 넣어요.</p>
 <p class="blk k-ex"><span>예시</span>AI가 돌려줄 답의 모양</p>
 <div class="copybox"><div class="copyhead"><span>예시 · 읽기만 하세요</span><button type="button">복사</button></div><pre>{"books": [
   {"title": "책 제목", "author": "저자", "reason": "이 감정에 맞는 이유 한 문장"},
@@ -480,7 +480,7 @@ aside nav a.active{border-left-color:var(--blue)}
 
 <section class="section session" id="s3">
 <div class="session-head"><div class="eyebrow">SESSION 3 · 13:00–14:40</div><h2>Hello 페이지에 책 추천 붙이기</h2><p>지난주 금요일에 만든 AI 스튜디오 Hello 앱을 열어, 2세션 기획표대로 감정 입력칸과 책 카드를 더해요.</p>
-<div class="why-box"><b>왜 하나?</b>지난주 금요일에는 AI가 화면을 만들어 줬어요. 오늘은 내 화면이 AI를 불러 사용자에게 답해요. 같은 앱이 'AI가 만든 서비스'에서 'AI를 붙인 서비스'로 바뀌어요.</div></div>
+<div class="why-box"><b>왜 하나?</b>지난주 금요일에는 AI가 화면을 만들어 줬어요. 오늘은 내 화면이 AI를 불러 사용자에게 답해요.</div></div>
 
 <div class="topic" id="s3-1"><h3><span class="stage">실습</span>3-1. 감정 입력과 책 카드 만들기</h3>
 <p><b>STEP 1. 지난주 금요일 Hello 앱 열기</b></p>
