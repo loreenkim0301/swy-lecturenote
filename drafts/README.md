@@ -8,6 +8,8 @@
 | 교안 | 폴더 | 들어온 날 | 상태 |
 |---|---|---|---|
 | 사진 대신 이름표로 · Vercel agent-desktop | [261110-agent-desktop](./261110-agent-desktop/) | 2026-11-10 | 새로 작성, 실습 미검증 |
+| agent-desktop 학생용 · 같이 써 볼까요? | [261110-agent-desktop-hands-on](./261110-agent-desktop-hands-on/) | 2026-11-10 | 새로 작성, 3-5 미검증 |
+| agent-desktop 강사용 노트 | [261110-agent-desktop-instructor](./261110-agent-desktop-instructor/) | 2026-11-10 | 강사 전용 |
 | PM을 위한 프로그래밍의 이해: 파이썬 ①·② | [2610-aiclass-python](./2610-aiclass-python/) | 2026-11-10 | 정식 목록에서 옮김 |
 | 바이브코더와 PM을 위한 GitHub 기초 | [261026-github-basics](./261026-github-basics/) | 2026-11-10 | 정식 목록에서 옮김 |
 | 비개발자를 위한 백엔드 플랫폼 이해 · 버셀 vs 네트리파이 | [261102-backend-platform](./261102-backend-platform/) | 2026-11-10 | 정식 목록에서 옮김 |
