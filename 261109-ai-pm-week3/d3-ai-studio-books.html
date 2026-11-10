@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet"/>
+<meta content="index, follow, noai, noimageai" name="robots"/>
+<title>AI 프로덕트 매니저 3주차 · DAY 3 감정 책 추천</title>
+<style>:root { --ink: #172033; --muted: #657086; --line: #dfe4ed; --soft: #f5f7fb; --blue: #2457f5; --nav: #111a2e; --green: #16a36b; --warn: #ffad22; --page-pad: clamp(28px,5.8vw,82px); --font-sans: "Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; scroll-behavior: smooth; }
+* { box-sizing: border-box; }
+body { margin: 0px; background: rgb(238, 241, 246); color: var(--ink); font-family: var(--font-sans); line-height: 1.7; letter-spacing: -0.01em; }
+.app aside { position: fixed; inset: 0px auto 0px 0px; width: 310px; height: 100vh; padding: 0 16px 28px; background: var(--nav); color: rgb(255, 255, 255); overflow-y: auto; z-index: 10; }
+.app main { min-height: 100vh; margin-left: 310px; background: rgb(255, 255, 255); }
+.side-head { position: sticky; top: 0; z-index: 1; margin: 0 -16px; padding: 20px 26px 14px; background: var(--nav); border-bottom: 1px solid rgb(45, 56, 80); }
+.brand { font-size: 11px; font-weight: 800; letter-spacing: 0.14em; color: rgb(130, 145, 177); }
+aside h1 { margin: 6px 0 4px; font-size: 17px; line-height: 1.35; letter-spacing: -0.02em; }
+.side-sub, .side-foot { font-size: 12px; color: rgb(150, 162, 186); }
+aside nav { margin-top: 10px; }
+aside nav a { display: block; padding: 7px 10px 7px 22px; color: rgb(190, 200, 219); text-decoration: none; font-size: 14px; line-height: 1.45; border-left: 3px solid transparent; border-radius: 0 6px 6px 0; }
+aside nav a:hover { color: rgb(255, 255, 255); background: rgb(25, 36, 60); }
+aside nav .major { margin-top: 12px; padding-left: 10px; color: rgb(255, 255, 255); font-size: 15px; font-weight: 800; }
+aside nav a.active { color: rgb(255, 255, 255); background: rgb(30, 44, 74); border-left-color: var(--blue); font-weight: 700; }
+.side-foot { margin: 20px 10px 0; padding-top: 14px; border-top: 1px solid rgb(45, 56, 80); }
+.hero { padding: 86px var(--page-pad) 72px; background: linear-gradient(135deg, rgb(247, 249, 255), rgb(238, 243, 255) 58%, rgb(233, 255, 246)); border-bottom: 1px solid var(--line); }
+.kicker, .section-label, .topic-label, .eyebrow { font-size: 13px; font-weight: 800; letter-spacing: 0.13em; color: var(--blue); }
+.hero h1 { margin: 16px 0px; font-size: clamp(40px, 5vw, 70px); line-height: 1.08; letter-spacing: -0.055em; }
+.hero h1 em { color: var(--blue); font-style: normal; }
+.hero > p { max-width: 860px; color: rgb(79, 91, 114); font-size: 18px; }
+.hero-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 38px; background: rgb(220, 226, 237); border: 1px solid rgb(220, 226, 237); }
+.hero-grid div { background: rgb(255, 255, 255); padding: 16px; }
+.hero-grid b { display: block; font-size: 12px; color: rgb(125, 135, 153); }
+.hero-grid span { font-size: 14px; font-weight: 800; }
+.section { padding: 70px var(--page-pad); border-bottom: 1px solid var(--line); scroll-margin-top: 18px; }
+.section > h2, .session-head h2 { margin: 8px 0px 14px; font-size: 36px; letter-spacing: -0.04em; }
+.lead { font-size: 18px; max-width: 900px; }
+.three-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px 0px; }
+.three-cards article { padding: 20px; border: 1px solid var(--line); border-radius: 14px; background: rgb(255, 255, 255); }
+.three-cards article > span { font-size: 12px; font-weight: 800; color: var(--blue); }
+.three-cards h3 { margin: 8px 0px 5px; font-size: 20px; }
+.three-cards p, .caption { color: var(--muted); font-size: 14px; }
+.notice, .warning { margin: 22px 0px; padding: 16px 19px; }
+.notice { border-left: 4px solid var(--blue); background: rgb(234, 240, 255); }
+.warning { border-left: 4px solid var(--warn); background: rgb(255, 246, 230); }
+.schedule { margin-top: 30px; }
+.schedule div { display: grid; grid-template-columns: 48px 125px 1fr; align-items: center; padding: 13px 0px; border-top: 1px solid var(--line); }
+.schedule span.badge { display: grid; place-items: center; width: 29px; height: 29px; border-radius: 50%; background: var(--nav); color: rgb(255, 255, 255); font-size: 12px; }
+.schedule p { margin: 0px; }
+.session { padding-top: 0px; }
+.session-head { margin: 0 calc(var(--page-pad)*-1) 50px; padding: 52px var(--page-pad); background: var(--nav); color: rgb(255, 255, 255); }
+.session-head .eyebrow { color: rgb(125, 160, 255); }
+.session-head p { max-width: 900px; color: rgb(195, 204, 220); }
+.vibe-intro { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 28px; align-items: start; margin-top: 30px; padding-top: 28px; border-top: 1px solid rgb(45, 56, 80); }
+.vibe-quote { margin: 0; padding-left: 18px; border-left: 3px solid rgb(125, 160, 255); }
+.vibe-quote blockquote { margin: 0 0 10px; color: #fff; font-size: 21px; font-weight: 700; line-height: 1.5; letter-spacing: -0.03em; }
+.vibe-quote figcaption { color: rgb(160, 172, 196); font-size: 13px; }
+.vibe-meaning { margin: 18px 0 0; padding: 14px 16px; border-radius: 12px; background: rgb(25, 36, 60); color: rgb(215, 222, 236); font-size: 15px; }
+.vibe-meaning b { color: #fff; }
+.vibe-timeline { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.vibe-timeline li { display: grid; grid-template-columns: 74px 1fr; gap: 12px; padding: 12px 14px; border: 1px solid rgb(45, 56, 80); border-radius: 12px; background: rgba(255, 255, 255, 0.03); }
+.vibe-timeline time { color: rgb(125, 160, 255); font-size: 13px; font-weight: 800; letter-spacing: 0.02em; }
+.vibe-timeline b { display: block; color: #fff; font-size: 15px; }
+.vibe-timeline span { display: block; color: rgb(185, 195, 214); font-size: 14px; line-height: 1.55; }
+.vibe-sources { grid-column: 1 / -1; margin: 0; color: rgb(130, 145, 177); font-size: 12px; }
+.vibe-sources a { color: rgb(160, 180, 230); }
+@media (max-width: 1020px) { .vibe-intro { grid-template-columns: 1fr; } }
+.time { font-size: 13px; color: rgb(174, 185, 207); }
+.topic { margin-bottom: 70px; scroll-margin-top: 20px; }
+.topic h3 { margin: 8px 0px 12px; font-size: 28px; letter-spacing: -0.025em; }
+.flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 9px; margin: 18px 0px 26px; }
+.flow div { text-align: center; padding: 16px 12px; border-radius: 12px; background: rgb(237, 242, 255); }
+.flow span { display: block; font-size: 12px; font-weight: 800; color: var(--blue); }
+.flow b { display: block; }
+.flow small { display: block; margin-top: 5px; color: var(--muted); }
+.versus { display: grid; grid-template-columns: 1fr 54px 1fr; align-items: center; margin: 16px 0px 26px; }
+.versus > div { padding: 20px; border: 1px solid var(--line); border-radius: 13px; background: var(--soft); }
+.versus i { text-align: center; color: var(--blue); font-style: normal; font-weight: 900; }
+.table-wrap { overflow: auto; }
+table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 14px; }
+th { padding: 13px; text-align: left; color: rgb(255, 255, 255); background: var(--nav); }
+td { padding: 14px 13px; border-bottom: 1px solid var(--line); }
+.checklist { display: grid; gap: 7px; padding: 0px; list-style: none; }
+.checklist li { padding: 11px 14px; border-radius: 8px; background: var(--soft); }
+.checklist li::before { content: "✓"; margin-right: 8px; color: var(--blue); font-weight: 900; }
+.practice-brief { display: grid; gap: 8px; margin: 18px 0px; }
+.practice-brief > div { padding: 15px 18px; border: 1px solid rgb(200, 239, 221); border-radius: 12px; background: rgb(237, 255, 246); }
+.copybox { margin: 20px 0px; border: 1px solid rgb(207, 215, 230); border-radius: 12px; overflow: hidden; background: rgb(17, 26, 46); color: rgb(232, 238, 252); }
+.copyhead { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: rgb(30, 43, 71); font-size: 13px; font-weight: 800; }
+.copyhead button { padding: 5px 10px; border: 1px solid rgb(97, 112, 141); border-radius: 6px; background: transparent; color: rgb(255, 255, 255); cursor: pointer; }
+.copybox pre { white-space: pre-wrap; margin: 0px; padding: 20px; font: 13px / 1.72 ui-monospace, SFMono-Regular, Menlo, monospace; }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 18px 0px 26px; }
+.steps article { padding: 18px; border-top: 4px solid var(--blue); border-radius: 12px; }
+.steps strong { display: block; color: var(--blue); font-size: 12px; }
+.steps b { display: block; font-size: 18px; margin-top: 3px; }
+.sub-optional { margin-top: 10px; padding: 10px 12px; border: 1px dashed var(--line); border-radius: 10px; color: var(--muted); font-size: 14px; }
+.sub-optional .tag { margin-left: 0; }
+.steps .sub-optional b { display: inline; font-size: 14px; margin: 0 4px 0 2px; color: var(--muted); }
+.tag { display: inline-block; margin-left: 6px; padding: 1px 8px; border-radius: 999px; font-size: 11px; font-weight: 800; letter-spacing: 0; vertical-align: 1px; }
+.tag-req { background: var(--blue); color: #fff; }
+.tag-opt { border: 1px solid var(--line); background: #fff; color: var(--muted); font-weight: 700; }
+.final-box { padding: 28px; border-radius: 18px; background: linear-gradient(135deg, rgb(17, 26, 46), rgb(29, 47, 88)); color: rgb(255, 255, 255); }
+.final-box h3 { margin: 6px 0px 8px; font-size: 30px; }
+.final-box p { color: rgb(203, 213, 231); }
+code.inline { padding: 2px 6px; border-radius: 6px; background: rgb(238, 242, 248); font-family: ui-monospace, monospace; }
+.small { font-size: 13px; color: var(--muted); }
+.resource-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 18px 0px 28px; }
+.resource-card { padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--soft); }
+.resource-card b { display: block; margin-bottom: 4px; }
+.resource-card a { color: var(--blue); font-weight: 800; text-decoration: none; word-break: break-all; font-size: 13px; }
+.sample-link { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin: 22px 0; padding: 14px 18px; border: 1px solid rgb(203, 218, 255); border-radius: 12px; background: rgb(240, 245, 255); }
+.sample-link span { color: var(--muted); font-size: 14px; }
+.sample-link b { display: block; color: var(--ink); font-size: 15px; }
+.sample-link .resource-link { flex-shrink: 0; margin-top: 0; }
+@media (max-width: 680px) { .sample-link { flex-direction: column; align-items: flex-start; } }
+.resource-link { display: inline-block; margin-top: 8px; padding: 8px 12px; border: 1px solid rgb(203, 213, 225); border-radius: 8px; color: var(--blue); font-size: 13px; font-weight: 800; text-decoration: none; background: rgb(255, 255, 255); }
+.procedure { counter-reset: step 0; display: grid; gap: 10px; margin: 18px 0px 28px; }
+.procedure > div { position: relative; padding: 15px 16px 15px 54px; border: 1px solid var(--line); border-radius: 12px; background: rgb(255, 255, 255); }
+.procedure > div::before { counter-increment: step 1; content: counter(step); position: absolute; left: 16px; top: 15px; width: 26px; height: 26px; display: grid; place-items: center; border-radius: 50%; background: var(--blue); color: rgb(255, 255, 255); font-size: 12px; font-weight: 900; }
+.sample-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 18px 0px 28px; }
+.sample-grid article { padding: 18px; border: 1px solid var(--line); border-radius: 13px; background: var(--soft); }
+.term-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 22px 0px; }
+.term-grid article { padding: 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--soft); }
+.term-grid strong { display: block; color: var(--blue); font-size: 12px; letter-spacing: 0.08em; }
+.term-grid h4 { margin: 5px 0px 8px; font-size: 20px; }
+.talk { margin: 18px 0px; padding: 22px; border-left: 4px solid var(--green); background: rgb(241, 252, 247); }
+.talk p { margin: 0px 0px 14px; }
+.talk p:last-child { margin-bottom: 0px; }
+.example-flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 18px 0px 24px; }
+.example-flow div { padding: 14px 12px; border-radius: 10px; background: rgb(255, 248, 235); }
+.example-flow b, .example-flow span { display: block; }
+.example-flow span { margin-bottom: 3px; color: rgb(154, 100, 16); font-size: 12px; font-weight: 800; }
+details.optional { margin-top: 8px; padding: 0 22px 6px; border: 1px solid var(--line); border-radius: 14px; background: var(--soft); }
+details.optional > summary { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; padding: 20px 0; cursor: pointer; list-style: none; }
+details.optional > summary::-webkit-details-marker { display: none; }
+details.optional > summary::before { content: "▸"; color: var(--blue); font-weight: 900; }
+details.optional[open] > summary::before { content: "▾"; }
+details.optional .summary-title { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
+details.optional .summary-hint { font-size: 13px; color: var(--muted); }
+details.optional[open] .summary-hint { display: none; }
+.profile-card { display: grid; grid-template-columns: 1.6fr 1fr; gap: 20px; padding: 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--soft); }
+.profile-card h3 { margin: 0 0 6px; font-size: 22px; }
+.profile-card ul { margin: 10px 0 0; padding-left: 18px; }
+.profile-links { display: grid; gap: 8px; align-content: start; }
+.profile-links a { padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--blue); font-size: 14px; font-weight: 700; text-decoration: none; word-break: break-all; }
+.sample-shot { margin: 22px 0; }
+.sample-shot img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 12px; }
+.sample-shot.narrow img { max-width: 700px; margin: 0 auto; }
+.sample-shot.small img { max-width: 360px; }
+.sample-shot figcaption { margin-top: 10px; color: var(--muted); font-size: 14px; }
+@media (max-width: 680px) { .profile-card { grid-template-columns: 1fr; padding: 18px; } }
+.app aside { word-break: keep-all; }
+.topic .three-cards h3 { margin: 8px 0 5px; font-size: 20px; letter-spacing: -0.02em; }
+.block-title { margin: 34px 0 4px; font-size: 22px; letter-spacing: -0.02em; scroll-margin-top: 18px; }
+.break { padding: 54px var(--page-pad); background: rgb(246, 248, 252); border-bottom: 1px solid var(--line); }
+.break h2 { margin: 0px 0px 8px; font-size: 32px; }
+@media (max-width: 1020px) {
+  .app aside { display: none; }
+  .app main { margin-left: 0px; }
+  .hero-grid, .three-cards, .steps, .term-grid, .example-flow { grid-template-columns: 1fr 1fr; }
+  .flow { grid-template-columns: 1fr 1fr; }
+}
+.nav-toggle { position: fixed; top: 14px; left: 322px; z-index: 20; display: flex; align-items: center; gap: 6px; height: 36px; padding: 0 12px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255, 255, 255, 0.94); color: var(--ink); font: 700 13px/1 var(--font-sans); cursor: pointer; box-shadow: 0 4px 14px rgba(17, 26, 46, 0.12); transition: left .25s ease; }
+.nav-toggle:hover { border-color: var(--blue); color: var(--blue); }
+.nav-toggle svg { width: 16px; height: 16px; }
+.app aside { transition: transform .25s ease; }
+.app main { transition: margin-left .25s ease; }
+body.nav-hidden .app aside { transform: translateX(-100%); }
+body.nav-hidden .app main { margin-left: 0; }
+body.nav-hidden .nav-toggle { left: 14px; }
+@media (max-width: 1020px) {
+  .app aside { display: block; width: min(310px, calc(100vw - 64px)); transform: translateX(-100%); }
+  .nav-toggle { left: 14px; }
+  body.nav-open .app aside { transform: none; box-shadow: 8px 0 24px rgba(17, 26, 46, 0.25); }
+  body.nav-open .nav-toggle { left: auto; right: 10px; padding: 0 11px; }
+  body.nav-open .nav-toggle span { display: none; }
+}
+@media (max-width: 680px) {
+  .hero, .section, .break { padding-left: 20px; padding-right: 20px; }
+  .hero { padding-top: 54px; }
+  .hero-grid, .three-cards, .steps, .flow, .resource-list, .term-grid, .example-flow { grid-template-columns: 1fr; }
+  .schedule div { grid-template-columns: 38px 100px 1fr; }
+  .versus { grid-template-columns: 1fr; }
+  .versus i { padding: 8px 0px; }
+  .session-head { margin-left: -20px; margin-right: -20px; padding-left: 20px; padding-right: 20px; }
+  .section > h2, .session-head h2 { font-size: 30px; }
+  .topic h3 { font-size: 24px; }
+}.colab-open{margin:8px 0 14px}.colab-open a{display:inline-block;padding:6px 12px;border-radius:8px;background:#f9ab00;color:#1d2433;font-weight:700;text-decoration:none}.colab-open a:hover{filter:brightness(.95)}.colab-open .small{display:block;margin-top:6px}.deep-dive{margin:18px 0;padding:14px 18px;border:1px solid #dfe3ec;border-left:4px solid #f9ab00;border-radius:10px;background:rgba(249,171,0,.05)}
+
+/* 블록 종류 표시 */
+.blk { margin: 22px 0 8px; font-size: 15px; font-weight: 700; }
+.blk span { display: inline-block; margin-right: 8px; padding: 2px 10px; border-radius: 999px; font-size: 12px; font-weight: 800; color: #fff; background: #657086; vertical-align: 1px; }
+.k-ex span { background: var(--blue); } .k-tpl span { background: var(--warn); color: #172033; } .k-pr span { background: var(--nav); } .k-res span { background: #6b4fd8; } .k-chk span { background: var(--green); }
+.step-h { margin: 34px 0 6px; padding-top: 18px; border-top: 1px dashed var(--line); font-size: 18px; }
+.block-legend { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 4px; } .block-legend .blk { margin: 0; }
+.hl-leg{display:inline-block;margin-left:4px;padding:1px 7px;border-radius:999px;background:#fff1f0;color:#b42318;font-weight:600;font-size:11.5px}
+
+/* 실행 결과 캡처 토글 */
+details.res-toggle { margin: 22px 0 8px; }
+details.res-toggle > summary { cursor: pointer; list-style: none; font-size: 15px; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; }
+details.res-toggle > summary::-webkit-details-marker { display: none; }
+details.res-toggle > summary .tg::after { content: "▸ 펼쳐 보기"; font-size: 13px; color: #6b4fd8; font-weight: 700; }
+details.res-toggle[open] > summary .tg::after { content: "▾ 접기"; }
+details.res-toggle > summary .blk { margin: 0; }
+</style>
+<style>
+.tt{margin:0;padding-left:1.1em}.tt li{margin:2px 0}
+.dl-list{display:grid;gap:10px;margin:18px 0}
+.dl-card{display:flex;align-items:center;gap:14px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:#fff;text-decoration:none;color:var(--ink)}
+.dl-card:hover{border-color:var(--blue);background:var(--soft)}
+.dl-ico{flex:none;display:grid;place-items:center;width:44px;height:52px;border-radius:8px;background:rgb(237,242,255);color:var(--blue);font-size:11px;font-weight:800}
+.dl-body{flex:1}.dl-body b{display:block;font-size:16px}.dl-body span{display:block;font-size:13px;color:var(--muted)}
+.dl-btn{flex:none;padding:8px 14px;border-radius:8px;background:var(--blue);color:#fff;font-size:13px;font-weight:800}
+@media(max-width:680px){.dl-card{flex-wrap:wrap}}
+#slide .sample-shot{margin:8px 0}#slide .sample-shot img{max-height:420px;width:auto;max-width:100%;margin:0 auto}#slide .sample-shot figcaption{margin-top:4px;font-size:13px;text-align:center}
+#slide .dl-card{padding:10px 14px}
+.todo{color:#b42318;font-weight:700}
+main,#slide{word-break:keep-all;overflow-wrap:break-word}
+h1,h2,h3,.hero p,.lead{text-wrap:balance}
+p,li,td{text-wrap:pretty}
+td .tag{margin-bottom:2px}
+.tag.nap{background:#7c3aed}.tag.sheet{background:var(--green)}
+.tag{margin-left:0;margin-right:4px}
+.topic .small{display:block}
+.resource-card .small{display:block;margin-bottom:6px}
+.resource-card a{display:inline-block;margin:2px 0}
+.copybox pre{background:none;color:inherit}
+.hero-grid{grid-template-columns:repeat(3,1fr)}
+.sample-link .resource-link{margin:0 6px 0 0}
+.sample-link{flex-wrap:wrap;justify-content:flex-start;gap:6px}
+#slideBtn{position:fixed;right:16px;bottom:16px;z-index:30;background:var(--blue);color:#fff;border:0;border-radius:999px;padding:12px 20px;font:700 15px var(--font-sans);cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+#deck{position:fixed;inset:0;z-index:100;background:#0b1220;display:flex;flex-direction:column}
+#deck[hidden]{display:none}
+#viewport{flex:1;min-height:0;position:relative;overflow:hidden}
+#stage{position:absolute;left:50%;top:50%;width:1280px;height:720px;background:#fff;display:flex;flex-direction:column;overflow:hidden;transform-origin:center center;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+#master{flex:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 96px;background:var(--nav);color:#fff;font-weight:800;font-size:15px}
+#master .m-brand{font-size:11px;letter-spacing:.14em;color:rgb(130,145,177);margin-right:12px}
+#mbar{flex:none;height:4px;background:var(--line)}#prog{display:block;height:100%;background:var(--blue);width:0}
+#slide{flex:1;min-height:0;overflow:hidden;padding:28px 96px 12px;font-size:19px;line-height:1.55}
+#slide h1{font-size:46px;line-height:1.15;margin:12px 0}#slide h1 em{color:var(--blue);font-style:normal}
+#slide h3.st{margin:0 0 14px;font-size:32px;letter-spacing:-.03em}
+#slide .cont{font-size:16px;color:var(--muted);font-weight:500;margin-left:10px}
+#slide table{font-size:16px;margin-top:6px}#slide th,#slide td{padding:9px 12px}
+#slide .copybox{margin:10px 0}#slide .copybox pre{font-size:15px;padding:14px 18px}
+#slide p,#slide .notice,#slide .warning{margin:8px 0}
+#slide .notice,#slide .warning{padding:12px 16px}
+#slide .procedure{gap:8px;margin:10px 0}#slide .procedure>div{padding:10px 14px 10px 50px}
+#slide .resource-list{grid-template-columns:repeat(3,1fr);margin:10px 0}
+#slide .hero-grid{margin-top:20px}#slide .flow{grid-template-columns:repeat(5,1fr);margin:12px 0 16px}#slide .flow div{padding:10px 8px}#slide .hero-grid{grid-template-columns:repeat(3,1fr)}
+#pager{flex:none;display:flex;align-items:center;justify-content:center;gap:14px;height:40px;border-top:1px solid var(--line);color:var(--muted);font-size:14px;font-weight:700}
+#pager button{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:6px;width:30px;height:26px;font-size:11px;cursor:pointer}
+#bar{flex:none;display:flex;align-items:center;justify-content:center;gap:16px;padding:8px;background:#111a2e;color:#cbd5e7;font-size:14px}
+#bar button{border:1px solid rgb(97,112,141);background:transparent;color:#fff;border-radius:8px;padding:6px 14px;font:700 14px var(--font-sans);cursor:pointer}
+@media print{#slideBtn,#deck{display:none!important}}
+
+aside nav .nav-title{padding:6px 10px 10px;font-size:12px;font-weight:800;letter-spacing:.12em;color:rgb(130,145,177)}
+aside nav .grp{margin-top:20px;padding-top:12px;border-top:1px solid rgb(45,56,80)}
+aside nav .nav-title+.grp{margin-top:0;border-top:0;padding-top:0}
+aside nav .grp-label{padding:0 10px 4px;font-size:11px;font-weight:800;letter-spacing:.1em;color:rgb(130,145,177)}
+aside nav a.l2{margin-top:0;padding:6px 10px;color:#fff;font-size:15px;font-weight:800;border-left:3px solid transparent}
+aside nav a.l3{margin-left:12px;padding:5px 10px 5px 14px;font-size:14px;border-left:1px solid rgb(45,56,80)}
+aside nav a.l4{display:none;margin-left:12px;padding:3px 10px 3px 30px;font-size:12.5px;color:rgb(150,162,186);border-left:1px solid rgb(45,56,80)}
+aside nav a.l4.show{display:block}
+aside nav a.active{border-left-color:var(--blue)}
+.dh{margin:30px 0 8px;padding:2px 0 2px 12px;border-left:4px solid var(--blue)}
+.dh b{font-size:1.06em}
+#slide .dh{margin:12px 0 8px}
+#slide .eb{margin:0 0 4px;font-size:14px;font-weight:800;letter-spacing:.06em;color:var(--blue)}
+#slide .outline{columns:2;column-gap:56px;font-size:16px;line-height:1.5}
+#slide .outline .og{break-inside:avoid;margin-bottom:12px}
+#slide .outline b{display:block;font-size:17px}
+#slide .outline span{display:block;padding-left:14px;color:var(--muted);font-size:14.5px}
+
+.base{margin:6px 0 14px;padding:8px 12px;border-left:4px solid var(--green);background:rgb(236,248,243);font-size:14.5px}
+.copybox pre{font:15px/1.8 var(--font-sans);letter-spacing:-.01em}
+.copybox pre.fmt{white-space:normal;padding:18px 20px}
+.pl{display:flex;gap:10px;margin:0 0 9px}.pl:last-child{margin-bottom:0}
+.pl .pk{flex:none;width:3.3em;color:rgb(140,180,255);font-weight:800}
+.pl.k2 .pk{color:rgb(110,220,180)}.pl.k3 .pk{color:rgb(255,200,110)}
+.pl .pt{flex:1;min-width:0}
+.pl.c{padding-left:calc(3.3em + 10px);margin-top:-5px}
+#slide .copybox pre.fmt{font-size:17px;padding:14px 18px}
+#slide .base{font-size:15px;padding:6px 12px}
+</style>
+<style>.side-link{margin:16px 10px 0;padding:12px;border:1px solid rgb(45,56,80);border-radius:10px;font-size:12px;color:rgb(190,200,219)}.side-link b{display:block;color:#fff;font-size:12px;margin-bottom:4px}.side-link a{color:rgb(140,180,255);word-break:break-all}.day-nav{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}.day-nav a{padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:13px;font-weight:700;color:var(--ink);text-decoration:none}.day-nav a[aria-current]{background:var(--blue);border-color:var(--blue);color:#fff}main pre{white-space:pre-wrap;overflow-wrap:anywhere}main code.inline{overflow-wrap:break-word}.hero-grid code.inline,.hero-grid span{overflow-wrap:anywhere}figure.voice{margin:18px 0;padding:16px 20px;border-left:4px solid var(--blue);background:var(--soft);border-radius:0 12px 12px 0}figure.voice blockquote{margin:0}figure.voice blockquote p{margin:0;font-size:18px;font-weight:700;line-height:1.55}figure.voice blockquote p.orig{margin-top:6px;font-size:14px;font-weight:500;color:var(--muted)}figure.voice figcaption{margin-top:10px;font-size:13px;color:var(--muted)}#slide figure.voice{margin:10px 0;padding:10px 16px}kbd{display:inline-block;padding:1px 6px;border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;background:#fff;font:600 13px var(--font-sans)}.source-note{font-size:13px;color:var(--muted)}.resource-list.news .resource-card{border-left:4px solid #e8a23a}.resource-list.news .resource-card>.small:first-child::before{content:"뉴스";display:inline-block;margin-right:6px;padding:0 6px;border-radius:4px;background:#fff3df;color:#9a5b00;font-weight:700}.resource-list.news .resource-card>.small:last-child{margin-top:6px;color:var(--muted)}</style>
+<style>.why-box{margin:14px 0 0;padding:12px 16px;border-left:4px solid #8fb0ff;background:rgba(255,255,255,.08);border-radius:0 10px 10px 0;color:#e6ebf5;max-width:900px}.why-box b{display:block;color:#a9c1ff;font-size:13px;margin-bottom:2px}.ok-line{margin:8px 0 0;font-size:14.5px}.ok-line b{display:inline-block;margin-right:8px;padding:1px 8px;border-radius:6px;background:#e7f7ef;color:#16a36b;font-size:12px}.goal-list li{margin-bottom:6px}</style><style>.shot{margin:14px 0 6px;max-width:760px}.shot img{display:block;width:100%;height:auto;border:1px solid #d9dde5;border-radius:10px;box-shadow:0 2px 10px rgba(20,30,60,.06)}.shot figcaption{font-size:12.5px;color:#6b7280;margin-top:6px}.stage{display:inline-block;margin-right:6px;padding:1px 8px;border-radius:999px;background:#eef2ff;color:#3b4ec8;font-size:12px;font-weight:700}.tpl td:empty::after{content:"\00a0";}.tpl td{height:30px}.result-box{border:1px solid #c9e9d9;background:#f2fbf6;border-radius:10px;padding:12px 16px;margin:10px 0}.result-box b{color:#16794f}.entry-box{border:1px solid #cfd9f3;background:#f5f8ff;border-radius:10px;padding:12px 16px;margin:12px 0}.entry-box>b{color:#2c48b8}.entry-box p{margin:6px 0}.entry-box .shot img{width:auto;max-width:100%}.ref-box{display:block;border:1px dashed #d9c27a;background:#fffbea;border-radius:10px;padding:12px 16px;margin:12px 0}.ref-box>b{color:#8a6a00}.ref-box p{margin:6px 0}.ref-box ul{margin:6px 0 0;padding-left:18px}h4{margin:16px 0 6px}ol.do-steps{padding-left:22px}ol.do-steps>li{margin-bottom:14px}ol.do-steps>li>p{margin:0 0 6px}.ref-kind{display:inline-block;font-size:12px;color:#6b5a1e;background:#f6ecc4;border-radius:6px;padding:1px 6px;margin-right:4px}.shot-todo .shot-ph{display:grid;place-content:center;gap:8px;aspect-ratio:16/10;padding:18px;border:2px dashed #c3cbe0;border-radius:10px;background:repeating-linear-gradient(-45deg,#f7f9fc 0 12px,#eef2f8 12px 24px);color:#657086;text-align:center;font-size:13px}.shot-todo.mobile{max-width:300px}.shot-todo.mobile .shot-ph{aspect-ratio:9/16}.shot-ph b{font-size:15px;color:#172033}.ph-file{font-family:ui-monospace,monospace;font-size:12px;word-break:break-all}.ph-marks{display:grid;gap:4px}.ph-marks i{font-style:normal;font-weight:700}.ph-click{color:#b42318}.ph-check{color:#b45309}.hl-leg.hl-k{background:#fff4e5;color:#b45309}</style></head>
+<body>
+<button aria-controls="side-nav" aria-expanded="true" class="nav-toggle" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" viewbox="0 0 16 16"><path d="M2 4h12M2 8h12M2 12h12"></path></svg><span>목차 숨기기</span></button>
+<div class="app">
+<aside id="side-nav">
+<div class="side-head">
+<div class="brand">SELECTWAY · LECTURE NOTE</div>
+<h1>AI 프로덕트 매니저 3주차 · DAY 3 감정 책 추천</h1>
+<div class="side-sub">11.11(수) · 09:00–18:00 · 실시간 비대면</div>
+</div>
+<nav>
+<div class="nav-title">전체 목차</div>
+<div class="grp"><div class="grp-label">교육 안내</div><a class="l2" href="#overview">교육 개요</a><a class="l2" href="#prep">수업 전 준비</a><a class="l2" href="#tt">타임테이블</a></div>
+<div class="grp"><div class="grp-label">오늘의 단어</div><a class="l2" href="#words">오늘의 단어</a></div>
+<div class="grp"><div class="grp-label">SESSION 1</div><a class="l2" href="#s1">LLM이 무엇이고 어디서 틀리나</a><a class="l3" href="#s1-1">1-1. LLM이란?</a><a class="l3" href="#s1-2">1-2. 책 추천과 링크를 받아 직접 눌러 보기</a><a class="l3" href="#s1-3">1-3. 결과</a></div>
+<div class="grp"><div class="grp-label">SESSION 2</div><a class="l2" href="#s2">책 추천 화면 기획하기</a><a class="l3" href="#s2-1">2-1. 링크는 AI가 아니라 코드가 만들기</a><a class="l3" href="#s2-2">2-2. AI에게 받을 답의 모양 정하기</a><a class="l3" href="#s2-3">2-3. 결과</a></div>
+<div class="grp"><div class="grp-label">SESSION 3</div><a class="l2" href="#s3">Hello 페이지에 책 추천 붙이기</a><a class="l3" href="#s3-1">3-1. 감정 입력과 책 카드 만들기</a><a class="l3" href="#s3-2">3-2. 결과</a></div>
+<div class="grp"><div class="grp-label">SESSION 4</div><a class="l2" href="#s4">추천이 진짜인지 확인하고 고치기</a><a class="l3" href="#s4-1">4-1. 추천한 책 9권 확인하기</a><a class="l3" href="#s4-2">4-2. 모르면 빼라고 규칙 고치기</a><a class="l3" href="#s4-3">4-3. 결과</a></div>
+<div class="grp"><div class="grp-label">SESSION 5</div><a class="l2" href="#s5">무료 한도와 API 키는 어디에 있나</a><a class="l3" href="#s5-1">5-1. AI 스튜디오 앱이 제미나이를 부르는 길</a><a class="l3" href="#s5-2">5-2. 내 앱에서 키와 한도 확인하기</a><a class="l3" href="#s5-3">5-3. 결과</a></div>
+<div class="grp"><div class="grp-label">마무리</div><a class="l2" href="#wrap">오늘 정리와 과제</a></div>
+</nav>
+<div class="side-link"><b>이 교안 주소</b><a href="https://loreenkim0301.github.io/swy-lecturenote/261109-ai-pm-week3/d3-ai-studio-books.html">loreenkim0301.github.io/swy-lecturenote/261109-ai-pm-week3/d3-ai-studio-books.html</a></div>
+<div class="side-foot">강사 김수정 · 셀렉트웨이</div>
+</aside>
+<main>
+<header class="hero">
+<div class="kicker">AI 프로덕트 매니저 · 3주차 DAY 3 · 2026.11.11 (수)</div>
+<h1>Hello 페이지에 <em>오늘의 감정</em>을 넣으면, 맞는 책 3권을 골라 줘요</h1>
+<p>지난주 금요일에 구글 AI 스튜디오로 Hello 페이지를 만들고 이름을 Firestore에 저장했던 것 기억하시나요? 오늘은 그 페이지에 '오늘의 감정' 입력칸을 더해요. 감정을 넣으면 AI(제미나이)가 맞는 책 3권을 골라, YES24로 이어지는 상품 카드로 보여 줘요. 먼저 LLM이 무엇이고 어디서 틀리는지 보고, 틀려도 사용자가 속지 않게 화면을 기획해요. 디자인은 최소한으로 하고, 무료 한도 안에서만 해요.</p>
+<div class="hero-grid">
+<div><b>일정</b><span>11월 11일(수) 09:00–18:00 · 실시간 비대면</span></div>
+<div><b>준비물</b><span>크롬, 지난주 금요일 AI 스튜디오 계정(개인 지메일), 클로드</span></div>
+<div><b>오늘의 결과물</b><span>감정 → 책 3권 상품 카드가 나오는 Hello 페이지 + 추천 확인표(고치기 전·후)</span></div>
+</div>
+<nav aria-label="3주차 교안" class="day-nav"><a href="./">3주차 홈</a><a href="./d1-sheet-appsscript.html">DAY 1 사용자의 데이터·GA</a><a href="./d2-web-crawling.html">DAY 2 웹 크롤링</a><a aria-current="page" href="./d3-ai-studio-books.html">DAY 3 감정 책 추천</a><a href="./d4-claude-code-chatbot.html">DAY 4 클로드 코드 챗봇 화면</a><a href="./d5-chatbot-api.html">DAY 5 챗봇에 AI API</a></nav>
+</header>
+
+<section class="section" id="overview"><div class="section-label">OVERVIEW</div><h2>교육 개요</h2>
+<div class="table-wrap"><table>
+<tr><th>시간</th><td>09:00–18:00 (점심 12:00–13:00, 수업 8시간)</td></tr>
+<tr><th>교과</th><td>[기본] AI 서비스 개발 · 9일차 (총 18일)</td></tr>
+<tr><th>교육 목표</th><td>LLM의 개념과 한계를 알고, 사용자의 입력에 AI가 답하는 화면을 틀린 답에 대비해 기획하고 만든다.</td></tr>
+<tr><th>수업이 끝나면</th><td>① LLM이 무엇이고 어떤 답을 지어낼 수 있는지 말하기<br/>② 링크처럼 지어내면 안 되는 값은 코드가 만들게 기획하기<br/>③ AI 스튜디오로 감정 입력 → 책 3권 상품 카드 만들기<br/>④ 추천한 책이 진짜인지 확인하고 규칙을 고쳐 전·후 비교하기<br/>⑤ 내 앱의 API 키 위치와 무료 한도 확인하기</td></tr>
+</table></div>
+</section>
+
+<section class="section" id="prep"><div class="section-label">PREPARE</div><h2>수업 전 준비</h2>
+<ul>
+<li><b>개인 지메일 계정:</b> 지난주 금요일에 AI 스튜디오 앱을 만든 계정으로 들어가요.</li>
+<li><b>지난주 금요일 Hello 앱:</b> <a href="https://aistudio.google.com/apps" target="_blank" rel="noopener">aistudio.google.com/apps</a> 에서 그 앱이 열리는지 봐요.</li>
+<li><b>클로드:</b> 1세션에서 써요. 새 대화를 하나 열어 둬요.</li>
+</ul>
+<div class="notice">프롬프트는 요청·내용·형식 3줄이에요. [ ] 안을 내 내용으로 바꿔 써요. 감정 입력칸에는 내 실제 고민이나 개인정보를 넣지 않아요.</div>
+</section>
+
+<section class="section" id="tt"><div class="section-label">TIMETABLE</div><h2>타임테이블</h2>
+<div class="table-wrap"><table>
+<tr><th>시간</th><th>구분</th><th>내용</th></tr>
+<tr><td>09:00–09:20</td><td>오늘의 단어</td><td><a href="#words">오늘의 단어</a></td></tr>
+<tr><td>09:20–10:20</td><td>SESSION 1</td><td><a href="#s1">LLM이 무엇이고 어디서 틀리나</a></td></tr>
+<tr><td>10:30–12:00</td><td>SESSION 2</td><td><a href="#s2">책 추천 화면 기획하기</a></td></tr>
+<tr><td>12:00–13:00</td><td>점심</td><td></td></tr>
+<tr><td>13:00–14:40</td><td>SESSION 3</td><td><a href="#s3">Hello 페이지에 책 추천 붙이기</a></td></tr>
+<tr><td>14:50–16:20</td><td>SESSION 4</td><td><a href="#s4">추천이 진짜인지 확인하고 고치기</a></td></tr>
+<tr><td>16:30–17:30</td><td>SESSION 5</td><td><a href="#s5">무료 한도와 API 키는 어디에 있나</a></td></tr>
+<tr><td>17:30–18:00</td><td>정리·회고</td><td><a href="#wrap">오늘 정리와 과제</a></td></tr>
+</table></div>
+</section>
+
+<section class="section session" id="words">
+<div class="session-head"><div class="eyebrow">단어 · 09:00–09:20</div><h2>오늘의 단어</h2><p>오늘 처음 나오는 말을 먼저 짧게 짚고 시작해요. 수업 중에 다시 나오면 이 표로 돌아와요.</p></div>
+<div class="table-wrap"><table>
+<tr><th>단어</th><th>뜻</th></tr>
+<tr><td><b>LLM(대규모 언어 모델)</b></td><td>아주 많은 글로 학습해서 글을 만들고, 번역하고, 요약하는 AI 모델. 클로드·제미나이가 LLM이에요.</td></tr>
+<tr><td><b>환각(hallucination)</b></td><td>LLM이 사실과 다르거나 주어진 내용과 맞지 않는 글을 그럴듯하게 만들어 내는 것</td></tr>
+<tr><td><b>상품 카드</b></td><td>상품 하나의 이름·설명·버튼을 네모 칸 하나에 모아 보여 주는 화면 조각</td></tr>
+<tr><td><b>검색 주소</b></td><td>검색어가 주소 안에 들어 있는 링크. 누르면 그 검색어의 결과 화면이 열려요.</td></tr>
+<tr><td><b>JSON</b></td><td>정보를 {"이름": "값"} 모양으로 적는 약속. 코드가 칸을 나눠 읽기 좋아요.</td></tr>
+<tr><td><b>API 키</b></td><td>내 계정으로 AI를 부를 때 쓰는 비밀 열쇠. 사용량이 이 키의 프로젝트에 쌓여요.</td></tr>
+<tr><td><b>무료 등급(Free Tier)</b></td><td>결제 없이 정해진 한도 안에서 제미나이 API를 쓰는 등급</td></tr>
+</table></div>
+</section>
+
+<section class="section session" id="s1">
+<div class="session-head"><div class="eyebrow">SESSION 1 · 09:20–10:20</div><h2>LLM이 무엇이고 어디서 틀리나</h2><p>오늘 만드는 화면은 사용자의 감정을 AI가 읽고 책을 골라요. 먼저 그 AI, 곧 LLM이 무엇인지 알고, 책을 추천할 때 어디서 틀릴 수 있는지 직접 확인해요.</p>
+<div class="why-box"><b>왜 하나?</b>AI가 지어낸 책을 사용자가 사려고 누르면, 없는 상품 화면이 열려요. 기획자가 AI가 틀리는 곳을 알아야, 틀려도 사용자가 속지 않는 화면을 만들 수 있어요.</div></div>
+
+<div class="topic" id="s1-1"><h3><span class="stage">개념</span>1-1. LLM이란?</h3>
+<h4>LLM이란?</h4><p>LLM(대규모 언어 모델)은 아주 많은 데이터로 학습한 언어 모델이에요. 글을 만들고, 번역하고, 요약하는 일을 해요. 클로드, 제미나이가 모두 LLM이에요.</p>
+<h4>어떤 문제를 해결하나요?</h4><p>사용자는 감정을 "설레요", "좀 지쳤어요"처럼 저마다 다르게 적어요. 규칙으로 만들면 감정 낱말마다 책 목록을 미리 짝지어 둬야 해요. LLM은 처음 보는 표현도 뜻을 읽고 어울리는 답을 글로 만들어 줘요.</p>
+<h4>조심할 점</h4><p>LLM은 사실과 다르거나 주어진 내용과 맞지 않는 글을 만들 수 있어요. 이것을 환각이라고 해요. 책 추천에서는 이런 모양으로 나타날 수 있어요.</p>
+<div class="table-wrap"><table><tr><th>틀릴 수 있는 곳</th><th>예</th><th>사용자에게 생기는 일</th></tr>
+<tr><td><b>없는 책</b></td><td>그럴듯한 제목을 지어냄</td><td>검색해도 나오지 않아요</td></tr>
+<tr><td><b>저자 바꿔 쓰기</b></td><td>있는 책에 다른 저자 이름을 붙임</td><td>다른 책을 사게 돼요</td></tr>
+<tr><td><b>링크 지어내기</b></td><td>상품 번호를 지어낸 주소</td><td>없는 화면이나 엉뚱한 상품이 열려요</td></tr>
+</table></div>
+<p>공식 문서는 환각을 줄이는 방법으로 "모르면 모른다고 말해도 된다고 허락하기", "근거를 함께 내게 하기"를 들어요. 2세션과 4세션에서 이 방법을 화면 기획에 써요.</p>
+<p class="source-note">출처: Google Cloud <a href="https://cloud.google.com/ai/llms" target="_blank" rel="noopener">대규모 언어 모델(LLM)이란?</a> · Anthropic 공식 문서 <a href="https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations" target="_blank" rel="noopener">환각 줄이기(Reduce hallucinations)</a> (2026.11.08 확인)</p>
+</div>
+
+<div class="topic" id="s1-2"><h3><span class="stage">실습</span>1-2. 책 추천과 링크를 받아 직접 눌러 보기</h3>
+<p><b>STEP 1. 클로드에게 책과 링크 받기</b></p>
+<p>클로드 새 대화를 열어요. 입력창 왼쪽 아래 [+]에서 [웹 검색]이 켜져 있으면 눌러서 꺼요. AI가 기억만으로 답할 때 무엇이 나오는지 보려는 거예요.</p>
+<p class="blk k-pr"><span>프롬프트</span></p>
+<div class="copybox"><div class="copyhead"><span>프롬프트 1 · 복사해서 클로드 새 대화에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 오늘 기분이 '설렘'인 사람에게 맞는 책 3권을 추천해 줘.
+내용: 한국에서 살 수 있는 책으로 골라 줘. 책마다 YES24 상품 페이지 링크를 붙여 줘.
+형식: 표(제목 / 저자 / 추천 이유 한 문장 / YES24 링크)</pre></div>
+<p><b>STEP 2. 링크를 하나씩 눌러 보기</b></p>
+<p>표의 링크를 하나씩 눌러, 열린 화면의 책이 표의 제목·저자와 같은지 봐요. 아래 빈 템플릿에 적어요.</p>
+<p class="blk k-tpl"><span>빈 템플릿</span>추천 링크 확인</p>
+<div class="table-wrap"><table class="tpl">
+<tr><th>제목</th><th>저자</th><th>링크가 열리나요?</th><th>열린 책이 같은 책인가요?</th></tr>
+<tr><td></td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td></tr>
+</table></div>
+<p class="blk k-chk"><span>확인할 점</span></p>
+<ul class="checklist"><li>링크 3개가 모두 열리는지 봤다</li><li>열린 화면의 제목·저자가 표와 같은지 봤다</li><li>클로드가 링크를 주지 않고 "직접 검색해 보라"고 했다면, 그것도 기록했다. 모르는 것을 지어내지 않은 답이에요</li></ul>
+<p>링크가 열리지 않거나 다른 책이 열렸다면, 오늘 만드는 화면에서 같은 일이 생길 수 있다는 뜻이에요. 모두 맞았더라도 다음 사용자에게 또 맞는다는 보장은 없어요. 그래서 2세션에서 링크를 AI에게 맡기지 않는 방법을 기획해요.</p>
+</div>
+
+<div class="topic" id="s1-3"><h3><span class="stage">결과</span>1-3. 결과</h3>
+<div class="result-box"><b>결과물</b> 추천 링크 확인표 3줄</div>
+<p class="ok-line"><b>이렇게 보이면 성공</b>LLM이 책 추천에서 틀릴 수 있는 곳 세 가지(없는 책, 저자, 링크)를 말할 수 있다</p>
+</div>
+</section>
+
+<section class="section session" id="s2">
+<div class="session-head"><div class="eyebrow">SESSION 2 · 10:30–12:00</div><h2>책 추천 화면 기획하기</h2><p>1세션에서 본 문제를 화면 기획으로 막아요. AI에게 맡길 일과 코드가 할 일을 나누고, AI가 답할 모양을 정해요. 여기서 만든 기획표를 3세션 프롬프트에 그대로 넣어요.</p>
+<div class="why-box"><b>왜 하나?</b>AI가 아무리 좋아져도 틀릴 수 있어요. 그래서 기획자는 "틀리면 안 되는 값은 AI에게 맡기지 않는다"는 규칙을 화면 기획에 넣어요.</div></div>
+
+<div class="topic" id="s2-1"><h3><span class="stage">기획</span>2-1. 링크는 AI가 아니라 코드가 만들기</h3>
+<h4>검색 주소란?</h4><p>검색 주소는 검색어가 주소 안에 들어 있는 링크예요. YES24에서 책을 검색하면 주소가 아래 모양이 돼요. <code class="inline">query=</code> 뒤가 검색어예요.</p>
+<p><code class="inline">https://www.yes24.com/product/search?domain=BOOK&amp;query=어린왕자</code></p>
+<h4>어떤 문제를 해결하나요?</h4><p>상품 페이지 주소에는 상품마다 다른 번호가 들어가요. AI가 이 번호를 지어내면 엉뚱한 화면이 열려요. 검색 주소는 번호가 필요 없어요. 코드가 책 제목을 <code class="inline">query=</code> 뒤에 붙이기만 하면 돼요. 책이 정말 없다면 검색 결과가 비어 보여서, 사용자도 바로 알아요.</p>
+<div class="table-wrap"><table><tr><th>누가</th><th>하는 일</th></tr>
+<tr><td><b>AI(제미나이)</b></td><td>감정을 읽고 책 제목·저자·추천 이유를 고르기</td></tr>
+<tr><td><b>코드</b></td><td>제목으로 YES24 검색 주소 만들기, 카드에 나눠 넣기</td></tr>
+<tr><td><b>사용자</b></td><td>[YES24에서 보기]를 눌러 실제 책을 확인하고 고르기</td></tr>
+</table></div>
+<h4>이번 실습에서는 새로운 코드가 하나 나와요</h4>
+<div class="table-wrap"><table><tr><th>코드</th><th>하는 일</th></tr>
+<tr><td><code class="inline">encodeURIComponent(제목)</code></td><td>한글이나 띄어쓰기가 든 제목을 주소에 넣을 수 있는 글자로 바꿔요. AI 스튜디오가 이 코드를 넣어 줘요.</td></tr>
+</table></div>
+<h4>조심할 점</h4><p>화요일에 YES24 robots.txt를 읽었던 것 기억하시나요? 오늘 앱은 YES24 페이지를 모으지 않아요. 사용자가 누를 링크만 만들어요.</p>
+<p class="source-note">출처: YES24 검색 화면 <a href="https://www.yes24.com/product/search?domain=BOOK&amp;query=%EC%96%B4%EB%A6%B0%EC%99%95%EC%9E%90" target="_blank" rel="noopener">'어린왕자' 검색 결과</a> · MDN <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent" target="_blank" rel="noopener">encodeURIComponent()</a> (2026.11.08 확인)</p>
+<p><b>STEP 1. 검색 주소를 직접 열어 보기</b></p>
+<p>크롬 주소창에 위 주소를 넣어 열어요. 그다음 <code class="inline">query=</code> 뒤를 좋아하는 책 제목으로 바꿔서 다시 열어 봐요. 검색 결과에 그 책이 보이는지 봐요.</p>
+<ul class="checklist"><li>'어린왕자' 검색 결과 화면이 열린다</li><li>제목만 바꿔도 다른 책의 검색 결과가 열린다</li></ul>
+</div>
+
+<div class="topic" id="s2-2"><h3><span class="stage">기획</span>2-2. AI에게 받을 답의 모양 정하기</h3>
+<h4>JSON으로 받는 이유</h4><p>AI가 긴 글로 답하면 코드는 어디가 제목이고 어디가 저자인지 알 수 없어요. 칸 이름을 정해 JSON으로 받으면, 코드가 칸마다 꺼내 카드에 넣어요.</p>
+<p class="blk k-ex"><span>예시</span>AI가 돌려줄 답의 모양</p>
+<div class="copybox"><div class="copyhead"><span>예시 · 읽기만 하세요</span><button type="button">복사</button></div><pre>{"books": [
+  {"title": "책 제목", "author": "저자", "reason": "이 감정에 맞는 이유 한 문장"},
+  {"title": "…", "author": "…", "reason": "…"},
+  {"title": "…", "author": "…", "reason": "…"}
+]}</pre></div>
+<p><b>STEP 1. 기획표 채우기</b></p>
+<p>아래 예시를 보고, 빈 템플릿에 내 화면의 기획을 적어요. 3세션 프롬프트의 [ ] 자리에 이 표의 내용을 넣어요.</p>
+<p class="blk k-ex"><span>예시</span>책 추천 화면 기획표</p>
+<div class="table-wrap"><table>
+<tr><th>항목</th><th>내용</th></tr>
+<tr><td>입력</td><td>'오늘의 감정' 입력칸 1개(한 단어나 한 문장) + [책 추천받기] 버튼</td></tr>
+<tr><td>AI에게 맡길 일</td><td>감정에 맞는 책 3권의 제목·저자·추천 이유 한 문장(JSON)</td></tr>
+<tr><td>AI가 지킬 규칙</td><td>한국에서 출간된 실제 책만. 제목·저자를 지어내지 않기. 링크는 만들지 않기</td></tr>
+<tr><td>코드가 할 일</td><td>제목으로 YES24 검색 주소를 만들어 [YES24에서 보기] 버튼에 넣기</td></tr>
+<tr><td>카드 한 장</td><td>제목 · 저자 · 추천 이유 · [YES24에서 보기]</td></tr>
+<tr><td>그대로 둘 것</td><td>Hello 문구, 이름 입력칸, 저장 버튼, Firestore 저장</td></tr>
+<tr><td>만들지 않을 것</td><td>감정·추천 결과 저장, 로그인, 꾸미기용 그림</td></tr>
+</table></div>
+<p class="blk k-tpl"><span>빈 템플릿</span>내 책 추천 화면 기획표</p>
+<div class="table-wrap"><table class="tpl">
+<tr><th>항목</th><th>내용</th></tr>
+<tr><td>입력</td><td></td></tr>
+<tr><td>AI에게 맡길 일</td><td></td></tr>
+<tr><td>AI가 지킬 규칙</td><td></td></tr>
+<tr><td>코드가 할 일</td><td></td></tr>
+<tr><td>카드 한 장</td><td></td></tr>
+<tr><td>그대로 둘 것</td><td></td></tr>
+<tr><td>만들지 않을 것</td><td></td></tr>
+</table></div>
+<p class="blk k-chk"><span>막히면</span></p>
+<p>기획표를 채운 뒤 클로드에게 빠진 것이 있는지 물어봐요.</p>
+<p class="blk k-pr"><span>프롬프트</span></p>
+<div class="copybox"><div class="copyhead"><span>프롬프트 2 · 필요할 때만 클로드에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 아래 책 추천 화면 기획표에서, AI가 틀렸을 때 사용자가 속을 수 있는 곳을 찾아 줘.
+내용: 기획표는 [내 기획표 붙여 넣기]야. 기획표에 없는 기능은 새로 제안하지 마.
+형식: 속을 수 있는 곳 / 그 이유 / 기획표에서 고칠 줄, 표로 최대 3줄.</pre></div>
+</div>
+
+<div class="topic" id="s2-3"><h3><span class="stage">결과</span>2-3. 결과</h3>
+<div class="result-box"><b>결과물</b> 내 책 추천 화면 기획표(7줄)</div>
+<p class="ok-line"><b>이렇게 보이면 성공</b>'링크는 코드가 검색 주소로 만든다'가 기획표에 들어 있다</p>
+</div>
+</section>
+
+<section class="section session" id="s3">
+<div class="session-head"><div class="eyebrow">SESSION 3 · 13:00–14:40</div><h2>Hello 페이지에 책 추천 붙이기</h2><p>지난주 금요일에 만든 AI 스튜디오 Hello 앱을 열어, 2세션 기획표대로 감정 입력칸과 책 카드를 더해요.</p>
+<div class="why-box"><b>왜 하나?</b>지난주 금요일에는 AI가 화면을 만들어 줬어요. 오늘은 내 화면이 AI를 불러 사용자에게 답해요.</div></div>
+
+<div class="topic" id="s3-1"><h3><span class="stage">실습</span>3-1. 감정 입력과 책 카드 만들기</h3>
+<p><b>STEP 1. 지난주 금요일 Hello 앱 열기</b></p>
+<p><a href="https://aistudio.google.com/apps" target="_blank" rel="noopener">aistudio.google.com/apps</a> 에 개인 지메일 계정으로 들어가요. 왼쪽 'My apps'에서 지난주 금요일에 만든 Hello 앱을 눌러 열어요. 오른쪽 미리보기에 Hello 문구와 이름 입력칸이 보이는지 봐요.</p>
+<p><b>STEP 2. 기획표대로 요청하기</b></p>
+<p>왼쪽 대화창에 아래 프롬프트를 보내요. [ ] 자리는 2세션 기획표에서 바꾼 것이 있을 때만 고쳐요.</p>
+<p class="blk k-pr"><span>프롬프트</span></p>
+<div class="copybox"><div class="copyhead"><span>프롬프트 3 · 복사해서 AI 스튜디오 대화창에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 지금 Hello 페이지 아래에 '오늘의 감정' 입력칸과 [책 추천받기] 버튼을 더해 줘. 감정을 넣고 누르면 제미나이가 그 감정에 맞는 책 3권을 골라 상품 카드 3장으로 보여 주게 해 줘.
+내용: 제미나이에게는 '한국에서 출간된 실제 책만 고르고, 책 제목과 저자를 지어내지 마. 링크는 만들지 마.'라고 지시하고, 답은 {"books":[{"title","author","reason"}]} 모양의 JSON으로만 받아 줘. 카드에는 제목, 저자, 추천 이유 한 문장, [YES24에서 보기] 버튼을 넣어 줘. 버튼 주소는 코드가 https://www.yes24.com/product/search?domain=BOOK&query= 뒤에 제목을 encodeURIComponent로 붙여 만들어 줘. [그대로 둘 것: Hello 문구, 이름 입력칸, 저장 버튼, Firestore 저장]은 바꾸지 마. [만들지 않을 것: 감정·추천 결과 저장, 로그인, 꾸미기용 그림]은 추가하지 마. 디자인은 최소한으로 해 줘.
+형식: 바꾼 내용을 왼쪽 대화에 다섯 줄 안으로 설명해 줘.</pre></div>
+<p><b>STEP 3. 감정 세 가지로 눌러 보기</b></p>
+<p>만들기가 끝나면 미리보기에서 감정을 하나씩 넣고 [책 추천받기]를 눌러요. 누를 때마다 무료 한도를 써요. 오늘은 감정마다 한 번씩만 눌러요.</p>
+<div class="table-wrap"><table><tr><th>순서</th><th>넣을 감정</th></tr>
+<tr><td>1</td><td>설렘</td></tr>
+<tr><td>2</td><td>지침</td></tr>
+<tr><td>3</td><td>[내가 고른 감정 한 단어]</td></tr>
+</table></div>
+<p class="blk k-chk"><span>확인할 점</span></p>
+<ul class="checklist"><li>감정 입력칸과 [책 추천받기] 버튼이 Hello 문구 아래에 있다</li><li>누르면 카드 3장이 나오고, 카드마다 제목·저자·이유·[YES24에서 보기]가 있다</li><li>[YES24에서 보기]를 누르면 주소가 <code class="inline">yes24.com/product/search?domain=BOOK&amp;query=</code>로 시작한다</li><li>이름 입력칸과 저장 버튼이 그대로 있고, 저장하면 지난주처럼 Firestore에 쌓인다</li><li>요청하지 않은 기능(감정 저장, 로그인 등)이 붙지 않았다. 왼쪽 설명도 읽어 봐요</li></ul>
+<p class="blk k-chk"><span>막히면</span></p>
+<div class="table-wrap"><table><tr><th>이렇게 보이면</th><th>이렇게 해요</th></tr>
+<tr><td><b>버튼을 눌러도 카드가 안 나와요</b></td><td>미리보기에 나온 오류 문장을 복사해 대화창에 붙여 넣고, "이 오류를 고쳐 줘. 다른 기능은 바꾸지 마."라고 보내요.</td></tr>
+<tr><td><b>카드에 { } 같은 글자가 그대로 보여요</b></td><td>"제미나이의 JSON 답을 칸마다 꺼내 카드에 넣어 줘. 글자 그대로 보여 주지 마."라고 보내요.</td></tr>
+<tr><td><b>[YES24에서 보기] 주소에 상품 번호가 들어 있어요</b></td><td>AI가 링크를 만든 거예요. "링크는 제미나이에게 받지 말고, 코드가 제목으로 검색 주소를 만들게 고쳐 줘."라고 보내요.</td></tr>
+<tr><td><b>앱을 공유했을 때 403 Access Restricted가 나와요</b></td><td>개인정보 보호 확장 프로그램 때문이거나 빌드 문제일 수 있어요. 공식 문서대로 대화창에 "fix any build issues with the current code"를 보내고 다시 공유해요.</td></tr>
+</table></div>
+<p class="source-note">출처: 구글 공식 문서 <a href="https://ai.google.dev/gemini-api/docs/aistudio-build-mode?hl=en" target="_blank" rel="noopener">Build apps in Google AI Studio(403 Access Restricted 해결)</a> (2026.11.08 확인)</p>
+</div>
+
+<div class="topic" id="s3-2"><h3><span class="stage">결과</span>3-2. 결과</h3>
+<div class="result-box"><b>결과물</b> 감정을 넣으면 책 3권 상품 카드가 나오는 Hello 페이지(AI 스튜디오 미리보기)</div>
+<p class="ok-line"><b>이렇게 보이면 성공</b>감정 세 가지마다 카드 3장이 나오고, 버튼이 YES24 검색 주소로 열린다</p>
+</div>
+</section>
+
+<section class="section session" id="s4">
+<div class="session-head"><div class="eyebrow">SESSION 4 · 14:50–16:20</div><h2>추천이 진짜인지 확인하고 고치기</h2><p>3세션에서 감정 세 가지로 받은 책 9권을 하나씩 확인해요. 틀린 책이 있으면 제미나이에게 주는 규칙을 고치고, 고치기 전과 뒤를 견줘요.</p>
+<div class="why-box"><b>왜 하나?</b>검색 주소로 바꿨다고 끝이 아니에요. AI가 없는 책을 고르면 사용자는 빈 검색 결과를 보게 돼요. 기획자는 결과를 직접 세어 보고 규칙을 고쳐요.</div></div>
+
+<div class="topic" id="s4-1"><h3><span class="stage">실습</span>4-1. 추천한 책 9권 확인하기</h3>
+<p><b>STEP 1. 카드마다 YES24에서 확인하기</b></p>
+<p>카드의 [YES24에서 보기]를 눌러, 검색 결과에 같은 제목·같은 저자의 책이 있는지 봐요. 화요일에 크롤링 결과를 기준값과 견줬던 것처럼, AI의 답을 실제 사이트와 견주는 거예요.</p>
+<p class="blk k-tpl"><span>빈 템플릿</span>추천 확인표 · 고치기 전</p>
+<div class="table-wrap"><table class="tpl">
+<tr><th>감정</th><th>제목</th><th>저자</th><th>검색 결과에 있나요?(O/X)</th><th>저자가 같나요?(O/X)</th></tr>
+<tr><td>설렘</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>설렘</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>설렘</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>지침</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>지침</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>지침</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>[내 감정]</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>[내 감정]</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>[내 감정]</td><td></td><td></td><td></td><td></td></tr>
+</table></div>
+<p class="ok-line"><b>세어 보기</b>9권 중 검색 결과에 있고 저자도 같은 책: ○권</p>
+<p class="blk k-chk"><span>막히면</span></p>
+<div class="table-wrap"><table><tr><th>이렇게 보이면</th><th>이렇게 해요</th></tr>
+<tr><td><b>제목이 비슷한 책이 여러 권 나와요</b></td><td>저자 이름까지 같은 책이 있으면 O로 적어요. 번역본처럼 옮긴이만 다르면 O예요.</td></tr>
+<tr><td><b>검색 결과가 하나도 없어요</b></td><td>제목 띄어쓰기만 다를 수 있어요. 검색창에서 띄어쓰기를 바꿔 한 번 더 찾아보고, 그래도 없으면 X로 적어요.</td></tr>
+</table></div>
+</div>
+
+<div class="topic" id="s4-2"><h3><span class="stage">실습</span>4-2. 모르면 빼라고 규칙 고치기</h3>
+<p>1세션에서 본 공식 문서의 방법을 써요. 제미나이에게 "확실하지 않으면 넣지 않아도 된다"고 허락하고, 그때 화면에 무엇을 보여 줄지 정해요.</p>
+<p><b>STEP 1. 규칙을 고쳐 달라고 하기</b></p>
+<p class="blk k-pr"><span>프롬프트</span></p>
+<div class="copybox"><div class="copyhead"><span>프롬프트 4 · 복사해서 같은 AI 스튜디오 대화창에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 제미나이에게 주는 책 추천 지시를 고쳐 줘. 다른 화면과 기능은 바꾸지 마.
+내용: 지시에 '실제로 있는지 확실한 책만 골라. 확실한 책이 3권이 안 되면 확실한 만큼만 답해도 돼. 저자를 모르면 그 책은 빼.'를 더해 줘. 카드가 3장보다 적으면, 빈 자리에 '이 감정에 맞는 책을 더 찾지 못했어요' 안내 한 줄을 보여 줘.
+형식: 고친 지시 문장을 왼쪽 대화에 그대로 보여 줘.</pre></div>
+<p><b>STEP 2. 같은 감정으로 다시 눌러 견주기</b></p>
+<p>3세션과 같은 감정 세 가지로 한 번씩 다시 눌러요. 4-1처럼 확인표를 채우고, 고치기 전과 견줘요.</p>
+<p class="blk k-tpl"><span>빈 템플릿</span>고치기 전·후 비교</p>
+<div class="table-wrap"><table class="tpl">
+<tr><th>항목</th><th>고치기 전</th><th>고친 뒤</th></tr>
+<tr><td>나온 카드 수</td><td>9장</td><td></td></tr>
+<tr><td>검색 결과에 있고 저자도 같은 책</td><td></td><td></td></tr>
+<tr><td>'더 찾지 못했어요' 안내가 나온 자리</td><td>0</td><td></td></tr>
+</table></div>
+<p class="blk k-chk"><span>확인할 점</span></p>
+<ul class="checklist"><li>고친 지시 문장에 '확실한 만큼만 답해도 돼'가 들어 있다</li><li>고친 뒤 확인표의 X가 고치기 전보다 많지 않다</li><li>카드가 줄었다면 빈 자리에 안내 한 줄이 보인다</li></ul>
+<p class="blk k-chk"><span>이렇게 하면 결과가 틀어져요</span></p>
+<p>"꼭 3권을 채워 줘."라고 하면, AI는 확실하지 않아도 빈칸을 채우려고 책을 지어낼 수 있어요. 개수를 지키는 것보다 진짜 책인 것이 더 중요하면, 개수를 줄여도 된다고 허락해요.</p>
+</div>
+
+<div class="topic" id="s4-3"><h3><span class="stage">결과</span>4-3. 결과</h3>
+<div class="result-box"><b>결과물</b> 추천 확인표(고치기 전·후) + 규칙을 고친 책 추천 Hello 페이지</div>
+<p class="ok-line"><b>이렇게 보이면 성공</b>고치기 전·후 표에 '검색 결과에 있고 저자도 같은 책' 수가 모두 채워져 있다</p>
+</div>
+</section>
+
+<section class="section session" id="s5">
+<div class="session-head"><div class="eyebrow">SESSION 5 · 16:30–17:30</div><h2>무료 한도와 API 키는 어디에 있나</h2><p>오늘 [책 추천받기]를 누를 때마다 내 계정으로 제미나이를 불렀어요. 그 열쇠(API 키)가 어디에 있고, 무료로 얼마나 쓸 수 있는지 확인해요.</p>
+<div class="why-box"><b>왜 하나?</b>금요일에는 우리가 직접 API 키를 받아 챗봇에 붙여요. AI 스튜디오가 키를 어떻게 숨겨 두는지 알면, 금요일에 같은 방법으로 키를 지킬 수 있어요.</div></div>
+
+<div class="topic" id="s5-1"><h3><span class="stage">개념</span>5-1. AI 스튜디오 앱이 제미나이를 부르는 길</h3>
+<h4>API 키는 어디에 있나요?</h4><p>AI 스튜디오 Build로 만든 웹 앱은 내 제미나이 API 키를 써요. AI 스튜디오가 이 키를 앱의 서버 쪽에 비밀값(Secret)으로 넣어 둬요. 키는 사용자가 보는 화면 코드에 들어가지 않아요. 그래서 앱을 공유받은 사람도 내 키를 볼 수 없어요.</p>
+<div class="flow">
+<div><span>1</span><b>사용자 화면</b><small>감정 입력, [책 추천받기]</small></div>
+<div><span>2</span><b>앱의 서버</b><small>비밀값으로 둔 API 키</small></div>
+<div><span>3</span><b>제미나이 API</b><small>책 3권 JSON</small></div>
+<div><span>4</span><b>앱의 서버</b><small>답을 화면으로 전달</small></div>
+<div><span>5</span><b>사용자 화면</b><small>카드 3장</small></div>
+</div>
+<h4>무료로 얼마나 쓸 수 있나요?</h4>
+<div class="table-wrap"><table><tr><th>항목</th><th>공식 문서 내용</th></tr>
+<tr><td><b>처음 등급</b></td><td>새 계정은 무료 등급(Free Tier)으로 시작해요. 무료 등급에서 쓸 수 있는 모델과 한도가 정해져 있어요.</td></tr>
+<tr><td><b>무료 모델 예</b></td><td>가격표에서 gemini-3.8-flash의 무료 등급 입력·출력 가격은 'Free of charge'예요.</td></tr>
+<tr><td><b>한도의 단위</b></td><td>분당 요청 수(RPM), 분당 토큰 수(TPM), 하루 요청 수(RPD). 한도는 API 키가 아니라 프로젝트마다 적용돼요. 내 한도는 AI 스튜디오에서 볼 수 있어요.</td></tr>
+<tr><td><b>하루 한도가 다시 차는 때</b></td><td>미국 태평양 시간 자정이에요. 11월에는 한국 시간 오후 5시예요.</td></tr>
+<tr><td><b>공유한 앱</b></td><td>다른 사람이 내 앱을 쓰면, 그 호출도 내 사용량에 쌓여요. 유료 모델을 쓰면 요금이 생길 수 있어요.</td></tr>
+<tr><td><b>무료 등급의 데이터</b></td><td>가격표에 무료 등급은 '제품 개선에 사용됨(Used to improve our products: Yes)'으로 적혀 있어요. 그래서 입력칸에 개인정보를 넣지 않아요.</td></tr>
+<tr><td><b>유료로 바꾸려면</b></td><td>결제 계정을 연결하고 최소 5달러를 미리 충전해야 해요. 오늘은 결제를 연결하지 않아요.</td></tr>
+</table></div>
+<h4>조심할 점</h4><p>무료 등급에서는 제미나이가 구글 검색으로 답을 확인하는 기능(Grounding with Google Search)을 gemini-3.8-flash에서 쓸 수 없다고 가격표에 적혀 있어요. 그래서 오늘처럼 사람이 YES24에서 확인하는 단계가 필요해요.</p>
+<p class="source-note">출처: 구글 공식 문서 <a href="https://ai.google.dev/gemini-api/docs/aistudio-build-mode?hl=en" target="_blank" rel="noopener">Build apps in Google AI Studio(서버 쪽 비밀값, Secrets 패널, 공유 시 사용량)</a> · <a href="https://ai.google.dev/gemini-api/docs/pricing?authuser=6" target="_blank" rel="noopener">Gemini API 가격(무료 등급, 제품 개선 사용, Grounding)</a> · <a href="https://ai.google.dev/gemini-api/docs/rate-limits?authuser=1" target="_blank" rel="noopener">사용량 한도(RPM·TPM·RPD, 프로젝트 단위, 태평양 시간 자정, 2026-10-26 갱신)</a> · <a href="https://ai.google.dev/gemini-api/docs/billing?hl=en" target="_blank" rel="noopener">결제(선불 최소 5달러, 2026-09-28 갱신)</a> (2026.11.08 확인)</p>
+</div>
+
+<div class="topic" id="s5-2"><h3><span class="stage">실습</span>5-2. 내 앱에서 키와 한도 확인하기</h3>
+<p><b>STEP 1. Secrets 패널에서 키 확인하기</b></p>
+<p>오늘 고친 Hello 앱의 Build 화면에서 [Secrets] 패널을 찾아 열어요. 제미나이 API 키가 비밀값으로 들어가 있는지 이름만 봐요. 키 값은 복사하거나 화면 공유로 보여 주지 않아요.</p>
+<p><b>STEP 2. 화면 코드에 키가 없는지 확인하기</b></p>
+<p>왼쪽 대화창에 아래 프롬프트를 보내요. 금요일에 클로드 코드로 똑같이 점검해요.</p>
+<p class="blk k-pr"><span>프롬프트</span></p>
+<div class="copybox"><div class="copyhead"><span>프롬프트 5 · 복사해서 AI 스튜디오 대화창에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 이 앱에서 제미나이 API 키가 어디에서 쓰이는지 알려 줘. 코드는 바꾸지 마.
+내용: 사용자의 브라우저로 내려가는 화면 코드(클라이언트)에 API 키 값이나 키를 읽는 코드가 있는지, 서버 쪽 코드에서만 쓰는지 나눠서 봐 줘.
+형식: '화면 코드: 있음/없음', '서버 코드: 파일 이름' 두 줄.</pre></div>
+<p><b>STEP 3. 오늘 쓴 양 세어 보기</b></p>
+<p>오늘 [책 추천받기]를 몇 번 눌렀는지 세어요. 3세션 3번 + 4세션 3번이면 6번이에요. 금요일 챗봇 테스트는 질문마다 한 번씩 API를 불러요. 그래서 금요일에는 테스트 질문을 미리 정해 두고 그 질문만 보내요.</p>
+<p class="blk k-chk"><span>확인할 점</span></p>
+<ul class="checklist"><li>Secrets 패널에 제미나이 API 키가 비밀값으로 있다(값은 보지 않았다)</li><li>AI 스튜디오의 답에서 화면 코드에는 키가 없다고 나왔다</li><li>오늘 부른 횟수를 말할 수 있다</li></ul>
+</div>
+
+<div class="topic" id="s5-3"><h3><span class="stage">결과</span>5-3. 결과</h3>
+<div class="result-box"><b>결과물</b> 내 앱의 키 위치(서버 쪽 비밀값)와 오늘 부른 횟수</div>
+<p class="ok-line"><b>이렇게 보이면 성공</b>"API 키는 화면 코드가 아니라 서버에 둔다"를 내 앱으로 설명할 수 있다</p>
+</div>
+</section>
+
+<section class="section session" id="wrap">
+<div class="session-head"><div class="eyebrow">정리 · 17:30–18:00</div><h2>오늘 정리와 과제</h2></div>
+<p><b>오늘의 규칙</b></p>
+<ul class="checklist">
+<li>LLM은 없는 책·저자·링크를 그럴듯하게 지어낼 수 있다</li>
+<li>틀리면 안 되는 값(링크·상품 번호)은 AI에게 맡기지 않고 코드가 만든다</li>
+<li>AI의 답은 JSON처럼 칸을 정해 받으면 화면에 나눠 넣기 쉽다</li>
+<li>개수를 채우는 것보다 진짜인 것이 중요하면, "확실한 만큼만 답해도 돼"라고 허락한다</li>
+<li>API 키는 화면 코드가 아니라 서버에 둔다. 무료 등급에는 개인정보를 넣지 않는다</li>
+</ul>
+<div class="notice"><b>오늘의 결과물</b><br/>감정 → 책 3권 상품 카드가 나오는 Hello 페이지 + 추천 확인표(고치기 전·후)</div>
+<div class="notice"><b>과제</b><br/>내가 기획하는 서비스에서 AI에게 맡기면 안 되는 값을 하나 찾아요. 그 값을 누가(코드, 사람, 다른 시스템) 대신 만들지 한 문장으로 적어 와요.</div>
+<p>목요일에는 클로드 코드로 셀렉트마켓 연말 이벤트 문의 챗봇 화면을 만들어요. 오늘처럼 AI가 지킬 규칙을 먼저 쓰고, 그 규칙으로 화면을 만들어요.</p>
+</section>
+</main>
+</div>
+<button id="slideBtn" type="button">▶ 슬라이드로 보기</button>
+<div hidden="" id="deck">
+<div id="viewport"><div id="stage">
+<div id="master"><span>AI 프로덕트 매니저 3주차 · DAY 3 감정 책 추천</span></div>
+<div id="mbar"><i id="prog"></i></div>
+<div id="slide"></div>
+<div id="pager"><button aria-label="이전" id="prev" type="button">◀</button><span id="pg"></span><button aria-label="다음" id="next" type="button">▶</button></div>
+</div></div>
+<div id="bar"><button id="exit" type="button">✕ 닫기 (Esc)</button></div>
+</div>
+<script type="text/javascript">
+(function(){
+  var K={'요청':'','내용':' k2','형식':' k3'};
+  window.fmtPre=function(pr){
+    var t=pr.textContent;
+    if(!/^요청: /.test(t))return;
+    var lines=t.split('\n');pr.textContent='';pr.className='fmt';
+    lines.forEach(function(l,i){
+      var m=l.match(/^(요청|내용|형식): (.*)$/),d=document.createElement('div');
+      if(m){d.className='pl'+K[m[1]];var b=document.createElement('b');b.className='pk';b.textContent=m[1]+': ';var sp=document.createElement('span');sp.className='pt';sp.textContent=m[2];d.appendChild(b);d.appendChild(sp);}
+      else{d.className='pl c';var sp2=document.createElement('span');sp2.className='pt';sp2.textContent=l;d.appendChild(sp2);}
+      pr.appendChild(d);if(i<lines.length-1)pr.appendChild(document.createTextNode('\n'));
+    });
+  };
+  document.querySelectorAll('.copybox pre').forEach(window.fmtPre);
+})();
+</script>
+<script type="text/javascript">
+(function(){
+  var re=/^(STEP|준비|규칙서대로|분석 [1-4]|프롬프트 [AB]|프롬프트 쓰기|실습|방법 [A-C]|워밍업|[①-⑤] |\(선택\)|완성한|결과를 보고|버전|두 결과)/;
+  var nav=document.querySelector('aside nav');
+  document.querySelectorAll('main .topic').forEach(function(t){
+    var parent=nav.querySelector('a.l3[href="#'+t.id+'"]'),last=parent,n=0;
+    if(!parent)return;
+    t.querySelectorAll(':scope > p').forEach(function(p){
+      var b=p.firstElementChild;
+      if(!b||b.tagName!=='B'||p.children.length!==1||p.textContent.trim()!==b.textContent.trim()||!re.test(b.textContent.trim()))return;
+      p.classList.add('dh');p.id='d-'+t.id+'-'+(++n);
+      var a=document.createElement('a');a.className='l4';a.href='#'+p.id;a.setAttribute('data-p',t.id);
+      a.textContent=b.textContent.replace(/[:：]\s*.*$/,'').trim();
+      last.parentNode.insertBefore(a,last.nextSibling);last=a;
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+var main=document.querySelector('main'),deck=document.getElementById('deck'),box=document.getElementById('slide'),pgEl=document.getElementById('pg'),prog=document.getElementById('prog'),pages=[],i=0;
+function kids(el,skip){return Array.prototype.filter.call(el.children,function(c){return !skip(c);});}
+function logical(){
+  var out=[],hero=main.querySelector('.hero');
+  if(hero)out.push({sect:'표지',title:'',n:Array.prototype.slice.call(hero.children)});
+  Array.prototype.forEach.call(main.querySelectorAll(':scope > .section'),function(sec){
+    var h2=sec.querySelector('h2'),title=h2.textContent,head=sec.querySelector('.session-head'),n=[];
+    if(head)n=Array.prototype.slice.call(head.querySelectorAll('p'));
+    n=n.concat(kids(sec,function(c){return c.classList.contains('section-label')||c.tagName==='H2'||c.classList.contains('session-head')||c.classList.contains('topic');}));
+    if(n.length)out.push({sect:title,title:title,n:n});
+    Array.prototype.forEach.call(sec.querySelectorAll(':scope > .topic'),function(t){
+      var h3=t.querySelector('h3');
+      out.push({sect:title,title:h3.textContent,n:kids(t,function(c){return c===h3;})});
+    });
+  });
+  return out;
+}
+function over(){return box.scrollHeight>box.clientHeight+1;}
+function build(){
+  pages=[];var L=logical(),count,sl;L.forEach(function(x){var out=[];x.n.forEach(function(el){if(el.tagName==="DETAILS"){var t=el.querySelector(".summary-title");var h=document.createElement("p");h.innerHTML="<b>"+(t?t.textContent:"")+"</b>";out.push(h);Array.prototype.forEach.call(el.children,function(c){if(c.tagName!=="SUMMARY")out.push(c);});}else out.push(el);});x.n=out;});
+  function head(cont){
+    box.innerHTML='';
+    if(sl.title&&sl.sect&&sl.sect!==sl.title){var eb=document.createElement('div');eb.className='eb';eb.textContent=sl.sect;box.appendChild(eb);}
+    if(sl.title){var h=document.createElement('h3');h.className='st';h.textContent=sl.title;
+      if(cont){var c=document.createElement('span');c.className='cont';c.textContent='(이어서)';h.appendChild(c);}
+      box.appendChild(h);}
+    count=0;
+  }
+  function flush(){pages.push({html:box.innerHTML,sect:sl.sect});}
+  function addSplit(items,shellFn){
+    var shell=shellFn(),n=0;box.appendChild(shell.root);
+    items.forEach(function(it){
+      shell.add(it);n++;
+      if(over()&&(n>1||count>0)){
+        shell.remove();n--;
+        if(n===0)box.removeChild(shell.root);
+        flush();head(true);shell=shellFn();n=0;box.appendChild(shell.root);shell.add(it);n=1;
+      }
+    });
+    count++;
+  }
+  L.forEach(function(s){
+    sl=s;head(false);
+    s.n.forEach(function(el){
+      var tbl=el.classList&&el.classList.contains('table-wrap')&&el.querySelector('table');
+      var rows=tbl?Array.prototype.slice.call(tbl.rows):null;
+      var hasHead=rows&&rows.length>3&&Array.prototype.every.call(rows[0].cells,function(c){return c.tagName==='TH';})
+        &&!rows.some(function(r){return Array.prototype.some.call(r.cells,function(c){return c.rowSpan>1;});});
+      var listy=(el.tagName==='UL'||el.tagName==='OL'||(el.classList&&(el.classList.contains('procedure')||el.classList.contains('resource-list'))))&&el.children.length>1;
+      if(el.classList&&el.classList.contains('dh')&&count>1&&box.scrollHeight>box.clientHeight*0.5){flush();head(false);}
+      var c=el.cloneNode(true);box.appendChild(c);
+      if(over()&&count>0){var pv=c.previousElementSibling,lead=count>1&&pv&&pv.tagName==='P'&&pv.children.length===1&&pv.firstElementChild.tagName==='B'&&pv.textContent.trim()===pv.firstElementChild.textContent.trim();
+        box.removeChild(c);if(lead)box.removeChild(pv);flush();head(true);if(lead){box.appendChild(pv);count++;}box.appendChild(c);}
+      if(over()){
+        if(hasHead){
+          box.removeChild(c);
+          addSplit(rows.slice(1),function(){
+            var w=el.cloneNode(false),t=tbl.cloneNode(false),b=document.createElement('tbody');
+            t.appendChild(b);b.appendChild(rows[0].cloneNode(true));w.appendChild(t);
+            return {root:w,add:function(r){b.appendChild(r.cloneNode(true));},remove:function(){b.removeChild(b.lastChild);}};
+          });
+          return;
+        }
+        if(el.classList&&el.classList.contains('copybox')){
+          box.removeChild(c);
+          var lines=el.querySelector('pre').textContent.split('\n');
+          addSplit(lines,function(){
+            var w=el.cloneNode(false),hd=el.querySelector('.copyhead').cloneNode(true),pr=document.createElement('pre'),txt=[];
+            w.appendChild(hd);w.appendChild(pr);
+            return {root:w,add:function(l){txt.push(l);pr.className='';pr.textContent=txt.join('\n');window.fmtPre(pr);},remove:function(){txt.pop();pr.className='';pr.textContent=txt.join('\n');window.fmtPre(pr);}};
+          });
+          return;
+        }
+        if(listy){
+          box.removeChild(c);
+          addSplit(Array.prototype.slice.call(el.children),function(){
+            var u=el.cloneNode(false);
+            return {root:u,add:function(li){u.appendChild(li.cloneNode(true));},remove:function(){u.removeChild(u.lastChild);}};
+          });
+          return;
+        }
+      }
+      count++;
+    });
+    flush();
+  });
+  var o='<h3 class="st">전체 목차</h3><div class="outline">';
+  Array.prototype.forEach.call(document.querySelectorAll('aside nav .grp'),function(g){
+    o+='<div class="og"><b>'+g.querySelector('.grp-label').textContent+(g.querySelector('.l2')&&g.querySelector('.grp-label').textContent.indexOf('세션')===0?' · '+g.querySelector('.l2').textContent:'')+'</b>';
+    var guide=g.querySelector('.grp-label').textContent==='교육 안내';
+    Array.prototype.forEach.call(g.querySelectorAll(guide?'a.l2,a.l3':'a.l3'),function(a){o+='<span>'+a.textContent+'</span>';});
+    o+='</div>';
+  });
+  pages.splice(1,0,{html:o+'</div>',sect:'목차'});
+}
+function show(n){
+  i=Math.max(0,Math.min(pages.length-1,n));var p=pages[i];
+  box.innerHTML=p.html;box.scrollTop=0;
+  pgEl.textContent=(i+1)+' / '+pages.length;prog.style.width=((i+1)/pages.length*100)+'%';
+}
+var stage=document.getElementById('stage'),vp=document.getElementById('viewport');
+function fit(){var k=Math.min(vp.clientWidth/1280,vp.clientHeight/720);stage.style.transform='translate(-50%,-50%) scale('+k+')';}
+function open(){deck.hidden=false;document.body.style.overflow='hidden';fit();var w=[].slice.call(main.querySelectorAll('img')).map(function(m){if(m.complete)return 0;m.loading='eager';return new Promise(function(r){m.onload=m.onerror=r;setTimeout(r,8000);});});Promise.all(w).then(function(){build();show(0);});}
+function close(){deck.hidden=true;document.body.style.overflow='';}
+window.addEventListener('resize',function(){if(!deck.hidden)fit();});
+document.getElementById('slideBtn').onclick=open;
+document.getElementById('exit').onclick=close;
+document.getElementById('prev').onclick=function(){show(i-1)};
+document.getElementById('next').onclick=function(){show(i+1)};
+document.addEventListener('keydown',function(e){
+  if(deck.hidden)return;
+  if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ')show(i+1);
+  else if(e.key==='ArrowLeft'||e.key==='PageUp')show(i-1);
+  else if(e.key==='Escape')close();
+});
+document.addEventListener('click',function(e){
+  var b=e.target.closest&&e.target.closest('.copyhead button');if(!b)return;
+  var pre=b.closest('.copybox').querySelector('pre');
+  var done=function(){var t=b.textContent;b.textContent='복사됨';setTimeout(function(){b.textContent=t;},1200);};
+  if(navigator.clipboard)navigator.clipboard.writeText(pre.classList.contains('fmt')?pre.textContent:pre.innerText).then(done,done);else done();
+});
+})();
+</script>
+<script type="text/javascript">
+(function(){
+  var links=[].slice.call(document.querySelectorAll('aside nav a[href^="#"]'));
+  var targets=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));});
+  function update(){
+    var y=window.scrollY+120, cur=-1;
+    targets.forEach(function(el,i){ if(el && el.getBoundingClientRect().top+window.scrollY<=y) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('active', i===cur); });
+    var cp=null;
+    if(cur>=0){ var ca=links[cur]; cp=ca.classList.contains('l4')?ca.getAttribute('data-p'):(ca.getAttribute('href').slice(1)); }
+    links.forEach(function(a){ if(a.classList.contains('l4')) a.classList.toggle('show', a.getAttribute('data-p')===cp); });
+    if(cur>=0){ var a=links[cur], box=a.closest('aside'), r=a.getBoundingClientRect();
+      if(r.top<120||r.bottom>window.innerHeight-20) box.scrollTop+=r.top-window.innerHeight/2; }
+  }
+  window.addEventListener('scroll',update,{passive:true}); update();
+})();
+</script>
+<script type="text/javascript">
+(function(){
+  var btn=document.querySelector('.nav-toggle'), label=btn.querySelector('span'), body=document.body;
+  var mq=window.matchMedia('(max-width: 1020px)');
+  function isOpen(){ return mq.matches ? body.classList.contains('nav-open') : !body.classList.contains('nav-hidden'); }
+  function sync(){ var o=isOpen(); btn.setAttribute('aria-expanded',o); label.textContent=o?'목차 숨기기':'목차 보기'; }
+  try{ if(localStorage.getItem('navHidden')==='1') body.classList.add('nav-hidden'); }catch(e){}
+  btn.addEventListener('click',function(){
+    if(mq.matches){ body.classList.toggle('nav-open'); }
+    else{ var h=body.classList.toggle('nav-hidden'); try{ localStorage.setItem('navHidden',h?'1':'0'); }catch(e){} }
+    sync();
+  });
+  document.querySelectorAll('aside nav a').forEach(function(a){ a.addEventListener('click',function(){ if(mq.matches){ body.classList.remove('nav-open'); sync(); } }); });
+  if(mq.addEventListener) mq.addEventListener('change',sync);
+  sync();
+})();
+</script>
+</body>
+</html>

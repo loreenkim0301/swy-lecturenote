@@ -290,7 +290,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <div><b>시간</b><span>월–금 09:00–18:00 (8h) · 총 40시간</span></div>
 <div><b>2주차 결과물</b><span>문제정의서, 간단 PRD v1→v2, 이벤트 신청 페이지 프로토타입, 배포 주소, 신청이 쌓이는 데이터베이스</span></div>
 </div>
-<nav aria-label="2주차 교안" class="day-nav"><a href="./">2주차 홈</a><a href="./d1-problem-artifact.html">DAY 1 문제 정의·아티팩트</a><a href="./d2-claude-flow.html">DAY 2 시나리오·PRD·클로드 기능</a><a href="./d3-deploy-localdb.html">DAY 3 데이터 정의·배포 3가지</a><a href="./d4-vibe-tools-bolt.html">DAY 4 도구 비교·볼트</a><a href="./d5-google-firebase.html">DAY 5 구글 AI 스튜디오·Firebase</a></nav>
+<nav aria-label="2주차 교안" class="day-nav"><a href="./">2주차 홈</a><a href="./d1-problem-artifact.html">DAY 1 문제 정의·아티팩트</a><a href="./d2-claude-flow.html">DAY 2 시나리오·와이어프레임·IA</a><a href="./d3-deploy-localdb.html">DAY 3 프로토타입·PRD·지침</a><a href="./d4-vibe-tools-bolt.html">DAY 4 도구 비교·볼트</a><a href="./d5-google-firebase.html">DAY 5 구글 AI 스튜디오·Firebase</a></nav>
 </header>
 
 <section class="section" id="goal"><div class="section-label">GOAL</div><h2>이번 주 목표</h2>
@@ -298,37 +298,40 @@ aside nav a.active{border-left-color:var(--blue)}
 <ol class="goal-list">
 <li><b>문제 발굴과 문제 정의의 기초를 이해해요.</b> 타깃·현상·문제 3요소로 문제를 한 문장으로 쓰고, 5 Whys로 원인을 찾고, 가설과 지표로 "잘 됐는지" 판단할 기준을 세워요.</li>
 <li><b>문제를 풀기 위한 프로토타입을 만들고 배포해요.</b> 문제정의서를 근거로 클로드에서 화면을 만들고, 코드 대신 프롬프트로 고치고, 인터넷 주소로 꺼내 다른 사람이 쓸 수 있게 해요.</li>
-<li><b>데이터베이스와 호스팅을 지난주보다 한 단계 높은 수준으로 구현해요.</b> 지난주에는 파일을 손으로 올려 공개했고 데이터는 저장하지 않았다면, 이번 주에는 올리면 자동으로 배포되게 하고 여러 사람의 신청이 한곳에 쌓이게 만들어요.</li>
+<li><b>데이터베이스와 호스팅을 지난주보다 한 단계 높은 수준으로 구현해요.</b> 지난주에는 파일을 손으로 올려 공개했고 데이터는 저장하지 않았어요. 이번 주에는 올리면 자동으로 배포되게 하고, 여러 사람의 신청이 한곳에 쌓이게 만들어요.</li>
 </ol>
 <div class="table-wrap"><table>
 <tr><th>구분</th><th>1주차에 한 것</th><th>2주차에 하는 것</th></tr>
 <tr><td><b>만드는 것</b></td><td>헬로 페이지(GitHub 저장소 my-first-site)</td><td>문제 정의에서 출발한 이벤트 신청 페이지</td></tr>
-<tr><td><b>호스팅·배포</b></td><td>GitHub에 파일을 직접 올리고 GitHub Pages로 공개</td><td>넷리파이 드롭(손으로 올리기) → 버셀(깃헙에 올리면 자동 배포, 미리보기 주소) → Firebase 호스팅</td></tr>
+<tr><td><b>호스팅·배포</b></td><td>GitHub에 파일을 직접 올리고 GitHub Pages로 공개</td><td>넷리파이 드롭(손으로 올리기) → 버셀(깃헙에 커밋하면 자동 배포, 미리보기 주소) → 볼트 배포 → AI 스튜디오 배포(Cloud Run)</td></tr>
 <tr><td><b>데이터</b></td><td>Colab에서 파이썬 기초 문법(변수·조건·리스트·반복) 실행. 저장하는 데이터는 없음</td><td>브라우저 저장(내 브라우저에만) → 볼트 데이터베이스 → Firebase Firestore(모두의 신청이 한곳에)</td></tr>
 <tr><td><b>AI 쓰는 법</b></td><td>Colab 속 Gemini에게 코드를 설명받고 고치기</td><td>코드를 받지 않고 프롬프트로 묻고, 방법을 고르고, 결과를 눈으로 확인하기</td></tr>
 </table></div>
-<div class="notice"><b>모든 세션이 같은 순서로 진행돼요</b><br/>개념 → 예시(채워진 템플릿) → 실습 템플릿 → 프롬프트로 시작하기 → 점검·피드백 → 실패 케이스 → 결과 만들기</div>
+<div class="notice"><b>세션은 수업 흐름대로 진행해요</b><br/>개념 → 예시 → 실습(셀렉트마켓으로 먼저, 그다음 내 주제로) → 점검 → 결과 순서예요. 세부 목차 제목은 그 절에서 학생이 하는 일이에요.<br/>막히면 볼 표와 '이렇게 하면 결과가 틀어져요'는 따로 떼지 않고 실습·점검 절 안에 있어요.</div>
 </section>
 
 <section class="section" id="days"><div class="section-label">DAYS</div><h2>날짜별 교안</h2>
 <div class="table-wrap"><table>
 <tr><th>날짜</th><th>교과</th><th>교안</th><th>오늘의 결과물</th></tr>
-<tr><td>11/02(월) 09:00–18:00</td><td>[기본] AI 서비스 개발 (2/18)</td><td><a href="./d1-problem-artifact.html">DAY 1 · 문제를 한 문장으로 정의하고, 그 문장으로 첫 화면을 만들어요</a></td><td>문제정의서 1장(3요소·5 Whys·가설·지표) + 이벤트 페이지 v2 + 수정 기록표</td></tr><tr><td>11/03(화) 09:00–18:00</td><td>[기본] AI 서비스 개발 (3/18)</td><td><a href="./d2-claude-flow.html">DAY 2 · 화면이 어떻게 쓰일지 설계하고, 클로드에게 맥락을 기억시켜요</a></td><td>간단 PRD v1 + 시안 평가표 + 프로젝트 지침 5줄 + 예약 작업 명세서 + 맡길 일 판정표</td></tr><tr><td>11/04(수) 09:00–18:00</td><td>[기본] AI 서비스 개발 (4/18)</td><td><a href="./d3-deploy-localdb.html">DAY 3 · 신청 데이터를 정의하고, 미리보기 속 페이지를 인터넷 주소로 꺼내요</a></td><td>데이터 정의표 + 배포 주소 3개 + 배포 비교표 + 저장 위치 확인표</td></tr><tr><td>11/05(목) 09:00–18:00</td><td>[기본] AI 서비스 개발 (5/18)</td><td><a href="./d4-vibe-tools-bolt.html">DAY 4 · 도구를 비교하는 기준을 세우고, PRD로 볼트에 DB까지 연결해요</a></td><td>도구 비교표 v2 + 볼트 요청서 + 저장 방법 기준표 + 볼트 배포 주소 + 테스트 시나리오 표</td></tr><tr><td>11/06(금) 09:00–18:00</td><td>[기본] AI 서비스 개발 (6/18)</td><td><a href="./d5-google-firebase.html">DAY 5 · 구글 AI 스튜디오와 Firebase로 모두의 신청을 한곳에 모아요</a></td><td>구글 서비스 지도 + 도구 비교 결과표 + Firestore 구조표 + 배포 주소 + PRD v2</td></tr>
+<tr><td>11/02(월) 09:00–18:00</td><td>[기본] AI 서비스 개발 (2/18)</td><td><a href="./d1-problem-artifact.html">DAY 1 · 문제를 한 문장으로 정의하고, 그 문장으로 첫 화면을 만들어요</a></td><td>문제정의서 1장(3요소·5 Whys·가설·지표) + 이벤트 페이지 v2 + 수정 기록표</td></tr><tr><td>11/03(화) 09:00–18:00</td><td>[기본] AI 서비스 개발 (3/18)</td><td><a href="./d2-claude-flow.html">DAY 2 · 시나리오를 시트에 쓰고, 화면·와이어프레임·IA로 구조를 설계해요</a></td><td>유즈케이스 시트(1·2·3차·검수) + 시나리오 화면 + 로우·하이·스켈레톤 3종 + IA 1·2차</td></tr><tr><td>11/04(수) 09:00–18:00</td><td>[기본] AI 서비스 개발 (4/18)</td><td><a href="./d3-deploy-localdb.html">DAY 3 · IA로 와이어프레임·프로토타입·PRD를 만들고, 지침·메모리·예약·크롬으로 일을 맡겨요</a></td><td>와이어프레임(모바일·PC) + 미드피델리티 프로토타입 + PRD 1차 + 프로젝트 지침 + 메모리·예약 작업 + 크롬·커넥터·데스크톱 실행 캡처 (배포 실습은 이월)</td></tr><tr><td>11/05(목) 09:00–18:00</td><td>[기본] AI 서비스 개발 (5/18)</td><td><a href="./d4-vibe-tools-bolt.html">DAY 4 · 도구를 비교하는 기준을 세우고, 볼트로 이름을 데이터베이스에 저장해요</a></td><td>도구 비교표 v2 + 볼트 Hello 페이지(공개 주소) + 데이터베이스에 저장된 이름</td></tr><tr><td>11/06(금) 09:00–18:00</td><td>[기본] AI 서비스 개발 (6/18)</td><td><a href="./d5-google-firebase.html">DAY 5 · 구글 AI 스튜디오로 같은 Hello 페이지를 만들고 Firestore에 저장해요</a></td><td>AI 스튜디오 Hello 페이지(공개 주소) + Firestore에 저장된 이름 + 볼트·AI 스튜디오 비교표 + PRD v2</td></tr>
 </table></div>
 </section>
 
 <section class="section" id="flow"><div class="section-label">FLOW</div><h2>한 주의 흐름</h2>
 <p>요일마다 같은 이벤트 페이지가 한 단계씩 자라요. 앞에서 만든 것이 다음 날 재료가 돼요.</p>
-<div class="flow"><div><span>월</span><b>문제를 문장으로</b><small>3요소·5 Whys·가설·지표, 아티팩트 v1</small></div><div><span>화</span><b>쓰임새 설계·맥락 기억</b><small>시나리오·예외·PRD, 시안 비교, 지침·예약</small></div><div><span>수</span><b>데이터 정의·주소로 꺼내기</b><small>데이터 정의표, 배포 3가지, 브라우저 저장의 한계</small></div><div><span>목</span><b>도구를 고르는 눈</b><small>세 기준 비교, 볼트로 DB 연결</small></div><div><span>금</span><b>모두의 신청을 한곳에</b><small>Firestore 구조, 호스팅, PRD v2</small></div></div>
+<div class="flow"><div><span>월</span><b>문제를 문장으로</b><small>3요소·5 Whys·가설·지표, 아티팩트 v1</small></div><div><span>화</span><b>화면 구조 설계</b><small>사용자 유형, 공동 시트 유즈케이스 1·2·3차, 시나리오 화면, 로우·하이·스켈레톤, IA 1·2차</small></div><div><span>수</span><b>화면을 펼치고 일을 맡기기</b><small>와이어프레임·미드피델리티 프로토타입, PRD 문제 파트, 지침·메모리·예약, 크롬·커넥터·데스크톱 앱 (배포는 이월)</small></div><div><span>목</span><b>도구를 고르는 눈</b><small>세 기준 비교, 볼트로 이름 저장·공개</small></div><div><span>금</span><b>모두의 신청을 한곳에</b><small>같은 샘플을 AI 스튜디오로, Firestore·공개, PRD v2</small></div></div>
 </section>
 
 <section class="section" id="ready"><div class="section-label">PREPARE</div><h2>이번 주 준비물</h2>
 <ul class="checklist">
 <li>카메라와 마이크가 되는 컴퓨터 (휴대폰만으로는 실습이 어려워요)</li>
-<li>크롬(Chrome) 브라우저와 Google 계정 (금요일 AI 스튜디오·Firebase 실습)</li>
-<li>Claude 유료 계정 (웹 버전, 계정은 운영 기관 안내를 따라요)</li>
+<li>크롬(Chrome) 브라우저</li>
+<li>Claude 유료 계정 (웹 버전, 계정은 운영 기관 안내를 따라요. 수요일 예약 작업은 유료 플랜에서만 보여요)</li>
+<li>넷리파이·버셀·볼트 계정 (수·목요일, 깃헙 계정으로 가입하면 편해요)</li>
+<li>개인 구글 계정 (금요일 AI 스튜디오 공개는 개인 지메일 계정이면 앱 2개까지 결제 계정 없이 할 수 있어요. 회사·학교 계정이나 새로 만든 계정은 안 될 수 있어요. 구글 공식 문서)</li>
 <li>1주차 DAY 3에 만든 GitHub 계정</li>
-<li>휴대폰 (목·금요일에 배포한 페이지에서 직접 신청해 봐요)</li>
+<li>휴대폰 (수·목·금요일에 배포한 페이지를 열고 직접 신청해 봐요)</li>
+<li>신청 폼 실습에는 실제 이름·연락처 대신 가상의 정보만 넣어요</li>
 </ul>
 </section>
 </main>
