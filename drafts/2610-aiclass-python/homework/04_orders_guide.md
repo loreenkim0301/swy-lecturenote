@@ -5,7 +5,7 @@
 ## Colab에서 불러오기
 ```python
 import pandas as pd
-url = "https://loreenkim0301.github.io/swy-lecturenote/draft/2610-aiclass-python/homework/04_orders.csv"
+url = "https://loreenkim0301.github.io/swy-lecturenote/drafts/2610-aiclass-python/homework/04_orders.csv"
 df = pd.read_csv(url)
 df.head()
 ```
