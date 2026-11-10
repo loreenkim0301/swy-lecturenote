@@ -295,7 +295,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="nav-title">전체 목차</div>
 <div class="grp"><div class="grp-label">교육 안내</div><a class="l2" href="#overview">교육 개요</a><a class="l2" href="#prep">수업 전 준비</a><a class="l2" href="#tt">타임테이블</a></div>
 <div class="grp"><div class="grp-label">오늘의 단어</div><a class="l2" href="#words">오늘의 단어</a></div>
-<div class="grp"><div class="grp-label">SESSION 1</div><a class="l2" href="#s1">모으기 전에 확인할 것</a><a class="l3" href="#s1-1">1-1. 크롤링이란?</a><a class="l3" href="#s1-2">1-2. 연습 사이트와 YES24의 robots.txt 읽기</a><a class="l3" href="#s1-3">1-3. 결과</a></div>
+<div class="grp"><div class="grp-label">SESSION 1</div><a class="l2" href="#s1">모으기 전에 확인할 것</a><a class="l3" href="#s1-1">1-1. 크롤링이란?</a><a class="l3" href="#s1-2">1-2. 크롤링과 법: 야놀자 vs 여기어때</a><a class="l3" href="#s1-3">1-3. 연습 사이트와 YES24의 robots.txt 읽기</a><a class="l3" href="#s1-4">1-4. 결과</a></div>
 <div class="grp"><div class="grp-label">SESSION 2</div><a class="l2" href="#s2">웹 페이지에서 모을 곳 찾기</a><a class="l3" href="#s2-1">2-1. HTML 태그와 속성이란?</a><a class="l3" href="#s2-2">2-2. 개발자 도구로 책 한 권의 HTML 찾기</a><a class="l3" href="#s2-3">2-3. 결과</a></div>
 <div class="grp"><div class="grp-label">SESSION 3</div><a class="l2" href="#s3">코랩으로 첫 페이지 모으기</a><a class="l3" href="#s3-1">3-1. 크롤링 코드의 짜임</a><a class="l3" href="#s3-2">3-2. 첫 페이지 20권을 표로 모으기</a><a class="l3" href="#s3-3">3-3. 결과</a></div>
 <div class="grp"><div class="grp-label">SESSION 4</div><a class="l2" href="#s4">1,000권 모두 모으기</a><a class="l3" href="#s4-1">4-1. 페이지 주소 규칙과 요청 간격</a><a class="l3" href="#s4-2">4-2. 50쪽을 돌며 원본 CSV 만들기</a><a class="l3" href="#s4-3">4-3. 결과</a></div>
@@ -324,7 +324,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><th>시간</th><td>09:00–18:00 (점심 12:00–13:00, 수업 8시간)</td></tr>
 <tr><th>교과</th><td>[기본] AI 서비스 개발 · 8일차 (총 18일)</td></tr>
 <tr><th>교육 목표</th><td>외부의 데이터를 웹 크롤링으로 모으고, 원본과 정리본으로 나눠 쓸 수 있게 만든다.</td></tr>
-<tr><th>수업이 끝나면</th><td>① 모으기 전에 robots.txt·이용약관·개인정보·요청 간격을 확인하기<br/>② 개발자 도구로 모을 정보가 HTML의 어디에 있는지 찾기<br/>③ 코랩에서 파이썬으로 책 정보를 모아 원본 CSV 만들기<br/>④ 정리 규칙을 세워 정리본 만들기<br/>⑤ 클로드의 웹 가져오기와 파일 만들기로 같은 일을 해 보고, 두 방법 견주기</td></tr>
+<tr><th>수업이 끝나면</th><td>① 모으기 전에 robots.txt·이용약관·개인정보·요청 간격을 확인하고, 야놀자 vs 여기어때 사건으로 크롤링의 형사·민사 책임을 나눠 설명하기<br/>② 개발자 도구로 모을 정보가 HTML의 어디에 있는지 찾기<br/>③ 코랩에서 파이썬으로 책 정보를 모아 원본 CSV 만들기<br/>④ 정리 규칙을 세워 정리본 만들기<br/>⑤ 클로드의 웹 가져오기와 파일 만들기로 같은 일을 해 보고, 두 방법 견주기</td></tr>
 </table></div>
 </section>
 
@@ -360,6 +360,8 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td><b>크롤러</b></td><td>크롤링을 하는 프로그램. 로봇(bot)이라고도 불러요.</td></tr>
 <tr><td><b>robots.txt</b></td><td>사이트가 크롤러에게 "여기는 들어와도 되고, 여기는 들어오지 마"를 적어 둔 파일</td></tr>
 <tr><td><b>이용약관</b></td><td>사이트를 쓰는 사람이 지켜야 할 규칙을 적은 글</td></tr>
+<tr><td><b>형사 · 민사</b></td><td>형사는 나라가 죄가 되는지 따져 벌을 주는 재판, 민사는 피해를 입은 쪽에 돈으로 물어 줘야 하는지 따지는 재판</td></tr>
+<tr><td><b>부정경쟁방지법</b></td><td>남이 노력해서 만든 성과를 가로채는 등 공정하지 않은 경쟁을 막는 법</td></tr>
 <tr><td><b>요청 간격</b></td><td>크롤러가 페이지를 한 번 연 뒤 다음 페이지를 열기까지 쉬는 시간</td></tr>
 <tr><td><b>HTML 태그 · 속성</b></td><td>웹 페이지를 이루는 상자(&lt;h3&gt;, &lt;a&gt; 등)와, 상자에 붙은 이름표(class, title 등)</td></tr>
 <tr><td><b>개발자 도구</b></td><td>크롬에서 웹 페이지의 HTML을 들여다보는 도구. 1주차 금요일에 열어 봤어요.</td></tr>
@@ -394,7 +396,88 @@ aside nav a.active{border-left-color:var(--blue)}
 <p class="source-note">출처: Google 검색 센터 <a href="https://developers.google.com/search/docs/advanced/robots" target="_blank" rel="noopener">robots.txt 소개</a>("robots.txt 파일의 지시는 크롤러의 행동을 강제할 수 없으며, 지키는 것은 크롤러의 몫") · IETF <a href="https://datatracker.ietf.org/doc/html/rfc9309" target="_blank" rel="noopener">RFC 9309 Robots Exclusion Protocol</a>("이 규칙은 접근 허가의 한 형태가 아니다", User-agent: * 그룹, Disallow) (2026.11.08 확인)</p>
 </div>
 
-<div class="topic" id="s1-2"><h3><span class="stage">실습</span>1-2. 연습 사이트와 YES24의 robots.txt 읽기</h3>
+<div class="topic" id="s1-2"><h3><span class="stage">사례</span>1-2. 크롤링과 법: 야놀자 vs 여기어때 사건</h3>
+<h4>왜 기획자가 알아야 하나요?</h4>
+<p>크롤링 코드는 개발자나 AI가 짜요. 그런데 "경쟁 앱의 가격을 모아서 우리 앱에 보여 주자" 같은 기능을 처음 제안하고 기획서에 적는 사람은 기획자예요. 그래서 법적 문제는 코드보다 먼저, 기능 아이디어에서 시작돼요. 국내에서 크롤링의 기준을 보여 준 대표 사건으로 이 기준을 살펴봐요.</p>
+
+<h4>사건 한눈에 보기</h4>
+<div class="table-wrap"><table>
+<tr><th>항목</th><th>내용</th></tr>
+<tr><td><b>누가</b></td><td>숙박 예약 앱 여기어때 운영사가 경쟁사 야놀자의 정보를 모았어요.</td></tr>
+<tr><td><b>언제</b></td><td>2016년. 처음에는 사람이 손으로 모으다가, 2016년 1월 크롤링 프로그램을 만들었어요.</td></tr>
+<tr><td><b>어떻게</b></td><td>야놀자 앱이 서버에서 정보를 받아 오는 통로(API 서버)를 분석해 프로그램을 만들고, 주기적으로 접속했어요. 앱은 내 위치 근처 7~30km를 검색하지만, 이 프로그램은 반경 1,000km를 한 번에 요청했어요.</td></tr>
+<tr><td><b>무엇을</b></td><td>숙박업소 이름·주소·지역처럼 앱 이용자에게 공개된 정보예요. 야놀자 데이터베이스의 50여 개 항목 가운데 3~8개 항목이었어요.</td></tr>
+<tr><td><b>어디에 썼나</b></td><td>모은 정보를 자기 회사의 영업 전략을 세우는 데 썼어요.</td></tr>
+</table></div>
+
+<h4>같은 사건, 다른 결론: 형사는 무죄, 민사는 10억 원 배상</h4>
+<p>법적 책임은 두 가지로 나뉘어요. <b>형사</b>는 나라가 "죄가 되는지"를 따져 벌을 주는 재판이에요. <b>민사</b>는 피해를 입은 회사에 "돈으로 물어 줘야 하는지"를 따지는 재판이에요. 이 사건은 두 재판의 결론이 달랐어요.</p>
+<div class="table-wrap"><table>
+<tr><th>구분</th><th>쟁점</th><th>법</th><th>결론</th><th>법원이 본 이유</th></tr>
+<tr><td rowspan="3"><b>형사</b></td><td>남의 서버에 몰래 들어갔나?</td><td>정보통신망법</td><td>무죄</td><td>비밀번호처럼 접근을 막는 장치가 없었고, 모은 정보도 이용자에게 공개된 정보였어요.</td></tr>
+<tr><td>남의 데이터베이스를 베꼈나?</td><td>저작권법 (데이터베이스제작자의 권리)</td><td>무죄</td><td>데이터베이스의 일부 항목만 모았어요. 이미 공개된 정보라 그 부분을 만드는 데 큰 비용이 든 것도 아니었어요.</td></tr>
+<tr><td>서버를 멈추게 해 업무를 방해했나?</td><td>형법 (컴퓨터 등 장애 업무방해)</td><td>무죄</td><td>앱이 원래 쓰는 정상적인 요청이었어요. 그 무렵 접속 장애가 있었지만, 공휴일에 이용자가 늘어서 생긴 것일 수도 있어 크롤링 때문이라고 증명되지 않았어요.</td></tr>
+<tr><td><b>민사</b></td><td>경쟁사가 쌓은 성과를 가로챘나?</td><td>부정경쟁방지법 (성과 도용)</td><td><b>10억 원 배상</b></td><td>정보가 공개되어 있다고 해서 누구나 마음대로 베껴도 되는 것은 아니라고 봤어요. 조직적이고 꾸준하게 가져가 자기 영업에 쓴 점을 문제로 봤어요.</td></tr>
+</table></div>
+<p class="source-note">형사: 대법원 2022. 5. 12. 선고 2021도1533 판결(무죄 확정). 민사: 서울중앙지방법원 2021. 8. 19. 1심 10억 원 배상 → 서울고등법원 2022. 8. 25. 2심도 배상 유지(2심은 1심의 복제 금지 명령은 취소). 민사 판결이 쓴 조항은 당시 부정경쟁방지법 제2조 제1호 (카)목이에요. 2022년 4월 법 개정으로 이 조항은 지금 (파)목으로 옮겨졌어요.</p>
+<div class="notice"><b>기억할 것</b><br/>형사에서 무죄라고 "해도 되는 일"이 되는 것은 아니에요. 경쟁사가 돈과 노력을 들여 쌓은 데이터를 가져다 내 영업에 쓰면, 민사에서 큰돈을 물어 줄 수 있어요.</div>
+
+<h4>크롤링과 관련된 법, 한 표로 보기</h4>
+<p>기획자는 법 조문을 외울 필요는 없어요. 어떤 기능이 어떤 법에 걸릴 수 있는지만 알면, 기획 단계에서 위험을 걸러 낼 수 있어요.</p>
+<div class="table-wrap"><table>
+<tr><th>구분</th><th>법</th><th>문제가 되는 경우</th><th>기획자가 확인할 질문</th></tr>
+<tr><td rowspan="3"><b>형사</b></td><td>정보통신망법</td><td>로그인이나 접근 차단 장치를 피해서 들어갈 때</td><td>로그인해야 보이는 정보를 모으는 기능인가요?</td></tr>
+<tr><td>저작권법 (데이터베이스제작자의 권리)</td><td>남의 데이터베이스에서 상당한 부분을 베낄 때. 조금씩이라도 반복해서 가져가 결국 상당한 부분을 가져간 것과 같아질 때</td><td>남의 데이터베이스를 통째로 옮기는 기능인가요?</td></tr>
+<tr><td>형법 (컴퓨터 등 장애 업무방해)</td><td>요청이 너무 많아 실제로 상대 서버에 장애가 생겼을 때</td><td>요청 간격과 횟수 제한을 기획서에 적었나요?</td></tr>
+<tr><td rowspan="4"><b>민사</b></td><td>부정경쟁방지법 (성과 도용, (파)목)</td><td>경쟁사가 투자해서 만든 데이터를 허락 없이 가져가 내 영업에 쓸 때</td><td>경쟁사 데이터가 우리 서비스의 핵심 재료인가요?</td></tr>
+<tr><td>부정경쟁방지법 (데이터 부정사용, (카)목, 2022. 4. 20. 시행)</td><td>회원이나 계약한 사람에게만 주는 데이터를 부정한 방법으로 가져가거나 쓸 때</td><td>유료 회원이나 제휴사에게만 주는 데이터인가요?</td></tr>
+<tr><td>이용약관 (계약)</td><td>가입할 때 동의한 약관에 자동 수집 금지가 있는데도 계속 모을 때</td><td>우리 계정으로 가입해서 모으나요? 약관에 수집 금지 문장이 있나요?</td></tr>
+<tr><td>개인정보 보호법</td><td>이름·연락처·이메일처럼 사람을 알아볼 수 있는 정보를 모아서 쓸 때</td><td>모으려는 칸에 개인정보가 섞여 있나요?</td></tr>
+</table></div>
+<p>개인정보는 공개된 곳에 있어도 마음대로 써도 되는 것이 아니에요. 개인정보보호위원회는 공개된 개인정보를 쓰려면 목적이 정당하고, 꼭 필요한 만큼만 쓰고, 정보 주인의 권리보다 회사의 이익이 분명히 커야 한다고 안내해요. 같은 안내서에서 사이트의 이용약관과 robots.txt를 지키라고도 해요. 그래서 수업에서는 개인정보가 섞인 칸은 모으지 않아요.</p>
+<p>robots.txt는 1-1에서 본 것처럼 법이 아니라 부탁이에요. 그래도 사이트 주인이 "여기는 모으지 마"라고 밝힌 뜻이라서, 다툼이 생기면 그 뜻을 알고도 무시했는지가 문제가 될 수 있어요.</p>
+<p class="source-note">출처: 법무법인 세종(신앤김) <a href="https://www.shinkim.com/kor/media/newsletter/1843" target="_blank" rel="noopener">크롤링 형사사건 대법원 판결 해설</a>(사건 개요·쟁점별 판단·관련 민사 1심) · 법무법인 세종 <a href="https://www.shinkim.com/kor/media/newsletter/1662" target="_blank" rel="noopener">데이터 부정사용행위 도입 해설</a>((카)목 신설, 기존 (카)목 → (파)목, 2022. 4. 20. 시행) · 법무법인 세종 <a href="https://www.shinkim.com/kor/media/newsletter/2517" target="_blank" rel="noopener">개인정보위 「AI 개발·서비스를 위한 공개된 개인정보 처리 안내서」 해설</a>(2024. 7. 17. 공개, 정당한 이익 3요건, 이용약관·robots.txt 준수 권고) (2026.11.10 확인)</p>
+
+<h4>관련 뉴스</h4>
+<div class="resource-list news">
+<a class="resource-card" href="https://v.daum.net/v/20220826110606958" target="_blank" rel="noopener"><span class="small">다음 뉴스 · 2022-08-26 보도</span><b>'야놀자 vs 여기어때' 숙박업체 소송…2심도 '크롤링' 불법 판정</b><span class="small">서울고법이 10억 원 배상을 유지하면서, 공개된 정보라도 마음대로 베껴도 되는 공공의 것은 아니라고 본 2심 판결 기사예요.</span></a>
+<a class="resource-card" href="https://v.daum.net/v/Fi3RbZBWW5" target="_blank" rel="noopener"><span class="small">한국경제 · 2024-04-24 보도</span><b>'여기어때' 사건으로 살펴본 '크롤링'의 적법성</b><span class="small">형사 무죄와 민사 배상이 갈린 이유를 변호사가 풀어 쓰고, 사람인 vs 잡코리아 사건도 함께 다룬 칼럼이에요.</span></a>
+<a class="resource-card" href="https://www.bizhankook.com/bk/article/27377" target="_blank" rel="noopener"><span class="small">비즈한국 · 2024-04-01 보도</span><b>구직앱이 경쟁사의 채용정보 허락 없이 가져오면 처벌 받을까</b><span class="small">크롤링 분쟁에서 형사 고소보다 부정경쟁방지법 민사 소송이 실제로 쓰이는 이유를 정리한 칼럼이에요.</span></a>
+<a class="resource-card" href="https://byline.network/2025/07/28-500/" target="_blank" rel="noopener"><span class="small">바이라인네트워크 · 2025-07-28 보도</span><b>법원 "마이리얼트립이 민다에 1억5000만원 배상하라"</b><span class="small">크롤링은 아니지만, 예약을 해야만 보이는 숙소 주인 연락처를 허위 예약으로 얻어 영업에 쓴 일에 배상 판결이 난 사건이에요.</span></a>
+</div>
+
+<h4>기획서에 넣는 크롤링 확인 질문</h4>
+<p>외부 데이터를 쓰는 기능을 기획할 때, 기획서에 아래 다섯 가지를 먼저 적어요. 하나라도 "예"가 나오면 법무 검토를 받거나 다른 방법을 찾아요.</p>
+<ul class="checklist">
+<li>로그인·예약·결제를 해야 보이는 정보를 모으나요?</li>
+<li>봇 차단이나 캡차(로봇인지 확인하는 장치)를 피해 가야 모을 수 있나요?</li>
+<li>경쟁사의 데이터베이스를 통째로, 또는 꾸준히 가져가 우리 서비스의 핵심 재료로 쓰나요?</li>
+<li>이름·연락처·이메일·아이디 같은 개인정보가 섞여 있나요?</li>
+<li>요청 간격과 하루 요청 횟수를 정하지 않았나요?</li>
+</ul>
+<p>다른 방법으로는 사이트가 공식으로 제공하는 API, 데이터 제휴 계약, 공공데이터포털처럼 처음부터 쓰라고 공개한 데이터가 있어요. 반대로 우리 서비스의 데이터를 지킬 때도 같은 기준을 써요. 이용약관에 자동 수집 금지 문장을 넣고, API에 인증과 요청 횟수 제한을 두는 것도 기획자가 기획서에 적을 일이에요.</p>
+
+<p><b>STEP 1. 기능 아이디어 네 개를 위험도로 나누기</b></p>
+<p>아래 네 아이디어를 읽고, 각각 '먼저 해 볼 수 있음', '확인표부터', '하지 않음' 가운데 하나로 나눠요. 고른 다음 정답과 비교해요.</p>
+<div class="table-wrap"><table class="tpl">
+<tr><th>아이디어</th><th>나의 판단</th></tr>
+<tr><td>A. 공공데이터포털에서 공식 API로 숙박 정보를 받아 지도에 보여 주기</td><td></td></tr>
+<tr><td>B. 경쟁 앱 서버에 매일 접속해 전국 숙박업소 정보와 가격을 모아 우리 영업 자료로 쓰기</td><td></td></tr>
+<tr><td>C. 커뮤니티 게시판에서 글쓴이 닉네임과 이메일을 모아 마케팅 메일 보내기</td><td></td></tr>
+<tr><td>D. 온라인 서점 책 다섯 권의 가격을 하루 한 번, 1초 간격으로 모아 사내 시장 조사에만 쓰기</td><td></td></tr>
+</table></div>
+<details class="res-toggle"><summary><span class="blk k-res"><span>정답 비교</span></span><span class="tg"></span></summary>
+<div class="table-wrap"><table><tr><th>아이디어</th><th>판단</th><th>이유</th></tr>
+<tr><td>A</td><td>먼저 해 볼 수 있음</td><td>쓰라고 공식으로 연 통로예요. 그래도 API 이용 조건은 읽어요.</td></tr>
+<tr><td>B</td><td>하지 않음</td><td>야놀자 vs 여기어때 사건과 같은 모양이에요. 경쟁사가 쌓은 데이터를 꾸준히 가져가 영업에 쓰면 성과 도용으로 배상할 수 있어요.</td></tr>
+<tr><td>C</td><td>하지 않음</td><td>개인정보예요. 마케팅 메일은 받는 사람의 동의도 따로 필요해요.</td></tr>
+<tr><td>D</td><td>확인표부터</td><td>양이 적고 사내에서만 쓰지만, robots.txt·이용약관·요청 간격을 확인표로 먼저 확인해요.</td></tr>
+</table></div>
+</details>
+<p class="source-note">이 내용은 수업을 위해 정리한 것이고 법률 자문이 아니에요. 실제 서비스에 넣을 기능은 법무 검토를 받아요.</p>
+</div>
+
+<div class="topic" id="s1-3"><h3><span class="stage">실습</span>1-3. 연습 사이트와 YES24의 robots.txt 읽기</h3>
 <p>오늘 크롤링할 연습 사이트와, 수요일에 링크로 이어 갈 실제 서점 YES24를 함께 확인해요.</p>
 <p><b>STEP 1. 연습 사이트가 크롤링을 허락했는지 보기</b></p>
 <p>크롬에서 <a href="https://toscrape.com/" target="_blank" rel="noopener">https://toscrape.com/</a> 을 열어요. 첫 화면에 이 사이트가 무엇인지 적혀 있어요.</p>
@@ -448,9 +531,10 @@ aside nav a.active{border-left-color:var(--blue)}
 <p>YES24는 오늘 크롤링하지 않아요. 수요일에는 YES24에서 정보를 모으지 않고, YES24 검색 화면으로 이동하는 링크만 만들어요.</p>
 </div>
 
-<div class="topic" id="s1-3"><h3><span class="stage">결과</span>1-3. 결과</h3>
+<div class="topic" id="s1-4"><h3><span class="stage">결과</span>1-4. 결과</h3>
 <div class="result-box"><b>결과물</b> 크롤링 확인표(books.toscrape.com · yes24.com 두 줄)</div>
 <p class="ok-line"><b>이렇게 보이면 성공</b>books.toscrape.com을 오늘 모아도 되는 이유를 한 문장으로 말할 수 있다</p>
+<p class="ok-line"><b>이렇게 보이면 성공</b>야놀자 vs 여기어때 사건에서 형사는 무죄인데 민사는 배상한 이유를 한 문장으로 말할 수 있다</p>
 </div>
 </section>
 
@@ -755,6 +839,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <p><b>오늘의 규칙</b></p>
 <ul class="checklist">
 <li>모으기 전에 robots.txt·이용약관·개인정보·요청 간격을 확인한다. robots.txt는 부탁이고, 지키는 것은 모으는 사람의 몫이다</li>
+<li>형사에서 무죄여도 민사 책임은 따로 있다. 경쟁사가 쌓은 데이터를 꾸준히 가져가 영업에 쓰면 배상할 수 있다(야놀자 vs 여기어때, 10억 원)</li>
 <li>화면 글자가 아니라 HTML의 이름표에서 값을 가져온다</li>
 <li>한 페이지로 먼저 맞는지 보고, 페이지를 늘릴 때는 1초 이상 쉬어 간다</li>
 <li>원본은 두고 정리본을 만든다. 판단할 수 없는 줄은 지우지 않고 '확인 필요'로 표시한다</li>
