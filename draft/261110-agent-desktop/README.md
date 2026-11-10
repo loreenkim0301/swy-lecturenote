@@ -3,7 +3,7 @@
 2026-11-10 · 김수정(Loreen kim) · 상태: 예비 교안, 실습 미검증
 
 - 페이지: https://loreenkim0301.github.io/swy-lecturenote/draft/261110-agent-desktop/ (main에 머지된 뒤 배포)
-- 이어지는 교안: [11/05 AI에게 손이 생기기까지](../../261105-ai-agent-three-hands/) 장면 2 '컴퓨터를 쥔 손'
+- 이어지는 교안: [11/05 AI에게 손이 생기기까지](../261105-ai-agent-three-hands/) 장면 2 '컴퓨터를 쥔 손'
 
 ## 정식 교안으로 옮기기 전에 할 일
 
