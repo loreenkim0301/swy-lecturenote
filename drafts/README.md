@@ -7,7 +7,7 @@
 
 | 교안 | 폴더 | 들어온 날 | 상태 |
 |---|---|---|---|
-| 웹 스크래핑 수집 환경별 대조 실습 · 채팅 / Claude in Chrome / 데스크톱 앱 | [261110-web-scraping-compare](./261110-web-scraping-compare/) | 2026-11-10 | 실습 결과 원본, HTML 교안 미작성 |
+| 웹 스크래핑 수집 환경별 대조 실습 · 채팅 / Claude in Chrome / 데스크톱 앱(Claude Code 탭) | [261110-web-scraping-compare](./261110-web-scraping-compare/) | 2026-11-10 | 2차 재실행 완료(3-C 미실행), HTML 교안 미작성 |
 | 노션으로 팀 일을 한곳에 · 노션 기초부터 노션 에이전트까지 | [261110-notion-workspace](./261110-notion-workspace/) | 2026-11-10 | 기존 노션 교안 통합, 실습 미검증 |
 | 사진 대신 이름표로 · Vercel agent-desktop | [261110-agent-desktop](./261110-agent-desktop/) | 2026-11-10 | 새로 작성, 실습 미검증 |
 | PM을 위한 프로그래밍의 이해: 파이썬 ①·② | [2610-aiclass-python](./2610-aiclass-python/) | 2026-11-10 | 정식 목록에서 옮김 |
