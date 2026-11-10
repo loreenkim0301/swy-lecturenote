@@ -296,7 +296,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="grp"><div class="grp-label">교육 안내</div><a class="l2" href="#overview">교육 개요</a><a class="l2" href="#prep">수업 전 준비</a><a class="l2" href="#tt">타임테이블</a></div>
 <div class="grp"><div class="grp-label">오늘의 단어</div><a class="l2" href="#words">오늘의 단어</a></div>
 <div class="grp"><div class="grp-label">SESSION 1</div><a class="l2" href="#s1">PM이 다루는 데이터와 사용자의 행동 데이터</a><a class="l3" href="#s1-1">1-1. PM이 다루는 데이터와 유형</a><a class="l3" href="#s1-2">1-2. 인터넷으로 모을 수 있는 행동 데이터</a><a class="l3" href="#s1-3">1-3. 행동 데이터를 보는 도구</a><a class="l3" href="#s1-4">1-4. 연말 이벤트 데이터 지도 만들기</a><a class="l3" href="#s1-5">1-5. 결과</a></div>
-<div class="grp"><div class="grp-label">SESSION 2</div><a class="l2" href="#s2">가설을 검증하려면 데이터가 필요해요</a><a class="l3" href="#s2-1">2-1. 초기 프로덕트의 가설 검증</a><a class="l3" href="#s2-2">2-2. A/B 테스트란?</a><a class="l3" href="#s2-3">2-3. 사용자 수에 따라 달라지는 검증 방법</a><a class="l3" href="#s2-4">2-4. 글로벌 기업의 A/B 테스트 사례</a><a class="l3" href="#s2-5">2-5. 연말 이벤트 가설을 실험으로 바꾸기</a><a class="l3" href="#s2-6">2-6. 결과</a></div>
+<div class="grp"><div class="grp-label">SESSION 2</div><a class="l2" href="#s2">가설을 검증하려면 데이터가 필요해요</a><a class="l3" href="#s2-1">2-1. 초기 프로덕트의 가설 검증</a><a class="l3" href="#s2-2">2-2. A/B 테스트란?</a><a class="l3" href="#s2-3">2-3. 글로벌 기업의 A/B 테스트 사례</a><a class="l3" href="#s2-4">2-4. 연말 이벤트 가설을 실험으로 바꾸기</a><a class="l3" href="#s2-5">2-5. 결과</a></div>
 <div class="grp"><div class="grp-label">SESSION 3</div><a class="l2" href="#s3">쌓인 신청 데이터 정리하기(전처리)</a><a class="l3" href="#s3-1">3-1. 전처리란?</a><a class="l3" href="#s3-2">3-2. 지저분한 명단에서 문제 찾기</a><a class="l3" href="#s3-3">3-3. 시트 기능으로 먼저 정리해 보기</a><a class="l3" href="#s3-4">3-4. 앱스스크립트로 정리 버튼 만들기</a><a class="l3" href="#s3-5">3-5. 결과</a></div>
 <div class="grp"><div class="grp-label">SESSION 4</div><a class="l2" href="#s4">GA로 사용자의 행동을 모으고 보고서 보기</a><a class="l3" href="#s4-1">4-1. GA란?</a><a class="l3" href="#s4-2">4-2. 이벤트 신청 페이지에 GA 붙이기</a><a class="l3" href="#s4-3">4-3. 데이터가 쌓인 GA로 보고서 보기</a><a class="l3" href="#s4-4">4-4. 보고서를 내 메일로 정기적으로 받기</a><a class="l3" href="#s4-5">4-5. 결과</a></div>
 <div class="grp"><div class="grp-label">SESSION 5</div><a class="l2" href="#s5">이벤트 텍소노미: 무엇을 어떤 이름으로 셀까</a><a class="l3" href="#s5-1">5-1. 현장에서 GA는 누가 쓰고, 태그는 왜 번거로울까</a><a class="l3" href="#s5-2">5-2. 이벤트 텍소노미란?</a><a class="l3" href="#s5-3">5-3. 실무 사례: 구독형 미디어 A사</a><a class="l3" href="#s5-4">5-4. 연말 이벤트 이벤트 텍소노미 설계</a><a class="l3" href="#s5-5">5-5. 결과</a></div>
@@ -493,86 +493,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <p class="source-note">출처: Jan Overgoor, <a href="https://medium.com/airbnb-engineering/e2db3abf39e7" target="_blank" rel="noopener">Experiments at Airbnb</a>, The Airbnb Tech Blog, 2014 (2026.11.09 확인)</p>
 </div>
 
-<div class="topic" id="s2-3"><h3><span class="stage">개념</span>2-3. 사용자 수에 따라 달라지는 검증 방법</h3>
-<h4>A/B 테스트는 언제부터 할 수 있나요?</h4>
-<p>A/B 테스트는 사람이 충분히 모여야 판정할 수 있어요. 사람이 적으면 두 안의 차이가 진짜인지 우연인지 가릴 수 없어요. 그래서 초기 프로덕트는 A/B 테스트보다 사람을 직접 만나고, 손으로 해 주는 방법으로 먼저 검증해요. 수학적인 통계 분석은 제품이 자라 사용자가 꾸준히 들어온 뒤에 쓰는 <b>나중 단계의 도구</b>예요.</p>
-<div class="table-wrap"><table>
-<tr><th>단계</th><th>물어볼 것</th><th>통계적 A/B 테스트</th><th>검증 방법</th><th>사례</th></tr>
-<tr><td><b>1단계</b><br/>제품 사용자 0~10명</td><td>이 문제를 겪는 사람이 진짜 있나?</td><td>할 수 없어요</td><td>고객 인터뷰, 화면 시안 보여 주고 관찰, 제품 없이 소개 영상·페이지로 관심 신청 받기</td><td>드롭박스</td></tr>
-<tr><td><b>2단계</b><br/>~100명</td><td>돈을 내거나 계속 쓸 만큼 가치 있나?</td><td>할 수 없어요</td><td>사람이 뒤에서 손으로 처리하기, 가격 단추를 누르는지 보기, 사용성 테스트</td><td>자포스, 버퍼</td></tr>
-<tr><td><b>3단계</b><br/>~1,000명</td><td>화면이나 기능을 바꾸면 행동이 바뀌나?</td><td>아주 큰 차이만 판정할 수 있어요</td><td>크게 바꾸고 전·후 비교, 작은 행동(단추 클릭) 재기, 히트맵·녹화 보기</td><td>에어비앤비 사진</td></tr>
-<tr><td><b>4단계</b><br/>~10,000명</td><td>효율을 높이고 이탈을 줄일 수 있나?</td><td>중간 크기 차이를 몇 주 걸려 판정해요</td><td>방문이 많은 앞 단계(방문·가입) 지표로 A/B, 일부 사용자에게만 기능 켜기</td><td>—</td></tr>
-<tr><td><b>5단계</b><br/>수만 명 이상</td><td>작은 개선이 우연이 아니라 진짜 효과인가?</td><td>할 수 있어요(정통 통계)</td><td>필요한 인원을 미리 계산하고 검정, 여러 실험을 동시에, 단계적 배포</td><td>넷플릭스, 스포티파이, 메타</td></tr>
-</table></div>
-<p>사례는 회사의 사용자 수가 아니라 <b>무엇을 검증했는지</b>로 단계에 놓았어요. 각 사례가 그 시점에 사용자가 정확히 몇 명이었는지는 공개되지 않았어요. 4단계에 맞는 공개 사례는 찾지 못했어요.</p>
-
-<h4>초기 단계 사례: 기술 없이 먼저 확인했어요</h4>
-<div class="table-wrap"><table>
-<tr><th>회사</th><th>무엇을 했나</th><th>결과</th><th>출처</th></tr>
-<tr><td><b>드롭박스</b> (1단계)</td><td>비공개 베타를 소개하는 영상을 올렸어요. 영상에는 제품이 어떻게 작동할지 담았어요</td><td>2008년 3월, 베타 대기자가 하루 만에 5,000명에서 75,000명으로 늘었어요. 제품 사용자 없이 수요부터 확인한 거예요</td><td>창업자 드루 휴스턴 발표 자료(2010) · 위키백과 Timeline of Dropbox</td></tr>
-<tr><td><b>자포스</b> (2단계)</td><td>창업자가 동네 신발 가게에 "사진을 찍어 온라인에 올리고, 주문이 들어오면 정가로 사 가겠다"고 제안했어요</td><td>1999년, 재고 없이 주문 몇 건을 받아 '사람들이 온라인으로 신발을 살까'를 확인했어요</td><td>Fortune 2012 · Alexander Jarvis</td></tr>
-<tr><td><b>버퍼</b> (2단계)</td><td>설명 페이지 → 가격 플랜 페이지 → 이메일 남기기 순서의 페이지만 만들었어요. 제품은 없었어요. 사람들이 어떤 플랜을 누르는지로 가격을 확인했어요</td><td>제품을 7주 만에 만들고, 출시 4일 안에 첫 유료 고객이 생겼어요. 2개월 반 뒤 사용자 500명이 넘었고, 약 4%가 유료로 바꿨어요</td><td>버퍼 공식 블로그(창업자 조엘 개스코인)</td></tr>
-<tr><td><b>에어비앤비</b> (3단계)</td><td>2009년, 뉴욕 숙소 약 40곳의 사진이 나쁘다는 것을 보고 창업자들이 직접 가서 사진을 다시 찍었어요</td><td>주간 매출이 200달러에서 1주 뒤 400달러로 두 배가 됐어요. 데이터 없이 시작한 전·후 비교였고, 나눠 보여 주는 A/B 테스트는 아니었어요</td><td>First Round Review(공동창업자 조 게비아 인터뷰)</td></tr>
-</table></div>
-<p>네 사례 모두 통계 도구를 쓰지 않았어요. 사람이 적을 때는 "기술 없이 손으로 해 줬을 때 사용자가 반응하는가"를 먼저 봐요. 버퍼도 페이지를 나눠 보여 주지 않고, 가격 페이지를 중간에 끼워 넣어 순서대로 확인했어요.</p>
-
-<h4>몇 명이 있어야 판정할 수 있나요? 표본 수 계산</h4>
-<p>정통 통계에서는 A/B 테스트를 시작하기 전에 그룹마다 몇 명이 필요한지 먼저 계산해요. 계산하려면 네 가지를 정해야 해요.</p>
-<div class="table-wrap"><table>
-<tr><th>정할 것</th><th>뜻</th><th>보통 쓰는 값</th></tr>
-<tr><td>기준 전환율(p₁)</td><td>지금 화면(A)의 전환율</td><td>내 서비스의 실제 숫자</td></tr>
-<tr><td>최소 감지 효과(MDE)</td><td>"이 정도 차이는 잡아내고 싶다"는 크기</td><td>비즈니스에서 의미 있는 차이</td></tr>
-<tr><td>유의수준(α)</td><td>효과가 없는데 있다고 잘못 판정할 확률을 어디까지 받아들일지</td><td>5%</td></tr>
-<tr><td>검정력(1−β)</td><td>효과가 진짜 있을 때 잡아낼 확률</td><td>80%</td></tr>
-</table></div>
-<p>두 비율을 견주는 공식은 아래와 같아요. p₂는 B안의 목표 전환율이에요.</p>
-<pre>그룹당 인원 n = (1.96 + 0.84)² × [p₁(1−p₁) + p₂(1−p₂)] ÷ (p₂ − p₁)²
-               (유의수준 5% 양측, 검정력 80%일 때)</pre>
-<p>지금 전환율이 10%라고 하고 공식에 넣으면 아래와 같아요.</p>
-<div class="table-wrap"><table>
-<tr><th>B안 목표 전환율</th><th>지금보다</th><th>그룹당 인원</th><th>A·B 합계</th><th>해당 단계</th></tr>
-<tr><td>17.6%</td><td>76% 개선</td><td>319명</td><td>약 640명</td><td>3단계</td></tr>
-<tr><td>15%</td><td>50% 개선</td><td>683명</td><td>약 1,400명</td><td>3~4단계</td></tr>
-<tr><td>13%</td><td>30% 개선</td><td>1,771명</td><td>약 3,500명</td><td>4단계</td></tr>
-<tr><td>12%</td><td>20% 개선</td><td>3,838명</td><td>약 7,700명</td><td>4단계</td></tr>
-<tr><td>11%</td><td>10% 개선</td><td>14,748명</td><td>약 29,500명</td><td>5단계</td></tr>
-<tr><td>10.5%</td><td>5% 개선</td><td>57,760명</td><td>약 115,500명</td><td>5단계</td></tr>
-</table></div>
-<ul>
-<li>잡아내고 싶은 차이를 절반으로 줄이면 필요한 인원은 약 4배가 돼요.</li>
-<li>지금 전환율이 낮을수록 더 많이 필요해요. 20% 개선을 잡으려면 전환율 20%일 때 약 3,400명, 5%일 때 약 16,300명, 2%일 때 약 42,200명이 필요해요.</li>
-<li>공식 대신 계산기를 써도 돼요. 에반 밀러(Evan Miller)의 표본 수 계산기에 같은 값을 넣어 위 표와 비슷한지 확인해 보세요. 계산기마다 쓰는 근사식이 달라 숫자가 조금씩 다를 수 있어요.</li>
-</ul>
-
-<h4>우리 서비스 월 사용자가 1,000명이라면?</h4>
-<p>전환율 10%인 페이지에서 한 달 동안 1,000명을 500명씩 나눠 보여 준다고 해 봐요. 공식에 넣으면 <b>약 5.9%p</b> 넘게 차이가 나야 판정할 수 있어요. B안 전환율이 16%쯤(약 60% 개선)은 되어야 한다는 뜻이에요. B안이 13%(30% 개선)로 꽤 좋아도 '판정할 수 없음'이 돼요.</p>
-<p>이럴 때는 A/B 테스트에 매달리지 않고 아래 방법을 써요.</p>
-<div class="table-wrap"><table>
-<tr><th>방법</th><th>이렇게 해요</th><th>근거</th></tr>
-<tr><td><b>사용성 테스트</b></td><td>사용자 5명이 직접 써 보는 모습을 보고 문제를 찾아요. 한 번에 15명보다, 5명씩 세 번 테스트하고 그 사이에 고치는 편이 나아요</td><td>제이콥 닐슨: 5명이면 사용성 문제의 약 85%를 찾아요(2000). 숫자로 비교하는 정량 연구는 20명을 권해요</td></tr>
-<tr><td><b>크게 바꾸기</b></td><td>문구 하나가 아니라 제안 자체를 바꿔요. 예: 무료 유지 vs 유료 플랜 도입</td><td>Optimizely: 트래픽이 적으면 영향이 큰 변화를 테스트</td></tr>
-<tr><td><b>작은 행동 재기(마이크로 전환)</b></td><td>결제 완료 대신 장바구니 담기, 30초 머물기처럼 더 자주 일어나는 행동을 지표로 써요</td><td>Optimizely: 결과를 더 빨리 판정할 수 있음</td></tr>
-<tr><td><b>여러 안 동시에 하지 않기</b></td><td>A·B 두 안만 비교해요. 여러 요소를 한 번에 섞는 다변량 테스트는 트래픽이 충분해질 때까지 미뤄요</td><td>Optimizely: 변형이 많을수록 트래픽이 더 필요</td></tr>
-<tr><td><b>바로 적용하고 지켜보기</b></td><td>개선이 뚜렷하면 바로 적용하고 전·후 숫자를 지켜봐요. 전·후 비교는 요일·광고 영향이 섞이므로, 그 기간에 있었던 일을 함께 적어 둬요</td><td>에어비앤비 사진 사례</td></tr>
-</table></div>
-
-<h4>정통 통계는 언제 주력이 되나요?</h4>
-<p>사용자가 수만 명 이상 꾸준히 들어오면, 10~20%의 작은 개선도 통계로 판정할 수 있어요. 이때부터는 실험을 여러 팀이 동시에 돌리고, 새 기능을 조금씩 넓혀 배포해요.</p>
-<ul>
-<li><b>넷플릭스</b>: 작품 이미지를 회원들에게 나눠 보여 주고, 노출 대비 재생 비율(take rate)로 이긴 이미지를 골랐어요(2016). 2-4 표에도 있어요.</li>
-<li><b>스포티파이</b>: 수백 개 팀이 실험을 돌려요. 결과를 중간에 들여다봐도 판정이 흔들리지 않도록 순차 검정(sequential testing)을 써요.</li>
-<li><b>메타(페이스북)</b>: 새 코드를 직원에게 먼저 내보내고, 다음에 실제 사용자의 2%, 마지막에 100%로 넓혀요. 기능은 게이트키퍼(Gatekeeper)라는 스위치로 켜고 꺼요.</li>
-</ul>
-<h4>조심할 점</h4>
-<ul>
-<li>위 표의 인원은 정해진 기준이 아니라 계산 결과예요. 지금 전환율과 잡고 싶은 차이가 바뀌면 필요한 인원도 바뀌어요.</li>
-<li>결과를 자주 들여다보다가 좋아 보일 때 멈추면 잘못 판정할 확률이 올라가요. 에반 밀러의 예에서는 5%로 정해 두었던 오판 확률이 26.1%까지 올라갔어요. 필요한 인원을 미리 정하고 그때까지 기다려요. 2-2의 에어비앤비 가격 필터 사례가 이 경우예요.</li>
-<li>'순차 검정(sequential testing)'은 A안 2주 → B안 2주처럼 기간을 나눠 보여 주는 것이 아니에요. 동시에 나눠 보여 주면서 중간 확인을 허용하는 통계 방법이에요.</li>
-</ul>
-<p class="source-note">출처: <a href="https://www.slideshare.net/vishaltx/dropbox-startup-lessons-learned-16991502" target="_blank" rel="noopener">Drew Houston, Dropbox Startup Lessons Learned(2010, 13번 슬라이드)</a> · <a href="https://en.wikipedia.org/wiki/Timeline_of_Dropbox" target="_blank" rel="noopener">Timeline of Dropbox(위키백과)</a> · <a href="https://fortune.com/2012/09/05/nick-swinmurn-zappos-silent-founder" target="_blank" rel="noopener">Fortune, Nick Swinmurn(2012)</a> · <a href="https://www.alexanderjarvis.com/zappos-doing-things-that-dont-scale" target="_blank" rel="noopener">Alexander Jarvis, Zappos</a> · <a href="https://buffer.com/resources/idea-to-paying-customers-in-7-weeks-how-we-did-it" target="_blank" rel="noopener">Buffer, Idea to Paying Customers in 7 Weeks</a> · <a href="https://review.firstround.com/How-design-thinking-transformed-Airbnb-from-failing-startup-to-billion-dollar-business" target="_blank" rel="noopener">First Round Review, Airbnb</a> · <a href="https://nngroup.com/articles/why-you-only-need-to-test-with-5-users/" target="_blank" rel="noopener">Jakob Nielsen, Why You Only Need to Test with 5 Users(NN/g, 2000)</a> · <a href="https://docs.optimizely.com/experimentation-strategy/docs/test-tips-for-low-traffic-sites" target="_blank" rel="noopener">Optimizely, Test tips for low-traffic sites</a> · <a href="https://www.evanmiller.org/how-not-to-run-an-ab-test.html" target="_blank" rel="noopener">Evan Miller, How Not To Run an A/B Test</a> · <a href="https://evanmiller.org/ab-testing/sample-size.html" target="_blank" rel="noopener">Evan Miller 표본 수 계산기</a> · <a href="https://medium.com/netflix-techblog/selecting-the-best-artwork-for-videos-through-a-b-testing-f6155c4595f6" target="_blank" rel="noopener">Netflix Tech Blog(2016)</a> · <a href="https://confidence.spotify.com/blog/experiment-analysis" target="_blank" rel="noopener">Spotify Confidence, Analysis of Experiments</a> · <a href="https://engineering.fb.com/2017/08/31/web/rapid-release-at-massive-scale/" target="_blank" rel="noopener">Meta Engineering, Rapid release at massive scale(2017)</a> · 표본 수 표는 위 공식에 값을 넣어 계산 (2026.11.10 확인)</p>
-</div>
-
-<div class="topic" id="s2-4"><h3><span class="stage">사례</span>2-4. 글로벌 기업의 A/B 테스트 사례</h3>
+<div class="topic" id="s2-3"><h3><span class="stage">사례</span>2-3. 글로벌 기업의 A/B 테스트 사례</h3>
 <div class="table-wrap"><table>
 <tr><th>회사</th><th>바꾼 것</th><th>결과</th><th>출처</th></tr>
 <tr><td><b>마이크로소프트 Bing</b></td><td>검색 광고의 제목(헤드라인) 보여 주는 방식을 바꾸자는 아이디어. 우선순위가 낮아 6개월 넘게 미뤄졌다가 실험함</td><td>매출 12% 증가, 미국에서만 연 1억 달러 넘게 늘어난 것으로 추정</td><td>HBR 2017(실험 책임자 기고)</td></tr>
@@ -585,7 +506,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <p class="source-note">출처: <a href="https://web-docs.stern.nyu.edu/executive/The%20Surprising%20Power%20of%20Online%20Experiments.pdf" target="_blank" rel="noopener">Kohavi·Thomke, HBR 2017(재게시본)</a> · <a href="https://www.optimizely.com/insights/blog/how-obama-raised-60-million-by-running-a-simple-experiment/" target="_blank" rel="noopener">Dan Siroker, How Obama raised $60 million(Optimizely, 2010)</a> · <a href="https://hbswk.hbs.edu/item/at-booking-com-innovation-means-constant-failure" target="_blank" rel="noopener">HBS Working Knowledge</a> · <a href="https://www.engadget.com/2016/05/03/netflix-explains-video-thumbnail-testing/" target="_blank" rel="noopener">Engadget 2016</a> · <a href="https://www.streamtvinsider.com/online-video/netflix-aims-to-break-viewer-browsing-habits-through-one-simple-change-its-artwork" target="_blank" rel="noopener">StreamTVInsider</a> (2026.11.09 확인)</p>
 </div>
 
-<div class="topic" id="s2-5"><h3><span class="stage">실습</span>2-5. 연말 이벤트 가설을 실험으로 바꾸기</h3>
+<div class="topic" id="s2-4"><h3><span class="stage">실습</span>2-4. 연말 이벤트 가설을 실험으로 바꾸기</h3>
 <p>셀렉트마켓 연말 이벤트 신청 페이지에서 바꿔 보고 싶은 것 하나를 골라, 가설·지표·A/B 테스트 계획으로 만들어요.</p>
 <p><b>STEP 1. 바꿀 것 하나 고르기</b></p>
 <p>예: 신청 단추 문구, 맨 위 혜택 문구(선착순 사은품), 입력 칸 수, 마감 날짜를 보여 주는 위치.</p>
@@ -596,7 +517,7 @@ aside nav a.active{border-left-color:var(--blue)}
 형식: 가설 문장 1개(누가 / 무엇을 보면 / 어떤 숫자가 / 얼마나), 핵심 지표·보조 지표·나빠지면 안 되는 지표 각 1개, 필요한 GA4 이벤트, 판정 기준을 표로.</pre></div>
 <details class="res-toggle"><summary><span class="blk k-res"><span>실행 결과</span></span><span class="tg"></span></summary><figure class="shot"><a href="images/d1-s2-claude-abwarn-hl.png" target="_blank" rel="noopener"><img style="width:658px;max-width:100%" alt="프롬프트 2를 보낸 클로드의 답변(앞부분): '선착순 100명' 문구의 문제를 먼저 짚었어요" loading="lazy" src="images/d1-s2-claude-abwarn-hl.png"/></a><figcaption>프롬프트 2를 보낸 클로드의 답변(앞부분): '선착순 100명' 문구의 문제를 먼저 짚었어요 <span class="hl-leg hl-k">주황 점선 = 확인할 곳</span></figcaption></figure><figure class="shot"><a href="images/d1-s2-claude-abplan-hl.png" target="_blank" rel="noopener"><img style="width:687px;max-width:100%" alt="같은 답변: 가설 문장과 지표 3개" loading="lazy" src="images/d1-s2-claude-abplan-hl.png"/></a><figcaption>같은 답변: 가설 문장과 지표 3개 <span class="hl-leg hl-k">주황 점선 = 확인할 곳</span></figcaption></figure></details>
 <p><b>STEP 3. 판정할 수 있는지 따져 보기</b></p>
-<p>강사가 '선착순 100명 사은품' 문구로 해 보니, 클로드는 계획보다 문제를 먼저 짚었어요. 차이를 판정하려면 그룹마다 수천 명이 페이지를 봐야 하는데 사은품은 100명분이라, 그 전에 문구가 사실과 달라진다는 것이에요. 실험할 안이 실제 운영과 맞는지도 함께 확인해요. 그룹마다 몇 명이 필요한지는 2-3의 표본 수 표로 가늠해 봐요.</p>
+<p>강사가 '선착순 100명 사은품' 문구로 해 보니, 클로드는 계획보다 문제를 먼저 짚었어요. 차이를 판정하려면 그룹마다 수천 명이 페이지를 봐야 하는데 사은품은 100명분이라, 그 전에 문구가 사실과 달라진다는 것이에요. 실험할 안이 실제 운영과 맞는지도 함께 확인해요.</p>
 <p>클로드가 적은 지표를 지금 데이터로 셀 수 있는지 봐요. 신청 수는 시트로 셀 수 있지만, 방문 수와 단추 클릭 수는 GA4가 있어야 셀 수 있어요. 그래서 오후에 GA4를 붙이고, 셀 이벤트의 이름을 정해요.</p>
 <p class="blk k-chk"><span>확인할 점</span></p>
 <ul class="checklist"><li>가설에 '누가 / 무엇을 / 어떤 숫자가'가 모두 있다</li><li>핵심 지표가 셀 수 있는 행동이다('만족도 향상'처럼 셀 수 없는 말이 아니다)</li><li>판정 기준(언제까지, 몇 명까지 보고 정할지)이 있다</li></ul>
@@ -608,7 +529,7 @@ aside nav a.active{border-left-color:var(--blue)}
 </table></div>
 </div>
 
-<div class="topic" id="s2-6"><h3><span class="stage">결과</span>2-6. 결과</h3>
+<div class="topic" id="s2-5"><h3><span class="stage">결과</span>2-5. 결과</h3>
 <div class="result-box"><b>결과물</b> 연말 이벤트 A/B 테스트 계획(가설·지표 3개·필요한 이벤트·판정 기준)</div>
 <p class="ok-line"><b>이렇게 보이면 성공</b>내 가설을 판정하려면 어떤 숫자를 어디서 모아야 하는지 말할 수 있다</p>
 </div>

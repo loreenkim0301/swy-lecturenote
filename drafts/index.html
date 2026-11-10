@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noai, noimageai">
+<meta name="tdm-reservation" content="1">
+<title>예비 교안 모음</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/swy-lecturenote/assets/style.css">
+<style>
+  body{ display:flex; justify-content:center; }
+  .wrap{ max-width:720px; width:100%; padding:56px 24px 96px; }
+  .session-list{ list-style:none; margin:0; padding:0; border-top:1px solid var(--line); }
+  .session-row{ border-bottom:1px solid var(--line); }
+  .session-row a{ display:flex; align-items:flex-start; gap:18px; padding:24px 6px; text-decoration:none; color:inherit; }
+  .session-row a:hover{ background:var(--accent-soft); }
+  .session-num{ font:700 13px "JetBrains Mono",monospace; color:var(--muted); width:26px; flex-shrink:0; padding-top:2px; }
+  .session-main{ flex:1; min-width:0; }
+  .session-main h2{ font-size:18px; margin:0 0 8px; line-height:1.4; }
+  .session-meta{ display:flex; gap:10px; flex-wrap:wrap; font-size:12.5px; color:var(--muted); margin:0 0 8px; }
+  .session-date{ font-family:"JetBrains Mono",monospace; color:var(--accent-ink); font-weight:700; }
+  .session-main p.desc{ margin:0; font-size:13px; color:var(--muted); line-height:1.6; }
+  .back{ display:inline-block; margin-top:32px; font-size:13px; color:var(--accent); }
+  @media (max-width:520px){ .session-row a{ gap:12px; padding:18px 4px; } .session-main h2{ font-size:16px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="doc-header">
+    <div class="date">2026.11.10 업데이트</div>
+    <h1>예비 교안 모음</h1>
+    <p class="lede">수업 일정과 대상이 정해지기 전에 미리 준비해 둔 교안이에요. 수업이 정해지면 날짜+주제 폴더로 옮겨 정식 교안으로 바꿔요.</p>
+  </header>
+  <main>
+    <ul class="session-list">
+      <li class="session-row">
+        <a href="./data-hypothesis-by-user-scale/">
+          <span class="session-num">01</span>
+          <div class="session-main">
+            <h2>사용자 수에 맞는 가설 검증 · 데이터 분석 입문</h2>
+            <p class="session-meta"><span class="session-date">일정 미정</span><span>약 3시간 · 2026.11.10 준비</span></p>
+            <p class="desc">사용자 수 5단계별 검증 방법(드롭박스·자포스·버퍼·에어비앤비), A/B 테스트 표본 수 계산, 사람이 적을 때 쓰는 방법과 정통 통계가 주력이 되는 때</p>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </main>
+  <a class="back" href="../">← 실습 교안 모음으로</a>
+</div>
+</body>
+</html>
