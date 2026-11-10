@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet"/>
+<meta content="noindex, nofollow, noai, noimageai" name="robots"/>
+<title>노션으로 팀 일을 한곳에 · 노션 기초부터 노션 에이전트까지 (예비 교안)</title>
+<style>:root { --ink: #172033; --muted: #657086; --line: #dfe4ed; --soft: #f5f7fb; --blue: #2457f5; --nav: #111a2e; --green: #16a36b; --warn: #ffad22; --page-pad: clamp(28px,5.8vw,82px); --font-sans: "Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; scroll-behavior: smooth; }
+* { box-sizing: border-box; }
+body { margin: 0px; background: rgb(238, 241, 246); color: var(--ink); font-family: var(--font-sans); line-height: 1.7; letter-spacing: -0.01em; }
+.app aside { position: fixed; inset: 0px auto 0px 0px; width: 310px; height: 100vh; padding: 0 16px 28px; background: var(--nav); color: rgb(255, 255, 255); overflow-y: auto; z-index: 10; }
+.app main { min-height: 100vh; margin-left: 310px; background: rgb(255, 255, 255); }
+.side-head { position: sticky; top: 0; z-index: 1; margin: 0 -16px; padding: 20px 26px 14px; background: var(--nav); border-bottom: 1px solid rgb(45, 56, 80); }
+.brand { font-size: 11px; font-weight: 800; letter-spacing: 0.14em; color: rgb(130, 145, 177); }
+aside h1 { margin: 6px 0 4px; font-size: 17px; line-height: 1.35; letter-spacing: -0.02em; }
+.side-sub, .side-foot { font-size: 12px; color: rgb(150, 162, 186); }
+aside nav { margin-top: 10px; }
+aside nav a { display: block; padding: 7px 10px 7px 22px; color: rgb(190, 200, 219); text-decoration: none; font-size: 14px; line-height: 1.45; border-left: 3px solid transparent; border-radius: 0 6px 6px 0; }
+aside nav a:hover { color: rgb(255, 255, 255); background: rgb(25, 36, 60); }
+aside nav .major { margin-top: 12px; padding-left: 10px; color: rgb(255, 255, 255); font-size: 15px; font-weight: 800; }
+aside nav a.active { color: rgb(255, 255, 255); background: rgb(30, 44, 74); border-left-color: var(--blue); font-weight: 700; }
+.side-foot { margin: 20px 10px 0; padding-top: 14px; border-top: 1px solid rgb(45, 56, 80); }
+.hero { padding: 86px var(--page-pad) 72px; background: linear-gradient(135deg, rgb(247, 249, 255), rgb(238, 243, 255) 58%, rgb(233, 255, 246)); border-bottom: 1px solid var(--line); }
+.kicker, .section-label, .topic-label, .eyebrow { font-size: 13px; font-weight: 800; letter-spacing: 0.13em; color: var(--blue); }
+.hero h1 { margin: 16px 0px; font-size: clamp(40px, 5vw, 70px); line-height: 1.08; letter-spacing: -0.055em; }
+.hero h1 em { color: var(--blue); font-style: normal; }
+.hero > p { max-width: 860px; color: rgb(79, 91, 114); font-size: 18px; }
+.hero-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 38px; background: rgb(220, 226, 237); border: 1px solid rgb(220, 226, 237); }
+.hero-grid div { background: rgb(255, 255, 255); padding: 16px; }
+.hero-grid b { display: block; font-size: 12px; color: rgb(125, 135, 153); }
+.hero-grid span { font-size: 14px; font-weight: 800; }
+.section { padding: 70px var(--page-pad); border-bottom: 1px solid var(--line); scroll-margin-top: 18px; }
+.section > h2, .session-head h2 { margin: 8px 0px 14px; font-size: 36px; letter-spacing: -0.04em; }
+.lead { font-size: 18px; max-width: 900px; }
+.three-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px 0px; }
+.three-cards article { padding: 20px; border: 1px solid var(--line); border-radius: 14px; background: rgb(255, 255, 255); }
+.three-cards article > span { font-size: 12px; font-weight: 800; color: var(--blue); }
+.three-cards h3 { margin: 8px 0px 5px; font-size: 20px; }
+.three-cards p, .caption { color: var(--muted); font-size: 14px; }
+.notice, .warning { margin: 22px 0px; padding: 16px 19px; }
+.notice { border-left: 4px solid var(--blue); background: rgb(234, 240, 255); }
+.warning { border-left: 4px solid var(--warn); background: rgb(255, 246, 230); }
+.schedule { margin-top: 30px; }
+.schedule div { display: grid; grid-template-columns: 48px 125px 1fr; align-items: center; padding: 13px 0px; border-top: 1px solid var(--line); }
+.schedule span.badge { display: grid; place-items: center; width: 29px; height: 29px; border-radius: 50%; background: var(--nav); color: rgb(255, 255, 255); font-size: 12px; }
+.schedule p { margin: 0px; }
+.session { padding-top: 0px; }
+.session-head { margin: 0 calc(var(--page-pad)*-1) 50px; padding: 52px var(--page-pad); background: var(--nav); color: rgb(255, 255, 255); }
+.session-head .eyebrow { color: rgb(125, 160, 255); }
+.session-head p { max-width: 900px; color: rgb(195, 204, 220); }
+.vibe-intro { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 28px; align-items: start; margin-top: 30px; padding-top: 28px; border-top: 1px solid rgb(45, 56, 80); }
+.vibe-quote { margin: 0; padding-left: 18px; border-left: 3px solid rgb(125, 160, 255); }
+.vibe-quote blockquote { margin: 0 0 10px; color: #fff; font-size: 21px; font-weight: 700; line-height: 1.5; letter-spacing: -0.03em; }
+.vibe-quote figcaption { color: rgb(160, 172, 196); font-size: 13px; }
+.vibe-meaning { margin: 18px 0 0; padding: 14px 16px; border-radius: 12px; background: rgb(25, 36, 60); color: rgb(215, 222, 236); font-size: 15px; }
+.vibe-meaning b { color: #fff; }
+.vibe-timeline { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.vibe-timeline li { display: grid; grid-template-columns: 74px 1fr; gap: 12px; padding: 12px 14px; border: 1px solid rgb(45, 56, 80); border-radius: 12px; background: rgba(255, 255, 255, 0.03); }
+.vibe-timeline time { color: rgb(125, 160, 255); font-size: 13px; font-weight: 800; letter-spacing: 0.02em; }
+.vibe-timeline b { display: block; color: #fff; font-size: 15px; }
+.vibe-timeline span { display: block; color: rgb(185, 195, 214); font-size: 14px; line-height: 1.55; }
+.vibe-sources { grid-column: 1 / -1; margin: 0; color: rgb(130, 145, 177); font-size: 12px; }
+.vibe-sources a { color: rgb(160, 180, 230); }
+@media (max-width: 1020px) { .vibe-intro { grid-template-columns: 1fr; } }
+.time { font-size: 13px; color: rgb(174, 185, 207); }
+.topic { margin-bottom: 70px; scroll-margin-top: 20px; }
+.topic h3 { margin: 8px 0px 12px; font-size: 28px; letter-spacing: -0.025em; }
+.flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 9px; margin: 18px 0px 26px; }
+.flow div { text-align: center; padding: 16px 12px; border-radius: 12px; background: rgb(237, 242, 255); }
+.flow span { display: block; font-size: 12px; font-weight: 800; color: var(--blue); }
+.flow b { display: block; }
+.flow small { display: block; margin-top: 5px; color: var(--muted); }
+.versus { display: grid; grid-template-columns: 1fr 54px 1fr; align-items: center; margin: 16px 0px 26px; }
+.versus > div { padding: 20px; border: 1px solid var(--line); border-radius: 13px; background: var(--soft); }
+.versus i { text-align: center; color: var(--blue); font-style: normal; font-weight: 900; }
+.table-wrap { overflow: auto; }
+table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 14px; }
+th { padding: 13px; text-align: left; color: rgb(255, 255, 255); background: var(--nav); }
+td { padding: 14px 13px; border-bottom: 1px solid var(--line); }
+.checklist { display: grid; gap: 7px; padding: 0px; list-style: none; }
+.checklist li { padding: 11px 14px; border-radius: 8px; background: var(--soft); }
+.checklist li::before { content: "✓"; margin-right: 8px; color: var(--blue); font-weight: 900; }
+.practice-brief { display: grid; gap: 8px; margin: 18px 0px; }
+.practice-brief > div { padding: 15px 18px; border: 1px solid rgb(200, 239, 221); border-radius: 12px; background: rgb(237, 255, 246); }
+.copybox { margin: 20px 0px; border: 1px solid rgb(207, 215, 230); border-radius: 12px; overflow: hidden; background: rgb(17, 26, 46); color: rgb(232, 238, 252); }
+.copyhead { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: rgb(30, 43, 71); font-size: 13px; font-weight: 800; }
+.copyhead button { padding: 5px 10px; border: 1px solid rgb(97, 112, 141); border-radius: 6px; background: transparent; color: rgb(255, 255, 255); cursor: pointer; }
+.copybox pre { white-space: pre-wrap; margin: 0px; padding: 20px; font: 13px / 1.72 ui-monospace, SFMono-Regular, Menlo, monospace; }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 18px 0px 26px; }
+.steps article { padding: 18px; border-top: 4px solid var(--blue); border-radius: 12px; }
+.steps strong { display: block; color: var(--blue); font-size: 12px; }
+.steps b { display: block; font-size: 18px; margin-top: 3px; }
+.sub-optional { margin-top: 10px; padding: 10px 12px; border: 1px dashed var(--line); border-radius: 10px; color: var(--muted); font-size: 14px; }
+.sub-optional .tag { margin-left: 0; }
+.steps .sub-optional b { display: inline; font-size: 14px; margin: 0 4px 0 2px; color: var(--muted); }
+.tag { display: inline-block; margin-left: 6px; padding: 1px 8px; border-radius: 999px; font-size: 11px; font-weight: 800; letter-spacing: 0; vertical-align: 1px; }
+.tag-req { background: var(--blue); color: #fff; }
+.tag-opt { border: 1px solid var(--line); background: #fff; color: var(--muted); font-weight: 700; }
+.final-box { padding: 28px; border-radius: 18px; background: linear-gradient(135deg, rgb(17, 26, 46), rgb(29, 47, 88)); color: rgb(255, 255, 255); }
+.final-box h3 { margin: 6px 0px 8px; font-size: 30px; }
+.final-box p { color: rgb(203, 213, 231); }
+code.inline { padding: 2px 6px; border-radius: 6px; background: rgb(238, 242, 248); font-family: ui-monospace, monospace; }
+.small { font-size: 13px; color: var(--muted); }
+.resource-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 18px 0px 28px; }
+.resource-card { padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--soft); }
+.resource-card b { display: block; margin-bottom: 4px; }
+.resource-card a { color: var(--blue); font-weight: 800; text-decoration: none; word-break: break-all; font-size: 13px; }
+.sample-link { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin: 22px 0; padding: 14px 18px; border: 1px solid rgb(203, 218, 255); border-radius: 12px; background: rgb(240, 245, 255); }
+.sample-link span { color: var(--muted); font-size: 14px; }
+.sample-link b { display: block; color: var(--ink); font-size: 15px; }
+.sample-link .resource-link { flex-shrink: 0; margin-top: 0; }
+@media (max-width: 680px) { .sample-link { flex-direction: column; align-items: flex-start; } }
+.resource-link { display: inline-block; margin-top: 8px; padding: 8px 12px; border: 1px solid rgb(203, 213, 225); border-radius: 8px; color: var(--blue); font-size: 13px; font-weight: 800; text-decoration: none; background: rgb(255, 255, 255); }
+.procedure { counter-reset: step 0; display: grid; gap: 10px; margin: 18px 0px 28px; }
+.procedure > div { position: relative; padding: 15px 16px 15px 54px; border: 1px solid var(--line); border-radius: 12px; background: rgb(255, 255, 255); }
+.procedure > div::before { counter-increment: step 1; content: counter(step); position: absolute; left: 16px; top: 15px; width: 26px; height: 26px; display: grid; place-items: center; border-radius: 50%; background: var(--blue); color: rgb(255, 255, 255); font-size: 12px; font-weight: 900; }
+.sample-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 18px 0px 28px; }
+.sample-grid article { padding: 18px; border: 1px solid var(--line); border-radius: 13px; background: var(--soft); }
+.term-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 22px 0px; }
+.term-grid article { padding: 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--soft); }
+.term-grid strong { display: block; color: var(--blue); font-size: 12px; letter-spacing: 0.08em; }
+.term-grid h4 { margin: 5px 0px 8px; font-size: 20px; }
+.talk { margin: 18px 0px; padding: 22px; border-left: 4px solid var(--green); background: rgb(241, 252, 247); }
+.talk p { margin: 0px 0px 14px; }
+.talk p:last-child { margin-bottom: 0px; }
+.example-flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 18px 0px 24px; }
+.example-flow div { padding: 14px 12px; border-radius: 10px; background: rgb(255, 248, 235); }
+.example-flow b, .example-flow span { display: block; }
+.example-flow span { margin-bottom: 3px; color: rgb(154, 100, 16); font-size: 12px; font-weight: 800; }
+details.optional { margin-top: 8px; padding: 0 22px 6px; border: 1px solid var(--line); border-radius: 14px; background: var(--soft); }
+details.optional > summary { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; padding: 20px 0; cursor: pointer; list-style: none; }
+details.optional > summary::-webkit-details-marker { display: none; }
+details.optional > summary::before { content: "▸"; color: var(--blue); font-weight: 900; }
+details.optional[open] > summary::before { content: "▾"; }
+details.optional .summary-title { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
+details.optional .summary-hint { font-size: 13px; color: var(--muted); }
+details.optional[open] .summary-hint { display: none; }
+.profile-card { display: grid; grid-template-columns: 1.6fr 1fr; gap: 20px; padding: 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--soft); }
+.profile-card h3 { margin: 0 0 6px; font-size: 22px; }
+.profile-card ul { margin: 10px 0 0; padding-left: 18px; }
+.profile-links { display: grid; gap: 8px; align-content: start; }
+.profile-links a { padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--blue); font-size: 14px; font-weight: 700; text-decoration: none; word-break: break-all; }
+.sample-shot { margin: 22px 0; }
+.sample-shot img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 12px; }
+.sample-shot.narrow img { max-width: 700px; margin: 0 auto; }
+.sample-shot.small img { max-width: 360px; }
+.sample-shot figcaption { margin-top: 10px; color: var(--muted); font-size: 14px; }
+@media (max-width: 680px) { .profile-card { grid-template-columns: 1fr; padding: 18px; } }
+.app aside { word-break: keep-all; }
+.topic .three-cards h3 { margin: 8px 0 5px; font-size: 20px; letter-spacing: -0.02em; }
+.block-title { margin: 34px 0 4px; font-size: 22px; letter-spacing: -0.02em; scroll-margin-top: 18px; }
+.break { padding: 54px var(--page-pad); background: rgb(246, 248, 252); border-bottom: 1px solid var(--line); }
+.break h2 { margin: 0px 0px 8px; font-size: 32px; }
+@media (max-width: 1020px) {
+  .app aside { display: none; }
+  .app main { margin-left: 0px; }
+  .hero-grid, .three-cards, .steps, .term-grid, .example-flow { grid-template-columns: 1fr 1fr; }
+  .flow { grid-template-columns: 1fr 1fr; }
+}
+.nav-toggle { position: fixed; top: 14px; left: 322px; z-index: 20; display: flex; align-items: center; gap: 6px; height: 36px; padding: 0 12px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255, 255, 255, 0.94); color: var(--ink); font: 700 13px/1 var(--font-sans); cursor: pointer; box-shadow: 0 4px 14px rgba(17, 26, 46, 0.12); transition: left .25s ease; }
+.nav-toggle:hover { border-color: var(--blue); color: var(--blue); }
+.nav-toggle svg { width: 16px; height: 16px; }
+.app aside { transition: transform .25s ease; }
+.app main { transition: margin-left .25s ease; }
+body.nav-hidden .app aside { transform: translateX(-100%); }
+body.nav-hidden .app main { margin-left: 0; }
+body.nav-hidden .nav-toggle { left: 14px; }
+@media (max-width: 1020px) {
+  .app aside { display: block; width: min(310px, calc(100vw - 64px)); transform: translateX(-100%); }
+  .nav-toggle { left: 14px; }
+  body.nav-open .app aside { transform: none; box-shadow: 8px 0 24px rgba(17, 26, 46, 0.25); }
+  body.nav-open .nav-toggle { left: auto; right: 10px; padding: 0 11px; }
+  body.nav-open .nav-toggle span { display: none; }
+}
+@media (max-width: 680px) {
+  .hero, .section, .break { padding-left: 20px; padding-right: 20px; }
+  .hero { padding-top: 54px; }
+  .hero-grid, .three-cards, .steps, .flow, .resource-list, .term-grid, .example-flow { grid-template-columns: 1fr; }
+  .schedule div { grid-template-columns: 38px 100px 1fr; }
+  .versus { grid-template-columns: 1fr; }
+  .versus i { padding: 8px 0px; }
+  .session-head { margin-left: -20px; margin-right: -20px; padding-left: 20px; padding-right: 20px; }
+  .section > h2, .session-head h2 { font-size: 30px; }
+  .topic h3 { font-size: 24px; }
+}.colab-open{margin:8px 0 14px}.colab-open a{display:inline-block;padding:6px 12px;border-radius:8px;background:#f9ab00;color:#1d2433;font-weight:700;text-decoration:none}.colab-open a:hover{filter:brightness(.95)}.colab-open .small{display:block;margin-top:6px}.deep-dive{margin:18px 0;padding:14px 18px;border:1px solid #dfe3ec;border-left:4px solid #f9ab00;border-radius:10px;background:rgba(249,171,0,.05)}
+
+/* 이월 세션 머리 */
+.carry-head { margin: 0; padding: 26px var(--page-pad); background: #fff6e6; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.carry-head h2 { margin: 0 0 6px; }
+
+/* 블록 종류 표시 */
+.blk { margin: 22px 0 8px; font-size: 15px; font-weight: 700; }
+.blk span { display: inline-block; margin-right: 8px; padding: 2px 10px; border-radius: 999px; font-size: 12px; font-weight: 800; color: #fff; background: #657086; vertical-align: 1px; }
+.k-ex span { background: var(--blue); } .k-tpl span { background: var(--warn); color: #172033; } .k-pr span { background: var(--nav); } .k-res span { background: #6b4fd8; } .k-chk span { background: var(--green); }
+table.tpl th { background: #fff1d6; color: #172033; } table.tpl { outline: 2px dashed #ffad22; outline-offset: -1px; }
+.step-h { margin: 34px 0 6px; padding-top: 18px; border-top: 1px dashed var(--line); font-size: 18px; }
+.block-legend { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 4px; } .block-legend .blk { margin: 0; }
+</style>
+<style>
+.tt{margin:0;padding-left:1.1em}.tt li{margin:2px 0}
+.dl-list{display:grid;gap:10px;margin:18px 0}
+.dl-card{display:flex;align-items:center;gap:14px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:#fff;text-decoration:none;color:var(--ink)}
+.dl-card:hover{border-color:var(--blue);background:var(--soft)}
+.dl-ico{flex:none;display:grid;place-items:center;width:44px;height:52px;border-radius:8px;background:rgb(237,242,255);color:var(--blue);font-size:11px;font-weight:800}
+.dl-body{flex:1}.dl-body b{display:block;font-size:16px}.dl-body span{display:block;font-size:13px;color:var(--muted)}
+.dl-btn{flex:none;padding:8px 14px;border-radius:8px;background:var(--blue);color:#fff;font-size:13px;font-weight:800}
+@media(max-width:680px){.dl-card{flex-wrap:wrap}}
+#slide .sample-shot{margin:8px 0}#slide .sample-shot img{max-height:420px;width:auto;max-width:100%;margin:0 auto}#slide .sample-shot figcaption{margin-top:4px;font-size:13px;text-align:center}
+#slide .dl-card{padding:10px 14px}
+.todo{color:#b42318;font-weight:700}
+main,#slide{word-break:keep-all;overflow-wrap:break-word}
+h1,h2,h3,.hero p,.lead{text-wrap:balance}
+p,li,td{text-wrap:pretty}
+td .tag{margin-bottom:2px}
+.tag.nap{background:#7c3aed}.tag.sheet{background:var(--green)}
+.tag{margin-left:0;margin-right:4px}
+.topic .small{display:block}
+.resource-card .small{display:block;margin-bottom:6px}
+.resource-card a{display:inline-block;margin:2px 0}
+.copybox pre{background:none;color:inherit}
+.hero-grid{grid-template-columns:repeat(3,1fr)}
+.sample-link .resource-link{margin:0 6px 0 0}
+.sample-link{flex-wrap:wrap;justify-content:flex-start;gap:6px}
+#slideBtn{position:fixed;right:16px;bottom:16px;z-index:30;background:var(--blue);color:#fff;border:0;border-radius:999px;padding:12px 20px;font:700 15px var(--font-sans);cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+#deck{position:fixed;inset:0;z-index:100;background:#0b1220;display:flex;flex-direction:column}
+#deck[hidden]{display:none}
+#viewport{flex:1;min-height:0;position:relative;overflow:hidden}
+#stage{position:absolute;left:50%;top:50%;width:1280px;height:720px;background:#fff;display:flex;flex-direction:column;overflow:hidden;transform-origin:center center;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+#master{flex:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 96px;background:var(--nav);color:#fff;font-weight:800;font-size:15px}
+#master .m-brand{font-size:11px;letter-spacing:.14em;color:rgb(130,145,177);margin-right:12px}
+#mbar{flex:none;height:4px;background:var(--line)}#prog{display:block;height:100%;background:var(--blue);width:0}
+#slide{flex:1;min-height:0;overflow:hidden;padding:28px 96px 12px;font-size:19px;line-height:1.55}
+#slide h1{font-size:46px;line-height:1.15;margin:12px 0}#slide h1 em{color:var(--blue);font-style:normal}
+#slide h3.st{margin:0 0 14px;font-size:32px;letter-spacing:-.03em}
+#slide .cont{font-size:16px;color:var(--muted);font-weight:500;margin-left:10px}
+#slide table{font-size:16px;margin-top:6px}#slide th,#slide td{padding:9px 12px}
+#slide .copybox{margin:10px 0}#slide .copybox pre{font-size:15px;padding:14px 18px}
+#slide p,#slide .notice,#slide .warning{margin:8px 0}
+#slide .notice,#slide .warning{padding:12px 16px}
+#slide .procedure{gap:8px;margin:10px 0}#slide .procedure>div{padding:10px 14px 10px 50px}
+#slide .resource-list{grid-template-columns:repeat(3,1fr);margin:10px 0}
+#slide .hero-grid{margin-top:20px}#slide .flow{grid-template-columns:repeat(5,1fr);margin:12px 0 16px}#slide .flow div{padding:10px 8px}#slide .hero-grid{grid-template-columns:repeat(3,1fr)}
+#pager{flex:none;display:flex;align-items:center;justify-content:center;gap:14px;height:40px;border-top:1px solid var(--line);color:var(--muted);font-size:14px;font-weight:700}
+#pager button{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:6px;width:30px;height:26px;font-size:11px;cursor:pointer}
+#bar{flex:none;display:flex;align-items:center;justify-content:center;gap:16px;padding:8px;background:#111a2e;color:#cbd5e7;font-size:14px}
+#bar button{border:1px solid rgb(97,112,141);background:transparent;color:#fff;border-radius:8px;padding:6px 14px;font:700 14px var(--font-sans);cursor:pointer}
+@media print{#slideBtn,#deck{display:none!important}}
+
+aside nav .nav-title{padding:6px 10px 10px;font-size:12px;font-weight:800;letter-spacing:.12em;color:rgb(130,145,177)}
+aside nav .grp{margin-top:20px;padding-top:12px;border-top:1px solid rgb(45,56,80)}
+aside nav .nav-title+.grp{margin-top:0;border-top:0;padding-top:0}
+aside nav .grp-label{padding:0 10px 4px;font-size:11px;font-weight:800;letter-spacing:.1em;color:rgb(130,145,177)}
+aside nav a.l2{margin-top:0;padding:6px 10px;color:#fff;font-size:15px;font-weight:800;border-left:3px solid transparent}
+aside nav a.l3{margin-left:12px;padding:5px 10px 5px 14px;font-size:14px;border-left:1px solid rgb(45,56,80)}
+aside nav a.l4{display:none;margin-left:12px;padding:3px 10px 3px 30px;font-size:12.5px;color:rgb(150,162,186);border-left:1px solid rgb(45,56,80)}
+aside nav a.l4.show{display:block}
+aside nav a.active{border-left-color:var(--blue)}
+.dh{margin:30px 0 8px;padding:2px 0 2px 12px;border-left:4px solid var(--blue)}
+.dh b{font-size:1.06em}
+#slide .dh{margin:12px 0 8px}
+#slide .eb{margin:0 0 4px;font-size:14px;font-weight:800;letter-spacing:.06em;color:var(--blue)}
+#slide .outline{columns:2;column-gap:56px;font-size:16px;line-height:1.5}
+#slide .outline .og{break-inside:avoid;margin-bottom:12px}
+#slide .outline b{display:block;font-size:17px}
+#slide .outline span{display:block;padding-left:14px;color:var(--muted);font-size:14.5px}
+
+.base{margin:6px 0 14px;padding:8px 12px;border-left:4px solid var(--green);background:rgb(236,248,243);font-size:14.5px}
+.copybox pre{font:15px/1.8 var(--font-sans);letter-spacing:-.01em}
+.copybox pre.fmt{white-space:normal;padding:18px 20px}
+.pl{display:flex;gap:10px;margin:0 0 9px}.pl:last-child{margin-bottom:0}
+.pl .pk{flex:none;width:3.3em;color:rgb(140,180,255);font-weight:800}
+.pl.k2 .pk{color:rgb(110,220,180)}.pl.k3 .pk{color:rgb(255,200,110)}
+.pl .pt{flex:1;min-width:0}
+.pl.c{padding-left:calc(3.3em + 10px);margin-top:-5px}
+#slide .copybox pre.fmt{font-size:17px;padding:14px 18px}
+#slide .base{font-size:15px;padding:6px 12px}
+</style>
+<style>.side-link{margin:16px 10px 0;padding:12px;border:1px solid rgb(45,56,80);border-radius:10px;font-size:12px;color:rgb(190,200,219)}.side-link b{display:block;color:#fff;font-size:12px;margin-bottom:4px}.side-link a{color:rgb(140,180,255);word-break:break-all}.day-nav{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}.day-nav a{padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:13px;font-weight:700;color:var(--ink);text-decoration:none}.day-nav a[aria-current]{background:var(--blue);border-color:var(--blue);color:#fff}main pre{white-space:pre-wrap;overflow-wrap:anywhere}main code.inline{overflow-wrap:break-word}.hero-grid code.inline,.hero-grid span{overflow-wrap:anywhere}figure.voice{margin:18px 0;padding:16px 20px;border-left:4px solid var(--blue);background:var(--soft);border-radius:0 12px 12px 0}figure.voice blockquote{margin:0}figure.voice blockquote p{margin:0;font-size:18px;font-weight:700;line-height:1.55}figure.voice blockquote p.orig{margin-top:6px;font-size:14px;font-weight:500;color:var(--muted)}figure.voice figcaption{margin-top:10px;font-size:13px;color:var(--muted)}#slide figure.voice{margin:10px 0;padding:10px 16px}kbd{display:inline-block;padding:1px 6px;border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;background:#fff;font:600 13px var(--font-sans)}.source-note{font-size:13px;color:var(--muted)}.resource-list.news .resource-card{border-left:4px solid #e8a23a}.resource-list.news .resource-card>.small:first-child::before{content:"뉴스";display:inline-block;margin-right:6px;padding:0 6px;border-radius:4px;background:#fff3df;color:#9a5b00;font-weight:700}.resource-list.news .resource-card>.small:last-child{margin-top:6px;color:var(--muted)}</style>
+<style>.why-box{margin:14px 0 0;padding:12px 16px;border-left:4px solid #8fb0ff;background:rgba(255,255,255,.08);border-radius:0 10px 10px 0;color:#e6ebf5;max-width:900px}.why-box b{display:block;color:#a9c1ff;font-size:13px;margin-bottom:2px}.ok-line{margin:8px 0 0;font-size:14.5px}.ok-line b{display:inline-block;margin-right:8px;padding:1px 8px;border-radius:6px;background:#e7f7ef;color:#16a36b;font-size:12px}.goal-list li{margin-bottom:6px}</style><style>.shot{margin:14px 0 6px;max-width:760px}.shot img{display:block;width:100%;height:auto;border:1px solid #d9dde5;border-radius:10px;box-shadow:0 2px 10px rgba(20,30,60,.06)}.shot figcaption{font-size:12.5px;color:#6b7280;margin-top:6px}.stage{display:inline-block;margin-right:6px;padding:1px 8px;border-radius:999px;background:#eef2ff;color:#3b4ec8;font-size:12px;font-weight:700}.tpl td:empty::after{content:"\00a0";}.tpl td{height:30px}.result-box{border:1px solid #c9e9d9;background:#f2fbf6;border-radius:10px;padding:12px 16px;margin:10px 0}.result-box b{color:#16794f}.entry-box{border:1px solid #cfd9f3;background:#f5f8ff;border-radius:10px;padding:12px 16px;margin:12px 0}.entry-box>b{color:#2c48b8}.entry-box p{margin:6px 0}.entry-box .shot img{width:auto;max-width:100%}.ref-box{display:block;border:1px dashed #d9c27a;background:#fffbea;border-radius:10px;padding:12px 16px;margin:12px 0}.ref-box>b{color:#8a6a00}.ref-box p{margin:6px 0}.ref-box ul{margin:6px 0 0;padding-left:18px}h4{margin:16px 0 6px}ol.do-steps{padding-left:22px}ol.do-steps>li{margin-bottom:14px}ol.do-steps>li>p{margin:0 0 6px}.ref-kind{display:inline-block;font-size:12px;color:#6b5a1e;background:#f6ecc4;border-radius:6px;padding:1px 6px;margin-right:4px}</style><style>@media(max-width:680px){.hero-grid{grid-template-columns:1fr}}</style></head>
+<body>
+<button aria-controls="side-nav" aria-expanded="true" class="nav-toggle" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" viewbox="0 0 16 16"><path d="M2 4h12M2 8h12M2 12h12"></path></svg><span>목차 숨기기</span></button>
+<div class="app">
+<aside id="side-nav">
+<div class="side-head">
+<div class="brand">SELECTWAY · LECTURE NOTE</div>
+<h1>노션으로 팀 일을 한곳에</h1>
+<div class="side-sub">노션 기초부터 노션 에이전트까지 · 예비 교안</div>
+</div>
+<nav>
+<div class="nav-title">전체 목차</div>
+<div class="grp"><div class="grp-label">OVERVIEW</div><a class="l2" href="#overview">교육 개요</a><a class="l3" href="#plans">수업 전에: 요금제와 AI 쓸 수 있는 범위</a></div>
+<div class="grp"><div class="grp-label">단어</div><a class="l2" href="#words">오늘의 단어</a></div>
+<div class="grp"><div class="grp-label">1</div><a class="l2" href="#s1">페이지와 블록</a><a class="l3" href="#s1-1">1-1. 노션이란?</a><a class="l3" href="#s1-2">1-2. 왼쪽 패널 읽기</a><a class="l3" href="#s1-3">1-3. 구글 독스 PRD를 노션으로 옮기기</a></div>
+<div class="grp"><div class="grp-label">2</div><a class="l2" href="#s2">데이터베이스</a><a class="l3" href="#s2-1">2-1. 데이터베이스란?</a><a class="l3" href="#s2-2">2-2. 고객 문의 데이터베이스 만들기</a><a class="l3" href="#s2-3">2-3. 같은 데이터를 다른 보기로</a></div>
+<div class="grp"><div class="grp-label">3</div><a class="l2" href="#s3">폼으로 받기</a><a class="l3" href="#s3-1">3-1. 폼이란?</a><a class="l3" href="#s3-2">3-2. 고객 문의 폼 열기</a></div>
+<div class="grp"><div class="grp-label">4</div><a class="l2" href="#s4">자동화</a><a class="l3" href="#s4-1">4-1. 버튼과 데이터베이스 자동화</a><a class="l3" href="#s4-2">4-2. 버튼 하나로 상태 바꾸기</a><a class="l3" href="#s4-3">4-3. 새 문의가 오면 팀에 메일 보내기</a></div>
+<div class="grp"><div class="grp-label">5</div><a class="l2" href="#s5">노션 에이전트</a><a class="l3" href="#s5-1">5-1. 노션 AI에서 노션 에이전트까지</a><a class="l3" href="#s5-2">5-2. 조심할 점: 못 하는 일</a><a class="l3" href="#s5-3">5-3. 문의 데이터로 주간 보고서 만들기</a><a class="l3" href="#s5-4">5-4. 커스텀 에이전트는 무엇이 다를까요</a></div>
+<div class="grp"><div class="grp-label">6</div><a class="l2" href="#s6">밖으로 내보내고 잇기</a><a class="l3" href="#s6-1">6-1. 노션 사이트로 공개하기</a><a class="l3" href="#s6-2">6-2. 다른 앱과 잇기</a></div>
+<div class="grp"><div class="grp-label">7</div><a class="l2" href="#s7">결과</a><a class="l3" href="#s7-1">7-1. 오늘 만든 것 한눈에 보기</a></div>
+<div class="grp"><div class="grp-label">SOURCES</div><a class="l2" href="#sources">출처</a></div>
+</nav>
+<div class="side-link"><b>이 교안 주소</b><a href="https://loreenkim0301.github.io/swy-lecturenote/drafts/261110-notion-workspace/">loreenkim0301.github.io/swy-lecturenote/drafts/261110-notion-workspace/</a></div>
+<div class="side-foot">강사 김수정 · 셀렉트웨이</div>
+</aside>
+<main>
+<header class="hero">
+<div class="kicker">노션 실무 · 2026.11.10 작성 (예비 교안)</div>
+<h1>노션으로 <em>팀 일</em>을 한곳에</h1>
+<p>셀렉트마켓 팀은 기획 문서는 구글 독스에, 고객 문의는 메일에, 할 일은 메신저에 흩어 두고 있어요. 오늘은 이 일을 노션 한곳으로 모아요. 문서를 옮기고, 문의를 표로 쌓고, 폼으로 받고, 자동으로 알리고, 마지막에 노션 에이전트에게 보고서를 맡겨요.</p>
+<div class="hero-grid">
+<div><b>다루는 것</b><span>페이지·블록 · 데이터베이스 · 폼 · 자동화 · 노션 에이전트 · 노션 사이트</span></div>
+<div><b>방식</b><span>하나의 결과물(셀렉트마켓 고객 문의 관리)을 단계마다 키워요</span></div>
+<div><b>준비물</b><span>노션 계정(구글 계정으로 가입 가능) · 크롬 브라우저 · 지메일 계정</span></div>
+</div>
+</header>
+
+<section class="section" id="overview"><div class="section-label">OVERVIEW</div><h2>교육 개요</h2>
+<div class="table-wrap"><table>
+<tr><th>교육 목표</th><td>노션의 페이지·데이터베이스·폼·자동화·에이전트를 이어 써서, 팀의 반복 업무 하나를 노션 안에서 처음부터 끝까지 돌린다.</td></tr>
+<tr><th>대상·시간</th><td><span class="todo">확인 필요</span> (과정에 맞춰 정해요)</td></tr>
+<tr><th>오늘 만드는 것</th><td>셀렉트마켓 팀 공간 하나: ① 노션으로 옮긴 PRD ② 고객 문의 데이터베이스 ③ 고객 문의 폼 ④ 상태 버튼과 메일 알림 자동화 ⑤ 노션 에이전트가 쓴 주간 문의 보고서 ⑥ 밖에 공개한 FAQ 페이지</td></tr>
+<tr><th>수업이 끝나면</th><td>① 페이지와 데이터베이스가 어떻게 다른지 말하기<br/>② 폼 응답이 데이터베이스에 쌓이는 흐름을 직접 만들기<br/>③ 노션 에이전트에게 맡길 일과 맡기면 안 되는 일을 구분하기</td></tr>
+</table></div>
+<div class="table-wrap"><table>
+<tr><th>장면</th><th>하는 일</th><th>결과물</th></tr>
+<tr><td>1. 페이지와 블록</td><td>팀스페이스를 만들고 구글 독스 PRD를 노션 페이지로 옮겨요</td><td>셀렉트마켓 PRD 페이지</td></tr>
+<tr><td>2. 데이터베이스</td><td>고객 문의를 쌓을 표를 만들고 보기를 바꿔요</td><td>고객 문의 데이터베이스</td></tr>
+<tr><td>3. 폼으로 받기</td><td>데이터베이스에 폼 보기를 붙여 문의를 받아요</td><td>고객 문의 폼 링크</td></tr>
+<tr><td>4. 자동화</td><td>상태 버튼과 메일 알림을 붙여요</td><td>새 문의 알림 메일</td></tr>
+<tr><td>5. 노션 에이전트</td><td>문의 데이터를 읽혀 보고서를 받아요</td><td>주간 문의 보고서 페이지</td></tr>
+<tr><td>6. 밖으로 내보내기</td><td>FAQ 페이지를 노션 사이트로 공개해요</td><td>FAQ 공개 주소</td></tr>
+</table></div>
+<div class="notice">노션은 메뉴 이름과 AI 기능이 자주 바뀌어요. 화면이 이 교안과 다르면 각 절의 참고 상자에 있는 노션 공식 도움말을 기준으로 해요. (공식 도움말 2026-11-10 확인)</div>
+
+<article class="topic" id="plans">
+<h3>수업 전에: 요금제와 AI 쓸 수 있는 범위</h3>
+<p>노션은 요금제마다 쓸 수 있는 기능이 달라요. 실습 전에 내 계정이 어떤 요금제인지 먼저 확인해요. 왼쪽 위 워크스페이스 이름을 누르고 [설정]에서 요금제를 볼 수 있어요.</p>
+<div class="table-wrap"><table>
+<tr><th>요금제</th><th>가격(1인·월)</th><th>노션 AI</th><th>오늘 실습에 미치는 영향</th></tr>
+<tr><td><b>Free</b></td><td>무료</td><td>체험만</td><td>페이지·데이터베이스·폼·버튼은 돼요. 데이터베이스 자동화는 슬랙 알림만 만들 수 있어요.</td></tr>
+<tr><td><b>Plus</b></td><td>$10부터</td><td>체험만</td><td>데이터베이스 자동화(메일 보내기 포함)를 만들 수 있어요.</td></tr>
+<tr><td><b>Business</b></td><td>$20부터</td><td>노션 에이전트 · AI 회의록 포함</td><td>노션 에이전트 실습(장면 5)을 체험 한도 걱정 없이 할 수 있어요. 폼 조건부 질문도 돼요.</td></tr>
+<tr><td><b>Enterprise</b></td><td>별도 문의</td><td>Business와 같음 + 관리 기능</td><td>기관 계정이면 관리자가 막아 둔 기능이 있을 수 있어요.</td></tr>
+</table></div>
+<p class="small">가격은 노션 가격 페이지에 표시된 1인당 월 금액이에요. 연간 결제 기준이며, 월 결제는 더 비싸요. 원화로는 1달러를 1,400원으로 계산하면 Plus 약 14,000원, Business 약 28,000원이에요. 실제 결제 금액은 결제 시점 환율과 부가세에 따라 달라요.</p>
+<div class="warning">Free·Plus의 노션 AI는 체험이에요. 매달 다시 채워지는 사용량이 아니므로, 장면 5에서 한두 번만 써 봐요. 체험이 끝나면 강사 화면으로 결과를 함께 봐요.</div>
+<div class="ref-box"><b>참고 · 공식 출처</b><ul>
+<li><a href="https://www.notion.com/pricing" target="_blank" rel="noopener">Notion 가격 페이지</a> · 2026-11-10 확인</li>
+<li><a href="https://www.notion.com/help/standard-select-and-notion-credits-eligible-features" target="_blank" rel="noopener">Standard, Select & Notion credits: eligible features</a> · Business·Enterprise는 1인마다 매달 AI 사용량(Standard·Select)이 주어지고, AI 회의록은 2026년 12월 1일부터 Standard 사용량을 써요 · 2026-11-10 확인</li>
+</ul></div>
+</article>
+</section>
+
+<section class="section session" id="words">
+<div class="session-head"><div class="eyebrow">단어</div><h2>오늘의 단어</h2><p>중간에 헷갈리면 이 표로 돌아와요.</p></div>
+<div class="table-wrap"><table><tr><th>단어</th><th>뜻</th></tr>
+<tr><td><b>블록</b></td><td>노션에 들어가는 한 조각이에요. 글 한 줄, 제목, 체크박스, 이미지, 표가 모두 블록이에요.</td></tr>
+<tr><td><b>페이지</b></td><td>블록을 담는 문서 한 장이에요. 페이지 안에 다른 페이지(하위 페이지)를 넣을 수 있어요.</td></tr>
+<tr><td><b>워크스페이스</b></td><td>내 노션 전체를 담는 가장 큰 공간이에요. 회사 하나가 워크스페이스 하나를 쓰는 경우가 많아요.</td></tr>
+<tr><td><b>팀스페이스</b></td><td>워크스페이스 안에서 팀끼리 함께 쓰는 공간이에요. 여기에 둔 페이지는 팀원에게 보여요.</td></tr>
+<tr><td><b>데이터베이스</b></td><td>페이지를 줄 맞춰 모아 둔 표예요. 줄 하나가 페이지 하나예요.</td></tr>
+<tr><td><b>속성</b></td><td>데이터베이스의 칸 이름이에요. 예: 상태, 담당자, 마감일</td></tr>
+<tr><td><b>보기</b></td><td>같은 데이터베이스를 표·보드·캘린더처럼 다르게 보여 주는 화면이에요. 보기를 바꿔도 원본 데이터는 그대로예요.</td></tr>
+<tr><td><b>자동화</b></td><td>"이런 일이 생기면(트리거) 이걸 해(액션)"를 정해 두면 노션이 대신 해 주는 기능이에요.</td></tr>
+<tr><td><b>노션 에이전트</b></td><td>노션 안에서 여러 단계의 일을 대신 해 주는 AI예요. 페이지와 데이터베이스를 만들고 고칠 수 있어요.</td></tr>
+</table></div>
+</section>
+
+<section class="section session" id="s1">
+<div class="session-head"><div class="eyebrow">장면 1</div><h2>페이지와 블록</h2><p>노션의 가장 작은 조각(블록)과 문서(페이지)를 익히고, 흩어진 기획 문서 하나를 노션으로 옮겨요.</p></div>
+
+<article class="topic" id="s1-1">
+<h3>1-1. 노션이란?</h3>
+<p>노션은 글, 표, 할 일, 일정을 한 화면에 모아 쓰는 문서 도구예요. 메모장처럼 시작하지만, 표를 데이터베이스로 바꾸면 업무 관리 도구가 돼요.</p>
+<div class="three-cards">
+<article><span>문제</span><h3>자료가 흩어져요</h3><p>기획서는 구글 독스에, 문의는 메일에, 할 일은 메신저에 있어요. 무엇이 최신인지 찾느라 시간이 들어요.</p></article>
+<article><span>노션이 하는 일</span><h3>한곳에 모아요</h3><p>문서와 표를 같은 공간에 두고, 서로 링크로 이어요. 팀원은 같은 페이지를 동시에 고칠 수 있어요.</p></article>
+<article><span>회사에서는</span><h3>팀 위키·프로젝트 보드</h3><p>신규 입사자 안내, 회의록, 기획 문서, 칸반 보드를 노션으로 관리하는 IT 회사가 많아요.</p></article>
+</div>
+<p>노션의 모든 내용은 블록으로 되어 있어요. 빈 줄에서 <kbd>/</kbd>(슬래시)를 누르면 넣을 수 있는 블록 목록이 나와요.</p>
+<div class="table-wrap"><table>
+<tr><th>블록 종류</th><th>예</th><th>이럴 때 써요</th></tr>
+<tr><td>기본</td><td>텍스트, 제목1·2·3, 글머리 목록, 할 일 목록, 토글, 콜아웃</td><td>문서의 뼈대를 잡을 때</td></tr>
+<tr><td>데이터베이스</td><td>표, 보드, 캘린더, 갤러리, 타임라인</td><td>같은 모양의 정보를 계속 쌓을 때(장면 2)</td></tr>
+<tr><td>미디어</td><td>이미지, 동영상, 파일, 코드</td><td>캡처나 자료 파일을 붙일 때</td></tr>
+<tr><td>임베드</td><td>구글 드라이브, 피그마, 유튜브 링크</td><td>다른 앱의 화면을 페이지 안에 띄울 때</td></tr>
+<tr><td>고급</td><td>버튼, 목차, 동기화 블록, 수식</td><td>반복 작업을 줄이거나 긴 문서를 정리할 때</td></tr>
+</table></div>
+</article>
+
+<article class="topic" id="s1-2">
+<h3>1-2. 왼쪽 패널 읽기</h3>
+<p>노션을 열면 왼쪽에 패널이 있어요. 새로 만든 페이지가 팀원에게 안 보이는 일이 자주 생기는데, 대부분 페이지를 둔 위치 때문이에요.</p>
+<div class="table-wrap"><table>
+<tr><th>자리</th><th>무엇이 있나요</th><th>누가 보나요</th></tr>
+<tr><td>위쪽 메뉴</td><td>검색, 홈, 받은 편지함(알림)</td><td>나</td></tr>
+<tr><td><b>팀스페이스</b></td><td>팀이 함께 쓰는 페이지</td><td>팀원 모두</td></tr>
+<tr><td><b>공유된 페이지</b></td><td>다른 사람이 나를 초대한 페이지</td><td>초대받은 사람만</td></tr>
+<tr><td><b>개인 페이지</b></td><td>나만 쓰는 초안·메모</td><td>나만</td></tr>
+</table></div>
+<div class="warning">개인 페이지에 만든 페이지는 팀원에게 보이지 않아요. 팀이 함께 볼 페이지는 처음부터 팀스페이스에 만들거나, 왼쪽 패널에서 끌어서 팀스페이스로 옮겨요.</div>
+</article>
+
+<article class="topic" id="s1-3">
+<h3>1-3. 구글 독스 PRD를 노션으로 옮기기</h3>
+<p>셀렉트마켓의 「고객 문의 접수 개선」 PRD를 노션 페이지로 옮겨요. 내 PRD가 있으면 내 것으로 해도 좋아요. 실제 회사 자료는 회사 이름과 숫자를 가상 값으로 바꿔서 써요.</p>
+<p><b>STEP 1. 팀스페이스에 페이지 만들기</b></p>
+<div class="procedure">
+<div>왼쪽 패널의 팀스페이스 이름 옆 [+]를 눌러 새 페이지를 만들어요.</div>
+<div>제목에 <code class="inline">셀렉트마켓 고객 문의 접수 개선 PRD</code>를 적어요.</div>
+<div>제목 위에 마우스를 올리면 나오는 [아이콘 추가]로 아이콘을 붙여요. 페이지를 찾기 쉬워져요.</div>
+</div>
+<p><b>STEP 2. 블록으로 뼈대 잡기</b></p>
+<p>PRD의 큰 항목을 제목2 블록으로 먼저 놓아요. 빈 줄에서 <kbd>/</kbd>를 누르고 "제목2"를 고르면 돼요.</p>
+<div class="table-wrap"><table>
+<tr><th>제목2</th><th>그 아래에 둘 블록</th></tr>
+<tr><td>목적</td><td>콜아웃 블록 한 개: 이 PRD가 해결할 문제 한 문장</td></tr>
+<tr><td>요구사항</td><td>할 일 목록 블록: 요구사항 한 줄에 하나씩</td></tr>
+<tr><td>기능 정의</td><td>간단한 표 블록: 기능 이름 · 설명 · 우선순위</td></tr>
+<tr><td>화면 구조(IA)</td><td>토글 블록: 화면 이름을 접어 두고 펼치면 설명이 보이게</td></tr>
+<tr><td>참고 자료</td><td>임베드 블록: 원본 구글 독스 링크</td></tr>
+</table></div>
+<p><b>STEP 3. 원본 내용 붙여 넣기</b></p>
+<p>구글 독스에서 항목별로 내용을 복사해 각 제목 아래에 붙여 넣어요. 붙여 넣은 뒤 글머리 목록이 깨지면, 그 줄을 선택하고 <kbd>/</kbd>로 블록 종류를 다시 골라요.</p>
+<div class="blk k-pr"><span>프롬프트</span>뼈대만 빨리 잡고 싶을 때 (노션 AI 체험이 남아 있으면)</div>
+<div class="copybox"><div class="copyhead"><span>노션 에이전트에게</span><button type="button">복사</button></div><pre>요청: 이 페이지에 PRD 뼈대를 만들어 줘.
+내용: 주제는 [셀렉트마켓 고객 문의 접수 개선]이야. 목적, 요구사항, 기능 정의, 화면 구조, 참고 자료 다섯 항목을 제목2로 만들어 줘. 내용은 내가 채울 거니까 항목 아래는 비워 둬. 자료에 없는 숫자나 일정은 추가하지 마.
+형식: 요구사항은 할 일 목록, 기능 정의는 표(기능 이름 · 설명 · 우선순위), 화면 구조는 토글로 만들어 줘.</pre></div>
+<p><b>STEP 4. 팀원과 함께 보기</b></p>
+<div class="procedure">
+<div>오른쪽 위 [공유]를 눌러요.</div>
+<div>옆자리 수강생의 이메일을 넣어 초대해요. 권한은 [댓글 허용]으로 골라요.</div>
+<div>초대받은 사람은 요구사항 한 줄을 드래그해 선택하고 [댓글]로 의견을 하나 남겨요.</div>
+</div>
+<div class="blk k-chk"><span>확인할 점</span></div>
+<ul class="checklist">
+<li>페이지가 왼쪽 패널의 팀스페이스 아래에 있어요(개인 페이지가 아니에요).</li>
+<li>다섯 항목이 모두 제목2 블록이에요. 페이지 오른쪽에 목차가 생기면 제대로 된 거예요.</li>
+<li>원본에 없던 숫자나 일정이 들어가 있지 않아요(AI로 뼈대를 만들었다면 꼭 확인해요).</li>
+<li>짝이 남긴 댓글이 오른쪽에 보여요.</li>
+</ul>
+<div class="ref-box"><b>참고</b><p>노션 공식 강의 <a href="https://academy.notion.com/building-basics/323676/scorm/yz9o79x912bs" target="_blank" rel="noopener">Notion Academy · Building Basics</a>에서 워크스페이스·블록 구조를 영어 영상으로 다시 볼 수 있어요.</p></div>
+</article>
+</section>
+
+<section class="section session" id="s2">
+<div class="session-head"><div class="eyebrow">장면 2</div><h2>데이터베이스</h2><p>노션에서 가장 많이 쓰는 기능이에요. 셀렉트마켓의 고객 문의를 쌓을 데이터베이스를 만들어요. 이 데이터베이스가 장면 3~5의 바탕이 돼요.</p></div>
+
+<article class="topic" id="s2-1">
+<h3>2-1. 데이터베이스란?</h3>
+<p>노션의 데이터베이스는 페이지를 줄 맞춰 모은 표예요. 겉으로는 구글 시트와 비슷하지만, 줄 하나를 열면 그 안이 또 하나의 페이지예요. 그래서 문의 한 건 안에 고객이 보낸 캡처, 처리 메모, 댓글을 함께 둘 수 있어요.</p>
+<div class="versus">
+<div><b>구글 시트</b><p>칸 하나에는 값 하나만 들어가요. 긴 설명이나 캡처를 넣기 어려워요.</p></div>
+<i>vs</i>
+<div><b>노션 데이터베이스</b><p>줄 하나가 페이지예요. 칸(속성)에는 요약 값을, 페이지 안에는 자세한 내용을 둬요.</p></div>
+</div>
+<div class="table-wrap"><table>
+<tr><th>구성 요소</th><th>뜻</th><th>고객 문의 예</th></tr>
+<tr><td>페이지(줄)</td><td>데이터 한 건</td><td>문의 1건</td></tr>
+<tr><td>속성(칸)</td><td>각 건에 붙는 정보</td><td>상태, 문의 유형, 담당자, 접수일</td></tr>
+<tr><td>보기</td><td>같은 데이터를 보여 주는 방법</td><td>표 보기, 상태별 보드 보기</td></tr>
+<tr><td>필터·정렬·그룹</td><td>원하는 것만 골라 보기</td><td>"내 담당 + 처리 중"만 보기</td></tr>
+<tr><td>템플릿</td><td>새 줄을 만들 때 미리 채워지는 양식</td><td>처리 메모 양식</td></tr>
+</table></div>
+<div class="table-wrap"><table>
+<tr><th>종류</th><th>모양</th><th>이럴 때 써요</th></tr>
+<tr><td>전체 페이지 데이터베이스</td><td>데이터베이스 자체가 페이지 하나</td><td>문의처럼 계속 많이 쌓이는 데이터</td></tr>
+<tr><td>인라인 데이터베이스</td><td>다른 글 사이에 끼워 넣은 표</td><td>PRD 안의 작은 기능 목록</td></tr>
+</table></div>
+</article>
+
+<article class="topic" id="s2-2">
+<h3>2-2. 고객 문의 데이터베이스 만들기</h3>
+<p><b>STEP 1. 데이터베이스 만들기</b></p>
+<div class="procedure">
+<div>팀스페이스 이름 옆 [+]로 새 페이지를 만들고, 제목을 <code class="inline">셀렉트마켓 고객 문의</code>로 적어요.</div>
+<div>본문 빈 줄에서 <kbd>/</kbd>를 누르고 "데이터베이스"를 검색해 표 보기를 골라요.</div>
+</div>
+<p><b>STEP 2. 속성 만들기</b></p>
+<p>칸 제목 오른쪽 [+]를 눌러 속성을 하나씩 추가해요. 속성 종류를 잘못 고르면 나중에 바꿀 때 값이 사라질 수 있으니 표대로 골라요.</p>
+<div class="table-wrap"><table>
+<tr><th>속성 이름</th><th>속성 종류</th><th>값 예</th></tr>
+<tr><td>제목(기본 칸)</td><td>제목</td><td>결제 후 주문 내역이 안 보여요</td></tr>
+<tr><td>상태</td><td>상태</td><td>접수 · 처리 중 · 답변 완료</td></tr>
+<tr><td>문의 유형</td><td>선택</td><td>결제 · 배송 · 버그 · 기타</td></tr>
+<tr><td>담당자</td><td>사람</td><td>나 또는 짝</td></tr>
+<tr><td>고객 이메일</td><td>이메일</td><td>customer01@example.com</td></tr>
+<tr><td>접수일</td><td>생성 일시</td><td>자동으로 채워져요</td></tr>
+</table></div>
+<p><b>STEP 3. 연습용 문의 5건 넣기</b></p>
+<p>아래 예시 데이터를 한 줄씩 넣어요. 장면 5에서 노션 에이전트가 이 데이터를 읽어요.</p>
+<div class="table-wrap"><table>
+<tr><th>제목</th><th>상태</th><th>문의 유형</th></tr>
+<tr><td>결제 후 주문 내역이 안 보여요</td><td>접수</td><td>결제</td></tr>
+<tr><td>배송 출발 알림이 두 번 왔어요</td><td>처리 중</td><td>배송</td></tr>
+<tr><td>쿠폰 적용 버튼을 눌러도 반응이 없어요</td><td>접수</td><td>버그</td></tr>
+<tr><td>카드 결제가 중복으로 승인됐어요</td><td>처리 중</td><td>결제</td></tr>
+<tr><td>교환 신청은 어디서 하나요?</td><td>답변 완료</td><td>기타</td></tr>
+</table></div>
+<p><b>STEP 4. 줄 하나를 페이지로 열기</b></p>
+<p>"쿠폰 적용 버튼…" 줄에 마우스를 올리고 [열기]를 눌러요. 오른쪽에 페이지가 열리면 본문에 "재현 방법: 장바구니 → 쿠폰 선택 → 적용 클릭"처럼 처리 메모를 적어요. 표로 돌아가도 메모는 그 줄 안에 남아 있어요.</p>
+<div class="blk k-chk"><span>확인할 점</span></div>
+<ul class="checklist">
+<li>속성 6개가 표의 종류대로 만들어졌어요. 접수일은 직접 입력하지 않아도 채워져요.</li>
+<li>문의 5건이 들어가 있고, 줄을 열면 페이지가 나와요.</li>
+<li>데이터베이스가 팀스페이스 안에 있어요.</li>
+</ul>
+<div class="ref-box"><b>참고 · 공식 출처</b><p><a href="https://www.notion.com/ko/help/intro-to-databases" target="_blank" rel="noopener">노션 도움말 · 데이터베이스 소개</a> · 2026-11-10 확인</p></div>
+</article>
+
+<article class="topic" id="s2-3">
+<h3>2-3. 같은 데이터를 다른 보기로</h3>
+<p>담당자는 "내가 처리할 문의"만, 팀장은 "상태별 개수"만 보고 싶어요. 데이터베이스를 복사하지 않고 보기만 추가하면 돼요.</p>
+<p><b>STEP 1. 상태별 보드 보기 추가</b></p>
+<div class="procedure">
+<div>데이터베이스 위쪽 보기 이름 옆 [+]를 눌러요.</div>
+<div>[보드]를 고르고, 그룹 기준을 "상태"로 정해요. 이름은 <code class="inline">상태별 보드</code>로 바꿔요.</div>
+<div>카드 하나를 "접수"에서 "처리 중" 칸으로 끌어 옮겨요. 표 보기로 돌아가 상태가 바뀌었는지 확인해요.</div>
+</div>
+<p><b>STEP 2. 내 담당 보기 만들기</b></p>
+<div class="procedure">
+<div>[+]로 표 보기를 하나 더 만들고 이름을 <code class="inline">내 담당</code>으로 적어요.</div>
+<div>[필터] → "담당자" → "나"를 고르고, 필터를 하나 더 추가해 "상태가 답변 완료가 아님"을 골라요.</div>
+</div>
+<div class="blk k-chk"><span>확인할 점</span></div>
+<ul class="checklist">
+<li>보드에서 카드를 옮기면 표 보기의 상태도 같이 바뀌어요. 보기는 화면만 다르고 데이터는 하나예요.</li>
+<li>"내 담당" 보기에는 내가 담당이고 아직 끝나지 않은 문의만 보여요.</li>
+</ul>
+<div class="warning">여럿이 쓰는 데이터베이스에서 누군가 필터를 바꾸면 모두의 화면이 바뀌어요. 보기 메뉴의 [보기 잠금]을 켜 두면 필터와 정렬을 함부로 바꿀 수 없어요.</div>
+</article>
+</section>
+
+<section class="section session" id="s3">
+<div class="session-head"><div class="eyebrow">장면 3</div><h2>폼으로 받기</h2><p>지금은 문의를 손으로 옮겨 적고 있어요. 고객이 직접 폼을 채우면 장면 2의 데이터베이스에 바로 쌓이게 해요.</p></div>
+
+<article class="topic" id="s3-1">
+<h3>3-1. 폼이란?</h3>
+<p>노션 폼은 구글 설문지처럼 질문을 보내고 답을 받는 기능이에요. 다른 점은 답이 노션 데이터베이스에 한 줄씩 바로 쌓인다는 거예요. 폼의 질문 하나가 데이터베이스 속성 하나와 이어져요.</p>
+<div class="table-wrap"><table>
+<tr><th>만드는 방법</th><th>순서</th><th>이럴 때 써요</th></tr>
+<tr><td>있는 데이터베이스에 붙이기</td><td>데이터베이스 보기 옆 [+] → [폼]</td><td>이미 속성을 정해 둔 경우(오늘 실습)</td></tr>
+<tr><td>폼부터 만들기</td><td>빈 줄에서 <code class="inline">/form</code> → [폼]</td><td>질문부터 정하고 싶은 경우. 응답을 담을 데이터베이스가 함께 생겨요.</td></tr>
+</table></div>
+<div class="warning">
+<p>조심할 점</p>
+<ul>
+<li>폼을 만들고 고치는 일은 컴퓨터(웹·데스크톱 앱)에서만 할 수 있어요. 휴대폰 앱에서는 안 돼요.</li>
+<li>답에 따라 다음 질문을 바꾸는 조건부 질문은 Business·Enterprise 요금제에서만 돼요.</li>
+<li>"웹에서 링크가 있는 모든 사람"으로 공유하면 응답자 이름이 남지 않는 익명 응답이 돼요.</li>
+<li>폼 보기는 내보내기가 안 돼요. 응답을 내려받을 때는 표 보기에서 내보내요.</li>
+</ul></div>
+</article>
+
+<article class="topic" id="s3-2">
+<h3>3-2. 고객 문의 폼 열기</h3>
+<p><b>STEP 1. 데이터베이스에 폼 보기 붙이기</b></p>
+<div class="procedure">
+<div>장면 2에서 만든 「셀렉트마켓 고객 문의」 데이터베이스를 열어요.</div>
+<div>보기 이름 옆 [+]를 누르고 [폼]을 골라요. 속성 개수만큼 질문을 만들어 주는 버튼이 나오면 눌러요.</div>
+</div>
+<p><b>STEP 2. 고객이 답할 질문만 남기기</b></p>
+<p>상태·담당자는 팀이 정하는 값이라 고객에게 묻지 않아요. 질문의 [•••]를 눌러 [질문 삭제]를 골라요. 질문을 지워도 데이터베이스 속성은 그대로 남아요.</p>
+<div class="table-wrap"><table>
+<tr><th>질문(=속성)</th><th>남길까요</th><th>설정</th></tr>
+<tr><td>제목 → "어떤 점이 불편하셨나요?"</td><td>남겨요</td><td>[필수] 켜기 · [긴 답변] 켜기</td></tr>
+<tr><td>문의 유형</td><td>남겨요</td><td>[필수] 켜기 · 목록으로 보이기</td></tr>
+<tr><td>고객 이메일</td><td>남겨요</td><td>[필수] 켜기</td></tr>
+<tr><td>상태 · 담당자</td><td>지워요</td><td>팀이 채워요</td></tr>
+</table></div>
+<p class="small">질문 문구를 바꾸면 데이터베이스 속성 이름도 같이 바뀌어요. 속성 이름은 그대로 두고 질문만 바꾸려면 질문 [•••]에서 [속성 이름과 동기화]를 꺼요.</p>
+<p><b>STEP 3. 공유하고 응답 넣어 보기</b></p>
+<div class="procedure">
+<div>폼 위쪽 [폼 공유]를 눌러요. [작성 가능한 사람]을 "웹에서 링크가 있는 모든 사람"으로 바꾸고 링크를 복사해요.</div>
+<div>링크를 짝에게 보내요. 짝은 휴대폰으로 열어 문의 한 건을 남겨요.</div>
+<div>내 데이터베이스의 표 보기로 돌아가 새 줄이 생겼는지 확인해요.</div>
+</div>
+<div class="blk k-chk"><span>확인할 점</span></div>
+<ul class="checklist">
+<li>짝이 남긴 문의가 표 보기에 한 줄로 들어왔어요.</li>
+<li>상태 칸이 비어 있거나 기본값이에요. 이 칸은 장면 4에서 자동으로 채워요.</li>
+<li>질문을 지웠는데 데이터베이스 칸이 비어 버린 곳이 있으면, 그 칸이 폼에서 꼭 필요한지 다시 봐요.</li>
+</ul>
+<div class="ref-box"><b>참고 · 공식 출처</b><p><a href="https://notion.com/help/forms" target="_blank" rel="noopener">Notion Help · Forms</a> · 폼 만들기, 공유 범위, 조건부 질문 요금제 조건 · 2026-11-10 확인</p></div>
+</article>
+</section>
+
+<section class="section session" id="s4">
+<div class="session-head"><div class="eyebrow">장면 4</div><h2>자동화</h2><p>문의가 들어올 때마다 팀원이 데이터베이스를 들여다보지 않아도 되게 만들어요. 버튼으로 손을 줄이고, 자동화로 알림을 보내요.</p></div>
+
+<article class="topic" id="s4-1">
+<h3>4-1. 버튼과 데이터베이스 자동화</h3>
+<p>자동화는 "이런 일이 생기면(트리거) 이걸 해(액션)"를 정해 두는 기능이에요. 노션에는 두 가지가 있어요.</p>
+<div class="versus">
+<div><b>버튼</b><p>사람이 눌러야 움직여요. 예: [답변 완료] 버튼을 누르면 상태가 "답변 완료"로 바뀌어요. 모든 요금제에서 쓸 수 있어요.</p></div>
+<i>vs</i>
+<div><b>데이터베이스 자동화</b><p>조건이 맞으면 저절로 움직여요. 예: 새 문의가 들어오면 팀에 메일을 보내요. Plus 이상 요금제에서 만들 수 있어요.</p></div>
+</div>
+<div class="table-wrap"><table>
+<tr><th>트리거(언제)</th><th>액션(무엇을)</th></tr>
+<tr><td>페이지가 추가되면<br/>속성이 바뀌면<br/>매일·매주처럼 정해진 때마다</td><td>속성 바꾸기 · 다른 데이터베이스에 페이지 추가 · 노션 알림 보내기 · 메일 보내기(지메일) · 슬랙 알림 · 웹훅 보내기</td></tr>
+</table></div>
+<div class="warning">Free 요금제에서는 데이터베이스 자동화 중 슬랙 알림만 만들 수 있어요. 4-3 실습은 Plus 이상 계정에서 해요. Free 계정이면 4-2 버튼 실습까지 하고, 4-3은 강사 화면으로 함께 봐요.</div>
+</article>
+
+<article class="topic" id="s4-2">
+<h3>4-2. 버튼 하나로 상태 바꾸기</h3>
+<p><b>STEP 1. 버튼 속성 만들기</b></p>
+<div class="procedure">
+<div>고객 문의 데이터베이스의 칸 제목 오른쪽 [+]를 눌러 새 속성을 만들어요.</div>
+<div>속성 종류는 [버튼], 이름은 <code class="inline">답변 완료</code>로 적어요.</div>
+</div>
+<p><b>STEP 2. 버튼이 할 일 정하기</b></p>
+<div class="procedure">
+<div>[답변 완료] 칸 제목을 누르고 [자동화 편집]을 골라요.</div>
+<div>액션으로 [속성 편집]을 고르고, "상태"를 "답변 완료"로 바꾸게 정해요.</div>
+<div>[저장]을 누르고, 문의 한 줄의 [답변 완료] 버튼을 눌러 상태가 바뀌는지 봐요.</div>
+</div>
+<div class="blk k-chk"><span>확인할 점</span></div>
+<ul class="checklist">
+<li>버튼을 누른 줄만 상태가 "답변 완료"로 바뀌어요.</li>
+<li>장면 2의 "내 담당" 보기에서 그 문의가 사라져요(필터가 답변 완료를 빼기 때문이에요).</li>
+</ul>
+</article>
+
+<article class="topic" id="s4-3">
+<h3>4-3. 새 문의가 오면 팀에 메일 보내기</h3>
+<p>폼으로 새 문의가 들어오면, 팀원에게 메일이 가고 상태가 "접수"로 채워지게 만들어요. 팀원은 데이터베이스를 계속 열어 보지 않아도 돼요.</p>
+<p><b>STEP 1. 자동화 만들기</b></p>
+<div class="procedure">
+<div>데이터베이스 오른쪽 위 번개 모양(⚡)을 누르고 [새 자동화]를 골라요. 이름은 <code class="inline">새 문의 알림</code>으로 적어요.</div>
+<div>[새 트리거]에서 [페이지 추가됨]을 골라요.</div>
+<div>[새 액션]에서 [속성 편집]을 골라 "상태"를 "접수"로 정해요.</div>
+<div>[액션 추가]를 누르고 [메일 보내기]를 골라요. 처음이면 내 지메일 계정을 연결해요.</div>
+</div>
+<p><b>STEP 2. 메일 내용 채우기</b></p>
+<div class="table-wrap"><table>
+<tr><th>칸</th><th>넣을 값</th></tr>
+<tr><td>받는 사람</td><td>짝의 이메일(또는 팀 메일 주소)</td></tr>
+<tr><td>제목</td><td>[셀렉트마켓] 새 고객 문의가 들어왔어요</td></tr>
+<tr><td>본문</td><td>@를 눌러 "트리거한 페이지"를 넣고, 그 아래 "문의 유형을 확인하고 담당자를 정해 주세요."를 적어요.</td></tr>
+</table></div>
+<p><b>STEP 3. 실제로 돌려 보기</b></p>
+<div class="procedure">
+<div>[생성]을 눌러 자동화를 켜요.</div>
+<div>장면 3의 폼 링크로 문의를 하나 더 남겨요.</div>
+<div>1~2분 기다린 뒤 짝의 메일함에 알림이 왔는지, 데이터베이스의 상태가 "접수"로 채워졌는지 확인해요.</div>
+</div>
+<div class="blk k-chk"><span>확인할 점</span></div>
+<ul class="checklist">
+<li>메일은 바로 오지 않고 최대 2분쯤 늦게 올 수 있어요. 늦게 와도 정상이에요.</li>
+<li>메일은 내 지메일 계정에서 보내져요. 받는 사람에게 보낸 사람이 내 이름으로 보여요.</li>
+<li>이 자동화는 지메일을 연결한 사람만 고칠 수 있어요. 담당자가 바뀌면 다시 만들어야 해요.</li>
+<li>지메일의 하루 보내기 한도가 그대로 적용돼요. 문의가 아주 많은 서비스라면 슬랙 알림이 더 맞아요.</li>
+</ul>
+<div class="blk k-pr"><span>프롬프트</span>알림 메일에 넣을 요약 수식이 필요할 때</div>
+<p>문의 유형과 제목을 한 줄로 이어 붙인 "알림용 요약" 속성이 있으면 메일 제목이 더 알아보기 쉬워져요. 수식이 어려우면 노션 에이전트에게 수식을 만들어 달라고 해요(노션 에이전트는 수식을 만들고 고칠 수 있어요).</p>
+<div class="copybox"><div class="copyhead"><span>노션 에이전트에게</span><button type="button">복사</button></div><pre>요청: 셀렉트마켓 고객 문의 데이터베이스에 넣을 수식을 만들어 줘.
+내용: "문의 유형"과 "제목"을 "[결제] 결제 후 주문 내역이 안 보여요"처럼 대괄호로 이어 붙이고 싶어. 문의 유형이 비어 있으면 [미분류]로 보여 줘.
+형식: 수식 한 줄과, 그 수식이 하는 일을 한 문장으로 알려 줘.</pre></div>
+<div class="ref-box"><b>참고 · 공식 출처</b><p><a href="https://www.notion.com/help/database-automations" target="_blank" rel="noopener">Notion Help · Database automations</a> · 트리거·액션 종류, 메일 보내기는 지메일 계정 필요·최대 2분 지연, 요금제별 제한 · 2026-11-10 확인</p><p>이 실습은 셀렉트웨이 노션에서 "버그 리포트가 추가되면 팀 메일로 보내기"를 운영하며 확인한 흐름을 셀렉트마켓 예시로 옮긴 거예요. 실제 운영에서도 등록 뒤 1~2분 늦게 메일이 왔어요.</p></div>
+</article>
+</section>
+
+<section class="section session" id="s5">
+<div class="session-head"><div class="eyebrow">장면 5</div><h2>노션 에이전트</h2><p>장면 2~4에서 쌓은 고객 문의를 노션 에이전트에게 읽히고, 팀에 공유할 주간 보고서를 맡겨요.</p></div>
+
+<article class="topic" id="s5-1">
+<h3>5-1. 노션 AI에서 노션 에이전트까지</h3>
+<p>처음 나온 노션 AI는 글을 요약하고 다듬는 도우미였어요. 2025년 9월 18일 노션 3.0이 나오면서 AI가 에이전트로 바뀌었어요. 에이전트는 글만 쓰는 게 아니라 페이지와 데이터베이스를 직접 만들고 고쳐요.</p>
+<div class="versus">
+<div><b>예전 노션 AI</b><p>"이 글 요약해 줘", "블로그 말투로 바꿔 줘"처럼 지금 보고 있는 글 하나를 다뤄요.</p></div>
+<i>→</i>
+<div><b>노션 에이전트</b><p>"문의 데이터베이스를 읽고 보고서 페이지를 만들어 줘"처럼 여러 단계를 이어서 해요. 워크스페이스와 연결된 앱을 찾아보며 일해요.</p></div>
+</div>
+<p>노션 화면 아래쪽의 얼굴 모양 아이콘을 누르면 노션 에이전트 채팅이 열려요. 이전 대화는 왼쪽 패널의 [Notion AI]에 마우스를 올리면 나오는 시계 아이콘에서 다시 볼 수 있어요.</p>
+<div class="table-wrap"><table>
+<tr><th>노션 에이전트가 할 수 있는 일</th><th>셀렉트마켓 예</th></tr>
+<tr><td>페이지·데이터베이스·보기·속성 만들기와 고치기</td><td>"문의 유형별로 묶은 보기를 만들어 줘"</td></tr>
+<tr><td>워크스페이스 내용에 대해 답하기, 데이터베이스 값 찾기</td><td>"이번 주 결제 문의는 몇 건이야?"</td></tr>
+<tr><td>올린 파일 읽기(PDF·CSV·엑셀·워드·파워포인트·ZIP)</td><td>광고 성과 CSV를 올리고 요약 받기</td></tr>
+<tr><td>수식 만들기·고치기</td><td>4-3의 알림용 요약 수식</td></tr>
+<tr><td>연결한 앱(지메일·캘린더·슬랙 등) 다루기</td><td>"문의 답장 초안을 지메일에 써 줘" (보낼 때는 내 확인이 필요해요)</td></tr>
+</table></div>
+</article>
+
+<article class="topic" id="s5-2">
+<h3>5-2. 조심할 점: 못 하는 일</h3>
+<p>노션 에이전트는 나와 같은 권한으로 일해요. 내가 볼 수 없는 페이지는 에이전트도 못 봐요. 그리고 아래 일은 아직 할 수 없어요.</p>
+<div class="table-wrap"><table>
+<tr><th>못 하는 일</th><th>그래서 이렇게 해요</th></tr>
+<tr><td>데이터베이스 자동화, 템플릿, 버튼 만들기</td><td>장면 4처럼 사람이 직접 만들어요</td></tr>
+<tr><td>롤업·버튼 같은 고급 속성 만들기</td><td>수식은 만들어 주지만, 속성 추가는 직접 해요</td></tr>
+<tr><td>댓글 쓰기·고치기</td><td>의견은 사람이 댓글로 남겨요</td></tr>
+<tr><td>공유 범위·권한 바꾸기</td><td>[공유]는 사람이 직접 눌러요</td></tr>
+<tr><td>AI 회의록 시작, 리마인더 만들기</td><td>회의록은 직접 시작해요</td></tr>
+<tr><td>요금제·멤버·보안 설정 바꾸기</td><td>워크스페이스 관리자가 해요</td></tr>
+</table></div>
+<div class="warning">에이전트가 만든 보고서의 숫자는 꼭 원본 데이터베이스와 대조해요. 에이전트는 없는 원인이나 앞으로의 계획을 그럴듯하게 덧붙이기도 해요. 프롬프트에 "데이터에 없는 내용은 추가하지 마"를 넣어요.</div>
+</article>
+
+<article class="topic" id="s5-3">
+<h3>5-3. 문의 데이터로 주간 보고서 만들기</h3>
+<p>장면 2에서 넣은 문의 5건과 장면 3·4에서 폼으로 들어온 문의를 바탕으로, 팀장에게 공유할 주간 보고서를 만들어요.</p>
+<p><b>STEP 1. 보고서 페이지 만들기</b></p>
+<div class="procedure">
+<div>팀스페이스에 새 페이지를 만들고 제목을 <code class="inline">셀렉트마켓 주간 문의 보고서</code>로 적어요.</div>
+<div>화면 아래 얼굴 아이콘을 눌러 노션 에이전트를 열어요.</div>
+</div>
+<p><b>STEP 2. 에이전트에게 맡기기</b></p>
+<div class="copybox"><div class="copyhead"><span>노션 에이전트에게</span><button type="button">복사</button></div><pre>요청: 「셀렉트마켓 고객 문의」 데이터베이스를 읽고, 지금 열린 「셀렉트마켓 주간 문의 보고서」 페이지에 주간 보고서를 써 줘.
+내용: 문의 유형별 건수, 상태별 건수, 아직 답변하지 않은 문의 목록을 정리해 줘. 같은 문제로 보이는 문의가 있으면 묶어서 알려 줘. 데이터베이스에 없는 원인, 숫자, 앞으로의 계획은 추가하지 말고, 판단이 필요한 곳은 [확인 필요]로 남겨 줘.
+형식: 맨 위에 세 줄 요약, 그 아래 유형별·상태별 표 두 개, 마지막에 미답변 문의 목록(제목 · 문의 유형 · 접수일)으로 써 줘.</pre></div>
+<p><b>STEP 3. 원본과 대조하기</b></p>
+<p>보고서의 숫자를 장면 2의 보기로 직접 세어 확인해요. 상태별 보드 보기의 칸마다 몇 장인지 세면 돼요.</p>
+<div class="blk k-tpl"><span>빈 템플릿</span>내 보고서 대조표</div>
+<div class="table-wrap"><table class="tpl">
+<tr><th>항목</th><th>보고서에 적힌 값</th><th>데이터베이스에서 센 값</th><th>같나요?</th></tr>
+<tr><td>전체 문의 수</td><td></td><td></td><td></td></tr>
+<tr><td>결제 문의 수</td><td></td><td></td><td></td></tr>
+<tr><td>미답변(접수+처리 중) 수</td><td></td><td></td><td></td></tr>
+</table></div>
+<p>숫자가 다르면 에이전트에게 "결제 문의를 4건이라고 썼는데 데이터베이스에는 2건이야. 어떤 줄을 셌는지 목록으로 보여 줘"처럼 어디서 틀렸는지 물어봐요.</p>
+<div class="blk k-chk"><span>확인할 점</span></div>
+<ul class="checklist">
+<li>보고서의 숫자가 데이터베이스와 같아요.</li>
+<li>데이터베이스에 없는 원인 분석이나 일정이 들어가 있지 않아요. 들어갔다면 지우라고 다시 요청해요.</li>
+<li>판단이 필요한 곳에 [확인 필요]가 남아 있어요.</li>
+</ul>
+<details class="optional"><summary><span class="summary-title">더 해 보기 · 광고 성과 파일로 마케팅 보고서 만들기</span><span class="summary-hint">파일 종류에 따라 결과가 어떻게 다른지 봐요</span></summary>
+<p>메타 광고 관리자 같은 광고 도구는 성과를 이미지(PNG)·엑셀·CSV로 내보낼 수 있어요. 같은 성과를 세 형식으로 올려 보면, 그림은 설명용으로만 쓸 수 있고 정확한 숫자 분석은 표 형식 파일(CSV·엑셀)이 더 낫다는 것을 확인할 수 있어요. 실제 회사 데이터는 가상 값으로 바꿔서 올려요.</p>
+<div class="copybox"><div class="copyhead"><span>노션 에이전트에게</span><button type="button">복사</button></div><pre>요청: 첨부한 광고 성과 파일을 읽고 이 페이지에 분기별 마케팅 보고서를 써 줘.
+내용: 파일에 있는 기간, 광고비, 노출, 클릭 숫자만 써. 파일에 없는 숫자나 원인은 추가하지 말고 [확인 필요]로 남겨 줘.
+형식: 세 줄 요약, 분기별 표(기간 · 광고비 · 노출 · 클릭), 눈에 띄는 변화 두 가지 순서로 써 줘.</pre></div>
+</details>
+<div class="ref-box"><b>참고 · 공식 출처</b><p><a href="https://www.notion.com/help/notion-agent" target="_blank" rel="noopener">Notion Help · Notion Agent</a> · 여는 방법, 할 수 있는 일과 못 하는 일, 읽을 수 있는 파일 종류 · 2026-11-10 확인</p></div>
+</article>
+
+<article class="topic" id="s5-4">
+<h3>5-4. 커스텀 에이전트는 무엇이 다를까요</h3>
+<p>노션 에이전트는 내가 말을 걸 때만 일해요. 커스텀 에이전트는 미리 정해 둔 지시에 따라 정해진 때에 알아서 일하는 AI 팀원이에요.</p>
+<div class="table-wrap"><table>
+<tr><th></th><th>노션 에이전트</th><th>커스텀 에이전트</th></tr>
+<tr><td>언제 일하나요</td><td>내가 채팅으로 부탁할 때</td><td>정해진 시간, 데이터베이스가 바뀔 때, 슬랙 채널에 글이 올라올 때</td></tr>
+<tr><td>무엇을 보나요</td><td>내 권한이 닿는 모든 곳</td><td>만든 사람이 허락한 페이지·데이터베이스·앱만</td></tr>
+<tr><td>비용</td><td>Business는 요금제 사용량 안에서</td><td>체험 뒤에는 노션 크레딧이 필요해요(1,000크레딧당 $10)</td></tr>
+<tr><td>셀렉트마켓 예</td><td>5-3 주간 보고서를 그때그때 요청</td><td>매주 월요일 오전에 주간 문의 보고서를 알아서 써 두기</td></tr>
+</table></div>
+<p>오늘은 커스텀 에이전트를 만들지 않아요. 주간 보고서처럼 같은 요청을 매주 반복하게 되면 그때 커스텀 에이전트로 옮기는 것을 검토해요.</p>
+<div class="ref-box"><b>참고 · 공식 출처</b><ul>
+<li><a href="https://www.notion.com/help/category/custom-agents" target="_blank" rel="noopener">Notion Help · Custom Agents</a> · 트리거 종류, 접근 권한, 활동 기록 · 2026-11-10 확인</li>
+<li><a href="https://www.notion.com/help/what-are-notion-credits" target="_blank" rel="noopener">Notion Help · What are Notion credits?</a> · 크레딧 가격과 쓰이는 곳 · 2026-11-10 확인</li>
+</ul></div>
+</article>
+</section>
+
+<section class="section session" id="s6">
+<div class="session-head"><div class="eyebrow">장면 6</div><h2>밖으로 내보내고 잇기</h2><p>노션 안의 페이지를 고객이 볼 수 있게 공개하고, 노션을 다른 앱과 이어요.</p></div>
+
+<article class="topic" id="s6-1">
+<h3>6-1. 노션 사이트로 공개하기</h3>
+<p>노션 사이트는 노션 페이지를 로그인하지 않은 사람도 볼 수 있는 웹페이지로 공개하는 기능이에요. 페이지를 고치면 공개된 사이트도 바로 바뀌어요. 텀블벅의 광고 소개 페이지처럼 회사 소개, 채용 공고, FAQ를 노션으로 공개하는 회사가 많아요.</p>
+<p><b>STEP 1. FAQ 페이지 만들기</b></p>
+<p>팀스페이스에 <code class="inline">셀렉트마켓 자주 묻는 질문</code> 페이지를 만들고, 장면 2의 "교환 신청은 어디서 하나요?" 같은 질문을 토글 블록으로 3개 적어요. 토글 제목에 질문을, 펼친 안쪽에 답을 써요.</p>
+<p><b>STEP 2. 게시하기</b></p>
+<div class="procedure">
+<div>FAQ 페이지 오른쪽 위 [공유]를 누르고 [게시] 탭으로 가요.</div>
+<div>[게시]를 누르고, [사이트 보기]로 공개된 페이지를 열어요.</div>
+<div>주소를 복사해 휴대폰으로 열어 봐요. 로그인 없이 보이면 성공이에요.</div>
+</div>
+<div class="warning">게시하면 하위 페이지도 함께 공개돼요. FAQ 페이지 안에 내부 메모 페이지가 들어 있지 않은지 게시 전에 확인해요.</div>
+<div class="table-wrap"><table>
+<tr><th>하고 싶은 일</th><th>Free</th><th>유료 요금제</th></tr>
+<tr><td>notion.site 주소로 공개</td><td>1개</td><td>최대 5개</td></tr>
+<tr><td>검색 엔진에 노출</td><td>돼요</td><td>돼요(제목·설명도 고칠 수 있어요)</td></tr>
+<tr><td>구글 애널리틱스 연결</td><td>안 돼요</td><td>돼요</td></tr>
+<tr><td>내 도메인(예: faq.selectmarket.kr) 연결</td><td>안 돼요</td><td>추가 요금: 도메인 1개당 월 $10(연간 결제 시 월 $8)</td></tr>
+</table></div>
+<div class="ref-box"><b>참고 · 우피(Oopy)와 비교</b><p>노션 사이트가 나오기 전에는 우피 같은 외부 서비스로 노션 페이지를 웹사이트처럼 꾸미고 구글 애널리틱스를 붙였어요. 지금은 노션 사이트만으로 공개·검색 노출·애널리틱스(유료)가 돼요. 디자인을 더 꾸미거나 채팅 상담 버튼을 붙이고 싶을 때 우피 같은 외부 서비스를 검토해요. 외부 서비스로 공개하면 애널리틱스 데이터는 그 서비스가 만든 새 주소 기준으로 쌓여요.</p>
+<ul><li><a href="https://www.notion.com/help/public-pages-and-web-publishing" target="_blank" rel="noopener">Notion Help · Publish a Notion Site</a> · 2026-11-10 확인</li><li><a href="https://www.notion.com/help/notion-sites-availability-and-pricing" target="_blank" rel="noopener">Notion Help · Notion Sites availability &amp; pricing</a> · 2026-11-10 확인</li><li><a href="https://www.oopy.io/ko/guides/plugins/ga" target="_blank" rel="noopener">우피 · 구글 애널리틱스 연결 가이드</a></li></ul></div>
+</article>
+
+<article class="topic" id="s6-2">
+<h3>6-2. 다른 앱과 잇기</h3>
+<p>노션은 다른 앱과 잇는 방법이 여러 가지예요. 무엇을 하고 싶은지에 따라 고르면 돼요.</p>
+<div class="table-wrap"><table>
+<tr><th>하고 싶은 일</th><th>방법</th><th>어디서 켜나요</th></tr>
+<tr><td>노션 에이전트가 지메일·구글 캘린더를 찾아보게</td><td>AI 커넥터</td><td>[설정] → [Notion AI] → [AI 커넥터]</td></tr>
+<tr><td>노션 에이전트가 다른 서비스 도구를 쓰게</td><td>MCP 연결</td><td>에이전트 채팅의 [모든 소스] → [MCP 서버] → [MCP 서버 추가]</td></tr>
+<tr><td>웹에서 본 자료를 노션 데이터베이스에 모으기</td><td>노션 웹 클리퍼(크롬 확장 프로그램)</td><td><a href="https://chromewebstore.google.com/detail/notion-web-clipper/knheggckgoiihginacbkhaalnibhilkk" target="_blank" rel="noopener">크롬 웹 스토어</a>에서 설치</td></tr>
+<tr><td>구글 캘린더 일정을 노션과 함께 보기</td><td>노션 캘린더 앱</td><td><a href="https://calendar.notion.so" target="_blank" rel="noopener">calendar.notion.so</a>에서 구글 계정 연결</td></tr>
+<tr><td>날씨·시계·외부 설문 같은 위젯 넣기</td><td>임베드 블록</td><td>빈 줄에서 <code class="inline">/embed</code> → 위젯 링크 붙여 넣기</td></tr>
+<tr><td>노션 밖의 서비스와 데이터를 주고받기</td><td>재피어(Zapier)·메이크(Make), 또는 4-3의 웹훅 보내기</td><td>각 서비스에서 노션 계정 연결</td></tr>
+</table></div>
+<div class="warning">AI 커넥터나 MCP로 앱을 연결하면 에이전트가 그 앱의 내용을 읽을 수 있어요. 회사 메일이나 고객 정보가 있는 계정은 회사 보안 규칙을 먼저 확인하고 연결해요.</div>
+<div class="ref-box"><b>참고</b><p>메이크·재피어와 노션 연결: <a href="https://www.make.com/en/integrations/notion" target="_blank" rel="noopener">Make + Notion</a> · <a href="https://zapier.com/apps/notion/integrations" target="_blank" rel="noopener">Zapier + Notion</a></p></div>
+</article>
+</section>
+
+<section class="section session" id="s7">
+<div class="session-head"><div class="eyebrow">장면 7</div><h2>결과</h2><p>처음에 흩어져 있던 셀렉트마켓의 일이 어떻게 바뀌었는지 비교해요.</p></div>
+<article class="topic" id="s7-1">
+<h3>7-1. 오늘 만든 것 한눈에 보기</h3>
+<div class="table-wrap"><table>
+<tr><th>일</th><th>노션을 쓰기 전</th><th>오늘 만든 뒤</th></tr>
+<tr><td>기획 문서</td><td>구글 독스 파일을 메신저로 주고받아요</td><td>팀스페이스의 PRD 페이지 하나에서 댓글로 의견을 나눠요</td></tr>
+<tr><td>고객 문의 접수</td><td>메일로 받아 시트에 옮겨 적어요</td><td>고객이 폼을 채우면 데이터베이스에 바로 쌓여요</td></tr>
+<tr><td>문의 확인</td><td>담당자가 수시로 메일함을 열어 봐요</td><td>새 문의가 오면 팀에 메일이 가고 상태가 "접수"로 채워져요</td></tr>
+<tr><td>처리 완료</td><td>시트의 칸을 손으로 고쳐요</td><td>[답변 완료] 버튼 한 번으로 상태가 바뀌어요</td></tr>
+<tr><td>주간 보고</td><td>시트를 보며 직접 세고 써요</td><td>노션 에이전트가 초안을 쓰고, 사람은 숫자를 대조해요</td></tr>
+<tr><td>고객 안내</td><td>같은 질문에 매번 답장해요</td><td>공개한 FAQ 주소를 보내요</td></tr>
+</table></div>
+<div class="final-box"><div class="eyebrow">끝으로</div><h3>노션에게 맡기는 일과 사람이 하는 일</h3><p>문서 뼈대, 반복 알림, 보고서 초안은 노션에게 맡겨요. 무엇을 쌓을지 정하는 일(속성 설계), 자동화를 만드는 일, 숫자를 대조하는 일, 공개 범위를 정하는 일은 사람이 해요.</p></div>
+<div class="blk k-chk"><span>확인할 점</span>오늘 결과물 점검</div>
+<ul class="checklist">
+<li>PRD 페이지가 팀스페이스에 있고 짝의 댓글이 달려 있어요.</li>
+<li>고객 문의 데이터베이스에 표·보드·내 담당 보기가 있어요.</li>
+<li>폼 링크로 들어온 문의가 데이터베이스에 쌓여요.</li>
+<li>답변 완료 버튼과 새 문의 알림이 움직여요(Free 계정은 버튼까지).</li>
+<li>주간 문의 보고서의 숫자를 데이터베이스와 대조했어요.</li>
+<li>FAQ 페이지가 로그인 없이 열려요.</li>
+</ul>
+</article>
+</section>
+
+<section class="section" id="sources"><div class="section-label">SOURCES</div><h2>출처</h2>
+<p class="small">모두 2026-11-10에 확인했어요. 노션 도움말은 영어 원문 기준이며, 한국어 화면의 메뉴 이름은 다를 수 있어요.</p>
+<div class="resource-list">
+<div class="resource-card"><b>Notion 가격</b><a href="https://www.notion.com/pricing" target="_blank" rel="noopener">notion.com/pricing</a></div>
+<div class="resource-card"><b>AI 사용량(Standard·Select·Notion 크레딧)</b><a href="https://www.notion.com/help/standard-select-and-notion-credits-eligible-features" target="_blank" rel="noopener">eligible features</a></div>
+<div class="resource-card"><b>Notion 크레딧</b><a href="https://www.notion.com/help/what-are-notion-credits" target="_blank" rel="noopener">What are Notion credits?</a></div>
+<div class="resource-card"><b>데이터베이스 소개</b><a href="https://www.notion.com/ko/help/intro-to-databases" target="_blank" rel="noopener">intro-to-databases</a></div>
+<div class="resource-card"><b>폼</b><a href="https://notion.com/help/forms" target="_blank" rel="noopener">help/forms</a></div>
+<div class="resource-card"><b>데이터베이스 자동화</b><a href="https://www.notion.com/help/database-automations" target="_blank" rel="noopener">database-automations</a></div>
+<div class="resource-card"><b>노션 에이전트</b><a href="https://www.notion.com/help/notion-agent" target="_blank" rel="noopener">help/notion-agent</a></div>
+<div class="resource-card"><b>커스텀 에이전트</b><a href="https://www.notion.com/help/category/custom-agents" target="_blank" rel="noopener">category/custom-agents</a></div>
+<div class="resource-card"><b>노션 사이트 게시</b><a href="https://www.notion.com/help/public-pages-and-web-publishing" target="_blank" rel="noopener">public-pages-and-web-publishing</a></div>
+<div class="resource-card"><b>노션 사이트 요금</b><a href="https://www.notion.com/help/notion-sites-availability-and-pricing" target="_blank" rel="noopener">notion-sites-availability-and-pricing</a></div>
+<div class="resource-card"><b>Notion Academy</b><a href="https://academy.notion.com/building-basics/323676/scorm/yz9o79x912bs" target="_blank" rel="noopener">Building Basics</a></div>
+<div class="resource-card"><b>템플릿 갤러리</b><a href="https://www.notion.so/templates" target="_blank" rel="noopener">notion.so/templates</a></div>
+</div>
+<div class="profile-card">
+<div><h3>강사 김수정</h3><p>셀렉트웨이 대표 · 기획자·PM · 서비스경험디자인기사</p></div>
+<div class="profile-links"><a href="https://www.linkedin.com/in/soojung-sue/" target="_blank" rel="noopener">링크드인 김수정</a><a href="https://brunch.co.kr/@loreenkim" target="_blank" rel="noopener">브런치 @loreenkim</a><a href="https://www.instagram.com/loreenkim.ceo/" target="_blank" rel="noopener">인스타그램 @loreenkim.ceo</a></div>
+</div>
+</section>
+</main>
+</div>
+<button id="slideBtn" type="button">▶ 슬라이드로 보기</button>
+<div hidden="" id="deck">
+<div id="viewport"><div id="stage">
+<div id="master"><span>노션으로 팀 일을 한곳에</span></div>
+<div id="mbar"><i id="prog"></i></div>
+<div id="slide"></div>
+<div id="pager"><button aria-label="이전" id="prev" type="button">◀</button><span id="pg"></span><button aria-label="다음" id="next" type="button">▶</button></div>
+</div></div>
+<div id="bar"><button id="exit" type="button">✕ 닫기 (Esc)</button></div>
+</div>
+<script type="text/javascript">
+(function(){
+  var K={'요청':'','내용':' k2','형식':' k3'};
+  window.fmtPre=function(pr){
+    var t=pr.textContent;
+    if(!/^요청: /.test(t))return;
+    var lines=t.split('\n');pr.textContent='';pr.className='fmt';
+    lines.forEach(function(l,i){
+      var m=l.match(/^(요청|내용|형식): (.*)$/),d=document.createElement('div');
+      if(m){d.className='pl'+K[m[1]];var b=document.createElement('b');b.className='pk';b.textContent=m[1]+': ';var sp=document.createElement('span');sp.className='pt';sp.textContent=m[2];d.appendChild(b);d.appendChild(sp);}
+      else{d.className='pl c';var sp2=document.createElement('span');sp2.className='pt';sp2.textContent=l;d.appendChild(sp2);}
+      pr.appendChild(d);if(i<lines.length-1)pr.appendChild(document.createTextNode('\n'));
+    });
+  };
+  document.querySelectorAll('.copybox pre').forEach(window.fmtPre);
+})();
+</script>
+<script type="text/javascript">
+(function(){
+  var re=/^(STEP|준비|규칙서대로|분석 [1-4]|프롬프트 [AB]|프롬프트 쓰기|실습|방법 [A-C]|워밍업|[①-⑤] |\(선택\)|완성한|결과를 보고|버전|두 결과)/;
+  var nav=document.querySelector('aside nav');
+  document.querySelectorAll('main .topic').forEach(function(t){
+    var parent=nav.querySelector('a.l3[href="#'+t.id+'"]'),last=parent,n=0;
+    if(!parent)return;
+    t.querySelectorAll(':scope > p').forEach(function(p){
+      var b=p.firstElementChild;
+      if(!b||b.tagName!=='B'||p.children.length!==1||p.textContent.trim()!==b.textContent.trim()||!re.test(b.textContent.trim()))return;
+      p.classList.add('dh');p.id='d-'+t.id+'-'+(++n);
+      var a=document.createElement('a');a.className='l4';a.href='#'+p.id;a.setAttribute('data-p',t.id);
+      a.textContent=b.textContent.replace(/[:：]\s*.*$/,'').trim();
+      last.parentNode.insertBefore(a,last.nextSibling);last=a;
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+var main=document.querySelector('main'),deck=document.getElementById('deck'),box=document.getElementById('slide'),pgEl=document.getElementById('pg'),prog=document.getElementById('prog'),pages=[],i=0;
+function kids(el,skip){return Array.prototype.filter.call(el.children,function(c){return !skip(c);});}
+function logical(){
+  var out=[],hero=main.querySelector('.hero');
+  if(hero)out.push({sect:'표지',title:'',n:Array.prototype.slice.call(hero.children)});
+  Array.prototype.forEach.call(main.querySelectorAll(':scope > .section'),function(sec){
+    var h2=sec.querySelector('h2'),title=h2.textContent,head=sec.querySelector('.session-head'),n=[];
+    if(head)n=Array.prototype.slice.call(head.querySelectorAll('p'));
+    n=n.concat(kids(sec,function(c){return c.classList.contains('section-label')||c.tagName==='H2'||c.classList.contains('session-head')||c.classList.contains('topic');}));
+    if(n.length)out.push({sect:title,title:title,n:n});
+    Array.prototype.forEach.call(sec.querySelectorAll(':scope > .topic'),function(t){
+      var h3=t.querySelector('h3');
+      out.push({sect:title,title:h3.textContent,n:kids(t,function(c){return c===h3;})});
+    });
+  });
+  return out;
+}
+function over(){return box.scrollHeight>box.clientHeight+1;}
+function build(){
+  pages=[];var L=logical(),count,sl;L.forEach(function(x){var out=[];x.n.forEach(function(el){if(el.tagName==="DETAILS"){var t=el.querySelector(".summary-title");var h=document.createElement("p");h.innerHTML="<b>"+(t?t.textContent:"")+"</b>";out.push(h);Array.prototype.forEach.call(el.children,function(c){if(c.tagName!=="SUMMARY")out.push(c);});}else out.push(el);});x.n=out;});
+  function head(cont){
+    box.innerHTML='';
+    if(sl.title&&sl.sect&&sl.sect!==sl.title){var eb=document.createElement('div');eb.className='eb';eb.textContent=sl.sect;box.appendChild(eb);}
+    if(sl.title){var h=document.createElement('h3');h.className='st';h.textContent=sl.title;
+      if(cont){var c=document.createElement('span');c.className='cont';c.textContent='(이어서)';h.appendChild(c);}
+      box.appendChild(h);}
+    count=0;
+  }
+  function flush(){pages.push({html:box.innerHTML,sect:sl.sect});}
+  function addSplit(items,shellFn){
+    var shell=shellFn(),n=0;box.appendChild(shell.root);
+    items.forEach(function(it){
+      shell.add(it);n++;
+      if(over()&&(n>1||count>0)){
+        shell.remove();n--;
+        if(n===0)box.removeChild(shell.root);
+        flush();head(true);shell=shellFn();n=0;box.appendChild(shell.root);shell.add(it);n=1;
+      }
+    });
+    count++;
+  }
+  L.forEach(function(s){
+    sl=s;head(false);
+    s.n.forEach(function(el){
+      var tbl=el.classList&&el.classList.contains('table-wrap')&&el.querySelector('table');
+      var rows=tbl?Array.prototype.slice.call(tbl.rows):null;
+      var hasHead=rows&&rows.length>3&&Array.prototype.every.call(rows[0].cells,function(c){return c.tagName==='TH';})
+        &&!rows.some(function(r){return Array.prototype.some.call(r.cells,function(c){return c.rowSpan>1;});});
+      var listy=(el.tagName==='UL'||el.tagName==='OL'||(el.classList&&(el.classList.contains('procedure')||el.classList.contains('resource-list'))))&&el.children.length>1;
+      if(el.classList&&el.classList.contains('dh')&&count>1&&box.scrollHeight>box.clientHeight*0.5){flush();head(false);}
+      var c=el.cloneNode(true);box.appendChild(c);
+      if(over()&&count>0){var pv=c.previousElementSibling,lead=count>1&&pv&&pv.tagName==='P'&&pv.children.length===1&&pv.firstElementChild.tagName==='B'&&pv.textContent.trim()===pv.firstElementChild.textContent.trim();
+        box.removeChild(c);if(lead)box.removeChild(pv);flush();head(true);if(lead){box.appendChild(pv);count++;}box.appendChild(c);}
+      if(over()){
+        if(hasHead){
+          box.removeChild(c);
+          addSplit(rows.slice(1),function(){
+            var w=el.cloneNode(false),t=tbl.cloneNode(false),b=document.createElement('tbody');
+            t.appendChild(b);b.appendChild(rows[0].cloneNode(true));w.appendChild(t);
+            return {root:w,add:function(r){b.appendChild(r.cloneNode(true));},remove:function(){b.removeChild(b.lastChild);}};
+          });
+          return;
+        }
+        if(el.classList&&el.classList.contains('copybox')){
+          box.removeChild(c);
+          var lines=el.querySelector('pre').textContent.split('\n');
+          addSplit(lines,function(){
+            var w=el.cloneNode(false),hd=el.querySelector('.copyhead').cloneNode(true),pr=document.createElement('pre'),txt=[];
+            w.appendChild(hd);w.appendChild(pr);
+            return {root:w,add:function(l){txt.push(l);pr.className='';pr.textContent=txt.join('\n');window.fmtPre(pr);},remove:function(){txt.pop();pr.className='';pr.textContent=txt.join('\n');window.fmtPre(pr);}};
+          });
+          return;
+        }
+        if(listy){
+          box.removeChild(c);
+          addSplit(Array.prototype.slice.call(el.children),function(){
+            var u=el.cloneNode(false);
+            return {root:u,add:function(li){u.appendChild(li.cloneNode(true));},remove:function(){u.removeChild(u.lastChild);}};
+          });
+          return;
+        }
+      }
+      count++;
+    });
+    flush();
+  });
+  var o='<h3 class="st">전체 목차</h3><div class="outline">';
+  Array.prototype.forEach.call(document.querySelectorAll('aside nav .grp'),function(g){
+    o+='<div class="og"><b>'+g.querySelector('.grp-label').textContent+(g.querySelector('.l2')&&g.querySelector('.grp-label').textContent.indexOf('세션')===0?' · '+g.querySelector('.l2').textContent:'')+'</b>';
+    var guide=g.querySelector('.grp-label').textContent==='교육 안내';
+    Array.prototype.forEach.call(g.querySelectorAll(guide?'a.l2,a.l3':'a.l3'),function(a){o+='<span>'+a.textContent+'</span>';});
+    o+='</div>';
+  });
+  pages.splice(1,0,{html:o+'</div>',sect:'목차'});
+}
+function show(n){
+  i=Math.max(0,Math.min(pages.length-1,n));var p=pages[i];
+  box.innerHTML=p.html;box.scrollTop=0;
+  pgEl.textContent=(i+1)+' / '+pages.length;prog.style.width=((i+1)/pages.length*100)+'%';
+}
+var stage=document.getElementById('stage'),vp=document.getElementById('viewport');
+function fit(){var k=Math.min(vp.clientWidth/1280,vp.clientHeight/720);stage.style.transform='translate(-50%,-50%) scale('+k+')';}
+function open(){deck.hidden=false;document.body.style.overflow='hidden';fit();var w=[].slice.call(main.querySelectorAll('img')).map(function(m){if(m.complete)return 0;m.loading='eager';return new Promise(function(r){m.onload=m.onerror=r;setTimeout(r,8000);});});Promise.all(w).then(function(){build();show(0);});}
+function close(){deck.hidden=true;document.body.style.overflow='';}
+window.addEventListener('resize',function(){if(!deck.hidden)fit();});
+document.getElementById('slideBtn').onclick=open;
+document.getElementById('exit').onclick=close;
+document.getElementById('prev').onclick=function(){show(i-1)};
+document.getElementById('next').onclick=function(){show(i+1)};
+document.addEventListener('keydown',function(e){
+  if(deck.hidden)return;
+  if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ')show(i+1);
+  else if(e.key==='ArrowLeft'||e.key==='PageUp')show(i-1);
+  else if(e.key==='Escape')close();
+});
+document.addEventListener('click',function(e){
+  var b=e.target.closest&&e.target.closest('.copyhead button');if(!b)return;
+  var pre=b.closest('.copybox').querySelector('pre');
+  var done=function(){var t=b.textContent;b.textContent='복사됨';setTimeout(function(){b.textContent=t;},1200);};
+  if(navigator.clipboard)navigator.clipboard.writeText(pre.classList.contains('fmt')?pre.textContent:pre.innerText).then(done,done);else done();
+});
+})();
+</script>
+<script type="text/javascript">
+(function(){
+  var links=[].slice.call(document.querySelectorAll('aside nav a[href^="#"]'));
+  var targets=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));});
+  function update(){
+    var y=window.scrollY+120, cur=-1;
+    targets.forEach(function(el,i){ if(el && el.getBoundingClientRect().top+window.scrollY<=y) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('active', i===cur); });
+    var cp=null;
+    if(cur>=0){ var ca=links[cur]; cp=ca.classList.contains('l4')?ca.getAttribute('data-p'):(ca.getAttribute('href').slice(1)); }
+    links.forEach(function(a){ if(a.classList.contains('l4')) a.classList.toggle('show', a.getAttribute('data-p')===cp); });
+    if(cur>=0){ var a=links[cur], box=a.closest('aside'), r=a.getBoundingClientRect();
+      if(r.top<120||r.bottom>window.innerHeight-20) box.scrollTop+=r.top-window.innerHeight/2; }
+  }
+  window.addEventListener('scroll',update,{passive:true}); update();
+})();
+</script>
+<script type="text/javascript">
+(function(){
+  var btn=document.querySelector('.nav-toggle'), label=btn.querySelector('span'), body=document.body;
+  var mq=window.matchMedia('(max-width: 1020px)');
+  function isOpen(){ return mq.matches ? body.classList.contains('nav-open') : !body.classList.contains('nav-hidden'); }
+  function sync(){ var o=isOpen(); btn.setAttribute('aria-expanded',o); label.textContent=o?'목차 숨기기':'목차 보기'; }
+  try{ if(localStorage.getItem('navHidden')==='1') body.classList.add('nav-hidden'); }catch(e){}
+  btn.addEventListener('click',function(){
+    if(mq.matches){ body.classList.toggle('nav-open'); }
+    else{ var h=body.classList.toggle('nav-hidden'); try{ localStorage.setItem('navHidden',h?'1':'0'); }catch(e){} }
+    sync();
+  });
+  document.querySelectorAll('aside nav a').forEach(function(a){ a.addEventListener('click',function(){ if(mq.matches){ body.classList.remove('nav-open'); sync(); } }); });
+  if(mq.addEventListener) mq.addEventListener('change',sync);
+  sync();
+})();
+</script>
+</body>
+</html>
