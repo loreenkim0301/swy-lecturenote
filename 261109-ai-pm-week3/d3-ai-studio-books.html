@@ -618,10 +618,10 @@ aside nav a.active{border-left-color:var(--blue)}
 <p>개선 전(AS-IS)과 개선 후(TO-BE)를 도식으로 나눠 그려요. 그 안에서 AI가 어떤 처리를 하는지 따로 표시해요. 지금은 다 만든 것을 보고 거꾸로 그리는 역기획이지만, 실무에서는 기획자가 이 도식을 기획서에 먼저 정의해서 전달해요.</p>
 <p class="blk k-pr"><span>프롬프트</span></p>
 <div class="copybox"><div class="copyhead"><span>프롬프트 12 · 같은 대화에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 개선 전(AS-IS)과 개선 후(TO-BE)의 흐름을 도식으로 나눠 그려 줘.
-내용: 사용자가 감정을 넣고 책 추천을 받기까지의 흐름이야. 흐름 안에서 AI가 처리하는 단계는 다른 색으로 구분해 줘. 플로우차트의 기본 모양(시작·끝, 처리, 판단)을 지켜 줘.
+내용: 사용자가 감정을 넣고 책 추천을 받기까지의 흐름이야. 흐름 안에서 AI가 처리하는 단계는 다른 색으로 구분해 줘.
 형식: 아티팩트 한 장에 AS-IS와 TO-BE를 나란히.</pre></div>
 <p class="blk k-chk"><span>확인할 점</span></p>
-<ul class="checklist"><li>AS-IS와 TO-BE가 나뉘어 있다</li><li>AI가 처리하는 단계가 따로 표시돼 있다</li><li>판단(예·아니오로 갈리는 곳)이 마름모 모양으로 그려져 있다</li></ul>
+<ul class="checklist"><li>AS-IS와 TO-BE가 나뉘어 있다</li><li>AI가 처리하는 단계가 따로 표시돼 있다</li></ul>
 </div>
 
 <div class="topic" id="s3-8"><h3><span class="stage">결과</span>3-8. 결과</h3>
@@ -662,10 +662,10 @@ aside nav a.active{border-left-color:var(--blue)}
 <li>Anthropic은 API 키를 다른 사람과 나누지 말고, 각자 키를 받으라고 안내해요. 내장 API가 안 되는 분이 있을 때만, 강사가 만든 수업용 키 하나를 1시간 동안 함께 쓰고, 수업이 끝나면 강사가 키를 지워요.</li>
 <li>강사는 수업용 워크스페이스를 따로 만들고, 그 워크스페이스에 월 지출 한도를 걸어요. 키는 그 워크스페이스 안에서 만들어요.</li>
 <li>키를 만들 때 만료 기간을 짧게(예: 3시간) 골라요. 강사가 지우는 것을 잊어도 정해진 시간이 지나면 키가 멈춰요.</li>
-<li>수업용 키는 슬랙 공개 채널에 올리지 않고, 필요한 분에게만 따로 전달해요. 공개 채널에 올렸다면 수업이 끝나자마자 키를 지우고 메시지도 지워요.</li>
+<li>수업용 키는 여러 사람이 보는 대화방에 올리지 않고, 필요한 분에게만 따로 전달해요. 여러 사람이 보는 곳에 올렸다면 수업이 끝나자마자 키를 지우고 그 메시지도 지워요.</li>
 <li>키를 지우면 그 키로는 더 이상 클로드를 부를 수 없어요. 그래서 수업용 키를 넣은 앱의 AI 기능은 수업 뒤에 멈춰요.</li>
 </ul>
-<p><b>학생이 지킬 것:</b> 키를 캡처하거나, 슬랙 공개 채널·깃헙·노션에 올리지 않아요. 키는 내 앱 안에만 넣어요.</p>
+<p><b>학생이 지킬 것:</b> 키를 캡처하거나, 여러 사람이 보는 대화방·깃헙·노션에 올리지 않아요. 키는 내 앱 안에만 넣어요.</p>
 </div>
 
 <p><b>STEP 2. 사용량·지출을 보고, 한도를 거는 곳 알기</b></p>
@@ -677,7 +677,7 @@ aside nav a.active{border-left-color:var(--blue)}
 </table></div>
 <p class="blk k-chk"><span>확인할 점</span></p>
 <ul class="checklist"><li>내 계정에서 API 키 메뉴가 보이는지 확인했다</li><li>사용량·지출·한도 메뉴가 어디 있는지 찾았다</li></ul>
-<div class="notice"><b>안 되면 강사를 불러요</b><br/>화면이 교안과 다르거나 막히면 혼자 오래 붙잡지 말고 슬랙 쓰레드나 손들기로 강사를 불러요.</div>
+<div class="notice"><b>안 되면 강사를 불러요</b><br/>화면이 교안과 다르거나 막히면 혼자 오래 붙잡지 말고 강사를 불러요.</div>
 <p class="source-note">출처: Claude 공식 문서 <a href="https://platform.claude.com/docs/en/get-api-key" target="_blank" rel="noopener">Get your Claude API key</a> · Claude 고객센터 <a href="https://support.claude.com/en/articles/9534590-cost-and-usage-reporting-in-the-claude-console" target="_blank" rel="noopener">Cost and usage reporting in the Claude Console</a> · <a href="https://support.claude.com/en/articles/9796807-create-and-manage-workspaces-in-the-claude-console" target="_blank" rel="noopener">Create and manage Workspaces</a> · <a href="https://support.claude.com/en/articles/8977456-how-do-i-pay-for-my-claude-api-usage" target="_blank" rel="noopener">How do I pay for my Claude API usage?</a> · <a href="https://support.claude.com/en/articles/17154008-monthly-api-credits-for-max-ultra-and-team-plans" target="_blank" rel="noopener">Monthly API credits for Max, Ultra, and Team plans</a> · <a href="https://support.claude.com/en/articles/9767949-api-key-best-practices-keep-your-keys-safe-and-secure" target="_blank" rel="noopener">API key best practices</a> · Google AI for Developers <a href="https://ai.google.dev/gemini-api/docs/billing" target="_blank" rel="noopener">Billing</a>(2026-09-28 갱신) · <a href="https://ai.google.dev/gemini-api/docs/rate-limits" target="_blank" rel="noopener">Rate limits</a>(2026-10-28 갱신) (2026.11.11 확인)</p>
 </div>
 
@@ -763,12 +763,12 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td>사용량 화면에 오늘 호출이 쌓였다</td><td></td><td></td></tr>
 </table></div>
 <p class="blk k-chk"><span>확인할 점</span></p>
-<ul class="checklist"><li>[책 추천받기]를 누를 때마다 사용량을 써요. 감정마다 한 번씩만 눌렀다</li><li>2·3세션 아티팩트와 같은 감정으로 눌러, 답이 비슷한지 견줘 봤다</li><li>결과 화면을 슬랙 쓰레드에 올렸다</li></ul>
+<ul class="checklist"><li>[책 추천받기]를 누를 때마다 사용량을 써요. 감정마다 한 번씩만 눌렀다</li><li>2·3세션 아티팩트와 같은 감정으로 눌러, 답이 비슷한지 견줘 봤다</li></ul>
 <p class="blk k-chk"><span>막히면</span></p>
 <div class="table-wrap"><table><tr><th>이렇게 보이면</th><th>이렇게 해요</th></tr>
 <tr><td>미리보기나 배포된 앱에 이상한 화면·오류가 나와요</td><td>그 화면을 캡처해 AI 스튜디오 대화창에 올리고 "이 화면이 왜 나오는지 알려 주고 고쳐 줘. 다른 기능은 바꾸지 마."라고 물어요.</td></tr>
 <tr><td>고쳤다는데 배포된 앱은 그대로예요</td><td>브라우저를 강제 새로고침(맥 Cmd+Shift+R, 윈도우 Ctrl+Shift+R)한 뒤, [Publish]를 한 번 더 눌러 다시 배포해요.</td></tr>
-<tr><td>클로드 키로도 답이 오지 않아요</td><td>슬랙 쓰레드에 오류 화면을 올리고 강사를 불러요.</td></tr>
+<tr><td>클로드 키로도 답이 오지 않아요</td><td>오류 화면을 캡처해 두고 강사를 불러요.</td></tr>
 </table></div>
 </div>
 
@@ -785,8 +785,8 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td>오류나 빈 화면이 나왔나요?</td><td></td><td></td></tr>
 <tr><td>내가 고른다면, 그 이유</td><td colspan="2"></td></tr>
 </table></div>
-<p><b>STEP 2. 테스트 후기를 슬랙 쓰레드에 올리기</b></p>
-<p>비교표와 함께 "어떤 감정에서 무엇이 달랐는지"를 두세 줄로 적어 올려요. 화면이 예뻐졌다는 말보다, 같은 입력에 어떤 답이 나왔는지가 판단의 근거예요.</p>
+<p><b>STEP 2. 테스트 후기 쓰기</b></p>
+<p>비교표 아래에 "어떤 감정에서 무엇이 달랐는지"를 두세 줄로 적어요. 화면이 예뻐졌다는 말보다, 같은 입력에 어떤 답이 나왔는지가 판단의 근거예요.</p>
 <p class="blk k-chk"><span>확인할 점</span></p>
 <ul class="checklist"><li>두 버전에 같은 감정을 넣어 견줬다</li><li>후기에 디자인이 아니라 테스트 결과의 차이가 적혀 있다</li></ul>
 </div>
