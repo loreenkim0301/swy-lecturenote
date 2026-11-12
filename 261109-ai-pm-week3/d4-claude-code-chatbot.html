@@ -991,28 +991,23 @@ memo-v2.txt를 지워 줘.</pre></div>
 <div class="copybox"><div class="copyhead"><span>프롬프트 16 · 같은 채팅에 이어서 보내세요</span><button type="button">복사</button></div><pre>요청: 방금 연 http://localhost:8000 페이지가 인터넷 없이도 열리는 이유를 알려 줘.
 내용: 나는 개발을 모르는 기획자야. 오전에 만든 구글 AI 스튜디오 배포 주소와 비교해 줘.
 형식: 초등학생도 알 수 있게 3문장 이내로.</pre></div>
-<p><b>STEP 2. 직접 확인하기</b></p>
+<p><b>STEP 2. 네트워크 탭에서 요청이 어디서 오는지 보기</b></p>
 <ol class="do-steps">
-<li><p>와이파이를 잠깐 꺼요.</p></li>
-<li><p>http://localhost:8000 페이지에서 새로고침을 눌러요. 그대로 보이면 성공이에요.</p></li>
-<li><p>다른 탭에서 naver.com 같은 인터넷 주소를 열어 봐요. 열리지 않으면 인터넷이 정말 끊긴 거예요.</p></li>
-<li><p>와이파이를 다시 켜요.</p></li>
+<li><p>http://localhost:8000 페이지에서 F12(맥은 Command + Option + I)를 눌러 개발자 도구를 열어요.</p></li>
+<li><p>[네트워크] 탭을 눌러요. 위쪽 메뉴가 <b>'제한 없음'</b>인지 확인해요. 다른 값이면 '제한 없음'으로 바꿔요.</p></li>
+<li><p>새로고침해요. 페이지가 가져온 파일들이 목록에 한 줄씩 나와요.</p></li>
+<li><p>각 줄의 주소(도메인)를 봐요. 모두 <code class="inline">localhost:8000</code>이면 성공이에요.</p></li>
 </ol>
-<div class="notice">실시간 비대면 수업에서는 와이파이를 끄면 화상 수업도 끊겨요. 강사가 안내한 뒤 1분 안에 다시 켜거나, 수업이 끝난 뒤에 해 봐요.</div>
-<p><b>STEP 3. (선택) 크롬 개발자 도구의 '오프라인'과 비교하기</b></p>
-<p>크롬에는 와이파이를 끄지 않고 그 탭만 인터넷이 없는 것처럼 만드는 메뉴가 있어요.</p>
-<ol class="do-steps">
-<li><p>localhost 페이지에서 F12(맥은 Command + Option + I)를 눌러 개발자 도구를 열어요.</p></li>
-<li><p>[네트워크] 탭을 누르고, '제한 없음'이라고 쓰인 메뉴를 눌러 [오프라인]을 골라요.</p></li>
-<li><p>새로고침해요.</p></li>
-<li><p>다 보면 메뉴를 다시 [제한 없음]으로 돌려놓아요.</p></li>
-</ol>
-<figure class="shot"><a href="images/d4-s4-chrome-offline-menu.png" target="_blank" rel="noopener"><img style="width:240px;max-width:100%" alt="크롬 개발자 도구 네트워크 탭의 제한 메뉴에서 오프라인을 고른 모습" loading="lazy" src="images/d4-s4-chrome-offline-menu.png"/></a><figcaption>네트워크 탭의 제한 메뉴: 제한 없음 · 빠른 4G · 느린 4G · 3G · 오프라인</figcaption></figure>
-<p>이때는 localhost 페이지도 열리지 않아요(ERR_INTERNET_DISCONNECTED). 이 메뉴는 '인터넷만 끊기'가 아니라 그 탭의 <b>모든 연결</b>을 끊어요. 내 컴퓨터 안의 서버로 가는 연결까지 막혀요. 그래서 "인터넷 없이도 열리는지"는 STEP 2처럼 와이파이를 끄고 확인해요.</p>
-<div class="copybox"><div class="copyhead"><span>프롬프트 17 · 같은 채팅에 이어서 보내세요</span><button type="button">복사</button></div><pre>요청: 크롬 개발자 도구에서 오프라인을 고르면 localhost 페이지도 안 열리는 이유를 알려 줘.
-내용: 와이파이를 껐을 때는 localhost 페이지가 열렸어. 두 경우가 어떻게 다른지 비교해 줘.
-형식: 초등학생도 알 수 있게 3문장 이내로.</pre></div>
-<p class="source-note">참고: Chrome DevTools <a href="https://developer.chrome.com/docs/devtools/network/reference" target="_blank" rel="noopener">Network features reference</a>(Network 탭의 throttling 메뉴에서 Offline 선택) (2024-07-16 갱신, 2026-11-12 확인) · 오프라인에서 localhost가 열리지 않는 것: 2026-11-12 크로미움으로 직접 확인 · 메뉴 화면: 2026-11-12 강사 화면</p>
+<div class="ref-box"><b>참고 · 왜 이걸로 '인터넷 없이도 열린다'를 알 수 있나요?</b>
+<p>인터넷이 없을 때 페이지가 깨지는 이유는 하나예요. 페이지가 바깥 주소에서 무언가를 가져오기 때문이에요. 예를 들면 구글 폰트, 외부 이미지, CDN 스크립트가 있어요. 네트워크 탭에 보이는 요청이 모두 <code class="inline">localhost</code>라면, 인터넷이 끊겨도 이 페이지는 똑같이 열린다는 뜻이에요.</p>
+<p>반대로 목록에 <code class="inline">fonts.googleapis.com</code>처럼 바깥 주소가 보이면, 인터넷이 끊겼을 때 그 부분만 깨져요. 서버는 내 컴퓨터에 있어도, 페이지 안에서 바깥 것을 불러오면 그 부분은 인터넷이 필요해요.</p>
+<p><b>마음책방을 로컬에서 열면?</b> 수요일과 오늘 오전에 만든 마음책방을 내 컴퓨터의 로컬 서버로 열어도 화면 파일은 내 컴퓨터에서 와요. 하지만 바깥 인터넷에서 가져오는 부분은 인터넷이 없으면 깨질 수 있어요. AI에게 감정 문장을 보내 추천을 받는 부분, 구글 로그인, 바깥 주소의 책 표지 이미지나 글꼴이 그래요. 로컬에서 "화면은 열리는데 추천이 안 나온다"면 이런 경우예요.</p>
+</div>
+<div class="ref-box"><b>참고 · 크롬 개발자 도구의 '오프라인'은 이 확인에 쓰지 않아요</b>
+<p>네트워크 탭의 메뉴를 [오프라인]으로 바꾸면 localhost 페이지도 열리지 않아요(ERR_INTERNET_DISCONNECTED). 이 메뉴는 '인터넷만 끊기'가 아니라 그 탭의 <b>모든 연결</b>을 끊어서, 내 컴퓨터 안의 서버로 가는 연결까지 막아요. 그래서 이 확인은 '제한 없음'으로 두고 해요. 실제로 인터넷을 끊어 보고 싶으면 수업이 끝난 뒤 와이파이를 끄고 새로고침해 봐요. 수업 중에 와이파이를 끄면 화상 수업도 끊겨요.</p>
+<figure class="shot"><a href="images/d4-s4-chrome-offline-menu.png" target="_blank" rel="noopener"><img style="width:200px;max-width:100%" alt="크롬 개발자 도구 네트워크 탭의 제한 메뉴. 제한 없음, 빠른 4G, 느린 4G, 3G, 오프라인" loading="lazy" src="images/d4-s4-chrome-offline-menu.png"/></a><figcaption>네트워크 탭의 제한 메뉴: 이 확인에서는 [제한 없음]으로 둬요</figcaption></figure>
+</div>
+<p class="source-note">참고: Chrome DevTools <a href="https://developer.chrome.com/docs/devtools/network/reference" target="_blank" rel="noopener">Network features reference</a>(Network 탭 요청 목록, throttling 메뉴) (2024-07-16 갱신, 2026-11-12 확인) · 오프라인에서 localhost가 열리지 않는 것: 2026-11-12 크로미움으로 직접 확인 · 메뉴 화면: 2026-11-12 강사 화면</p>
 </div>
 
 <div class="topic" id="s4-6"><h3><span class="stage">실습</span>4-6. 서버 끄기</h3>
@@ -1047,7 +1042,7 @@ memo-v2.txt를 지워 줘.</pre></div>
 
 <div class="topic" id="s4-9"><h3><span class="stage">결과</span>4-9. 결과</h3>
 <div class="result-box"><b>결과물</b> aipm-source/hello-page/index.html + 서버를 켜는 실행 파일</div>
-<p class="ok-line"><b>이렇게 보이면 성공</b>http://localhost:8000에서 헬로 페이지가 보이고, 와이파이를 꺼도 열리며, Control + C로 끄면 '연결할 수 없음'이 뜬다</p>
+<p class="ok-line"><b>이렇게 보이면 성공</b>http://localhost:8000에서 헬로 페이지가 보이고, 네트워크 탭의 요청이 모두 localhost이며, Control + C로 끄면 '연결할 수 없음'이 뜬다</p>
 </div>
 </section>
 
@@ -1084,7 +1079,7 @@ memo-v2.txt를 지워 줘.</pre></div>
 <p><b>STEP 4. 클로드 코드에게 이벤트 정보 파일 만들게 하기</b></p>
 <p>Code 탭 입력창에 아래 프롬프트를 보내요. [ ] 자리에는 STEP 3의 표를 그대로 복사해 붙여 넣어요.</p>
 <p class="blk k-pr"><span>프롬프트</span></p>
-<div class="copybox"><div class="copyhead"><span>프롬프트 18 · 복사해서 클로드 코드 입력창에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 이 폴더에 event-info.md 파일을 만들어 줘. 셀렉트마켓 연말 이벤트 문의 챗봇이 읽을 이벤트 정보 파일이야.
+<div class="copybox"><div class="copyhead"><span>프롬프트 17 · 복사해서 클로드 코드 입력창에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 이 폴더에 event-info.md 파일을 만들어 줘. 셀렉트마켓 연말 이벤트 문의 챗봇이 읽을 이벤트 정보 파일이야.
 내용: 이벤트 정보는 [STEP 3 표 붙여 넣기]야. 표에 없는 혜택, 날짜, 금액, 연락처는 추가하지 마. 맨 위에 '가상의 수업용 이벤트 정보예요.' 한 줄을 넣어 줘.
 형식: # 제목 한 줄, 항목마다 ## 소제목과 한두 줄 설명. 다른 파일은 만들지 마.</pre></div>
 <p><b>STEP 5. 바뀔 내용을 보고 승인하기</b></p>
@@ -1166,7 +1161,7 @@ memo-v2.txt를 지워 줘.</pre></div>
 <p><b>STEP 3. 클로드 코드에게 규칙 파일로 묶게 하기</b></p>
 <p>6-2와 6-3에서 채운 내용을 붙여 넣어 보내요.</p>
 <p class="blk k-pr"><span>프롬프트</span></p>
-<div class="copybox"><div class="copyhead"><span>프롬프트 19 · 복사해서 같은 클로드 코드 세션에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 이 폴더에 answer-rules.md 파일을 만들어 줘. 연말 이벤트 문의 챗봇의 시스템 프롬프트, 예시 답변, 판단 순서를 담은 파일이야.
+<div class="copybox"><div class="copyhead"><span>프롬프트 18 · 복사해서 같은 클로드 코드 세션에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 이 폴더에 answer-rules.md 파일을 만들어 줘. 연말 이벤트 문의 챗봇의 시스템 프롬프트, 예시 답변, 판단 순서를 담은 파일이야.
 내용: 시스템 프롬프트는 [6-2에서 채운 표], 예시 답변은 [6-3 STEP 1 표], 판단 순서는 [6-3 STEP 2 목록]이야. 예시 답변의 날짜·금액이 event-info.md와 같은지 견주고, 다르면 고치지 말고 다른 곳을 알려 줘. 내가 준 것 말고 규칙이나 예시를 추가하지 마.
 형식: ## 시스템 프롬프트 / ## 예시 답변(질문·답 3쌍) / ## 판단 순서 세 부분. 다 만들면 event-info.md와 다른 곳이 있었는지 한 줄로 알려 줘.</pre></div>
 <p class="blk k-chk"><span>확인할 점</span></p>
@@ -1186,7 +1181,7 @@ memo-v2.txt를 지워 줘.</pre></div>
 <div class="topic" id="s7-1"><h3><span class="stage">실습</span>7-1. 규칙 파일로 챗봇 화면 만들기</h3>
 <p><b>STEP 1. 클로드 코드에게 화면 만들게 하기</b></p>
 <p class="blk k-pr"><span>프롬프트</span></p>
-<div class="copybox"><div class="copyhead"><span>프롬프트 20 · 복사해서 같은 클로드 코드 세션에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 이 폴더에 셀렉트마켓 연말 이벤트 문의 챗봇 화면을 index.html 한 파일로 만들어 줘.
+<div class="copybox"><div class="copyhead"><span>프롬프트 19 · 복사해서 같은 클로드 코드 세션에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 이 폴더에 셀렉트마켓 연말 이벤트 문의 챗봇 화면을 index.html 한 파일로 만들어 줘.
 내용: 맨 위에 '셀렉트마켓 연말 이벤트 도우미' 제목, 가운데에 대화 말풍선(사용자는 오른쪽, 챗봇은 왼쪽), 맨 아래에 입력창과 [보내기] 단추를 넣어 줘. 처음 열면 챗봇이 '연말 이벤트에 대해 물어보세요.'라고 인사하게 해 줘. 입력창 위에는 answer-rules.md의 예시 질문 3개를 빠른 질문 단추로 넣고, 누르면 그 예시의 답을 챗봇 말풍선으로 보여 줘. 직접 입력한 질문에는 '아직 AI가 연결되지 않았어요.'라고 답하게 해 줘. 휴대폰 너비(390px)에서도 글자가 잘리지 않게 해 줘. 외부 라이브러리, 로그인, 대화 저장 기능은 추가하지 마.
 형식: index.html 한 파일. 다 만들면 빠른 질문 단추 3개의 글자를 알려 줘.</pre></div>
 <p><b>STEP 2. diff를 보고 승인하기</b></p>
@@ -1219,7 +1214,7 @@ memo-v2.txt를 지워 줘.</pre></div>
 <p>크롬 창의 오른쪽 끝을 끌어 창을 좁게 줄여요. 글자가 잘리거나, 입력창이 화면 밖으로 나가거나, 단추가 겹치는 곳을 찾아요. 하나만 골라요.</p>
 <p><b>STEP 2. 하나만 고쳐 달라고 하기</b></p>
 <p class="blk k-pr"><span>프롬프트</span></p>
-<div class="copybox"><div class="copyhead"><span>프롬프트 21 · 복사해서 같은 클로드 코드 세션에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: index.html에서 [고칠 곳 한 가지]를 고쳐 줘.
+<div class="copybox"><div class="copyhead"><span>프롬프트 20 · 복사해서 같은 클로드 코드 세션에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: index.html에서 [고칠 곳 한 가지]를 고쳐 줘.
 내용: 휴대폰 너비(390px)에서 [보이는 문제]가 생겨. 이 문제만 고치고, 다른 기능과 글자는 바꾸지 마.
 형식: 바뀐 줄만 diff로 보여 주고, 무엇을 바꿨는지 한 줄로 알려 줘.</pre></div>
 <p><b>STEP 3. diff를 읽고 승인한 뒤 다시 열기</b></p>
