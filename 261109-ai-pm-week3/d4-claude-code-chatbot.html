@@ -295,7 +295,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="nav-title">전체 목차</div>
 <div class="grp"><div class="grp-label">교육 안내</div><a class="l2" href="#overview">교육 개요</a><a class="l2" href="#prep">수업 전 준비</a><a class="l2" href="#tt">타임테이블</a></div>
 <div class="grp"><div class="grp-label">오늘의 단어</div><a class="l2" href="#words">오늘의 단어</a></div>
-<div class="grp"><div class="grp-label">SESSION 0</div><a class="l2" href="#s0">AI 서비스를 써 보고 관리자 페이지 만들기</a><a class="l3" href="#s0-1">0-1. 뤼튼 써 보기</a><a class="l3" href="#s0-2">0-2. 상품 상세페이지 이미지 만들기</a><a class="l3" href="#s0-3">0-3. 수노 써 보기</a><a class="l3" href="#s0-4">0-4. 사용자·생산자 입장 정리</a><a class="l3" href="#s0-5">0-5. AI 서비스와 AI 스튜디오</a><a class="l3" href="#s0-6">0-6. [기획자] 플랜 모드로 기획</a><a class="l3" href="#s0-7">0-7. [구현] 관리자 페이지 화면</a><a class="l3" href="#s0-8">0-8. [구현] 세부 기능·테스트</a><a class="l3" href="#s0-9">0-9. [구현] 구글 로그인(추가)</a><a class="l3" href="#s0-10">0-10. [확인] 다시 배포·확인</a><a class="l3" href="#s0-11">0-11. 결과</a><a class="l3" href="#s0-opt">선택. Playground·Few-shot·미세조정</a></div>
+<div class="grp"><div class="grp-label">SESSION 0</div><a class="l2" href="#s0">AI 서비스를 써 보고 관리자 페이지 만들기</a><a class="l3" href="#s0-1">0-1. 뤼튼 써 보기</a><a class="l3" href="#s0-2">0-2. 상품 상세페이지 이미지 만들기</a><a class="l3" href="#s0-3">0-3. 수노 써 보기</a><a class="l3" href="#s0-4">0-4. 사용자·생산자 입장 정리</a><a class="l3" href="#s0-5">0-5. AI 서비스와 AI 스튜디오</a><a class="l3" href="#s0-6">0-6. [기획자] 플랜 모드로 기획</a><a class="l3" href="#s0-7">0-7. [구현] 관리자 페이지 화면</a><a class="l3" href="#s0-8">0-8. [구현] 세부 기능·테스트</a><a class="l3" href="#s0-9">0-9. [구현] 구글 로그인(추가)</a><a class="l3" href="#s0-10">0-10. [확인] 다시 배포·확인</a><a class="l3" href="#s0-11">0-11. [구현] 프롬프트로 깃헙에 올리기·시크릿</a><a class="l3" href="#s0-12">0-12. 결과</a><a class="l3" href="#s0-opt">선택. Playground·Few-shot·미세조정</a></div>
 <div class="grp"><div class="grp-label">SESSION 1</div><a class="l2" href="#s1">클로드 코드란?</a><a class="l3" href="#s1-1">1-1. 클로드 코드(데스크톱 앱)란?</a><a class="l3" href="#s1-2">1-2. 오늘 만들 것 한눈에 보기</a></div>
 <div class="grp"><div class="grp-label">SESSION 2</div><a class="l2" href="#s2">설치하고 첫 세션 열기</a><a class="l3" href="#s2-1">2-1. 데스크톱 앱 설치와 Code 탭 열기</a><a class="l3" href="#s2-2">2-2. 프로젝트 폴더를 열고 이벤트 정보 파일 만들기</a><a class="l3" href="#s2-3">2-3. 결과</a></div>
 <div class="grp"><div class="grp-label">SESSION 3</div><a class="l2" href="#s3">챗봇이 지킬 답변 규칙 쓰기</a><a class="l3" href="#s3-1">3-1. 시스템 프롬프트·Few-shot·CoT란?</a><a class="l3" href="#s3-2">3-2. 시스템 프롬프트 쓰기</a><a class="l3" href="#s3-3">3-3. 예시 답변(Few-shot)과 판단 순서(CoT) 더하기</a><a class="l3" href="#s3-4">3-4. 결과</a></div>
@@ -362,6 +362,8 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><th>단어</th><th>뜻</th></tr>
 <tr><td><b>관리자 페이지</b></td><td>서비스를 운영하는 사람만 쓰는 화면. 오늘은 AI의 지시문과 모델을 바꾸는 곳이에요.</td></tr>
 <tr><td><b>벤치마킹</b></td><td>다른 서비스의 좋은 점을 보고 내 서비스에 맞게 가져오는 것</td></tr>
+<tr><td><b>시크릿(Secrets)</b></td><td>API 키·토큰처럼 남에게 보이면 안 되는 값을 코드와 따로 보관하는 곳. 코드는 이름으로만 불러요.</td></tr>
+<tr><td><b>개인 액세스 토큰(PAT)</b></td><td>깃헙 비밀번호 대신 프로그램에 주는 열쇠. 비밀번호처럼 다뤄요.</td></tr>
 <tr><td><b>미세조정(파인튜닝)</b></td><td>예시 데이터로 모델을 다시 학습시켜 모델 자체를 바꾸는 방법. 지시문을 바꾸는 것과는 달라요.</td></tr>
 <tr><td><b>클로드 코드(Claude Code)</b></td><td>내 컴퓨터 폴더 안의 파일을 클로드가 직접 읽고, 만들고, 고치는 도구. 클로드 데스크톱 앱의 Code 탭에 들어 있어요.</td></tr>
 <tr><td><b>세션</b></td><td>클로드 코드와 내 폴더를 두고 나누는 대화 하나</td></tr>
@@ -542,10 +544,10 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="topic" id="s0-10"><h3><span class="stage check">기획자·확인</span>0-10. 다시 배포하고 실제 주소에서 확인하기</h3>
 <p>기획자로 돌아와요. 미리보기에서 되던 것이 실제로 배포한 주소에서도 되는지 확인하고, 마지막 코드를 깃헙에 남겨요.</p>
 <ol class="do-steps">
-<li><p><b>다시 배포하기:</b> 오른쪽 위의 [Publish]를 눌러 바뀐 앱을 다시 배포해요.</p></li>
+<li><p><b>다시 배포하기:</b> 오른쪽 위의 [Publish]를 눌러 바뀐 앱을 다시 배포해요. 대화창에 "배포해 줘"라고 요청해도 돼요.</p></li>
 <li><p><b>실제 주소에서 로그인 확인:</b> 배포된 서비스 주소를 열고, 관리자 페이지 로그인이 잘 되는지 봐요.</p></li>
 <li><p><b>새 시크릿 창에서 테스트:</b> 크롬의 새 시크릿 창에서 같은 주소를 열어요. 로그인하지 않은 사람이 관리자 페이지를 볼 수 없는지, 사용자 화면은 잘 되는지 봐요.</p></li>
-<li><p><b>깃헙에 올리기:</b> 마지막 소스코드를 깃헙 저장소를 새로 만들어 올려요. 구글 AI 스튜디오는 앱을 깃헙 저장소와 연결해 양쪽을 맞출 수 있어요.</p></li>
+<li><p><b>깃헙에 올리기:</b> 마지막 소스코드를 내 깃헙 저장소에 올려요. 구글 AI 스튜디오는 앱을 깃헙 저장소와 연결해 양쪽을 맞출 수 있어요. 이번에는 0-11에서 프롬프트로 올려요.</p></li>
 </ol>
 <p class="source-note">출처: Google AI for Developers <a href="https://ai.google.dev/gemini-api/docs/aistudio-build-mode" target="_blank" rel="noopener">Build apps in Google AI Studio</a> (공식, 2026-10-26 갱신. 깃헙 저장소 연결과 양방향 동기화)</p>
 <p class="blk k-tpl"><span>빈 템플릿</span>배포 확인표</p>
@@ -564,8 +566,98 @@ aside nav a.active{border-left-color:var(--blue)}
 </table></div>
 </div>
 
-<div class="topic" id="s0-11"><h3><span class="stage">결과</span>0-11. 결과</h3>
-<div class="result-box"><b>결과물</b> 상품 상세페이지 이미지 1벌 + AI 서비스 관찰표·느낀 점 + 관리자 페이지 기획서 + 관리자가 프롬프트를 고칠 수 있는 마음책방(배포 주소) + 깃헙 저장소</div>
+<div class="topic" id="s0-11"><h3><span class="stage dev">개발자·구현</span>0-11. 프롬프트로 내 깃헙에 소스코드 올리기</h3>
+<p>0-10에서는 [Publish] 버튼을 눌러 배포했어요. 사실 배포와 깃헙 올리기도 버튼 대신 프롬프트로 할 수 있어요. 대화창에 "배포해 줘", "깃헙에 소스코드 올려 줘"라고 요청하면 돼요. 이번에는 새로운 방법으로, 프롬프트만으로 내 깃헙 저장소에 소스코드를 올려요.</p>
+<p class="source-note">2026년 11월 12일 강사 화면 기준이에요. AI 스튜디오의 답 문장은 그때그때 달라질 수 있어요.</p>
+
+<p><b>STEP 1. 깃헙에 올릴 수 있는지 묻기</b></p>
+<p class="blk k-pr"><span>프롬프트</span></p>
+<div class="copybox"><div class="copyhead"><span>프롬프트 8 · 수업에서 쓴 프롬프트 · AI 스튜디오 대화창에 붙여 넣으세요</span><button type="button">복사</button></div><pre>이 소스코드를 내 깃헙에 올릴 수 있어?</pre></div>
+<p>AI 스튜디오가 "현재 프로젝트의 로컬 Git 저장소 초기화와 main 브랜치 첫 커밋 생성이 완료되었습니다"처럼 답할 수 있어요.</p>
+<div class="ref-box"><b>참고 · 여기서 말하는 '로컬'은 내 컴퓨터가 아니에요</b>
+<p>보통 '로컬'은 내 컴퓨터를 뜻해요. 하지만 여기서 로컬 Git 저장소는 내 컴퓨터가 아니라, 구글 AI 스튜디오가 이 앱의 코드를 보관하고 실행하는 구글 서버 쪽 작업 공간 안에 만들어진 저장소예요. AI 스튜디오 앱은 화면 코드와 함께 서버 쪽 코드(Node.js)가 도는 환경을 가지고 있어요. 그 작업 공간에서 코드에 첫 기록(커밋)을 남겼다는 뜻이에요. 아직 내 깃헙에는 아무것도 올라가지 않았어요.</p>
+<p class="source-note">출처: Google AI for Developers <a href="https://ai.google.dev/gemini-api/docs/aistudio-build-mode" target="_blank" rel="noopener">Build apps in Google AI Studio</a> (공식, 2026-10-26 갱신, 서버 쪽 Node.js 실행 환경). 작업 공간이 구글 서버의 어디에 있는지는 공식 문서에 나오지 않아요.</p>
+</div>
+
+<p><b>STEP 2. 푸시 방법 고르기: 직접 푸시</b></p>
+<p>AI 스튜디오가 올리는 방법 두 가지를 알려 줄 수 있어요.</p>
+<div class="table-wrap"><table><tr><th>방법</th><th>하는 일</th><th>오늘</th></tr>
+<tr><td><b>직접 푸시</b></td><td>AI 스튜디오가 작업 공간에서 바로 내 깃헙 저장소로 코드를 올려요</td><td>이 방법으로 해요</td></tr>
+<tr><td><b>내 컴퓨터(터미널)에서 푸시</b></td><td>코드를 내 컴퓨터로 받은 뒤, 터미널에서 git 명령으로 올려요</td><td>하지 않아요</td></tr>
+</table></div>
+
+<p><b>STEP 3. 올릴 저장소 주소 알려 주기</b></p>
+<p>깃헙에 저장소를 미리 만들어 두고 주소를 복사해요. 저장소 화면의 [Code] 버튼을 누르면 <code class="inline">https://github.com/아이디/저장소이름.git</code> 모양의 주소가 보여요. 새 저장소를 만들 때도 주소만 가져오면 같은 방법으로 올릴 수 있어요.</p>
+<p class="blk k-pr"><span>프롬프트</span></p>
+<div class="copybox"><div class="copyhead"><span>프롬프트 9 · 같은 대화창에 붙여 넣으세요</span><button type="button">복사</button></div><pre>직접 푸시로 할게. https://github.com/[내 깃헙 아이디]/[저장소 이름].git 로 푸시해줘</pre></div>
+<p class="source-note">강사 예시 저장소: <a href="https://github.com/loreenkim0301/aipm-maumlibrary-251112" target="_blank" rel="noopener">github.com/loreenkim0301/aipm-maumlibrary-251112</a></p>
+<div class="notice"><b>토큰을 대화창에 넣지 않아요</b><br/>AI 스튜디오가 "저장소 주소와 Personal Access Token(PAT)을 알려 주시면 푸시해 드립니다", "https://&lt;토큰&gt;@github.com/... 로 푸시해 줘"처럼 대화창에 토큰을 넣으라고 안내할 수 있어요. 대화창에 넣은 글은 대화 기록에 남아요. 그래서 토큰은 대화창이 아니라 STEP 5의 Secrets에 넣어요. 대화창에는 저장소 주소만 보내요.</div>
+<p>AI 스튜디오가 "원격 저장소 주소 등록을 완료했습니다"라고 답하고, 이어서 푸시를 해 보면 인증 오류가 날 수 있어요. 깃헙은 보안 정책상 이 환경에서 아이디·비밀번호를 물어보는 창을 띄우지 않아요. 그래서 푸시하려면 깃헙 개인 액세스 토큰(Personal Access Token)이 필요해요.</p>
+
+<p><b>STEP 4. 깃헙에서 개인 액세스 토큰 만들기</b></p>
+<p>가장 빠른 방법은 주소창에 <a href="https://github.com/settings/tokens" target="_blank" rel="noopener">github.com/settings/tokens</a>를 넣어 바로 들어가는 거예요. 메뉴로 들어갈 때는 아래 순서를 따라요.</p>
+<ol class="do-steps">
+<li><p>깃헙 화면 오른쪽 맨 위의 내 프로필 사진(둥근 아이콘)을 눌러요.</p></li>
+<li><p>메뉴에서 [Settings]를 눌러요. 저장소 화면 위쪽의 [Settings] 탭이 아니에요. 토큰은 저장소가 아니라 내 계정 설정에 있어요.</p></li>
+<li><p>왼쪽 메뉴 맨 아래로 내려가 [Developer settings]를 눌러요.</p></li>
+<li><p>[Personal access tokens] → [Tokens (classic)]을 눌러요.</p></li>
+<li><p>[Generate new token] → [Generate new token (classic)]을 눌러요.</p></li>
+<li><p>[Note]에 <code class="inline">ai-studio</code>를 넣고, [Expiration]에서 짧은 기간을 골라요. 범위(scopes)에서 [repo]를 체크하고, 맨 아래 [Generate token]을 눌러요.</p></li>
+<li><p>나온 토큰(<code class="inline">ghp_</code>로 시작)을 바로 복사해요. 이 화면을 떠나면 다시 볼 수 없어요.</p></li>
+</ol>
+<div class="table-wrap"><table><tr><th>이렇게 보이면</th><th>이렇게 해요</th></tr>
+<tr><td>휴대폰 인증이나 비밀번호를 다시 물어봐요</td><td>토큰 만들기는 깃헙이 다시 본인 확인을 하는 중요한 작업이에요. 비밀번호를 넣거나, 깃헙 모바일 앱이 로그인돼 있으면 화면에 나온 숫자를 앱에 넣어 승인해요. 강사는 깃헙 모바일 앱에 미리 로그인해 두고 앱에서 승인했어요.</td></tr>
+<tr><td>메뉴 이름이나 위치가 교안과 달라요</td><td>지금 화면을 캡처해 AI 스튜디오(또는 클로드)에 올리고 "깃헙 개인 액세스 토큰을 만들려면 이 화면에서 어디를 눌러야 해?"라고 물어요. 토큰 메뉴는 저장소가 아니라 내 계정 설정에 있다는 점을 함께 알려 줘요.</td></tr>
+</table></div>
+<p class="source-note">출처: GitHub Docs <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens" target="_blank" rel="noopener">Managing your personal access tokens</a> (토큰 만드는 순서, "토큰은 비밀번호처럼 다루세요") · <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/sudo-mode" target="_blank" rel="noopener">Sudo mode</a> (토큰 만들기는 다시 본인 확인이 필요한 작업, 깃헙 모바일 앱으로 확인 가능) (2026-11-12 확인)</p>
+<div class="ref-box"><b>참고 · classic 토큰을 쓸 때 조심할 점</b>
+<ul>
+<li>classic 토큰은 내가 들어갈 수 있는 모든 저장소에 접근할 수 있어요. 그래서 비밀번호처럼 다뤄요.</li>
+<li>깃헙은 가능하면 저장소를 골라 권한을 줄 수 있는 fine-grained 토큰을 쓰라고 권해요. 오늘은 순서가 단순한 classic 토큰으로 하고, 만료 기간을 짧게 잡아요.</li>
+<li>수업이 끝나고 더 쓰지 않으면 같은 화면에서 토큰을 지워요.</li>
+</ul>
+<p class="source-note">출처: GitHub Docs <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens" target="_blank" rel="noopener">Managing your personal access tokens</a> (2026-11-12 확인)</p>
+</div>
+
+<p><b>STEP 5. 토큰을 AI 스튜디오 Secrets에 넣기</b></p>
+<ol class="do-steps">
+<li><p>구글 AI 스튜디오의 [Settings]에서 Secrets를 열어요. 열쇠 모양이나 설정 아이콘으로 보일 수 있어요.</p></li>
+<li><p>새 시크릿을 더해요. 이름(Key)은 <code class="inline">GITHUB_TOKEN</code>, 값(Value)은 STEP 4에서 복사한 토큰(<code class="inline">ghp_…</code>)을 넣고 저장해요.</p></li>
+<li><p>토큰을 넣은 화면은 캡처하지 않아요.</p></li>
+</ol>
+<p class="source-note">출처: Google AI for Developers <a href="https://ai.google.dev/gemini-api/docs/aistudio-fullstack" target="_blank" rel="noopener">Develop full-stack apps in Google AI Studio</a> (공식, 2026-10-20 갱신, Settings의 Secrets에 API 키·토큰을 넣고 서버 쪽 코드가 읽음)</p>
+
+<p><b>STEP 6. 푸시해 달라고 하기</b></p>
+<p class="blk k-pr"><span>프롬프트</span></p>
+<div class="copybox"><div class="copyhead"><span>프롬프트 10 · 같은 대화창에 붙여 넣으세요</span><button type="button">복사</button></div><pre>시크릿 등록했어, 푸시해줘</pre></div>
+<p class="blk k-chk"><span>확인할 점</span></p>
+<ul class="checklist"><li>내 깃헙 저장소 화면을 새로고침했을 때 앱의 소스코드 파일이 보인다</li><li>대화창에 토큰을 한 번도 붙여 넣지 않았다</li><li>저장소의 마지막 기록(커밋) 시각이 방금 푸시한 시각과 맞다</li></ul>
+<p>여기까지 하면 AI 스튜디오가 Secrets의 토큰으로 내 깃헙에 올릴 권한을 갖게 돼요. 다음부터는 구글 서버 위의 작업 공간에 있는 내 소스코드를 "푸시해 줘" 한마디로 바로 내 깃헙에 올릴 수 있어요.</p>
+
+<div class="ref-box"><b>참고 · 시크릿(Secrets)이란? 왜 쓰나요?</b>
+<h4>시크릿이란?</h4>
+<p>시크릿은 API 키, 토큰, 비밀번호처럼 남에게 보이면 안 되는 값을 코드와 따로 보관하는 곳이에요. 코드에는 값 대신 이름(예: <code class="inline">GITHUB_TOKEN</code>)만 적고, 프로그램이 실행될 때 그 이름으로 값을 꺼내 써요.</p>
+<h4>어떤 문제를 해결하나요?</h4>
+<div class="table-wrap"><table><tr><th>시크릿 없이</th><th>시크릿을 쓰면</th></tr>
+<tr><td>토큰을 코드나 대화창에 그대로 적어요</td><td>코드와 대화 기록에는 이름만 남아요</td></tr>
+<tr><td>코드를 깃헙에 올리거나 공유하면 토큰도 같이 퍼져요</td><td>코드를 공유해도 값은 따라가지 않아요</td></tr>
+<tr><td>토큰을 바꾸려면 코드를 고쳐야 해요</td><td>시크릿 값만 바꾸면 돼요</td></tr>
+</table></div>
+<h4>어디서 또 보나요?</h4>
+<div class="table-wrap"><table><tr><th>서비스</th><th>메뉴 이름</th><th>예</th></tr>
+<tr><td>구글 AI 스튜디오</td><td>Settings → Secrets</td><td>수요일의 API 키, 오늘의 GITHUB_TOKEN</td></tr>
+<tr><td>깃헙</td><td>저장소 Settings → Secrets and variables</td><td>깃헙 액션이 배포할 때 쓰는 토큰</td></tr>
+<tr><td>버셀·넷리파이 같은 배포 서비스</td><td>환경 변수(Environment Variables)</td><td>금요일에 쓸 AI API 키</td></tr>
+</table></div>
+<p>이름은 서비스마다 '시크릿', '환경 변수'처럼 달라도 하는 일은 같아요. 비밀값은 코드 밖에 두고, 코드는 이름으로만 불러요.</p>
+<h4>조심할 점</h4>
+<ul><li>시크릿에 넣은 값도 그 값을 읽는 코드가 화면에 출력하면 드러날 수 있어요. 키는 서버 쪽 코드에서만 읽어요.</li><li>시크릿에 넣었더라도 토큰이 새어 나갔다고 의심되면 원래 서비스(깃헙 등)에서 토큰을 지우고 새로 만들어요.</li></ul>
+<p class="source-note">출처: Google AI for Developers <a href="https://ai.google.dev/gemini-api/docs/aistudio-fullstack" target="_blank" rel="noopener">Develop full-stack apps in Google AI Studio</a> (공식, 2026-10-20 갱신) · GitHub Docs <a href="https://docs.github.com/en/actions/concepts/security/secrets" target="_blank" rel="noopener">Secrets</a> (민감한 값을 코드에 드러내지 않고 저장, 2026-11-12 확인)</p>
+</div>
+</div>
+
+<div class="topic" id="s0-12"><h3><span class="stage">결과</span>0-12. 결과</h3>
+<div class="result-box"><b>결과물</b> 상품 상세페이지 이미지 1벌 + AI 서비스 관찰표·느낀 점 + 관리자 페이지 기획서 + 관리자가 프롬프트를 고칠 수 있는 마음책방(배포 주소) + 프롬프트로 푸시한 깃헙 저장소</div>
 <p class="ok-line"><b>이렇게 보이면 성공</b>배포 주소에서 관리자로 로그인해 프롬프트를 바꾸면, 사용자 화면의 추천이 달라진다</p>
 <p>오후 수업 전에 클로드 데스크톱 앱을 설치해 둬요 (<a href="#s2-1">설치 순서</a>).</p>
 </div>
@@ -760,7 +852,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <p><b>STEP 4. 클로드 코드에게 이벤트 정보 파일 만들게 하기</b></p>
 <p>Code 탭 입력창에 아래 프롬프트를 보내요. [ ] 자리에는 STEP 3의 표를 그대로 복사해 붙여 넣어요.</p>
 <p class="blk k-pr"><span>프롬프트</span></p>
-<div class="copybox"><div class="copyhead"><span>프롬프트 8 · 복사해서 클로드 코드 입력창에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 이 폴더에 event-info.md 파일을 만들어 줘. 셀렉트마켓 연말 이벤트 문의 챗봇이 읽을 이벤트 정보 파일이야.
+<div class="copybox"><div class="copyhead"><span>프롬프트 11 · 복사해서 클로드 코드 입력창에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 이 폴더에 event-info.md 파일을 만들어 줘. 셀렉트마켓 연말 이벤트 문의 챗봇이 읽을 이벤트 정보 파일이야.
 내용: 이벤트 정보는 [STEP 3 표 붙여 넣기]야. 표에 없는 혜택, 날짜, 금액, 연락처는 추가하지 마. 맨 위에 '가상의 수업용 이벤트 정보예요.' 한 줄을 넣어 줘.
 형식: # 제목 한 줄, 항목마다 ## 소제목과 한두 줄 설명. 다른 파일은 만들지 마.</pre></div>
 <p><b>STEP 5. 바뀔 내용을 보고 승인하기</b></p>
@@ -842,7 +934,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <p><b>STEP 3. 클로드 코드에게 규칙 파일로 묶게 하기</b></p>
 <p>3-2와 3-3에서 채운 내용을 붙여 넣어 보내요.</p>
 <p class="blk k-pr"><span>프롬프트</span></p>
-<div class="copybox"><div class="copyhead"><span>프롬프트 9 · 복사해서 같은 클로드 코드 세션에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 이 폴더에 answer-rules.md 파일을 만들어 줘. 연말 이벤트 문의 챗봇의 시스템 프롬프트, 예시 답변, 판단 순서를 담은 파일이야.
+<div class="copybox"><div class="copyhead"><span>프롬프트 12 · 복사해서 같은 클로드 코드 세션에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 이 폴더에 answer-rules.md 파일을 만들어 줘. 연말 이벤트 문의 챗봇의 시스템 프롬프트, 예시 답변, 판단 순서를 담은 파일이야.
 내용: 시스템 프롬프트는 [3-2에서 채운 표], 예시 답변은 [3-3 STEP 1 표], 판단 순서는 [3-3 STEP 2 목록]이야. 예시 답변의 날짜·금액이 event-info.md와 같은지 견주고, 다르면 고치지 말고 다른 곳을 알려 줘. 내가 준 것 말고 규칙이나 예시를 추가하지 마.
 형식: ## 시스템 프롬프트 / ## 예시 답변(질문·답 3쌍) / ## 판단 순서 세 부분. 다 만들면 event-info.md와 다른 곳이 있었는지 한 줄로 알려 줘.</pre></div>
 <p class="blk k-chk"><span>확인할 점</span></p>
@@ -862,7 +954,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="topic" id="s4-1"><h3><span class="stage">실습</span>4-1. 규칙 파일로 챗봇 화면 만들기</h3>
 <p><b>STEP 1. 클로드 코드에게 화면 만들게 하기</b></p>
 <p class="blk k-pr"><span>프롬프트</span></p>
-<div class="copybox"><div class="copyhead"><span>프롬프트 10 · 복사해서 같은 클로드 코드 세션에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 이 폴더에 셀렉트마켓 연말 이벤트 문의 챗봇 화면을 index.html 한 파일로 만들어 줘.
+<div class="copybox"><div class="copyhead"><span>프롬프트 13 · 복사해서 같은 클로드 코드 세션에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 이 폴더에 셀렉트마켓 연말 이벤트 문의 챗봇 화면을 index.html 한 파일로 만들어 줘.
 내용: 맨 위에 '셀렉트마켓 연말 이벤트 도우미' 제목, 가운데에 대화 말풍선(사용자는 오른쪽, 챗봇은 왼쪽), 맨 아래에 입력창과 [보내기] 단추를 넣어 줘. 처음 열면 챗봇이 '연말 이벤트에 대해 물어보세요.'라고 인사하게 해 줘. 입력창 위에는 answer-rules.md의 예시 질문 3개를 빠른 질문 단추로 넣고, 누르면 그 예시의 답을 챗봇 말풍선으로 보여 줘. 직접 입력한 질문에는 '아직 AI가 연결되지 않았어요.'라고 답하게 해 줘. 휴대폰 너비(390px)에서도 글자가 잘리지 않게 해 줘. 외부 라이브러리, 로그인, 대화 저장 기능은 추가하지 마.
 형식: index.html 한 파일. 다 만들면 빠른 질문 단추 3개의 글자를 알려 줘.</pre></div>
 <p><b>STEP 2. diff를 보고 승인하기</b></p>
@@ -895,7 +987,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <p>크롬 창의 오른쪽 끝을 끌어 창을 좁게 줄여요. 글자가 잘리거나, 입력창이 화면 밖으로 나가거나, 단추가 겹치는 곳을 찾아요. 하나만 골라요.</p>
 <p><b>STEP 2. 하나만 고쳐 달라고 하기</b></p>
 <p class="blk k-pr"><span>프롬프트</span></p>
-<div class="copybox"><div class="copyhead"><span>프롬프트 11 · 복사해서 같은 클로드 코드 세션에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: index.html에서 [고칠 곳 한 가지]를 고쳐 줘.
+<div class="copybox"><div class="copyhead"><span>프롬프트 14 · 복사해서 같은 클로드 코드 세션에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: index.html에서 [고칠 곳 한 가지]를 고쳐 줘.
 내용: 휴대폰 너비(390px)에서 [보이는 문제]가 생겨. 이 문제만 고치고, 다른 기능과 글자는 바꾸지 마.
 형식: 바뀐 줄만 diff로 보여 주고, 무엇을 바꿨는지 한 줄로 알려 줘.</pre></div>
 <p><b>STEP 3. diff를 읽고 승인한 뒤 다시 열기</b></p>
