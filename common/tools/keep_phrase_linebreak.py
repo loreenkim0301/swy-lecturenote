@@ -14,17 +14,21 @@ pats=[
  # ~게 되다/하다/만들다
  (r'(\S+게) (되|돼|됐|하|해|만들)', lambda m:m.group(1)+NB+m.group(2)),
  # 관형형 + 의존명사(것·때·줄·대로·만큼·뿐·중·후·전·뒤·적)
- (r'(\S+[은는을ㄹ던]) (것|거|때|줄|대로|만큼|뿐|적|듯)(?=[가-힣\s.,!?)]|$)', lambda m:m.group(1)+NB+m.group(2)),
+ (r'(\S+[은는을ㄹ던]) (것|거|때|대로|만큼|뿐|적|듯)(?=[가-힣\s.,!?)]|$)', lambda m:m.group(1)+NB+m.group(2)),
  # 숫자 + 단위
  (r'(\d+) (개|분|시간|명|장|번|원|초|일|주|가지|단계|줄)(?=[가-힣\s.,!?)]|$)', lambda m:m.group(1)+NB+m.group(2)),
  # 부정 '안/못' + 동사
  (r'(?<=\s)(안|못|잘) (\S)', lambda m:m.group(1)+NB+m.group(2)),
 ]
 def fix(text):
+  # 겹친 묶음까지 처리하려고 더 바뀌지 않을 때까지 반복해요(여러 번 돌려도 결과가 같아요).
   n=0
-  for p,f in pats:
-    text,k=re.subn(p,f,text); n+=k
-  return text,n
+  while True:
+    k0=0
+    for p,f in pats:
+      text,k=re.subn(p,f,text); k0+=k
+    if not k0: return text,n
+    n+=k0
 def run(path):
   s=open(path,encoding='utf-8').read()
   # 보호 구간: script, style, pre, code, textarea, 그리고 태그 자체
