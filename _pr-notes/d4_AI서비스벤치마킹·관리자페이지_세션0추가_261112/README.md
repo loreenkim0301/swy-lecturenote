@@ -1,5 +1,11 @@
 # DAY 4 SESSION 0 추가 · AI 서비스를 써 보고, 관리자가 프롬프트를 고칠 수 있게 만들기 (2026-11-12)
 
+## 2차 수정 (로린 님 요청)
+- 0-3 STEP 4 "예시 답을 넣어 보기(Few-shot)" 추가: Few-shot이란? → 해결하는 문제 → 조심할 점(형식 통일, 너무 많으면 예시만 따라 함, 실제 책으로) → 예시 3개 붙여 넣기 → 넣기 전·후 비교표 → 예시를 지우면 돌아가는지 확인
+- 강조 상자 "프롬프트를 바꾸는 것은 모델을 학습시키는 것이 아니에요" (구글 ML 강의: 프롬프트 엔지니어링은 매개변수를 바꾸지 않음, 무료 등급 데이터 활용과도 구분)
+- 참고 박스 "미세조정이란?" 다시 씀: 정의, Few-shot과 비교표(무엇이 바뀌나·예시 두는 곳·필요한 것·고치는 법·누가 하나), AI 스튜디오에서는 현재 불가, 기획자의 사용 순서
+- Gemma 미세조정 안내 삭제. 빈 이미지 상자 없음(텍스트만)
+
 ## 추가한 것
 | 절 | 누구 | 내용 |
 |---|---|---|
@@ -16,7 +22,7 @@
 - 프롬프트 번호 1~6으로 다시 매김
 
 ## 출처 (본문 표에 날짜와 함께 표기)
-- 공식: Google AI plans(2026-10-16), Rate limits(2026-10-28), Gemini API pricing(날짜 없음, 11-12 확인), AI Studio quickstart(2026-07-30), Fine-tuning with the Gemini API(2026-04-28), Gemma tuning(2026-04-16), Suno 고객센터(2025-12-19)
+- 공식: Google AI plans(2026-10-16), Rate limits(2026-10-28), Gemini API pricing(날짜 없음, 11-12 확인), AI Studio quickstart(2026-07-30), Fine-tuning with the Gemini API(2026-04-28), Prompt design strategies(2026-10-13), ML Crash Course LLM tuning(2025-12-03), Suno 고객센터(2025-12-19)
 - 언론·외부: VentureBeat(2026-11-10), Atlas Cloud(2026-11-11), imisofts(2026-10-21), 디지털마케터 뤼튼(2026-10-04), eesel Suno(2026-06-22)
 
 ## 확인하지 못한 것
