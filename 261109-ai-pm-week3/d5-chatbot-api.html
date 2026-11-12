@@ -478,10 +478,23 @@ aside nav a.active{border-left-color:var(--blue)}
 </ol>
 <p class="blk k-chk"><span>막히면</span></p>
 <div class="table-wrap"><table><tr><th>이렇게 보이면</th><th>이렇게 해요</th></tr>
-<tr><td><b>주소는 열리는데 빈 화면이에요</b></td><td>앱을 화면에 내보내기 전에 '빌드'가 필요한 앱일 수 있어요(폴더에 package.json이 있는 경우). 클로드 코드에게 "이 앱이 빌드가 필요한지 확인하고, 깃헙 페이지스에 올리는 방법을 알려 줘"라고 물어요. 4세션의 '선택' 실습과 이어져요.</td></tr>
+<tr><td><b>주소는 열리는데 빈 화면이에요</b></td><td>깃헙 페이지스에 올리려면 한 번 더 맞춰야 하는 앱일 수 있어요. 아래 참고 상자를 보고, 클로드 코드에게 "이 앱을 깃헙 페이지스에서 열리게 맞춰 줘"라고 물어요.</td></tr>
 <tr><td><b>404 화면이 나와요</b></td><td>저장소 맨 위에 index.html이 있는지 봐요. 다른 폴더 안에 있으면 클로드 코드에게 위치를 맞춰 달라고 해요.</td></tr>
 </table></div>
 <p class="source-note">출처: GitHub Docs <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site" target="_blank" rel="noopener">Configuring a publishing source</a>(Settings &gt; Pages &gt; Deploy from a branch &gt; Save) (2026-11-12 확인)</p>
+<div class="ref-box"><b>참고 · AI 스튜디오에서 만든 앱을 깃헙 페이지스에 올리면</b>
+<p>AI 스튜디오에서 만든 앱은 원래 <b>구글 클라우드</b>에 올리도록 만들어져 있어요. 깃헙 페이지스는 그 기본 배포처가 아니에요. 그래서 깃헙 페이지스에 올리려면 맞추는 작업이 필요해요. 강사가 직접 해 본 결과예요.</p>
+<div class="table-wrap"><table><tr><th>해 본 것</th><th>뜻</th></tr>
+<tr><td>AI 스튜디오가 만든 코드 그대로</td><td>화면과 서버가 같이 있는 앱이에요. 서버와 키가 함께 돌아가는 구글 클라우드가 기본 배포처예요.</td></tr>
+<tr><td>깃헙 페이지스에 처음 올렸더니 빨간 X</td><td>기본 배포처가 아닌 곳에 올려서, 맞추는 작업이 필요했어요.</td></tr>
+<tr><td>오류 기록을 클로드에게 보여 주고 고쳐서 다시 올렸더니 초록 체크</td><td>오류가 나도 기록을 보여 주면 AI가 고칠 수 있어요.</td></tr>
+<tr><td>공개 주소에서 화면은 열려요</td><td>깃헙 페이지스는 <b>화면만</b> 올려 주는 곳이에요. 서버가 하던 일(AI 추천, 관리자 저장)은 여기서 동작하지 않아요.</td></tr>
+</table></div>
+<figure class="shot"><a href="images/d5-s3-deploy-fail.jpg" target="_blank" rel="noopener"><img style="width:360px;max-width:100%" alt="깃헙 액션 화면에서 첫 배포가 빨간 X로 실패한 모습" loading="lazy" src="images/d5-s3-deploy-fail.jpg"/></a><figcaption>① 처음 올렸을 때: 빨간 X(실패) (2026-11-12 강사 시연 저장소)</figcaption></figure>
+<figure class="shot"><a href="images/d5-s3-deploy-fixed.jpg" target="_blank" rel="noopener"><img style="width:360px;max-width:100%" alt="깃헙 액션 화면에서 고친 뒤 초록 체크로 성공한 모습" loading="lazy" src="images/d5-s3-deploy-fixed.jpg"/></a><figcaption>② 클로드에게 오류 기록을 보여 주고 고친 뒤: 초록 체크(성공) (2026-11-12 강사 시연 저장소)</figcaption></figure>
+<p>정리하면, AI 스튜디오의 기본 배포처는 바꿀 수 있어요. 다만 바꾸면 맞추는 작업이 생기고, 기본 배포처에서 되던 기능이 안 될 수 있어요. 그래서 기획자는 "어디에 올릴지"를 먼저 정해요.</p>
+<p class="source-note">출처: 강사 시연 저장소 <a href="https://github.com/loreenkim0301/aipm-maumlibrary-251112/actions" target="_blank" rel="noopener">aipm-maumlibrary-251112 Actions</a>(첫 배포 실패 → 고친 뒤 성공) · 같은 저장소의 .env.example(AI 스튜디오가 실행할 때 키를 넣어 줌, 주소는 Cloud Run 서비스) (2026-11-12 확인)</p>
+</div>
 </div>
 
 <div class="topic" id="s3-3"><h3><span class="stage">실습</span>3-3. 고쳐서 올리면 저절로 바뀌는지 보기</h3>
