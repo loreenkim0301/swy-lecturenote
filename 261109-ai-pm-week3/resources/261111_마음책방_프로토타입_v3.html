@@ -1,0 +1,484 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>마음책방</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<style>
+/* Layout: mobile-first single column (max 480px). Screens swap in place: 입력 → 읽는 중 → 결과 / 문장 고르기 / 안내(차단·위기). */
+:root{
+  --bg:#f3f5f4; --surface:#ffffff; --ink:#1d2826; --muted:#5d6b68; --line:#d9e0de;
+  --accent:#2c5f5d; --accent-ink:#ffffff; --accent-soft:#e2ecea;
+  --warn:#8a5a12; --warn-soft:#f8efdf; --alert:#9b2c2c; --alert-soft:#f9e8e6;
+  --display:"Gowun Batang","Noto Serif KR",Georgia,serif;
+  --sans:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121817; --surface:#1b2322; --ink:#e4ebe9; --muted:#9aaba7; --line:#2c3836;
+  --accent:#7fb8b4; --accent-ink:#0f1a19; --accent-soft:#22312f;
+  --warn:#e3b46a; --warn-soft:#33291a; --alert:#f0a19a; --alert-soft:#3a2221; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121817; --surface:#1b2322; --ink:#e4ebe9; --muted:#9aaba7; --line:#2c3836;
+  --accent:#7fb8b4; --accent-ink:#0f1a19; --accent-soft:#22312f;
+  --warn:#e3b46a; --warn-soft:#33291a; --alert:#f0a19a; --alert-soft:#3a2221; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.65;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 40px}
+.wrap{max-width:480px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+button,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+header.top{display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:var(--display);font-weight:700;font-size:1.15rem;letter-spacing:-.01em;display:flex;align-items:center;gap:8px}
+.brand svg{width:22px;height:22px}
+.link-btn{border:0;background:none;color:var(--muted);font-size:.85rem;padding:6px 2px}
+
+h1,h2{font-family:var(--display);font-weight:700;letter-spacing:-.01em;text-wrap:balance;margin:0}
+h1{font-size:1.6rem;line-height:1.35}
+h2{font-size:1.25rem;line-height:1.4}
+.lead{margin:6px 0 0;color:var(--muted);font-size:.95rem}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+textarea{width:100%;min-height:110px;resize:vertical;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);padding:14px;font-size:1.05rem;line-height:1.6}
+textarea:focus{outline:2px solid var(--accent);outline-offset:0;border-color:transparent}
+.counter{font-size:.78rem;color:var(--muted);text-align:right;margin-top:4px;font-variant-numeric:tabular-nums}
+.note{font-size:.82rem;color:var(--muted);margin:8px 0 0;display:flex;gap:6px;align-items:flex-start}
+.note svg{flex:none;width:15px;height:15px;margin-top:3px}
+
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:52px;border-radius:var(--r);border:0;background:var(--accent);color:var(--accent-ink);font-weight:700;font-size:1.02rem}
+.btn:disabled{opacity:.45;cursor:default}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line);font-weight:500}
+.row{display:flex;gap:8px}
+.row .btn{flex:1}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 13px;font-size:.88rem;min-height:36px}
+.chip[aria-pressed=true]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.label{font-size:.8rem;color:var(--muted);font-weight:500;margin:0 0 8px;letter-spacing:.02em}
+
+/* 읽는 중 */
+.reading{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;padding:32px 16px}
+.pages{display:flex;gap:6px}
+.pages span{width:10px;height:28px;border-radius:3px;background:var(--accent);opacity:.25}
+@media (prefers-reduced-motion:no-preference){.pages span{animation:flip 1.2s ease-in-out infinite}.pages span:nth-child(2){animation-delay:.15s}.pages span:nth-child(3){animation-delay:.3s}@keyframes flip{50%{opacity:1;transform:translateY(-4px)}}}
+
+/* 결과 */
+.quote{font-family:var(--display);font-size:1.2rem;line-height:1.55;margin:0}
+.mood{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:12px}
+.mood .main{background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:4px 12px;font-weight:700;font-size:.9rem}
+.mood .sub{border:1px solid var(--line);border-radius:999px;padding:3px 10px;font-size:.82rem;color:var(--muted)}
+.kw{font-size:.85rem;color:var(--muted);margin:10px 0 0}
+.kw b{color:var(--ink);font-weight:500}
+ol.books{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.book{display:grid;grid-template-columns:52px 1fr;gap:14px;align-items:start}
+.spine{width:52px;height:72px;border-radius:4px 8px 8px 4px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:8px;font-family:var(--display);font-weight:700;color:#fff;font-size:1.1rem;box-shadow:inset 4px 0 0 rgba(0,0,0,.18)}
+.book h3{margin:0;font-size:1.02rem;line-height:1.4}
+.book .by{font-size:.82rem;color:var(--muted)}
+.book p{margin:6px 0 0;font-size:.92rem}
+.book a{display:inline-block;margin-top:8px;font-size:.82rem;color:var(--accent);text-decoration:none;font-weight:500}
+.book .min{min-width:0}
+.tag-fill{display:inline-block;margin-top:6px;font-size:.75rem;color:var(--muted);border:1px dashed var(--line);border-radius:6px;padding:1px 6px}
+
+/* 문장 고르기 */
+.pick{display:flex;flex-direction:column;gap:10px;margin:0;padding:0;list-style:none}
+.pick button{width:100%;text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:var(--r);padding:14px 16px;display:flex;justify-content:space-between;gap:12px;align-items:center;min-height:56px}
+.pick button:hover{border-color:var(--accent)}
+.pick .e{font-size:.78rem;color:var(--muted);white-space:nowrap}
+
+/* 안내 */
+.notice{border-radius:var(--r);padding:18px}
+.notice.policy{background:var(--warn-soft)}
+.notice.crisis{background:var(--alert-soft)}
+.notice h2{font-size:1.1rem}
+.notice ul{margin:10px 0 0;padding-left:18px;font-size:.92rem}
+.notice p{margin:8px 0 0;font-size:.92rem}
+.tel{font-size:1.4rem;font-weight:700;font-variant-numeric:tabular-nums;color:var(--alert);margin-top:4px;user-select:all}
+.err{background:var(--warn-soft);border-radius:var(--r);padding:12px 14px;font-size:.9rem}
+
+details.raw{font-size:.8rem}
+details.raw pre{white-space:pre-wrap;word-break:break-all;background:var(--bg);border-radius:8px;padding:10px;margin:8px 0 0;max-height:260px;overflow:auto}
+footer{font-size:.78rem;color:var(--muted);display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+footer label{display:flex;gap:6px;align-items:center}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand" aria-label="마음책방">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 5.5C5.5 4.5 8.5 4.5 12 6.5c3.5-2 6.5-2 9-1v13c-2.5-1-5.5-1-9 1-3.5-2-6.5-2-9-1z"/><path d="M12 6.5v13"/></svg>
+      마음책방
+    </div>
+    <button class="link-btn" id="home-btn" hidden>처음으로</button>
+  </header>
+
+  <main id="app" aria-live="polite">
+
+    <!-- 1. 입력 -->
+    <section id="s-input" aria-labelledby="h-input">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div>
+          <h1 id="h-input">오늘 마음을<br>한 문장으로 적어 주세요</h1>
+          <p class="lead">감정 단어가 없어도 괜찮아요. 날씨나 있었던 일만 적어도 어울리는 책 3권을 골라 드려요.</p>
+        </div>
+        <form id="f" novalidate>
+          <label for="q" class="sr">오늘의 마음</label>
+          <textarea id="q" maxlength="300" placeholder="예: 오늘은 날씨가 좀 쌀쌀해"></textarea>
+          <div class="counter"><span id="cnt">0</span>/300</div>
+          <div style="margin-top:12px"><button class="btn" id="go" type="submit" disabled>책 추천받기</button></div>
+          <p class="note" id="consent-note" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16v.5"/></svg>처음 한 번, Claude 사용을 허용할지 묻는 창이 뜹니다. 허용해야 추천을 받을 수 있어요.</p>
+        </form>
+        <div>
+          <p class="label">이렇게 써 보세요</p>
+          <div class="chips" id="examples"></div>
+        </div>
+        <p class="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>적은 문장은 추천을 위해 AI에게만 전달되고, 이 화면에 저장되지 않아요.</p>
+      </div>
+    </section>
+
+    <!-- 2. 읽는 중 -->
+    <section id="s-loading" hidden aria-label="추천 준비 중">
+      <div class="card reading">
+        <div class="pages" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div>
+          <strong id="load-title">마음을 읽고 있어요</strong>
+          <p class="lead" style="margin-top:4px">보통 몇 초 걸려요.</p>
+        </div>
+        <button class="btn ghost" id="cancel" style="max-width:200px">취소</button>
+      </div>
+    </section>
+
+    <!-- 3. 결과 -->
+    <section id="s-result" hidden aria-labelledby="h-result" style="display:flex;flex-direction:column;gap:16px"></section>
+
+    <!-- 4. 문장 고르기 -->
+    <section id="s-pick" hidden aria-labelledby="h-pick" style="display:flex;flex-direction:column;gap:16px"></section>
+
+    <!-- 5. 안내 (정책·위기) -->
+    <section id="s-notice" hidden style="display:flex;flex-direction:column;gap:16px"></section>
+
+  </main>
+
+  <footer>
+    <span>책 목록 16권 안에서 추천합니다 · 프로토타입 v3</span>
+    <label><input type="checkbox" id="testmode"> 테스트 모드</label>
+  </footer>
+</div>
+
+<script>
+/* ============ [1] 책 데이터 ============ */
+const DB = [
+  {emo:"불안", color:"#5b6c8f", words:["불안","걱정","초조","긴장","두려","무서","겁"], books:[
+    {t:"미움받을 용기",a:"기시미 이치로·고가 후미타케",w:"남의 시선 때문에 생기는 걱정을 대화 형식으로 풀어 줍니다."},
+    {t:"불안",a:"알랭 드 보통",w:"지위와 평가에 대한 불안이 어디서 오는지 차분하게 설명합니다."},
+    {t:"아주 작은 습관의 힘",a:"제임스 클리어",w:"통제할 수 있는 작은 행동부터 잡게 해 막연함을 줄여 줍니다."}]},
+  {emo:"슬픔", color:"#4f6f8a", words:["슬픔","슬퍼","우울","눈물","울고","상실","허전","서러"], books:[
+    {t:"죽고 싶지만 떡볶이는 먹고 싶어",a:"백세희",w:"우울한 날의 감정을 솔직한 상담 기록으로 따라가 봅니다."},
+    {t:"아몬드",a:"손원평",w:"감정을 잘 느끼지 못하는 소년을 통해 슬픔과 공감을 다시 봅니다."},
+    {t:"밝은 밤",a:"최은영",w:"여러 세대의 여성이 서로를 위로하는 이야기로 마음을 덥혀 줍니다."}]},
+  {emo:"외로움", color:"#6a5f8c", words:["외로","고독","혼자","쓸쓸","소외"], books:[
+    {t:"우리가 빛의 속도로 갈 수 없다면",a:"김초엽",w:"멀리 떨어진 존재들이 서로를 그리워하는 SF 단편집입니다."},
+    {t:"어린 왕자",a:"앙투안 드 생텍쥐페리",w:"관계를 길들인다는 의미를 짧고 깊게 생각하게 합니다."},
+    {t:"불편한 편의점",a:"김호연",w:"낯선 사람들이 편의점에서 조금씩 연결되는 이야기입니다."}]},
+  {emo:"지침", color:"#5f7a64", words:["지침","지쳤","지쳐","피곤","번아웃","힘들","탈진","녹초"], books:[
+    {t:"월든",a:"헨리 데이비드 소로",w:"속도를 내려놓고 단순하게 사는 법을 보여 줍니다."},
+    {t:"달러구트 꿈 백화점",a:"이미예",w:"잠과 꿈을 파는 가게 이야기로 가볍게 쉬어 가기 좋습니다."},
+    {t:"메리골드 마음 세탁소",a:"윤정은",w:"상처 난 마음을 씻어 주는 세탁소라는 설정의 힐링 소설입니다."}]},
+  {emo:"분노", color:"#9a5545", words:["분노","화나","화가","짜증","억울","열받"], books:[
+    {t:"화",a:"틱낫한",w:"화를 억누르지 않고 다루는 방법을 쉬운 말로 알려 줍니다."},
+    {t:"미움받을 용기",a:"기시미 이치로·고가 후미타케",w:"타인에 대한 화가 내 과제인지 남의 과제인지 나눠 보게 합니다."},
+    {t:"데미안",a:"헤르만 헤세",w:"세상과 부딪히는 감정을 성장의 과정으로 다시 읽게 합니다."}]},
+  {emo:"무기력", color:"#7a7466", words:["무기력","귀찮","공허","노잼","의욕이 없","의욕 없"], books:[
+    {t:"아주 작은 습관의 힘",a:"제임스 클리어",w:"의욕이 없어도 시작할 수 있는 1% 단위 행동을 제안합니다."},
+    {t:"연금술사",a:"파울로 코엘료",w:"잊고 있던 바람을 다시 떠올리게 하는 짧은 우화입니다."},
+    {t:"불편한 편의점",a:"김호연",w:"바닥에 있던 인물이 다시 일어서는 과정을 따뜻하게 그립니다."}]},
+  {emo:"막막함", color:"#5c7480", words:["막막","진로","방황","모르겠"], books:[
+    {t:"데미안",a:"헤르만 헤세",w:"내가 누구인지 묻는 시기에 오래 읽혀 온 성장 소설입니다."},
+    {t:"연금술사",a:"파울로 코엘료",w:"자기 길을 찾아 떠나는 여정을 단순한 이야기로 보여 줍니다."},
+    {t:"미움받을 용기",a:"기시미 이치로·고가 후미타케",w:"정답 대신 지금 할 수 있는 선택에 집중하게 합니다."}]},
+  {emo:"그리움", color:"#8a6a55", words:["그리움","그리워","보고싶","추억","향수"], books:[
+    {t:"나의 라임오렌지나무",a:"J. M. 바스콘셀로스",w:"어린 시절의 기억과 이별을 다룬 오래된 성장 소설입니다."},
+    {t:"밝은 밤",a:"최은영",w:"떠난 사람들의 이야기를 이어 붙이며 그리움을 견디게 합니다."},
+    {t:"어린 왕자",a:"앙투안 드 생텍쥐페리",w:"보이지 않는 것을 오래 기억하는 법을 이야기합니다."}]},
+  {emo:"설렘", color:"#a0703a", words:["설렘","설레","기쁨","기뻐","행복","신나","두근"], books:[
+    {t:"연금술사",a:"파울로 코엘료",w:"새로운 시작을 앞둔 마음에 방향을 더해 줍니다."},
+    {t:"달러구트 꿈 백화점",a:"이미예",w:"상상력이 가득한 세계라 들뜬 기분을 그대로 이어 가기 좋습니다."},
+    {t:"우리가 빛의 속도로 갈 수 없다면",a:"김초엽",w:"낯선 세계에 대한 호기심을 크게 넓혀 주는 단편들입니다."}]}
+];
+const EMOS = DB.map(d => d.emo);
+const emoOf = e => DB.find(d => d.emo === e);
+const CATALOG = [];
+DB.forEach(d => d.books.forEach(b => {
+  let c = CATALOG.find(x => x.t === b.t);
+  if (!c){ c = {id:"B"+String(CATALOG.length+1).padStart(2,"0"), t:b.t, a:b.a, w:b.w, emos:[]}; CATALOG.push(c); }
+  c.emos.push(d.emo);
+}));
+const byId = id => CATALOG.find(c => c.id === String(id||"").trim());
+const byTitle = t => CATALOG.find(c => c.t === t);
+
+// 9개 밖 감정 이름을 가까운 감정으로 바꾸는 표
+const SYNONYM = {"쓸쓸함":"외로움","고독":"외로움","허전함":"슬픔","서러움":"슬픔","우울":"슬픔","상실감":"슬픔","걱정":"불안","초조":"불안","긴장":"불안","두려움":"불안","피곤":"지침","피로":"지침","번아웃":"지침","짜증":"분노","억울함":"분노","공허함":"무기력","권태":"무기력","혼란":"막막함","답답함":"막막함","향수":"그리움","아쉬움":"그리움","기쁨":"설렘","행복":"설렘","기대":"설렘","평온":"설렘","차분함":"그리움"};
+function toEmo(name){
+  name = String(name||"").trim();
+  if (EMOS.includes(name)) return name;
+  if (SYNONYM[name]) return SYNONYM[name];
+  const d = DB.find(d => d.words.some(w => name.includes(w)));
+  return d ? d.emo : null;
+}
+
+const EXAMPLES = ["오늘은 날씨가 좀 쌀쌀해","발표 앞두고 계속 떨려","퇴근길 지하철이 꽉 찼어","하나도 안 불안해, 그냥 좀 허전해"];
+const FALLBACK_PICKS = [
+  {text:"요즘 이유 없이 마음이 허전해", emotion:"슬픔"},
+  {text:"해야 할 일은 많은데 손에 안 잡혀", emotion:"무기력"},
+  {text:"새로운 일을 앞두고 괜히 설레", emotion:"설렘"}
+];
+
+/* ============ [2] 코드 안전 검사 (AI보다 먼저) ============ */
+// 변형 욕설을 잡기 위해 공백·기호·숫자를 지운 뒤 비교
+const norm = s => s.toLowerCase().replace(/[\s\d\.\,\!\?\-_~\*\#\@\^\(\)\[\]\/\\'"`:;+=|<>]/g,"");
+const BLOCK = ["시발","씨발","씨바","ㅅㅂ","ㅆㅂ","병신","ㅂㅅ","개새","좆","존나","졸라","ㅈㄴ","지랄","미친놈","미친년","닥쳐","엿먹","fuck","shit","bitch"];
+const CRISIS = ["죽고싶","자살","사라지고싶","살기싫","자해","끝내고싶","죽어버리"];
+const isBlocked = s => { const n = norm(s); return BLOCK.some(w => n.includes(norm(w))); };
+const isCrisis = s => { const n = norm(s); return CRISIS.some(w => n.includes(w)); };
+
+/* ============ [3] AI 연결 ============ */
+let samplePromise = null;
+const getSample = () => samplePromise || (samplePromise = (window.claude ? window.claude.use("sample") : Promise.resolve(null)).catch(() => null));
+let aiOff = false;
+
+/* ============ [4] 지시문 ============ */
+function buildPrompt(input, exclude){
+  const cat = CATALOG.map(c => `${c.id} | 『${c.t}』 ${c.a} | 태그: ${c.emos.join(", ")} | 소개: ${c.w}`).join("\n");
+  return `너는 다정한 한국어 독서 큐레이터다. 사용자가 지금 마음을 한 문장으로 적었다. 아래 규칙대로 판단하고 JSON 하나만 답한다.
+
+판단 순서:
+1) 욕설, 특정 대상을 비하·혐오하는 말, 타인을 공격하는 말이 있으면 mode="block". 감정이 섞여 있어도 block이다.
+   단, 화남·우울·슬픔 같은 부정적 '감정' 표현 자체는 block이 아니다.
+2) 자해·자살 의도가 보이면 mode="crisis".
+3) 그 밖의 문장은 무조건 감정을 찾아 mode="recommend"로 답한다.
+   - 감정이 직접 드러나면 그 감정을 고른다. 부정 표현("안 ~해", "~지 않아")이 붙은 감정은 제외한다.
+   - 감정 단어가 없어도 날씨, 계절, 장소, 음식, 일상 사건에서 연상되는 분위기로 감정을 해석한다.
+     예: "날씨가 쌀쌀해" → 연상 키워드 가을, 쓸쓸함 → 외로움.
+   - "감정을 찾을 수 없다"고 답하지 않는다.
+4) 무작위 글자, 숫자나 기호만 있는 등 뜻을 전혀 알 수 없을 때만 mode="suggest".
+   이때 사용자가 고를 수 있는 자연스러운 한국어 문장 3개를 만들고, 3개는 서로 다른 감정 방향이어야 한다.
+
+공통 규칙:
+- 감정 이름은 다음 9개 중에서만: ${EMOS.join(", ")}
+- primary 1개, secondary 최대 2개.
+- keywords: 해석에 쓴 연상 키워드 1~3개 (직접 감정 표현이면 문장 속 핵심 단어).
+- empathy: 사용자의 문장을 받아 주는 공감 한 문장, 존댓말, 40자 이내. 진단하거나 조언하지 않는다.
+- books: 아래 목록의 id로만 서로 다른 3권.${exclude.length ? " 다음 id는 이미 보여 줬으니 제외: " + exclude.join(", ") : ""}
+- why: 사용자 문장과 그 책을 잇는 이유 한 문장, 존댓말, 60자 이내. 책 소개에 없는 줄거리는 지어내지 않는다.
+
+책 목록:
+${cat}
+
+출력 형식 (JSON 하나만):
+{"mode":"recommend|suggest|block|crisis","primary":"감정","secondary":["감정"],"keywords":["단어"],"empathy":"문장","books":[{"id":"B01","why":"이유"}],"suggestions":[{"text":"문장","emotion":"감정"}]}
+
+사용자 문장: """${input.slice(0,300)}"""`;
+}
+
+/* ============ [5] 화면 상태 ============ */
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const screens = ["s-input","s-loading","s-result","s-pick","s-notice"];
+function show(id){ screens.forEach(s => $("#"+s).hidden = s !== id); $("#home-btn").hidden = id === "s-input"; window.scrollTo({top:0}); }
+let state = {input:"", primary:null, shown:[], raw:null};
+let ctl = null;
+const testOn = () => $("#testmode").checked;
+function rawBlock(){ return testOn() && state.raw ? `<details class="raw card"><summary>테스트 모드 · AI 원본 답</summary><pre>${esc(JSON.stringify(state.raw,null,2))}</pre></details>` : ""; }
+
+/* ============ [6] 흐름 ============ */
+async function start(text, opts={}){
+  text = text.trim();
+  if (!text) return;
+  state.input = text; state.raw = null;
+  if (!opts.more) state.shown = [];
+  // 코드 안전 검사가 먼저 (R-07·R-08, 위기 안내)
+  if (isCrisis(text)) return showCrisis();
+  if (isBlocked(text)) return showPolicy();
+
+  show("s-loading");
+  $("#load-title").textContent = opts.more ? "다른 책을 고르고 있어요" : "마음을 읽고 있어요";
+  const sample = aiOff ? null : await getSample();
+  if (!sample) return fallback(text, "AI를 쓸 수 없어 간단 추천으로 보여 드려요.");
+
+  ctl = new AbortController();
+  try{
+    const res = await sample.json(buildPrompt(text, state.shown), {modelTier:"quick", signal:ctl.signal, cache: opts.more ? false : undefined});
+    state.raw = res;
+    route(res, text);
+  }catch(e){
+    if (e && e.code === "cancelled") return show("s-input");
+    if (e && ["not_granted","sampling_disabled","not_declared","capability_disabled","capability_removed"].includes(e.code)){ aiOff = true; return fallback(text, "Claude 사용이 허용되지 않아 간단 추천으로 보여 드려요."); }
+    showError(e && e.code);
+  }finally{ markConsentSeen(); }
+}
+
+// AI 답 확인 (코드가 최종 판단)
+function route(res, text){
+  const mode = String(res?.mode||"");
+  if (mode === "crisis") return showCrisis();
+  if (mode === "block") return showPolicy();
+  if (mode === "suggest") {
+    const picks = (Array.isArray(res.suggestions) ? res.suggestions : [])
+      .map(s => ({text:String(s?.text||"").slice(0,60), emotion: toEmo(s?.emotion)}))
+      .filter(s => s.text && s.emotion);
+    const uniq = []; picks.forEach(p => { if (uniq.length < 3 && !uniq.some(u => u.emotion === p.emotion)) uniq.push(p); });
+    return showPick(uniq.length === 3 ? uniq : FALLBACK_PICKS);
+  }
+  // recommend
+  const primary = toEmo(res?.primary);
+  if (!primary) return showPick(FALLBACK_PICKS);            // 막다른 안내 대신 문장 고르기
+  const secondary = (Array.isArray(res?.secondary) ? res.secondary : []).map(toEmo).filter(e => e && e !== primary).filter((e,i,a)=>a.indexOf(e)===i).slice(0,2);
+  const keywords = (Array.isArray(res?.keywords) ? res.keywords : []).map(k => String(k).slice(0,12)).filter(Boolean).slice(0,3);
+  const picked = [], seen = new Set(state.shown);
+  (Array.isArray(res?.books) ? res.books : []).forEach(b => {
+    const c = byId(b?.id);
+    if (c && !seen.has(c.id) && picked.length < 3){ seen.add(c.id); picked.push({...c, why:String(b.why||"").slice(0,90) || c.w, filled:false}); }
+  });
+  fill(picked, primary, seen);
+  showResult({primary, secondary, keywords, empathy:String(res?.empathy||"").slice(0,60), books:picked});
+}
+
+// 빈자리 채우기: 주 감정 → 나머지 목록 순
+function fill(picked, primary, seen){
+  // 주 감정 칸의 책은 그 감정에 맞는 소개 문장을 함께 씀
+  const pool = [...emoOf(primary).books.map(b => ({...byTitle(b.t), w:b.w})), ...CATALOG];
+  for (const c of pool){ if (picked.length >= 3) break; if (!seen.has(c.id)){ seen.add(c.id); picked.push({...c, why:c.w, filled:true}); } }
+}
+
+// AI 없이 동작 (규칙 기반)
+function fallback(text, msg){
+  const q = text.replace(/\s+/g,"");
+  const d = DB.find(d => d.words.some(w => q.includes(w.replace(/\s+/g,""))));
+  if (!d) return showPick(FALLBACK_PICKS, msg);
+  const picked = [], seen = new Set(state.shown); fill(picked, d.emo, seen);
+  picked.forEach(p => p.filled = false);
+  showResult({primary:d.emo, secondary:[], keywords:[], empathy:"", books:picked, note:msg});
+}
+
+// 감정 바꾸기 (AI 호출 없음)
+function changeEmotion(emo){
+  state.shown = []; state.raw = null;
+  const picked = [], seen = new Set(); fill(picked, emo, seen); picked.forEach(p => p.filled = false);
+  showResult({primary:emo, secondary:[], keywords:[], empathy:"", books:picked, changed:true});
+}
+
+/* ============ [7] 화면 그리기 ============ */
+function spine(c, i){ const col = emoOf(c.emos[0]).color; return `<div class="spine" style="background:${col}" aria-hidden="true">${i+1}</div>`; }
+function showResult(r){
+  state.primary = r.primary;
+  r.books.forEach(b => { if (!state.shown.includes(b.id)) state.shown.push(b.id); });
+  const head = r.changed ? `${r.primary} 마음에 맞는 책으로 바꿨어요.` : (r.empathy || `지금 마음에 어울리는 책을 골랐어요.`);
+  const moreLeft = CATALOG.length - state.shown.length;
+  $("#s-result").innerHTML = `
+    ${r.note ? `<div class="err">${esc(r.note)}</div>` : ""}
+    <div class="card">
+      <h2 id="h-result" class="sr">추천 결과</h2>
+      <p class="quote">${esc(head)}</p>
+      <div class="mood"><span class="main">${r.primary}</span>${r.secondary.map(s => `<span class="sub">${s}</span>`).join("")}</div>
+      ${r.keywords.length ? `<p class="kw">이렇게 읽었어요: <b>${r.keywords.map(esc).join(" · ")}</b></p>` : ""}
+    </div>
+    <section aria-label="추천 책">
+      <p class="label">이 마음에 어울리는 책</p>
+      <ol class="books">${r.books.map((b,i) => `
+        <li class="card book">${spine(b,i)}
+          <div class="min">
+            <h3>${esc(b.t)}</h3><div class="by">${esc(b.a)}</div>
+            <p>${esc(b.why)}</p>
+            ${b.filled ? `<span class="tag-fill">기본 추천</span>` : ""}
+            <div><a href="https://www.google.com/search?q=${encodeURIComponent(b.t+" "+b.a+" 책")}" target="_blank" rel="noopener">서점에서 찾아보기 ↗</a></div>
+          </div>
+        </li>`).join("")}
+      </ol>
+    </section>
+    <div class="card">
+      <p class="label">이 감정이 맞나요? 다르면 골라 주세요</p>
+      <div class="chips">${EMOS.map(e => `<button class="chip" aria-pressed="${e===r.primary}" data-emo="${e}">${e}</button>`).join("")}</div>
+    </div>
+    <div class="row">
+      <button class="btn ghost" id="again">다시 쓰기</button>
+      <button class="btn" id="more" ${moreLeft <= 0 || r.changed || r.note ? "disabled" : ""}>다른 책 보기</button>
+    </div>
+    ${rawBlock()}`;
+  $("#s-result").querySelectorAll("[data-emo]").forEach(b => b.onclick = () => { if (b.dataset.emo !== r.primary) changeEmotion(b.dataset.emo); });
+  $("#again").onclick = reset;
+  $("#more").onclick = () => start(state.input, {more:true});
+  show("s-result");
+}
+
+function showPick(picks, note){
+  $("#s-pick").innerHTML = `
+    ${note ? `<div class="err">${esc(note)}</div>` : ""}
+    <div>
+      <h2 id="h-pick">어떤 마음에 더 가까운가요?</h2>
+      <p class="lead">적어 주신 문장만으로는 마음을 읽기 어려웠어요. 가까운 문장을 골라 주세요.</p>
+    </div>
+    <ul class="pick">${picks.map((p,i) => `<li><button data-i="${i}"><span>${esc(p.text)}</span><span class="e">${p.emotion}</span></button></li>`).join("")}</ul>
+    <button class="btn ghost" id="pick-again">직접 다시 쓰기</button>
+    ${rawBlock()}`;
+  $("#s-pick").querySelectorAll("[data-i]").forEach(b => b.onclick = () => {
+    const p = picks[+b.dataset.i];
+    if (aiOff || note) return changeEmotion(p.emotion);
+    start(p.text);
+  });
+  $("#pick-again").onclick = reset;
+  show("s-pick");
+}
+
+function showPolicy(){
+  $("#s-notice").innerHTML = `
+    <div class="notice policy" role="alert">
+      <h2>이 문장에는 추천을 드리지 않아요</h2>
+      <p>마음책방은 모두가 편하게 쓰는 공간이라, 아래 표현이 담긴 문장에는 답하지 않습니다.</p>
+      <ul><li>욕설이나 비속어</li><li>특정 사람이나 집단을 비하·혐오하는 말</li><li>다른 사람을 공격하거나 위협하는 말</li></ul>
+      <p>화가 나거나 속상한 마음 자체는 괜찮아요. 거친 말 대신 지금 느끼는 마음을 적어 주시면 어울리는 책을 골라 드릴게요.</p>
+    </div>
+    <button class="btn" id="n-again">다시 쓰기</button>
+    ${rawBlock()}`;
+  $("#n-again").onclick = reset;
+  show("s-notice");
+}
+
+function showCrisis(){
+  $("#s-notice").innerHTML = `
+    <div class="notice crisis" role="alert">
+      <h2>지금 많이 힘드신 것 같아요</h2>
+      <p>이런 마음은 책보다 사람과 먼저 나누는 게 좋아요. 혼자 견디지 않으셔도 됩니다.</p>
+      <p style="margin-top:12px">자살예방 상담전화</p>
+      <div class="tel">109</div>
+      <p>위급한 상황이면 <b>119</b>에 바로 연락해 주세요. 가까운 사람에게 지금 마음을 한 줄 보내는 것도 도움이 돼요.</p>
+    </div>
+    <button class="btn ghost" id="n-again">처음으로</button>`;
+  $("#n-again").onclick = reset;
+  show("s-notice");
+}
+
+function showError(code){
+  const msg = ({rate_limited:"요청이 많아 잠시 쉬고 있어요. 조금 뒤 다시 눌러 주세요.", session_expired:"로그인이 만료됐어요. 다시 로그인한 뒤 시도해 주세요.", invalid_json:"답을 정리하지 못했어요. 한 번 더 눌러 주세요.", refused:"이 문장에는 답하기 어려워요. 표현을 바꿔 다시 적어 주세요."})[code] || "연결이 잠시 끊겼어요. 다시 눌러 주세요.";
+  show("s-input");
+  const box = document.createElement("div"); box.className = "err"; box.setAttribute("role","alert"); box.textContent = msg;
+  $("#f").prepend(box); setTimeout(() => box.remove(), 6000);
+}
+
+function reset(){ $("#q").value = ""; updateCount(); show("s-input"); $("#q").focus(); }
+
+/* ============ [8] 입력 연결 ============ */
+function updateCount(){ const n = $("#q").value.length; $("#cnt").textContent = n; $("#go").disabled = !$("#q").value.trim(); }
+$("#q").addEventListener("input", updateCount);
+$("#f").addEventListener("submit", e => { e.preventDefault(); start($("#q").value); });
+$("#q").addEventListener("keydown", e => { if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) { e.preventDefault(); start($("#q").value); } });
+$("#cancel").onclick = () => ctl?.abort();
+$("#home-btn").onclick = reset;
+EXAMPLES.forEach(t => { const b = document.createElement("button"); b.type="button"; b.className="chip"; b.textContent=t; b.onclick = () => { $("#q").value = t; updateCount(); start(t); }; $("#examples").appendChild(b); });
+
+function markConsentSeen(){ try{ localStorage.setItem("consentSeen","1"); }catch(e){} $("#consent-note").hidden = true; }
+try{ $("#consent-note").hidden = !!localStorage.getItem("consentSeen"); }catch(e){ $("#consent-note").hidden = false; }
+try{ $("#testmode").checked = location.hash === "#test" || localStorage.getItem("testmode") === "1"; }catch(e){}
+$("#testmode").addEventListener("change", e => { try{ localStorage.setItem("testmode", e.target.checked ? "1" : "0"); }catch(_){} });
+getSample();
+</script>
+
+</body></html>
