@@ -275,7 +275,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="side-sub">11.09(월) – 11.13(금) · 실시간 비대면</div>
 </div>
 <nav>
-<div class="nav-title">전체 목차</div><div class="grp"><div class="grp-label">GOAL</div><a class="l2" href="#goal">이번 주 목표</a></div><div class="grp"><div class="grp-label">DAYS</div><a class="l2" href="#days">날짜별 교안</a></div><div class="grp"><div class="grp-label">FLOW</div><a class="l2" href="#flow">한 주의 흐름</a></div><div class="grp"><div class="grp-label">교육 안내</div><a class="l2" href="#ready">이번 주 준비물</a></div>
+<div class="nav-title">전체 목차</div><div class="grp"><div class="grp-label">GOAL</div><a class="l2" href="#goal">이번 주 목표</a></div><div class="grp"><div class="grp-label">DAYS</div><a class="l2" href="#days">날짜별 교안</a></div><div class="grp"><div class="grp-label">FLOW</div><a class="l2" href="#flow">한 주의 흐름</a></div><div class="grp"><div class="grp-label">자료실</div><a class="l2" href="#resources">자료실</a></div><div class="grp"><div class="grp-label">교육 안내</div><a class="l2" href="#ready">이번 주 준비물</a></div>
 </nav>
 <div class="side-link"><b>이 교안 주소</b><a href="https://loreenkim0301.github.io/swy-lecturenote/261109-ai-pm-week3/">loreenkim0301.github.io/swy-lecturenote/261109-ai-pm-week3/</a></div>
 <div class="side-foot">강사 김수정 · 셀렉트웨이</div>
@@ -323,6 +323,37 @@ aside nav a.active{border-left-color:var(--blue)}
 
 <section class="section" id="flow"><div class="section-label">FLOW</div><h2>한 주의 흐름</h2>
 <div class="flow"><div><span>월</span><b>사용자의 데이터</b><small>데이터 개론·가설 검증, 정리본, GA·이벤트 텍소노미</small></div><div><span>화</span><b>외부의 데이터</b><small>웹 크롤링, 클로드로 크롤링하는 법, 정리본</small></div><div><span>수</span><b>AI가 고르게 하기</b><small>클로드 아티팩트로 감정 → 책 3권, AI 스튜디오로 옮겨 API 연결</small></div><div><span>목</span><b>챗봇 화면</b><small>클로드 코드(데스크톱 앱)로 만들기</small></div><div><span>금</span><b>챗봇에 API 연결</b><small>API 키, 테스트, 회고</small></div></div>
+</section>
+
+<section class="section" id="resources"><div class="section-label">RESOURCES</div><h2>자료실</h2>
+<p>수업을 놓친 날이 있으면 여기서 강사 예시를 받아 이어서 해요. 같은 자료를 세 가지 방법으로 받을 수 있어요.</p>
+<div class="table-wrap"><table>
+<tr><th>날짜</th><th>자료</th><th>바로 열기</th><th>내려받기</th></tr>
+<tr><td>11/11(수)</td><td><b>마음책방 프로토타입 v3</b> (강사 예시)<br/>DAY 3 3세션에서 개선한 마음책방이에요. 감정 문장을 넣으면 책 3권을 추천해요. DAY 4 0세션에서 이어서 써요.</td><td><a href="https://claude.ai/artifact/EmTErvCbmXEEMx1PiAWrRg" target="_blank" rel="noopener">클로드 아티팩트</a> (클로드 로그인 필요, AI 추천 동작)</td><td><a href="./resources/261111_마음책방_프로토타입_v3.html" download>HTML 파일</a><br/><a href="./resources/261111_마음책방_프로토타입_v3.zip" download>전체 ZIP</a> (HTML + 안내.txt)<br/><a href="https://github.com/loreenkim0301/swy-lecturenote/blob/claude/hello-page-deploy-yqm9q5/261109-ai-pm-week3/resources/" target="_blank" rel="noopener">GitHub에서 보기</a></td></tr>
+</table></div>
+<div class="notice"><b>내려받은 HTML은 AI 없이 동작해요</b><br/>이 프로토타입은 클로드 아티팩트 안에서만 클로드를 불러요. 내 컴퓨터에서 HTML 파일을 열면 AI 대신 감정 단어로 찾는 간단 추천으로 동작하고, 화면 위에 "AI를 쓸 수 없어 간단 추천으로 보여 드려요."가 보여요. AI가 답하는 모습은 클로드 아티팩트 링크에서 봐요. 지시문(프롬프트)은 코드 안의 <code>[4] 지시문</code> 부분에 있어요.</div>
+
+<h3>받는 방법 1 · 이 페이지에서 바로 받기</h3>
+<ol>
+<li>위 표의 [HTML 파일] 또는 [전체 ZIP]을 눌러요. 내 컴퓨터의 다운로드 폴더에 저장돼요.</li>
+<li>ZIP은 더블클릭해서 압축을 풀어요. 폴더 안에 HTML 파일과 안내.txt가 있어요.</li>
+<li>HTML 파일을 더블클릭하면 크롬에서 열려요. 눌러도 화면만 바뀌고 저장되지 않으면, 링크를 마우스 오른쪽 버튼으로 눌러 [다른 이름으로 링크 저장]을 골라요.</li>
+</ol>
+
+<h3>받는 방법 2 · GitHub에서 파일 하나만 받기</h3>
+<ol>
+<li>위 표의 [GitHub에서 보기]를 눌러 자료 폴더를 열어요.</li>
+<li>받고 싶은 파일 이름을 눌러 파일 화면을 열어요.</li>
+<li>파일 화면 오른쪽 위의 [Raw] 버튼 옆에 있는 내려받기(아래 화살표) 아이콘을 눌러요. 그 파일 하나만 저장돼요.</li>
+</ol>
+<p class="source-note">출처: GitHub Docs <a href="https://docs.github.com/en/repositories/working-with-files/using-files/viewing-and-understanding-files" target="_blank" rel="noopener">Viewing and understanding files</a> (Raw 보기와 파일 내려받기, 2026-11-12 확인)</p>
+
+<h3>받는 방법 3 · 내 클로드에 다시 만들기</h3>
+<ol>
+<li>[HTML 파일]을 내려받아요.</li>
+<li>클로드 새 대화에 파일을 올리고 "이 HTML 파일을 아티팩트로 그대로 열어 줘. 내용은 바꾸지 마."라고 보내요.</li>
+<li>열린 아티팩트에서 이어서 실습해요. 내 클로드 계정으로 열었으니 AI 추천도 동작하는지 봐요.</li>
+</ol>
 </section>
 
 <section class="section" id="ready"><div class="section-label">PREPARE</div><h2>이번 주 준비물</h2>
