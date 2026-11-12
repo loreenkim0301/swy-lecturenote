@@ -295,7 +295,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="nav-title">전체 목차</div>
 <div class="grp"><div class="grp-label">교육 안내</div><a class="l2" href="#overview">교육 개요</a><a class="l2" href="#prep">수업 전 준비</a><a class="l2" href="#tt">타임테이블</a></div>
 <div class="grp"><div class="grp-label">오늘의 단어</div><a class="l2" href="#words">오늘의 단어</a></div>
-<div class="grp"><div class="grp-label">SESSION 0</div><a class="l2" href="#s0">AI 서비스를 써 보고 관리자 페이지 만들기</a><a class="l3" href="#s0-1">0-1. 뤼튼·수노 써 보기</a><a class="l3" href="#s0-2">0-2. AI 서비스와 AI 스튜디오</a><a class="l3" href="#s0-3">0-3. 화면 없이 모델만 테스트·Few-shot</a><a class="l3" href="#s0-4">0-4. [기획자] 관리자 페이지 UI 설계</a><a class="l3" href="#s0-5">0-5. [구현] 프롬프트 변경 기능</a><a class="l3" href="#s0-6">0-6. [구현] AI 스튜디오·모델 선택</a><a class="l3" href="#s0-7">0-7. [확인] 기획서와 결과 견주기</a><a class="l3" href="#s0-8">0-8. 결과</a></div>
+<div class="grp"><div class="grp-label">SESSION 0</div><a class="l2" href="#s0">AI 서비스를 써 보고 관리자 페이지 만들기</a><a class="l3" href="#s0-1">0-1. 뤼튼·수노 써 보기</a><a class="l3" href="#s0-2">0-2. AI 서비스와 AI 스튜디오</a><a class="l3" href="#s0-3">0-3. Playground에서 모델만 테스트·Few-shot</a><a class="l3" href="#s0-4">0-4. [기획자] 관리자 페이지 UI 설계</a><a class="l3" href="#s0-5">0-5. [구현] 프롬프트 변경 기능</a><a class="l3" href="#s0-6">0-6. [구현] AI 스튜디오·모델 선택</a><a class="l3" href="#s0-7">0-7. [확인] 기획서와 결과 견주기</a><a class="l3" href="#s0-8">0-8. 결과</a></div>
 <div class="grp"><div class="grp-label">SESSION 1</div><a class="l2" href="#s1">클로드 코드란?</a><a class="l3" href="#s1-1">1-1. 클로드 코드(데스크톱 앱)란?</a><a class="l3" href="#s1-2">1-2. 오늘 만들 것 한눈에 보기</a></div>
 <div class="grp"><div class="grp-label">SESSION 2</div><a class="l2" href="#s2">설치하고 첫 세션 열기</a><a class="l3" href="#s2-1">2-1. 데스크톱 앱 설치와 Code 탭 열기</a><a class="l3" href="#s2-2">2-2. 프로젝트 폴더를 열고 이벤트 정보 파일 만들기</a><a class="l3" href="#s2-3">2-3. 결과</a></div>
 <div class="grp"><div class="grp-label">SESSION 3</div><a class="l2" href="#s3">챗봇이 지킬 답변 규칙 쓰기</a><a class="l3" href="#s3-1">3-1. 시스템 프롬프트·Few-shot·CoT란?</a><a class="l3" href="#s3-2">3-2. 시스템 프롬프트 쓰기</a><a class="l3" href="#s3-3">3-3. 예시 답변(Few-shot)과 판단 순서(CoT) 더하기</a><a class="l3" href="#s3-4">3-4. 결과</a></div>
@@ -406,10 +406,10 @@ aside nav a.active{border-left-color:var(--blue)}
 
 <div class="topic" id="s0-2"><h3><span class="stage">개념</span>0-2. 내가 써 본 AI 서비스와 구글 AI 스튜디오는 어떻게 다른가요?</h3>
 <h4>AI 서비스는 무엇으로 이루어져 있나요?</h4>
-<p>뤼튼과 수노는 AI 모델 위에 회사가 만든 화면을 얹고, 회사가 정한 지시문으로 AI를 불러요. 사용자는 화면만 쓰고, 모델과 지시문은 볼 수 없어요. 구글 AI 스튜디오의 채팅 화면은 구글이 자기 모델을 최소한의 화면만 얹어 그대로 써 보게 한 곳이에요. 지시문은 내가 직접 써요.</p>
-<div class="table-wrap"><table><tr><th></th><th>뤼튼·수노</th><th>구글 AI 스튜디오 채팅 화면</th><th>내 서비스(마음책방)</th></tr>
+<p>뤼튼과 수노는 AI 모델 위에 회사가 만든 화면을 얹고, 회사가 정한 지시문으로 AI를 불러요. 사용자는 화면만 쓰고, 모델과 지시문은 볼 수 없어요. 구글 AI 스튜디오의 Playground는 구글이 자기 모델을 최소한의 화면만 얹어 그대로 써 보게 한 곳이에요. 지시문은 내가 직접 써요.</p>
+<div class="table-wrap"><table><tr><th></th><th>뤼튼·수노</th><th>구글 AI 스튜디오 Playground</th><th>내 서비스(마음책방)</th></tr>
 <tr><td><b>AI 모델</b></td><td>회사가 골라요</td><td>내가 골라요</td><td>관리자가 골라요 (0-6에서 만들어요)</td></tr>
-<tr><td><b>화면</b></td><td>회사가 만든 화면</td><td>테스트용 최소 화면</td><td>사용자 화면 + 관리자 화면</td></tr>
+<tr><td><b>화면</b></td><td>회사가 만든 화면</td><td>테스트용 최소 화면 (앱은 [Build]에서 따로 만들어요)</td><td>사용자 화면 + 관리자 화면</td></tr>
 <tr><td><b>지시문(프롬프트)</b></td><td>사용자는 볼 수 없어요</td><td>내가 직접 써요</td><td>관리자가 고쳐요 (0-5에서 만들어요)</td></tr>
 </table></div>
 <p class="small">이 표는 이해를 돕기 위한 비유예요. 서비스마다 실제 구조는 다를 수 있어요.</p>
@@ -428,16 +428,27 @@ aside nav a.active{border-left-color:var(--blue)}
 </table></div>
 </div>
 
-<div class="topic" id="s0-3"><h3><span class="stage">사용자</span>0-3. AI 스튜디오에서 화면 없이 모델만 테스트하기 (Few-shot까지)</h3>
-<p>화면을 만들기 전에 모델과 지시문만 먼저 테스트할 수 있어요. 수요일에 마음책방을 만들었던 것 기억하시나요? 그 마음책방에 들어간 AI 기능을 AI 스튜디오 채팅 화면에서 테스트해요.</p>
-<p><b>STEP 1. 채팅 화면 열고 둘러보기</b></p>
-<p><a href="https://aistudio.google.com/prompts/new_chat" target="_blank" rel="noopener">aistudio.google.com/prompts/new_chat</a>을 개인 구글 계정으로 열어요.</p>
+<div class="topic" id="s0-3"><h3><span class="stage">사용자</span>0-3. AI 스튜디오 Playground에서 화면 없이 모델만 테스트하기 (Few-shot까지)</h3>
+<p>화면을 만들기 전에 모델과 지시문만 먼저 테스트할 수 있어요. 수요일에 마음책방을 만들었던 것 기억하시나요? 그때는 AI 스튜디오의 [Build] 메뉴에서 앱을 만들었어요. 이번에는 처음 써 보는 [Playground] 메뉴에서, 마음책방에 들어간 AI 기능만 따로 떼어 테스트해요.</p>
+<h4>Build와 Playground는 무엇이 다른가요?</h4>
+<p>둘 다 구글 AI 스튜디오 안에 있는 메뉴예요. [Build]는 앱을 만드는 곳이고, [Playground]는 모델에게 바로 말을 걸어 보는 곳이에요.</p>
+<div class="table-wrap"><table><tr><th></th><th>Build (수요일에 쓴 곳)</th><th>Playground (오늘 처음 써요)</th></tr>
+<tr><td><b>무엇을 하나</b></td><td>말로 요청하면 AI 스튜디오가 화면과 코드가 있는 앱을 만들어 줘요</td><td>모델을 골라 질문을 보내고, 모델의 답을 바로 봐요</td></tr>
+<tr><td><b>결과물</b></td><td>화면(프론트엔드)과 서버 코드가 있는 웹 앱, 미리보기, 배포</td><td>대화 기록. 앱이나 화면은 만들어지지 않아요</td></tr>
+<tr><td><b>지시문은 어디에</b></td><td>앱의 코드 안에 들어 있어요 (수요일 2-5에서 코드 안에서 찾았던 지시문)</td><td>[Run settings]의 [System Instructions] 칸에 내가 직접 넣어요</td></tr>
+<tr><td><b>모델 바꾸기</b></td><td>코드를 고쳐야 해요</td><td>Model selection에서 바로 바꿔요</td></tr>
+<tr><td><b>언제 쓰나</b></td><td>서비스 화면까지 만들 때</td><td>화면을 만들기 전에, 어떤 모델과 어떤 지시문이 좋은지 먼저 견줄 때</td></tr>
+</table></div>
+<p>Playground는 수요일에 만든 앱과 따로 열리는 화면이에요. Playground에서 지시문이나 모델을 바꿔도 수요일 앱은 바뀌지 않아요. 여기서 고른 지시문과 모델을 앱에 쓰려면 직접 옮겨야 해요. 그 일을 쉽게 하려고 0-5·0-6에서 관리자 페이지를 만들어요.</p>
+<p class="source-note">출처: Google AI for Developers <a href="https://ai.google.dev/gemini-api/docs/ai-studio-quickstart" target="_blank" rel="noopener">Google AI Studio quickstart</a> (공식, 2026-07-30 갱신, Playground: "모델을 빠르게 써 보고 여러 프롬프트를 실험하는 곳") · <a href="https://ai.google.dev/gemini-api/docs/aistudio-build-mode" target="_blank" rel="noopener">Build apps in Google AI Studio</a> (공식, 2026-10-26 갱신, Build: "프롬프트로 완성된 앱을 만드는 곳")</p>
+<p><b>STEP 1. Playground 열고 둘러보기</b></p>
+<p>구글 AI 스튜디오 왼쪽 메뉴에서 [Build] 대신 [Playground]를 눌러요. 새 채팅 화면이 열려요. 메뉴가 안 보이면 주소창에 <a href="https://aistudio.google.com/prompts/new_chat" target="_blank" rel="noopener">aistudio.google.com/prompts/new_chat</a>을 넣어 바로 들어가요. 개인 구글 계정으로 열어요.</p>
 <div class="table-wrap"><table><tr><th>화면 요소</th><th>보는 법</th></tr>
 <tr><td><b>Model selection 패널</b></td><td>오른쪽에서 모델을 골라요. 위의 탭(All·Featured·Gemini·Live·Images·Video·Audio·Music·Agents·Gemma)으로 종류를 걸러요.</td></tr>
 <tr><td><b>모델 카드</b></td><td>모델 이름과 코드 이름(예: gemini-3.8-flash), 한 줄 설명, 입력·출력 가격, 지식 기준일, 출시일이 보여요.</td></tr>
 <tr><td><b>배지</b></td><td><code class="inline">New</code>는 새로 나온 모델, <code class="inline">Paid</code>는 유료 모델이에요.</td></tr>
 </table></div>
-<p class="source-note">2026년 11월 12일 강사 계정 화면 기준이에요. 이날 화면에서 Gemini 4 Carbon·Gemini 4 Argon에는 Paid 표시가 있었고, Gemini 3.8 Flash에는 없었어요.</p>
+<p class="source-note">2026년 11월 12일 강사 계정의 Playground 화면 기준이에요. 이날 화면에서 Gemini 4 Carbon·Gemini 4 Argon에는 Paid 표시가 있었고, Gemini 3.8 Flash에는 없었어요.</p>
 <p><b>STEP 2. 마음책방의 지시문 넣기</b></p>
 <p>수요일 2-5에서 찾은 마음책방 AI 탭의 지시문을 복사해요. 오른쪽 위의 조절 아이콘을 눌러 [Run settings]를 열고, [System Instructions] 칸에 붙여 넣어요.</p>
 <p class="source-note">출처: Google AI for Developers <a href="https://ai.google.dev/gemini-api/docs/ai-studio-quickstart" target="_blank" rel="noopener">Google AI Studio quickstart</a> (공식, 2026-07-30 갱신). 메뉴 이름이나 위치가 지금 화면과 다르면 지금 화면을 따라요.</p>
@@ -465,7 +476,7 @@ aside nav a.active{border-left-color:var(--blue)}
 </ul>
 <p class="source-note">출처: Google AI for Developers <a href="https://ai.google.dev/gemini-api/docs/prompting-strategies" target="_blank" rel="noopener">Prompt design strategies</a> (공식, 2026-10-13 갱신) · Google for Developers <a href="https://developers.google.com/machine-learning/crash-course/llm/tuning" target="_blank" rel="noopener">Machine Learning Crash Course · LLMs: Fine-tuning, distillation, and prompt engineering</a> (공식, 2025-12-03 갱신)</p>
 <h4>써 볼까요?</h4>
-<p>STEP 3에서 쓴 모델 중 하나만 골라요. [System Instructions] 칸의 지시문 맨 아래에 아래 예시를 붙여 넣어요. [ ] 안은 내가 직접 검색해서 찾은 실제 책으로 바꿔요.</p>
+<p>STEP 3에서 쓴 모델 중 하나만 골라요. Playground의 [System Instructions] 칸의 지시문 맨 아래에 아래 예시를 붙여 넣어요. [ ] 안은 내가 직접 검색해서 찾은 실제 책으로 바꿔요.</p>
 <p class="blk k-ex"><span>예시</span>지시문 아래에 붙일 예시 3개</p>
 <div class="copybox"><div class="copyhead"><span>예시 · [ ]를 바꿔서 지시문 맨 아래에 붙여 넣으세요</span><button type="button">복사</button></div><pre>아래는 좋은 답의 예시야. 같은 형식으로 답해.
 
@@ -574,7 +585,7 @@ aside nav a.active{border-left-color:var(--blue)}
 </div>
 
 <div class="topic" id="s0-7"><h3><span class="stage check">기획자·확인</span>0-7. 기획서와 결과 견주기</h3>
-<p>기획자로 돌아와요. 0-4 기획서의 완료 기준으로 판단하고, 0-3에서 채팅 화면으로 테스트한 결과와도 견줘요.</p>
+<p>기획자로 돌아와요. 0-4 기획서의 완료 기준으로 판단하고, 0-3에서 Playground로 테스트한 결과와도 견줘요.</p>
 <p class="blk k-tpl"><span>빈 템플릿</span>관리자 페이지 확인표</p>
 <div class="table-wrap"><table class="tpl">
 <tr><th>완료 기준</th><th>판단(맞다·아니다)</th><th>확인한 것</th></tr>
@@ -582,7 +593,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td>되돌리기를 누르면 처음 지시문으로 돌아간다</td><td></td><td></td></tr>
 <tr><td>모델을 2개 이상 고를 수 있다</td><td></td><td></td></tr>
 <tr><td>감정 3개의 결과가 모델별로 나란히 보인다</td><td></td><td></td></tr>
-<tr><td>0-3 채팅 화면의 결과와 앱의 결과가 비슷하다</td><td></td><td></td></tr>
+<tr><td>0-3 Playground의 결과와 앱의 결과가 비슷하다</td><td></td><td></td></tr>
 </table></div>
 <p class="blk k-chk"><span>확인할 점</span></p>
 <ul class="checklist"><li>테스트할 때마다 무료 한도를 써요. 감정 3개 × 모델 2개, 한 번씩만 눌렀다</li><li>내가 고른 모델과 그 이유를 한 줄로 적었다</li></ul>
