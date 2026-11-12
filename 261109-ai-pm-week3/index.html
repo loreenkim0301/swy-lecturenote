@@ -290,9 +290,9 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="hero-grid">
 <div><b>기간</b><span>11월 9일(월) – 13일(금) · 실시간 비대면</span></div>
 <div><b>시간</b><span>월–금 09:00–18:00 (8h) · 총 40시간</span></div>
-<div><b>3주차 결과물</b><span>시점별 측정 표·A/B 테스트 계획서, 정리본 시트, GA를 붙인 신청 페이지, 크롤링 데이터, 책 추천 Hello 페이지, API를 붙인 챗봇</span></div>
+<div><b>3주차 결과물</b><span>시점별 측정 표·A/B 테스트 계획서, 정리본 시트, GA를 붙인 신청 페이지, 크롤링 데이터, 책 추천 Hello 페이지, 관리자 페이지가 있는 마음책방, 자동 배포되는 마음책방 주소</span></div>
 </div>
-<nav aria-label="3주차 교안" class="day-nav"><a aria-current="page" href="./">3주차 홈</a><a href="./d1-sheet-appsscript.html">DAY 1 사용자의 데이터·GA</a><a href="./d2-web-crawling.html">DAY 2 웹 크롤링</a><a href="./d3-ai-studio-books.html">DAY 3 감정 책 추천</a><a href="./d4-claude-code-chatbot.html">DAY 4 관리자 페이지·로컬 서버</a><a href="./d5-chatbot-api.html">DAY 5 클로드 코드 챗봇·AI API</a></nav>
+<nav aria-label="3주차 교안" class="day-nav"><a aria-current="page" href="./">3주차 홈</a><a href="./d1-sheet-appsscript.html">DAY 1 사용자의 데이터·GA</a><a href="./d2-web-crawling.html">DAY 2 웹 크롤링</a><a href="./d3-ai-studio-books.html">DAY 3 감정 책 추천</a><a href="./d4-claude-code-chatbot.html">DAY 4 관리자 페이지·로컬 서버</a><a href="./d5-chatbot-api.html">DAY 5 마음책방 자동 배포</a></nav>
 </header>
 
 <section class="section" id="goal"><div class="section-label">GOAL</div><h2>이번 주 목표</h2>
@@ -300,7 +300,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <ol class="goal-list">
 <li><b>기획자에게 필요한 데이터를 두 갈래로 모아요.</b> ① 사용자의 데이터: 사용자가 직접 입력한 값은 구글 시트에 쌓고, GA를 연결해 방문·클릭 같은 행동을 모아요. ② 외부의 데이터: 웹에 있는 정보는 크롤링으로 모아요.</li>
 <li><b>모은 데이터를 쓸 수 있게 정리해요.</b> 원본은 그대로 두고, 빈칸·중복·형식을 규칙으로 정리한 정리본을 만들어요.</li>
-<li><b>AI API를 내 서비스에 붙여요.</b> API 키를 받고 무료 한도 안에서 호출해 보고, 목·금요일에는 클로드 코드로 챗봇 화면에 API를 연결해요.</li>
+<li><b>AI API를 내 서비스에 붙여요.</b> API 키를 받고 무료 한도 안에서 호출해 보고, 목요일에는 관리자 페이지와 로컬 서버를, 금요일에는 클로드 코드로 마음책방을 깃헙에 올려 자동 배포(CI/CD)해요.</li>
 </ol>
 <div class="table-wrap"><table>
 <tr><th>구분</th><th>2주차에 한 것</th><th>3주차에 하는 것</th></tr>
@@ -308,7 +308,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td><b>외부의 데이터</b></td><td>—</td><td>웹 크롤링(파이썬, 클로드로 크롤링하는 실무 방법)</td></tr>
 <tr><td><b>데이터 다루기</b></td><td>저장된 이름이 콘솔에 보이는지 확인</td><td>원본과 정리본을 나누고 규칙으로 전처리</td></tr>
 <tr><td><b>AI 쓰는 법</b></td><td>AI가 화면과 코드를 만들어 줌</td><td>내 페이지가 AI API를 불러 사용자에게 답함</td></tr>
-<tr><td><b>도구</b></td><td>클로드, 넷리파이·버셀, 볼트, 구글 AI 스튜디오</td><td>클로드(아티팩트), 구글 시트·앱스스크립트, 코랩, 클로드 코드(데스크톱 앱), 깃헙·버셀</td></tr>
+<tr><td><b>도구</b></td><td>클로드, 넷리파이·버셀, 볼트, 구글 AI 스튜디오</td><td>클로드(아티팩트), 구글 시트·앱스스크립트, 코랩, 클로드 코드(데스크톱 앱), 깃헙 페이지스·깃헙 액션, 파이어베이스 호스팅</td></tr>
 </table></div>
 </section>
 
@@ -319,12 +319,12 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td>11/10(화) 09:00–18:00</td><td>[기본] AI 서비스 개발 (8/18)</td><td><a href="./d2-web-crawling.html">DAY 2 · 외부의 데이터 모으기: 파이썬 웹 크롤링과 클로드로 크롤링하는 실무 방법</a></td><td>크롤링 확인표 + 책 1,000권 원본·정리본 시트 + 클로드로 받은 CSV</td></tr>
 <tr><td>11/11(수) 09:00–18:00</td><td>[기본] AI 서비스 개발 (9/18)</td><td><a href="./d3-ai-studio-books.html">DAY 3 · 오늘의 감정을 넣으면 맞는 책 3권을 추천하는 서비스(클로드 아티팩트) · 구글 AI 스튜디오로 옮겨 API 연결</a></td><td>감정 책 추천 아티팩트 + API로 답하는 AI 스튜디오 앱 + 모델 비교표</td></tr>
 <tr><td>11/12(목) 09:00–18:00</td><td>[기본] AI 서비스 개발 (10/18)</td><td><a href="./d4-claude-code-chatbot.html">DAY 4 · 관리자 페이지로 AI 지시문·모델 바꾸기 + 내 컴퓨터에서 로컬 서버 띄우기</a></td><td>관리자 페이지가 있는 마음책방 + 로컬 서버로 연 헬로 페이지·마음책방</td></tr>
-<tr><td>11/13(금) 09:00–18:00</td><td>[기본] AI 서비스 개발 (11/18)</td><td><a href="./d5-chatbot-api.html">DAY 5 · 클로드 코드로 챗봇 만들고 AI API 붙이기</a></td><td>챗봇 화면 + 답변 규칙 파일(시스템 프롬프트·Few-shot·CoT) + AI가 답하는 챗봇 공개 주소 + 시험 결과표</td></tr>
+<tr><td>11/13(금) 09:00–18:00</td><td>[기본] AI 서비스 개발 (11/18)</td><td><a href="./d5-chatbot-api.html">DAY 5 · 마음책방을 깃헙에 올리고 깃헙 페이지스·파이어베이스로 자동 배포(CI/CD 맛보기)</a></td><td>마음책방 깃헙 저장소 + 깃헙 페이지스 주소 + 파이어베이스 주소 + 3주차 결과물 표</td></tr>
 </table></div>
 </section>
 
 <section class="section" id="flow"><div class="section-label">FLOW</div><h2>한 주의 흐름</h2>
-<div class="flow"><div><span>월</span><b>사용자의 데이터</b><small>데이터 개론·가설 검증, 정리본, GA·이벤트 텍소노미</small></div><div><span>화</span><b>외부의 데이터</b><small>웹 크롤링, 클로드로 크롤링하는 법, 정리본</small></div><div><span>수</span><b>AI가 고르게 하기</b><small>클로드 아티팩트로 감정 → 책 3권, AI 스튜디오로 옮겨 API 연결</small></div><div><span>목</span><b>챗봇 화면</b><small>클로드 코드(데스크톱 앱)로 만들기</small></div><div><span>금</span><b>챗봇에 API 연결</b><small>API 키, 테스트, 회고</small></div></div>
+<div class="flow"><div><span>월</span><b>사용자의 데이터</b><small>데이터 개론·가설 검증, 정리본, GA·이벤트 텍소노미</small></div><div><span>화</span><b>외부의 데이터</b><small>웹 크롤링, 클로드로 크롤링하는 법, 정리본</small></div><div><span>수</span><b>AI가 고르게 하기</b><small>클로드 아티팩트로 감정 → 책 3권, AI 스튜디오로 옮겨 API 연결</small></div><div><span>목</span><b>관리자 페이지·로컬 서버</b><small>프롬프트 수정 관리자 페이지, 데스크톱 앱, 내 컴퓨터에서 띄우기</small></div><div><span>금</span><b>자동 배포</b><small>클로드 코드로 깃헙 → 깃헙 페이지스 → 파이어베이스, CI/CD, 회고</small></div></div>
 </section>
 
 <section class="section" id="resources"><div class="section-label">RESOURCES</div><h2>자료실</h2>
@@ -356,6 +356,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <li>클로드 새 대화에 파일을 올리고 "이 HTML 파일을 아티팩트로 그대로 열어 줘. 내용은 바꾸지 마."라고 보내요.</li>
 <li>열린 아티팩트에서 이어서 실습해요. 내 클로드 계정으로 열었으니 AI 추천도 동작하는지 봐요.</li>
 </ol>
+<p class="notice">4주차는 <a href="../261116-ai-pm-week4/">4주차 홈</a>에서 미리 볼 수 있어요. 이번 주에 못 한 챗봇 만들기는 4주차 월요일에 해요.</p>
 </section>
 
 <section class="section" id="ready"><div class="section-label">PREPARE</div><h2>이번 주 준비물</h2>
@@ -364,7 +365,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <li>크롬(Chrome) 브라우저</li>
 <li>Claude 유료 계정 (계정은 운영 기관 안내를 따라요)</li>
 <li>개인 구글 계정 (구글 시트·앱스스크립트·코랩을 같은 계정으로 써요)</li>
-<li>깃헙·버셀 계정 (지난주 목요일에 쓴 계정을 월요일과 금요일에 다시 써요)</li>
+<li>깃헙 계정 (금요일에 마음책방을 올려요) · 지난주 목요일에 쓴 버셀 계정(월요일 GA 연결)</li>
 <li>목요일 전까지 컴퓨터에 클로드 데스크톱 앱을 설치해요 (<a href="./d4-claude-code-chatbot.html#s2-3">설치 순서</a>)</li>
 <li>휴대폰 (만든 페이지를 열고 직접 입력해 봐요)</li>
 <li>실습에는 실제 이름·연락처 대신 가상의 정보만 넣어요</li>

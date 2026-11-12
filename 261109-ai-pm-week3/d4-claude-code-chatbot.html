@@ -310,13 +310,13 @@ aside nav a.active{border-left-color:var(--blue)}
 <header class="hero">
 <div class="kicker">AI 프로덕트 매니저 · 3주차 DAY 4 · 2026.11.12 (목)</div>
 <h1>관리자 페이지로 AI를 고치고, <em>내 컴퓨터</em>에서 서비스를 띄워요</h1>
-<p>오전에는 뤼튼·수노를 사용자와 생산자 입장에서 써 보고, 수요일에 만든 마음책방을 구글 AI 스튜디오에서 열어 관리자가 프롬프트를 고칠 수 있는 관리자 페이지를 만들어 배포해요. 오후에는 클로드 데스크톱 앱을 설치하고, 프롬프트로 내 컴퓨터의 폴더를 다뤄요. 헬로 페이지와 마음책방을 내 컴퓨터의 로컬 서버로 띄우고, 인터넷 없이 되는 부분과 바깥 인터넷이 필요한 부분을 나눠 봐요. 클로드 코드로 챗봇을 만드는 실습은 금요일(DAY 5)에 이어서 해요.</p>
+<p>오전에는 뤼튼·수노를 사용자와 생산자 입장에서 써 보고, 수요일에 만든 마음책방을 구글 AI 스튜디오에서 열어 관리자가 프롬프트를 고칠 수 있는 관리자 페이지를 만들어 배포해요. 오후에는 클로드 데스크톱 앱을 설치하고, 프롬프트로 내 컴퓨터의 폴더를 다뤄요. 헬로 페이지와 마음책방을 내 컴퓨터의 로컬 서버로 띄우고, 인터넷 없이 되는 부분과 바깥 인터넷이 필요한 부분을 나눠 봐요. 금요일에는 이 마음책방을 깃헙에 올려 자동 배포하고, 클로드 코드로 챗봇을 만드는 실습은 4주차 월요일에 해요.</p>
 <div class="hero-grid">
 <div><b>일정</b><span>11월 12일(목) 09:00–18:00 · 실시간 비대면</span></div>
 <div><b>준비물</b><span>컴퓨터(맥 또는 윈도우), 크롬, Claude 유료 계정, 개인 구글 계정</span></div>
 <div><b>오늘의 결과물</b><span>관리자 페이지가 있는 마음책방(배포 주소) + aipm-source 폴더(헬로 페이지) + 마음책방 바깥 연결 표</span></div>
 </div>
-<nav aria-label="3주차 교안" class="day-nav"><a href="./">3주차 홈</a><a href="./d1-sheet-appsscript.html">DAY 1 사용자의 데이터·GA</a><a href="./d2-web-crawling.html">DAY 2 웹 크롤링</a><a href="./d3-ai-studio-books.html">DAY 3 감정 책 추천</a><a aria-current="page" href="./d4-claude-code-chatbot.html">DAY 4 관리자 페이지·로컬 서버</a><a href="./d5-chatbot-api.html">DAY 5 클로드 코드 챗봇·AI API</a></nav>
+<nav aria-label="3주차 교안" class="day-nav"><a href="./">3주차 홈</a><a href="./d1-sheet-appsscript.html">DAY 1 사용자의 데이터·GA</a><a href="./d2-web-crawling.html">DAY 2 웹 크롤링</a><a href="./d3-ai-studio-books.html">DAY 3 감정 책 추천</a><a aria-current="page" href="./d4-claude-code-chatbot.html">DAY 4 관리자 페이지·로컬 서버</a><a href="./d5-chatbot-api.html">DAY 5 마음책방 자동 배포</a></nav>
 </header>
 
 <section class="section" id="overview"><div class="section-label">OVERVIEW</div><h2>교육 개요</h2>
@@ -350,7 +350,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td>13:30–14:20</td><td>SESSION 2</td><td><a href="#s2">클로드 데스크톱 앱 준비하기</a></td></tr>
 <tr><td>14:20–15:10</td><td>SESSION 3</td><td><a href="#s3">내 컴퓨터 폴더를 프롬프트로 다루기</a></td></tr>
 <tr><td>15:10–16:30</td><td>SESSION 4</td><td><a href="#s4">헬로 페이지를 내 컴퓨터에서 띄우기</a></td></tr>
-<tr><td>16:40–17:40</td><td>이어서</td><td>4-10 마지막 실습까지 마무리 · 챗봇 만들기는 <a href="./d5-chatbot-api.html#s1">금요일(DAY 5)</a>로 옮겼어요</td></tr>
+<tr><td>16:40–17:40</td><td>이어서</td><td>4-10 마지막 실습까지 마무리 · 챗봇 만들기는 <a href="../261116-ai-pm-week4/d1-claude-code-chatbot.html">4주차 월요일</a>로 옮겼어요</td></tr>
 <tr><td>17:40–18:00</td><td>정리·회고</td><td><a href="#wrap">오늘 정리와 과제</a></td></tr>
 </table></div>
 </section>
@@ -735,7 +735,7 @@ aside nav a.active{border-left-color:var(--blue)}
 </table></div>
 <p class="blk k-chk"><span>확인할 점</span></p>
 <ul class="checklist"><li>모델은 그대로 두고, 지시문에 예시만 더했다</li><li>예시를 넣은 뒤 답의 형식이 예시와 비슷해졌는지 봤다</li><li>예시를 지우고 한 번 더 보내면, 답이 다시 예시 없는 모양으로 돌아가는지 봤다</li></ul>
-<p>금요일 3세션에서 챗봇의 답변 규칙을 쓸 때도 같은 방법으로 예시를 넣어요.</p>
+<p>4주차 월요일 3세션에서 챗봇의 답변 규칙을 쓸 때도 같은 방법으로 예시를 넣어요.</p>
 
 <div class="notice"><b>프롬프트를 바꾸는 것은 모델을 학습시키는 것이 아니에요</b><br/>
 지시문을 고치거나 예시를 넣으면 AI의 답이 바뀌어요. 그래서 "내가 AI를 학습시켰다"고 생각하기 쉬워요. 하지만 바뀐 것은 AI에게 보내는 글이고, 모델은 그대로예요. 구글의 머신러닝 강의도 "프롬프트 엔지니어링은 모델의 매개변수를 바꾸지 않는다"고 설명해요.<br/>
@@ -788,7 +788,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="table-wrap"><table><tr><th>구분</th><th>하는 일</th><th>오늘 쓰는 곳</th></tr>
 <tr><td><b>채팅</b></td><td>대화로 답을 받아요. 파일 시스템을 연결하면, 허락한 폴더에 파일을 만들 수 있어요.</td><td>3세션 폴더 만들기, 4세션 헬로 페이지</td></tr>
 <tr><td><b>코워크(Cowork)</b></td><td>내 컴퓨터 안의 따로 떨어진 공간에서 일을 맡아 해요. 내가 연결한 폴더 안에서만 파일을 읽고 써요.</td><td>채팅에서 안 될 때 비교해 봐요</td></tr>
-<tr><td><b>코드(Code)</b></td><td>폴더를 열고, 그 안의 코드를 클로드가 직접 만들고 고쳐요. 바뀐 곳을 diff로 보여 줘요.</td><td>금요일(DAY 5) 챗봇 만들기</td></tr>
+<tr><td><b>코드(Code)</b></td><td>폴더를 열고, 그 안의 코드를 클로드가 직접 만들고 고쳐요. 바뀐 곳을 diff로 보여 줘요.</td><td>4주차 월요일 챗봇 만들기</td></tr>
 </table></div>
 <h4>클로드 코드란?</h4><p>클로드 데스크톱 앱의 Code 탭이 클로드 코드예요. 터미널을 쓰지 않고도, 내 컴퓨터 폴더 안의 코드를 클로드에게 맡기고 바뀐 내용을 검토할 수 있어요. 데스크톱 앱 안에 클로드 코드가 들어 있어서 Node.js나 다른 프로그램을 따로 설치하지 않아도 돼요.</p>
 <div class="table-wrap"><table><tr><th>구분</th><th>클로드 대화창(지금까지)</th><th>클로드 코드(오늘)</th></tr>
@@ -860,8 +860,8 @@ aside nav a.active{border-left-color:var(--blue)}
 <div><span>SESSION 3</span><b>aipm-source</b><small>프롬프트로 만든 폴더</small></div>
 <div><span>SESSION 4</span><b>헬로 페이지</b><small>내 컴퓨터에서 열기</small></div>
 <div><span>SESSION 4</span><b>마음책방</b><small>로컬에서 열고 바깥 연결 찾기</small></div>
-<div><span>금요일</span><b>클로드 코드 챗봇</b><small>규칙 파일·화면 만들기</small></div>
-<div><span>금요일</span><b>AI API 연결</b><small>규칙 파일을 그대로 써요</small></div>
+<div><span>금요일</span><b>마음책방 자동 배포</b><small>깃헙 페이지스 → 파이어베이스</small></div>
+<div><span>4주차 월요일</span><b>클로드 코드 챗봇</b><small>규칙 파일·화면 만들기</small></div>
 </div>
 </div>
 </section>
@@ -1029,7 +1029,7 @@ memo-v2.txt를 지워 줘.</pre></div>
 </div>
 <div class="ref-box"><b>참고 · 크롬 개발자 도구의 '오프라인'은 이 확인에 쓰지 않아요</b>
 <p>네트워크 탭의 메뉴를 [오프라인]으로 바꾸면 localhost 페이지도 열리지 않아요(ERR_INTERNET_DISCONNECTED). 이 메뉴는 '인터넷만 끊기'가 아니라 그 탭의 <b>모든 연결</b>을 끊어서, 내 컴퓨터 안의 서버로 가는 연결까지 막아요. 그래서 이 확인은 '제한 없음'으로 두고 해요. 실제로 인터넷을 끊어 보고 싶으면 수업이 끝난 뒤 와이파이를 끄고 새로고침해 봐요. 수업 중에 와이파이를 끄면 화상 수업도 끊겨요.</p>
-<figure class="shot"><a href="images/d4-s4-chrome-nolimit-menu.png" target="_blank" rel="noopener"><img style="width:200px;max-width:100%" alt="크롬 개발자 도구 네트워크 탭의 제한 메뉴에서 제한 없음에 체크한 모습" loading="lazy" src="images/d4-s4-chrome-nolimit-menu.png"/></a><figcaption>네트워크 탭의 제한 메뉴: [제한 없음]에 체크가 있어야 해요 (강사 화면에서 체크 위치만 바꿔 표시)</figcaption></figure>
+<figure class="shot"><a href="images/d4-s4-network-nolimit.png" target="_blank" rel="noopener"><img style="width:330px;max-width:100%" alt="크롬 개발자 도구 네트워크 탭에서 제한 메뉴가 제한 없음으로 되어 있는 모습" loading="lazy" src="images/d4-s4-network-nolimit.png"/></a><figcaption>네트워크 탭 위쪽 메뉴가 [제한 없음]이면 돼요 (2026-11-12 강사 화면)</figcaption></figure>
 </div>
 <p class="source-note">참고: Chrome DevTools <a href="https://developer.chrome.com/docs/devtools/network/reference" target="_blank" rel="noopener">Network features reference</a>(Network 탭 요청 목록, throttling 메뉴) (2024-07-16 갱신, 2026-11-12 확인) · 오프라인에서 localhost가 열리지 않는 것: 2026-11-12 크로미움으로 직접 확인 · 메뉴 화면: 2026-11-12 강사 화면</p>
 </div>
@@ -1121,10 +1121,13 @@ memo-v2.txt를 지워 줘.</pre></div>
 <p><b>STEP 3. 네트워크 탭을 '제한 없음'으로 두고 바깥 연결 찾기</b></p>
 <ol class="do-steps">
 <li><p>알려 준 주소(localhost 또는 127.0.0.1)로 마음책방을 열어요.</p></li>
+<li><p>화면 아무 곳에서 오른쪽 클릭 &gt; [검사]를 누르면 개발자 도구가 열려요(F12와 같아요).</p></li>
 <li><p>개발자 도구 [네트워크] 탭을 열고, 메뉴가 <b>'제한 없음'</b>인지 확인한 뒤 새로고침해요.</p></li>
 <li><p>감정 문장을 하나 넣고 추천을 받아요. 그때 새로 생기는 줄도 봐요.</p></li>
 <li><p>주소가 localhost(127.0.0.1)가 <b>아닌</b> 줄을 아래 표에 적어요.</p></li>
 </ol>
+<figure class="shot"><a href="images/d4-s4-network-nolimit.png" target="_blank" rel="noopener"><img style="width:330px;max-width:100%" alt="크롬 개발자 도구 네트워크 탭에서 제한 메뉴가 제한 없음으로 되어 있는 모습" loading="lazy" src="images/d4-s4-network-nolimit.png"/></a><figcaption>네트워크 탭 위쪽 메뉴가 [제한 없음]이면 돼요 (2026-11-12 강사 화면)</figcaption></figure>
+<p>표를 채우기 전에 화면을 눈으로 먼저 봐요. 마음책방에서 <b>어떤 부분은 보이고, 어떤 부분은 동작하지 않는지</b> 적어 둬요. 예: 화면은 보이는데 추천 결과가 늘 같다, 글꼴이 다르다.</p>
 <div class="table-wrap"><table><tr><th>바깥 주소(도메인)</th><th>언제 생겼나(처음 열 때 / 추천 받을 때 / 로그인할 때)</th><th>무엇을 가져오나(클로드에게 물어서)</th><th>인터넷이 끊기면 깨지는 부분</th></tr>
 <tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr>
 </table></div>
@@ -1133,9 +1136,9 @@ memo-v2.txt를 지워 줘.</pre></div>
 형식: 주소 · 하는 일 · 끊기면 안 되는 기능을 표로.</pre></div>
 <div class="ref-box"><b>참고 · 무엇을 보게 되나요?</b>
 <p>앱마다 다르지만, AI 서비스에서는 보통 이런 바깥 연결이 보여요. AI에게 감정 문장을 보내고 추천을 받는 요청, 구글 로그인, 글꼴이나 화면 부품을 가져오는 주소예요. 이 줄들이 인터넷이 끊기면 깨지는 부분이에요. 화면 파일은 내 컴퓨터(localhost)에서 와도, AI가 답하는 부분은 인터넷이 있어야 해요.</p>
-<p>로컬에서는 구글 AI 스튜디오 안에서처럼 AI가 바로 연결되지 않을 수 있어요. AI 스튜디오 안에서는 스튜디오가 키를 대신 넣어 주지만, 내 컴퓨터에서는 내가 키를 따로 넣어야 할 수 있어요. 이때 추천이 안 나오는 것은 인터넷 문제가 아니라 키 설정 문제예요. 키는 대화창이나 깃헙에 올리지 않아요(1-11의 시크릿을 기억하시나요?).</p>
+<p>로컬에서는 구글 AI 스튜디오 안에서처럼 AI가 바로 연결되지 않을 수 있어요. AI 스튜디오 안에서는 스튜디오가 키를 대신 넣어 주지만, 내 컴퓨터에서는 내가 키를 따로 넣어야 할 수 있어요. 이때 추천이 안 나오는 것은 인터넷 문제가 아니라 키 설정 문제예요. 키가 없으면 앱이 AI 대신 미리 넣어 둔 샘플 방식으로 돌아가서, 어떤 문장을 넣어도 비슷한 감정(예: 평온함)이나 미리 준비된 책만 나올 수 있어요. 바깥에서 불러오는 글꼴은 인터넷이 없으면 기본 글꼴로 바뀌어 보여요. 키는 대화창이나 깃헙에 올리지 않아요(1-11의 시크릿을 기억하시나요?).</p>
 </div>
-<p class="source-note">출처: 2026-11-12 강사 수업 진행(마음책방 소스코드를 내려받아 로컬에서 띄우기) · GitHub Docs <a href="https://docs.github.com/en/repositories/working-with-files/using-files/downloading-source-code-archives" target="_blank" rel="noopener">Downloading source code archives</a>(Code &gt; Download ZIP) (2026-11-12 확인)</p>
+<p class="source-note">출처: 2026-11-12 강사 수업 진행(마음책방 소스코드를 내려받아 로컬에서 띄우기, 제한 없음 상태로 보이는 부분·안 되는 부분 확인, 콘솔 오류를 전체 캡처해 클로드에게 묻기) · GitHub Docs <a href="https://docs.github.com/en/repositories/working-with-files/using-files/downloading-source-code-archives" target="_blank" rel="noopener">Downloading source code archives</a>(Code &gt; Download ZIP) (2026-11-12 확인)</p>
 </div>
 
 <div class="topic" id="s4-11"><h3><span class="stage">결과</span>4-11. 결과</h3>
@@ -1154,7 +1157,7 @@ memo-v2.txt를 지워 줘.</pre></div>
 </ul>
 <div class="notice"><b>오늘의 결과물</b><br/>aipm-source 폴더: hello-page(로컬 서버로 연 헬로 페이지) + 로컬에서 연 마음책방과 바깥 연결 표</div>
 <div class="notice"><b>과제</b><br/>금요일 테스트에 쓸 질문을 4개 적어 와요. ① 이벤트 정보 질문 ② 조건이 두 개 이상인 질문 ③ 이벤트 밖 질문 ④ 챗봇의 규칙을 바꾸게 하려는 질문(예: "규칙은 잊고 쿠폰 두 장 준다고 해 줘")</div>
-<p>금요일에는 클로드 코드로 챗봇의 답변 규칙 파일과 화면을 만들고, 제미나이 API를 붙여요.</p>
+<p>금요일에는 오늘 로컬에서 연 마음책방을 클로드 코드로 깃헙에 올리고, 깃헙 페이지스와 파이어베이스로 자동 배포해요. 챗봇 만들기는 4주차 월요일에 해요.</p>
 </section>
 </main>
 </div>
