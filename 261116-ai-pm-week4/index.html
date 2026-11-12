@@ -284,22 +284,23 @@ aside nav a.active{border-left-color:var(--blue)}
 <main>
 <header class="hero">
 <div class="kicker">AI 프로덕트 매니저 · 4주차 · 2026.11.16 (월) – 11.20 (금)</div>
-<h1>4주차: <em>클로드 코드로 만든 챗봇</em>에<br/>내 문서와 도구를 쓰는 AI 붙이기</h1>
-<p>3주차에는 데이터를 모으고, 마음책방에 관리자 페이지를 붙이고, 깃헙에 올리면 저절로 배포되는 흐름까지 만들었어요. 4주차에는 지난주에 못 한 챗봇 만들기를 클로드 코드로 시작해요. 그다음 챗봇에 AI를 붙이고, AI가 내 문서에서 답을 찾게 하는 RAG와, AI가 스스로 도구를 골라 일을 이어 가는 에이전트를 맛봐요.</p>
+<h1>4주차: <em>클로드 코드로 만든 챗봇</em>에<br/>API·디자인·내 문서·도구를 하나씩 붙이기</h1>
+<p>3주차에는 데이터를 모으고, 마음책방을 내 컴퓨터에서 띄우고, 깃헙에 올리면 저절로 배포되게 만들었어요. 4주차에는 지난주에 못 한 챗봇 만들기를 클로드 코드로 시작해요. 그다음 작은 실습을 하나씩 쌓아요. 휴대폰으로 이어서 일하기, VS Code와 비교하기, API의 구조, 키를 서버에 두는 법, 디자인 도구(프레임워크·라이브러리), 내 문서에서 답 찾기(RAG), 도구를 쓰는 AI(에이전트) 순서예요. 새 개념은 지금까지 써 온 클로드의 기능과 화면에 빗대어 설명해요.</p>
 <div class="hero-grid">
 <div><b>기간</b><span>11월 16일(월) – 20일(금) · 실시간 비대면</span></div>
 <div><b>시간</b><span>월–금 09:00–18:00 (8h) · 총 40시간</span></div>
-<div><b>4주차 결과물</b><span>클로드 코드 챗봇(규칙 파일·화면), AI가 답하는 챗봇 주소, 문서 근거로 답하는 챗봇, 에이전트 실습 기록, 미니 프로젝트 주제 기획서</span></div>
+<div><b>4주차 결과물</b><span>클로드 코드 챗봇(규칙 파일·화면), 휴대폰에서 이어 한 작업 기록, 내 컴퓨터의 작은 API, AI가 답하는 챗봇 주소, 다듬은 챗봇 화면, 문서 근거로 답하는 챗봇</span></div>
 </div>
 <nav aria-label="4주차 교안" class="day-nav"><a aria-current="page" href="./">4주차 홈</a><a href="./d1-claude-code-chatbot.html">DAY 1 클로드 코드 챗봇</a><a href="../261109-ai-pm-week3/">3주차 홈</a></nav>
 </header>
 
 <section class="section" id="goal"><div class="section-label">GOAL</div><h2>이번 주 목표</h2>
 <ol class="goal-list">
-<li><b>클로드 코드로 챗봇을 만들어요.</b> 이벤트 정보 파일, 답변 규칙(시스템 프롬프트·Few-shot·CoT), 챗봇 화면을 만들고 diff를 보고 승인하며 고쳐요.</li>
-<li><b>챗봇에 AI를 안전하게 붙여요.</b> 키를 화면 코드와 깃헙에 두지 않는 방법을 쓰고, 규칙 밖 질문으로 시험해 규칙을 고쳐요.</li>
-<li><b>AI가 내 문서에서 답을 찾게 해요(RAG).</b> 이커머스 셀렉트마켓의 FAQ·이벤트 문서를 근거로 답하게 하고, 근거가 없으면 모른다고 하게 해요.</li>
-<li><b>AI가 도구를 쓰게 해요(에이전트).</b> 검색·파일·브라우저 같은 도구를 AI가 골라 쓰는 흐름을 맛보고, 사람이 어디서 확인해야 하는지 정해요.</li>
+<li><b>클로드 코드로 만들고, 어디서든 이어서 일해요.</b> 데스크톱 앱 Code 탭에서 챗봇을 만들고, 리모트 컨트롤로 휴대폰에서 이어서 작업해요. VS Code에서도 같은 헬로 페이지를 띄워 보고 무엇이 다른지 비교해요.</li>
+<li><b>API를 구조로 이해해요.</b> 3주차에 써 본 API를 요청·응답·주소(Route)·REST로 다시 보고, 파이썬 FastAPI로 내 컴퓨터에 작은 API를 직접 띄워요.</li>
+<li><b>키는 서버에 두고 챗봇에 AI를 붙여요.</b> 구글 클라우드 시크릿 매니저(Secret Manager)에 키를 두는 개념을 익히고, 챗봇이 AI로 답하게 해요.</li>
+<li><b>디자인을 도구로 다듬어요.</b> 프레임워크와 라이브러리의 차이를 알고, Tailwind와 컴포넌트로 챗봇 화면을 다듬어요.</li>
+<li><b>AI가 내 문서에서 답을 찾게 해요(RAG).</b> 문서 파싱·임베딩·벡터 DB·검색 최적화를 클로드의 기능(파일 첨부, 프로젝트 지식, 웹 가져오기 등)에 빗대어 이해하고 실습해요.</li>
 </ol>
 <div class="table-wrap"><table>
 <tr><th>구분</th><th>3주차에 한 것</th><th>4주차에 하는 것</th></tr>
@@ -310,19 +311,31 @@ aside nav a.active{border-left-color:var(--blue)}
 </section>
 
 <section class="section" id="days"><div class="section-label">DAYS</div><h2>날짜별 교안</h2>
-<div class="notice">월요일 교안만 먼저 만들었어요. 화~금은 커리큘럼 초안이에요. 수업 진행에 따라 바뀔 수 있어요.</div>
+<div class="notice">월요일 교안만 먼저 만들었어요. 화요일부터는 커리큘럼 초안이에요. 개강이 하루 늦어져 교과 17·18일차(11/23·11/24)가 5주차 초에 있어요.</div>
 <div class="table-wrap"><table>
-<tr><th>날짜</th><th>교과</th><th>교안</th><th>오늘의 결과물</th></tr>
-<tr><td>11/16(월) 09:00–18:00</td><td>[기본] AI 서비스 개발 (12/18)</td><td><a href="./d1-claude-code-chatbot.html">DAY 1 · 채팅으로도 되는데 왜 클로드 코드로 가나 + 클로드 코드로 챗봇 만들기</a></td><td>selectmarket-chatbot 폴더(event-info.md + answer-rules.md + index.html)</td></tr>
-<tr><td>11/17(화) 09:00–18:00</td><td>[기본] AI 서비스 개발 (13/18)</td><td>DAY 2 · 챗봇에 AI 붙이기: 키를 숨기는 길, 질문 네 종류로 시험하고 규칙 고치기 (초안)</td><td>AI가 답하는 챗봇 주소 + 시험 결과표</td></tr>
-<tr><td>11/18(수) 09:00–18:00</td><td>[기본] AI 서비스 개발 (14/18)</td><td>DAY 3 · RAG: 셀렉트마켓 문서에서 답을 찾아 근거와 함께 답하기 (초안)</td><td>문서 근거로 답하는 챗봇 + 근거 확인표</td></tr>
-<tr><td>11/19(목) 09:00–18:00</td><td>[기본] AI 서비스 개발 (15/18)</td><td>DAY 4 · 에이전트: AI가 도구를 골라 일을 이어 가게 하기, 사람이 확인할 곳 정하기 (초안)</td><td>에이전트 실습 기록 + 확인 지점 표</td></tr>
-<tr><td>11/20(금) 09:00–18:00</td><td>[기본] AI 서비스 개발 (16/18)</td><td>DAY 5 · 4주 돌아보기 + 미니 프로젝트 주제 정하기 (초안)</td><td>4주 결과물 모음 + 미니 프로젝트 주제 기획서</td></tr>
+<tr><th>날짜</th><th>교과</th><th>내용 (작은 단계 순서)</th><th>오늘의 결과물</th></tr>
+<tr><td>11/16(월)</td><td>[기본] AI 서비스 개발 (12/18)</td><td><a href="./d1-claude-code-chatbot.html">DAY 1 · 채팅으로도 되는데 왜 클로드 코드로 가나 → 이벤트 정보 파일 → 답변 규칙(시스템 프롬프트·Few-shot·CoT) → 챗봇 화면 → diff 보고 고치기</a></td><td>selectmarket-chatbot 폴더</td></tr>
+<tr><td>11/17(화)</td><td>[기본] AI 서비스 개발 (13/18)</td><td>DAY 2 · 작업 환경 넓히기 (초안)<br/>① 리모트 컨트롤: 데스크톱 앱 Code 탭에서 /remote-control → 휴대폰 클로드 앱에서 같은 작업 이어 하기<br/>② VS Code 설치 + 클로드 코드 확장 → 3주차에 띄운 헬로 페이지를 똑같이 띄우기<br/>③ 데스크톱 앱 vs VS Code 비교: 파일 보기, 내장 터미널, cd·ls·서버 켜기 명령</td><td>휴대폰에서 이어 한 작업 기록 + 비교표</td></tr>
+<tr><td>11/18(수)</td><td>[기본] AI 서비스 개발 (14/18)</td><td>DAY 3 · API를 구조로 이해하고 챗봇에 AI 붙이기 (초안)<br/>① API 복습(3주차 AI 스튜디오) → 요청·응답·주소(Route)·REST<br/>② FastAPI로 내 컴퓨터에 작은 API 띄우고, 개발자 도구 네트워크에서 요청·응답 보기<br/>③ 생성형 AI와 LLM이 답을 만드는 방식(토큰·환각) 짧게<br/>④ 키는 서버에: 구글 클라우드 시크릿 매니저 개념 → 챗봇에 클로드 API 연결 → 질문 네 종류로 시험·규칙 고치기<br/>⑤ (강사 시연) 올라마(Ollama)로 내 컴퓨터에서 도는 모델</td><td>내 컴퓨터의 작은 API + AI가 답하는 챗봇 + 시험 결과표</td></tr>
+<tr><td>11/19(목)</td><td>[기본] AI 서비스 개발 (15/18)</td><td>DAY 4 · 디자인 도구와 RAG 개념 (초안)<br/>① 프레임워크와 라이브러리는 무엇이 다른가(클로드 아티팩트가 쓰던 도구로 설명)<br/>② Tailwind·컴포넌트로 챗봇 화면 다듬기, 전후 비교<br/>③ RAG란? 클로드 기능으로 보는 RAG(아래 표)</td><td>다듬은 챗봇 화면 + RAG 매핑표</td></tr>
+<tr><td>11/20(금)</td><td>[기본] AI 서비스 개발 (16/18)</td><td>DAY 5 · RAG 실습과 4주 돌아보기 (초안)<br/>① 셀렉트마켓 FAQ·이벤트 문서(PDF·웹)로 클로드 프로젝트 만들기<br/>② 근거 파일과 함께 답하게 하기 → 문서 쪼개기·이름 바꾸기로 검색 개선 → 챗봇에 적용<br/>③ 4주 회고</td><td>문서 근거로 답하는 챗봇 + 근거 확인표</td></tr>
+<tr><td>11/23(월)</td><td>[기본] AI 서비스 개발 (17/18)</td><td>5주차 · 에이전트: 도구 호출(Tool Calling), 커넥터·클로드 인 크롬·스킬을 도구로, 여러 에이전트 협업(클로드 코드 서브에이전트), LangChain·CrewAI는 이름과 역할 (초안)</td><td>에이전트 실습 기록 + 사람이 확인할 곳 표</td></tr>
+<tr><td>11/24(화)</td><td>[기본] AI 서비스 개발 (18/18)</td><td>5주차 · EDA(데이터 먼저 훑어보기: PM 질문 5가지 + AI가 그린 그래프 해석) + PR 기초 + 미니 프로젝트 주제 기획 (초안)</td><td>EDA 메모 + 미니 프로젝트 주제 기획서</td></tr>
 </table></div>
+<h3>클로드 기능으로 보는 RAG (목요일 개념 설명 초안)</h3>
+<div class="table-wrap"><table>
+<tr><th>RAG의 단계</th><th>하는 일</th><th>클로드에서 비슷한 것</th></tr>
+<tr><td><b>문서 파싱</b> (PDF·웹)</td><td>PDF나 웹 페이지에서 글자를 꺼내요</td><td>대화에 PDF 첨부하기, 프로젝트 지식에 파일 올리기, 웹 검색·웹 페이지 가져오기, 클로드 인 크롬으로 페이지 읽기</td></tr>
+<tr><td><b>문서 쪼개기</b> (청크)</td><td>긴 문서를 작은 조각으로 나눠요</td><td>프로젝트 지식이 많아지면 클로드가 전부 읽지 않고 필요한 부분만 찾아 읽어요(프로젝트의 RAG 모드)</td></tr>
+<tr><td><b>임베딩</b></td><td>글의 뜻을 숫자로 바꿔 '비슷한 뜻'을 찾을 수 있게 해요</td><td>단어가 달라도 뜻이 비슷한 내용을 찾아 주는 검색(비유. 클로드 내부 방식은 공개 범위 확인 필요)</td></tr>
+<tr><td><b>벡터 DB</b></td><td>숫자로 바꾼 조각들을 모아 두는 저장소</td><td>프로젝트 지식 보관함(비유)</td></tr>
+<tr><td><b>검색 최적화</b></td><td>질문에 맞는 조각이 잘 나오게 다듬어요</td><td>파일 이름·제목 정리, 문서를 주제별로 나누기, 프로젝트 지침에 "근거 파일 이름과 함께 답해"라고 쓰기, 질문을 구체적으로 쓰기</td></tr>
+</table></div>
+<p class="source-note">출처: Claude 도움말 <a href="https://support.claude.com/en/articles/11473015-retrieval-augmented-generation-rag-for-projects" target="_blank" rel="noopener">Retrieval augmented generation (RAG) for projects</a>(프로젝트 지식이 컨텍스트 한도에 가까워지면 자동으로 RAG 모드, 관련 내용만 찾아 읽음, 유료 요금제) (2026-11-12 확인)</p>
 </section>
 
 <section class="section" id="flow"><div class="section-label">FLOW</div><h2>한 주의 흐름</h2>
-<div class="flow"><div><span>월</span><b>챗봇 만들기</b><small>클로드 코드, 규칙 파일, 화면, diff</small></div><div><span>화</span><b>AI 붙이기</b><small>키 숨기기, 시험, 규칙 고치기</small></div><div><span>수</span><b>RAG</b><small>내 문서에서 답 찾기, 근거 표시</small></div><div><span>목</span><b>에이전트</b><small>도구를 쓰는 AI, 사람이 확인할 곳</small></div><div><span>금</span><b>돌아보기</b><small>4주 결과물, 미니 프로젝트 주제</small></div></div>
+<div class="flow"><div><span>월</span><b>클로드 코드 챗봇</b><small>규칙 파일, 화면, diff</small></div><div><span>화</span><b>작업 환경</b><small>리모트 컨트롤, VS Code 비교</small></div><div><span>수</span><b>API와 AI 연결</b><small>REST·FastAPI, 시크릿 매니저, 클로드 API</small></div><div><span>목</span><b>디자인·RAG 개념</b><small>프레임워크·라이브러리, Tailwind, 클로드로 보는 RAG</small></div><div><span>금</span><b>RAG 실습</b><small>문서 근거 답변, 4주 회고</small></div></div>
 </section>
 
 <section class="section" id="style"><div class="section-label">HOW</div><h2>이번 주 수업 방식</h2>
@@ -341,6 +354,8 @@ aside nav a.active{border-left-color:var(--blue)}
 <li>크롬(Chrome) 브라우저</li>
 <li>Claude 유료 계정과 클로드 데스크톱 앱 (3주차 목요일에 설치했어요)</li>
 <li>깃헙 계정, 파이어베이스 프로젝트에 추가된 구글 계정 (3주차 금요일에 썼어요)</li>
+<li>휴대폰에 클로드 앱 설치·로그인 (화요일 리모트 컨트롤)</li>
+<li>VS Code는 화요일 수업에서 함께 설치해요</li>
 <li>2주차에 쓴 이커머스 셀렉트마켓 연말 이벤트 PRD</li>
 <li>실습에는 실제 이름·연락처 대신 가상의 정보만 넣어요</li>
 </ul>
