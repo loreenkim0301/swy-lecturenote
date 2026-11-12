@@ -264,7 +264,9 @@ aside nav a.active{border-left-color:var(--blue)}
 #slide .base{font-size:15px;padding:6px 12px}
 </style>
 <style>.side-link{margin:16px 10px 0;padding:12px;border:1px solid rgb(45,56,80);border-radius:10px;font-size:12px;color:rgb(190,200,219)}.side-link b{display:block;color:#fff;font-size:12px;margin-bottom:4px}.side-link a{color:rgb(140,180,255);word-break:break-all}.day-nav{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}.day-nav a{padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:13px;font-weight:700;color:var(--ink);text-decoration:none}.day-nav a[aria-current]{background:var(--blue);border-color:var(--blue);color:#fff}main pre{white-space:pre-wrap;overflow-wrap:anywhere}main code.inline{overflow-wrap:break-word}.hero-grid code.inline,.hero-grid span{overflow-wrap:anywhere}figure.voice{margin:18px 0;padding:16px 20px;border-left:4px solid var(--blue);background:var(--soft);border-radius:0 12px 12px 0}figure.voice blockquote{margin:0}figure.voice blockquote p{margin:0;font-size:18px;font-weight:700;line-height:1.55}figure.voice blockquote p.orig{margin-top:6px;font-size:14px;font-weight:500;color:var(--muted)}figure.voice figcaption{margin-top:10px;font-size:13px;color:var(--muted)}#slide figure.voice{margin:10px 0;padding:10px 16px}kbd{display:inline-block;padding:1px 6px;border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;background:#fff;font:600 13px var(--font-sans)}.source-note{font-size:13px;color:var(--muted)}.resource-list.news .resource-card{border-left:4px solid #e8a23a}.resource-list.news .resource-card>.small:first-child::before{content:"뉴스";display:inline-block;margin-right:6px;padding:0 6px;border-radius:4px;background:#fff3df;color:#9a5b00;font-weight:700}.resource-list.news .resource-card>.small:last-child{margin-top:6px;color:var(--muted)}</style>
-<style>.why-box{margin:14px 0 0;padding:12px 16px;border-left:4px solid #8fb0ff;background:rgba(255,255,255,.08);border-radius:0 10px 10px 0;color:#e6ebf5;max-width:900px}.why-box b{display:block;color:#a9c1ff;font-size:13px;margin-bottom:2px}.ok-line{margin:8px 0 0;font-size:14.5px}.ok-line b{display:inline-block;margin-right:8px;padding:1px 8px;border-radius:6px;background:#e7f7ef;color:#16a36b;font-size:12px}.goal-list li{margin-bottom:6px}</style></head>
+<style>.why-box{margin:14px 0 0;padding:12px 16px;border-left:4px solid #8fb0ff;background:rgba(255,255,255,.08);border-radius:0 10px 10px 0;color:#e6ebf5;max-width:900px}.why-box b{display:block;color:#a9c1ff;font-size:13px;margin-bottom:2px}.ok-line{margin:8px 0 0;font-size:14.5px}.ok-line b{display:inline-block;margin-right:8px;padding:1px 8px;border-radius:6px;background:#e7f7ef;color:#16a36b;font-size:12px}.goal-list li{margin-bottom:6px}</style>
+<style>/* 2026-11-12 줄바꿈: 단어 단위로 끊고, 제목은 줄 길이를 고르게, 본문은 마지막 줄에 한 단어만 남지 않게 */main,#slide{word-break:keep-all;overflow-wrap:break-word}h1,h2,h3,h4,.lead,.sub,.why-box b{text-wrap:balance}p,li,td,th,dd{text-wrap:pretty}main a,main code{overflow-wrap:anywhere}</style>
+</head>
 <body>
 <button aria-controls="side-nav" aria-expanded="true" class="nav-toggle" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" viewbox="0 0 16 16"><path d="M2 4h12M2 8h12M2 12h12"></path></svg><span>목차 숨기기</span></button>
 <div class="app">
@@ -297,11 +299,11 @@ aside nav a.active{border-left-color:var(--blue)}
 <p>이번 주는 세 가지를 목표로 해요.</p>
 <ol class="goal-list">
 <li><b>기획자에게 필요한 데이터를 두 갈래로 모아요.</b> ① 사용자의 데이터: 사용자가 직접 입력한 값은 구글 시트에 쌓고, GA를 연결해 방문·클릭 같은 행동을 모아요. ② 외부의 데이터: 웹에 있는 정보는 크롤링으로 모아요.</li>
-<li><b>모은 데이터를 쓸 수 있게 정리해요.</b> 원본은 그대로 두고, 빈칸·중복·형식을 규칙으로 정리한 정리본을 만들어요.</li>
-<li><b>AI API를 내 서비스에 붙여요.</b> API 키를 받고 무료 한도 안에서 호출해 보고, 목·금요일에는 클로드 코드로 챗봇 화면에 API를 연결해요.</li>
+<li><b>모은 데이터를 쓸 수 있게 정리해요.</b> 원본은 그대로 두고, 빈칸·중복·형식을 규칙으로 정리한 정리본을 만들어요.</li>
+<li><b>AI API를 내 서비스에 붙여요.</b> API 키를 받고 무료 한도 안에서 호출해 보고, 목·금요일에는 클로드 코드로 챗봇 화면에 API를 연결해요.</li>
 </ol>
 <div class="table-wrap"><table>
-<tr><th>구분</th><th>2주차에 한 것</th><th>3주차에 하는 것</th></tr>
+<tr><th>구분</th><th>2주차에 한 것</th><th>3주차에 하는 것</th></tr>
 <tr><td><b>사용자의 데이터</b></td><td>신청 페이지 → 브라우저 저장·볼트 데이터베이스·Firestore</td><td>직접 입력된 데이터(구글 시트 + 앱스스크립트 입력 화면), 사용자 행동 데이터(GA 연결)</td></tr>
 <tr><td><b>외부의 데이터</b></td><td>—</td><td>웹 크롤링(파이썬, 클로드로 크롤링하는 실무 방법)</td></tr>
 <tr><td><b>데이터 다루기</b></td><td>저장된 이름이 콘솔에 보이는지 확인</td><td>원본과 정리본을 나누고 규칙으로 전처리</td></tr>
@@ -322,16 +324,16 @@ aside nav a.active{border-left-color:var(--blue)}
 </section>
 
 <section class="section" id="flow"><div class="section-label">FLOW</div><h2>한 주의 흐름</h2>
-<div class="flow"><div><span>월</span><b>사용자의 데이터</b><small>데이터 개론·가설 검증, 정리본, GA·이벤트 텍소노미</small></div><div><span>화</span><b>외부의 데이터</b><small>웹 크롤링, 클로드로 크롤링하는 법, 정리본</small></div><div><span>수</span><b>AI가 고르게 하기</b><small>클로드 아티팩트로 감정 → 책 3권, AI 스튜디오로 옮겨 API 연결</small></div><div><span>목</span><b>챗봇 화면</b><small>클로드 코드(데스크톱 앱)로 만들기</small></div><div><span>금</span><b>챗봇에 API 연결</b><small>API 키, 테스트, 회고</small></div></div>
+<div class="flow"><div><span>월</span><b>사용자의 데이터</b><small>데이터 개론·가설 검증, 정리본, GA·이벤트 텍소노미</small></div><div><span>화</span><b>외부의 데이터</b><small>웹 크롤링, 클로드로 크롤링하는 법, 정리본</small></div><div><span>수</span><b>AI가 고르게 하기</b><small>클로드 아티팩트로 감정 → 책 3권, AI 스튜디오로 옮겨 API 연결</small></div><div><span>목</span><b>챗봇 화면</b><small>클로드 코드(데스크톱 앱)로 만들기</small></div><div><span>금</span><b>챗봇에 API 연결</b><small>API 키, 테스트, 회고</small></div></div>
 </section>
 
 <section class="section" id="resources"><div class="section-label">RESOURCES</div><h2>자료실</h2>
-<p>수업을 놓친 날이 있으면 여기서 강사 예시를 받아 이어서 해요. 같은 자료를 세 가지 방법으로 받을 수 있어요.</p>
+<p>수업을 놓친 날이 있으면 여기서 강사 예시를 받아 이어서 해요. 같은 자료를 세 가지 방법으로 받을 수 있어요.</p>
 <div class="table-wrap"><table>
 <tr><th>날짜</th><th>자료</th><th>바로 열기</th><th>내려받기</th></tr>
 <tr><td>11/11(수)</td><td><b>마음책방 프로토타입 v3</b> (강사 예시)<br/>DAY 3 3세션에서 개선한 마음책방이에요. 감정 문장을 넣으면 책 3권을 추천해요. DAY 4 0세션에서 이어서 써요.</td><td><a href="https://claude.ai/artifact/EmTErvCbmXEEMx1PiAWrRg" target="_blank" rel="noopener">클로드 아티팩트</a> (클로드 로그인 필요, AI 추천 동작)</td><td><a href="./resources/261111_마음책방_프로토타입_v3.html" download>HTML 파일</a><br/><a href="./resources/261111_마음책방_프로토타입_v3.zip" download>전체 ZIP</a> (HTML + 안내.txt)<br/><a href="https://github.com/loreenkim0301/swy-lecturenote/blob/claude/hello-page-deploy-yqm9q5/261109-ai-pm-week3/resources/" target="_blank" rel="noopener">GitHub에서 보기</a></td></tr>
 </table></div>
-<div class="notice"><b>내려받은 HTML은 AI 없이 동작해요</b><br/>이 프로토타입은 클로드 아티팩트 안에서만 클로드를 불러요. 내 컴퓨터에서 HTML 파일을 열면 AI 대신 감정 단어로 찾는 간단 추천으로 동작하고, 화면 위에 "AI를 쓸 수 없어 간단 추천으로 보여 드려요."가 보여요. AI가 답하는 모습은 클로드 아티팩트 링크에서 봐요. 지시문(프롬프트)은 코드 안의 <code>[4] 지시문</code> 부분에 있어요.</div>
+<div class="notice"><b>내려받은 HTML은 AI 없이 동작해요</b><br/>이 프로토타입은 클로드 아티팩트 안에서만 클로드를 불러요. 내 컴퓨터에서 HTML 파일을 열면 AI 대신 감정 단어로 찾는 간단 추천으로 동작하고, 화면 위에 "AI를 쓸 수 없어 간단 추천으로 보여 드려요."가 보여요. AI가 답하는 모습은 클로드 아티팩트 링크에서 봐요. 지시문(프롬프트)은 코드 안의 <code>[4] 지시문</code> 부분에 있어요.</div>
 
 <h3>받는 방법 1 · 이 페이지에서 바로 받기</h3>
 <ol>
@@ -343,7 +345,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <h3>받는 방법 2 · GitHub에서 파일 하나만 받기</h3>
 <ol>
 <li>위 표의 [GitHub에서 보기]를 눌러 자료 폴더를 열어요.</li>
-<li>받고 싶은 파일 이름을 눌러 파일 화면을 열어요.</li>
+<li>받고 싶은 파일 이름을 눌러 파일 화면을 열어요.</li>
 <li>파일 화면 오른쪽 위의 [Raw] 버튼 옆에 있는 내려받기(아래 화살표) 아이콘을 눌러요. 그 파일 하나만 저장돼요.</li>
 </ol>
 <p class="source-note">출처: GitHub Docs <a href="https://docs.github.com/en/repositories/working-with-files/using-files/viewing-and-understanding-files" target="_blank" rel="noopener">Viewing and understanding files</a> (Raw 보기와 파일 내려받기, 2026-11-12 확인)</p>
@@ -351,7 +353,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <h3>받는 방법 3 · 내 클로드에 다시 만들기</h3>
 <ol>
 <li>[HTML 파일]을 내려받아요.</li>
-<li>클로드 새 대화에 파일을 올리고 "이 HTML 파일을 아티팩트로 그대로 열어 줘. 내용은 바꾸지 마."라고 보내요.</li>
+<li>클로드 새 대화에 파일을 올리고 "이 HTML 파일을 아티팩트로 그대로 열어 줘. 내용은 바꾸지 마."라고 보내요.</li>
 <li>열린 아티팩트에서 이어서 실습해요. 내 클로드 계정으로 열었으니 AI 추천도 동작하는지 봐요.</li>
 </ol>
 </section>
@@ -363,8 +365,8 @@ aside nav a.active{border-left-color:var(--blue)}
 <li>Claude 유료 계정 (계정은 운영 기관 안내를 따라요)</li>
 <li>개인 구글 계정 (구글 시트·앱스스크립트·코랩을 같은 계정으로 써요)</li>
 <li>깃헙·버셀 계정 (지난주 목요일에 쓴 계정을 월요일과 금요일에 다시 써요)</li>
-<li>목요일 전까지 컴퓨터에 클로드 데스크톱 앱을 설치해요 (<a href="./d4-claude-code-chatbot.html#s2-1">설치 순서</a>)</li>
-<li>휴대폰 (만든 페이지를 열고 직접 입력해 봐요)</li>
+<li>목요일 전까지 컴퓨터에 클로드 데스크톱 앱을 설치해요 (<a href="./d4-claude-code-chatbot.html#s3-1">설치 순서</a>)</li>
+<li>휴대폰 (만든 페이지를 열고 직접 입력해 봐요)</li>
 <li>실습에는 실제 이름·연락처 대신 가상의 정보만 넣어요</li>
 </ul>
 </section>
