@@ -595,21 +595,19 @@ aside nav a.active{border-left-color:var(--blue)}
 <p>AI 스튜디오가 "원격 저장소 주소 등록을 완료했습니다"라고 답하고, 이어서 푸시를 해 보면 인증 오류가 날 수 있어요. 깃헙은 보안 정책상 이 환경에서 아이디·비밀번호를 물어보는 창을 띄우지 않아요. 그래서 푸시하려면 깃헙 개인 액세스 토큰(Personal Access Token)이 필요해요.</p>
 
 <p><b>STEP 4. 깃헙에서 개인 액세스 토큰 만들기</b></p>
-<p>가장 빠른 방법은 주소창에 <a href="https://github.com/settings/tokens" target="_blank" rel="noopener">github.com/settings/tokens</a>를 넣어 바로 들어가는 거예요. 메뉴로 들어갈 때는 아래 순서를 따라요.</p>
+<p>2026년 11월 12일 강사 화면에서는 깃헙 계정 설정의 왼쪽 메뉴에 [Developer settings] → [Personal access tokens] → [Tokens (classic)] 메뉴가 보이지 않았어요. 그래서 메뉴를 찾지 말고 주소로 바로 들어가요.</p>
 <ol class="do-steps">
-<li><p>깃헙 화면 오른쪽 맨 위의 내 프로필 사진(둥근 아이콘)을 눌러요.</p></li>
-<li><p>메뉴에서 [Settings]를 눌러요. 저장소 화면 위쪽의 [Settings] 탭이 아니에요. 토큰은 저장소가 아니라 내 계정 설정에 있어요.</p></li>
-<li><p>왼쪽 메뉴 맨 아래로 내려가 [Developer settings]를 눌러요.</p></li>
-<li><p>[Personal access tokens] → [Tokens (classic)]을 눌러요.</p></li>
+<li><p>깃헙에 로그인한 상태에서 주소창에 <a href="https://github.com/settings/tokens" target="_blank" rel="noopener">github.com/settings/tokens</a>를 넣어요. 토큰 만드는 화면이 바로 열려요. 토큰은 저장소가 아니라 내 계정 설정에 있어요.</p></li>
 <li><p>[Generate new token] → [Generate new token (classic)]을 눌러요.</p></li>
-<li><p>[Note]에 <code class="inline">ai-studio</code>를 넣고, [Expiration]에서 짧은 기간을 골라요. 범위(scopes)에서 [repo]를 체크하고, 맨 아래 [Generate token]을 눌러요.</p></li>
+<li><p>[Note]에 <code class="inline">ai-studio</code>를 넣고, [Expiration]에서 짧은 기간을 골라요.</p></li>
+<li><p>범위(scopes)에서 [repo]를 체크하고, 맨 아래 [Generate token]을 눌러요.</p></li>
 <li><p>나온 토큰(<code class="inline">ghp_</code>로 시작)을 바로 복사해요. 이 화면을 떠나면 다시 볼 수 없어요.</p></li>
 </ol>
 <div class="table-wrap"><table><tr><th>이렇게 보이면</th><th>이렇게 해요</th></tr>
 <tr><td>휴대폰 인증이나 비밀번호를 다시 물어봐요</td><td>토큰 만들기는 깃헙이 다시 본인 확인을 하는 중요한 작업이에요. 비밀번호를 넣거나, 깃헙 모바일 앱이 로그인돼 있으면 화면에 나온 숫자를 앱에 넣어 승인해요. 강사는 깃헙 모바일 앱에 미리 로그인해 두고 앱에서 승인했어요.</td></tr>
-<tr><td>메뉴 이름이나 위치가 교안과 달라요</td><td>지금 화면을 캡처해 AI 스튜디오(또는 클로드)에 올리고 "깃헙 개인 액세스 토큰을 만들려면 이 화면에서 어디를 눌러야 해?"라고 물어요. 토큰 메뉴는 저장소가 아니라 내 계정 설정에 있다는 점을 함께 알려 줘요.</td></tr>
+<tr><td>AI가 알려 준 메뉴(예: 왼쪽 맨 아래 Developer settings)가 화면에 없어요</td><td>강사 화면에서도 그 메뉴는 보이지 않았어요. 주소창에 github.com/settings/tokens를 넣어 바로 들어가요. 그래도 화면이 다르면 지금 화면을 캡처해 AI 스튜디오(또는 클로드)에 올리고 "깃헙 개인 액세스 토큰을 만들려면 이 화면에서 어디를 눌러야 해? 최신 화면 기준으로 다시 알려 줘."라고 물어요. 토큰 메뉴는 저장소가 아니라 내 계정 설정에 있다는 점을 함께 알려 줘요.</td></tr>
 </table></div>
-<p class="source-note">출처: GitHub Docs <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens" target="_blank" rel="noopener">Managing your personal access tokens</a> (토큰 만드는 순서, "토큰은 비밀번호처럼 다루세요") · <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/sudo-mode" target="_blank" rel="noopener">Sudo mode</a> (토큰 만들기는 다시 본인 확인이 필요한 작업, 깃헙 모바일 앱으로 확인 가능) (2026-11-12 확인)</p>
+<p class="source-note">메뉴가 보이지 않은 것은 2026-11-12 강사 화면 기준이에요. 출처: GitHub Docs <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens" target="_blank" rel="noopener">Managing your personal access tokens</a> (토큰 화면의 버튼·항목, "토큰은 비밀번호처럼 다루세요". 문서에는 아직 메뉴 경로가 적혀 있어 화면과 달라요) · <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/sudo-mode" target="_blank" rel="noopener">Sudo mode</a> (토큰 만들기는 다시 본인 확인이 필요한 작업, 깃헙 모바일 앱으로 확인 가능) (2026-11-12 확인)</p>
 <div class="ref-box"><b>참고 · classic 토큰을 쓸 때 조심할 점</b>
 <ul>
 <li>classic 토큰은 내가 들어갈 수 있는 모든 저장소에 접근할 수 있어요. 그래서 비밀번호처럼 다뤄요.</li>
