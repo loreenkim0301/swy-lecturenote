@@ -297,7 +297,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="nav-title">전체 목차</div>
 <div class="grp"><div class="grp-label">교육 안내</div><a class="l2" href="#overview">교육 개요</a><a class="l2" href="#prep">수업 전 준비</a><a class="l2" href="#tt">타임테이블</a></div>
 <div class="grp"><div class="grp-label">오늘의 단어</div><a class="l2" href="#words">오늘의 단어</a></div>
-<div class="grp"><div class="grp-label">SESSION 1</div><a class="l2" href="#s1">채팅으로도 되는데, 왜 클로드 코드로 가나</a><a class="l3" href="#s1-1">1-1. 어제 채팅에서 막혔던 곳 다시 보기</a><a class="l3" href="#s1-2">1-2. 클로드 코드가 다른 점</a><a class="l3" href="#s1-3">1-3. 그래서 챗봇은 왜 클로드 코드로 만드나</a></div>
+<div class="grp"><div class="grp-label">SESSION 1</div><a class="l2" href="#s1">채팅으로도 되는데, 왜 클로드 코드로 가나</a><a class="l3" href="#s1-1">1-1. 지난주 채팅에서 막혔던 곳 다시 보기</a><a class="l3" href="#s1-2">1-2. 클로드 코드가 다른 점</a><a class="l3" href="#s1-3">1-3. 그래서 챗봇은 왜 클로드 코드로 만드나</a></div>
 <div class="grp"><div class="grp-label">SESSION 2</div><a class="l2" href="#s2">챗봇 폴더를 열고 이벤트 정보 파일 만들기</a><a class="l3" href="#s2-1">2-1. 프로젝트 폴더를 열고 이벤트 정보 파일 만들기</a><a class="l3" href="#s2-2">2-2. 결과</a></div>
 <div class="grp"><div class="grp-label">SESSION 3</div><a class="l2" href="#s3">챗봇이 지킬 답변 규칙 쓰기</a><a class="l3" href="#s3-1">3-1. 시스템 프롬프트·Few-shot·CoT란?</a><a class="l3" href="#s3-2">3-2. 시스템 프롬프트 쓰기</a><a class="l3" href="#s3-3">3-3. 예시 답변(Few-shot)과 판단 순서(CoT) 더하기</a><a class="l3" href="#s3-4">3-4. 결과</a></div>
 <div class="grp"><div class="grp-label">SESSION 4</div><a class="l2" href="#s4">챗봇 화면 만들기</a><a class="l3" href="#s4-1">4-1. 규칙 파일로 챗봇 화면 만들기</a><a class="l3" href="#s4-2">4-2. 결과</a></div>
@@ -371,7 +371,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="session-head"><div class="eyebrow">SESSION 1 · 09:20–10:10</div><h2>채팅으로도 되는데, 왜 클로드 코드로 가나</h2><p>지난주 목요일에 데스크톱 앱의 채팅에 파일 시스템을 연결해서 폴더를 만들고 헬로 페이지도 만들었어요. 같은 데스크톱 앱 안에 Code 탭(클로드 코드)도 있어요. 채팅으로도 내 컴퓨터의 파일을 다룰 수 있는데, 왜 챗봇은 클로드 코드로 만들까요?</p>
 <div class="why-box"><b>왜 하나?</b>도구를 고르는 이유를 알아야, 기획자가 개발자나 AI에게 일을 맡길 때 "이 일은 어디서 해야 하는지"까지 정할 수 있어요.</div></div>
 
-<div class="topic" id="s1-1"><h3><span class="stage">개념</span>1-1. 어제 채팅에서 막혔던 곳 다시 보기</h3>
+<div class="topic" id="s1-1"><h3><span class="stage">개념</span>1-1. 지난주 채팅에서 막혔던 곳 다시 보기</h3>
 <p>지난주 목요일에 채팅(파일 시스템 연결)으로 여러 일을 시켜 봤던 것 기억하시나요? 되는 일과 막히는 일이 나뉘었어요.</p>
 <div class="table-wrap"><table><tr><th>시킨 일</th><th>채팅(파일 시스템)</th><th>막힌 이유</th></tr>
 <tr><td>새 폴더·파일 만들기, 파일 읽기</td><td>됐어요</td><td></td></tr>
@@ -383,6 +383,7 @@ aside nav a.active{border-left-color:var(--blue)}
 </div>
 
 <div class="topic" id="s1-2"><h3><span class="stage">개념</span>1-2. 클로드 코드가 다른 점</h3>
+<p>지난주 금요일(3주차 DAY 5) 1세션에서 클로드 코드로 폴더를 열고, 아티팩트를 가져오고, 깃헙에 올려 봤던 것 기억하시나요? 그 경험을 채팅과 나란히 놓고 비교해 봐요. <a href="../261109-ai-pm-week3/d5-chatbot-api.html#s1">3주차 DAY 5의 1세션</a>을 열어 두면 좋아요.</p>
 <p>채팅의 파일 시스템은 <b>파일을 읽고 쓰는 손</b>만 빌려준 거예요. 클로드 코드는 그 손에 더해 <b>터미널</b>까지 맡긴 거예요. 터미널로는 이름 바꾸기·옮기기·지우기, 서버 켜기, 프로그램 설치, 실행해 보고 오류 확인하기를 다 할 수 있어요.</p>
 <div class="table-wrap"><table><tr><th>구분</th><th>채팅 + 파일 시스템</th><th>클로드 코드(Code 탭)</th></tr>
 <tr><td><b>일하는 단위</b></td><td>대화 한 번에 파일 몇 개</td><td>폴더 하나를 <b>프로젝트</b>로 열고, 안의 파일 전체를 읽고 일해요</td></tr>
