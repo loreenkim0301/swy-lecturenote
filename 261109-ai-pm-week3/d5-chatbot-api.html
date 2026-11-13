@@ -302,6 +302,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="grp"><div class="grp-label">SESSION 3</div><a class="l2" href="#s3">배포한 사이트 점검하기: 보안과 SEO</a><a class="l3" href="#s3-1">3-1. 기본 보안 사항 물어보고, 깃헙 이슈로 남기기</a><a class="l3" href="#s3-2">3-2. SEO와 공유 미리보기 물어보기</a><a class="l3" href="#s3-3">3-3. 카카오톡에서 공유 미리보기 확인하기</a><a class="l3" href="#s3-4">3-4. 결과</a></div>
 <div class="grp"><div class="grp-label">SESSION 4</div><a class="l2" href="#s4">파이어베이스로 옮겨 배포하기</a><a class="l3" href="#s4-1">4-1. 깃헙 페이지스와 파이어베이스 호스팅 비교</a><a class="l3" href="#s4-2">4-2. 파이어베이스 프로젝트 직접 만들기</a><a class="l3" href="#s4-3">4-3. 프로젝트 화면 둘러보기: 제미나이, 사이드 메뉴, 요금제</a><a class="l3" href="#s4-4">4-4. 웹 앱 등록하고 설정 복사하기</a><a class="l3" href="#s4-5">4-5. 클로드 코드에게 다음 단계를 맡기기</a><a class="l3" href="#s4-6">4-6. 파이어베이스 주소 열어 보고, 깃헙 페이지스 주소와 비교하기</a><a class="l3" href="#s4-7">4-7. 더 해 보기: 데이터베이스와 구글 로그인</a><a class="l3" href="#s4-8">4-8. 결과</a></div>
 <div class="grp"><div class="grp-label">SESSION 5</div><a class="l2" href="#s5">3주차 회고와 다음 주 예고</a><a class="l3" href="#s5-1">5-1. 3주차 결과물 모으기와 회고</a></div>
+<div class="grp"><div class="grp-label">SESSION 6</div><a class="l2" href="#s6">CI/CD 맛보기: 개발 과정을 자동으로</a><a class="l3" href="#s6-1">6-1. CI/CD란?</a><a class="l3" href="#s6-2">6-2. 깃헙 액션은 어디에 있고, 무엇을 하나요?</a><a class="l3" href="#s6-3">6-3. 액션 탭에서 깃헙 페이지스 배포 기록 보기</a><a class="l3" href="#s6-4">6-4. 세 가지 배포 흐름 비교하기</a><a class="l3" href="#s6-5">6-5. ②를 ③으로 바꿔 보기: 파이어베이스 자동 배포</a><a class="l3" href="#s6-6">6-6. 결과</a></div>
 <div class="grp"><div class="grp-label">마무리</div><a class="l2" href="#wrap">오늘 정리와 과제</a></div>
 </nav>
 <div class="side-link"><b>이 교안 주소</b><a href="https://loreenkim0301.github.io/swy-lecturenote/261109-ai-pm-week3/d5-chatbot-api.html">loreenkim0301.github.io/swy-lecturenote/261109-ai-pm-week3/d5-chatbot-api.html</a></div>
@@ -351,6 +352,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td>14:00–15:40</td><td>SESSION 3</td><td><a href="#s3">배포한 사이트 점검하기: 보안과 SEO</a></td></tr>
 <tr><td>15:50–17:00</td><td>SESSION 4</td><td><a href="#s4">파이어베이스로 옮겨 배포하기</a></td></tr>
 <tr><td>17:00–17:30</td><td>SESSION 5</td><td><a href="#s5">3주차 회고와 다음 주 예고</a></td></tr>
+<tr><td>보충 60분</td><td>SESSION 6</td><td><a href="#s6">CI/CD 맛보기: 개발 과정을 자동으로</a></td></tr>
 <tr><td>17:30–18:00</td><td>정리</td><td><a href="#wrap">오늘 정리와 과제</a></td></tr>
 </table></div>
 </section>
@@ -790,6 +792,129 @@ aside nav a.active{border-left-color:var(--blue)}
 </ol>
 <p><b>STEP 3. 다음 주 예고</b></p>
 <p>다음 주 월요일에는 이번 주에 못 한 챗봇 만들기를 클로드 코드로 해요. 그다음 챗봇에 AI를 붙이고, 내 문서에서 답을 찾아 읽고 답하는 RAG와, AI가 스스로 도구를 골라 일을 이어 가는 에이전트(Agent)를 배워요. <a href="../261116-ai-pm-week4/">4주차 홈</a>에서 미리 볼 수 있어요.</p>
+</div>
+</section>
+
+<section class="section session" id="s6">
+<div class="session-head"><div class="eyebrow">SESSION 6 · 보충 60분</div><h2>CI/CD 맛보기: 개발 과정을 자동으로</h2><p>2세션에서 코드를 올리면 1~2분 뒤 사이트가 저절로 바뀌었어요. 그 뒤에서 일한 것이 깃헙 액션이에요. 액션이 어디에 있고 무엇을 하는지 보고, 깃헙 페이지스·파이어베이스 배포를 수동과 자동으로 나란히 비교해요.</p>
+<div class="why-box"><b>왜 하나?</b>개발자가 "CI/CD 걸어 뒀어요", "액션이 깨졌어요"라고 말할 때, 기획자가 무슨 뜻인지 알아야 "고친 내용이 언제 사용자에게 보이나"를 판단할 수 있어요.</div></div>
+
+<div class="topic" id="s6-1"><h3><span class="stage">개념</span>6-1. CI/CD란?</h3>
+<p>빵집에 비유해 볼게요. 반죽(코드)을 넣으면 컨베이어가 알아서 굽고(빌드), 탄 빵은 골라내고(검사), 통과한 빵만 진열대에 올려요(배포). 사람은 반죽만 잘 만들면 돼요.</p>
+<div class="table-wrap"><table><tr><th>말</th><th>뜻</th><th>빵집에서는</th></tr>
+<tr><td><b>CI</b> (지속적 통합)</td><td>코드를 올릴 때마다 자동으로 합치고 검사해요.</td><td>반죽이 들어오면 바로 굽고 탄 빵을 골라내요</td></tr>
+<tr><td><b>CD</b> (지속적 배포)</td><td>검사를 통과하면 자동으로 사이트에 내보내요.</td><td>통과한 빵을 바로 진열대에 올려요</td></tr>
+<tr><td><b>깃헙 액션</b></td><td>깃헙에서 이 자동 과정을 실행해 주는 기능이에요.</td><td>컨베이어 벨트</td></tr>
+</table></div>
+</div>
+
+<div class="topic" id="s6-2"><h3><span class="stage">개념</span>6-2. 깃헙 액션은 어디에 있고, 무엇을 하나요?</h3>
+<p><b>메뉴 위치</b> · 깃헙 저장소를 열면 저장소 이름 아래에 탭이 한 줄로 있어요. <b>Code · Issues · Pull requests · Actions · Projects · Settings …</b> 가운데 <b>[Actions]</b> 탭이에요. 계정 메뉴가 아니라 <b>저장소마다</b> 있어요.</p>
+<figure class="shot"><a href="images/d5-s6-actions-tab.jpg" target="_blank" rel="noopener"><img style="width:640px;max-width:100%" alt="깃헙 저장소 위쪽 탭 줄에 Actions 탭이 있고, Pages 설정 아래에 pages build and deployment 워크플로로 배포되었다는 안내가 보이는 모습" loading="lazy" src="images/d5-s6-actions-tab.jpg"/></a><figcaption>빨간 상자: 저장소 위쪽 탭 줄의 [Actions]. 주황 상자: 아래쪽 안내에 'pages build and deployment' 워크플로로 배포됐다고 나와요 (2026-11-13 강사 화면)</figcaption></figure>
+<div class="table-wrap"><table><tr><th>말</th><th>뜻</th><th>마음책방에서는</th></tr>
+<tr><td><b>워크플로</b></td><td>자동으로 실행할 일의 순서표예요. 저장소의 <code class="inline">.github/workflows</code> 폴더에 파일로 있어요.</td><td>깃헙 페이지스를 켜면 깃헙이 'pages build and deployment' 워크플로를 알아서 써요</td></tr>
+<tr><td><b>이벤트(트리거)</b></td><td>워크플로를 시작하게 하는 일이에요. 푸시, PR, 정해진 시간, 손으로 누르기가 있어요.</td><td>main에 푸시하면 시작돼요</td></tr>
+<tr><td><b>잡 · 스텝</b></td><td>잡은 한 컴퓨터에서 실행할 일 묶음, 스텝은 그 안의 한 단계예요. 스텝은 순서대로 실행돼요.</td><td>파일 준비 → 묶기 → 배포</td></tr>
+<tr><td><b>러너</b></td><td>워크플로를 실제로 실행하는 깃헙의 컴퓨터예요.</td><td>내 컴퓨터가 꺼져 있어도 깃헙 컴퓨터가 배포해요</td></tr>
+<tr><td><b>실행 기록</b></td><td>Actions 탭에 실행마다 한 줄씩 남아요. 초록 체크는 성공, 빨간 X는 실패예요. 누르면 단계별 기록(로그)이 보여요.</td><td>어느 커밋이 언제 배포됐는지 확인해요</td></tr>
+</table></div>
+<p><b>비용</b> · 공개 저장소에서 깃헙의 기본 러너를 쓰면 무료예요. 비공개 저장소는 무료 계정에 매달 정해진 사용량이 들어 있고, 넘으면 비용이 생겨요.</p>
+<p class="source-note">출처: GitHub Docs <a href="https://docs.github.com/en/actions/get-started/understand-github-actions" target="_blank" rel="noopener">Understanding GitHub Actions</a>(workflow·event·job·step·runner, .github/workflows) · <a href="https://docs.github.com/en/billing/concepts/product-billing/github-actions" target="_blank" rel="noopener">GitHub Actions billing</a>(공개 저장소 기본 러너 무료) · <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site" target="_blank" rel="noopener">Configuring a publishing source</a>("Your GitHub Pages site will always be deployed with a GitHub Actions workflow run.") (2026-11-13 확인)</p>
+</div>
+
+<div class="topic" id="s6-3"><h3><span class="stage">실습</span>6-3. 액션 탭에서 깃헙 페이지스 배포 기록 보기</h3>
+<ol class="do-steps">
+<li><p>2세션에서 깃헙 페이지스를 켰던 마음책방 저장소를 열고 위쪽 [Actions] 탭을 눌러요.</p></li>
+<li><p>목록에서 'pages build and deployment' 실행 기록을 찾아요. 줄마다 커밋 메시지와 시각이 보여요.</p></li>
+<li><p>한 줄을 눌러 build, deploy 단계와 걸린 시간을 봐요.</p></li>
+<li><p>빨간 X가 있으면 그 줄의 기록을 열어 클로드 코드에게 보여 주고 "이 배포가 왜 실패했는지 알려 줘"라고 물어요.</p></li>
+</ol>
+<div class="table-wrap tpl"><table><tr><th>기록에서 알 수 있는 것</th><th>내 결과</th></tr>
+<tr><td>어떤 커밋 메시지가 배포되었나</td><td></td></tr>
+<tr><td>성공했나(초록 체크 / 빨간 X)</td><td></td></tr>
+<tr><td>몇 초 걸렸나</td><td></td></tr>
+</table></div>
+<p>1-8에서 커밋 메시지를 내가 읽을 수 있게 정해 둔 덕분에, 이 목록만 봐도 무엇이 언제 배포됐는지 알 수 있어요.</p>
+<p class="blk k-chk"><span>막히면</span></p>
+<div class="table-wrap"><table><tr><th>이렇게 보이면</th><th>이렇게 해요</th></tr>
+<tr><td><b>Actions 탭에 기록이 하나도 없어요</b></td><td>4세션에서 깃헙 페이지스를 껐다면 새 기록이 생기지 않아요. 지난 기록이 남아 있는지 아래로 내려 봐요.</td></tr>
+</table></div>
+</div>
+
+<div class="topic" id="s6-4"><h3><span class="stage">개념</span>6-4. 세 가지 배포 흐름 비교하기</h3>
+<p>앞의 네 단계는 셋 다 같아요. <b>마지막 '배포'를 누가 하느냐</b>가 달라요.</p>
+<style>
+.flowcmp{display:grid;gap:14px;margin:14px 0}
+.flowrow{border:1px solid #d9dde5;border-radius:12px;padding:12px 14px;background:#fff}
+.flowrow h4{margin:0 0 10px;font-size:15px}
+.flowrow h4 .tag{display:inline-block;margin-left:6px;padding:1px 8px;border-radius:999px;font-size:12px;font-weight:700;vertical-align:1px}
+.tag.auto{background:#e7f7ef;color:#16794f}.tag.manual{background:#fff1e6;color:#b45309}
+.steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:22px;list-style:none;margin:0;padding:0}
+.steps li{position:relative;border:1px solid #cfd9f3;background:#f5f8ff;border-radius:10px;padding:8px 9px;font-size:13px;line-height:1.45}
+.steps li b{display:block;font-size:12px;color:#2c48b8;margin-bottom:2px}
+.steps li:not(:last-child)::after{content:"→";position:absolute;right:-18px;top:50%;transform:translateY(-50%);color:#8a93a6;font-weight:700}
+.steps li.same{opacity:.92}
+.steps li.deploy{border-width:2px}
+.steps li.deploy.auto{border-color:#16a36b;background:#f2fbf6}.steps li.deploy.auto b{color:#16794f}
+.steps li.deploy.manual{border-color:#e08a2e;background:#fff8f0}.steps li.deploy.manual b{color:#b45309}
+.steps li .who{display:block;margin-top:4px;font-size:12px;color:#5d6b82}
+.flowrow .gap{margin:10px 0 0;font-size:13px;color:#5d6b82}
+@media (max-width:760px){.steps{grid-template-columns:1fr;gap:16px}.steps li:not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-16px;transform:translateX(-50%)}}
+</style>
+<div class="flowcmp" role="group" aria-label="세 가지 배포 흐름 비교">
+<div class="flowrow"><h4>① 깃헙 페이지스 <span class="tag auto">자동</span></h4>
+<ol class="steps">
+<li class="same"><b>1. 로컬 소스코드</b>내 컴퓨터 폴더</li>
+<li class="same"><b>2. 클로드 코드로 편집</b>diff 보고 승인</li>
+<li class="same"><b>3. 로컬 깃에 버전 관리</b>커밋</li>
+<li class="same"><b>4. 깃헙에 푸시</b>git push</li>
+<li class="deploy auto"><b>5. 깃헙 페이지스 배포</b>깃헙 액션이 저절로<span class="who">누가: 깃헙(pages build and deployment)</span></li>
+</ol>
+<p class="gap">푸시하면 끝. 깃헙의 코드와 사이트가 늘 같아요. 단, 무료 계정은 공개 저장소에서만 써요.</p></div>
+<div class="flowrow"><h4>② 파이어베이스 <span class="tag manual">수동</span></h4>
+<ol class="steps">
+<li class="same"><b>1. 로컬 소스코드</b>내 컴퓨터 폴더</li>
+<li class="same"><b>2. 클로드 코드로 편집</b>diff 보고 승인</li>
+<li class="same"><b>3. 로컬 깃에 버전 관리</b>커밋</li>
+<li class="same"><b>4. 깃헙에 푸시</b>git push</li>
+<li class="deploy manual"><b>5. 파이어베이스 배포</b>내 컴퓨터에서 배포 명령<span class="who">누가: 나(클로드 코드에게 "배포해 줘")</span></li>
+</ol>
+<p class="gap">푸시와 배포가 따로예요. 배포를 깜빡하면 깃헙에는 새 코드, 사이트에는 옛날 화면이 남아요. 4세션에서 한 방식이에요.</p></div>
+<div class="flowrow"><h4>③ 파이어베이스 + 깃헙 액션 <span class="tag auto">자동</span></h4>
+<ol class="steps">
+<li class="same"><b>1. 로컬 소스코드</b>내 컴퓨터 폴더</li>
+<li class="same"><b>2. 클로드 코드로 편집</b>diff 보고 승인</li>
+<li class="same"><b>3. 로컬 깃에 버전 관리</b>커밋</li>
+<li class="same"><b>4. 깃헙에 푸시</b>git push</li>
+<li class="deploy auto"><b>5. 파이어베이스 배포</b>깃헙 액션이 저절로<span class="who">누가: 깃헙(내가 만든 워크플로 + 시크릿)</span></li>
+</ol>
+<p class="gap">①처럼 푸시하면 끝이고, 비공개 저장소에서도 돼요. 처음에 워크플로 파일과 파이어베이스 열쇠(시크릿)를 한 번 준비해야 해요.</p></div>
+</div>
+<div class="table-wrap"><table><tr><th>비교</th><th>① 깃헙 페이지스</th><th>② 파이어베이스 수동</th><th>③ 파이어베이스 + 액션</th></tr>
+<tr><td><b>배포를 누가 하나</b></td><td>깃헙</td><td>나</td><td>깃헙</td></tr>
+<tr><td><b>깃헙 코드와 사이트가 같은가</b></td><td>늘 같아요</td><td>배포를 잊으면 달라요</td><td>늘 같아요</td></tr>
+<tr><td><b>배포 기록</b></td><td>Actions 탭</td><td>내 컴퓨터 터미널에만</td><td>Actions 탭</td></tr>
+<tr><td><b>비공개 저장소</b></td><td>무료 계정은 안 돼요</td><td>돼요</td><td>돼요</td></tr>
+<tr><td><b>처음 준비</b></td><td>Pages 설정만</td><td>파이어베이스 명령 도구</td><td>워크플로 파일 + 깃헙 시크릿</td></tr>
+</table></div>
+</div>
+
+<div class="topic" id="s6-5"><h3><span class="stage">선택</span>6-5. ②를 ③으로 바꿔 보기: 파이어베이스 자동 배포</h3>
+<p>4세션에서 만든 파이어베이스 배포를 깃헙 액션으로 자동화해요. 파이어베이스 명령 도구에는 깃헙 액션 연결을 대신 만들어 주는 명령이 있어요.</p>
+<div class="copybox"><div class="copyhead"><span>프롬프트 15 · 클로드 코드 입력창에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 마음책방을 깃헙 main에 푸시하면 깃헙 액션이 파이어베이스 호스팅에 자동으로 배포하게 해 줘.
+내용: 파이어베이스 공식 방법(firebase init hosting:github)을 써 줘. 열쇠는 코드에 넣지 말고 깃헙 시크릿에만 넣어 줘. 실행하기 전에 할 일 목록을 먼저 보여 줘.
+형식: ① 할 일 목록 ② 내가 브라우저에서 해야 할 일 ③ 만들어진 워크플로 파일 이름과 시크릿 이름을 한 줄씩.</pre></div>
+<ol class="do-steps">
+<li><p>브라우저가 열리면 깃헙 계정으로 로그인하고 연결을 허용해요. 저장소 관리자 권한이 있어야 해요.</p></li>
+<li><p>저장소 → [Settings] → [Secrets and variables] → [Actions]에 파이어베이스 시크릿이 생겼는지 봐요. 값은 보이지 않고 이름만 보이면 정상이에요.</p></li>
+<li><p>첫 화면 글자 하나를 고쳐 커밋하고 푸시해요. [Actions] 탭에 새 실행 기록이 생기고, 초록 체크가 뜬 뒤 web.app 주소에 바뀐 글자가 보이면 성공이에요.</p></li>
+</ol>
+<p class="source-note">출처: Firebase 문서 <a href="https://firebase.google.com/docs/hosting/github-integration" target="_blank" rel="noopener">Deploy to live &amp; preview channels via GitHub pull requests</a>(firebase init hosting:github: 서비스 계정 생성, 키를 깃헙 시크릿으로 업로드, 워크플로 파일 작성, 저장소 관리자 권한 필요) (2026-11-10 갱신, 2026-11-12 확인)</p>
+</div>
+
+<div class="topic" id="s6-6"><h3><span class="stage">결과</span>6-6. 결과</h3>
+<div class="result-box"><b>결과물</b> 액션 실행 기록 표 + 세 가지 배포 흐름 비교를 내 말로 쓴 한 줄 (선택: 파이어베이스 자동 배포 기록)</div>
+<p class="ok-line"><b>이렇게 보이면 성공</b>Actions 탭에서 배포 기록을 찾아 커밋·성공 여부·시간을 말하고, ②와 ③의 차이를 "배포를 누가 하나"로 설명할 수 있다</p>
 </div>
 </section>
 
