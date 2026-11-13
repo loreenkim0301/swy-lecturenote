@@ -10,7 +10,10 @@
 | 웹 스크래핑 수집 환경별 대조 실습 · 채팅 / Claude in Chrome / 데스크톱 앱 | [261110-web-scraping-compare](./261110-web-scraping-compare/) | 2026-11-10 | 실습 결과 원본, HTML 교안 미작성 |
 | 노션으로 팀 일을 한곳에 · 노션 기초부터 노션 에이전트까지 | [261110-notion-workspace](./261110-notion-workspace/) | 2026-11-10 | 기존 노션 교안 통합, 실습 미검증 |
 | 사진 대신 이름표로 · Vercel agent-desktop | [261110-agent-desktop](./261110-agent-desktop/) | 2026-11-10 | 새로 작성, 실습 미검증 |
+| agent-desktop 학생용 · 같이 써 볼까요? | [261110-agent-desktop-hands-on](./261110-agent-desktop-hands-on/) | 2026-11-10 | 새로 작성, 3-5 미검증 |
+| agent-desktop 강사용 노트 | [261110-agent-desktop-instructor](./261110-agent-desktop-instructor/) | 2026-11-10 | 강사 전용 |
 | PM을 위한 프로그래밍의 이해: 파이썬 ①·② | [2610-aiclass-python](./2610-aiclass-python/) | 2026-11-10 | 정식 목록에서 옮김 |
 | 바이브코더와 PM을 위한 GitHub 기초 | [261026-github-basics](./261026-github-basics/) | 2026-11-10 | 정식 목록에서 옮김 |
 | 비개발자를 위한 백엔드 플랫폼 이해 · 버셀 vs 네트리파이 | [261102-backend-platform](./261102-backend-platform/) | 2026-11-10 | 정식 목록에서 옮김 |
 | AI에게 손이 생기기까지 · 브라우저·컴퓨터·커넥터의 기원 | [261105-ai-agent-three-hands](./261105-ai-agent-three-hands/) | 2026-11-10 | 정식 목록에서 옮김 |
+| 사용자 수에 맞는 가설 검증 · 데이터 분석 입문 | [data-hypothesis-by-user-scale](./data-hypothesis-by-user-scale/) | 2026-11-10 | 새로 작성 |
