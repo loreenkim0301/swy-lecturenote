@@ -469,7 +469,10 @@ aside nav a.active{border-left-color:var(--blue)}
 
 <div class="topic" id="s3-2"><h3><span class="stage">실습</span>3-2. 무료 날씨 키 받아 붙이기</h3>
 <ol class="do-steps">
-<li><p><a href="https://openweathermap.org" target="_blank" rel="noopener">OpenWeather</a>에 이메일로 가입해요. 카드 정보는 넣지 않아요.</p></li>
+<li><p><a href="https://openweathermap.org/price" target="_blank" rel="noopener">OpenWeather 요금 페이지</a>의 'Free Weather API access'에서 무료 범위를 먼저 확인하고, 이메일로 가입해요. 카드 정보는 넣지 않아요.</p></li>
+</ol>
+<figure class="shot"><a href="images/d2_owm_free.jpg" target="_blank" rel="noopener"><img style="width:440px;max-width:100%" alt="OpenWeather Free Weather API access. Free for everyone 카드에 60 API calls/minute, 1,000,000 calls/month, Current Weather API" loading="lazy" src="images/d2_owm_free.jpg"/></a><figcaption>무료 범위: 1분 60회, 한 달 1,000,000회 (2026-11-16 확인)</figcaption></figure>
+<ol class="do-steps" start="2">
 <li><p>내 계정 메뉴의 [My API keys]에서 키를 복사해요. 새 키는 바로 동작하지 않을 수 있어요. 안 되면 잠시 기다렸다가 다시 해요.</p></li>
 <li><p>키를 대화창에 붙여 넣지 말고, 아래 프롬프트로 클로드 코드에게 <b>키를 넣을 빈 파일</b>을 만들게 해요. 키는 내가 그 파일에 직접 넣어요.</p></li>
 </ol>
@@ -517,7 +520,10 @@ aside nav a.active{border-left-color:var(--blue)}
 
 <div class="topic" id="s4-2"><h3><span class="stage">실습</span>4-2. 활용신청하고 인증키 받기</h3>
 <ol class="do-steps">
-<li><p>로그인한 상태로 상세 화면의 [활용신청]을 눌러요.</p></li>
+<li><p>로그인한 상태로 상세 화면의 [활용신청]을 눌러요. 요약 글 바로 아래에 있어요.</p></li>
+</ol>
+<figure class="shot"><a href="images/d2_kma_apply.jpg" target="_blank" rel="noopener"><img style="width:480px;max-width:100%" alt="기상청 단기예보 조회서비스 상세 화면의 활용신청 단추와 오픈 API 정보" loading="lazy" src="images/d2_kma_apply.jpg"/></a><figcaption>상세 화면의 [활용신청] 단추 (2026-11-16 확인)</figcaption></figure>
+<ol class="do-steps" start="2">
 <li><p>활용 목적에 "수업 실습: 이벤트 배너에 날씨 표시"처럼 짧게 써요.</p></li>
 <li><p>자동승인 API라서 신청하면 바로 승인돼요. 마이페이지에서 인증키를 확인해요.</p></li>
 <li><p>인증키는 3세션처럼 .env 파일에 직접 넣어요. 대화창에 붙여 넣지 않아요.</p></li>
@@ -525,7 +531,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <p class="blk k-chk"><span>막히면</span></p>
 <div class="table-wrap"><table><tr><th>이렇게 보이면</th><th>이렇게 해요</th></tr>
 <tr><td><b>인증키가 두 가지로 보여요</b></td><td>클로드 코드에게 "공공데이터포털 인증키가 두 가지인데, 이 요청에는 어느 것을 넣어야 해?"라고 물어요. 키 값은 붙여 넣지 말고 질문만 해요.</td></tr>
-<tr><td><b>요청했더니 키가 등록되지 않았다고 나와요</b></td><td>승인 직후에는 키가 바로 동작하지 않을 때가 있어요. 잠시 뒤에 다시 해요.</td></tr>
+<tr><td><b>"등록되지 않은 API 인증키입니다"라고 나와요</b></td><td>승인 직후에는 키가 바로 동작하지 않을 때가 있어요. 잠시 뒤에 다시 해요.</td></tr>
 </table></div>
 </div>
 

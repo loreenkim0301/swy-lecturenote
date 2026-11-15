@@ -398,8 +398,8 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="why-box"><b>왜 하나?</b>채팅이 아는 것을 파일 하나로 모아 두면, 틀린 답이 나왔을 때 어디를 고칠지 바로 알 수 있어요.</div></div>
 
 <div class="topic" id="s2-1"><h3><span class="stage">개념</span>2-1. 이 컴퓨터 환경과 클라우드 환경</h3>
-<p>지난주 금요일에는 입력창 아래 환경에서 [이 컴퓨터]를 골랐어요. 같은 자리에서 클라우드 환경도 고를 수 있어요.</p>
-<div class="table-wrap"><table><tr><th>구분</th><th>이 컴퓨터(Local)</th><th>클라우드(Cloud)</th></tr>
+<p>지난주 금요일에는 입력창 아래 환경 단추에서 내 컴퓨터(로컬)를 골랐어요. 같은 단추에서 클라우드 환경도 고를 수 있어요.</p>
+<div class="table-wrap"><table><tr><th>구분</th><th>로컬(내 컴퓨터)</th><th>클라우드</th></tr>
 <tr><td><b>어디서 일하나</b></td><td>내 컴퓨터의 폴더</td><td>앤트로픽의 클라우드 컴퓨터</td></tr>
 <tr><td><b>앱을 닫으면</b></td><td>일이 멈춰요</td><td>일이 이어져요</td></tr>
 <tr><td><b>내 컴퓨터 파일</b></td><td>바로 열어요</td><td>직접 열 수 없어요. 필요한 내용은 대화에 붙여 넣어요</td></tr>
@@ -423,19 +423,30 @@ aside nav a.active{border-left-color:var(--blue)}
 </table></div>
 <p><b>STEP 2. 클라우드 세션 열기</b></p>
 <ol class="do-steps">
-<li><p>Code 탭에서 [새로 만들기]를 눌러요.</p></li>
-<li><p>입력창 아래 첫 번째 단추(환경 선택)를 눌러 Cloud 묶음의 환경을 골라요. 처음이면 안내에 따라 기본 환경을 만들어요.</p></li>
-<li><p>권한 모드는 [Manual]로 둬요. 파일을 만들기 전에 바뀔 내용을 보여 주고 물어봐요.</p></li>
+<li><p>Code 화면 왼쪽 위의 [새로 만들기]를 눌러요. 입력창 아래에 단추가 세 개 보여요. 왼쪽부터 환경, 저장소, 권한이에요.</p></li>
 </ol>
+<figure class="shot"><a href="images/d1_cloud_bar.jpg" target="_blank" rel="noopener"><img style="width:560px;max-width:100%" alt="입력창 아래 단추. 왼쪽부터 구름 모양 자동, 저장소, 오른쪽 끝에 모델 이름과 권한 단추 자동" loading="lazy" src="images/d1_cloud_bar.jpg"/></a><figcaption>입력창 아래 단추: 환경(구름 모양) · 저장소 · 권한(오른쪽 끝) (2026-11-16 claude.ai/code에서 확인)</figcaption></figure>
+<ol class="do-steps" start="2">
+<li><p><b>환경:</b> 구름 모양 단추를 눌러 '클라우드' 아래의 [자동]이나 [Default]를 골라요. 맨 위 '로컬'은 데스크톱 앱에서만 쓰는 내 컴퓨터 환경이에요.</p></li>
+</ol>
+<figure class="shot"><a href="images/d1_cloud_env_menu.jpg" target="_blank" rel="noopener"><img style="width:320px;max-width:100%" alt="환경 선택 메뉴. 로컬(데스크톱 앱 전용), 클라우드 아래 자동과 Default, Remote Control, 새 환경" loading="lazy" src="images/d1_cloud_env_menu.jpg"/></a><figcaption>환경 메뉴: '클라우드' 아래에서 골라요. 흐리게 가린 칸은 강사 계정의 다른 환경 이름이에요 (2026-11-16 확인)</figcaption></figure>
+<ol class="do-steps" start="3">
+<li><p><b>저장소:</b> 두 번째 단추를 눌러 맨 아래 [저장소 없음]을 골라요. 깃헙 저장소 없이 빈 클라우드 작업 공간에서 시작해요.</p></li>
+</ol>
+<figure class="shot"><a href="images/d1_cloud_repo_none.jpg" target="_blank" rel="noopener"><img style="width:320px;max-width:100%" alt="저장소 선택 메뉴. 맨 아래 저장소 없음" loading="lazy" src="images/d1_cloud_repo_none.jpg"/></a><figcaption>저장소 메뉴 맨 아래의 [저장소 없음] (2026-11-16 확인)</figcaption></figure>
+<ol class="do-steps" start="4">
+<li><p><b>권한:</b> 오른쪽 끝 권한 단추를 눌러 [계획]을 골라요. 파일을 바꾸기 전에 무엇을 할지 계획을 먼저 보여 줘요. 계획을 읽고 승인하면 그때 만들어요.</p></li>
+</ol>
+<figure class="shot"><a href="images/d1_cloud_perm_menu.jpg" target="_blank" rel="noopener"><img style="width:320px;max-width:100%" alt="권한 메뉴. 자동, 편집 자동 수락, 계획(변경하기 전에 계획 세우기)" loading="lazy" src="images/d1_cloud_perm_menu.jpg"/></a><figcaption>권한 메뉴: 자동 · 편집 자동 수락 · 계획 (2026-11-16 확인)</figcaption></figure>
 <p><b>STEP 3. 이벤트 정보 파일 만들기</b></p>
 <div class="copybox"><div class="copyhead"><span>프롬프트 1 · 클로드 코드 입력창에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: selectmarket-chat 폴더를 만들고, 그 안에 event-info.md 파일을 만들어 줘. 셀렉트마켓 연말 이벤트 문의 채팅이 읽을 이벤트 정보 파일이야.
 내용: 이벤트 정보는 [STEP 1 표 붙여 넣기]야. 표에 없는 혜택, 날짜, 금액, 연락처는 추가하지 마. 맨 위에 '가상의 수업용 이벤트 정보예요.' 한 줄을 넣어 줘.
 형식: # 제목 한 줄, 항목마다 ## 소제목과 한두 줄 설명. 다른 파일은 만들지 마.</pre></div>
 <p class="blk k-chk"><span>확인할 점</span></p>
-<ul class="checklist"><li>diff에서 날짜·금액·인원이 STEP 1 표와 같은지 보고 승인했다</li><li>표에 없는 혜택이나 연락처가 없다</li></ul>
+<ul class="checklist"><li>계획과 만든 파일에서 날짜·금액·인원이 STEP 1 표와 같은지 봤다</li><li>표에 없는 혜택이나 연락처가 없다</li></ul>
 <p class="blk k-chk"><span>막히면</span></p>
 <div class="table-wrap"><table><tr><th>이렇게 보이면</th><th>이렇게 해요</th></tr>
-<tr><td><b>Cloud 묶음이 없거나 막혀 있어요</b></td><td>회사·기관 계정은 관리자가 켜 줘야 할 수 있어요. 오늘은 [이 컴퓨터]로 새 폴더를 열어 같은 순서로 해도 돼요. 4세션도 똑같이 할 수 있어요.</td></tr>
+<tr><td><b>'클라우드' 묶음이 없거나 막혀 있어요</b></td><td>회사·기관 계정은 관리자가 켜 줘야 할 수 있어요. 오늘은 데스크톱 앱에서 [로컬]을 골라 새 폴더를 열고 같은 순서로 해도 돼요. 4세션도 똑같이 할 수 있어요.</td></tr>
 </table></div>
 </div>
 </section>

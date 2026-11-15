@@ -400,6 +400,11 @@ aside nav a.active{border-left-color:var(--blue)}
 형식: 새 파일 하나. 다 만들면 Tailwind를 불러오는 줄이 몇 번째 줄인지 알려 줘.</pre></div>
 <ol class="do-steps">
 <li><p>두 파일을 나란히 열어 견줘요.</p></li>
+</ol>
+<figure class="shot"><a href="images/d3_tailwind_cdn.jpg" target="_blank" rel="noopener"><img style="width:480px;max-width:100%" alt="Tailwind CSS Play CDN 문서. head에 script 한 줄을 넣고 h1에 text-3xl font-bold underline 이름표를 붙인 예시" loading="lazy" src="images/d3_tailwind_cdn.jpg"/></a><figcaption>Tailwind 공식 문서의 Play CDN: &lt;head&gt;에 주소 한 줄을 넣고 이름표로 꾸며요 (2026-11-16 확인)</figcaption></figure>
+<p>Tailwind 문서에는 Play CDN이 개발·연습용이고 실제 서비스(production)용은 아니라고 적혀 있어요. 실제 서비스로 낼 때는 개발자와 설치 방법을 다시 정해요.</p>
+<p class="source-note">출처: Tailwind CSS <a href="https://tailwindcss.com/docs/installation/play-cdn" target="_blank" rel="noopener">Play CDN</a>("designed for development purposes only, and is not intended for production") (2026-11-16 확인)</p>
+<ol class="do-steps" start="2">
 <li><p>index-tailwind.html의 코드를 열고, 태그에 붙은 짧은 이름표(예: text-4xl, p-6)가 무엇을 뜻하는지 클로드 코드에게 하나만 물어봐요.</p></li>
 </ol>
 </div>
@@ -408,6 +413,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="copybox"><div class="copyhead"><span>프롬프트 2 · 클로드 코드 입력창에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: index-tailwind.html 아래에 오늘 서울의 시간별 기온 선 그래프를 Chart.js로 붙여 줘.
 내용: Open-Meteo에서 hourly=temperature_2m 으로 오늘 24시간 값을 받아 와 줘. Chart.js도 CDN 주소 한 줄로 불러와 줘.
 형식: 바뀐 줄(diff)을 먼저 보여 주고, 승인하면 반영해 줘. 그래프에 쓴 API 주소를 한 줄로 알려 줘.</pre></div>
+<figure class="shot"><a href="images/d3_chartjs_start.jpg" target="_blank" rel="noopener"><img style="width:480px;max-width:100%" alt="Chart.js Getting Started 문서. canvas 태그와 cdn.jsdelivr.net/npm/chart.js script 한 줄, new Chart 예시" loading="lazy" src="images/d3_chartjs_start.jpg"/></a><figcaption>Chart.js 공식 문서: canvas 하나와 주소 한 줄로 그래프를 그려요 (2026-11-16 확인)</figcaption></figure>
 <div class="table-wrap tpl"><table><tr><th>견줄 것</th><th>라이브러리 없이(어제)</th><th>라이브러리로(오늘)</th></tr>
 <tr><td>디자인을 바꾸는 데 걸린 시간</td><td></td><td></td></tr>
 <tr><td>코드 줄 수</td><td></td><td></td></tr>
