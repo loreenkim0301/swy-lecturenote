@@ -1,0 +1,9 @@
+{
+  "manifest_version": 3,
+  "name": "내 문장 모음",
+  "version": "1.0",
+  "description": "드래그한 문장을 우클릭으로 모아 두고, 눌러서 복사해요.",
+  "permissions": ["contextMenus", "storage"],
+  "background": { "service_worker": "background.js" },
+  "action": { "default_popup": "popup.html" }
+}
