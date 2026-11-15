@@ -377,6 +377,10 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td><b>캐시</b></td><td>한 번 본 정보를 저장해 두고 다시 쓰는 것. 고쳤는데 옛날 모습이 보이면 캐시 때문일 수 있어요.</td></tr>
 <tr><td><b>스파크 요금제</b></td><td>파이어베이스의 무료 요금제. 정해진 양까지 호스팅·데이터베이스를 무료로 써요.</td></tr>
 </table></div>
+<div class="ref-box"><b>시작 질문 · 나는 어느 쪽에 가까운가요?</b>
+<p>수업을 시작하기 전에 두 가지를 스스로 답해 봐요. 고를 영역은 <b>비즈니스 문제와 솔루션 정의</b>, <b>디자인·UXUI</b>, <b>개발과 자동화</b> 세 가지예요.</p>
+<ul><li>나는 어떤 영역에 더 관심이 있나요?</li><li>현실적으로 지금, 또는 수료 후 6개월 안에 내 강점은 어디에 가까운가요?</li></ul>
+<p>오늘은 '개발과 자동화'에 가까운 날이에요. 내 관심 영역과 다르더라도, 기획자가 개발 흐름을 알면 일정과 위험을 판단할 수 있어요.</p></div>
 </section>
 
 <section class="section session" id="s1">
@@ -392,6 +396,10 @@ aside nav a.active{border-left-color:var(--blue)}
 <figure class="shot"><a href="images/d5-s1-folder-chip.png" target="_blank" rel="noopener"><img style="width:360px;max-width:100%" alt="입력창 아래에 이 컴퓨터와 작업 폴더 이름이 보이는 모습" loading="lazy" src="images/d5-s1-folder-chip.png"/></a><figcaption>입력창 아래: [이 컴퓨터]와 내가 고른 폴더 (2026-11-13 강사 화면)</figcaption></figure>
 <p class="blk k-chk"><span>확인할 점</span></p>
 <ul class="checklist"><li>입력창 아래에 [이 컴퓨터]와 내가 고른 폴더 이름이 보인다</li></ul>
+<p class="blk k-chk"><span>막히면</span></p>
+<div class="table-wrap"><table><tr><th>이렇게 보이면</th><th>이렇게 해요</th></tr>
+<tr><td><b>Code 탭을 못 찾겠어요</b></td><td>데스크톱 앱 왼쪽 위를 봐요. 채팅 모양 아이콘 옆의 &lt;/&gt; 모양이 Code 탭이에요.</td></tr>
+</table></div>
 </div>
 
 <div class="topic" id="s1-2"><h3><span class="stage">실습</span>1-2. 아티팩트를 내 폴더로 가져오기</h3>
@@ -426,6 +434,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <p class="blk k-chk"><span>막히면</span></p>
 <div class="table-wrap"><table><tr><th>이렇게 보이면</th><th>이렇게 해요</th></tr>
 <tr><td><b>Remote Control 항목이 없거나 켜지지 않아요</b></td><td>회사·기관 계정(Team·Enterprise)은 조직 관리자(Owner)가 먼저 켜 줘야 해요. 관리자가 켠 뒤 앱을 다시 열어 확인해요.</td></tr>
+<tr><td><b>'조직에서 비활성화되었다'는 안내가 나와요</b></td><td>같은 이유예요. 조직 관리자가 켜 주면 바로 쓸 수 있어요. 켜졌다는 안내를 받으면 설정 화면을 다시 열어 스위치를 확인해요.</td></tr>
 </table></div>
 <p class="source-note">출처: Claude Code 공식 문서 <a href="https://code.claude.com/docs/en/remote-control" target="_blank" rel="noopener">Remote Control</a>("On Team and Enterprise, an Owner must first enable the Remote Control toggle") (2026-11-13 확인)</p>
 </div>
@@ -439,6 +448,8 @@ aside nav a.active{border-left-color:var(--blue)}
 내용: 깃헙은 내가 만든 저장소에 연결할 거야. 설치 명령은 실행하기 전에 보여 줘.
 형식: 실행할 명령과, 설치가 끝났는지 확인한 결과를 한 줄씩.</pre></div>
 <p>명령을 실행하기 전에 클로드 코드가 승인을 물어요. 무엇을 하는 명령인지 읽고 승인해요.</p>
+<div class="ref-box"><b>참고 · 명령 카드와 실행 버튼</b>
+<p>클로드 코드가 명령을 알려 줄 때는 답 안에 명령이 카드처럼 따로 보여요(예: <code class="inline">cd …</code>, <code class="inline">git …</code>). 카드 오른쪽의 <b>▶ 실행 버튼</b>을 누르면 그 명령이 실행되고, 결과가 카드 바로 아래에 나와요. 카드가 두 개 이상이면 위에서부터 하나씩 눌러요. 결과를 클로드에게 다시 묻지 않아도, 클로드 코드가 그 결과를 읽고 다음 일을 이어 가요.</p></div>
 </div>
 
 <div class="topic" id="s1-6"><h3><span class="stage">실습</span>1-6. 새 비공개 저장소에 올리고, 결과 링크 열어 보기</h3>
@@ -452,6 +463,16 @@ aside nav a.active{border-left-color:var(--blue)}
 <li><p>같은 링크를 크롬 같은 바깥 브라우저의 새 탭에서도 열어요.</p></li>
 <li><p>두 화면을 비교해요. 비공개 저장소라서 깃헙에 <b>로그인한 브라우저</b>에서만 코드가 보이고, 로그인하지 않은 브라우저에서는 404(찾을 수 없음) 화면이 나와요.</p></li>
 </ol>
+<p><b>정말 올라갔는지는 깃헙 화면으로 확인해요</b></p>
+<ol class="do-steps">
+<li><p>깃헙에서 저장소 첫 화면을 열어요. 파일 목록 위쪽 오른편에 <b>마지막 커밋 메시지</b>와 <b>언제 올렸는지</b>(예: 21분 전)가 보여요.</p></li>
+<li><p>시각에 마우스를 올리면 정확한 날짜와 시간이 나와요. 방금 올린 시각과 맞는지 일시까지 확인해요.</p></li>
+<li><p>클로드 코드에게 한 번 더 물어봐요.</p></li>
+</ol>
+<div class="copybox"><div class="copyhead"><span>프롬프트 4-1 · 올라간 뒤 다시 확인하기</span><button type="button">복사</button></div><pre>요청: 현재 최신 코드가 깃헙에 잘 반영되었는지 한 번 더 푸시해서 확인해 줘.
+내용: 새로 올릴 변경이 없으면 그렇다고 알려 줘.
+형식: ① 실행한 명령 ② 결과 ③ 그 결과가 무슨 뜻인지 한 줄씩.</pre></div>
+<p>결과에 <code class="inline">Everything up-to-date</code>가 나오면, 새로 올릴 변경이 없고 <b>내 컴퓨터의 코드와 깃헙 저장소가 똑같다</b>는 뜻이에요.</p>
 <p class="blk k-chk"><span>확인할 점</span></p>
 <ul class="checklist"><li>깃헙에서 저장소가 Private으로 보이고 index.html이 올라가 있다</li><li>로그인 여부에 따라 같은 링크가 다르게 보인다는 것을 설명할 수 있다</li></ul>
 </div>
@@ -565,7 +586,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="copybox"><div class="copyhead"><span>프롬프트 9 · 안 되는 기능이 있으면</span><button type="button">복사</button></div><pre>요청: 깃헙 페이지스 주소에서 [안 되는 기능]이 안 돼. 왜 안 되는지 알려 줘.
 내용: 내 컴퓨터에서 열었을 때와 무엇이 다른지도 비교해 줘. 아직 고치지는 마.
 형식: ① 안 되는 이유 ② 고치려면 필요한 것을 한 줄씩.</pre></div>
-<p>예를 들어 DAY 3에 만든 마음책방은 클로드 아티팩트 안에서만 AI를 불러요. 깃헙 페이지스에서는 AI 대신 감정 단어로 찾는 간단 추천으로 동작해요.</p>
+<p>예를 들어 DAY 3에 만든 마음책방은 클로드 아티팩트 안에서만 AI를 불러요. 깃헙 페이지스에서 감정 문장을 넣으면 화면 위에 "AI를 쓸 수 없어 간단 추천으로 보여 드려요."가 뜨고, 감정 단어로 찾는 간단 추천으로 동작해요. <b>이 단계에서는 자연스러운 동작</b>이고, 배포가 깨진 것이 아니에요. AI까지 붙이는 방법은 4주차에 배워요.</p>
 <div class="ref-box"><b>참고 · AI 스튜디오에서 만든 앱을 깃헙 페이지스에 올리면</b>
 <p>AI 스튜디오에서 만든 앱은 원래 <b>구글 클라우드</b>에 올리도록 만들어져 있어요. 깃헙 페이지스는 그 기본 배포처가 아니에요. 그래서 깃헙 페이지스에 올리려면 맞추는 작업이 필요해요. 강사가 직접 해 본 결과예요.</p>
 <div class="table-wrap"><table><tr><th>해 본 것</th><th>뜻</th></tr>
