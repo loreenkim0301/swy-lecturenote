@@ -568,7 +568,37 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td>서버를 "내 컴퓨터에서만" 열지, "같은 와이파이의 다른 기기에서도" 열지 정할 때</td><td>127.0.0.1 / 0.0.0.0</td><td>127.0.0.1로 열면 내 컴퓨터에서만, 0.0.0.0으로 열면 같은 네트워크의 휴대폰 같은 다른 기기에서도 들어올 수 있어요</td></tr>
 </table></div>
 <p>기획자에게 중요한 것은 세 번째 줄이에요. 테스트 서버를 다른 사람도 들어올 수 있게 열면, API 키로 쓰는 비용도 그 사람들의 사용만큼 늘어요.</p>
-<p class="source-note">출처: 달레 블로그 <a href="https://daleseo.com/localhost/" target="_blank" rel="noopener">localhost와 127.0.0.1: 같은 듯 다른 둘의 정체</a>(hosts 파일에 127.0.0.1과 ::1이 함께 있으면 localhost가 둘 다로 해석될 수 있음, Node.js가 IPv6를 먼저 시도해 ECONNREFUSED가 생기는 사례), Linuxize <a href="https://linuxize.com/post/what-is-localhost/" target="_blank" rel="noopener">What Is localhost?</a>(localhost는 이름, 127.0.0.1은 IPv4 루프백, ::1은 IPv6 루프백, 0.0.0.0은 다른 역할) (2026-11-16 확인)</p>
+<p><b>STEP 1. 지금 내 컴퓨터에 열려 있는 localhost 확인하기</b></p>
+<p>실습을 하다 보면 서버를 켜 둔 채 잊어버리기 쉬워요. 앞에서 켠 서버가 남아 있으면 새로 고친 화면 대신 예전 화면이 보여서 헷갈려요. 클로드 코드에게 지금 열려 있는 localhost를 찾아 달라고 해요.</p>
+<div class="copybox"><div class="copyhead"><span>프롬프트 7 · 열려 있는 localhost 확인하기</span><button type="button">복사</button></div><pre>요청: 지금 내 컴퓨터에서 열려 있는 localhost(로컬 서버)가 무엇인지 확인해 줘.
+내용: 터미널 명령어로 확인만 하고, 아무것도 끄지 마. 맥·윈도우 기능이나 클로드 앱처럼 내가 켜지 않은 것은 따로 표시해 줘.
+형식: 표(주소 / 포트 번호 / 프로그램 이름 / 이번 실습에서 켠 것인지) + 실행한 명령어 한 줄.</pre></div>
+<p>클로드 코드는 아래 명령어를 실행해도 되는지 물어요. 확인만 하는 명령어라서 실행해도 아무것도 꺼지지 않아요.</p>
+<div class="copybox"><div class="copyhead"><span>맥 · 터미널 · 열려 있는 서버 목록 보기</span><button type="button">복사</button></div><pre>lsof -nP -iTCP -sTCP:LISTEN</pre></div>
+<div class="copybox"><div class="copyhead"><span>윈도우 · 파워셸 · 열려 있는 서버 목록 보기</span><button type="button">복사</button></div><pre>Get-NetTCPConnection -State Listen | Sort-Object LocalPort | Select-Object LocalAddress,LocalPort,OwningProcess,@{n='Process';e={(Get-Process -Id $_.OwningProcess).ProcessName}}</pre></div>
+<div class="table-wrap"><table><tr><th>목록에서 보는 곳</th><th>맥 · 터미널</th><th>윈도우 · 파워셸</th><th>뜻</th></tr>
+<tr><td><b>프로그램 이름</b></td><td>COMMAND</td><td>Process</td><td>node나 python이면 실습에서 켠 개발 서버일 가능성이 커요</td></tr>
+<tr><td><b>번호표(PID)</b></td><td>PID</td><td>OwningProcess</td><td>컴퓨터가 켜진 프로그램마다 붙인 번호예요. 끌 때 이 번호를 써요</td></tr>
+<tr><td><b>주소와 포트</b></td><td>NAME (예: 127.0.0.1:3000)</td><td>LocalAddress, LocalPort</td><td>localhost:3000이면 포트 번호 3000이 보여요</td></tr>
+</table></div>
+<p>목록에 claude, ControlCenter, svchost처럼 내가 켜지 않은 이름도 보여요. 클로드 앱과 맥·윈도우가 쓰는 것이라서 끄지 않아요.</p>
+
+<p><b>STEP 2. 실습에서 켠 localhost 모두 닫기</b></p>
+<p>이번에는 실습에서 켠 서버만 골라 모두 꺼 달라고 해요. 끄기 전에 목록을 먼저 보여 달라고 하면, 엉뚱한 프로그램이 꺼지는 일을 막을 수 있어요.</p>
+<div class="copybox"><div class="copyhead"><span>프롬프트 8 · 실습에서 켠 localhost 모두 닫기</span><button type="button">복사</button></div><pre>요청: 이번 실습에서 켠 localhost(로컬 서버)를 모두 꺼 줘.
+내용: 끄기 전에 끌 목록을 먼저 보여 줘. node, python처럼 실습에서 켠 개발 서버만 끄고, 클로드 앱이나 맥·윈도우 기능은 끄지 마. 끈 뒤에 다시 확인해서 남은 서버가 있는지 알려 줘.
+형식: 끈 것(포트 번호 / 프로그램 이름) / 남은 것 두 줄 + 실행한 명령어.</pre></div>
+<p>클로드 코드는 아래와 같은 명령어를 실행해도 되는지 물어요. 이 명령어는 서버를 끄기 때문에, 끌 목록이 실습에서 켠 것인지 먼저 확인하고 실행 단추를 눌러요.</p>
+<div class="copybox"><div class="copyhead"><span>맥 · 터미널 · node·python 서버 모두 끄기</span><button type="button">복사</button></div><pre>lsof -nP -iTCP -sTCP:LISTEN | awk 'tolower($1) ~ /^(node|python)/ {print $2}' | sort -u | xargs kill</pre></div>
+<div class="copybox"><div class="copyhead"><span>윈도우 · 파워셸 · node·python 서버 모두 끄기</span><button type="button">복사</button></div><pre>Get-NetTCPConnection -State Listen | ForEach-Object { Get-Process -Id $_.OwningProcess } | Where-Object { $_.ProcessName -match '^(node|python)$' } | Sort-Object Id -Unique | Stop-Process</pre></div>
+<div class="table-wrap"><table><tr><th>하고 싶은 일</th><th>맥 · 터미널</th><th>윈도우 · 파워셸</th></tr>
+<tr><td>포트 번호 3000 서버 하나만 끄기</td><td><code class="inline">lsof -ti tcp:3000 | xargs kill</code></td><td><code class="inline">Stop-Process -Id (Get-NetTCPConnection -LocalPort 3000 -State Listen).OwningProcess</code></td></tr>
+<tr><td>다 꺼졌는지 다시 보기</td><td colspan="2">STEP 1의 목록 보기 명령어를 다시 실행해요. node, python이 없으면 다 꺼진 거예요</td></tr>
+</table></div>
+<p class="blk k-chk"><span>확인할 점</span></p>
+<ul class="checklist"><li>STEP 1 목록에서 node, python이 사라졌다</li><li>크롬에서 <code class="inline">http://localhost:3000</code>을 새로고침하면 '사이트에 연결할 수 없음'이 뜬다</li><li>클로드 앱은 그대로 켜져 있다</li></ul>
+<div class="notice">6-6부터는 챗봇을 다시 써요. 서버를 끈 뒤에는 클로드 코드에 "챗봇 서버를 다시 켜 줘"라고 보내고, 알려 준 주소를 열어요.</div>
+<p class="source-note">출처: 달레 블로그 <a href="https://daleseo.com/localhost/" target="_blank" rel="noopener">localhost와 127.0.0.1: 같은 듯 다른 둘의 정체</a>(hosts 파일에 127.0.0.1과 ::1이 함께 있으면 localhost가 둘 다로 해석될 수 있음, Node.js가 IPv6를 먼저 시도해 ECONNREFUSED가 생기는 사례), Linuxize <a href="https://linuxize.com/post/what-is-localhost/" target="_blank" rel="noopener">What Is localhost?</a>(localhost는 이름, 127.0.0.1은 IPv4 루프백, ::1은 IPv6 루프백, 0.0.0.0은 다른 역할)  · Microsoft Learn <a href="https://learn.microsoft.com/powershell/module/nettcpip/get-nettcpconnection" target="_blank" rel="noopener">Get-NetTCPConnection</a>(-State Listen으로 기다리는 연결만 보기, OwningProcess로 프로그램 번호 보기) · flaviocopes <a href="https://flaviocopes.com/command-using-port/" target="_blank" rel="noopener">Find and kill the process using a port on Linux or Mac (lsof)</a>(lsof로 포트를 쓰는 프로그램을 찾고 kill로 끄기) (2026-11-16 확인)</p>
 </div>
 
 <div class="topic" id="s6-6"><h3><span class="stage">실습</span>6-6. 데이터 0건에서 일부러 오류 내 보기</h3>
@@ -618,7 +648,7 @@ aside nav a.active{border-left-color:var(--blue)}
 </div>
 
 <div class="topic" id="s6-9"><h3><span class="stage plan">기획자</span>6-9. 테스트 보고서 받기</h3>
-<div class="copybox"><div class="copyhead"><span>프롬프트 7 · 테스트 보고서 요청</span><button type="button">복사</button></div><pre>요청: 지금 실행 중인 챗봇과 관리자 화면을 테스트하고, 결과를 test-report.md로 정리해 줘.
+<div class="copybox"><div class="copyhead"><span>프롬프트 9 · 테스트 보고서 요청</span><button type="button">복사</button></div><pre>요청: 지금 실행 중인 챗봇과 관리자 화면을 테스트하고, 결과를 test-report.md로 정리해 줘.
 내용: ① 챗봇(localhost:3000)과 관리자(localhost:3000/admin) 화면이 열리는지 ② 빠른 질문 단추마다 답이 나오는지 ③ 상품·주문 데이터가 없을 때와 [6-7 표의 데이터]를 넣은 뒤, 같은 질문의 답이 어떻게 다른지 ④ 없는 주문번호를 물었을 때 ⑤ 쇼핑몰과 상관없는 질문 ⑥ 답에 고객에게 보이면 안 되는 내부 이름이나 규칙 문구가 섞이는지 ⑦ API 키가 없거나 틀렸을 때 안내가 나오는지. 보고서에 API 키 값은 절대 적지 마.
 형식: 표(번호 / 테스트 항목 / 넣은 값 / 기대 결과 / 실제 결과 / 통과 여부) + 발견한 문제와 고칠 순서 3개.</pre></div>
 </div>
@@ -663,7 +693,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td>너무 길거나 말투가 달라요</td><td>시스템 프롬프트의 말투와 예시 답변(Few-shot)</td></tr>
 <tr><td>규칙을 바꾸라는 말에 넘어가요</td><td>시스템 프롬프트의 '지킬 규칙'</td></tr>
 </table></div>
-<div class="copybox"><div class="copyhead"><span>프롬프트 8 · 고칠 곳 한 군데만</span><button type="button">복사</button></div><pre>요청: [고칠 곳]을 고쳐 줘.
+<div class="copybox"><div class="copyhead"><span>프롬프트 10 · 고칠 곳 한 군데만</span><button type="button">복사</button></div><pre>요청: [고칠 곳]을 고쳐 줘.
 내용: "[보낸 질문]"에 "[받은 답]"이라고 답했어. 나는 "[기대하는 답]"을 원해. 이 문제만 고치고 다른 규칙은 바꾸지 마.
 형식: 바뀐 줄(diff)을 먼저 보여 주고, 승인하면 반영한 뒤 서버를 다시 켜 줘.</pre></div>
 <p>고친 뒤에는 고친 질문만 보지 말고 <b>5가지 질문을 다시 모두</b> 보내요. 한 곳을 고치다 다른 답이 나빠지는 일이 자주 있어요.</p>
