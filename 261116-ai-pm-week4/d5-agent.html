@@ -315,7 +315,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <p>이번 주에는 채팅을 만들고, API를 붙이고, 개발 도구를 바꿔 보고, 크롬 확장 프로그램을 만들었어요. 오늘은 이 일을 AI가 여러 단계로 나눠 스스로 해 나가게 하는 기능을 써 봐요. 일하는 방법을 적어 두는 스킬, 일을 나눠 맡기는 서브에이전트, 앱과 브라우저를 쓰는 손을 차례로 다뤄요. 마지막에는 사람이 꼭 확인해야 하는 곳을 정해요.</p>
 <div class="hero-grid">
 <div><b>일정</b><span>11월 20일(금) 09:00–18:00 · 실시간 비대면</span></div>
-<div><b>준비물</b><span>클로드 데스크톱 앱, 월요일에 만든 이벤트 도우미 폴더, 이번 주 결과물 링크</span></div>
+<div><b>준비물</b><span>클로드 데스크톱 앱, 월요일에 만든 상담 챗봇 폴더, 이번 주 결과물 링크</span></div>
 <div><b>오늘의 결과물</b><span>답변 규칙 스킬 + 문구 검수 서브에이전트 + 사람이 확인할 곳 표 + 4주차 회고</span></div>
 </div>
 <nav aria-label="4주차 교안" class="day-nav"><a href="./">4주차 홈</a><a href="./d1-claude-code-chatbot.html">DAY 1 AI 채팅</a><a href="./d2-api.html">DAY 2 API 붙이기</a><a href="./d3-dev-env.html">DAY 3 개발 환경</a><a href="./d4-chrome-extension.html">DAY 4 크롬 확장</a><a aria-current="page" href="./d5-agent.html">DAY 5 에이전트</a><a href="../261109-ai-pm-week3/">3주차 홈</a></nav>
@@ -332,7 +332,7 @@ aside nav a.active{border-left-color:var(--blue)}
 
 <section class="section" id="prep"><div class="section-label">PREPARE</div><h2>수업 전 준비</h2>
 <ul>
-<li><b>월요일 폴더:</b> 월요일에 event-info.md와 답변 규칙으로 이벤트 도우미 채팅을 만들었던 것 기억하시나요? 그 폴더(또는 깃헙 저장소)를 열 수 있게 해 둬요.</li>
+<li><b>월요일 폴더:</b> 월요일에 AI 상담 챗봇을 내 컴퓨터에서 실행했던 것 기억하시나요? 그 폴더(aipm-chatbot-test-1116 등)를 열 수 있게 해 둬요.</li>
 <li><b>이번 주 결과물 링크:</b> 날씨 배너, 개발 환경 비교표, 크롬 확장 프로그램. 6세션 회고에서 써요.</li>
 </ul>
 </section>
@@ -390,36 +390,36 @@ aside nav a.active{border-left-color:var(--blue)}
 </section>
 
 <section class="section session" id="s2">
-<div class="session-head"><div class="eyebrow">SESSION 2 · 10:20–12:00</div><h2>스킬: 일하는 방법을 적어 두기</h2><p>월요일에 이벤트 도우미의 답변 규칙을 프롬프트로 고쳤던 것 기억하시나요? 매번 붙여 넣던 그 규칙을 스킬로 만들어, 이름 하나로 불러 써요.</p>
+<div class="session-head"><div class="eyebrow">SESSION 2 · 10:20–12:00</div><h2>스킬: 일하는 방법을 적어 두기</h2><p>월요일에 상담 챗봇의 답을 프롬프트로 시험하고 고쳤던 것 기억하시나요? 매번 붙여 넣던 그 규칙을 스킬로 만들어, 이름 하나로 불러 써요.</p>
 <div class="why-box"><b>왜 하나?</b>팀이 같은 규칙으로 일하게 하려면 규칙이 사람 머릿속이 아니라 파일에 있어야 해요. 스킬은 '일하는 방법'을 파일로 남기는 방법이에요.</div></div>
 
 <div class="topic" id="s2-1"><h3><span class="stage">개념</span>2-1. 스킬은 이렇게 생겼어요</h3>
 <div class="table-wrap"><table><tr><th>부분</th><th>적는 것</th><th>예</th></tr>
-<tr><td><b>폴더 위치</b></td><td>프로젝트 폴더의 .claude/skills/스킬이름/</td><td>.claude/skills/event-answer/</td></tr>
-<tr><td><b>폴더 이름</b></td><td>스킬 이름이 돼요. /이름 으로 불러요</td><td>/event-answer</td></tr>
-<tr><td><b>description</b></td><td>언제 쓰는지 한 줄. 클로드가 이 줄을 보고 스스로 꺼내 써요</td><td>셀렉트마켓 이벤트 문의에 답변 초안을 쓸 때</td></tr>
-<tr><td><b>본문</b></td><td>순서와 규칙</td><td>월요일에 고친 답변 규칙</td></tr>
+<tr><td><b>폴더 위치</b></td><td>프로젝트 폴더의 .claude/skills/스킬이름/</td><td>.claude/skills/cs-answer/</td></tr>
+<tr><td><b>폴더 이름</b></td><td>스킬 이름이 돼요. /이름 으로 불러요</td><td>/cs-answer</td></tr>
+<tr><td><b>description</b></td><td>언제 쓰는지 한 줄. 클로드가 이 줄을 보고 스스로 꺼내 써요</td><td>쇼핑몰 고객 문의에 답변 초안을 쓸 때</td></tr>
+<tr><td><b>본문</b></td><td>순서와 규칙</td><td>월요일에 고친 상담 규칙</td></tr>
 </table></div>
 <figure class="shot"><a href="images/d5_docs_skills.jpg" target="_blank" rel="noopener"><img style="width:480px;max-width:100%" alt="Claude Code 문서 Extend Claude with skills. SKILL.md 파일을 만들면 클로드가 필요할 때 쓰거나 /skill-name으로 직접 부른다는 설명" loading="lazy" src="images/d5_docs_skills.jpg"/></a><figcaption>공식 문서: 같은 지시를 자꾸 붙여 넣게 될 때 스킬로 만들라고 안내해요 (2026-11-16 확인)</figcaption></figure>
 <p class="source-note">출처: Claude Code 공식 문서 <a href="https://code.claude.com/docs/en/skills" target="_blank" rel="noopener">Agent Skills</a>(SKILL.md, 필요할 때 자동으로 쓰거나 /스킬이름으로 직접 부름, 폴더 이름이 명령 이름) (2026-11-16 확인)</p>
 </div>
 
 <div class="topic" id="s2-2"><h3><span class="stage dev">개발자·구현</span>2-2. 답변 규칙 스킬 만들기</h3>
-<div class="copybox"><div class="copyhead"><span>프롬프트 1 · 클로드 코드 입력창에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 이 프로젝트에 event-answer 스킬을 만들어 줘.
-내용: 위치는 .claude/skills/event-answer/SKILL.md. description은 '셀렉트마켓 이벤트 문의에 답변 초안을 쓸 때'로 해 줘. 본문에는 event-info.md만 근거로 답하기, 모르면 '확인 후 안내드릴게요'라고 하기, 해요체 3문장 이내, 개인정보는 묻지 않기를 순서대로 적어 줘. [월요일에 고친 답변 규칙이 있으면 붙여 넣으세요]
+<div class="copybox"><div class="copyhead"><span>프롬프트 1 · 클로드 코드 입력창에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 이 프로젝트에 cs-answer 스킬을 만들어 줘.
+내용: 위치는 .claude/skills/cs-answer/SKILL.md. description은 '쇼핑몰 고객 문의에 답변 초안을 쓸 때'로 해 줘. 본문에는 data/shop-data.json의 운영 정책과 데이터만 근거로 답하기, 모르면 '확인 후 안내드릴게요'라고 하기, 해요체 3문장 이내, 개인정보는 묻지 않기를 순서대로 적어 줘. [월요일에 고친 규칙이 있으면 붙여 넣으세요]
 형식: SKILL.md 내용을 보여 주고, 승인하면 저장해 줘.</pre></div>
 <ol class="do-steps">
-<li><p>새 대화에서 <code class="inline">/event-answer 쿠폰은 두 장 같이 쓸 수 있나요?</code>를 보내요.</p></li>
-<li><p>이번에는 /를 빼고 "이벤트 문의 답변 써 줘: 배송은 언제 와요?"라고 보내, 클로드가 스킬을 스스로 꺼내 쓰는지 봐요.</p></li>
+<li><p>새 대화에서 <code class="inline">/cs-answer 쿠폰은 두 장 같이 쓸 수 있나요?</code>를 보내요.</p></li>
+<li><p>이번에는 /를 빼고 "고객 문의 답변 써 줘: 배송은 언제 와요?"라고 보내, 클로드가 스킬을 스스로 꺼내 쓰는지 봐요.</p></li>
 </ol>
 <div class="table-wrap tpl"><table><tr><th>시험</th><th>스킬을 썼나</th><th>규칙을 지켰나</th></tr>
-<tr><td>/event-answer 로 불렀을 때</td><td></td><td></td></tr>
+<tr><td>/cs-answer 로 불렀을 때</td><td></td><td></td></tr>
 <tr><td>그냥 부탁했을 때</td><td></td><td></td></tr>
 </table></div>
 </div>
 
 <div class="topic" id="s2-3"><h3><span class="stage">결과</span>2-3. 결과</h3>
-<div class="result-box"><b>결과물</b> .claude/skills/event-answer/SKILL.md</div>
+<div class="result-box"><b>결과물</b> .claude/skills/cs-answer/SKILL.md</div>
 <p class="ok-line"><b>이렇게 보이면 성공</b>규칙을 붙여 넣지 않아도 답변이 해요체 3문장 이내로 나온다</p>
 </div>
 </section>
@@ -509,7 +509,7 @@ aside nav a.active{border-left-color:var(--blue)}
 </div>
 
 <div class="topic" id="s5-2"><h3><span class="stage plan">기획자</span>5-2. 내 서비스의 '사람이 확인할 곳' 표</h3>
-<p>월요일의 이벤트 도우미나 목요일의 확장 프로그램을 에이전트가 더 많이 맡는다고 생각하고 표를 채워요.</p>
+<p>월요일의 상담 챗봇이나 목요일의 확장 프로그램을 에이전트가 더 많이 맡는다고 생각하고 표를 채워요.</p>
 <div class="table-wrap tpl"><table><tr><th>에이전트가 할 일</th><th>되돌릴 수 있나</th><th>사람이 확인할 곳</th><th>실제 상태를 확인하는 방법</th><th>막히면 누가 어떻게 이어받나</th></tr>
 <tr><td>예: 고객에게 쿠폰 안내 메일 보내기</td><td>아니요(보내면 끝)</td><td>보내기 전 초안 승인</td><td>보낸 편지함에서 받는 사람 수 확인</td><td>운영 담당자가 초안함에서 직접 보냄</td></tr>
 <tr><td></td><td></td><td></td><td></td><td></td></tr>
@@ -530,7 +530,7 @@ aside nav a.active{border-left-color:var(--blue)}
 
 <div class="topic" id="s6-1"><h3><span class="stage">정리</span>6-1. 이번 주 결과물 모으기</h3>
 <div class="table-wrap tpl"><table><tr><th>요일</th><th>결과물</th><th>링크</th><th>이제 기획서에 쓸 수 있는 말</th></tr>
-<tr><td>월</td><td>내장 AI 이벤트 도우미 + 답변 규칙</td><td></td><td>예: 답변 근거 문서와 모를 때의 답을 정해야 한다</td></tr>
+<tr><td>월</td><td>AI 상담 챗봇 + 테스트 보고서</td><td></td><td>예: 답의 근거 자료와 모를 때의 답을 정해야 한다</td></tr>
 <tr><td>화</td><td>날씨 배너 + API 비교표</td><td></td><td></td></tr>
 <tr><td>수</td><td>라이브러리로 다듬은 배너 + 개발 환경 비교표</td><td></td><td></td></tr>
 <tr><td>목</td><td>크롬 확장 프로그램</td><td></td><td></td></tr>
