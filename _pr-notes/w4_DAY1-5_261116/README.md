@@ -27,7 +27,7 @@
 ## 캡처
 ![4주차 홈](index_top.png)
 ![DAY1](d1-claude-code-chatbot_s4.png)
-![DAY2](d2-api_s4.png)
+![DAY2](d2-api_s4-1.png)
 ![DAY3](d3-dev-env_s4.png)
 ![DAY4](d4-chrome-extension_s2.png)
 ![DAY5](d5-agent_s4.png)
@@ -185,3 +185,42 @@ claude.ai/code 새 세션 화면에서 직접 확인했어요(세션은 시작�
 ![SESSION 9](d1_v7_s9.png)
 ![6-9](d1_v7_s6-9.png)
 ![7-1](d1_v7_s7-1.png)
+
+
+## 교안 수정 이력 (DAY2, 2026-11-17)
+
+| PR | 내용 | 로린님 결정 |
+|---|---|---|
+| 이번 PR | **Open-Meteo 전부 삭제**, OpenWeather(무료 키·.env·로컬 서버)로 날씨 배너 일원화, SESSION 3을 공공데이터 개념(소방청 교육 자료 기반)으로 교체, 세 API 비교 → 두 API 비교, DAY3 그래프 실습·4주차 홈 일정표 연동 수정 | 로린님 지시 |
+
+### 왜 바꿨나
+- 로린님 결정(11/17): "오픈메테오 수업에서 삭제". 11/17 강사 컴퓨터에서 api.open-meteo.com이 Chrome·내장 브라우저 모두 오류 페이지로 열리지 않음(11/15엔 열림). 수업 중 같은 일이 생기면 1~2세션 실습이 통째로 멈춤.
+- 로린님 결정: "공공데이터 관련은 이전 교재의 실습 덩어리로 대체" → 소방청 교육 자료([소방청] 1차 세종시 교육_2일차_20260514, 공유 드라이브 '50. 세종시 소방청 교육_2026/1. 세종시 교육/최종본')의 '공공데이터 활용'·'소방안전 빅데이터 플랫폼'·'데이터 체험 실습(관찰 포인트)' 블록을 4주차 수준(해요체, 실습표)으로 옮김.
+
+### 바뀐 구조
+| 세션 | 전 | 후 |
+|---|---|---|
+| 1 | API 개념 + 주소창에 Open-Meteo 주소 넣기 | API 개념(OpenWeather 예) + 키를 두는 곳(전 3-1을 앞으로) |
+| 2 | Open-Meteo 키 없는 배너(아티팩트 가능) + 네트워크 탭 | OpenWeather 무료 키 → .env + 로컬 서버 배너 → 네트워크 탭에서 **키가 안 보이는지** 확인 |
+| 3 | OpenWeather 키 + 키 다루는 법 | 공공데이터와 공공데이터법 → 찾는 곳(data.go.kr·KOSIS·소방안전 빅데이터) → 상세 화면의 받는 방법 3가지·관리 한계 → 파일 데이터 관찰표 |
+| 4 | 기상청 단기예보 API 신청·시험 | 그대로(Open-Meteo 비교 문장만 OpenWeather로) |
+| 5 | 세 API 비교 | 두 API 비교 + 웹훅 vs API |
+
+- 삭제한 이미지: d2_openmeteo_json.jpg, d2_weather_page.png(생성 이미지), d2_openmeteo_docs.jpg(미사용)
+- DAY3 2-2 프롬프트: Open-Meteo hourly → OpenWeather 3-hour Forecast(5 days). 무료 플랜 포함 여부는 d2_owm_free.jpg 캡처(Free for everyone 목록의 '3-hour Forecast (5 days)')로 확인
+- 새 출처: 국가법령정보센터 공공데이터법([시행 2013. 10. 31.] 법률 제11956호), 공공데이터포털 분쟁조정 제도 안내, OpenWeather Current weather data 문서·FAQ
+
+### 아직 남은 캡처 (로린님 로그인 후 진행)
+- OpenWeather [My API keys] 화면(키 가림)
+- 공공데이터포털 활용신청 뒤 인증키 화면(키 가림)
+- 기상청 API 응답 결과
+- OpenWeather 배너 실제 화면 + 네트워크 탭
+
+### 확인 캡처
+![1-2](d2-api_s1-2.png)
+![2-3](d2-api_s2-3.png)
+![2-4](d2-api_s2-4.png)
+![3-1](d2-api_s3-1.png)
+![3-3](d2-api_s3-3.png)
+![3-4](d2-api_s3-4.png)
+![4-1](d2-api_s4-1.png)
