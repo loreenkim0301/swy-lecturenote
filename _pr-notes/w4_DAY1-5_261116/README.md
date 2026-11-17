@@ -255,3 +255,9 @@ claude.ai/code 새 세션 화면에서 직접 확인했어요(세션은 시작�
 ![6-2](d2-api_s6-2.png)
 ![6-4 접힘](d2-api_s6-4_closed.png)
 ![6-4 펼침](d2-api_s6-4_open.png)
+
+| PR | 내용 | 로린님 결정 |
+|---|---|---|
+| 이번 PR | DAY2 6-1에 **"셋이 무엇이 다른가요?"** 표 추가(깃 CLI·깃헙 CLI·깃헙 커넥터, 한 줄 설명·하는 일) + 출처(Claude 도움말 GitHub integration, 깃헙 블로그 GitHub CLI 1.0) | 로린님 지시(교안에 포함) |
+
+![6-1](d2-api_s6-1.png)
