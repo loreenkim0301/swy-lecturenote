@@ -645,6 +645,13 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td><b>추천 도구</b></td><td>코드는 깃헙, 배포·로그인·데이터베이스는 파이어베이스(호스팅, Authentication, Firestore). 다른 도구를 골랐다면 의사결정 문서에 이유를 적어요.</td></tr>
 <tr><td><b>데이터베이스 관점</b></td><td>블로그 기능을 CRUD(만들기·읽기·고치기·지우기)로 나눠서 봐요(6-3)</td></tr>
 </table></div>
+<p><b>셋이 무엇이 다른가요?</b> 깃헙에 코드를 올릴 때 비슷한 이름이 세 가지 나와요.</p>
+<div class="table-wrap"><table><tr><th>도구</th><th>한 줄 설명</th><th>하는 일</th></tr>
+<tr><td><b>깃 CLI</b> (<code>git</code>)</td><td>코드 기록을 다루는 도구</td><td>커밋, 가지 만들기, 푸시</td></tr>
+<tr><td><b>깃헙 CLI</b> (<code>gh</code>)</td><td>깃헙 웹사이트 기능을 터미널에서 쓰는 도구</td><td>PR 만들기, PR 상태 보기, 이슈 쓰기</td></tr>
+<tr><td><b>깃헙 커넥터</b> (claude.ai의 깃헙 연동)</td><td>클로드에게 내 저장소를 읽을거리로 보여 주는 기능</td><td>채팅이나 프로젝트에 저장소 파일을 붙여서 클로드가 코드를 이해하게 함</td></tr>
+</table></div>
+<p class="source-note">출처: Claude 도움말 <a href="https://support.claude.com/en/articles/10167454-use-the-github-integration" target="_blank" rel="noopener">Use the GitHub integration</a>(채팅·프로젝트에 깃헙 저장소를 붙여 코드 맥락을 주는 기능), 깃헙 블로그 <a href="https://github.blog/2020-09-17-github-cli-1-0-is-now-available/" target="_blank" rel="noopener">GitHub CLI 1.0</a>(깃헙 CLI는 깃헙을 터미널로 가져와 이슈부터 PR까지 터미널에서 처리) (2026-11-17 확인)</p>
 <p><b>에이전틱 코딩 문서 3종</b> AI와 함께 만들 때는 아래 문서를 만들고 계속 고쳐 가요. 다음에 이어서 작업할 때 AI도, 나도 이 문서를 보고 다시 시작해요.</p>
 <ul>
 <li><b>코드 개발 지침</b> (<code>CLAUDE.md</code>): 내 프로젝트에서 클로드 코드가 지킬 규칙이에요. 어제 챗봇에 넣었던 시스템 프롬프트를 내 프로젝트에 두는 것과 같아요.</li>
