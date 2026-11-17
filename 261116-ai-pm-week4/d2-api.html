@@ -302,6 +302,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="grp"><div class="grp-label">SESSION 3</div><a class="l2" href="#s3">공공데이터 알아보기</a><a class="l3" href="#s3-1">3-1. 공공데이터와 공공데이터법</a><a class="l3" href="#s3-2">3-2. 공공데이터를 찾는 곳</a><a class="l3" href="#s3-3">3-3. 상세 화면에서 먼저 볼 것</a><a class="l3" href="#s3-4">3-4. 파일 데이터 하나 열어 보기</a><a class="l3" href="#s3-5">3-5. 결과</a></div>
 <div class="grp"><div class="grp-label">SESSION 4</div><a class="l2" href="#s4">공공데이터포털 API 시험하기</a><a class="l3" href="#s4-1">4-1. 기상청 단기예보 API의 이용 조건 읽기</a><a class="l3" href="#s4-2">4-2. 활용신청하고 인증키 받기</a><a class="l3" href="#s4-3">4-3. 클로드 코드로 요청 보내 보기</a><a class="l3" href="#s4-4">4-4. 결과</a></div>
 <div class="grp"><div class="grp-label">SESSION 5</div><a class="l2" href="#s5">API 용어표로 정리하기</a><a class="l3" href="#s5-1">5-1. 두 API 비교표</a><a class="l3" href="#s5-2">5-2. 웹훅과 API는 무엇이 다른가</a><a class="l3" href="#s5-3">5-3. 결과</a></div>
+<div class="grp"><div class="grp-label">SESSION 6</div><a class="l2" href="#s6">내 손으로 만드는 자체 개발 블로그</a><a class="l3" href="#s6-1">6-1. 전체 공통 지침</a><a class="l3" href="#s6-2">6-2. 단계별 목표</a><a class="l3" href="#s6-3">6-3. CRUD로 본 블로그 기능</a><a class="l3" href="#s6-4">6-4. 자주 나올 만한 트러블슈팅</a><a class="l3" href="#s6-5">6-5. 결과</a></div>
 <div class="grp"><div class="grp-label">마무리</div><a class="l2" href="#wrap">오늘 정리와 과제</a></div>
 </nav>
 <div class="side-link"><b>이 교안 주소</b><a href="https://loreenkim0301.github.io/swy-lecturenote/261116-ai-pm-week4/d2-api.html">loreenkim0301.github.io/swy-lecturenote/261116-ai-pm-week4/d2-api.html</a></div>
@@ -349,6 +350,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td>14:30–16:40</td><td>SESSION 4</td><td><a href="#s4">공공데이터포털 API 시험하기</a></td></tr>
 <tr><td>16:50–17:30</td><td>SESSION 5</td><td><a href="#s5">API 용어표로 정리하기</a></td></tr>
 <tr><td>17:30–18:00</td><td>정리</td><td><a href="#wrap">오늘 정리와 과제</a></td></tr>
+<tr><td>수업 뒤</td><td>선택 과제</td><td><a href="#s6">내 손으로 만드는 자체 개발 블로그</a></td></tr>
 </table></div>
 </section>
 
@@ -632,6 +634,82 @@ aside nav a.active{border-left-color:var(--blue)}
 </div>
 </section>
 
+<section class="section session" id="s6">
+<div class="session-head"><div class="eyebrow">선택 과제 · 수업 뒤</div><h2>내 손으로 만드는 자체 개발 블로그</h2><p>내 블로그를 직접 만들어 출시해 봐요. 목표만 주어지고, 그 안에서 필수·선택·주의사항을 지키며 스스로 만들어요.</p>
+<div class="why-box"><b>왜 하나?</b>오늘 배운 키 다루기, 어제 배운 시스템 프롬프트와 테스트를 내 서비스 하나에 모두 써 보는 연습이에요. 기획자가 목표를 정하고 AI에게 일을 맡기는 흐름을 처음부터 끝까지 겪어요.</div></div>
+
+<div class="topic" id="s6-1"><h3><span class="stage plan">기획자</span>6-1. 전체 공통 지침</h3>
+<div class="table-wrap"><table><tr><th>구분</th><th>내용</th></tr>
+<tr><td><b>필수 요구사항</b></td><td>① 로그인한 관리자만 글을 쓸 수 있어요<br/>② 글은 공개글과 나만 보기 글로 나뉘어요</td></tr>
+<tr><td><b>주의사항</b></td><td>API 키나 중요한 비밀 값은 .env 파일에 넣어요. 대화창이나 깃헙에 올리지 않아요.<br/>나만 보기 글은 화면에서만 숨기지 말고 데이터베이스에서 막아요(6-4 트러블슈팅 ①).</td></tr>
+<tr><td><b>추천 도구</b></td><td>코드는 깃헙, 배포·로그인·데이터베이스는 파이어베이스(호스팅, Authentication, Firestore). 다른 도구를 골랐다면 의사결정 문서에 이유를 적어요.</td></tr>
+<tr><td><b>데이터베이스 관점</b></td><td>블로그 기능을 CRUD(만들기·읽기·고치기·지우기)로 나눠서 봐요(6-3)</td></tr>
+</table></div>
+<p><b>에이전틱 코딩 문서 3종</b> AI와 함께 만들 때는 아래 문서를 만들고 계속 고쳐 가요. 다음에 이어서 작업할 때 AI도, 나도 이 문서를 보고 다시 시작해요.</p>
+<ul>
+<li><b>코드 개발 지침</b> (<code>CLAUDE.md</code>): 내 프로젝트에서 클로드 코드가 지킬 규칙이에요. 어제 챗봇에 넣었던 시스템 프롬프트를 내 프로젝트에 두는 것과 같아요.</li>
+<li><b>의사결정 문서</b> (<code>docs/decisions.md</code>): 내 프로젝트에서 정한 것을 날짜와 함께 모두 적어요. 예: "배포는 파이어베이스 호스팅으로 정함"</li>
+<li><b>실패 로그</b> (<code>docs/failures/주제.md</code>): 막혔던 일과 푼 방법을 <b>주제마다 따로</b> 적어요. 예: <code>docs/failures/로그인.md</code></li>
+</ul>
+</div>
+
+<div class="topic" id="s6-2"><h3><span class="stage">실습</span>6-2. 단계별 목표</h3>
+<div class="table-wrap"><table><tr><th>목표</th><th>할 일 (필수)</th><th>선택</th><th>다 됐다는 기준</th></tr>
+<tr><td><b>1차<br/>첫 화면 출시</b></td><td>블로그 첫 화면 디자인 초안 잡기 → 깃헙에 코드 올리기 → <b>사이트 배포</b></td><td>문서 3종 처음 만들기</td><td>배포 주소로 첫 화면이 열린다</td></tr>
+<tr><td><b>2차<br/>전체 화면 시안</b></td><td>클로드 아티팩트로 5개 화면 만들기: 첫 화면, 글 목록, 글 상세, 글쓰기, 관리자 로그인 → 전체 시안을 <b>시안 공유</b> 링크로 열기</td><td>• 공통 디자인 요소를 아티팩트 '디자인 시스템'으로 저장<br/>• 문서 3종 업데이트 + 디자인 시스템 문서(<code>docs/design-system.md</code>)</td><td>5개 화면 시안 링크가 있다</td></tr>
+<tr><td><b>3차<br/>첫 기능</b></td><td>사용자 스토리 "관리자는 로그인 후에, 글쓰기 기능으로 글을 직접 쓸 수 있다" 만들기. 모르는 것과 해결 과정은 문서에 남기며 진행</td><td>• 문서 4종 업데이트<br/>• 기능 배포 후 테스트 보고서(PDF)</td><td>로그인 → 글쓰기 → 목록에 내 글이 보인다</td></tr>
+<tr><td><b>4차<br/>글 관리</b></td><td>글 수정, 글 삭제, 글 옵션(공개글·비공개글)</td><td>• 글 썸네일 이미지<br/>• 리치 텍스트 에디터(RTE): 본문에 이미지·링크 넣기</td><td>비공개 글이 로그아웃 상태에서 안 보인다</td></tr>
+</table></div>
+<p>1차의 <b>사이트 배포</b>는 실제로 저장되는 블로그를 올리는 것이고, 2차의 <b>시안 공유</b>는 생김새만 보여 주는 링크예요. 둘은 달라요.</p>
+</div>
+
+<div class="topic" id="s6-3"><h3><span class="stage">개념</span>6-3. CRUD로 본 블로그 기능</h3>
+<div class="table-wrap"><table><tr><th>CRUD</th><th>뜻</th><th>블로그 기능</th><th>목표</th></tr>
+<tr><td><b>C</b> Create</td><td>만들기</td><td>글쓰기</td><td>3차</td></tr>
+<tr><td><b>R</b> Read</td><td>읽기</td><td>글 목록, 글 상세(로그아웃이면 공개글만, 관리자는 모두)</td><td>2차 화면, 3차 데이터</td></tr>
+<tr><td><b>U</b> Update</td><td>고치기</td><td>글 수정, 공개·비공개 바꾸기</td><td>4차</td></tr>
+<tr><td><b>D</b> Delete</td><td>지우기</td><td>글 삭제</td><td>4차</td></tr>
+</table></div>
+<p>어제 챗봇 관리자 페이지에서 상품과 주문을 추가하고 고쳤던 것 기억하시나요? 그것도 CRUD였어요.</p>
+</div>
+
+<div class="topic" id="s6-4"><h3><span class="stage">기획자·확인</span>6-4. 자주 나올 만한 트러블슈팅</h3>
+<p>"이런 문제가 있었어요! 안 돼요!"에 대한 강사 답변이에요. 질문을 누르면 답이 열려요.</p>
+<details class="res-toggle"><summary>① "나만 보기로 쓴 글이 로그아웃해도 보여요!" <span class="tg"></span></summary>
+<p><b>강사 코멘트</b> 화면에서만 숨겼기 때문이에요. 숨기는 일은 데이터베이스가 해야 해요. 클로드 코드에게 "비공개 글은 쓴 사람만 읽을 수 있게 데이터베이스 보안 규칙을 만들어 줘"라고 하세요. 다 되면 시크릿 창에서 비공개 글 주소를 열어 보고, 안 열리면 성공이에요.</p>
+<p class="source-note">출처: 파이어베이스 <a href="https://firebase.google.com/docs/firestore/security/get-started" target="_blank" rel="noopener">Cloud Firestore 보안 규칙 시작하기</a>(데이터를 읽고 쓸 때마다 보안 규칙을 먼저 검사하고, 막히면 요청 전체가 실패), <a href="https://firebase.google.com/docs/rules/rules-and-auth" target="_blank" rel="noopener">보안 규칙과 Firebase 인증</a>(로그인하지 않으면 auth가 비어 있음), <a href="https://docs.cloud.google.com/firestore/docs/security/rules-conditions" target="_blank" rel="noopener">보안 규칙 조건 작성</a>(visibility가 public일 때만 읽기 예시) (2026-11-17 확인)</p>
+</details>
+<details class="res-toggle"><summary>② "개발자 도구에 파이어베이스 apiKey가 보여요! 키가 샌 건가요?" <span class="tg"></span></summary>
+<p><b>강사 코멘트</b> 괜찮아요. 파이어베이스 키는 클로드 API 키나 오픈AI 키와 달리 밖에 보여도 되는 키예요. 내 데이터는 키가 아니라 ①의 보안 규칙이 지켜 줘요. 대신 클로드 API 키나 오픈AI 키는 절대 화면 코드에 넣지 말고 .env에 둬요.</p>
+<p class="source-note">출처: 파이어베이스 <a href="https://firebase.google.com/docs/projects/api-keys" target="_blank" rel="noopener">파이어베이스 API 키 사용과 관리</a>(파이어베이스 키는 코드에 넣어도 되며, 보안 규칙과 App Check를 쓰라고 권함) (2026-11-17 확인)</p>
+</details>
+<details class="res-toggle"><summary>③ "내 컴퓨터에선 되는데, 배포하니까 파이어베이스가 연결이 안 돼요!" <span class="tg"></span></summary>
+<p><b>강사 코멘트</b> .env 파일은 깃헙에 안 올라가서 그래요. 정상이에요. 클로드 코드에게 "배포한 사이트에서는 이 설정값을 어디에 넣어야 해?"라고 물어보고, 어떻게 했는지 의사결정 문서에 한 줄 적어요. 어제 6-2에서 .env를 .gitignore에 넣었던 것 기억하시나요? 같은 이유예요.</p>
+<p class="source-note">출처: 깃헙 Docs <a href="https://docs.github.com/en/get-started/git-basics/ignoring-files" target="_blank" rel="noopener">파일 무시하기</a>(.gitignore에 적은 파일과 폴더는 커밋할 때 빠짐) (2026-11-17 확인)</p>
+</details>
+<details class="res-toggle"><summary>④ "아티팩트로 배포했는데 글쓰기를 눌러도 저장이 안 돼요!" <span class="tg"></span></summary>
+<p><b>강사 코멘트</b> 고장이 아니에요. 아티팩트는 생김새를 보여 주는 <b>시안</b>이고, 실제로 저장되는 건 깃헙과 파이어베이스로 배포한 <b>진짜 사이트</b>예요. 저장 기능은 3차에서 진짜 사이트에 만들어요.</p>
+<p class="source-note">근거: 공식 문서가 아니라 이 과제의 목표 설계예요. 2차는 시안 공유, 3차는 글쓰기 기능 구현으로 나눠 두었어요.</p>
+</details>
+<details class="res-toggle"><summary>⑤ "썸네일을 올리려니까 요금제를 바꾸래요! / 402·403 오류가 나요!" <span class="tg"></span></summary>
+<p><b>강사 코멘트</b> 정상이에요. 이미지를 저장하는 Storage는 무료 요금제(Spark)로는 못 쓰고 Blaze 요금제로 바꿔야 해요. Blaze에서도 일정량까지는 무료예요. 썸네일은 선택이라서 건너뛰어도 돼요. 하고 싶다면 어제처럼 Blaze로 바꾸고 사용량 메뉴부터 확인해요.</p>
+<p class="source-note">출처: 파이어베이스 <a href="https://firebase.google.com/docs/storage/faqs-storage-changes-announced-sept-2024" target="_blank" rel="noopener">Cloud Storage 요금제·기본 버킷 변경 FAQ</a>(Storage는 Blaze 요금제 필요, Blaze에서도 무료 사용량 있음, Spark에서 호출하면 402·403 오류) (2026-11-17 확인)</p>
+</details>
+</div>
+
+<div class="topic" id="s6-5"><h3><span class="stage">결과</span>6-5. 결과</h3>
+<div class="result-box"><b>결과물</b> 내 블로그 배포 주소 + 깃헙 저장소 + 문서(개발 지침·의사결정·실패 로그)</div>
+<p class="ok-line"><b>이렇게 보이면 성공</b>배포 주소에서 관리자로 로그인해 글을 쓰고, 나만 보기 글은 로그아웃 상태에서 보이지 않는다</p>
+<div class="term-note" role="note" aria-label="이 절의 용어"><b>용어</b><dl>
+<dt>CRUD</dt><dd>데이터로 하는 네 가지 일. 만들기(Create)·읽기(Read)·고치기(Update)·지우기(Delete)</dd>
+<dt>보안 규칙</dt><dd>데이터베이스가 "누가 무엇을 읽고 쓸 수 있는지" 검사하는 규칙</dd>
+<dt>의사결정 문서</dt><dd>프로젝트에서 정한 것을 날짜와 함께 모아 두는 문서</dd>
+<dt>실패 로그</dt><dd>막혔던 일과 해결 방법을 주제별로 적는 문서</dd>
+<dt>리치 텍스트 에디터(RTE)</dt><dd>글자 꾸미기, 이미지·링크 넣기를 버튼으로 할 수 있는 글쓰기 칸</dd>
+</dl></div>
+</div>
+</section>
+
 <section class="section session" id="wrap">
 <div class="session-head"><div class="eyebrow">정리 · 17:30–18:00</div><h2>오늘 정리와 과제</h2></div>
 <p><b>오늘의 규칙</b></p>
@@ -644,6 +722,7 @@ aside nav a.active{border-left-color:var(--blue)}
 </ul>
 <div class="notice"><b>오늘의 결과물</b><br/>날씨를 붙인 이벤트 배너 화면 + 공공데이터 관찰표 + 공공데이터 API 테스트 기록 + API 비교표</div>
 <div class="notice"><b>과제</b><br/>공공데이터포털에서 내 서비스 아이디어에 쓸 만한 오픈 API 하나를 더 찾아, 5-1 표의 칸(키, 비용·한도, 묻는 방법, 출처 표시)을 채워 와요.</div>
+<div class="notice"><b>선택 과제</b><br/><a href="#s6">내 손으로 만드는 자체 개발 블로그</a>를 1차 목표부터 시작해 봐요.</div>
 <p>내일은 같은 화면을 다른 개발 도구에서도 열어 보고, 초보자가 쓰기 좋은 라이브러리와 프레임워크를 알아봐요.</p>
 </section>
 
