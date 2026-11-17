@@ -297,7 +297,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="nav-title">전체 목차</div>
 <div class="grp"><div class="grp-label">교육 안내</div><a class="l2" href="#overview">교육 개요</a><a class="l2" href="#prep">수업 전 준비</a><a class="l2" href="#tt">타임테이블</a></div>
 <div class="grp"><div class="grp-label">오늘의 단어</div><a class="l2" href="#words">오늘의 단어</a></div>
-<div class="grp"><div class="grp-label">SESSION 1</div><a class="l2" href="#s1">API란? 요청·응답과 키</a><a class="l3" href="#s1-1">1-1. "날씨 API 연동" 한 줄로는 왜 부족할까</a><a class="l3" href="#s1-2">1-2. API는 식당의 주문 창구예요</a><a class="l3" href="#s1-3">1-3. 키는 비밀번호처럼 다뤄요</a><a class="l3" href="#s1-4">1-4. 결과</a></div>
+<div class="grp"><div class="grp-label">SESSION 1</div><a class="l2" href="#s1">API란? 요청·응답과 키</a><a class="l3" href="#s1-1">1-1. "날씨 API 연동" 한 줄로는 왜 부족할까</a><a class="l3" href="#s1-2">1-2. API, 호출, 응답</a><a class="l3" href="#s1-3">1-3. 키는 비밀번호처럼 다뤄요</a><a class="l3" href="#s1-4">1-4. 결과</a></div>
 <div class="grp"><div class="grp-label">SESSION 2</div><a class="l2" href="#s2">무료 키 받아 날씨 배너 붙이기</a><a class="l3" href="#s2-1">2-1. 화면에 보여 줄 것 정하기</a><a class="l3" href="#s2-2">2-2. 무료 키 받기</a><a class="l3" href="#s2-3">2-3. 클로드 코드로 날씨 배너 만들기</a><a class="l3" href="#s2-4">2-4. 개발자 도구로 요청과 응답 보기</a><a class="l3" href="#s2-5">2-5. 결과</a></div>
 <div class="grp"><div class="grp-label">SESSION 3</div><a class="l2" href="#s3">공공데이터 알아보기</a><a class="l3" href="#s3-1">3-1. 공공데이터와 공공데이터법</a><a class="l3" href="#s3-2">3-2. 공공데이터를 찾는 곳</a><a class="l3" href="#s3-3">3-3. 상세 화면에서 먼저 볼 것</a><a class="l3" href="#s3-4">3-4. 파일 데이터 하나 열어 보기</a><a class="l3" href="#s3-5">3-5. 결과</a></div>
 <div class="grp"><div class="grp-label">SESSION 4</div><a class="l2" href="#s4">공공데이터포털 API 시험하기</a><a class="l3" href="#s4-1">4-1. 기상청 단기예보 API의 이용 조건 읽기</a><a class="l3" href="#s4-2">4-2. 활용신청하고 인증키 받기</a><a class="l3" href="#s4-3">4-3. 클로드 코드로 요청 보내 보기</a><a class="l3" href="#s4-4">4-4. 결과</a></div>
@@ -325,7 +325,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><th>시간</th><td>09:00–18:00 (점심 12:00–13:00, 수업 8시간)</td></tr>
 <tr><th>교과</th><td>[기본] AI 서비스 개발 · 13일차 (총 18일)</td></tr>
 <tr><th>교육 목표</th><td>무료 키 API와 공공데이터포털 API를 차례로 붙여 보고, 요청·응답·주소·키의 뜻과 키를 다루는 규칙, 공공데이터를 찾고 쓰는 방법을 설명한다.</td></tr>
-<tr><th>수업이 끝나면</th><td>① API를 식당 주문에 빗대어 설명하기<br/>② 키를 코드 밖에 두는 이유 말하기<br/>③ 무료 키를 받아 날씨 배너에 붙이고, 네트워크 탭에서 요청·응답 보기<br/>④ 공공데이터가 무엇이고 어디서 찾는지 말하기<br/>⑤ 공공데이터포털에서 API 하나를 신청하고 시험하기</td></tr>
+<tr><th>수업이 끝나면</th><td>① API·호출·응답이 무엇인지 내 말로 설명하기<br/>② 키를 코드 밖에 두는 이유 말하기<br/>③ 무료 키를 받아 날씨 배너에 붙이고, 네트워크 탭에서 요청·응답 보기<br/>④ 공공데이터가 무엇이고 어디서 찾는지 말하기<br/>⑤ 공공데이터포털에서 API 하나를 신청하고 시험하기</td></tr>
 </table></div>
 </section>
 
@@ -356,8 +356,8 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="session-head"><div class="eyebrow">단어 · 09:00–09:20</div><h2>오늘의 단어</h2><p>오늘 처음 나오는 말을 먼저 짧게 짚고 시작해요.</p></div>
 <div class="table-wrap"><table>
 <tr><th>단어</th><th>뜻</th></tr>
-<tr><td><b>API</b></td><td>다른 프로그램에 일을 부탁하는 정해진 창구. 정해진 모양으로 요청하면 정해진 모양으로 답을 줘요.</td></tr>
-<tr><td><b>요청 · 응답</b></td><td>내가 보내는 부탁 · 상대가 돌려주는 답</td></tr>
+<tr><td><b>API</b></td><td>프로그램끼리 정보를 주고받도록 정해 둔 약속. 정해진 모양으로 부탁하면 정해진 모양으로 답을 줘요.</td></tr>
+<tr><td><b>호출(요청) · 응답</b></td><td>내 프로그램이 API에 보내는 부탁 · API가 돌려주는 답</td></tr>
 <tr><td><b>엔드포인트(주소)</b></td><td>API에 요청을 보내는 주소. 일마다 주소가 달라요.</td></tr>
 <tr><td><b>파라미터</b></td><td>요청에 붙이는 조건. 주소 뒤 ? 다음에 이름=값으로 붙여요.</td></tr>
 <tr><td><b>JSON</b></td><td>응답을 담는 글 모양. {"이름": 값} 형태예요.</td></tr>
@@ -368,7 +368,7 @@ aside nav a.active{border-left-color:var(--blue)}
 </section>
 
 <section class="section session" id="s1">
-<div class="session-head"><div class="eyebrow">SESSION 1 · 09:20–10:30</div><h2>API란? 요청·응답과 키</h2><p>API를 식당 주문에 빗대어 이해하고, API 키를 어디에 두어야 하는지 먼저 정해요.</p>
+<div class="session-head"><div class="eyebrow">SESSION 1 · 09:20–10:30</div><h2>API란? 요청·응답과 키</h2><p>API와 호출·응답이 무엇인지 잡고, API 키를 어디에 두어야 하는지 먼저 정해요.</p>
 <div class="why-box"><b>왜 하나?</b>기획서에 "날씨 API 연동"이라고만 쓰면 개발자는 무엇을 언제 얼마나 부를지 다시 물어요. 요청과 응답의 모양, 키를 다루는 규칙을 알면 기획서에 정확히 쓸 수 있어요.</div></div>
 
 <div class="topic" id="s1-1"><h3><span class="stage plan">기획자</span>1-1. "날씨 API 연동" 한 줄로는 왜 부족할까</h3>
@@ -395,16 +395,19 @@ aside nav a.active{border-left-color:var(--blue)}
 <p>세션이 끝날 때마다 이 표로 돌아와서, 기획자의 답 칸을 내 서비스에 맞게 고쳐 써 보세요.</p>
 </div>
 
-<div class="topic" id="s1-2"><h3><span class="stage">개념</span>1-2. API는 식당의 주문 창구예요</h3>
-<div class="table-wrap"><table><tr><th>식당에서</th><th>API에서</th><th>날씨 API(OpenWeather) 예</th></tr>
-<tr><td>주문 창구</td><td>엔드포인트(주소)</td><td>api.openweathermap.org/data/2.5/weather</td></tr>
-<tr><td>메뉴판에 적힌 주문법</td><td>API 문서</td><td>위도(lat)·경도(lon)를 넣으라고 적혀 있어요</td></tr>
-<tr><td>"김치찌개 1인분, 덜 맵게"</td><td>요청 + 파라미터</td><td>lat=37.57&amp;lon=126.98&amp;units=metric</td></tr>
-<tr><td>나온 음식</td><td>응답(JSON)</td><td>"main" 안의 "temp"(현재 기온)</td></tr>
-<tr><td>회원 카드</td><td>API 키</td><td>appid=내 키. 가입하면 무료 키를 줘요</td></tr>
+<div class="topic" id="s1-2"><h3><span class="stage">개념</span>1-2. API, 호출, 응답</h3>
+<p>API는 <b>프로그램끼리 정보를 주고받도록 정해 둔 약속</b>이에요. 내 프로그램이 정해진 모양으로 부탁하면, 상대 프로그램이 정해진 모양으로 답을 돌려줘요. 핵심은 <b>주고받는다</b>는 점이에요.</p>
+<div class="table-wrap"><table><tr><th>용어</th><th>뜻</th><th>날씨 배너에서는</th></tr>
+<tr><td><b>API</b></td><td>프로그램끼리 정보를 주고받도록 정해 둔 약속</td><td>OpenWeather가 "이렇게 물으면 이렇게 답해 줄게"라고 열어 둔 약속</td></tr>
+<tr><td><b>호출(요청)</b></td><td>내 프로그램이 API에 부탁을 보내는 것. 개발자는 "API를 부른다", "호출한다"고 말해요</td><td>"서울의 지금 날씨 알려 줘"를 보내는 것</td></tr>
+<tr><td><b>응답</b></td><td>API가 부탁을 받고 돌려주는 답. 주로 JSON 모양으로 와요</td><td>기온, 날씨 상태, 기준 시각이 담긴 답</td></tr>
 </table></div>
-<p>지난주 화요일에 크롤링을 배우면서 "사이트가 공식으로 제공하는 API나 공공데이터포털을 먼저 찾자"고 했던 것 기억하시나요? 오늘이 바로 그 방법이에요. 크롤링은 화면을 긁어 오는 것이고, API는 상대가 쓰라고 열어 둔 창구예요.</p>
-<p class="source-note">출처: OpenWeather <a href="https://openweathermap.org/current" target="_blank" rel="noopener">Current weather data 문서</a>(요청 주소 api.openweathermap.org/data/2.5/weather, 파라미터 lat·lon·appid·units), <a href="https://docs.openweather.co.uk/faq" target="_blank" rel="noopener">FAQ</a>("Upon registration on our website using just your email (no banking details required), you will receive an API key that allows for 60 free calls per minute.") (2026-11-15 확인)</p>
+<ol class="do-steps">
+<li><p><b>호출:</b> 날씨 배너가 OpenWeather에 "서울의 지금 날씨 알려 줘"라고 보내요.</p></li>
+<li><p><b>응답:</b> OpenWeather가 기온, 날씨 상태, 기준 시각을 돌려줘요.</p></li>
+<li><p><b>화면:</b> 날씨 배너가 받은 답을 글자로 바꿔 보여 줘요.</p></li>
+</ol>
+<p>지난주 화요일에 크롤링을 배우면서 "사이트가 공식으로 제공하는 API나 공공데이터포털을 먼저 찾자"고 했던 것 기억하시나요? 오늘이 바로 그 방법이에요. 크롤링은 화면을 긁어 오는 것이고, API는 상대가 주고받자고 열어 둔 약속이에요.</p>
 </div>
 
 <div class="topic" id="s1-3"><h3><span class="stage">개념</span>1-3. 키는 비밀번호처럼 다뤄요</h3>
@@ -419,8 +422,8 @@ aside nav a.active{border-left-color:var(--blue)}
 </div>
 
 <div class="topic" id="s1-4"><h3><span class="stage">결과</span>1-4. 결과</h3>
-<div class="result-box"><b>결과물</b> 식당 비유 표를 내 말로 한 줄씩 설명하기</div>
-<p class="ok-line"><b>이렇게 보이면 성공</b>주소의 어느 부분이 창구이고 어느 부분이 조건이며, 키는 어디에 두는지 말할 수 있다</p>
+<div class="result-box"><b>결과물</b> API·호출·응답을 내 말로 한 줄씩 설명하기</div>
+<p class="ok-line"><b>이렇게 보이면 성공</b>API는 주고받는 약속이고, 호출은 부탁을 보내는 것, 응답은 돌려받는 답이라고 말하고, 키는 어디에 두는지 말할 수 있다</p>
 </div>
 </section>
 
