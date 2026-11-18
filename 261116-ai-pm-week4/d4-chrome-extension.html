@@ -487,14 +487,90 @@ aside nav a.active{border-left-color:var(--blue)}
 <p class="ok-line"><b>이렇게 보이면 성공</b>드래그 → 우클릭 저장 → 단추 → 카드 클릭 → 붙여 넣기가 되고, 깃헙 저장소 맨 위에 manifest.json이 보인다</p>
 </div>
 
-<div class="topic" id="s2-6"><h3><span class="stage">선택</span>2-6. (선택) 다른 사람에게 배포하려면: 크롬 웹 스토어 개발자 등록</h3>
-<p>지금 바로 하지 않아도 돼요. 만든 확장 프로그램을 웹 스토어에 올려 다른 사람이 설치하게 하고 싶을 때 필요한 단계예요. 실제 출시 화면과 준비물은 <a href="#s3">3세션</a>에서 이어서 봐요.</p>
+<div class="topic" id="s2-6"><h3><span class="stage">선택</span>2-6. (선택) 다른 사람에게 배포하려면: 크롬 웹 스토어 출시</h3>
+<p>지금 바로 하지 않아도 돼요. 만든 확장 프로그램을 웹 스토어에 올려 다른 사람이 설치하게 하고 싶을 때 필요한 단계예요. 내 크롬에서 쓰거나 짝과 서로 써 보는 것은 지금처럼 개발자 모드로 하면 돼요.</p>
 <ul>
-<li>웹 스토어에 게시하려면 먼저 개발자로 등록하고 <b>한 번만 내는 등록비</b>를 내야 해요.</li>
-<li>등록 뒤에도 웹 스토어 소개 글, 개인정보 처리 안내, 심사를 따로 준비해야 해요.</li>
-<li>내 크롬에서 쓰거나 짝과 서로 써 보는 것은 지금처럼 개발자 모드로 하면 돼요.</li>
+<li>웹 스토어에 게시하려면 먼저 개발자로 등록하고 <b>한 번만 내는 등록비</b>를 내야 해요. 월 구독료가 아니고, 업데이트할 때 다시 내지 않아요.</li>
+<li>등록 뒤에도 소개 글·이미지, 개인정보 보호 탭, 심사를 따로 준비해야 해요.</li>
+<li>왜 이렇게 준비할 것이 많은지는 <a href="#s3">3세션</a>에서, 실제 화면은 <a href="#s3-3">3-3</a>에서 봐요.</li>
 </ul>
-<p class="source-note">출처: Chrome for Developers <a href="https://developer.chrome.com/docs/webstore/register" target="_blank" rel="noopener">Register your developer account</a> (2026-11-18 확인)</p>
+
+<details class="optional" id="s2-6-steps"><summary><span class="summary-title">자세히 · 크롬 웹 스토어 출시 순서와 절차 14단계</span><span class="summary-hint">눌러서 펼쳐 보세요</span></summary>
+<p>출시는 <b>준비 → 대시보드 입력 → 심사 → 출시 뒤 운영</b> 순서로 진행해요. 가장 많이 헷갈리는 점은 "업로드"와 "출시"가 다르다는 것이에요. ZIP을 올린 뒤 등록정보와 개인정보 보호 탭을 모두 채우고 [제출하여 검토받기]를 눌러야 심사가 시작돼요.</p>
+
+<h4>준비 구간 (내 컴퓨터에서)</h4>
+<ol class="do-steps">
+<li><p><b>로컬 테스트를 끝내요.</b> 2-2·2-3처럼 개발자 모드로 설치해 주요 기능과 오류 상황을 여러 번 써 봐요. 크롬 내부 페이지(chrome://)와 웹 스토어 페이지에서는 확장 프로그램이 동작하지 않으니, 일반 웹페이지에서 확인해요.</p></li>
+<li><p><b>배포용 ZIP을 만들어요.</b> ZIP을 열었을 때 <b>manifest.json이 맨 위에 바로 보여야</b> 해요. 2-1의 완성본 ZIP처럼 폴더가 한 겹 더 있으면 스토어에 올릴 수 없어요.</p>
+<div class="table-wrap"><table><tr><th>맞는 ZIP</th><th>자주 하는 실수</th></tr>
+<tr><td><pre>snippet-ext-store.zip
+├─ manifest.json   ← 바로 보여야 함
+├─ background.js
+├─ popup.html
+├─ popup.js
+└─ icons/
+   └─ icon128.png</pre></td><td><pre>snippet-ext.zip
+└─ snippet-ext/    ← 폴더가 한 겹 더 있음
+   └─ manifest.json</pre></td></tr></table></div>
+<p>ZIP을 올리기 전에 manifest.json의 버전 번호, 아이콘 경로와 파일 이름의 대소문자를 확인하고, 개발용 메모·원본 디자인 파일·비밀키와 쓰지 않는 권한·코드를 지워요.</p>
+<div class="copybox"><div class="copyhead"><span>배포 프롬프트 1 · 클로드 코드 입력창에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 이 폴더의 크롬 확장 프로그램을 크롬 웹 스토어에 올릴 배포용 ZIP으로 만들어 줘.
+내용: manifest.json이 ZIP 맨 위에 바로 오게 묶어 줘. 128×128 PNG 아이콘이 없으면 icons/icon128.png를 만들고 manifest.json의 icons에 연결해 줘. 메모 파일, .git 폴더, 비밀키는 넣지 마. 기획서에 없는 권한은 추가하지 마.
+형식: ① ZIP 파일 위치 ② ZIP에 들어간 파일 목록 ③ manifest.json의 version과 permissions 줄</pre></div></li>
+<li><p><b>스토어 이미지와 소개 문구를 준비해요.</b> store-assets 폴더를 만들고 icon-128.png, screenshot-01.png, promo-small.png처럼 규칙적으로 이름을 붙여요.</p>
+<div class="table-wrap"><table><tr><th>자료</th><th>크기</th><th>메모</th></tr>
+<tr><td>확장 프로그램 아이콘</td><td>128×128 PNG</td><td>필수</td></tr>
+<tr><td>스크린샷</td><td>1280×800(권장) 또는 640×400, 1~5장</td><td>시작 화면 → 핵심 기능 → 설정 → 결과 순서로 찍어요</td></tr>
+<tr><td>작은 프로모션 이미지</td><td>440×280</td><td></td></tr>
+<tr><td>마키 이미지</td><td>1400×560</td><td>선택</td></tr>
+</table></div>
+<p>소개 문구는 "<b>[이름]은 [대상 사용자]가 [핵심 기능]으로 [얻는 결과]를 만들도록 돕는 크롬 확장 프로그램입니다</b>" 틀로 시작하고, 상세 설명은 문제 → 해결 → 기능 → 데이터 → 사용법 순서로 써요. 3-5 프롬프트로 초안을 만들 수 있어요. 아직 없는 기능과 "최고", "유일" 같은 표현은 쓰지 않아요.</p></li>
+<li><p><b>개인정보처리방침을 준비해요.</b> 데이터를 처리하는 확장 프로그램은 로그인 없이 열리는 공개 HTTPS 주소에 처리방침을 올려야 해요. 홈페이지가 없으면 5-2처럼 깃헙 페이지스로 공개해요. 처리방침 내용, 스토어 개인정보 보호 탭의 답, 실제 코드 동작이 서로 같아야 해요.</p></li>
+</ol>
+
+<h4>대시보드 구간 (크롬 웹 스토어 개발자 대시보드에서)</h4>
+<ol class="do-steps" start="5">
+<li><p><b>개발자 계정을 등록해요.</b> 출시 전용 구글 계정으로 개발자 대시보드에 들어가 개발자 약관에 동의하고 1회 등록비를 내요(정확한 금액과 결제 수단은 결제 화면 기준). 구글 계정 2단계 인증을 켜고, 계정 설정에서 게시자 이름을 넣고, 연락처 이메일을 등록해 인증 메일을 확인해요. Trader(사업자) 또는 Non-Trader를 사실대로 골라요.</p>
+<p>계정 이메일은 만든 뒤 바꿀 수 없어요. Trader로 등록하면 법적 이름·전화번호·주소 인증이 필요하고 일부가 스토어에 공개될 수 있어요.</p></li>
+<li><p><b>새 항목을 만들고 ZIP을 올려요.</b> [+ 새 항목] → [파일 선택]으로 2단계에서 만든 ZIP을 올려요(화면: <a href="#s3-3">3-3 ①</a>). 2단계 인증이 꺼져 있으면 ZIP이 정상이어도 올라가지 않아요(화면: <a href="#s3-3">3-3 ②</a>). 2026년부터는 초안에 ZIP을 올리면 스토어가 설치 가능 여부를 자동으로 검사하니, 문제가 표시되면 고친 ZIP을 다시 올려요.</p></li>
+<li><p><b>스토어 등록정보를 채워요.</b> 언어(한국어), 패키지 요약, 상세 설명, 카테고리, 아이콘·스크린샷·프로모션 이미지, 홈페이지·지원 주소를 넣어요(화면: <a href="#s3-3">3-3 ③</a>). 이미지 크기가 맞지 않으면 '이미지 크기가 잘못되었습니다'가 떠요(화면: <a href="#s3-2">3-2</a>).</p></li>
+<li><p><b>개인정보 보호 탭을 채워요.</b> 아래 순서대로 입력하고 [임시저장]을 눌러요(화면: <a href="#s3-3">3-3 ④·⑥</a>).</p>
+<div class="table-wrap"><table><tr><th>순서</th><th>항목</th><th>'내 문장 모음' 예</th></tr>
+<tr><td>1</td><td>전용 목적</td><td>사용자가 드래그해 저장한 문장을 모아 두고, 눌러서 복사하게 돕습니다</td></tr>
+<tr><td>2</td><td>권한마다 사용 이유</td><td>contextMenus: 사용자가 고른 문장을 우클릭 메뉴로 저장하기 위해 / storage: 저장한 문장을 브라우저 안에 보관하기 위해</td></tr>
+<tr><td>3</td><td>원격 코드 사용 여부</td><td>"아니요"(바깥 서버의 자바스크립트를 내려받아 실행하지 않음)</td></tr>
+<tr><td>4</td><td>수집하는 사용자 데이터</td><td>실제로 바깥으로 모으는 것만 체크. storage 권한을 쓴다는 이유만으로 '사용자 활동'을 체크하지 않아요</td></tr>
+<tr><td>5</td><td>데이터 사용 인증</td><td>실제 동작과 맞는 항목에 체크</td></tr>
+<tr><td>6</td><td>개인정보처리방침 URL</td><td>4단계에서 공개한 주소</td></tr>
+</table></div>
+<p>권한 이유는 "<b>[권한]은 사용자가 [직접 실행한 기능]을 이용할 때 [필요한 동작]을 하기 위해 사용합니다</b>" 틀로 써요. 하나라도 비면 위쪽 [제출할 수 없는 이유]에 남은 항목이 빨갛게 나와요(화면: <a href="#s3-3">3-3 ⑤</a>).</p></li>
+<li><p><b>배포 범위를 정해요.</b></p>
+<div class="table-wrap"><table><tr><th>공개 범위</th><th>누가 설치하나요</th></tr>
+<tr><td>Public(공개)</td><td>스토어 검색과 링크로 누구나</td></tr>
+<tr><td>Unlisted(링크 공개)</td><td>검색에는 안 나오고, 주소를 아는 사람만</td></tr>
+<tr><td>Private(비공개)</td><td>지정한 테스터, 구글 그룹, 허용한 조직 사용자만</td></tr>
+</table></div>
+<p>처음에는 Private로 테스터에게 설치 → 실행 → 핵심 기능 → 결과 확인 → 제거까지 해 보게 한 뒤 Public을 정하면 안전해요. 공개 범위와 관계없이 심사는 같아요. 로그인이 필요한 기능이면 [테스트 안내]에 재현 순서와 테스트 계정을 적어요.</p></li>
+<li><p><b>제출 전에 마지막으로 점검해요.</b></p>
+<ul class="checklist">
+<li>필수 탭에 오류 표시가 없다</li>
+<li>설명과 스크린샷이 실제 기능과 같다</li>
+<li>모든 권한의 사용 이유를 적었다</li>
+<li>개인정보 보호 탭의 답과 개인정보처리방침이 같다</li>
+<li>문의 메일과 홈페이지·처리방침 주소가 로그인 없이 열린다</li>
+<li>새 크롬 프로필에서 설치 테스트를 마쳤다</li>
+</ul></li>
+<li><p><b>[제출하여 검토받기]를 눌러요.</b> 확인 창에서 '검토 통과 후 자동으로 게시'를 켤지 정해요(화면: <a href="#s3-3">3-3 ⑦</a>). 끄고 제출하면 승인 뒤 직접 [게시]를 눌러야 하고, 승인 뒤 30일 안에 게시하지 않으면 다시 초안으로 돌아갈 수 있어요.</p></li>
+</ol>
+
+<h4>심사와 출시 뒤</h4>
+<ol class="do-steps" start="12">
+<li><p><b>심사를 기다려요.</b> 대부분 며칠 안에 끝나지만 몇 주가 걸릴 수 있어요. 3주가 넘게 대기 중이면 개발자 지원팀에 문의해요. 넓은 사이트 접근 권한, tabs·downloads 같은 민감한 권한, 많은 권한과 코드, 읽기 어렵게 바꾼 코드는 심사를 길게 만들어요.</p></li>
+<li><p><b>결과에 대응해요.</b> 승인되면 자동 게시를 켠 경우 바로 공개되고, 아니면 대시보드에서 [게시]를 눌러요. 거절되면 메일 확인 → 위반 원인 분류 → 코드·설명·개인정보 항목 함께 수정 → manifest.json 버전 올리기 → 다시 제출 순서로 해요.</p></li>
+<li><p><b>출시 당일과 그 뒤를 챙겨요.</b> 스토어 검색과 상세 페이지를 확인하고, 새 크롬 프로필에서 설치해 권한 안내 문구·핵심 기능·예외 상황·설정 유지를 확인해요. 문의 메일과 개인정보 링크도 열어 봐요. 업데이트할 때는 manifest.json 버전을 올려 새 ZIP을 올리고, 업데이트도 같은 심사를 받아요. 새 권한을 추가하면 사용자에게 다시 동의를 받을 수 있어요.</p></li>
+</ol>
+<div class="result-box"><b>마지막 확인</b> 출시 체크리스트를 팀원 1명과 서로 검토하고, 스토어 공개 링크와 출시 버전을 기록해 둬요.</div>
+<p class="source-note">이전 교안: 셀렉트웨이 「Chrome 확장 프로그램 웹 스토어 출시 가이드」 V2(2026-09-16, SwyClassTimer 실제 출시 기준). 출처: Chrome for Developers <a href="https://developer.chrome.com/docs/webstore/register" target="_blank" rel="noopener">Register your developer account</a> · <a href="https://developer.chrome.com/docs/webstore/publish" target="_blank" rel="noopener">Publish in the Chrome Web Store</a> · <a href="https://developer.chrome.com/docs/webstore/images" target="_blank" rel="noopener">Supplying images</a> · <a href="https://developer.chrome.com/docs/webstore/cws-dashboard-privacy" target="_blank" rel="noopener">Privacy practices</a> · <a href="https://developer.chrome.com/docs/webstore/review-process" target="_blank" rel="noopener">Review process</a> (2026-11-18 확인)</p>
+</details>
 </div>
 </section>
 
