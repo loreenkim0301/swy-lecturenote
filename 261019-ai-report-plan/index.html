@@ -263,6 +263,17 @@ aside nav a.active{border-left-color:var(--blue)}
 #slide .copybox pre.fmt{font-size:17px;padding:14px 18px}
 #slide .base{font-size:15px;padding:6px 12px}
 </style>
+<style>/* fab-menu v1 */
+#fabMenu{position:fixed;right:16px;bottom:16px;z-index:30;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+#fabItems{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+#fabItems[hidden]{display:none}
+#fabMenu #slideBtn,#fabMenu .fab-item{position:static;right:auto;bottom:auto;background:#fff;color:var(--blue);border:1px solid var(--blue);border-radius:999px;padding:10px 16px;font:700 14px var(--font-sans);cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.18);white-space:nowrap}
+#fabMenu .fab-item:hover,#fabMenu .fab-item:focus-visible{background:var(--blue);color:#fff}
+#fabMain{width:52px;height:52px;border-radius:50%;border:0;background:var(--blue);color:#fff;font:700 26px/1 var(--font-sans);cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center}
+#fabMain span{display:inline-block;transition:transform .2s}
+#fabMain[aria-expanded="true"] span{transform:rotate(45deg)}
+@media print{#fabMenu{display:none!important}}
+</style>
 </head>
 <body>
 <button aria-controls="side-nav" aria-expanded="true" class="nav-toggle" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" viewbox="0 0 16 16"><path d="M2 4h12M2 8h12M2 12h12"></path></svg><span>목차 숨기기</span></button>
@@ -487,7 +498,14 @@ aside nav a.active{border-left-color:var(--blue)}
 </table></div><p><b>오늘 쓴 프롬프트 남기기</b>: 잘 된 프롬프트는 메모장에 모아 두세요. 다음 달 보고서를 쓸 때 [ ] 안만 바꿔 다시 쓸 수 있어요.</p></div></section>
 </main>
 </div>
-<button id="slideBtn" type="button">▶ 슬라이드로 보기</button>
+<!-- fab-menu v1 -->
+<nav id="fabMenu" aria-label="빠른 메뉴">
+<div id="fabItems" hidden>
+<button id="slideBtn" class="fab-item" type="button">▶ 슬라이드로 보기</button>
+<button id="toTopBtn" class="fab-item" type="button">↑ 최상단으로</button>
+</div>
+<button id="fabMain" type="button" aria-expanded="false" aria-controls="fabItems" aria-label="빠른 메뉴 열기"><span aria-hidden="true">＋</span></button>
+</nav>
 <div hidden="" id="deck">
 <div id="viewport"><div id="stage">
 <div id="master"><span>생성형 AI를 활용한 보고서/기획서 제작</span></div>
@@ -689,6 +707,19 @@ document.addEventListener('click',function(e){
   document.querySelectorAll('aside nav a').forEach(function(a){ a.addEventListener('click',function(){ if(mq.matches){ body.classList.remove('nav-open'); sync(); } }); });
   if(mq.addEventListener) mq.addEventListener('change',sync);
   sync();
+})();
+</script>
+<script>/* fab-menu v1 */
+(function(){
+  var main=document.getElementById('fabMain'),items=document.getElementById('fabItems'),top=document.getElementById('toTopBtn');
+  if(!main||!items)return;
+  function set(open){items.hidden=!open;main.setAttribute('aria-expanded',open?'true':'false');main.setAttribute('aria-label',open?'빠른 메뉴 닫기':'빠른 메뉴 열기');}
+  main.addEventListener('click',function(){set(items.hidden);});
+  if(top)top.addEventListener('click',function(){set(false);window.scrollTo({top:0,behavior:'smooth'});});
+  var sb=document.getElementById('slideBtn');
+  if(sb)sb.addEventListener('click',function(){set(false);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!items.hidden){set(false);main.focus();}});
+  document.addEventListener('click',function(e){if(!items.hidden&&!document.getElementById('fabMenu').contains(e.target))set(false);});
 })();
 </script>
 </body>
