@@ -507,9 +507,17 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><th>처음 나온 때</th><td>2025년 11월 18일. 구글의 AI 모델 Gemini 3와 같은 날 공개됐고, 개인은 무료로 써 볼 수 있는 미리보기(퍼블릭 프리뷰)로 시작했어요.</td></tr>
 <tr><th>누가 만들었나</th><td>2025년 7월 구글이 AI 코드 편집기 윈드서프(Windsurf)를 만든 팀을 데려왔고, 이 팀이 안티그래비티 개발을 이끌었어요.</td></tr>
 <tr><th>뿌리</th><td>무료로 공개된 VS Code 코드를 바탕으로 만들었어요. 그래서 4세션의 VS Code와 생김새가 닮았어요.</td></tr>
-<tr><th>바뀐 점</th><td>2026년 5월 19일 '안티그래비티 2.0'이 나오면서, 코드 편집기 없이 대화로 일을 맡기는 데스크톱 앱(Antigravity App)이 따로 생겼어요. 오늘은 이 앱을 써요.</td></tr>
+<tr><th>바뀐 점</th><td>2026년 5월 19일 '안티그래비티 2.0'이 나오면서, 하나였던 프로그램이 이름별로 나뉘었어요. 아래 '이름 정리'를 봐요.</td></tr>
 </table></div>
-<p>다운로드 화면을 열면 이름이 같은 제품이 여러 개 보여요. 헷갈리지 않게 먼저 나눠요.</p>
+<h4>이름 정리 · 2026년 11월 기준</h4>
+<p>처음 나왔을 때 안티그래비티는 <b>프로그램 하나</b>였어요. 코드 편집기와, 에이전트 여러 개에게 일을 나눠 맡기는 '에이전트 매니저(Agent Manager)' 화면이 한 프로그램 안에 같이 들어 있었어요. 2.0부터는 이 둘이 <b>이름이 다른 별개의 제품</b>으로 나뉘었어요.</p>
+<div class="table-wrap"><table><tr><th>시기</th><th>이름</th><th>들어 있는 것</th></tr>
+<tr><td>2025년 11월 ~ 2026년 5월</td><td><b>Google Antigravity</b>(하나)</td><td>코드 편집기 + 에이전트 매니저가 한 프로그램에</td></tr>
+<tr><td rowspan="2">2026년 5월 19일 2.0부터 (지금)</td><td><b>Antigravity App</b></td><td>대화로 일을 맡기는 앱. 코드 편집기가 없어요. 오늘 쓰는 것</td></tr>
+<tr><td><b>Antigravity IDE</b></td><td>코드 편집기가 있는 예전 프로그램을 잇는 제품. 구글은 앞으로 IDE에서 에이전트 매니저를 빼겠다고 밝혔어요</td></tr>
+</table></div>
+<p>그래서 2026년 5월 전에 나온 블로그 글이나 영상에서 '안티그래비티'라고 하면 대부분 지금의 IDE 쪽을 말해요. 글에서 본 화면과 내 화면이 다르면 날짜부터 확인해요.</p>
+<p>다운로드 화면을 열면 지금 나뉘어 있는 제품이 모두 보여요.</p>
 <figure class="shot"><a href="images/d3_antigravity_download.jpg" target="_blank" rel="noopener"><img style="width:440px;max-width:100%" alt="Google Antigravity 다운로드 화면. macOS, Windows, Linux 탭과 Antigravity App 다운로드 단추, Antigravity CLI가 보인다" loading="lazy" src="images/d3_antigravity_download.jpg"/></a><figcaption>안티그래비티 다운로드 화면 (2026-11-15 확인)</figcaption></figure>
 <div class="table-wrap"><table><tr><th>제품</th><th>무엇인가요</th><th>오늘 쓰나요</th></tr>
 <tr><td><b>Antigravity App</b></td><td>데스크톱 앱. 클로드 데스크톱 앱처럼 대화로 일을 맡겨요</td><td>설치해서 써요</td></tr>
@@ -518,7 +526,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td><b>IDE용 확장</b></td><td>VS Code, JetBrains(IntelliJ IDEA 등) 같은 편집기에 안티그래비티를 붙이는 확장</td><td>참고만 해요</td></tr>
 </table></div>
 <figure class="shot"><a href="images/d3_antigravity_ide_plugins.jpg" target="_blank" rel="noopener"><img style="width:440px;max-width:100%" alt="안티그래비티 IDE용 확장 목록. Visual Studio, JetBrains(IntelliJ IDEA, PyCharm 등), Zed, Xcode" loading="lazy" src="images/d3_antigravity_ide_plugins.jpg"/></a><figcaption>다른 편집기에 붙이는 확장도 있어요. JetBrains 확장은 IntelliJ IDEA 같은 편집기를 지원해요 (2026-11-15 확인)</figcaption></figure>
-<p class="source-note">출처: Google Antigravity <a href="https://antigravity.google/download" target="_blank" rel="noopener">다운로드</a>(Antigravity App v2.32.1, CLI v1.5.8, IDE 독립 실행형 v2.7.0, VS Code·JetBrains 등 확장) (2026-11-15 확인) · <a href="https://thenewstack.io/antigravity-is-googles-new-agentic-development-platform/" target="_blank" rel="noopener">The New Stack</a>(2025-11-18 공개), <a href="https://venturebeat.com/ai/google-antigravity-introduces-agent-first-architecture-for-asynchronous" target="_blank" rel="noopener">VentureBeat</a>(2025년 7월 윈드서프 팀 합류, 퍼블릭 프리뷰), <a href="https://www.altamira.ai/antigravity-is-agent-first-coding-tool/" target="_blank" rel="noopener">Altamira</a>(VS Code 오픈소스 기반), <a href="https://www.testmuai.com/blog/google-antigravity-review/" target="_blank" rel="noopener">TestMu AI</a>(2026-05-19 안티그래비티 2.0, 코드 편집기 없는 앱) (2026-11-18 확인)</p>
+<p class="source-note">출처: Google Antigravity <a href="https://antigravity.google/download" target="_blank" rel="noopener">다운로드</a>(Antigravity App v2.32.1, CLI v1.5.8, IDE 독립 실행형 v2.7.0, VS Code·JetBrains 등 확장) (2026-11-15 확인) · <a href="https://thenewstack.io/antigravity-is-googles-new-agentic-development-platform/" target="_blank" rel="noopener">The New Stack</a>(2025-11-18 공개), <a href="https://venturebeat.com/ai/google-antigravity-introduces-agent-first-architecture-for-asynchronous" target="_blank" rel="noopener">VentureBeat</a>(2025년 7월 윈드서프 팀 합류, 퍼블릭 프리뷰), <a href="https://www.altamira.ai/antigravity-is-agent-first-coding-tool/" target="_blank" rel="noopener">Altamira</a>(VS Code 오픈소스 기반), <a href="https://www.testmuai.com/blog/google-antigravity-review/" target="_blank" rel="noopener">TestMu AI</a>(2025년 11월 IDE는 편집기와 에이전트 매니저를 함께 제공, 2026-05-19 2.0에서 편집기 없는 App 분리, 이후 IDE에서 에이전트 매니저 제거 예정) (2026-11-18 확인)</p>
 </div>
 
 <div class="topic" id="s3-2"><h3><span class="stage">실습</span>3-2. 설치하기</h3>
