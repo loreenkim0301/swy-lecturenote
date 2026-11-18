@@ -309,10 +309,10 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="grp"><div class="grp-label">교육 안내</div><a class="l2" href="#overview">교육 개요</a><a class="l2" href="#prep">수업 전 준비</a><a class="l2" href="#tt">타임테이블</a></div>
 <div class="grp"><div class="grp-label">오늘의 단어</div><a class="l2" href="#words">오늘의 단어</a></div>
 <div class="grp"><div class="grp-label">SESSION 1</div><a class="l2" href="#s1">크롬 확장 프로그램은 무엇으로 이뤄지나</a><a class="l3" href="#s1-1">1-1. 오늘 만들 '내 문장 모음'의 파일 4개</a><a class="l3" href="#s1-2">1-2. 기획서 먼저 쓰기</a></div>
-<div class="grp"><div class="grp-label">SESSION 2</div><a class="l2" href="#s2">문장 모음 확장 프로그램 만들어 설치하기</a><a class="l3" href="#s2-1">2-1. 클로드 코드로 만들기</a><a class="l3" href="#s2-2">2-2. 내 크롬에 설치하기</a><a class="l3" href="#s2-3">2-3. 써 보고, 고치면 새로고침</a><a class="l3" href="#s2-4">2-4. 결과</a></div>
+<div class="grp"><div class="grp-label">SESSION 2</div><a class="l2" href="#s2">문장 모음 확장 프로그램 만들어 설치하기</a><a class="l3" href="#s2-1">2-1. 클로드 코드로 만들기</a><a class="l3" href="#s2-2">2-2. 내 크롬에 설치하기</a><a class="l3" href="#s2-3">2-3. 써 보고, 고치면 새로고침</a><a class="l3" href="#s2-4">2-4. 깃헙에 올려 보관하기</a><a class="l3" href="#s2-5">2-5. 결과</a><a class="l3" href="#s2-6">2-6. (선택) 크롬 웹 스토어 개발자 등록</a></div>
 <div class="grp"><div class="grp-label">SESSION 3</div><a class="l2" href="#s3">권한과 개인정보 확인하기</a><a class="l3" href="#s3-1">3-1. 자주 보는 권한</a><a class="l3" href="#s3-2">3-2. 내 크롬의 확장 프로그램 권한 읽기</a></div>
 <div class="grp"><div class="grp-label">SESSION 4</div><a class="l2" href="#s4">내 반복 업무로 확장 프로그램 만들기</a><a class="l3" href="#s4-1">4-1. 아이디어 고르기</a><a class="l3" href="#s4-2">4-2. 만들고 설치하기</a><a class="l3" href="#s4-3">4-3. 결과</a></div>
-<div class="grp"><div class="grp-label">SESSION 5</div><a class="l2" href="#s5">서로 써 보고 고치기</a><a class="l3" href="#s5-1">5-1. 짝의 확장 프로그램 확인표</a></div>
+<div class="grp"><div class="grp-label">SESSION 5</div><a class="l2" href="#s5">서로 써 보고 고치기</a><a class="l3" href="#s5-1">5-1. 짝의 확장 프로그램 받아서 설치하기</a><a class="l3" href="#s5-2">5-2. 짝의 확장 프로그램 확인표</a></div>
 <div class="grp"><div class="grp-label">마무리</div><a class="l2" href="#wrap">오늘 정리와 과제</a></div>
 </nav>
 <div class="side-link"><b>이 교안 주소</b><a href="https://loreenkim0301.github.io/swy-lecturenote/261116-ai-pm-week4/d4-chrome-extension.html">loreenkim0301.github.io/swy-lecturenote/261116-ai-pm-week4/d4-chrome-extension.html</a></div>
@@ -336,13 +336,14 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><th>시간</th><td>09:00–18:00 (점심 12:00–13:00, 수업 8시간)</td></tr>
 <tr><th>교과</th><td>[기본] AI 서비스 개발 · 15일차 (총 18일)</td></tr>
 <tr><th>교육 목표</th><td>크롬 확장 프로그램의 구조와 권한을 이해하고, 반복 업무 하나를 줄이는 확장 프로그램을 기획해 내 크롬에 설치한다.</td></tr>
-<tr><th>수업이 끝나면</th><td>① 확장 프로그램을 이루는 파일(manifest, 팝업, 배경 스크립트)을 설명하기<br/>② 만든 확장 프로그램을 '압축 해제된 확장 프로그램 로드'로 설치하기<br/>③ 권한(permissions)이 무엇을 허락하는지 읽고 줄이기<br/>④ 내 반복 업무로 확장 프로그램 기획서를 쓰고 시제품 만들기</td></tr>
+<tr><th>수업이 끝나면</th><td>① 확장 프로그램을 이루는 파일(manifest, 팝업, 배경 스크립트)을 설명하기<br/>② 만든 확장 프로그램을 [압축해제된 확장 프로그램 로드]로 설치하고, 깃헙에 올려 보관하기<br/>③ 권한(permissions)이 무엇을 허락하는지 읽고 줄이기<br/>④ 내 반복 업무로 확장 프로그램 기획서를 쓰고 시제품 만들기</td></tr>
 </table></div>
 </section>
 
 <section class="section" id="prep"><div class="section-label">PREPARE</div><h2>수업 전 준비</h2>
 <ul>
 <li><b>크롬:</b> 회사 컴퓨터는 확장 프로그램 설치가 막혀 있을 수 있어요. 막혀 있으면 개인 크롬 프로필에서 해요.</li>
+<li><b>깃헙 계정:</b> 만든 코드는 깃헙에 올려 보관해요. 깃헙에 로그인해 둬요.</li>
 <li><b>내 반복 업무 메모:</b> 어제 과제로 적어 온 것을 4세션에서 써요.</li>
 </ul>
 </section>
@@ -366,24 +367,27 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="table-wrap"><table>
 <tr><th>단어</th><th>뜻</th></tr>
 <tr><td><b>크롬 확장 프로그램</b></td><td>크롬에 기능을 더하는 작은 프로그램. 퍼즐 조각 단추 안에 모여 있어요.</td></tr>
-<tr><td><b>manifest.json</b></td><td>확장 프로그램의 신분증. 이름, 버전, 쓸 권한, 어떤 파일을 여는지 적어요.</td></tr>
+<tr><td><b>manifest.json</b></td><td>확장 프로그램의 이름, 버전, 쓸 권한, 처음 열 파일을 적어 두는 설명 파일. 크롬은 설치할 때 이 파일을 가장 먼저 읽어요.</td></tr>
+<tr><td><b>Manifest V3</b></td><td>manifest.json을 쓰는 규칙의 3번째 버전. 크롬은 2025년 7월(크롬 138)부터 V2로 만든 확장 프로그램을 모두 꺼 두었어요. 그래서 오늘은 V3로 만들어요.</td></tr>
 <tr><td><b>팝업(popup)</b></td><td>확장 프로그램 단추를 누르면 뜨는 작은 창</td></tr>
 <tr><td><b>배경 스크립트(service worker)</b></td><td>화면 뒤에서 기다리다가 우클릭 메뉴 같은 일이 생기면 일하는 코드</td></tr>
 <tr><td><b>권한(permissions)</b></td><td>확장 프로그램이 크롬에게 "이것까지 해도 돼요?"라고 허락받는 목록</td></tr>
-<tr><td><b>압축 해제된 확장 프로그램 로드</b></td><td>웹 스토어를 거치지 않고, 내 컴퓨터 폴더의 확장 프로그램을 바로 설치하는 방법</td></tr>
+<tr><td><b>압축해제된 확장 프로그램 로드</b></td><td>웹 스토어를 거치지 않고, 내 컴퓨터 폴더의 확장 프로그램을 바로 설치하는 단추. [개발자 모드]를 켜야 보여요.</td></tr>
+<tr><td><b>개발자 모드</b></td><td>chrome://extensions 오른쪽 위의 스위치. 켜면 내 폴더의 확장 프로그램을 설치하고 고칠 수 있어요. 개발자 등록과는 다른 것이에요.</td></tr>
+<tr><td><b>크롬 웹 스토어 개발자 등록</b></td><td>만든 확장 프로그램을 웹 스토어에 올려 다른 사람에게 배포할 때만 하는 등록. 오늘 내 크롬에 설치하고 테스트하는 데에는 필요 없어요.</td></tr>
 </table></div>
 </section>
 
 <section class="section session" id="s1">
-<div class="session-head"><div class="eyebrow">SESSION 1 · 09:20–10:20</div><h2>크롬 확장 프로그램은 무엇으로 이뤄지나</h2><p>확장 프로그램은 지금까지 만든 웹페이지와 같은 HTML·자바스크립트로 만들어요. 다른 점은 신분증(manifest.json)과 권한이에요.</p>
+<div class="session-head"><div class="eyebrow">SESSION 1 · 09:20–10:20</div><h2>크롬 확장 프로그램은 무엇으로 이뤄지나</h2><p>확장 프로그램은 지금까지 만든 웹페이지와 같은 HTML·자바스크립트로 만들어요. 다른 점은 설명 파일(manifest.json)과 권한이에요.</p>
 <div class="why-box"><b>왜 하나?</b>웹페이지는 한 사이트 안에서만 일하지만, 확장 프로그램은 내가 여는 여러 사이트에서 일할 수 있어요. 그래서 할 수 있는 일도 많고, 조심할 것도 많아요.</div></div>
 
 <div class="topic" id="s1-1"><h3><span class="stage">개념</span>1-1. 오늘 만들 '내 문장 모음'의 파일 4개</h3>
-<div class="table-wrap"><table><tr><th>파일</th><th>하는 일</th><th>비유</th></tr>
-<tr><td><b>manifest.json</b></td><td>이름, 버전, 권한(우클릭 메뉴·저장), 팝업 파일 이름을 적어요</td><td>신분증</td></tr>
-<tr><td><b>background.js</b></td><td>우클릭 메뉴 [내 문장 모음에 저장]을 만들고, 누르면 고른 문장을 저장해요</td><td>창고지기</td></tr>
-<tr><td><b>popup.html</b></td><td>단추를 누르면 뜨는 창의 생김새</td><td>진열대</td></tr>
-<tr><td><b>popup.js</b></td><td>저장한 문장을 카드로 보여 주고, 누르면 복사해요</td><td>점원</td></tr>
+<div class="table-wrap"><table><tr><th>파일</th><th>하는 일</th></tr>
+<tr><td><b>manifest.json</b></td><td>이름, 버전, 권한(우클릭 메뉴·저장), 팝업 파일 이름을 적어요</td></tr>
+<tr><td><b>background.js</b></td><td>우클릭 메뉴 [내 문장 모음에 저장]을 만들고, 누르면 고른 문장을 저장해요</td></tr>
+<tr><td><b>popup.html</b></td><td>단추를 누르면 뜨는 창의 생김새</td></tr>
+<tr><td><b>popup.js</b></td><td>저장한 문장을 카드로 보여 주고, 누르면 복사해요</td></tr>
 </table></div>
 <p>문장은 내 크롬 안(chrome.storage.local)에만 저장하고, 최대 30개까지만 남겨요. 바깥 서버로 보내지 않아요.</p>
 </div>
@@ -405,42 +409,87 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="why-box"><b>왜 하나?</b>내 손으로 설치해 써 보면, 확장 프로그램이 '앱 스토어에 올려야만 쓸 수 있는 것'이 아니라는 걸 알게 돼요.</div></div>
 
 <div class="topic" id="s2-1"><h3><span class="stage dev">개발자·구현</span>2-1. 클로드 코드로 만들기</h3>
-<p>이번 작업은 내 크롬에 설치해야 하므로 <b>내 컴퓨터(Local) 환경</b>에서 해요. 새 폴더 snippet-ext를 만들어 열어요.</p>
+<p>이번 작업은 내 크롬에 설치해야 하므로 <b>내 컴퓨터(Local) 환경</b>에서 해요. 새 폴더 snippet-ext를 만들어 열어요. 맥은 Finder, 윈도우는 파일 탐색기에서 폴더가 생겼는지 확인해요.</p>
 <div class="copybox"><div class="copyhead"><span>프롬프트 1 · 클로드 코드 입력창에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 이 폴더에 크롬 확장 프로그램 '내 문장 모음'을 만들어 줘.
 내용: [1-2 기획서 표를 붙여 넣으세요] Manifest V3로 만들어 줘. 권한은 contextMenus와 storage만 써. 외부 라이브러리와 바깥 서버 요청은 쓰지 마.
 형식: manifest.json, background.js, popup.html, popup.js 4개 파일. 다 만들면 각 파일이 하는 일과, 크롬에 설치하는 순서를 알려 줘.</pre></div>
 <figure class="shot"><a href="images/d4_popup_demo.png" target="_blank" rel="noopener"><img style="width:320px;max-width:100%" alt="내 문장 모음 팝업. 3 / 30 개수와 배송 안내, 쿠폰 안내, 교환반품 안내 문장 카드 3개" loading="lazy" src="images/d4_popup_demo.png"/></a><figcaption>예시 결과: 단추를 누르면 뜨는 팝업. 카드를 누르면 문장이 복사돼요 (2026-11-15 강사 예시)</figcaption></figure>
-<p>막히면 예시 코드와 견줘 봐요: <a href="samples/snippet-ext/manifest.json" target="_blank" rel="noopener">manifest.json</a> · <a href="samples/snippet-ext/background.js" target="_blank" rel="noopener">background.js</a> · <a href="samples/snippet-ext/popup.html" target="_blank" rel="noopener">popup.html</a> · <a href="samples/snippet-ext/popup.js" target="_blank" rel="noopener">popup.js</a></p>
+<p>클로드 코드가 만든 파일과 예시 코드를 견줘 볼 수 있어요: <a href="samples/snippet-ext/manifest.json" target="_blank" rel="noopener">manifest.json</a> · <a href="samples/snippet-ext/background.js" target="_blank" rel="noopener">background.js</a> · <a href="samples/snippet-ext/popup.html" target="_blank" rel="noopener">popup.html</a> · <a href="samples/snippet-ext/popup.js" target="_blank" rel="noopener">popup.js</a></p>
+<div class="ref-box"><b>완성하지 못했으면 완성본으로 이어 가요</b>
+<p>시간 안에 만들지 못했어도 괜찮아요. 아래 완성본을 내려받아 2-2부터 똑같이 따라 해요.</p>
+<div class="dl-list"><a class="dl-card" download="" href="data/d4-snippet-ext.zip"><span class="dl-ico">ZIP</span><span class="dl-body"><b>내 문장 모음 완성본 (snippet-ext)</b><span>2-1 결과 · 파일 4개(manifest.json, background.js, popup.html, popup.js) · 2-2~2-5에서 사용</span></span><span class="dl-btn">⬇ 다운로드</span></a></div>
+<ol>
+<li>맥은 내려받은 ZIP 파일을 더블클릭해요. 윈도우는 ZIP 파일을 우클릭해 압축 풀기 메뉴를 눌러요.</li>
+<li>압축을 푼 폴더를 열어 <b>manifest.json이 바로 보이는 폴더</b>까지 들어가요. 폴더가 한 겹 더 있으면 한 번 더 들어가요.</li>
+<li>그 폴더를 2-2에서 골라요.</li>
+</ol>
+<figure class="shot"><a href="images/d4_mac_unzip-hl.png" target="_blank" rel="noopener"><img style="width:802px;max-width:100%" alt="맥 Finder에서 d4-snippet-ext.zip을 더블클릭해 생긴 snippet-ext 폴더. 폴더를 펼치면 background.js, manifest.json, popup.html, popup.js가 보이고 snippet-ext 폴더와 manifest.json이 주황 점선으로 표시됨" loading="lazy" src="images/d4_mac_unzip-hl.png"/></a><figcaption>맥에서 ZIP을 더블클릭하면 snippet-ext 폴더가 생겨요. 이 폴더 안에 manifest.json이 바로 보여요 (2026-11-18 강사 화면, 맥 Finder · 주황 점선 = 확인할 곳)</figcaption></figure>
+</div>
 </div>
 
 <div class="topic" id="s2-2"><h3><span class="stage">실습</span>2-2. 내 크롬에 설치하기</h3>
+<p>내 폴더의 확장 프로그램은 <b>개발자 등록 없이</b> 내 크롬에 바로 설치해서 테스트할 수 있어요. 계정을 만들거나 돈을 낼 필요가 없어요. 맥과 윈도우의 순서가 같아요.</p>
 <ol class="do-steps">
-<li><p>크롬 주소창에 <code class="inline">chrome://extensions</code>를 넣고 Enter를 눌러요.</p></li>
-<li><p>오른쪽 위 [개발자 모드] 스위치를 켜요.</p></li>
-<li><p>왼쪽 위에 생긴 [압축 해제된 확장 프로그램을 로드합니다]를 누르고 snippet-ext 폴더를 골라요.</p></li>
-<li><p>퍼즐 조각 단추를 눌러 '내 문장 모음' 옆의 핀을 눌러 고정해요.</p></li>
+<li><p>크롬 주소창에 <code class="inline">chrome://extensions</code>를 넣고 Enter를 눌러요. 이 주소는 링크로 열리지 않아서 직접 입력해야 해요.</p></li>
+<li><p>오른쪽 위 [개발자 모드] 스위치(①)를 켜요.</p>
+<figure class="shot"><a href="images/d4_ext_devmode_off-hl.png" target="_blank" rel="noopener"><img style="width:1180px;max-width:100%" alt="크롬 확장 프로그램 페이지. 오른쪽 위 개발자 모드 스위치가 꺼져 있고 빨간 상자와 1번으로 표시됨" loading="lazy" src="images/d4_ext_devmode_off-hl.png"/></a><figcaption>[개발자 모드] 스위치를 켜기 전 화면 (2026-11-18 강사 화면, 맥 크롬 · 빨간 번호 = 누를 곳 · 주황 점선 = 확인할 곳)</figcaption></figure></li>
+<li><p>왼쪽 위에 새로 생긴 [압축해제된 확장 프로그램 로드](②)를 눌러요.</p>
+<figure class="shot"><a href="images/d4_ext_load_unpacked-hl.png" target="_blank" rel="noopener"><img style="width:1180px;max-width:100%" alt="개발자 모드를 켠 뒤 왼쪽 위에 압축해제된 확장 프로그램 로드, 확장 프로그램 압축, 업데이트 단추가 생긴 화면. 압축해제된 확장 프로그램 로드가 빨간 상자와 2번, 켜진 개발자 모드 스위치가 주황 점선으로 표시됨" loading="lazy" src="images/d4_ext_load_unpacked-hl.png"/></a><figcaption>개발자 모드를 켜면 단추 3개가 생겨요 (2026-11-18 강사 화면, 맥 크롬 · 빨간 번호 = 누를 곳 · 주황 점선 = 확인할 곳)</figcaption></figure></li>
+<li><p>폴더 고르는 창이 열리면 <b>manifest.json이 바로 들어 있는 폴더</b>(snippet-ext)를 한 번 눌러 고르고, 창 오른쪽 아래의 선택 단추를 눌러요. 폴더 안으로 들어가서 파일을 고르는 것이 아니에요.</p></li>
+<li><p>'내 문장 모음' 카드가 생겼는지 봐요. [새 확장 프로그램을 툴바에 고정]이 켜져 있으면 툴바에 '내' 단추가 바로 생겨요. 꺼져 있으면 퍼즐 조각 단추를 눌러 '내 문장 모음' 옆의 핀을 눌러 고정해요.</p>
+<figure class="shot"><a href="images/d4_ext_installed-hl.png" target="_blank" rel="noopener"><img style="width:1180px;max-width:100%" alt="설치가 끝난 확장 프로그램 페이지. 내 문장 모음 1.0 카드에 설명, ID, 뷰 검사 서비스 워커 링크, 세부정보, 삭제, 새로고침, 켜짐 스위치가 보이고, 카드와 툴바의 내 단추가 주황 점선으로 표시됨" loading="lazy" src="images/d4_ext_installed-hl.png"/></a><figcaption>설치가 끝나면 카드와 툴바 단추가 생겨요 (2026-11-18 강사 화면, 맥 크롬 · 주황 점선 = 확인할 곳)</figcaption></figure></li>
 </ol>
-<figure class="shot"><a href="images/d4_chrome_load_unpacked.jpg" target="_blank" rel="noopener"><img style="width:440px;max-width:100%" alt="Chrome for Developers 문서의 Hello World 확장 프로그램 설치 안내. 개발자 모드와 압축 해제된 확장 프로그램 로드 단추 설명" loading="lazy" src="images/d4_chrome_load_unpacked.jpg"/></a><figcaption>크롬 공식 문서의 설치 안내: 개발자 모드 → 압축 해제된 확장 프로그램 로드 (2026-11-15 확인)</figcaption></figure>
-<p class="source-note">출처: Chrome for Developers <a href="https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world" target="_blank" rel="noopener">Hello World extension</a>(chrome://extensions → Developer mode → Load unpacked) (2026-11-15 확인)</p>
+<p class="blk k-chk"><span>막히면</span></p>
+<div class="table-wrap"><table><tr><th>이렇게 보이면</th><th>이렇게 해요</th></tr>
+<tr><td><b>[개발자 모드] 스위치가 회색이고 켜지지 않아요</b></td><td>회사나 학교가 관리하는 크롬은 관리자가 개발자 모드를 막아 둘 수 있어요. 개인 크롬 프로필로 바꿔서 해요.</td></tr>
+<tr><td><b>폴더를 고른 뒤 오류 창이 떠요</b></td><td>manifest.json이 바로 들어 있는 폴더를 골랐는지 봐요. 한 겹 바깥 폴더나 안쪽 파일을 고르면 설치되지 않아요.</td></tr>
+<tr><td><b>[압축해제된 확장 프로그램 로드] 단추가 안 보여요</b></td><td>[개발자 모드] 스위치가 켜져 있는지 봐요. 단추는 개발자 모드를 켠 뒤에만 보여요.</td></tr>
+</table></div>
+<p class="source-note">출처: Chrome for Developers <a href="https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world" target="_blank" rel="noopener">Hello World extension</a>(개발자 모드 → 압축해제된 확장 프로그램 로드) · <a href="https://developer.chrome.com/docs/webstore/register" target="_blank" rel="noopener">Register your developer account</a>(개발자 등록은 웹 스토어에 게시할 때 필요) · <a href="https://learn.microsoft.com/en-us/deployedge/microsoft-edge-browser-policies/extensiondevelopermodesettings" target="_blank" rel="noopener">ExtensionDeveloperModeSettings 정책</a>(관리자가 개발자 모드를 막는 설정) (2026-11-18 확인)</p>
 </div>
 
 <div class="topic" id="s2-3"><h3><span class="stage">실습</span>2-3. 써 보고, 고치면 새로고침</h3>
 <ol class="do-steps">
-<li><p>아무 페이지에서 문장을 드래그하고 우클릭 → [내 문장 모음에 저장]을 눌러요.</p></li>
-<li><p>퍼즐 조각 옆 단추를 눌러 카드가 생겼는지 봐요. 카드를 누르고 메모장에 붙여 넣어요.</p></li>
-<li><p>클로드 코드에게 고칠 점을 시킨 뒤에는 chrome://extensions에서 '내 문장 모음'의 새로고침(↻) 단추를 눌러야 바뀐 코드가 적용돼요.</p></li>
+<li><p>아무 웹페이지에서 문장을 드래그하고 우클릭한 뒤 [내 문장 모음에 저장]을 눌러요.</p></li>
+<li><p>툴바의 '내' 단추(①)를 눌러 카드가 생겼는지 봐요. 오른쪽 위 숫자는 저장한 개수예요.</p>
+<figure class="shot"><a href="images/d4_popup_saved-hl.png" target="_blank" rel="noopener"><img style="width:347px;max-width:100%" alt="툴바의 내 단추를 눌러 연 팝업. 머리에 내 문장 모음과 1 / 30이 보이고 저장한 문장 카드 1개가 있음. 내 단추가 빨간 상자와 1번, 팝업이 주황 점선으로 표시됨" loading="lazy" src="images/d4_popup_saved-hl.png"/></a><figcaption>저장한 문장이 카드로 보여요 (2026-11-18 강사 화면, 맥 크롬 · 빨간 번호 = 누를 곳 · 주황 점선 = 확인할 곳)</figcaption></figure></li>
+<li><p>카드를 눌러요. '복사했어요'가 잠깐 뜨면, 메모장에 붙여 넣어요. 맥은 <kbd>⌘</kbd>+<kbd>V</kbd>, 윈도우는 <kbd>Ctrl</kbd>+<kbd>V</kbd>예요.</p></li>
+<li><p>클로드 코드에게 고칠 점을 시킨 뒤에는 chrome://extensions에서 '내 문장 모음'의 새로고침(↻) 단추(①)를 눌러야 바뀐 코드가 적용돼요.</p>
+<figure class="shot"><a href="images/d4_ext_reload-hl.png" target="_blank" rel="noopener"><img style="width:470px;max-width:100%" alt="내 문장 모음 카드. 오른쪽 아래 새로고침 단추가 빨간 상자와 1번으로 표시됨" loading="lazy" src="images/d4_ext_reload-hl.png"/></a><figcaption>코드를 고친 뒤에는 새로고침(↻)을 눌러요 (2026-11-18 강사 화면, 맥 크롬 · 빨간 번호 = 누를 곳 · 주황 점선 = 확인할 곳)</figcaption></figure></li>
 </ol>
 <p class="blk k-chk"><span>막히면</span></p>
 <div class="table-wrap"><table><tr><th>이렇게 보이면</th><th>이렇게 해요</th></tr>
 <tr><td><b>[오류] 단추가 빨갛게 보여요</b></td><td>[오류]를 눌러 나온 글을 복사해 클로드 코드에게 "이 오류를 고쳐 줘"라고 붙여 넣어요.</td></tr>
-<tr><td><b>우클릭 메뉴가 안 보여요</b></td><td>문장을 드래그한 상태에서 우클릭했는지 봐요. 그래도 없으면 새로고침(↻) 뒤에 다시 해요.</td></tr>
+<tr><td><b>우클릭 메뉴가 안 보여요</b></td><td>문장을 드래그한 상태에서 우클릭했는지 봐요. 그래도 없으면 새로고침(↻) 뒤에 웹페이지도 새로고침하고 다시 해요.</td></tr>
 <tr><td><b>크롬 설정 페이지(chrome://)에서는 안 돼요</b></td><td>크롬 내부 페이지에서는 확장 프로그램이 동작하지 않아요. 일반 웹페이지에서 해요.</td></tr>
 </table></div>
 </div>
 
-<div class="topic" id="s2-4"><h3><span class="stage">결과</span>2-4. 결과</h3>
-<div class="result-box"><b>결과물</b> 내 크롬에 설치된 '내 문장 모음'</div>
-<p class="ok-line"><b>이렇게 보이면 성공</b>드래그 → 우클릭 저장 → 단추 → 카드 클릭 → 붙여 넣기가 된다</p>
+<div class="topic" id="s2-4"><h3><span class="stage dev">개발자·구현</span>2-4. 깃헙에 올려 보관하기</h3>
+<p>내 컴퓨터에서 만든 코드는 컴퓨터를 바꾸거나 폴더를 지우면 사라져요. 그래서 다 만든 코드는 <b>꼭 깃헙에 올려 보관</b>해요. 3주차 금요일에 마음책방 코드를 깃헙 저장소로 올렸던 것 기억하시나요? 같은 방법이에요.</p>
+<div class="copybox"><div class="copyhead"><span>프롬프트 2 · 클로드 코드 입력창에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 이 폴더의 크롬 확장 프로그램을 내 깃헙에 새 공개(Public) 저장소로 만들어서 올려 줘.
+내용: 저장소 이름은 snippet-ext-[오늘 날짜]로 해 줘. manifest.json이 저장소 맨 위에 바로 보이게 올려 줘. 키·토큰·개인정보는 올리지 마. 깃이나 깃헙 로그인이 안 되어 있으면 먼저 알려 줘.
+형식: ① 저장소 주소 ② 올린 파일 목록 ③ 커밋 메시지를 한 줄씩.</pre></div>
+<ul>
+<li>공개 저장소로 올리는 이유: 5세션에서 짝이 내 저장소를 내려받아 설치해 봐요. 확장 프로그램 코드에는 키나 개인정보가 없어야 하므로 공개해도 돼요.</li>
+<li>답에 나온 저장소 주소를 열어, 파일 목록 맨 위에 manifest.json이 보이는지 확인해요.</li>
+<li>2-3에서 코드를 고쳤다면 "고친 내용을 깃헙에도 올려 줘"라고 한 번 더 시켜요.</li>
+</ul>
+</div>
+
+<div class="topic" id="s2-5"><h3><span class="stage">결과</span>2-5. 결과</h3>
+<div class="result-box"><b>결과물</b> 내 크롬에 설치된 '내 문장 모음' + 깃헙 저장소 주소(snippet-ext-[날짜])</div>
+<p class="ok-line"><b>이렇게 보이면 성공</b>드래그 → 우클릭 저장 → 단추 → 카드 클릭 → 붙여 넣기가 되고, 깃헙 저장소 맨 위에 manifest.json이 보인다</p>
+</div>
+
+<div class="topic" id="s2-6"><h3><span class="stage">선택</span>2-6. (선택) 다른 사람에게 배포하려면: 크롬 웹 스토어 개발자 등록</h3>
+<p>오늘 수업에는 필요 없어요. 만든 확장 프로그램을 웹 스토어에 올려 다른 사람이 설치하게 하고 싶을 때만 읽어요.</p>
+<ul>
+<li>웹 스토어에 게시하려면 먼저 개발자로 등록하고 <b>한 번만 내는 등록비</b>를 내야 해요.</li>
+<li>등록 뒤에도 웹 스토어 소개 글, 개인정보 처리 안내, 심사를 따로 준비해야 해요.</li>
+<li>내 크롬에서 쓰거나 짝과 서로 써 보는 것은 지금처럼 개발자 모드로 하면 돼요.</li>
+</ul>
+<p class="source-note">출처: Chrome for Developers <a href="https://developer.chrome.com/docs/webstore/register" target="_blank" rel="noopener">Register your developer account</a> (2026-11-18 확인)</p>
 </div>
 </section>
 
@@ -460,14 +509,13 @@ aside nav a.active{border-left-color:var(--blue)}
 
 <div class="topic" id="s3-2"><h3><span class="stage">실습</span>3-2. 내 크롬의 확장 프로그램 권한 읽기</h3>
 <ol class="do-steps">
-<li><p>chrome://extensions에서 설치해 둔 확장 프로그램 하나의 [세부정보]를 눌러요.</p></li>
+<li><p>chrome://extensions에서 '내 문장 모음' 카드의 [세부정보]를 눌러요. 그다음 원래 설치해 둔 확장 프로그램 하나도 똑같이 열어요.</p></li>
 <li><p>'사이트 액세스'와 '권한'을 읽고 표를 채워요.</p></li>
 </ol>
 <div class="table-wrap tpl"><table><tr><th>확장 프로그램</th><th>권한·사이트 액세스</th><th>이 일에 꼭 필요한가</th></tr>
 <tr><td>내 문장 모음</td><td>storage, contextMenus</td><td></td></tr>
 <tr><td></td><td></td><td></td></tr>
 </table></div>
-<div class="notice">오늘 만든 확장 프로그램은 수업 연습용이에요. 크롬 웹 스토어에 올리려면 개발자 등록과 개인정보 처리 안내 같은 심사 준비가 따로 필요해요.</div>
 </div>
 </section>
 
@@ -482,6 +530,8 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td>업무 시간에 딴짓 사이트 줄이기</td><td>정해 둔 사이트를 열면 안내 문구 보여 주기</td><td>정해 둔 사이트만 host_permissions</td></tr>
 <tr><td>자주 쓰는 문장에 날짜 붙이기</td><td>문장 모음 카드를 누르면 오늘 날짜를 붙여 복사</td><td>storage, contextMenus</td></tr>
 </table></div>
+<p>첫째 줄 '회의록에 참고 링크 모으기'의 완성본을 예시로 받아 볼 수 있어요. 내 아이디어를 정하기 어려우면 이 완성본을 설치해 써 보고, 내 일에 맞게 고쳐 써요.</p>
+<div class="dl-list"><a class="dl-card" download="" href="data/d4-link-copy-ext.zip"><span class="dl-ico">ZIP</span><span class="dl-body"><b>참고 링크 복사 완성본 (link-copy-ext)</b><span>4-1 아이디어표 첫째 줄 · 권한 activeTab 하나 · 파일 3개(manifest.json, popup.html, popup.js)</span></span><span class="dl-btn">⬇ 다운로드</span></a></div>
 <div class="table-wrap tpl"><table><tr><th>항목</th><th>내 확장 프로그램</th></tr>
 <tr><td>누가</td><td></td></tr>
 <tr><td>반복되는 일</td><td></td></tr>
@@ -493,14 +543,15 @@ aside nav a.active{border-left-color:var(--blue)}
 </div>
 
 <div class="topic" id="s4-2"><h3><span class="stage dev">개발자·구현</span>4-2. 만들고 설치하기</h3>
-<div class="copybox"><div class="copyhead"><span>프롬프트 2 · 클로드 코드 입력창에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 새 폴더에 아래 기획서대로 크롬 확장 프로그램을 만들어 줘.
+<div class="copybox"><div class="copyhead"><span>프롬프트 3 · 클로드 코드 입력창에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 새 폴더에 아래 기획서대로 크롬 확장 프로그램을 만들어 줘.
 내용: [4-1 기획서 표를 붙여 넣으세요] Manifest V3로 만들고, 기획서에 적은 권한 말고는 추가하지 마. 권한이 더 필요하면 만들기 전에 이유와 함께 먼저 물어봐 줘.
 형식: 파일 목록과 각 파일이 하는 일, manifest.json의 권한 줄, 설치 순서.</pre></div>
 <p>설치는 2-2와 같아요. 고칠 때마다 새로고침(↻)을 눌러요.</p>
+<p>다 만들면 2-4와 같은 프롬프트로 깃헙에 올려요. 저장소 이름만 내 확장 프로그램 이름으로 바꿔요.</p>
 </div>
 
 <div class="topic" id="s4-3"><h3><span class="stage">결과</span>4-3. 결과</h3>
-<div class="result-box"><b>결과물</b> 내 반복 업무 확장 프로그램 기획서 + 내 크롬에 설치된 시제품</div>
+<div class="result-box"><b>결과물</b> 내 반복 업무 확장 프로그램 기획서 + 내 크롬에 설치된 시제품 + 깃헙 저장소 주소</div>
 <p class="ok-line"><b>이렇게 보이면 성공</b>manifest.json의 권한이 기획서의 '필요한 권한' 칸과 같다</p>
 </div>
 </section>
@@ -509,7 +560,30 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="session-head"><div class="eyebrow">SESSION 5 · 16:50–17:30</div><h2>서로 써 보고 고치기</h2><p>짝과 확장 프로그램 폴더를 바꿔 설치해 보고, 기획서대로 되는지 확인해요.</p>
 <div class="why-box"><b>왜 하나?</b>만든 사람은 쓰는 법을 이미 알아서 막히는 곳을 못 봐요. 처음 쓰는 사람이 막히는 곳이 고칠 곳이에요.</div></div>
 
-<div class="topic" id="s5-1"><h3><span class="stage">실습</span>5-1. 짝의 확장 프로그램 확인표</h3>
+<div class="topic" id="s5-1"><h3><span class="stage">실습</span>5-1. 짝의 확장 프로그램 받아서 설치하기</h3>
+<p>내 깃헙 저장소 주소를 짝에게 알려 주고, 짝의 저장소 주소를 받아요. 받는 방법은 두 가지예요. 편한 쪽 하나만 해요.</p>
+<h4>방법 A. 클로드 코드에게 클론 맡기기</h4>
+<p>3주차 금요일에 깃헙 저장소를 내 컴퓨터로 내려받았던 '클론'과 같아요.</p>
+<div class="copybox"><div class="copyhead"><span>프롬프트 4 · 새 세션에서 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: [짝의 저장소 주소]를 내 컴퓨터로 클론해 줘.
+내용: 이 폴더 안에 저장소 이름으로 새 폴더를 만들어 받아 줘. manifest.json이 어느 폴더에 있는지도 찾아 줘.
+형식: ① 받은 폴더 위치 ② manifest.json이 들어 있는 폴더 위치를 한 줄씩.</pre></div>
+<h4>방법 B. 깃헙에서 ZIP으로 내려받기</h4>
+<ol>
+<li>짝의 저장소 화면에서 초록색 [Code] 단추를 누르고 [Download ZIP]을 눌러요.</li>
+<li>내려받은 ZIP의 압축을 풀어요. 깃헙 ZIP은 압축을 풀면 '저장소이름-main' 폴더가 생겨요.</li>
+<li>그 폴더를 열어 manifest.json이 바로 보이는 폴더까지 들어가요.</li>
+</ol>
+<p>설치는 2-2와 같아요. [압축해제된 확장 프로그램 로드]를 누르고 manifest.json이 바로 들어 있는 폴더를 골라요.</p>
+</div>
+
+<div class="topic" id="s5-2"><h3><span class="stage">실습</span>5-2. 짝의 확장 프로그램 확인표</h3>
+<p>'바깥 서버로 보내는 요청이 없다'는 개발자 도구의 [Network](네트워크) 탭으로 확인해요.</p>
+<ol class="do-steps">
+<li><p>chrome://extensions에서 짝의 확장 프로그램 카드에 있는 [서비스 워커] 링크(①)를 눌러요. 개발자 도구 창이 따로 열려요.</p>
+<figure class="shot"><a href="images/d4_ext_service_worker-hl.png" target="_blank" rel="noopener"><img style="width:470px;max-width:100%" alt="내 문장 모음 카드의 뷰 검사 서비스 워커 링크가 빨간 상자와 1번으로 표시됨" loading="lazy" src="images/d4_ext_service_worker-hl.png"/></a><figcaption>카드의 [서비스 워커] 링크를 눌러 개발자 도구를 열어요 (2026-11-18 강사 화면, 맥 크롬 · 빨간 번호 = 누를 곳 · 주황 점선 = 확인할 곳)</figcaption></figure></li>
+<li><p>개발자 도구 위쪽의 [Network] 탭을 눌러요. 그다음 짝의 확장 프로그램을 몇 번 써 봐요.</p></li>
+<li><p>목록에 새 줄이 생기지 않으면 바깥으로 보내는 요청이 없는 거예요. 새 줄이 생기면 주소를 적어 두고 짝에게 왜 필요한지 물어봐요.</p></li>
+</ol>
 <div class="table-wrap tpl"><table><tr><th>확인할 것</th><th>예 / 아니요</th><th>메모</th></tr>
 <tr><td>설명 없이 쓰는 법을 알 수 있었다</td><td></td><td></td></tr>
 <tr><td>기획서의 '할 일'이 다 된다</td><td></td><td></td></tr>
@@ -517,7 +591,6 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td>바깥 서버로 보내는 요청이 없다(네트워크 탭)</td><td></td><td></td></tr>
 <tr><td>가장 먼저 고칠 한 가지</td><td colspan="2"></td></tr>
 </table></div>
-<p>폴더는 깃헙 저장소 링크로 주고받아요. 3주차 금요일에 깃헙에 올렸던 것과 같은 방법이에요.</p>
 </div>
 </section>
 
@@ -528,9 +601,11 @@ aside nav a.active{border-left-color:var(--blue)}
 <li>확장 프로그램도 기획서부터. '하지 않을 일'과 '필요한 권한'을 먼저 적는다</li>
 <li>권한은 가장 적게. 모든 사이트 권한은 정말 필요한지 다시 따진다</li>
 <li>고친 뒤에는 chrome://extensions에서 새로고침(↻)한다</li>
+<li>다 만든 코드는 깃헙에 올려 보관한다. 고쳤으면 다시 올린다</li>
+<li>내 크롬에서 테스트하는 데에는 개발자 등록이 필요 없다. 등록은 웹 스토어에 배포할 때만 한다</li>
 <li>저장한 데이터가 어디에 남는지(내 크롬 안 / 바깥 서버) 말할 수 있어야 한다</li>
 </ul>
-<div class="notice"><b>오늘의 결과물</b><br/>내 문장 모음 + 내 반복 업무 확장 프로그램(기획서·시제품)</div>
+<div class="notice"><b>오늘의 결과물</b><br/>내 문장 모음 + 내 반복 업무 확장 프로그램(기획서·시제품) + 각각의 깃헙 저장소 주소</div>
 <div class="notice"><b>과제</b><br/>내 확장 프로그램을 하루 동안 실제 업무에 써 보고, 줄어든 시간이나 불편했던 점을 한 줄 적어 와요.</div>
 <p>내일은 지금까지 직접 시켰던 일을 AI가 여러 단계로 나눠 스스로 해 나가는 '에이전트' 기능을 알아봐요.</p>
 </section>

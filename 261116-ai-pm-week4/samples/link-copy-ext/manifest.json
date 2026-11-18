@@ -1,0 +1,8 @@
+{
+  "manifest_version": 3,
+  "name": "참고 링크 복사",
+  "version": "1.0",
+  "description": "단추를 누르면 지금 탭의 제목과 주소를 마크다운 한 줄로 복사해요.",
+  "permissions": ["activeTab"],
+  "action": { "default_popup": "popup.html" }
+}
