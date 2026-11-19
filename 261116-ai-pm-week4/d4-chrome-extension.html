@@ -932,6 +932,14 @@ aside nav a.active{border-left-color:var(--blue)}
 <li>값에 대문자·띄어쓰기·한글이 없다</li>
 <li>캠페인 이름이 채널마다 같고, 광고만 medium이 cpc다</li>
 </ul>
+<h4>같은 채널 안에서 더 나누고 싶을 때</h4>
+<p>같은 커뮤니티라도 게시판 글과 채팅방 공지는 반응이 달라요. 이럴 때는 utm_source는 그대로 두고 utm_medium이나 utm_content로 나눠요. 아래는 셀렉트웨이 이전 수업에서 대학 커뮤니티 홍보용으로 만든 예시예요.</p>
+<div class="table-wrap"><table><tr><th>올린 곳</th><th>utm_source</th><th>utm_medium</th><th>utm_campaign</th><th>utm_content</th></tr>
+<tr><td>A학교 커뮤니티 게시판</td><td>everytime</td><td>post</td><td>schoola_promotion</td><td>board_post</td></tr>
+<tr><td>A학교 커뮤니티 채팅방</td><td>everytime</td><td>chat</td><td>schoola_promotion</td><td>chat_room</td></tr>
+<tr><td>B학교 커뮤니티 게시판</td><td>everytime</td><td>post</td><td>schoolb_promotion</td><td>board_post</td></tr>
+</table></div>
+<p>이렇게 나누면 6-6 트래픽 획득 보고서에서 [세션 소스/매체]는 everytime / post와 everytime / chat으로, [세션 캠페인]은 학교별로 따로 보여요. 인플루언서나 협력사가 대신 홍보할 때도 utm_content에 그 사람 이름을 영문 소문자로 넣으면 누가 몇 명을 데려왔는지 볼 수 있어요.</p>
 </div>
 
 <div class="topic" id="s6-6"><h3><span class="stage">실습</span>6-6. GA에서 UTM 찾아 들어가기</h3>
@@ -982,8 +990,30 @@ aside nav a.active{border-left-color:var(--blue)}
 <p>채널마다 세션 수와 주요 이벤트(예: 설치 단추 클릭) 수를 비교하고, 다음 홍보에서 늘릴 채널과 줄일 채널을 한 줄씩 적어요.</p>
 <p class="ok-line"><b>이렇게 보이면 성공</b>6-5 링크표 옆에 채널별 세션 수와 판단 한 줄이 적혀 있다</p></li>
 </ol>
+<h4>C. 들어온 사람이 목표 행동까지 했는지 보기</h4>
+<p>UTM은 <b>어디서 왔는지</b>만 알려 줘요. 단추를 눌렀는지, 신청을 끝냈는지는 이벤트로 기록하고, 그중 가장 중요한 행동을 <b>주요 이벤트</b>로 표시해야 채널별 성과로 보여요. 예전 GA에서 '전환'이라고 부르던 것이 지금은 주요 이벤트예요.</p>
+<div class="table-wrap"><table><tr><th>단계</th><th>GA가 답하는 질문</th><th>무엇으로 기록하나요</th><th>'내 문장 모음' 예</th></tr>
+<tr><td>유입</td><td>어디서 왔나?</td><td>UTM</td><td>instagram / social</td></tr>
+<tr><td>행동</td><td>와서 무엇을 했나?</td><td>이벤트(page_view, click 등)</td><td>소개 페이지를 끝까지 보고 스토어로 가는 단추를 누름</td></tr>
+<tr><td>성과</td><td>목표를 이뤘나?</td><td>주요 이벤트</td><td>스토어로 가는 단추 클릭을 주요 이벤트로 표시</td></tr>
+</table></div>
+<ol class="do-steps" start="9">
+<li><p><b>중요한 이벤트를 주요 이벤트로 표시해요</b></p>
+<p class="where-line"><b>어디서</b>GA 왼쪽 아래 톱니바퀴 [관리] → [데이터 표시] → [이벤트]</p>
+<ol class="sub-steps"><li>[최근 활동] 목록에서 목표 행동에 해당하는 이벤트를 찾아요. GA가 한 번이라도 받은 이벤트만 목록에 나와요.</li><li>그 줄의 [주요 이벤트로 표시] 스위치를 켜요. 속성의 편집자 이상 권한이 있어야 켤 수 있어요.</li></ol>
+<p class="ok-line"><b>이렇게 보이면 성공</b>스위치가 파란색으로 켜져 있다</p></li>
+<li><p><b>채널별로 주요 이벤트 수를 비교해요</b></p>
+<p class="where-line"><b>어디서</b>7단계의 트래픽 획득 보고서(첫 열 = 세션 소스/매체)</p>
+<p>표 오른쪽 [주요 이벤트] 열에서 채널마다 숫자를 봐요. 표시한 뒤부터 쌓이므로 하루 정도 지나서 봐요.</p>
+<p class="ok-line"><b>이렇게 보이면 성공</b>instagram / social 줄의 주요 이벤트 열에 숫자가 보인다</p></li>
+</ol>
+<div class="table-wrap"><table><tr><th>이렇게 나오면</th><th>먼저 의심해 볼 곳</th></tr>
+<tr><td>세션은 많은데 주요 이벤트가 적어요</td><td>도착 페이지. 홍보 문구와 페이지 내용이 다르거나 단추가 잘 안 보일 수 있어요</td></tr>
+<tr><td>세션은 적은데 주요 이벤트 비율이 높아요</td><td>잘 맞는 사람만 들어오고 있어요. 이 채널은 노출을 늘려 볼 만해요</td></tr>
+<tr><td>둘 다 적어요</td><td>채널이나 홍보 문구가 대상과 맞지 않을 수 있어요. 문구를 바꿔 utm_content를 새로 붙여 비교해요</td></tr>
+</table></div>
 <div class="table-wrap"><table><tr><th>흔한 실수</th><th>왜 안 보이나요</th></tr>
-<tr><td>노션 페이지 주소에 UTM을 붙였어요</td><td>노션 페이지에는 내 GA가 없어서 기록되지 않아요</td></tr>
+<tr><td>노션 페이지 주소에 UTM을 붙였어요</td><td>노션 페이지에는 GA 코드를 넣을 수 없어서 기록되지 않아요. 노션으로 홍보 페이지를 만들었다면 우피(Oopy) 같은 도구로 웹사이트로 배포하고 거기에 GA를 설치해요</td></tr>
 <tr><td>인스타그램 채널 주소에 UTM을 붙였어요</td><td>남의 플랫폼 주소라 내 GA가 읽지 못해요. 프로필 링크 칸에 <b>내 페이지 주소+UTM</b>을 넣어요</td></tr>
 <tr><td>GA를 설치하지 않은 페이지에 UTM을 붙였어요</td><td>꼬리표를 읽을 GA 코드가 없으면 아무것도 남지 않아요</td></tr>
 </table></div>
@@ -993,7 +1023,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td><b>UTM 값이 안 보여요</b></td><td>UTM이 반영되기까지 시간이 걸릴 수 있어요. 실시간 보고서에서 먼저 들어오는지 봐요</td></tr>
 </table></div>
 <div class="result-box"><b>결과물</b> 채널별 UTM 링크표 + GA에서 채널을 비교하는 방법</div>
-<p class="source-note">GA4 화면은 AI PM 3주차 월요일 GA 수업과 같은 메뉴예요. 실시간 보고서에서 UTM을 찾는 순서와 흔한 실수는 셀렉트웨이 이전 교안 「GA4 / Microsoft Clarity / UTM」(2026-07)을 따랐어요. 출처: Google 애널리틱스 고객센터 <a href="https://support.google.com/analytics/answer/10917952" target="_blank" rel="noopener">URL builders</a>(트래픽 획득 보고서에서 세션 소스/매체·세션 캠페인 확인) (2026-11-18 확인)</p>
+<p class="source-note">GA4 화면은 AI PM 3주차 월요일 GA 수업과 같은 메뉴예요. 실시간 보고서에서 UTM을 찾는 순서, 채널 안에서 나누는 예시, 주요 이벤트 표시, 흔한 실수는 셀렉트웨이 이전 교안을 이어 왔어요(2025-04 KAIT 서비스기획 5일차 「UTM의 개념과 이해」, 2025-06 대구 AI창업 9·10일차, 2026-02 멋사 PM과정 「사용자를 추적하는 추적 코드 UTM」, 2026-07 AI 커리어 리부트 트랙2 21~24차시 「GA4 / Microsoft Clarity / UTM」). 주요 이벤트 표시 경로: Google 애널리틱스 고객센터 <a href="https://support.google.com/analytics/answer/13128484" target="_blank" rel="noopener">[GA4] Mark events as key events</a>(2026-11-19 확인). 출처: Google 애널리틱스 고객센터 <a href="https://support.google.com/analytics/answer/10917952" target="_blank" rel="noopener">URL builders</a>(트래픽 획득 보고서에서 세션 소스/매체·세션 캠페인 확인) (2026-11-18 확인)</p>
 </div>
 </section>
 
