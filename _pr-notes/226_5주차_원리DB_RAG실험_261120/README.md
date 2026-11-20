@@ -1,0 +1,60 @@
+# PR #226 · 5주차 DAY1·DAY2 교안 초안 (2026-11-20 KST)
+
+## 산출물 링크
+| 페이지 | 브랜치 파일 | 병합 후 공개 주소 |
+|---|---|---|
+| 5주차 홈 | [index.html](https://github.com/loreenkim0301/swy-lecturenote/blob/week5-d1-d2-rag-experiment-261120/261123-ai-pm-week5/index.html) | https://loreenkim0301.github.io/swy-lecturenote/261123-ai-pm-week5/ |
+| DAY 1 (11/23 월) 원리와 DB | [d1-principles-db.html](https://github.com/loreenkim0301/swy-lecturenote/blob/week5-d1-d2-rag-experiment-261120/261123-ai-pm-week5/d1-principles-db.html) | https://loreenkim0301.github.io/swy-lecturenote/261123-ai-pm-week5/d1-principles-db.html |
+| DAY 2 (11/24 화) RAG 비교 실험 | [d2-rag-experiment.html](https://github.com/loreenkim0301/swy-lecturenote/blob/week5-d1-d2-rag-experiment-261120/261123-ai-pm-week5/d2-rag-experiment.html) | https://loreenkim0301.github.io/swy-lecturenote/261123-ai-pm-week5/d2-rag-experiment.html |
+| 평가 질문 15개 | [data/questions.csv](https://github.com/loreenkim0301/swy-lecturenote/blob/week5-d1-d2-rag-experiment-261120/261123-ai-pm-week5/data/questions.csv) | |
+| 평가표(수식 254개, 오류 0) | [data/rag-eval-sheet.xlsx](https://github.com/loreenkim0301/swy-lecturenote/blob/week5-d1-d2-rag-experiment-261120/261123-ai-pm-week5/data/rag-eval-sheet.xlsx) | |
+
+## ① 한 줄 요약
+2026-11-20 대화에서 정한 5주차 월·화 구성(툴 콜링·MCP·멀티 에이전트·랭체인/크루AI → DB 세 조합 → 대조군·실험군 RAG 실험)을 교안 초안으로 만들었어요. 4주차 월요일에 만든 낱말 검색 챗봇(FAQ 30·시험지)을 화요일 실험의 대조군으로 그대로 이어 써요.
+
+## ② 바뀐 것
+| 파일 | 요일 | 절 | 내용 |
+|---|---|---|---|
+| 261123-ai-pm-week5/index.html | 홈 | 전체 | 새로 만듦. 월·화 교안 + 수·목 미니 프로젝트(1)·금 기획·MVP(일정표 E열 요지) |
+| d1-principles-db.html | 월 | 1~5세션 | 새로 만듦. 툴 콜링(공식 문서 흐름)·MCP·커넥터 층 / 멀티 에이전트(채팅 3개 역할, 리서치 관찰, 4배·15배 토큰) / 랭체인·크루AI 사례·사고 사례·판단표 / DB 종류·세 조합·RAG 창고 원칙 / 실험 1·2 가설·판정 기준 |
+| d2-rag-experiment.html | 화 | 1~6세션 | 새로 만듦. 키·측정 규칙 → 대조군 측정(평가 프로그램) → 실험 1(파이어스토어+제미나이 임베딩 2048차원) → 실험 2(같은 FAQ로 클로드 vs 제미나이) → 조합 2·3 시연 → EDA·가중치 결론·깃헙 보관 |
+| data/questions.csv · rag-eval-sheet.xlsx | 화 | 2~6세션 | 새로 만듦. 평가표 시트: 1_가설 / 질문 / 2_결과 붙여넣기(A4부터, O·X 채점) / 3_요약(조건별 점수·평균 시간·1만 건당 원) / 4_가중치와 결론 |
+| 261116-ai-pm-week4/index.html | 4주차 홈 | 날짜별 표 | 11/23·11/24 행을 5주차 교안 링크로 교체, 상단 이동 메뉴에 5주차 홈 추가, '깃헙 액션 자동 배포는 5주차 초에 이어서' 문구 삭제 |
+| index.html | 저장소 첫 페이지 | 목록 | 07-5 5주차 행 추가 |
+
+## ③ 코드로 보면
+- 전: `<td>5주차 · 배포 자동화와 에이전트 심화: 깃헙 액션으로 파이어베이스 자동 배포(CI/CD), ...</td>`
+- 후: `<td><a href="../261123-ai-pm-week5/d1-principles-db.html">5주차 DAY 1 · AI 기능 뒤의 원리와 DB 고르기</a>...</td>`
+
+## ④ 화면으로 보면
+| 장면 | 캡처 |
+|---|---|
+| 5주차 홈 | ![](01_홈_후.png) |
+| 월 상단 | ![](02_월_상단_후.png) |
+| 월 4-4 세 조합 | ![](03_월_4-4_세조합_후.png) |
+| 월 5-2 가설 | ![](04_월_5-2_가설_후.png) |
+| 화 상단 | ![](05_화_상단_후.png) |
+| 화 3-2 뜻 검색 | ![](06_화_3-2_뜻검색_후.png) |
+| 화 2-2 모바일(390px) | ![](07_화_2-2_모바일_후.png) |
+| 4주차 홈 날짜표 전 · 후 | ![](08_4주차홈_날짜표_전.png) ![](08_4주차홈_날짜표_후.png) |
+
+## ⑤ 확인한 것
+- 내부 앵커·파일 링크 깨짐 없음, 태그 짝 맞음, 중복 id 없음(3개 페이지)
+- 1280px·390px 가로 스크롤 없음
+- 공통 도구 적용: `apply_fab_menu.py`(템플릿에 이미 포함), `keep_phrase_linebreak.py`(월 72·화 40·홈 3곳)
+- 평가표: LibreOffice 재계산 수식 254개 오류 0, 시험 데이터로 1만 건당 비용 계산 검산(800·100토큰, 3·15달러, 1,400원 → 54,600원 일치)
+- 출처는 모두 2026-11-20 웹 확인(교안 source-note에 링크·확인일)
+
+## ⑥ 확인 못 한 것
+- 실제 API 실행 캡처 없음(강사 키 필요): 평가 프로그램, 파이어스토어 벡터 인덱스 생성, 제미나이 임베딩 2048차원 저장, 제미나이 답변
+- 학생 파이어베이스 프로젝트(Spark/Blaze)에서 벡터 인덱스를 클로드 코드(Firebase CLI)로 만들 수 있는지
+- 클로드 리서치 기능의 화면 이름·요금제별 사용 가능 여부(2-3)
+- MongoDB Atlas 자동 임베딩·Supabase gte-small의 한국어 검색 품질(5세션 시연 전 강사 시험 필요)
+- 단계별 완성본 ZIP(규칙서 18장)은 실제 실행 후 만들어야 해서 아직 없음
+- 슬라이드 보기 모드 렌더링
+
+## ⑦ 리뷰 포인트(로린 님이 정할 것)
+1. **CI/CD(깃헙 액션 자동 배포)**: 4주차 홈에 '5주차 초에 이어서'라고 적혀 있던 내용을 이번 구성에서 뺐어요. 다시 넣을지(예: 미니 프로젝트 안) 정해 주세요.
+2. **판정 기준 숫자**(2개 이상, 10% 미만, 2개 이하)는 초안이에요.
+3. **실험 2에 쓸 같은 가격대 모델 이름**과 당일 단가.
+4. 4-2의 Stack Overflow 수치: 대화 중에는 '현업 개발자 55.6%'라고 했지만, 확인해 보니 55.6%는 전체 응답자, 현업은 58.2%라서 교안에는 고쳐 넣었어요.
