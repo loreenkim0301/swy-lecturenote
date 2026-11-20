@@ -663,6 +663,20 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td>서버를 "내 컴퓨터에서만" 열지, "같은 와이파이의 다른 기기에서도" 열지 정할 때</td><td>127.0.0.1 / 0.0.0.0</td><td>127.0.0.1로 열면 내 컴퓨터에서만, 0.0.0.0으로 열면 같은 네트워크의 휴대폰 같은 다른 기기에서도 들어올 수 있어요</td></tr>
 </table></div>
 <p>기획자에게 중요한 것은 세 번째 줄이에요. 테스트 서버를 다른 사람도 들어올 수 있게 열면, API 키로 쓰는 비용도 그 사람들의 사용만큼 늘어요.</p>
+<p><b>STEP 1. 지금 내 컴퓨터에 열려 있는 localhost 확인하기</b></p>
+<p>실습을 하다 보면 서버를 켜 둔 채 잊어버리기 쉬워요. 앞에서 켠 서버가 남아 있으면 새로 고친 화면 대신 예전 화면이 보여서 헷갈려요. 클로드 코드에게 지금 열려 있는 localhost를 찾아 달라고 해요.</p>
+<div class="copybox"><div class="copyhead"><span>프롬프트 10 · 열려 있는 localhost 확인하기</span><button type="button">복사</button></div><pre>요청: 지금 내 컴퓨터에서 열려 있는 localhost(로컬 서버)가 무엇인지 확인해 줘.
+내용: 터미널 명령어로 확인만 하고, 아무것도 끄지 마. 맥·윈도우 기능이나 클로드 앱처럼 내가 켜지 않은 것은 따로 표시해 줘.
+형식: 표(주소 / 포트 번호 / 프로그램 이름 / 이번 실습에서 켠 것인지) + 실행한 명령어 한 줄.</pre></div>
+<p>클로드 코드가 명령어를 실행해도 되는지 물으면 실행 단추를 눌러요. 이 명령어는 목록을 보기만 해서 아무것도 꺼지지 않아요.</p>
+<p>목록에 claude, ControlCenter, svchost처럼 내가 켜지 않은 이름도 보여요. 클로드 앱과 맥·윈도우가 쓰는 것이라서 끄지 않아요.</p>
+<p><b>STEP 2. 실습에서 켠 localhost 모두 닫기</b></p>
+<p>이번에는 실습에서 켠 서버만 골라 모두 꺼 달라고 해요. 끄기 전에 목록을 먼저 보여 달라고 하면, 엉뚱한 프로그램이 꺼지는 일을 막을 수 있어요.</p>
+<div class="copybox"><div class="copyhead"><span>프롬프트 11 · 실습에서 켠 localhost 모두 닫기</span><button type="button">복사</button></div><pre>요청: 이번 실습에서 켠 localhost(로컬 서버)를 모두 꺼 줘.
+내용: 끄기 전에 끌 목록을 먼저 보여 줘. node, python처럼 실습에서 켠 개발 서버만 끄고, 클로드 앱이나 맥·윈도우 기능은 끄지 마. 끈 뒤에 다시 확인해서 남은 서버가 있는지 알려 줘.
+형식: 끈 것(포트 번호 / 프로그램 이름) / 남은 것 두 줄 + 실행한 명령어.</pre></div>
+<p>클로드 코드가 끌 목록을 보여 주고 명령어를 실행해도 되는지 물어요. 목록이 실습에서 켠 서버(node, python)인지 확인한 뒤 실행 단추를 눌러요. 다 끄고 나면 클로드 코드가 알려 준 '남은 것'에 node, python이 없어야 하고, 크롬에서 <code class="inline">http://localhost:3000</code>을 새로고침하면 '사이트에 연결할 수 없음'이 떠요.</p>
+<div class="notice">다음 실습부터는 챗봇을 다시 써요. 서버를 끈 뒤에는 클로드 코드에 "챗봇 서버를 다시 켜 줘"라고 보내고, 알려 준 주소를 열어요.</div>
 <p class="source-note">출처: 달레 블로그 <a href="https://daleseo.com/localhost/" target="_blank" rel="noopener">localhost와 127.0.0.1: 같은 듯 다른 둘의 정체</a>(hosts 파일에 127.0.0.1과 ::1이 함께 있으면 localhost가 둘 다로 해석될 수 있음, Node.js가 IPv6를 먼저 시도해 ECONNREFUSED가 생기는 사례), Linuxize <a href="https://linuxize.com/post/what-is-localhost/" target="_blank" rel="noopener">What Is localhost?</a>(localhost는 이름, 127.0.0.1은 IPv4 루프백, ::1은 IPv6 루프백, 0.0.0.0은 다른 역할) (2026-11-16 확인)</p>
 <div class="term-note" role="note" aria-label="이 절의 용어"><b>용어</b><dl><dt>루프백 주소</dt><dd>보낸 요청이 인터넷으로 나가지 않고 내 컴퓨터로 되돌아오는 주소. localhost, 127.0.0.1, ::1</dd><dt>IPv4 · IPv6</dt><dd>인터넷 주소를 적는 두 가지 방식. IPv4는 127.0.0.1처럼 숫자 네 묶음, IPv6는 ::1처럼 더 긴 새 방식이에요</dd><dt>hosts 파일</dt><dd>컴퓨터 안에 있는 이름표 목록. "localhost는 127.0.0.1"처럼 이름과 숫자 주소를 짝지어 둬요</dd><dt>0.0.0.0</dt><dd>서버를 켤 때 쓰면 "이 컴퓨터로 들어오는 모든 길에서 받기"라는 뜻. 같은 와이파이의 다른 기기도 들어올 수 있어요</dd></dl></div>
 </div>
@@ -728,7 +742,7 @@ aside nav a.active{border-left-color:var(--blue)}
 
 <div class="topic" id="s6-9"><h3><span class="stage plan">기획자</span>6-9. 테스트 보고서 받기</h3>
 <p>3주차 수요일에 시나리오를 주고 클로드에게 테스트 보고서를 받았던 것 기억하시나요? 오늘은 시나리오 대신 6-8에서 만든 시험지를 줘요.</p>
-<div class="copybox"><div class="copyhead"><span>프롬프트 10 · 테스트 보고서 요청</span><button type="button">복사</button></div><pre>요청: 지금 실행 중인 챗봇과 관리자 화면을 테스트하고, 결과를 테스트 보고서 PDF(test-report.pdf)로 정리해 줘. 테스트는 다른 포트에서 하고, 내가 켜 둔 서버는 건드리지 마.
+<div class="copybox"><div class="copyhead"><span>프롬프트 12 · 테스트 보고서 요청</span><button type="button">복사</button></div><pre>요청: 지금 실행 중인 챗봇과 관리자 화면을 테스트하고, 결과를 테스트 보고서 PDF(test-report.pdf)로 정리해 줘. 테스트는 다른 포트에서 하고, 내가 켜 둔 서버는 건드리지 마.
 내용: test-questions.md의 문항을 먼저 모두 시험하고, 이어서 ① 챗봇(localhost:3000)과 관리자(localhost:3000/admin) 화면이 열리는지 ② 빠른 질문 단추마다 답이 나오는지 ③ 상품·주문 데이터가 없을 때와 [6-7 표의 데이터]를 넣은 뒤, 같은 질문의 답이 어떻게 다른지 ④ 없는 주문번호를 물었을 때 ⑤ 쇼핑몰과 상관없는 질문 ⑥ 답에 고객에게 보이면 안 되는 내부 이름이나 규칙 문구가 섞이는지 ⑦ API 키가 없거나 틀렸을 때 안내가 나오는지. 보고서에 API 키 값은 절대 적지 마.
 형식: 표(번호 / 테스트 항목 / 넣은 값 / 기대 결과 / 실제 결과 / 통과 여부) + 발견한 문제와 고칠 순서 3개.</pre></div>
 <div class="ref-box"><b>개념 · AI 챗봇은 무엇을 테스트하나요?</b>
@@ -833,7 +847,7 @@ aside nav a.active{border-left-color:var(--blue)}
 </div>
 
 <div class="topic" id="s7-5"><h3><span class="stage dev">개발자·구현</span>7-5. 배포 맡기기</h3>
-<div class="copybox"><div class="copyhead"><span>프롬프트 11 · Firebase 배포</span><button type="button">복사</button></div><pre>\1
+<div class="copybox"><div class="copyhead"><span>프롬프트 13 · Firebase 배포</span><button type="button">복사</button></div><pre>\1
 내용: 고객 대화 기록과, 관리자 화면에서 고친 운영 정책·상품·주문 데이터가 배포본에서도 저장되게 해 줘. 8·9세션에서 고친 뒤 다시 배포할 수 있게, 다시 배포하는 방법도 정리해 줘.
 형식: 배포한 주소와, 바뀐 구조를 7-4 표 모양으로 알려 줘.</pre></div>
 <p><b>Claude가 먼저 물어보는 것</b>(내가 직접 정해요). 프롬프트에 미리 답을 적지 말고, 물어볼 때 직접 골라 봐요.</p>
@@ -925,7 +939,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td>주문·배송을 찾지 못해요</td><td>⑤ 관리자 화면의 주문·배송 데이터, 데이터를 AI에게 보내는 코드</td></tr>
 </table></div>
 <p class="blk k-pr"><span>프롬프트</span></p>
-<div class="copybox"><div class="copyhead"><span>프롬프트 12 · 고칠 곳 한 군데만 · 클로드 코드에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 시스템 프롬프트의 [고칠 칸 이름]만 고쳐 줘.
+<div class="copybox"><div class="copyhead"><span>프롬프트 14 · 고칠 곳 한 군데만 · 클로드 코드에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 시스템 프롬프트의 [고칠 칸 이름]만 고쳐 줘.
 내용: "[보낸 질문]"에 "[받은 답]"이라고 답했어. 나는 "[기대하는 답]"을 원해. 이 문제만 고치고 다른 규칙은 바꾸지 마. 배포는 아직 하지 마.
 형식: 바뀐 줄을 먼저 보여 줘. 내가 승인하면 반영하고, 내 컴퓨터에서 시험할 수 있게 서버를 켜 줘. 내가 켜 둔 서버는 건드리지 말고 다른 포트를 써 줘.</pre></div>
 <p class="blk k-ex"><span>예시</span></p>
@@ -944,7 +958,7 @@ aside nav a.active{border-left-color:var(--blue)}
 
 <div class="topic" id="s8-5"><h3><span class="stage dev">개발자·구현</span>8-5. 고친 지시문을 배포본에 반영하기</h3>
 <p>8-4에서 고친 것은 아직 내 컴퓨터에만 있어요. 고객이 쓰는 배포 주소에는 예전 지시문이 그대로 남아 있어요. 운영 중인 서비스는 이렇게 <b>내 컴퓨터에서 먼저 시험하고, 시험지를 모두 통과한 것만 배포</b>해요. 그래야 고객이 고장 난 챗봇을 만나지 않아요.</p>
-<div class="copybox"><div class="copyhead"><span>프롬프트 13 · 다시 배포하기 · 클로드 코드에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 내 컴퓨터에서 고친 챗봇을 7세션에서 배포한 Firebase에 다시 배포해 줘.
+<div class="copybox"><div class="copyhead"><span>프롬프트 15 · 다시 배포하기 · 클로드 코드에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 내 컴퓨터에서 고친 챗봇을 7세션에서 배포한 Firebase에 다시 배포해 줘.
 내용: 시험지(test-questions.md) 문항을 내 컴퓨터에서 모두 다시 시험했고, 나빠진 답이 없어. 배포하기 전에 무엇이 바뀌는지 한 번 더 보여 줘.
 형식: 바뀐 파일 목록과 배포 주소.</pre></div>
 <ol class="do-steps">
@@ -963,7 +977,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <li>피드백이 운영 정책과 부딪히면 <b>정책이 이기도록</b> 순서를 정해 둬요. 그래야 잘못된 피드백 하나 때문에 챗봇이 틀린 안내를 하지 않아요.</li>
 </ul>
 </div>
-<div class="copybox"><div class="copyhead"><span>프롬프트 14 · 관리자 피드백 · 클로드 코드에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 관리자 화면의 고객 대화 기록에서 답변마다 피드백을 남길 수 있게 해 줘.
+<div class="copybox"><div class="copyhead"><span>프롬프트 16 · 관리자 피드백 · 클로드 코드에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 관리자 화면의 고객 대화 기록에서 답변마다 피드백을 남길 수 있게 해 줘.
 내용: 대화 기록은 7세션에서 정한 대로 Firestore에 저장된 것을 써 줘. 관리자가 '지침에 반영'을 켠 피드백만 다음 답변의 시스템 프롬프트에 넣어 줘. 피드백이 운영 정책과 부딪히면 운영 정책을 따르게 해 줘. 저장이 됐는지 안 됐는지 저장 단추 바로 옆에 보여 줘. 먼저 내 컴퓨터에서 테스트하고, 내가 켜 둔 서버는 건드리지 마.
 형식: 바뀐 점 세 줄과 테스트 보고서 PDF. 테스트를 통과하면 다시 배포할지 나에게 물어봐 줘.</pre></div>
 <p><b>해 볼 것</b></p>
@@ -976,7 +990,7 @@ aside nav a.active{border-left-color:var(--blue)}
 </ol>
 <figure class="shot"><a href="images/d1_admin_feedback.jpg" target="_blank" rel="noopener"><img style="width:340px;max-width:100%" alt="관리자 화면 대화 기록·답변 피드백. 반품은 어떻게 신청해요 질문과 챗봇 답변, 개선 필요 선택, 피드백 메모, 지침에 반영 체크와 피드백 저장 단추" loading="lazy" src="images/d1_admin_feedback.jpg"/></a><figcaption>대화 기록과 답변 피드백 화면 (참고 이미지 · 2026-11-16 강사 예시, 내 컴퓨터에서 실행)</figcaption></figure>
 <div class="ref-box"><b>이렇게 하면 결과가 틀어져요 · 저장됐는지 알 수 없어요</b>
-<p>저장 단추를 눌러도 아무 반응이 없으면, 관리자는 저장됐는지 알 수 없어요. 기능이 "작동하는 것"과, 쓰는 사람이 "작동한다고 알 수 있는 것"은 달라요. 그래서 프롬프트 14에 '저장 단추 바로 옆에 결과를 보여 줘'를 미리 넣었어요.</p>
+<p>저장 단추를 눌러도 아무 반응이 없으면, 관리자는 저장됐는지 알 수 없어요. 기능이 "작동하는 것"과, 쓰는 사람이 "작동한다고 알 수 있는 것"은 달라요. 그래서 프롬프트 16에 '저장 단추 바로 옆에 결과를 보여 줘'를 미리 넣었어요.</p>
 </div>
 <figure class="shot"><a href="images/d1_report_feedback.png" target="_blank" rel="noopener"><img style="width:480px;max-width:100%" alt="대화 기록 저장·관리자 피드백 기능 로컬 테스트 보고서 첫 쪽. 요약(11개 항목 모두 통과), 추가한 기능 표, 설계 판단, 테스트 결과" loading="lazy" src="images/d1_report_feedback.png"/></a><figcaption>예시 보고서 첫 쪽 (참고 이미지 · 2026-11-16 강사 예시)</figcaption></figure>
 <p>예시 보고서 전체: <a href="samples/test-reports/2026-11-16-chat-log-feedback-test.pdf" target="_blank" rel="noopener">대화 기록·피드백 테스트 보고서 PDF</a></p>
@@ -1026,7 +1040,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="topic" id="s9-2"><h3><span class="stage plan">기획자</span>9-2. FAQ 자료 받고, RAG 시험 문항 정하기</h3>
 <p><b>STEP 1. FAQ 파일 받기</b></p>
 <p>수업용 가상 자료 <a href="samples/rag-faq/selectmarket-faq.md" target="_blank" rel="noopener">셀렉트마켓 FAQ 30개(selectmarket-faq.md)</a>를 열고, 내 챗봇 폴더의 data 폴더에 저장해요. 항목마다 번호, 분류, 질문, 답이 있어요. 내 챗봇 주제가 쇼핑몰이 아니면 아래 프롬프트로 내 주제의 FAQ를 같은 모양으로 만들어요.</p>
-<div class="copybox"><div class="copyhead"><span>프롬프트 15 · 내 주제 FAQ 만들기(쇼핑몰이 아닐 때만) · 클로드 코드에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: [내 서비스 주제]의 고객 FAQ 30개를 data/faq.md로 만들어 줘.
+<div class="copybox"><div class="copyhead"><span>프롬프트 17 · 내 주제 FAQ 만들기(쇼핑몰이 아닐 때만) · 클로드 코드에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: [내 서비스 주제]의 고객 FAQ 30개를 data/faq.md로 만들어 줘.
 내용: selectmarket-faq.md와 같은 모양(## FAQ 번호 · 분류, 질문:, 답:)으로 만들어 줘. 관리자 화면의 운영 정책과 숫자가 어긋나지 않게 해 줘. 정보는 모두 가상으로 만들어.
 형식: 파일 하나와 분류별 개수.</pre></div>
 <p><b>STEP 2. RAG 시험 문항 더하기</b></p>
@@ -1041,7 +1055,7 @@ aside nav a.active{border-left-color:var(--blue)}
 </div>
 
 <div class="topic" id="s9-3"><h3><span class="stage dev">개발자·구현</span>9-3. 질문에 맞는 FAQ만 골라 보내게 고치기</h3>
-<div class="copybox"><div class="copyhead"><span>프롬프트 16 · FAQ에서 골라 보내기 · 클로드 코드에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 챗봇이 data 폴더의 FAQ 파일에서 질문과 관련된 항목만 골라 AI에게 보내게 고쳐 줘.
+<div class="copybox"><div class="copyhead"><span>프롬프트 18 · FAQ에서 골라 보내기 · 클로드 코드에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 챗봇이 data 폴더의 FAQ 파일에서 질문과 관련된 항목만 골라 AI에게 보내게 고쳐 줘.
 내용: 질문의 낱말과 겹치는 항목을 3개까지 골라, 운영 정책과 함께 보내 줘. '환불·돈 돌려받기', '반품·돌려보내기', '배송·택배'처럼 같은 뜻의 낱말 묶음을 파일로 따로 두고, 그 묶음도 함께 찾게 해 줘. 고른 항목에 답이 없으면 지어내지 말고 '확인 후 안내드릴게요'라고 답하게 해 줘. 답 끝에 근거로 쓴 FAQ 번호를 [근거: FAQ 12]처럼 붙여 줘. 관리자 화면의 대화 기록에서 질문마다 어떤 FAQ를 골랐는지 보이게 해 줘. 먼저 내 컴퓨터에서 테스트하고, 내가 켜 둔 서버는 건드리지 마. 배포는 아직 하지 마.
 형식: ① 바뀐 파일 목록 ② FAQ를 고르는 방법 세 줄 ③ 9-2의 ⑧~⑪ 문항 시험 결과표.</pre></div>
 <ol class="do-steps">
@@ -1064,7 +1078,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="topic" id="s9-4"><h3><span class="stage">실습</span>9-4. 시험지 전체로 다시 시험하고 배포하기</h3>
 <ol class="do-steps">
 <li><p>8-3처럼 시험지 문항 ①~⑪을 모두 다시 보내요. RAG를 붙이면서 ①·⑥처럼 예전에 맞던 답이 나빠지지 않았는지 꼭 봐요.</p></li>
-<li><p>나빠진 답이 없으면, 8-5의 프롬프트 13으로 다시 배포해요.</p></li>
+<li><p>나빠진 답이 없으면, 8-5의 프롬프트 15로 다시 배포해요.</p></li>
 <li><p>휴대폰으로 배포 주소를 열고 ⑧과 ⑩을 보내요. [근거: FAQ 번호]가 붙고, ⑩에는 지어내지 않으면 반영된 거예요.</p></li>
 </ol>
 </div>
