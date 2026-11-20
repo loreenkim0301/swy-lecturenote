@@ -266,6 +266,17 @@ aside nav a.active{border-left-color:var(--blue)}
 <style>.side-link{margin:16px 10px 0;padding:12px;border:1px solid rgb(45,56,80);border-radius:10px;font-size:12px;color:rgb(190,200,219)}.side-link b{display:block;color:#fff;font-size:12px;margin-bottom:4px}.side-link a{color:rgb(140,180,255);word-break:break-all}.day-nav{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}.day-nav a{padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:13px;font-weight:700;color:var(--ink);text-decoration:none}.day-nav a[aria-current]{background:var(--blue);border-color:var(--blue);color:#fff}main pre{white-space:pre-wrap;overflow-wrap:anywhere}main code.inline{overflow-wrap:break-word}.hero-grid code.inline,.hero-grid span{overflow-wrap:anywhere}figure.voice{margin:18px 0;padding:16px 20px;border-left:4px solid var(--blue);background:var(--soft);border-radius:0 12px 12px 0}figure.voice blockquote{margin:0}figure.voice blockquote p{margin:0;font-size:18px;font-weight:700;line-height:1.55}figure.voice blockquote p.orig{margin-top:6px;font-size:14px;font-weight:500;color:var(--muted)}figure.voice figcaption{margin-top:10px;font-size:13px;color:var(--muted)}#slide figure.voice{margin:10px 0;padding:10px 16px}kbd{display:inline-block;padding:1px 6px;border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;background:#fff;font:600 13px var(--font-sans)}.source-note{font-size:13px;color:var(--muted)}.resource-list.news .resource-card{border-left:4px solid #e8a23a}.resource-list.news .resource-card>.small:first-child::before{content:"뉴스";display:inline-block;margin-right:6px;padding:0 6px;border-radius:4px;background:#fff3df;color:#9a5b00;font-weight:700}.resource-list.news .resource-card>.small:last-child{margin-top:6px;color:var(--muted)}</style>
 <style>.why-box{margin:14px 0 0;padding:12px 16px;border-left:4px solid #8fb0ff;background:rgba(255,255,255,.08);border-radius:0 10px 10px 0;color:#e6ebf5;max-width:900px}.why-box b{display:block;color:#a9c1ff;font-size:13px;margin-bottom:2px}.ok-line{margin:8px 0 0;font-size:14.5px}.ok-line b{display:inline-block;margin-right:8px;padding:1px 8px;border-radius:6px;background:#e7f7ef;color:#16a36b;font-size:12px}.goal-list li{margin-bottom:6px}</style>
 <style>/* 2026-11-12 줄바꿈: 단어 단위로 끊고, 제목은 줄 길이를 고르게, 본문은 마지막 줄에 한 단어만 남지 않게 */main,#slide{word-break:keep-all;overflow-wrap:break-word}h1,h2,h3,h4,.lead,.sub,.why-box b{text-wrap:balance}p,li,td,th,dd{text-wrap:pretty}main a,main code{overflow-wrap:anywhere}</style>
+<style>/* fab-menu v1 */
+#fabMenu{position:fixed;right:16px;bottom:16px;z-index:30;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+#fabItems{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+#fabItems[hidden]{display:none}
+#fabMenu #slideBtn,#fabMenu .fab-item{position:static;right:auto;bottom:auto;background:#fff;color:var(--blue);border:1px solid var(--blue);border-radius:999px;padding:10px 16px;font:700 14px var(--font-sans);cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.18);white-space:nowrap}
+#fabMenu .fab-item:hover,#fabMenu .fab-item:focus-visible{background:var(--blue);color:#fff}
+#fabMain{width:52px;height:52px;border-radius:50%;border:0;background:var(--blue);color:#fff;font:700 26px/1 var(--font-sans);cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center}
+#fabMain span{display:inline-block;transition:transform .2s}
+#fabMain[aria-expanded="true"] span{transform:rotate(45deg)}
+@media print{#fabMenu{display:none!important}}
+</style>
 </head>
 <body>
 <button aria-controls="side-nav" aria-expanded="true" class="nav-toggle" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" viewbox="0 0 16 16"><path d="M2 4h12M2 8h12M2 12h12"></path></svg><span>목차 숨기기</span></button>
@@ -360,7 +371,7 @@ aside nav a.active{border-left-color:var(--blue)}
 </section>
 
 <section class="section" id="ready"><div class="section-label">PREPARE</div><h2>이번 주 준비물</h2>
-<ul class="checklist">
+<ul>
 <li>카메라와 마이크가 되는 컴퓨터 (휴대폰만으로는 실습이 어려워요)</li>
 <li>크롬(Chrome) 브라우저</li>
 <li>Claude 유료 계정 (계정은 운영 기관 안내를 따라요)</li>
@@ -373,7 +384,14 @@ aside nav a.active{border-left-color:var(--blue)}
 </section>
 </main>
 </div>
-<button id="slideBtn" type="button">▶ 슬라이드로 보기</button>
+<!-- fab-menu v1 -->
+<nav id="fabMenu" aria-label="빠른 메뉴">
+<div id="fabItems" hidden>
+<button id="slideBtn" class="fab-item" type="button">▶ 슬라이드로 보기</button>
+<button id="toTopBtn" class="fab-item" type="button">↑ 최상단으로</button>
+</div>
+<button id="fabMain" type="button" aria-expanded="false" aria-controls="fabItems" aria-label="빠른 메뉴 열기"><span aria-hidden="true">＋</span></button>
+</nav>
 <div hidden="" id="deck">
 <div id="viewport"><div id="stage">
 <div id="master"><span>AI 프로덕트 매니저 3주차 교안</span></div>
@@ -575,6 +593,19 @@ document.addEventListener('click',function(e){
   document.querySelectorAll('aside nav a').forEach(function(a){ a.addEventListener('click',function(){ if(mq.matches){ body.classList.remove('nav-open'); sync(); } }); });
   if(mq.addEventListener) mq.addEventListener('change',sync);
   sync();
+})();
+</script>
+<script>/* fab-menu v1 */
+(function(){
+  var main=document.getElementById('fabMain'),items=document.getElementById('fabItems'),top=document.getElementById('toTopBtn');
+  if(!main||!items)return;
+  function set(open){items.hidden=!open;main.setAttribute('aria-expanded',open?'true':'false');main.setAttribute('aria-label',open?'빠른 메뉴 닫기':'빠른 메뉴 열기');}
+  main.addEventListener('click',function(){set(items.hidden);});
+  if(top)top.addEventListener('click',function(){set(false);window.scrollTo({top:0,behavior:'smooth'});});
+  var sb=document.getElementById('slideBtn');
+  if(sb)sb.addEventListener('click',function(){set(false);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!items.hidden){set(false);main.focus();}});
+  document.addEventListener('click',function(e){if(!items.hidden&&!document.getElementById('fabMenu').contains(e.target))set(false);});
 })();
 </script>
 </body>
