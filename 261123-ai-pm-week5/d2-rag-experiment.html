@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet"/>
+<meta content="index, follow, noai, noimageai" name="robots"/>
+<title>AI 프로덕트 매니저 5주차 · DAY 2 RAG 조합 비교 실험</title>
+<style>:root { --ink: #172033; --muted: #657086; --line: #dfe4ed; --soft: #f5f7fb; --blue: #2457f5; --nav: #111a2e; --green: #16a36b; --warn: #ffad22; --page-pad: clamp(28px,5.8vw,82px); --font-sans: "Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; scroll-behavior: smooth; }
+* { box-sizing: border-box; }
+body { margin: 0px; background: rgb(238, 241, 246); color: var(--ink); font-family: var(--font-sans); line-height: 1.7; letter-spacing: -0.01em; }
+.app aside { position: fixed; inset: 0px auto 0px 0px; width: 310px; height: 100vh; padding: 0 16px 28px; background: var(--nav); color: rgb(255, 255, 255); overflow-y: auto; z-index: 10; }
+.app main { min-height: 100vh; margin-left: 310px; background: rgb(255, 255, 255); }
+.side-head { position: sticky; top: 0; z-index: 1; margin: 0 -16px; padding: 20px 26px 14px; background: var(--nav); border-bottom: 1px solid rgb(45, 56, 80); }
+.brand { font-size: 11px; font-weight: 800; letter-spacing: 0.14em; color: rgb(130, 145, 177); }
+aside h1 { margin: 6px 0 4px; font-size: 17px; line-height: 1.35; letter-spacing: -0.02em; }
+.side-sub, .side-foot { font-size: 12px; color: rgb(150, 162, 186); }
+aside nav { margin-top: 10px; }
+aside nav a { display: block; padding: 7px 10px 7px 22px; color: rgb(190, 200, 219); text-decoration: none; font-size: 14px; line-height: 1.45; border-left: 3px solid transparent; border-radius: 0 6px 6px 0; }
+aside nav a:hover { color: rgb(255, 255, 255); background: rgb(25, 36, 60); }
+aside nav .major { margin-top: 12px; padding-left: 10px; color: rgb(255, 255, 255); font-size: 15px; font-weight: 800; }
+aside nav a.active { color: rgb(255, 255, 255); background: rgb(30, 44, 74); border-left-color: var(--blue); font-weight: 700; }
+.side-foot { margin: 20px 10px 0; padding-top: 14px; border-top: 1px solid rgb(45, 56, 80); }
+.hero { padding: 86px var(--page-pad) 72px; background: linear-gradient(135deg, rgb(247, 249, 255), rgb(238, 243, 255) 58%, rgb(233, 255, 246)); border-bottom: 1px solid var(--line); }
+.kicker, .section-label, .topic-label, .eyebrow { font-size: 13px; font-weight: 800; letter-spacing: 0.13em; color: var(--blue); }
+.hero h1 { margin: 16px 0px; font-size: clamp(40px, 5vw, 70px); line-height: 1.08; letter-spacing: -0.055em; }
+.hero h1 em { color: var(--blue); font-style: normal; }
+.hero > p { max-width: 860px; color: rgb(79, 91, 114); font-size: 18px; }
+.hero-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 38px; background: rgb(220, 226, 237); border: 1px solid rgb(220, 226, 237); }
+.hero-grid div { background: rgb(255, 255, 255); padding: 16px; }
+.hero-grid b { display: block; font-size: 12px; color: rgb(125, 135, 153); }
+.hero-grid span { font-size: 14px; font-weight: 800; }
+.section { padding: 70px var(--page-pad); border-bottom: 1px solid var(--line); scroll-margin-top: 18px; }
+.section > h2, .session-head h2 { margin: 8px 0px 14px; font-size: 36px; letter-spacing: -0.04em; }
+.lead { font-size: 18px; max-width: 900px; }
+.three-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px 0px; }
+.three-cards article { padding: 20px; border: 1px solid var(--line); border-radius: 14px; background: rgb(255, 255, 255); }
+.three-cards article > span { font-size: 12px; font-weight: 800; color: var(--blue); }
+.three-cards h3 { margin: 8px 0px 5px; font-size: 20px; }
+.three-cards p, .caption { color: var(--muted); font-size: 14px; }
+.notice, .warning { margin: 22px 0px; padding: 16px 19px; }
+.notice { border-left: 4px solid var(--blue); background: rgb(234, 240, 255); }
+.warning { border-left: 4px solid var(--warn); background: rgb(255, 246, 230); }
+.schedule { margin-top: 30px; }
+.schedule div { display: grid; grid-template-columns: 48px 125px 1fr; align-items: center; padding: 13px 0px; border-top: 1px solid var(--line); }
+.schedule span.badge { display: grid; place-items: center; width: 29px; height: 29px; border-radius: 50%; background: var(--nav); color: rgb(255, 255, 255); font-size: 12px; }
+.schedule p { margin: 0px; }
+.session { padding-top: 0px; }
+.session-head { margin: 0 calc(var(--page-pad)*-1) 50px; padding: 52px var(--page-pad); background: var(--nav); color: rgb(255, 255, 255); }
+.session-head .eyebrow { color: rgb(125, 160, 255); }
+.session-head p { max-width: 900px; color: rgb(195, 204, 220); }
+.vibe-intro { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 28px; align-items: start; margin-top: 30px; padding-top: 28px; border-top: 1px solid rgb(45, 56, 80); }
+.vibe-quote { margin: 0; padding-left: 18px; border-left: 3px solid rgb(125, 160, 255); }
+.vibe-quote blockquote { margin: 0 0 10px; color: #fff; font-size: 21px; font-weight: 700; line-height: 1.5; letter-spacing: -0.03em; }
+.vibe-quote figcaption { color: rgb(160, 172, 196); font-size: 13px; }
+.vibe-meaning { margin: 18px 0 0; padding: 14px 16px; border-radius: 12px; background: rgb(25, 36, 60); color: rgb(215, 222, 236); font-size: 15px; }
+.vibe-meaning b { color: #fff; }
+.vibe-timeline { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.vibe-timeline li { display: grid; grid-template-columns: 74px 1fr; gap: 12px; padding: 12px 14px; border: 1px solid rgb(45, 56, 80); border-radius: 12px; background: rgba(255, 255, 255, 0.03); }
+.vibe-timeline time { color: rgb(125, 160, 255); font-size: 13px; font-weight: 800; letter-spacing: 0.02em; }
+.vibe-timeline b { display: block; color: #fff; font-size: 15px; }
+.vibe-timeline span { display: block; color: rgb(185, 195, 214); font-size: 14px; line-height: 1.55; }
+.vibe-sources { grid-column: 1 / -1; margin: 0; color: rgb(130, 145, 177); font-size: 12px; }
+.vibe-sources a { color: rgb(160, 180, 230); }
+@media (max-width: 1020px) { .vibe-intro { grid-template-columns: 1fr; } }
+.time { font-size: 13px; color: rgb(174, 185, 207); }
+.topic { margin-bottom: 70px; scroll-margin-top: 20px; }
+.topic h3 { margin: 8px 0px 12px; font-size: 28px; letter-spacing: -0.025em; }
+.flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 9px; margin: 18px 0px 26px; }
+.flow div { text-align: center; padding: 16px 12px; border-radius: 12px; background: rgb(237, 242, 255); }
+.flow span { display: block; font-size: 12px; font-weight: 800; color: var(--blue); }
+.flow b { display: block; }
+.flow small { display: block; margin-top: 5px; color: var(--muted); }
+.versus { display: grid; grid-template-columns: 1fr 54px 1fr; align-items: center; margin: 16px 0px 26px; }
+.versus > div { padding: 20px; border: 1px solid var(--line); border-radius: 13px; background: var(--soft); }
+.versus i { text-align: center; color: var(--blue); font-style: normal; font-weight: 900; }
+.table-wrap { overflow: auto; }
+table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 14px; }
+th { padding: 13px; text-align: left; color: rgb(255, 255, 255); background: var(--nav); }
+td { padding: 14px 13px; border-bottom: 1px solid var(--line); }
+.checklist { display: grid; gap: 7px; padding: 0px; list-style: none; }
+.checklist li { padding: 11px 14px; border-radius: 8px; background: var(--soft); }
+.checklist li::before { content: "✓"; margin-right: 8px; color: var(--blue); font-weight: 900; }
+.practice-brief { display: grid; gap: 8px; margin: 18px 0px; }
+.practice-brief > div { padding: 15px 18px; border: 1px solid rgb(200, 239, 221); border-radius: 12px; background: rgb(237, 255, 246); }
+.copybox { margin: 20px 0px; border: 1px solid rgb(207, 215, 230); border-radius: 12px; overflow: hidden; background: rgb(17, 26, 46); color: rgb(232, 238, 252); }
+.copyhead { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: rgb(30, 43, 71); font-size: 13px; font-weight: 800; }
+.copyhead button { padding: 5px 10px; border: 1px solid rgb(97, 112, 141); border-radius: 6px; background: transparent; color: rgb(255, 255, 255); cursor: pointer; }
+.copybox pre { white-space: pre-wrap; margin: 0px; padding: 20px; font: 13px / 1.72 ui-monospace, SFMono-Regular, Menlo, monospace; }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 18px 0px 26px; }
+.steps article { padding: 18px; border-top: 4px solid var(--blue); border-radius: 12px; }
+.steps strong { display: block; color: var(--blue); font-size: 12px; }
+.steps b { display: block; font-size: 18px; margin-top: 3px; }
+.sub-optional { margin-top: 10px; padding: 10px 12px; border: 1px dashed var(--line); border-radius: 10px; color: var(--muted); font-size: 14px; }
+.sub-optional .tag { margin-left: 0; }
+.steps .sub-optional b { display: inline; font-size: 14px; margin: 0 4px 0 2px; color: var(--muted); }
+.tag { display: inline-block; margin-left: 6px; padding: 1px 8px; border-radius: 999px; font-size: 11px; font-weight: 800; letter-spacing: 0; vertical-align: 1px; }
+.tag-req { background: var(--blue); color: #fff; }
+.tag-opt { border: 1px solid var(--line); background: #fff; color: var(--muted); font-weight: 700; }
+.final-box { padding: 28px; border-radius: 18px; background: linear-gradient(135deg, rgb(17, 26, 46), rgb(29, 47, 88)); color: rgb(255, 255, 255); }
+.final-box h3 { margin: 6px 0px 8px; font-size: 30px; }
+.final-box p { color: rgb(203, 213, 231); }
+code.inline { padding: 2px 6px; border-radius: 6px; background: rgb(238, 242, 248); font-family: ui-monospace, monospace; }
+.small { font-size: 13px; color: var(--muted); }
+.resource-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 18px 0px 28px; }
+.resource-card { padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--soft); }
+.resource-card b { display: block; margin-bottom: 4px; }
+.resource-card a { color: var(--blue); font-weight: 800; text-decoration: none; word-break: break-all; font-size: 13px; }
+.sample-link { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin: 22px 0; padding: 14px 18px; border: 1px solid rgb(203, 218, 255); border-radius: 12px; background: rgb(240, 245, 255); }
+.sample-link span { color: var(--muted); font-size: 14px; }
+.sample-link b { display: block; color: var(--ink); font-size: 15px; }
+.sample-link .resource-link { flex-shrink: 0; margin-top: 0; }
+@media (max-width: 680px) { .sample-link { flex-direction: column; align-items: flex-start; } }
+.resource-link { display: inline-block; margin-top: 8px; padding: 8px 12px; border: 1px solid rgb(203, 213, 225); border-radius: 8px; color: var(--blue); font-size: 13px; font-weight: 800; text-decoration: none; background: rgb(255, 255, 255); }
+.procedure { counter-reset: step 0; display: grid; gap: 10px; margin: 18px 0px 28px; }
+.procedure > div { position: relative; padding: 15px 16px 15px 54px; border: 1px solid var(--line); border-radius: 12px; background: rgb(255, 255, 255); }
+.procedure > div::before { counter-increment: step 1; content: counter(step); position: absolute; left: 16px; top: 15px; width: 26px; height: 26px; display: grid; place-items: center; border-radius: 50%; background: var(--blue); color: rgb(255, 255, 255); font-size: 12px; font-weight: 900; }
+.sample-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 18px 0px 28px; }
+.sample-grid article { padding: 18px; border: 1px solid var(--line); border-radius: 13px; background: var(--soft); }
+.term-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 22px 0px; }
+.term-grid article { padding: 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--soft); }
+.term-grid strong { display: block; color: var(--blue); font-size: 12px; letter-spacing: 0.08em; }
+.term-grid h4 { margin: 5px 0px 8px; font-size: 20px; }
+.talk { margin: 18px 0px; padding: 22px; border-left: 4px solid var(--green); background: rgb(241, 252, 247); }
+.talk p { margin: 0px 0px 14px; }
+.talk p:last-child { margin-bottom: 0px; }
+.example-flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 18px 0px 24px; }
+.example-flow div { padding: 14px 12px; border-radius: 10px; background: rgb(255, 248, 235); }
+.example-flow b, .example-flow span { display: block; }
+.example-flow span { margin-bottom: 3px; color: rgb(154, 100, 16); font-size: 12px; font-weight: 800; }
+details.optional { margin-top: 8px; padding: 0 22px 6px; border: 1px solid var(--line); border-radius: 14px; background: var(--soft); }
+details.optional > summary { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; padding: 20px 0; cursor: pointer; list-style: none; }
+details.optional > summary::-webkit-details-marker { display: none; }
+details.optional > summary::before { content: "▸"; color: var(--blue); font-weight: 900; }
+details.optional[open] > summary::before { content: "▾"; }
+details.optional .summary-title { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
+details.optional .summary-hint { font-size: 13px; color: var(--muted); }
+details.optional[open] .summary-hint { display: none; }
+.profile-card { display: grid; grid-template-columns: 1.6fr 1fr; gap: 20px; padding: 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--soft); }
+.profile-card h3 { margin: 0 0 6px; font-size: 22px; }
+.profile-card ul { margin: 10px 0 0; padding-left: 18px; }
+.profile-links { display: grid; gap: 8px; align-content: start; }
+.profile-links a { padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--blue); font-size: 14px; font-weight: 700; text-decoration: none; word-break: break-all; }
+.sample-shot { margin: 22px 0; }
+.sample-shot img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 12px; }
+.sample-shot.narrow img { max-width: 700px; margin: 0 auto; }
+.sample-shot.small img { max-width: 360px; }
+.sample-shot figcaption { margin-top: 10px; color: var(--muted); font-size: 14px; }
+@media (max-width: 680px) { .profile-card { grid-template-columns: 1fr; padding: 18px; } }
+.app aside { word-break: keep-all; }
+.topic .three-cards h3 { margin: 8px 0 5px; font-size: 20px; letter-spacing: -0.02em; }
+.block-title { margin: 34px 0 4px; font-size: 22px; letter-spacing: -0.02em; scroll-margin-top: 18px; }
+.break { padding: 54px var(--page-pad); background: rgb(246, 248, 252); border-bottom: 1px solid var(--line); }
+.break h2 { margin: 0px 0px 8px; font-size: 32px; }
+@media (max-width: 1020px) {
+  .app aside { display: none; }
+  .app main { margin-left: 0px; }
+  .hero-grid, .three-cards, .steps, .term-grid, .example-flow { grid-template-columns: 1fr 1fr; }
+  .flow { grid-template-columns: 1fr 1fr; }
+}
+.nav-toggle { position: fixed; top: 14px; left: 322px; z-index: 20; display: flex; align-items: center; gap: 6px; height: 36px; padding: 0 12px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255, 255, 255, 0.94); color: var(--ink); font: 700 13px/1 var(--font-sans); cursor: pointer; box-shadow: 0 4px 14px rgba(17, 26, 46, 0.12); transition: left .25s ease; }
+.nav-toggle:hover { border-color: var(--blue); color: var(--blue); }
+.nav-toggle svg { width: 16px; height: 16px; }
+.app aside { transition: transform .25s ease; }
+.app main { transition: margin-left .25s ease; }
+body.nav-hidden .app aside { transform: translateX(-100%); }
+body.nav-hidden .app main { margin-left: 0; }
+body.nav-hidden .nav-toggle { left: 14px; }
+@media (max-width: 1020px) {
+  .app aside { display: block; width: min(310px, calc(100vw - 64px)); transform: translateX(-100%); }
+  .nav-toggle { left: 14px; }
+  body.nav-open .app aside { transform: none; box-shadow: 8px 0 24px rgba(17, 26, 46, 0.25); }
+  body.nav-open .nav-toggle { left: auto; right: 10px; padding: 0 11px; }
+  body.nav-open .nav-toggle span { display: none; }
+}
+@media (max-width: 680px) {
+  .hero, .section, .break { padding-left: 20px; padding-right: 20px; }
+  .hero { padding-top: 54px; }
+  .hero-grid, .three-cards, .steps, .flow, .resource-list, .term-grid, .example-flow { grid-template-columns: 1fr; }
+  .schedule div { grid-template-columns: 38px 100px 1fr; }
+  .versus { grid-template-columns: 1fr; }
+  .versus i { padding: 8px 0px; }
+  .session-head { margin-left: -20px; margin-right: -20px; padding-left: 20px; padding-right: 20px; }
+  .section > h2, .session-head h2 { font-size: 30px; }
+  .topic h3 { font-size: 24px; }
+}.colab-open{margin:8px 0 14px}.colab-open a{display:inline-block;padding:6px 12px;border-radius:8px;background:#f9ab00;color:#1d2433;font-weight:700;text-decoration:none}.colab-open a:hover{filter:brightness(.95)}.colab-open .small{display:block;margin-top:6px}.deep-dive{margin:18px 0;padding:14px 18px;border:1px solid #dfe3ec;border-left:4px solid #f9ab00;border-radius:10px;background:rgba(249,171,0,.05)}
+
+/* 블록 종류 표시 */
+.blk { margin: 22px 0 8px; font-size: 15px; font-weight: 700; }
+.blk span { display: inline-block; margin-right: 8px; padding: 2px 10px; border-radius: 999px; font-size: 12px; font-weight: 800; color: #fff; background: #657086; vertical-align: 1px; }
+.k-ex span { background: var(--blue); } .k-tpl span { background: var(--warn); color: #172033; } .k-pr span { background: var(--nav); } .k-res span { background: #6b4fd8; } .k-chk span { background: var(--green); }
+.step-h { margin: 34px 0 6px; padding-top: 18px; border-top: 1px dashed var(--line); font-size: 18px; }
+.block-legend { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 4px; } .block-legend .blk { margin: 0; }
+.hl-leg{display:inline-block;margin-left:4px;padding:1px 7px;border-radius:999px;background:#fff1f0;color:#b42318;font-weight:600;font-size:11.5px}
+
+/* 실행 결과 캡처 토글 */
+details.res-toggle { margin: 22px 0 8px; }
+details.res-toggle > summary { cursor: pointer; list-style: none; font-size: 15px; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; }
+details.res-toggle > summary::-webkit-details-marker { display: none; }
+details.res-toggle > summary .tg::after { content: "▸ 펼쳐 보기"; font-size: 13px; color: #6b4fd8; font-weight: 700; }
+details.res-toggle[open] > summary .tg::after { content: "▾ 접기"; }
+details.res-toggle > summary .blk { margin: 0; }
+</style>
+<style>
+.tt{margin:0;padding-left:1.1em}.tt li{margin:2px 0}
+.dl-list{display:grid;gap:10px;margin:18px 0}
+.dl-card{display:flex;align-items:center;gap:14px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:#fff;text-decoration:none;color:var(--ink)}
+.dl-card:hover{border-color:var(--blue);background:var(--soft)}
+.dl-ico{flex:none;display:grid;place-items:center;width:44px;height:52px;border-radius:8px;background:rgb(237,242,255);color:var(--blue);font-size:11px;font-weight:800}
+.dl-body{flex:1}.dl-body b{display:block;font-size:16px}.dl-body span{display:block;font-size:13px;color:var(--muted)}
+.dl-btn{flex:none;padding:8px 14px;border-radius:8px;background:var(--blue);color:#fff;font-size:13px;font-weight:800}
+@media(max-width:680px){.dl-card{flex-wrap:wrap}}
+#slide .sample-shot{margin:8px 0}#slide .sample-shot img{max-height:420px;width:auto;max-width:100%;margin:0 auto}#slide .sample-shot figcaption{margin-top:4px;font-size:13px;text-align:center}
+#slide .dl-card{padding:10px 14px}
+.todo{color:#b42318;font-weight:700}
+main,#slide{word-break:keep-all;overflow-wrap:break-word}
+h1,h2,h3,.hero p,.lead{text-wrap:balance}
+p,li,td{text-wrap:pretty}
+td .tag{margin-bottom:2px}
+.tag.nap{background:#7c3aed}.tag.sheet{background:var(--green)}
+.tag{margin-left:0;margin-right:4px}
+.topic .small{display:block}
+.resource-card .small{display:block;margin-bottom:6px}
+.resource-card a{display:inline-block;margin:2px 0}
+.copybox pre{background:none;color:inherit}
+.hero-grid{grid-template-columns:repeat(3,1fr)}
+.sample-link .resource-link{margin:0 6px 0 0}
+.sample-link{flex-wrap:wrap;justify-content:flex-start;gap:6px}
+#slideBtn{position:fixed;right:16px;bottom:16px;z-index:30;background:var(--blue);color:#fff;border:0;border-radius:999px;padding:12px 20px;font:700 15px var(--font-sans);cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+#deck{position:fixed;inset:0;z-index:100;background:#0b1220;display:flex;flex-direction:column}
+#deck[hidden]{display:none}
+#viewport{flex:1;min-height:0;position:relative;overflow:hidden}
+#stage{position:absolute;left:50%;top:50%;width:1280px;height:720px;background:#fff;display:flex;flex-direction:column;overflow:hidden;transform-origin:center center;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+#master{flex:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 96px;background:var(--nav);color:#fff;font-weight:800;font-size:15px}
+#master .m-brand{font-size:11px;letter-spacing:.14em;color:rgb(130,145,177);margin-right:12px}
+#mbar{flex:none;height:4px;background:var(--line)}#prog{display:block;height:100%;background:var(--blue);width:0}
+#slide{flex:1;min-height:0;overflow:hidden;padding:28px 96px 12px;font-size:19px;line-height:1.55}
+#slide h1{font-size:46px;line-height:1.15;margin:12px 0}#slide h1 em{color:var(--blue);font-style:normal}
+#slide h3.st{margin:0 0 14px;font-size:32px;letter-spacing:-.03em}
+#slide .cont{font-size:16px;color:var(--muted);font-weight:500;margin-left:10px}
+#slide table{font-size:16px;margin-top:6px}#slide th,#slide td{padding:9px 12px}
+#slide .copybox{margin:10px 0}#slide .copybox pre{font-size:15px;padding:14px 18px}
+#slide p,#slide .notice,#slide .warning{margin:8px 0}
+#slide .notice,#slide .warning{padding:12px 16px}
+#slide .procedure{gap:8px;margin:10px 0}#slide .procedure>div{padding:10px 14px 10px 50px}
+#slide .resource-list{grid-template-columns:repeat(3,1fr);margin:10px 0}
+#slide .hero-grid{margin-top:20px}#slide .flow{grid-template-columns:repeat(5,1fr);margin:12px 0 16px}#slide .flow div{padding:10px 8px}#slide .hero-grid{grid-template-columns:repeat(3,1fr)}
+#pager{flex:none;display:flex;align-items:center;justify-content:center;gap:14px;height:40px;border-top:1px solid var(--line);color:var(--muted);font-size:14px;font-weight:700}
+#pager button{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:6px;width:30px;height:26px;font-size:11px;cursor:pointer}
+#bar{flex:none;display:flex;align-items:center;justify-content:center;gap:16px;padding:8px;background:#111a2e;color:#cbd5e7;font-size:14px}
+#bar button{border:1px solid rgb(97,112,141);background:transparent;color:#fff;border-radius:8px;padding:6px 14px;font:700 14px var(--font-sans);cursor:pointer}
+@media print{#slideBtn,#deck{display:none!important}}
+
+aside nav .nav-title{padding:6px 10px 10px;font-size:12px;font-weight:800;letter-spacing:.12em;color:rgb(130,145,177)}
+aside nav .grp{margin-top:20px;padding-top:12px;border-top:1px solid rgb(45,56,80)}
+aside nav .nav-title+.grp{margin-top:0;border-top:0;padding-top:0}
+aside nav .grp-label{padding:0 10px 4px;font-size:11px;font-weight:800;letter-spacing:.1em;color:rgb(130,145,177)}
+aside nav a.l2{margin-top:0;padding:6px 10px;color:#fff;font-size:15px;font-weight:800;border-left:3px solid transparent}
+aside nav a.l3{margin-left:12px;padding:5px 10px 5px 14px;font-size:14px;border-left:1px solid rgb(45,56,80)}
+aside nav a.l4{display:none;margin-left:12px;padding:3px 10px 3px 30px;font-size:12.5px;color:rgb(150,162,186);border-left:1px solid rgb(45,56,80)}
+aside nav a.l4.show{display:block}
+aside nav a.active{border-left-color:var(--blue)}
+.dh{margin:30px 0 8px;padding:2px 0 2px 12px;border-left:4px solid var(--blue)}
+.dh b{font-size:1.06em}
+#slide .dh{margin:12px 0 8px}
+#slide .eb{margin:0 0 4px;font-size:14px;font-weight:800;letter-spacing:.06em;color:var(--blue)}
+#slide .outline{columns:2;column-gap:56px;font-size:16px;line-height:1.5}
+#slide .outline .og{break-inside:avoid;margin-bottom:12px}
+#slide .outline b{display:block;font-size:17px}
+#slide .outline span{display:block;padding-left:14px;color:var(--muted);font-size:14.5px}
+
+.base{margin:6px 0 14px;padding:8px 12px;border-left:4px solid var(--green);background:rgb(236,248,243);font-size:14.5px}
+.copybox pre{font:15px/1.8 var(--font-sans);letter-spacing:-.01em}
+.copybox pre.fmt{white-space:normal;padding:18px 20px}
+.pl{display:flex;gap:10px;margin:0 0 9px}.pl:last-child{margin-bottom:0}
+.pl .pk{flex:none;width:3.3em;color:rgb(140,180,255);font-weight:800}
+.pl.k2 .pk{color:rgb(110,220,180)}.pl.k3 .pk{color:rgb(255,200,110)}
+.pl .pt{flex:1;min-width:0}
+.pl.c{padding-left:calc(3.3em + 10px);margin-top:-5px}
+#slide .copybox pre.fmt{font-size:17px;padding:14px 18px}
+#slide .base{font-size:15px;padding:6px 12px}
+</style>
+<style>.side-link{margin:16px 10px 0;padding:12px;border:1px solid rgb(45,56,80);border-radius:10px;font-size:12px;color:rgb(190,200,219)}.side-link b{display:block;color:#fff;font-size:12px;margin-bottom:4px}.side-link a{color:rgb(140,180,255);word-break:break-all}.day-nav{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}.day-nav a{padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:13px;font-weight:700;color:var(--ink);text-decoration:none}.day-nav a[aria-current]{background:var(--blue);border-color:var(--blue);color:#fff}main pre{white-space:pre-wrap;overflow-wrap:anywhere}main code.inline{overflow-wrap:break-word}.hero-grid code.inline,.hero-grid span{overflow-wrap:anywhere}figure.voice{margin:18px 0;padding:16px 20px;border-left:4px solid var(--blue);background:var(--soft);border-radius:0 12px 12px 0}figure.voice blockquote{margin:0}figure.voice blockquote p{margin:0;font-size:18px;font-weight:700;line-height:1.55}figure.voice blockquote p.orig{margin-top:6px;font-size:14px;font-weight:500;color:var(--muted)}figure.voice figcaption{margin-top:10px;font-size:13px;color:var(--muted)}#slide figure.voice{margin:10px 0;padding:10px 16px}kbd{display:inline-block;padding:1px 6px;border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;background:#fff;font:600 13px var(--font-sans)}.source-note{font-size:13px;color:var(--muted)}.resource-list.news .resource-card{border-left:4px solid #e8a23a}.resource-list.news .resource-card>.small:first-child::before{content:"뉴스";display:inline-block;margin-right:6px;padding:0 6px;border-radius:4px;background:#fff3df;color:#9a5b00;font-weight:700}.resource-list.news .resource-card>.small:last-child{margin-top:6px;color:var(--muted)}</style>
+<style>.why-box{margin:14px 0 0;padding:12px 16px;border-left:4px solid #8fb0ff;background:rgba(255,255,255,.08);border-radius:0 10px 10px 0;color:#e6ebf5;max-width:900px}.why-box b{display:block;color:#a9c1ff;font-size:13px;margin-bottom:2px}.ok-line{margin:8px 0 0;font-size:14.5px}.ok-line b{display:inline-block;margin-right:8px;padding:1px 8px;border-radius:6px;background:#e7f7ef;color:#16a36b;font-size:12px}.goal-list li{margin-bottom:6px}</style><style>.shot{margin:14px 0 6px;max-width:760px}.shot img{display:block;width:100%;height:auto;border:1px solid #d9dde5;border-radius:10px;box-shadow:0 2px 10px rgba(20,30,60,.06)}.shot figcaption{font-size:12.5px;color:#6b7280;margin-top:6px}.stage{display:inline-block;margin-right:6px;padding:1px 8px;border-radius:999px;background:#eef2ff;color:#3b4ec8;font-size:12px;font-weight:700}.tpl td:empty::after{content:"\00a0";}.tpl td{height:30px}.result-box{border:1px solid #c9e9d9;background:#f2fbf6;border-radius:10px;padding:12px 16px;margin:10px 0}.result-box b{color:#16794f}.entry-box{border:1px solid #cfd9f3;background:#f5f8ff;border-radius:10px;padding:12px 16px;margin:12px 0}.entry-box>b{color:#2c48b8}.entry-box p{margin:6px 0}.entry-box .shot img{width:auto;max-width:100%}.ref-box{display:block;border:1px dashed #d9c27a;background:#fffbea;border-radius:10px;padding:12px 16px;margin:12px 0}.ref-box>b{color:#8a6a00}.ref-box p{margin:6px 0}.ref-box ul{margin:6px 0 0;padding-left:18px}h4{margin:16px 0 6px}ol.do-steps{padding-left:22px}ol.do-steps>li{margin-bottom:14px}ol.do-steps>li>p{margin:0 0 6px}.ref-kind{display:inline-block;font-size:12px;color:#6b5a1e;background:#f6ecc4;border-radius:6px;padding:1px 6px;margin-right:4px}.shot-todo .shot-ph{display:grid;place-content:center;gap:8px;aspect-ratio:16/10;padding:18px;border:2px dashed #c3cbe0;border-radius:10px;background:repeating-linear-gradient(-45deg,#f7f9fc 0 12px,#eef2f8 12px 24px);color:#657086;text-align:center;font-size:13px}.shot-todo.mobile{max-width:300px}.shot-todo.mobile .shot-ph{aspect-ratio:9/16}.shot-ph b{font-size:15px;color:#172033}.ph-file{font-family:ui-monospace,monospace;font-size:12px;word-break:break-all}.ph-marks{display:grid;gap:4px}.ph-marks i{font-style:normal;font-weight:700}.ph-click{color:#b42318}.ph-check{color:#b45309}.hl-leg.hl-k{background:#fff4e5;color:#b45309}.term-note{border-top:1px solid #d9dde5;margin:16px 0 4px;padding:10px 0 0;font-size:13.5px;color:#4b5563}.term-note>b{display:inline-block;font-size:12px;color:#3b4ec8;background:#eef2ff;border-radius:6px;padding:1px 8px;margin-bottom:6px}.term-note dl{margin:4px 0 0;display:grid;grid-template-columns:max-content 1fr;gap:4px 14px}.term-note dt{font-weight:700;color:#1f2937}.term-note dd{margin:0}@media(max-width:640px){.term-note dl{grid-template-columns:1fr}.term-note dd{margin:0 0 6px}}</style>
+<style>/* 2026-11-12 줄바꿈: 단어 단위로 끊고, 제목은 줄 길이를 고르게, 본문은 마지막 줄에 한 단어만 남지 않게 */main,#slide{word-break:keep-all;overflow-wrap:break-word}h1,h2,h3,h4,.lead,.sub,.why-box b{text-wrap:balance}p,li,td,th,dd{text-wrap:pretty}main a,main code{overflow-wrap:anywhere}</style>
+<style>/* fab-menu v1 */
+#fabMenu{position:fixed;right:16px;bottom:16px;z-index:30;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+#fabItems{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+#fabItems[hidden]{display:none}
+#fabMenu #slideBtn,#fabMenu .fab-item{position:static;right:auto;bottom:auto;background:#fff;color:var(--blue);border:1px solid var(--blue);border-radius:999px;padding:10px 16px;font:700 14px var(--font-sans);cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.18);white-space:nowrap}
+#fabMenu .fab-item:hover,#fabMenu .fab-item:focus-visible{background:var(--blue);color:#fff}
+#fabMain{width:52px;height:52px;border-radius:50%;border:0;background:var(--blue);color:#fff;font:700 26px/1 var(--font-sans);cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center}
+#fabMain span{display:inline-block;transition:transform .2s}
+#fabMain[aria-expanded="true"] span{transform:rotate(45deg)}
+@media print{#fabMenu{display:none!important}}
+</style>
+<style>.tip-box{margin:14px 0;padding:12px 16px;border:1px solid #cfe8d8;border-left:4px solid #16a36b;background:#f3fbf6;border-radius:0 10px 10px 0}.tip-box>b{display:inline-block;font-size:12px;color:#fff;background:#16a36b;border-radius:6px;padding:1px 8px;margin-bottom:6px}.tip-box p{margin:4px 0}.tip-box ul,.tip-box ol{margin:4px 0;padding-left:20px}.tip-box li{margin:3px 0}</style>
+</head>
+
+<body>
+<button aria-controls="side-nav" aria-expanded="true" class="nav-toggle" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" viewbox="0 0 16 16"><path d="M2 4h12M2 8h12M2 12h12"></path></svg><span>목차 숨기기</span></button>
+<div class="app">
+<aside id="side-nav">
+<div class="side-head">
+<div class="brand">SELECTWAY · LECTURE NOTE</div>
+<h1>AI 프로덕트 매니저 5주차 · DAY 2 RAG 조합 비교 실험</h1>
+<div class="side-sub">11.24(화) · 09:00–18:00 · 실시간 비대면</div>
+</div>
+<nav>
+<div class="nav-title">전체 목차</div>
+<div class="grp"><div class="grp-label">교육 안내</div><a class="l2" href="#overview">교육 개요</a><a class="l2" href="#prep">수업 전 준비</a><a class="l2" href="#tt">타임테이블</a></div>
+<div class="grp"><div class="grp-label">오늘의 단어</div><a class="l2" href="#words">오늘의 단어</a></div>
+<div class="grp"><div class="grp-label">SESSION 1</div><a class="l2" href="#s1">실험 준비: 키와 측정 규칙</a><a class="l3" href="#s1-1">1-1. API 키를 .env에 넣기</a><a class="l3" href="#s1-2">1-2. 측정 시간과 규칙</a></div>
+<div class="grp"><div class="grp-label">SESSION 2</div><a class="l2" href="#s2">대조군 재기: 낱말 검색 챗봇</a><a class="l3" href="#s2-1">2-1. 대조군과 평가 질문 15개</a><a class="l3" href="#s2-2">2-2. 평가 프로그램 만들기</a><a class="l3" href="#s2-3">2-3. 대조군 돌리고 채점하기</a></div>
+<div class="grp"><div class="grp-label">SESSION 3</div><a class="l2" href="#s3">실험 1: 찾는 방법을 뜻 검색으로 바꾸기</a><a class="l3" href="#s3-1">3-1. 무엇을 바꾸고 무엇을 고정하나</a><a class="l3" href="#s3-2">3-2. 파이어스토어에 FAQ와 좌표 넣기</a><a class="l3" href="#s3-3">3-3. 실험군 돌리고 판정하기</a></div>
+<div class="grp"><div class="grp-label">SESSION 4</div><a class="l2" href="#s4">실험 2: 답을 쓰는 AI 바꾸기</a><a class="l3" href="#s4-1">4-1. 같은 FAQ로 두 AI 비교하기</a><a class="l3" href="#s4-2">4-2. 돌리고 판정하기</a></div>
+<div class="grp"><div class="grp-label">SESSION 5</div><a class="l2" href="#s5">조합 2·3 시연 보기</a><a class="l3" href="#s5-1">5-1. 조합 2: 창고가 둘일 때</a><a class="l3" href="#s5-2">5-2. 조합 3: 한 곳에서 다 할 때</a></div>
+<div class="grp"><div class="grp-label">SESSION 6</div><a class="l2" href="#s6">결과 정리와 PM 결론</a><a class="l3" href="#s6-1">6-1. 결과 훑어보기</a><a class="l3" href="#s6-2">6-2. 가중치를 정하고 결론 쓰기</a><a class="l3" href="#s6-3">6-3. 깃헙에 올려 보관하기</a><a class="l3" href="#s6-4">6-4. 결과</a></div>
+<div class="grp"><div class="grp-label">마무리</div><a class="l2" href="#wrap">오늘 정리와 미니 프로젝트 안내</a></div>
+</nav>
+<div class="side-link"><b>이 교안 주소</b><a href="https://loreenkim0301.github.io/swy-lecturenote/261123-ai-pm-week5/d2-rag-experiment.html">loreenkim0301.github.io/swy-lecturenote/261123-ai-pm-week5/d2-rag-experiment.html</a></div>
+<div class="side-foot">강사 김수정 · 셀렉트웨이</div>
+</aside>
+<main>
+<header class="hero">
+<div class="kicker">AI 프로덕트 매니저 · 5주차 DAY 2 · 2026.11.24 (화)</div>
+<h1>뜻 검색은 정말 더 좋을까? <em>숫자로</em> 확인하기</h1>
+<p>어제 세운 가설을 오늘 실험으로 확인해요. 4주차 월요일에 만든 낱말 검색 챗봇을 기준(대조군)으로 두고, 찾는 방법을 뜻 검색으로 바꿔 보고(실험 1), 답을 쓰는 AI를 바꿔 봐요(실험 2). 사용성, 속도, 비용, 성능을 평가 프로그램으로 기록하고, 맞았는지는 직접 채점해요. 마지막에는 우리 서비스라면 어떤 조합을 고를지 결론을 써요.</p>
+<div class="hero-grid">
+<div><b>일정</b><span>11월 24일(화) 09:00–18:00 · 실시간 비대면</span></div>
+<div><b>준비물</b><span>4주차 월요일 상담 챗봇 폴더, 내 파이어베이스 프로젝트(Blaze), 어제 가설을 쓴 평가표</span></div>
+<div><b>오늘의 결과물</b><span>results.csv + 채점을 마친 평가표 + PM 결론 + 깃헙 저장소</span></div>
+</div>
+<nav aria-label="5주차 교안" class="day-nav"><a href="./">5주차 홈</a><a href="./d1-principles-db.html">DAY 1 원리와 DB</a><a aria-current="page" href="./d2-rag-experiment.html">DAY 2 RAG 비교 실험</a><a href="../261116-ai-pm-week4/">4주차 홈</a></nav>
+</header>
+
+<section class="section" id="overview"><div class="section-label">OVERVIEW</div><h2>교육 개요</h2>
+<div class="table-wrap"><table>
+<tr><th>시간</th><td>09:00–18:00 (점심 12:00–13:00, 수업 8시간)</td></tr>
+<tr><th>교과</th><td>[기본] AI 서비스 개발 · 18일차 (총 18일, 교과 마지막 날)</td></tr>
+<tr><th>교육 목표</th><td>대조군과 실험군을 나눠 RAG 조합을 비교하고, 사용성·속도·비용·성능 숫자로 서비스에 맞는 조합을 고른다.</td></tr>
+<tr><th>수업이 끝나면</th><td>① 평가 프로그램으로 시간과 토큰을 기록하고, 정답을 직접 채점하기<br/>② 파이어스토어에 FAQ와 임베딩 좌표를 넣고 뜻 검색으로 바꾸기<br/>③ 같은 FAQ로 클로드와 제미나이의 답을 비교하기<br/>④ 가설이 맞았는지 판정하고, 가중치로 우리 서비스의 조합 고르기</td></tr>
+</table></div>
+</section>
+
+<section class="section" id="prep"><div class="section-label">PREPARE</div><h2>수업 전 준비</h2>
+<ul>
+<li><b>상담 챗봇 폴더:</b> 4주차 월요일에 FAQ를 골라 보내게 고친 상담 챗봇 폴더예요. data 폴더에 FAQ 파일과 같은 뜻 낱말 묶음 파일이 있는지 봐요.</li>
+<li><b>파이어베이스 프로젝트:</b> 4주차 월요일에 Blaze 요금제로 바꾼 프로젝트를 써요. 지웠다면 새 프로젝트를 만들고 Blaze로 바꿔 둬요.</li>
+<li><b>평가표:</b> 어제 5세션에서 '1_가설' 시트를 채운 평가표를 열어 둬요.</li>
+</ul>
+</section>
+
+<section class="section" id="tt"><div class="section-label">TIMETABLE</div><h2>타임테이블</h2>
+<div class="table-wrap"><table>
+<tr><th>시간</th><th>구분</th><th>내용</th></tr>
+<tr><td>09:00–09:20</td><td>오늘의 단어</td><td><a href="#words">오늘의 단어</a></td></tr>
+<tr><td>09:20–10:00</td><td>SESSION 1</td><td><a href="#s1">실험 준비: 키와 측정 규칙</a></td></tr>
+<tr><td>10:10–12:00</td><td>SESSION 2</td><td><a href="#s2">대조군 재기: 낱말 검색 챗봇</a></td></tr>
+<tr><td>12:00–13:00</td><td>점심</td><td></td></tr>
+<tr><td>13:00–14:50</td><td>SESSION 3</td><td><a href="#s3">실험 1: 찾는 방법을 뜻 검색으로 바꾸기</a></td></tr>
+<tr><td>15:00–16:00</td><td>SESSION 4</td><td><a href="#s4">실험 2: 답을 쓰는 AI 바꾸기</a></td></tr>
+<tr><td>16:10–16:40</td><td>SESSION 5</td><td><a href="#s5">조합 2·3 시연 보기</a></td></tr>
+<tr><td>16:50–17:40</td><td>SESSION 6</td><td><a href="#s6">결과 정리와 PM 결론</a></td></tr>
+<tr><td>17:40–18:00</td><td>정리</td><td><a href="#wrap">오늘 정리와 미니 프로젝트 안내</a></td></tr>
+</table></div>
+</section>
+
+<section class="section session" id="words">
+<div class="session-head"><div class="eyebrow">단어 · 09:00–09:20</div><h2>오늘의 단어</h2><p>오늘 처음 나오는 말을 먼저 짧게 짚고 시작해요.</p></div>
+<div class="table-wrap"><table>
+<tr><th>단어</th><th>뜻</th></tr>
+<tr><td><b>평가 프로그램</b></td><td>정해 둔 질문을 차례로 보내고, 걸린 시간과 토큰 수와 답을 파일에 기록하는 프로그램이에요. 사람 대신 재는 일을 해요.</td></tr>
+<tr><td><b>토큰</b></td><td>AI가 글을 읽고 쓰는 단위예요. API 요금은 보낸 토큰(입력)과 받은 토큰(출력)으로 계산해요.</td></tr>
+<tr><td><b>벡터 인덱스</b></td><td>파이어스토어가 좌표를 빨리 찾을 수 있게 만들어 두는 목차예요. 뜻 검색을 하려면 먼저 만들어야 해요.</td></tr>
+<tr><td><b>차원</b></td><td>좌표 하나에 들어 있는 숫자의 개수예요. 저장할 때와 찾을 때의 차원이 같아야 해요.</td></tr>
+<tr><td><b>EDA</b></td><td>탐색적 데이터 분석. 결론을 내기 전에 데이터를 먼저 훑어보는 일이에요. 몇 건인지, 빈칸이 있는지, 그룹끼리 어떻게 다른지를 표와 그래프로 봐요.</td></tr>
+</table></div>
+</section>
+
+<section class="section session" id="s1">
+<div class="session-head"><div class="eyebrow">SESSION 1 · 09:20–10:00</div><h2>실험 준비: 키와 측정 규칙</h2><p>오늘은 클로드 API 키와 제미나이 API 키를 함께 써요. 두 키 모두 유료 키이고, 수업이 끝나면 지워져요.</p>
+<div class="why-box"><b>왜 하나?</b>키가 깃헙에 한 번 올라가면 누구나 쓸 수 있어요. 여러 팀이 같은 키를 쓰는 날일수록 키를 다루는 규칙을 먼저 지켜야 해요.</div></div>
+
+<div class="topic" id="s1-1"><h3><span class="stage dev">개발자·구현</span>1-1. API 키를 .env에 넣기</h3>
+<p>4주차 월요일에 상담 챗봇의 .env 파일에 API 키를 넣었던 것 기억하시나요? 오늘도 같은 파일에 키를 넣어요. 클로드 코드에 아래 프롬프트를 먼저 보내고, 키는 클로드 코드가 만든 .env 파일을 열어 직접 붙여 넣어요. 키를 채팅 입력창에 붙여 넣지 않아요.</p>
+<div class="copybox"><div class="copyhead"><span>프롬프트 1 · 클로드 코드에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 오늘 실험에 쓸 키 자리를 .env 파일에 만들어 줘.
+내용: ANTHROPIC_API_KEY와 GEMINI_API_KEY 두 줄을 만들고 값은 비워 둬. .gitignore에 .env가 들어 있는지 확인하고, 없으면 넣어 줘. 지금 깃헙에 올라갈 파일 목록에 .env가 없는지도 보여 줘.
+형식: ① .env 줄 목록(값 없이) ② .gitignore 확인 결과 ③ 올라갈 파일 목록</pre></div>
+<p class="ok-line"><b>이렇게 보이면 성공</b>.env에 키 두 개가 들어 있고, 올라갈 파일 목록에 .env가 없어요.</p>
+<div class="tip-box" role="note"><b>키가 올라가면</b><p>GitHub는 2026년 10월부터 Anthropic 키가 담긴 푸시를 기본으로 막아요. 하지만 다른 키는 막히지 않을 수 있어요. 키가 올라갔다고 생각되면 바로 강사에게 알려요. 키를 지우고 새로 받아야 해요.</p></div>
+<p class="source-note">출처: GitHub <a href="https://github.blog/changelog/2026-10-13-secret-scanning-blocks-anthropic-keys-by-default-adds-salesforce" target="_blank" rel="noopener">Secret scanning blocks Anthropic keys by default</a> (2026-11-20 확인)</p>
+</div>
+
+<div class="topic" id="s1-2"><h3><span class="stage">규칙</span>1-2. 측정 시간과 규칙</h3>
+<p>여러 팀이 같은 키로 동시에 평가 프로그램을 돌리면 API의 분당 한도에 걸릴 수 있어요. 그러면 'AI가 느리다'가 아니라 '한도에 걸렸다'가 결과가 돼요. 그래서 측정은 팀마다 정해진 시간에 해요.</p>
+<div class="table-wrap"><table><tr><th>규칙</th><th>이유</th></tr>
+<tr><td>측정은 우리 팀 시간에만 돌려요</td><td>다른 팀과 한도를 나눠 쓰지 않게 해요</td></tr>
+<tr><td>한도 초과 오류는 '오류'로 따로 적어요</td><td>느린 답과 섞이면 속도 비교가 틀어져요</td></tr>
+<tr><td>측정 중에는 같은 키로 다른 실습을 하지 않아요</td><td>측정 기록에 다른 요청이 섞이지 않게 해요</td></tr>
+</table></div>
+<p class="source-note">출처: Claude 문서 <a href="https://docs.anthropic.com/claude/reference/rate-limits" target="_blank" rel="noopener">Rate limits</a>(분당 요청 수, 분당 입력·출력 토큰으로 한도를 잼) (2026-11-20 확인)</p>
+</div>
+</section>
+
+<section class="section session" id="s2">
+<div class="session-head"><div class="eyebrow">SESSION 2 · 10:10–12:00</div><h2>대조군 재기: 낱말 검색 챗봇</h2><p>4주차 월요일에 만든 챗봇은 질문의 낱말과 같은 뜻 낱말 묶음으로 FAQ를 골라요. 이 챗봇이 오늘의 기준이에요. 먼저 이 챗봇의 점수를 재요.</p>
+<div class="why-box"><b>왜 하나?</b>기준을 재지 않으면 새 방법이 나아졌는지 말할 수 없어요.</div></div>
+
+<div class="topic" id="s2-1"><h3><span class="stage plan">기획자</span>2-1. 대조군과 평가 질문 15개</h3>
+<p>4주차 월요일에 만든 시험지는 챗봇이 규칙을 지키는지 보는 문항이었어요. 오늘 평가 질문은 찾는 방법을 비교하려고 세 종류로 나눠 만들었어요.</p>
+<div class="table-wrap"><table><tr><th>종류</th><th>개수</th><th>예</th><th>정답</th></tr>
+<tr><td><b>낱말이 같은 질문</b></td><td>5</td><td>선물 포장 되나요?</td><td>FAQ 12</td></tr>
+<tr><td><b>바꿔 말한 질문</b></td><td>5</td><td>돈은 언제 돌려받아요?</td><td>FAQ 18</td></tr>
+<tr><td><b>FAQ에 없는 질문</b></td><td>5</td><td>생일 쿠폰 있어요?</td><td>"확인 후 안내드릴게요"</td></tr>
+</table></div>
+<div class="dl-list"><a class="dl-card" download="" href="data/questions.csv"><span class="dl-ico">CSV</span><span class="dl-body"><b>평가 질문 15개 (questions.csv)</b><span>번호 · 질문 종류 · 질문 · 정답 FAQ · 기대하는 답 · 챗봇 폴더의 data 폴더에 저장해요</span></span><span class="dl-btn">⬇ 다운로드</span></a></div>
+</div>
+
+<div class="topic" id="s2-2"><h3><span class="stage dev">개발자·구현</span>2-2. 평가 프로그램 만들기</h3>
+<p>질문 15개를 사람이 하나씩 보내고 시간을 재면 오래 걸리고 틀리기 쉬워요. 평가 프로그램이 질문을 보내고 기록하게 해요. 이 프로그램은 실험 1·2에서도 그대로 써요.</p>
+<div class="copybox"><div class="copyhead"><span>프롬프트 2 · 클로드 코드에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 상담 챗봇의 찾기·답하기 방법을 비교하는 평가 프로그램을 만들어 줘.
+내용: data/questions.csv의 질문 15개를 차례로 보내. 지금 챗봇의 낱말 검색은 지우지 말고 '낱말 검색 + 클로드' 조건으로 이름 붙여 둬. 질문마다 조건 이름, 질문 번호, 찾은 FAQ 번호 3개(18|14|19처럼 | 로 이어 한 칸에), 찾는 시간(초), 답하는 시간(초), 입력 토큰, 출력 토큰, 임베딩 토큰(없으면 0), 답 내용, 오류 내용을 이 순서대로 data/results.csv에 한 줄씩 더해. 첫 번째 요청은 준비 운동으로 보고 기록에서 빼. temperature는 0으로 맞춰. 키는 .env에서만 읽고, 키가 results.csv나 코드에 들어가지 않게 해.
+형식: ① 실행 명령 한 줄 ② results.csv 칸 이름 목록 ③ '낱말 검색 + 클로드' 조건으로 질문 1번만 돌린 결과</pre></div>
+<p class="ok-line"><b>이렇게 보이면 성공</b>results.csv에 질문 1번 한 줄이 생기고, 찾는 시간·답하는 시간·토큰 칸이 모두 채워져 있어요.</p>
+<div class="table-wrap"><table><tr><th>막히면</th><th>이렇게 해요</th></tr>
+<tr><td>토큰 칸이 비어 있어요</td><td>클로드 코드에게 "API 응답의 usage에서 input_tokens와 output_tokens를 읽어 줘"라고 해요.</td></tr>
+<tr><td>찾는 시간과 답하는 시간이 한 칸에 합쳐져 있어요</td><td>"FAQ를 고르는 부분과 AI에게 보내는 부분의 시간을 따로 재 줘"라고 해요.</td></tr>
+</table></div>
+<p class="source-note">출처: Claude 문서 <a href="https://code.claude.com/docs/en/agent-sdk/cost-tracking" target="_blank" rel="noopener">Cost tracking</a>(응답의 usage에 input_tokens·output_tokens가 담김) · Gemini API 문서 <a href="https://ai.google.dev/api/tokens" target="_blank" rel="noopener">Counting tokens</a>(응답의 usageMetadata에 promptTokenCount·candidatesTokenCount가 담김) (2026-11-20 확인)</p>
+</div>
+
+<div class="topic" id="s2-3"><h3><span class="stage">실습</span>2-3. 대조군 돌리고 채점하기</h3>
+<p><b>STEP 1. 대조군 돌리기</b></p>
+<p>우리 팀 측정 시간에 클로드 코드에게 "평가 프로그램을 '낱말 검색 + 클로드' 조건으로 질문 15개 모두 돌려 줘"라고 해요.</p>
+<p><b>STEP 2. 평가표에 붙여 넣기</b></p>
+<p>data/results.csv를 열어 제목 줄을 뺀 내용을 복사하고, 평가표 '2_결과 붙여넣기' 시트의 A4 칸에 붙여 넣어요. 3행은 예시 줄이라 계산에 들어가지 않아요.</p>
+<p><b>STEP 3. 직접 채점하기</b></p>
+<p>평가표 오른쪽의 채점 칸 세 개를 O 또는 X로 채워요. 채점은 사람이 해요. 기준은 questions.csv의 정답 FAQ와 기대하는 답이에요.</p>
+<div class="table-wrap"><table><tr><th>채점 칸</th><th>O로 적는 경우</th></tr>
+<tr><td><b>찾기 맞음</b></td><td>정답 FAQ 번호가 찾은 3개 안에 있어요. FAQ에 없는 질문은 비워 둬요</td></tr>
+<tr><td><b>답 맞음</b></td><td>답의 내용이 기대하는 답과 같아요(말투는 달라도 돼요)</td></tr>
+<tr><td><b>규칙 지킴</b></td><td>FAQ에 있으면 근거 번호를 붙였고, FAQ에 없으면 지어내지 않고 "확인 후 안내드릴게요"로 답했어요</td></tr>
+</table></div>
+<p class="ok-line"><b>이렇게 보이면 성공</b>평가표 '3_요약' 시트의 '낱말 검색 + 클로드' 줄에 점수와 평균 시간이 채워져요.</p>
+</div>
+</section>
+
+<section class="section session" id="s3">
+<div class="session-head"><div class="eyebrow">SESSION 3 · 13:00–14:50</div><h2>실험 1: 찾는 방법을 뜻 검색으로 바꾸기</h2><p>어제 4세션의 조합 1(구글 창고 + 제미나이 임베딩 + 클로드 답변)을 만들어요. 답을 쓰는 AI는 클로드 그대로 두고, FAQ를 찾는 방법만 바꿔요.</p>
+<div class="why-box"><b>왜 하나?</b>"바꿔 말한 질문을 놓친다"는 문제를 뜻 검색이 정말 풀어 주는지, 그 대신 무엇을 잃는지 숫자로 봐요.</div></div>
+
+<div class="topic" id="s3-1"><h3><span class="stage plan">기획자</span>3-1. 무엇을 바꾸고 무엇을 고정하나</h3>
+<div class="table-wrap"><table><tr><th>구분</th><th>대조군</th><th>실험군</th></tr>
+<tr><td><b>FAQ 찾기</b></td><td>낱말 + 같은 뜻 낱말 묶음</td><td>제미나이 임베딩 + 파이어스토어 벡터 검색</td></tr>
+<tr><td><b>FAQ 30개</b></td><td colspan="2">같음</td></tr>
+<tr><td><b>찾아오는 FAQ 개수</b></td><td colspan="2">3개로 같음</td></tr>
+<tr><td><b>답을 쓰는 AI와 지시문</b></td><td colspan="2">클로드, 같은 모델, 같은 지시문, temperature 0</td></tr>
+<tr><td><b>평가 질문</b></td><td colspan="2">questions.csv 15개로 같음</td></tr>
+</table></div>
+<p>어제 평가표 '1_가설' 시트에 적은 실험 1의 가설을 다시 읽고 시작해요.</p>
+</div>
+
+<div class="topic" id="s3-2"><h3><span class="stage dev">개발자·구현</span>3-2. 파이어스토어에 FAQ와 좌표 넣기</h3>
+<p>이번 실습에서는 새로운 말이 몇 가지 나와요. 임베딩은 글의 뜻을 숫자 목록(좌표)으로 바꾸는 일이고, 그 숫자의 개수를 차원이라고 불러요. 제미나이 임베딩 모델은 기본으로 3,072차원 좌표를 만들어요. 그런데 파이어스토어에 좌표를 넣을 때는 2,048차원으로 맞추는 것이 중요해요. 그래서 프롬프트에 차원을 적어 줘요.</p>
+<p><b>STEP 1. FAQ 30개를 좌표와 함께 저장하기</b></p>
+<div class="copybox"><div class="copyhead"><span>프롬프트 3 · 클로드 코드에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: data 폴더의 FAQ 30개를 내 파이어베이스 프로젝트의 파이어스토어 faq 컬렉션에 임베딩 좌표와 함께 저장해 줘.
+내용: 항목마다 번호, 분류, 질문, 답, 좌표를 저장해. 좌표는 제미나이 gemini-embedding-001 모델로 '질문 + 답'을 바꿔서 만들고, 출력 차원은 2048로 맞춰. 키는 .env의 GEMINI_API_KEY를 써. 다 넣은 뒤 좌표 칸에 벡터 인덱스를 만들어 줘. 명령은 네가 실행하고, 실행 전에 무엇을 하는지 먼저 보여 줘.
+형식: ① 저장한 문서 수 ② 문서 하나의 칸 목록(좌표는 앞 3개 숫자만) ③ 벡터 인덱스 상태</pre></div>
+<p class="ok-line"><b>이렇게 보이면 성공</b>파이어베이스 콘솔의 파이어스토어 화면에 faq 컬렉션 문서가 30개 있고, 클로드 코드가 벡터 인덱스를 다 만들었다고 알려 줘요.</p>
+<p><b>STEP 2. 찾는 방법을 바꿔 끼우기</b></p>
+<div class="copybox"><div class="copyhead"><span>프롬프트 4 · 클로드 코드에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 상담 챗봇의 FAQ 찾기에 '뜻 검색'을 하나 더 만들고, 평가 프로그램에서 고를 수 있게 해 줘.
+내용: 질문을 gemini-embedding-001로 2048차원 좌표로 바꾼 뒤, 파이어스토어 faq 컬렉션에서 가장 가까운 3개를 찾아. 낱말 검색은 그대로 남겨 두고, 조건 이름 '뜻 검색 + 클로드'를 더해. 찾는 시간에는 질문을 좌표로 바꾸는 시간과 파이어스토어에서 찾는 시간을 합쳐서 적어. 질문을 좌표로 바꿀 때 쓴 토큰 수는 results.csv의 임베딩 토큰 칸에 적어.
+형식: ① 바뀐 파일 목록 ② '뜻 검색 + 클로드'로 질문 6번(돈은 언제 돌려받아요?)만 돌린 결과</pre></div>
+<div class="table-wrap"><table><tr><th>막히면</th><th>이렇게 해요</th></tr>
+<tr><td>차원이 맞지 않는다는 오류가 나요</td><td>"저장할 때와 찾을 때 모두 출력 차원이 2048인지 확인해 줘"라고 해요.</td></tr>
+<tr><td>인덱스가 없다는 오류가 나요</td><td>인덱스를 만드는 데 몇 분 걸릴 수 있어요. "벡터 인덱스 상태를 다시 확인해 줘"라고 해요.</td></tr>
+<tr><td>권한 오류가 나요</td><td>"지금 연결된 파이어베이스 프로젝트 이름을 보여 줘"라고 해서, 4주차 월요일에 쓴 내 프로젝트가 맞는지 봐요.</td></tr>
+</table></div>
+<p class="source-note">출처: Google Cloud <a href="https://docs.cloud.google.com/firestore/docs/vector-search" target="_blank" rel="noopener">Firestore vector search</a>(임베딩은 미리 만들어 저장, 벡터 인덱스를 만든 뒤 가장 가까운 K개 검색, 인덱스는 Firebase CLI로도 관리) · Google Cloud <a href="https://cloud.google.com/vertex-ai/generative-ai/docs/embeddings/get-text-embeddings" target="_blank" rel="noopener">Get text embeddings</a>(gemini-embedding-001은 3,072차원) · DEV Community <a href="https://dev.to/denisvalasek/set-up-rag-with-genkit-and-firebase-in-15-minutes-50b2" target="_blank" rel="noopener">Set up RAG with Genkit and Firebase</a>(파이어스토어를 벡터 창고로 쓸 때 2048차원으로 맞춤) (2026-11-20 확인)</p>
+</div>
+
+<div class="topic" id="s3-3"><h3><span class="stage">실습</span>3-3. 실험군 돌리고 판정하기</h3>
+<p><b>STEP 1. 실험군 돌리기</b></p>
+<p>우리 팀 측정 시간에 "평가 프로그램을 '뜻 검색 + 클로드' 조건으로 질문 15개 모두 돌려 줘"라고 해요.</p>
+<p><b>STEP 2. 붙여 넣고 채점하기</b></p>
+<p>새로 더해진 줄을 평가표 '2_결과 붙여넣기' 시트의 대조군 아래에 붙여 넣고, 2-3과 같은 기준으로 채점해요.</p>
+<p><b>STEP 3. 가설 판정하기</b></p>
+<p>'3_요약' 시트의 숫자를 보고 '1_가설' 시트의 실험 1 줄마다 판정(맞음 / 틀림)과 이유 한 줄을 적어요.</p>
+<div class="tip-box" role="note"><b>판정할 때</b><ul>
+<li>질문 15개는 적은 수라서, 오늘 결과는 방향을 보는 것이지 증명이 아니에요.</li>
+<li>가설이 틀려도 실패가 아니에요. "왜 예상과 달랐을까?"를 쓰는 것이 기획자의 일이에요.</li>
+<li>결과를 보고 판정 기준을 바꾸지 않아요.</li>
+</ul></div>
+<p class="ok-line"><b>이렇게 보이면 성공</b>'1_가설' 시트의 실험 1 다섯 줄에 판정과 이유가 모두 적혀 있어요.</p>
+</div>
+</section>
+
+<section class="section session" id="s4">
+<div class="session-head"><div class="eyebrow">SESSION 4 · 15:00–16:00</div><h2>실험 2: 답을 쓰는 AI 바꾸기</h2><p>이번에는 찾는 방법을 뜻 검색으로 두고, 답을 쓰는 AI만 클로드에서 제미나이로 바꿔요.</p>
+<div class="why-box"><b>왜 하나?</b>AI 모델을 바꾸자는 말이 나올 때, 정답률뿐 아니라 우리 규칙을 잘 지키는지도 봐야 해요.</div></div>
+
+<div class="topic" id="s4-1"><h3><span class="stage plan">기획자</span>4-1. 같은 FAQ로 두 AI 비교하기</h3>
+<p>찾기를 다시 돌리면 찾아온 FAQ가 조금 달라질 수 있어요. 그러면 차이가 찾기 때문인지 답하는 AI 때문인지 알 수 없어요. 그래서 실험 1에서 '뜻 검색 + 클로드'가 찾은 FAQ 3개를 그대로 제미나이에게 줘요. 두 모델은 같은 가격대로 골라요. 오늘 쓸 두 모델의 이름과 단가는 평가표 '3_요약' 시트 위쪽에 적어 둬요.</p>
+<div class="copybox"><div class="copyhead"><span>프롬프트 5 · 클로드 코드에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 평가 프로그램에 '뜻 검색 + 제미나이' 조건을 더해 줘.
+내용: FAQ를 새로 찾지 말고, results.csv에서 '뜻 검색 + 클로드'가 질문마다 찾은 FAQ 3개를 그대로 써. 지시문은 클로드에 보낸 것과 똑같이 쓰고, 모델은 [강사가 알려 준 제미나이 모델 이름], temperature는 0으로 해. 키는 .env의 GEMINI_API_KEY를 써. 토큰은 응답의 usageMetadata에서 읽어.
+형식: ① 바뀐 파일 목록 ② 질문 11번(매장에 직접 가서 사도 돼요?)만 돌린 결과</pre></div>
+</div>
+
+<div class="topic" id="s4-2"><h3><span class="stage">실습</span>4-2. 돌리고 판정하기</h3>
+<p><b>STEP 1. 돌리고 채점하기</b></p>
+<p>우리 팀 측정 시간에 '뜻 검색 + 제미나이' 조건으로 질문 15개를 돌리고, 평가표에 붙여 넣어 채점해요. '찾기 맞음' 칸은 실험 1과 같은 FAQ를 썼으니 같은 값이 나와요.</p>
+<p><b>STEP 2. 가설 판정하기</b></p>
+<p>'1_가설' 시트의 실험 2 줄마다 판정과 이유를 적어요. 속도와 비용은 어제 적은 내 예상과 비교해요.</p>
+<p class="ok-line"><b>이렇게 보이면 성공</b>'3_요약' 시트에 세 조건(낱말 검색 + 클로드, 뜻 검색 + 클로드, 뜻 검색 + 제미나이)의 숫자가 모두 채워져 있어요.</p>
+</div>
+</section>
+
+<section class="section session" id="s5">
+<div class="session-head"><div class="eyebrow">SESSION 5 · 16:10–16:40</div><h2>조합 2·3 시연 보기</h2><p>조합 2와 조합 3은 강사 화면으로 같은 질문 몇 개를 보내 보며 관찰해요. 이 둘은 창고, 임베딩, 연결 방식이 한꺼번에 달라서 원인을 하나로 짚는 실험이 아니라 사례 관찰이에요.</p></div>
+
+<div class="topic" id="s5-1"><h3><span class="stage">관찰</span>5-1. 조합 2: 창고가 둘일 때</h3>
+<p>파이어스토어의 FAQ를 MongoDB Atlas로 복사하고, MongoDB의 자동 임베딩으로 찾는 장면을 봐요. 파이어스토어에서 FAQ 하나를 고친 뒤 MongoDB 쪽 답이 어떻게 되는지도 봐요.</p>
+</div>
+
+<div class="topic" id="s5-2"><h3><span class="stage">관찰</span>5-2. 조합 3: 한 곳에서 다 할 때</h3>
+<p>Supabase 한 곳에서 FAQ를 저장하고, 안에 들어 있는 임베딩으로 찾는 장면을 봐요. 한국어 질문을 잘 찾는지 봐요.</p>
+<p class="blk k-tpl"><span>빈 템플릿</span>관찰 기록</p>
+<div class="table-wrap tpl"><table><tr><th>조합</th><th>관리할 계정·키 수</th><th>운영자가 더 신경 쓸 일 1가지</th></tr>
+<tr><td>조합 2</td><td></td><td></td></tr>
+<tr><td>조합 3</td><td></td><td></td></tr>
+</table></div>
+</div>
+</section>
+
+<section class="section session" id="s6">
+<div class="session-head"><div class="eyebrow">SESSION 6 · 16:50–17:40</div><h2>결과 정리와 PM 결론</h2><p>숫자가 모였어요. 숫자를 먼저 훑어보고, 우리 서비스에 무엇이 중요한지 정한 뒤 결론을 써요.</p>
+<div class="why-box"><b>왜 하나?</b>같은 결과표를 봐도 서비스마다 고르는 조합이 달라요. 무엇을 더 중요하게 볼지 정하는 것이 기획자의 일이에요.</div></div>
+
+<div class="topic" id="s6-1"><h3><span class="stage">실습</span>6-1. 결과 훑어보기</h3>
+<p>결론을 내기 전에 데이터를 먼저 훑어보는 일을 EDA라고 불러요. 미니 프로젝트에서도 데이터를 받으면 이 순서로 먼저 봐요.</p>
+<div class="copybox"><div class="copyhead"><span>프롬프트 6 · 클로드 채팅에 results.csv를 올리고 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 이 결과 파일을 결론 내기 전에 먼저 훑어봐 줘.
+내용: 조건별 줄 수와 오류 수, 빈칸이 있는 칸, 조건별 평균 찾는 시간·답하는 시간, 질문 종류(낱말이 같은 질문 / 바꿔 말한 질문 / FAQ에 없는 질문)별로 시간이 어떻게 다른지 봐 줘. 결론이나 추천은 쓰지 마.
+형식: ① 표 3개 ② 조건별 평균 시간 막대그래프 ③ 이상해 보이는 줄 목록</pre></div>
+<p class="ok-line"><b>이렇게 보이면 성공</b>이상해 보이는 줄(오류, 유난히 긴 시간)을 찾았고, 그 줄을 평가표에서 어떻게 다룰지(다시 재기 / 빼기) 정했어요.</p>
+</div>
+
+<div class="topic" id="s6-2"><h3><span class="stage plan">기획자</span>6-2. 가중치를 정하고 결론 쓰기</h3>
+<p>평가표 '4_가중치와 결론' 시트에서 네 기준의 가중치(합계 100)를 먼저 정해요. 그다음 조건마다 기준별 점수를 1~5점으로 매기면, 가중 점수가 계산돼요.</p>
+<p class="blk k-ex"><span>예시</span>이커머스 셀렉트마켓 고객센터 챗봇이라면</p>
+<p>틀린 환불 안내가 가장 위험하다고 보면 성능 50, 비용 20, 속도 20, 사용성 10으로 정할 수 있어요. 같은 결과를 봐도 가중치가 다르면 결론이 달라져요.</p>
+<p class="blk k-tpl"><span>빈 템플릿</span>결론 쓰기</p>
+<div class="copybox"><div class="copyhead"><span>결론 양식 · 평가표 '4_가중치와 결론' 시트에 적어요</span><button type="button">복사</button></div><pre>[실험 1 / 실험 2]
+가설: (어제 적은 문장 그대로)
+결과: (숫자)
+판정: 맞음 / 틀림
+이유 한 줄: 왜 이런 결과가 나왔을까?
+우리 서비스라면: 어떤 조합을 고를까? 이유 3줄(비용, 회사에 기대는 정도, 관리할 곳의 수)</pre></div>
+</div>
+
+<div class="topic" id="s6-3"><h3><span class="stage dev">개발자·구현</span>6-3. 깃헙에 올려 보관하기</h3>
+<div class="copybox"><div class="copyhead"><span>프롬프트 7 · 클로드 코드에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 오늘 바꾼 상담 챗봇과 실험 결과를 내 깃헙 저장소에 올려 줘.
+내용: 평가 프로그램, data/questions.csv, data/results.csv, 바뀐 챗봇 코드를 올려. .env와 키가 들어 있는 파일은 절대 올리지 마. 올리기 전에 올라갈 파일 목록을 보여 주고, 키가 들어 있지 않은지 검사해 줘. 커밋 메시지는 'feat: RAG 조합 비교 실험(낱말 검색·뜻 검색·제미나이 답변)'으로 해.
+형식: ① 올라간 파일 목록 ② 저장소 주소</pre></div>
+<p class="ok-line"><b>이렇게 보이면 성공</b>깃헙 저장소에 results.csv가 보이고, .env는 보이지 않아요.</p>
+</div>
+
+<div class="topic" id="s6-4"><h3><span class="stage">결과</span>6-4. 결과</h3>
+<div class="result-box"><b>결과물</b> results.csv(세 조건 × 15문항) + 채점과 판정을 마친 평가표 + PM 결론 + 깃헙 저장소 주소</div>
+</div>
+</section>
+
+<section class="section session" id="wrap">
+<div class="session-head"><div class="eyebrow">정리 · 17:40–18:00</div><h2>오늘 정리와 미니 프로젝트 안내</h2></div>
+<div class="tip-box" role="note"><b>오늘의 규칙</b><ul>
+<li>비교할 때는 한 번에 하나만 바꾼다</li>
+<li>재는 일은 프로그램에, 맞았는지 판단은 사람이 한다</li>
+<li>비용은 1만 건 단위로 늘려서 비교한다</li>
+<li>좋은 조합은 기술이 아니라 우리 서비스의 가중치가 정한다</li>
+</ul></div>
+<div class="notice"><b>오늘의 결과물</b><br/>results.csv + 채점과 판정을 마친 평가표 + PM 결론 + 깃헙 저장소 주소</div>
+<div class="notice"><b>다음 수업: 미니 프로젝트(1)</b><br/>이틀 동안 ① 데이터 전처리 ② 웹 크롤링으로 데이터 모으기와 EDA 시각화 ③ 실무에 쓸 AI 기능 구현(LLM·에이전트·API)을 해요. 오늘 6-1에서 결과를 훑어본 순서가 EDA의 첫걸음이에요.</div>
+<div class="notice"><b>과제</b><br/>미니 프로젝트 주제를 한 줄로 쓰고, 그 주제에 어떤 RAG 조합을 쓸지 이유 3줄과 함께 적어 와요.</div>
+</section>
+
+</main>
+</div>
+<!-- fab-menu v1 -->
+<nav id="fabMenu" aria-label="빠른 메뉴">
+<div id="fabItems" hidden>
+<button id="slideBtn" class="fab-item" type="button">▶ 슬라이드로 보기</button>
+<button id="toTopBtn" class="fab-item" type="button">↑ 최상단으로</button>
+</div>
+<button id="fabMain" type="button" aria-expanded="false" aria-controls="fabItems" aria-label="빠른 메뉴 열기"><span aria-hidden="true">＋</span></button>
+</nav>
+<div hidden="" id="deck">
+<div id="viewport"><div id="stage">
+<div id="master"><span>AI 프로덕트 매니저 5주차 · DAY 2 RAG 조합 비교 실험</span></div>
+<div id="mbar"><i id="prog"></i></div>
+<div id="slide"></div>
+<div id="pager"><button aria-label="이전" id="prev" type="button">◀</button><span id="pg"></span><button aria-label="다음" id="next" type="button">▶</button></div>
+</div></div>
+<div id="bar"><button id="exit" type="button">✕ 닫기 (Esc)</button></div>
+</div>
+<script type="text/javascript">
+(function(){
+  var K={'요청':'','내용':' k2','형식':' k3'};
+  window.fmtPre=function(pr){
+    var t=pr.textContent;
+    if(!/^요청: /.test(t))return;
+    var lines=t.split('\n');pr.textContent='';pr.className='fmt';
+    lines.forEach(function(l,i){
+      var m=l.match(/^(요청|내용|형식): (.*)$/),d=document.createElement('div');
+      if(m){d.className='pl'+K[m[1]];var b=document.createElement('b');b.className='pk';b.textContent=m[1]+': ';var sp=document.createElement('span');sp.className='pt';sp.textContent=m[2];d.appendChild(b);d.appendChild(sp);}
+      else{d.className='pl c';var sp2=document.createElement('span');sp2.className='pt';sp2.textContent=l;d.appendChild(sp2);}
+      pr.appendChild(d);if(i<lines.length-1)pr.appendChild(document.createTextNode('\n'));
+    });
+  };
+  document.querySelectorAll('.copybox pre').forEach(window.fmtPre);
+})();
+</script>
+<script type="text/javascript">
+(function(){
+  var re=/^(STEP|준비|규칙서대로|분석 [1-4]|프롬프트 [AB]|프롬프트 쓰기|실습|방법 [A-C]|워밍업|[①-⑤] |\(선택\)|완성한|결과를 보고|버전|두 결과)/;
+  var nav=document.querySelector('aside nav');
+  document.querySelectorAll('main .topic').forEach(function(t){
+    var parent=nav.querySelector('a.l3[href="#'+t.id+'"]'),last=parent,n=0;
+    if(!parent)return;
+    t.querySelectorAll(':scope > p').forEach(function(p){
+      var b=p.firstElementChild;
+      if(!b||b.tagName!=='B'||p.children.length!==1||p.textContent.trim()!==b.textContent.trim()||!re.test(b.textContent.trim()))return;
+      p.classList.add('dh');p.id='d-'+t.id+'-'+(++n);
+      var a=document.createElement('a');a.className='l4';a.href='#'+p.id;a.setAttribute('data-p',t.id);
+      a.textContent=b.textContent.replace(/[:：]\s*.*$/,'').trim();
+      last.parentNode.insertBefore(a,last.nextSibling);last=a;
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+var main=document.querySelector('main'),deck=document.getElementById('deck'),box=document.getElementById('slide'),pgEl=document.getElementById('pg'),prog=document.getElementById('prog'),pages=[],i=0;
+function kids(el,skip){return Array.prototype.filter.call(el.children,function(c){return !skip(c);});}
+function logical(){
+  var out=[],hero=main.querySelector('.hero');
+  if(hero)out.push({sect:'표지',title:'',n:Array.prototype.slice.call(hero.children)});
+  Array.prototype.forEach.call(main.querySelectorAll(':scope > .section'),function(sec){
+    var h2=sec.querySelector('h2'),title=h2.textContent,head=sec.querySelector('.session-head'),n=[];
+    if(head)n=Array.prototype.slice.call(head.querySelectorAll('p'));
+    n=n.concat(kids(sec,function(c){return c.classList.contains('section-label')||c.tagName==='H2'||c.classList.contains('session-head')||c.classList.contains('topic');}));
+    if(n.length)out.push({sect:title,title:title,n:n});
+    Array.prototype.forEach.call(sec.querySelectorAll(':scope > .topic'),function(t){
+      var h3=t.querySelector('h3');
+      out.push({sect:title,title:h3.textContent,n:kids(t,function(c){return c===h3;})});
+    });
+  });
+  return out;
+}
+function over(){return box.scrollHeight>box.clientHeight+1;}
+function build(){
+  pages=[];var L=logical(),count,sl;L.forEach(function(x){var out=[];x.n.forEach(function(el){if(el.tagName==="DETAILS"){var t=el.querySelector(".summary-title");var h=document.createElement("p");h.innerHTML="<b>"+(t?t.textContent:"")+"</b>";out.push(h);Array.prototype.forEach.call(el.children,function(c){if(c.tagName!=="SUMMARY")out.push(c);});}else out.push(el);});x.n=out;});
+  function head(cont){
+    box.innerHTML='';
+    if(sl.title&&sl.sect&&sl.sect!==sl.title){var eb=document.createElement('div');eb.className='eb';eb.textContent=sl.sect;box.appendChild(eb);}
+    if(sl.title){var h=document.createElement('h3');h.className='st';h.textContent=sl.title;
+      if(cont){var c=document.createElement('span');c.className='cont';c.textContent='(이어서)';h.appendChild(c);}
+      box.appendChild(h);}
+    count=0;
+  }
+  function flush(){pages.push({html:box.innerHTML,sect:sl.sect});}
+  function addSplit(items,shellFn){
+    var shell=shellFn(),n=0;box.appendChild(shell.root);
+    items.forEach(function(it){
+      shell.add(it);n++;
+      if(over()&&(n>1||count>0)){
+        shell.remove();n--;
+        if(n===0)box.removeChild(shell.root);
+        flush();head(true);shell=shellFn();n=0;box.appendChild(shell.root);shell.add(it);n=1;
+      }
+    });
+    count++;
+  }
+  L.forEach(function(s){
+    sl=s;head(false);
+    s.n.forEach(function(el){
+      var tbl=el.classList&&el.classList.contains('table-wrap')&&el.querySelector('table');
+      var rows=tbl?Array.prototype.slice.call(tbl.rows):null;
+      var hasHead=rows&&rows.length>3&&Array.prototype.every.call(rows[0].cells,function(c){return c.tagName==='TH';})
+        &&!rows.some(function(r){return Array.prototype.some.call(r.cells,function(c){return c.rowSpan>1;});});
+      var listy=(el.tagName==='UL'||el.tagName==='OL'||(el.classList&&(el.classList.contains('procedure')||el.classList.contains('resource-list'))))&&el.children.length>1;
+      if(el.classList&&el.classList.contains('dh')&&count>1&&box.scrollHeight>box.clientHeight*0.5){flush();head(false);}
+      var c=el.cloneNode(true);box.appendChild(c);
+      if(over()&&count>0){var pv=c.previousElementSibling,lead=count>1&&pv&&pv.tagName==='P'&&pv.children.length===1&&pv.firstElementChild.tagName==='B'&&pv.textContent.trim()===pv.firstElementChild.textContent.trim();
+        box.removeChild(c);if(lead)box.removeChild(pv);flush();head(true);if(lead){box.appendChild(pv);count++;}box.appendChild(c);}
+      if(over()){
+        if(hasHead){
+          box.removeChild(c);
+          addSplit(rows.slice(1),function(){
+            var w=el.cloneNode(false),t=tbl.cloneNode(false),b=document.createElement('tbody');
+            t.appendChild(b);b.appendChild(rows[0].cloneNode(true));w.appendChild(t);
+            return {root:w,add:function(r){b.appendChild(r.cloneNode(true));},remove:function(){b.removeChild(b.lastChild);}};
+          });
+          return;
+        }
+        if(el.classList&&el.classList.contains('copybox')){
+          box.removeChild(c);
+          var lines=el.querySelector('pre').textContent.split('\n');
+          addSplit(lines,function(){
+            var w=el.cloneNode(false),hd=el.querySelector('.copyhead').cloneNode(true),pr=document.createElement('pre'),txt=[];
+            w.appendChild(hd);w.appendChild(pr);
+            return {root:w,add:function(l){txt.push(l);pr.className='';pr.textContent=txt.join('\n');window.fmtPre(pr);},remove:function(){txt.pop();pr.className='';pr.textContent=txt.join('\n');window.fmtPre(pr);}};
+          });
+          return;
+        }
+        if(listy){
+          box.removeChild(c);
+          addSplit(Array.prototype.slice.call(el.children),function(){
+            var u=el.cloneNode(false);
+            return {root:u,add:function(li){u.appendChild(li.cloneNode(true));},remove:function(){u.removeChild(u.lastChild);}};
+          });
+          return;
+        }
+      }
+      count++;
+    });
+    flush();
+  });
+  var o='<h3 class="st">전체 목차</h3><div class="outline">';
+  Array.prototype.forEach.call(document.querySelectorAll('aside nav .grp'),function(g){
+    o+='<div class="og"><b>'+g.querySelector('.grp-label').textContent+(g.querySelector('.l2')&&g.querySelector('.grp-label').textContent.indexOf('세션')===0?' · '+g.querySelector('.l2').textContent:'')+'</b>';
+    var guide=g.querySelector('.grp-label').textContent==='교육 안내';
+    Array.prototype.forEach.call(g.querySelectorAll(guide?'a.l2,a.l3':'a.l3'),function(a){o+='<span>'+a.textContent+'</span>';});
+    o+='</div>';
+  });
+  pages.splice(1,0,{html:o+'</div>',sect:'목차'});
+}
+function show(n){
+  i=Math.max(0,Math.min(pages.length-1,n));var p=pages[i];
+  box.innerHTML=p.html;box.scrollTop=0;
+  pgEl.textContent=(i+1)+' / '+pages.length;prog.style.width=((i+1)/pages.length*100)+'%';
+}
+var stage=document.getElementById('stage'),vp=document.getElementById('viewport');
+function fit(){var k=Math.min(vp.clientWidth/1280,vp.clientHeight/720);stage.style.transform='translate(-50%,-50%) scale('+k+')';}
+function open(){deck.hidden=false;document.body.style.overflow='hidden';fit();var w=[].slice.call(main.querySelectorAll('img')).map(function(m){if(m.complete)return 0;m.loading='eager';return new Promise(function(r){m.onload=m.onerror=r;setTimeout(r,8000);});});Promise.all(w).then(function(){build();show(0);});}
+function close(){deck.hidden=true;document.body.style.overflow='';}
+window.addEventListener('resize',function(){if(!deck.hidden)fit();});
+document.getElementById('slideBtn').onclick=open;
+document.getElementById('exit').onclick=close;
+document.getElementById('prev').onclick=function(){show(i-1)};
+document.getElementById('next').onclick=function(){show(i+1)};
+document.addEventListener('keydown',function(e){
+  if(deck.hidden)return;
+  if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ')show(i+1);
+  else if(e.key==='ArrowLeft'||e.key==='PageUp')show(i-1);
+  else if(e.key==='Escape')close();
+});
+document.addEventListener('click',function(e){
+  var b=e.target.closest&&e.target.closest('.copyhead button');if(!b)return;
+  var pre=b.closest('.copybox').querySelector('pre');
+  var done=function(){var t=b.textContent;b.textContent='복사됨';setTimeout(function(){b.textContent=t;},1200);};
+  if(navigator.clipboard)navigator.clipboard.writeText(pre.classList.contains('fmt')?pre.textContent:pre.innerText).then(done,done);else done();
+});
+})();
+</script>
+<script type="text/javascript">
+(function(){
+  var links=[].slice.call(document.querySelectorAll('aside nav a[href^="#"]'));
+  var targets=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));});
+  function update(){
+    var y=window.scrollY+120, cur=-1;
+    targets.forEach(function(el,i){ if(el && el.getBoundingClientRect().top+window.scrollY<=y) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('active', i===cur); });
+    var cp=null;
+    if(cur>=0){ var ca=links[cur]; cp=ca.classList.contains('l4')?ca.getAttribute('data-p'):(ca.getAttribute('href').slice(1)); }
+    links.forEach(function(a){ if(a.classList.contains('l4')) a.classList.toggle('show', a.getAttribute('data-p')===cp); });
+    if(cur>=0){ var a=links[cur], box=a.closest('aside'), r=a.getBoundingClientRect();
+      if(r.top<120||r.bottom>window.innerHeight-20) box.scrollTop+=r.top-window.innerHeight/2; }
+  }
+  window.addEventListener('scroll',update,{passive:true}); update();
+})();
+</script>
+<script type="text/javascript">
+(function(){
+  var btn=document.querySelector('.nav-toggle'), label=btn.querySelector('span'), body=document.body;
+  var mq=window.matchMedia('(max-width: 1020px)');
+  function isOpen(){ return mq.matches ? body.classList.contains('nav-open') : !body.classList.contains('nav-hidden'); }
+  function sync(){ var o=isOpen(); btn.setAttribute('aria-expanded',o); label.textContent=o?'목차 숨기기':'목차 보기'; }
+  try{ if(localStorage.getItem('navHidden')==='1') body.classList.add('nav-hidden'); }catch(e){}
+  btn.addEventListener('click',function(){
+    if(mq.matches){ body.classList.toggle('nav-open'); }
+    else{ var h=body.classList.toggle('nav-hidden'); try{ localStorage.setItem('navHidden',h?'1':'0'); }catch(e){} }
+    sync();
+  });
+  document.querySelectorAll('aside nav a').forEach(function(a){ a.addEventListener('click',function(){ if(mq.matches){ body.classList.remove('nav-open'); sync(); } }); });
+  if(mq.addEventListener) mq.addEventListener('change',sync);
+  sync();
+})();
+</script>
+<script>/* fab-menu v1 */
+(function(){
+  var main=document.getElementById('fabMain'),items=document.getElementById('fabItems'),top=document.getElementById('toTopBtn');
+  if(!main||!items)return;
+  function set(open){items.hidden=!open;main.setAttribute('aria-expanded',open?'true':'false');main.setAttribute('aria-label',open?'빠른 메뉴 닫기':'빠른 메뉴 열기');}
+  main.addEventListener('click',function(){set(items.hidden);});
+  if(top)top.addEventListener('click',function(){set(false);window.scrollTo({top:0,behavior:'smooth'});});
+  var sb=document.getElementById('slideBtn');
+  if(sb)sb.addEventListener('click',function(){set(false);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!items.hidden){set(false);main.focus();}});
+  document.addEventListener('click',function(e){if(!items.hidden&&!document.getElementById('fabMenu').contains(e.target))set(false);});
+})();
+</script>
+</body>
+</html>
