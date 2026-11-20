@@ -294,6 +294,7 @@ aside nav a.active{border-left-color:var(--blue)}
 #fabMain[aria-expanded="true"] span{transform:rotate(45deg)}
 @media print{#fabMenu{display:none!important}}
 </style>
+<style>.tip-box{margin:14px 0;padding:12px 16px;border:1px solid #cfe8d8;border-left:4px solid #16a36b;background:#f3fbf6;border-radius:0 10px 10px 0}.tip-box>b{display:inline-block;font-size:12px;color:#fff;background:#16a36b;border-radius:6px;padding:1px 8px;margin-bottom:6px}.tip-box p{margin:4px 0}.tip-box ul,.tip-box ol{margin:4px 0;padding-left:20px}.tip-box li{margin:3px 0}</style>
 </head>
 <body>
 <button aria-controls="side-nav" aria-expanded="true" class="nav-toggle" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" viewbox="0 0 16 16"><path d="M2 4h12M2 8h12M2 12h12"></path></svg><span>목차 숨기기</span></button>
@@ -417,8 +418,6 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td></td><td></td><td></td><td></td></tr>
 <tr><td></td><td></td><td></td><td></td></tr>
 </table></div>
-<p class="blk k-chk"><span>확인할 점</span></p>
-<ul class="checklist"><li>링크 3개가 모두 열리는지 봤다</li><li>열린 화면의 제목·저자가 표와 같은지 봤다</li><li>클로드가 링크를 주지 않고 "직접 검색해 보라"고 했다면, 그것도 기록했다. 모르는 것을 지어내지 않은 답이에요</li></ul>
 <p>링크가 열리지 않거나 다른 책이 열렸다면, 오늘 만드는 화면에서 같은 일이 생길 수 있다는 뜻이에요. 모두 맞았더라도 다음 사용자에게 또 맞는다는 보장은 없어요. 그래서 6세션(선택)에서 AI에게 실제 책 목록을 주고 그 안에서만 고르게 하는 방법을 기획해요.</p>
 </div>
 
@@ -463,8 +462,6 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td>처리</td><td></td></tr>
 <tr><td>출력</td><td></td></tr>
 </table></div>
-<p class="blk k-chk"><span>확인할 점</span></p>
-<ul class="checklist"><li>감정 키워드를 넣으면 책 3권이 글로 나온다</li><li>입력·처리·출력 칸을 모두 내 프로토타입의 말로 채웠다</li></ul>
 </div>
 
 <div class="topic" id="s2-3"><h3><span class="stage">실습</span>2-3. 입력과 출력을 바꿔 다른 화면 만들기</h3>
@@ -473,8 +470,6 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="copybox"><div class="copyhead"><span>프롬프트 3 · 같은 대화에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 지금 프로토타입의 입력과 출력을 바꿔서 다른 UXUI 프로토타입으로 만들어 줘.
 내용: 입력은 [바꿀 입력 방법, 예: 감정 버튼 9개 중 고르기]로, 출력은 [바꿀 출력 모양, 예: 제목·저자·추천 이유가 있는 카드 3장]으로 바꿔 줘. 추천하는 방법은 바꾸지 마.
 형식: 바꾼 점을 세 줄로 알려 줘.</pre></div>
-<p class="blk k-chk"><span>확인할 점</span></p>
-<ul class="checklist"><li>2-2의 표에서 입력·출력 칸만 바뀌고, 처리 칸은 그대로다</li></ul>
 </div>
 
 <div class="topic" id="s2-4"><h3><span class="stage">실습</span>2-4. 규칙으로 고르는 탭과 AI가 고르는 탭 견주기</h3>
@@ -493,8 +488,6 @@ aside nav a.active{border-left-color:var(--blue)}
 <p class="blk k-pr"><span>프롬프트</span></p>
 <div class="copybox"><div class="copyhead"><span>프롬프트 5 · 수업에서 쓴 프롬프트 · 같은 대화에 붙여 넣으세요</span><button type="button">복사</button></div><pre>기존의 AI로 붙은 부분이 없다면, AI붙인것의 차이를 알고 싶어. AI붙인 버전을 만들고, 탭 1과 탭2로 분리해줘.</pre></div>
 <p>탭 2에서 처음 추천을 받을 때 클로드를 써도 되는지 묻는 창이 뜨면 허락해요.</p>
-<p class="blk k-chk"><span>확인할 점</span></p>
-<ul class="checklist"><li>탭 1(규칙)에 "좀 지쳤어요"처럼 단어장에 없을 법한 문장을 넣으면 못 찾는다고 나온다</li><li>탭 2(AI)에 같은 문장을 넣으면 뜻을 읽고 책을 추천한다</li></ul>
 <p class="source-note">강사 예시: <a href="https://claude.ai/artifact/7ia6Xe8rWrrPQMBuHc5fm4" target="_blank" rel="noopener">탭 1·탭 2 감정 책 추천 아티팩트</a> (열려면 클로드 로그인이 필요해요)</p>
 </div>
 
@@ -510,8 +503,6 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td><b>클로드를 부르는 코드</b></td><td>사용자가 넣은 감정을 클로드에게 보내고 답을 받아요.</td></tr>
 <tr><td><b>지시문(프롬프트)</b></td><td>클로드에게 "이런 역할로, 이런 모양으로 답해"라고 알려 주는 문장이에요. 5세션에서 이 문장을 고쳐요.</td></tr>
 </table></div>
-<p class="blk k-chk"><span>확인할 점</span></p>
-<ul class="checklist"><li>탭 2 코드 안에서 지시문 문장을 찾아 표시했다</li></ul>
 </div>
 
 <div class="topic" id="s2-6"><h3><span class="stage plan">기획자</span>2-6. 개발자에게 줄 요구사항 쓰기</h3>
@@ -563,8 +554,6 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td>정상</td><td></td><td></td></tr>
 <tr><td>예외·실패</td><td></td><td></td></tr>
 </table></div>
-<p class="blk k-chk"><span>확인할 점</span></p>
-<ul class="checklist"><li>표의 글이 왼쪽 정렬이고, 개선 사항마다 번호(1, 2, 3)가 붙어 있다</li><li>원인 분석처럼 개발에 관한 내용이 아니라, 기획자 관점의 문제와 기대 결과만 있다</li><li>예외 시나리오가 한 줄 이상 있다</li></ul>
 </div>
 
 <div class="topic" id="s3-2"><h3><span class="stage dev">개발자·구현</span>3-2. 개선 요청대로 프로토타입 고치기</h3>
@@ -573,8 +562,6 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="copybox"><div class="copyhead"><span>프롬프트 8 · 같은 대화에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 아래 개선 요청 표대로 탭 2의 프로토타입을 고쳐 줘.
 내용: 개선 요청은 [3-1에서 만든 표 두 개 붙여 넣기]야. 표에 없는 기능은 넣지 마. 실제 사용자가 보는 화면이라고 생각하고, 테스트용 표시나 버튼은 화면에 두지 마.
 형식: 번호마다 무엇을 고쳤는지 한 줄씩 알려 줘.</pre></div>
-<p class="blk k-chk"><span>확인할 점</span></p>
-<ul class="checklist"><li>고친 내용이 3-1 표의 번호와 하나씩 맞는다</li><li>요청하지 않은 기능이나 테스트용 버튼이 화면에 붙지 않았다</li></ul>
 </div>
 
 <div class="topic" id="s3-3"><h3><span class="stage dev">개발자·구현</span>3-3. AI에게 테스트를 시키고 보고서 받기</h3>
@@ -599,8 +586,6 @@ aside nav a.active{border-left-color:var(--blue)}
 </table></div>
 <p><b>STEP 2. 유저플로우를 화면 캡처로 정리하기</b></p>
 <p>사용자가 감정을 넣고 결과를 받기까지의 화면을 순서대로 직접 캡처해요. 캡처마다 사용자가 하는 일을 한 줄씩 적어요. 디자인 중심으로 화면(UXUI)이 어색한 곳을 찾기 좋아요.</p>
-<p class="blk k-chk"><span>확인할 점</span></p>
-<ul class="checklist"><li>표에 '판단'과 '확인한 것'이 모두 적혀 있다</li><li>개발 테스트와 기획자 확인이 섞이지 않고 나뉘어 있다</li></ul>
 </div>
 
 <div class="topic" id="s3-5"><h3><span class="stage dev">개발자·구현</span>3-5. 개선된 버전 만들기</h3>
@@ -633,8 +618,6 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="copybox"><div class="copyhead"><span>프롬프트 12 · 같은 대화에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 개선 전(AS-IS)과 개선 후(TO-BE)의 흐름을 도식으로 나눠 그려 줘.
 내용: 사용자가 감정을 넣고 책 추천을 받기까지의 흐름이야. 흐름 안에서 AI가 처리하는 단계는 다른 색으로 구분해 줘.
 형식: 아티팩트 한 장에 AS-IS와 TO-BE를 나란히.</pre></div>
-<p class="blk k-chk"><span>확인할 점</span></p>
-<ul class="checklist"><li>AS-IS와 TO-BE가 나뉘어 있다</li><li>AI가 처리하는 단계가 따로 표시돼 있다</li></ul>
 </div>
 
 <div class="topic" id="s3-8"><h3><span class="stage">결과</span>3-8. 결과</h3>
@@ -688,8 +671,6 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td><b>지출</b></td><td>[Cost] 화면 (<a href="https://platform.claude.com/cost" target="_blank" rel="noopener">platform.claude.com/cost</a>). 워크스페이스·모델·달별로 볼 수 있어요</td><td>[Billing] 화면에서 잔액과 결제를 봐요 (무료 등급은 결제 없음)</td></tr>
 <tr><td><b>한도 걸기</b></td><td>[Workspaces]에서 워크스페이스를 고르고 [Spend limits] → [Change limit]로 월 지출 한도를 걸어요. 기본 워크스페이스에는 걸 수 없어요</td><td>[Spend] 화면의 [Monthly spend cap] → [Edit spend cap] (결제를 연결한 프로젝트)</td></tr>
 </table></div>
-<p class="blk k-chk"><span>확인할 점</span></p>
-<ul class="checklist"><li>내 계정에서 API 키 메뉴가 보이는지 확인했다</li><li>사용량·지출·한도 메뉴가 어디 있는지 찾았다</li></ul>
 <div class="notice"><b>안 되면 강사를 불러요</b><br/>화면이 교안과 다르거나 막히면 혼자 오래 붙잡지 말고 강사를 불러요.</div>
 <p class="source-note">출처: Claude 공식 문서 <a href="https://platform.claude.com/docs/en/get-api-key" target="_blank" rel="noopener">Get your Claude API key</a> · Claude 고객센터 <a href="https://support.claude.com/en/articles/9534590-cost-and-usage-reporting-in-the-claude-console" target="_blank" rel="noopener">Cost and usage reporting in the Claude Console</a> · <a href="https://support.claude.com/en/articles/9796807-create-and-manage-workspaces-in-the-claude-console" target="_blank" rel="noopener">Create and manage Workspaces</a> · <a href="https://support.claude.com/en/articles/8977456-how-do-i-pay-for-my-claude-api-usage" target="_blank" rel="noopener">How do I pay for my Claude API usage?</a> · <a href="https://support.claude.com/en/articles/17154008-monthly-api-credits-for-max-ultra-and-team-plans" target="_blank" rel="noopener">Monthly API credits for Max, Ultra, and Team plans</a> · <a href="https://support.claude.com/en/articles/9767949-api-key-best-practices-keep-your-keys-safe-and-secure" target="_blank" rel="noopener">API key best practices</a> · Google AI for Developers <a href="https://ai.google.dev/gemini-api/docs/billing" target="_blank" rel="noopener">Billing</a>(2026-09-28 갱신) · <a href="https://ai.google.dev/gemini-api/docs/rate-limits" target="_blank" rel="noopener">Rate limits</a>(2026-10-28 갱신) (2026.11.11 확인)</p>
 </div>
@@ -720,8 +701,6 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td>그대로 둘 것</td><td></td></tr>
 <tr><td>완료 기준</td><td></td></tr>
 </table></div>
-<p class="blk k-chk"><span>확인할 점</span></p>
-<ul class="checklist"><li>"키는 Secrets에만 두고 화면 코드에는 두지 않는다"가 기획서에 들어 있다</li><li>실패할 때 사용자에게 보여 줄 문구가 있다</li></ul>
 </div>
 
 <div class="topic" id="s4-4"><h3><span class="stage dev">개발자·구현</span>4-4. AI 스튜디오로 코드를 옮기고 내장 API 연결하기</h3>
@@ -775,8 +754,6 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td>실패 문구가 코드에 들어 있다</td><td></td><td></td></tr>
 <tr><td>사용량 화면에 오늘 호출이 쌓였다</td><td></td><td></td></tr>
 </table></div>
-<p class="blk k-chk"><span>확인할 점</span></p>
-<ul class="checklist"><li>[책 추천받기]를 누를 때마다 사용량을 써요. 감정마다 한 번씩만 눌렀다</li><li>2·3세션 아티팩트와 같은 감정으로 눌러, 답이 비슷한지 견줘 봤다</li></ul>
 <p class="blk k-chk"><span>막히면</span></p>
 <div class="table-wrap"><table><tr><th>이렇게 보이면</th><th>이렇게 해요</th></tr>
 <tr><td>미리보기나 배포된 앱에 이상한 화면·오류가 나와요</td><td>그 화면을 캡처해 AI 스튜디오 대화창에 올리고 "이 화면이 왜 나오는지 알려 주고 고쳐 줘. 다른 기능은 바꾸지 마."라고 물어요.</td></tr>
@@ -800,8 +777,6 @@ aside nav a.active{border-left-color:var(--blue)}
 </table></div>
 <p><b>STEP 2. 테스트 후기 쓰기</b></p>
 <p>비교표 아래에 "어떤 감정에서 무엇이 달랐는지"를 두세 줄로 적어요. 화면이 예뻐졌다는 말보다, 같은 입력에 어떤 답이 나왔는지가 판단의 근거예요.</p>
-<p class="blk k-chk"><span>확인할 점</span></p>
-<ul class="checklist"><li>두 버전에 같은 감정을 넣어 견줬다</li><li>후기에 디자인이 아니라 테스트 결과의 차이가 적혀 있다</li></ul>
 </div>
 
 <div class="topic" id="s4-7"><h3><span class="stage">결과</span>4-7. 결과</h3>
@@ -886,8 +861,6 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td>AI가 하지 않을 일</td><td></td></tr>
 <tr><td>완료 기준</td><td></td></tr>
 </table></div>
-<p class="blk k-chk"><span>확인할 점</span></p>
-<ul class="checklist"><li>완료 기준이 "좋아진다"가 아니라, 눌러 보고 맞다·아니다로 판단할 수 있는 문장이다</li><li>좋은 답 예시의 책은 내가 직접 검색해서 있는 책으로 골랐다</li></ul>
 </div>
 
 <div class="topic" id="s5-3"><h3><span class="stage dev">개발자·구현</span>5-3. 기획서대로 지시문 바꾸기</h3>
@@ -901,8 +874,6 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="copybox"><div class="copyhead"><span>프롬프트 16 · 2세션 대화에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 아래 추천 프롬프트 기획서대로 탭 2의 지시문을 세 가지 버전으로 만들어 탭 A·B·C로 나눠 줘. 다른 화면과 기능은 바꾸지 마.
 내용: A는 지금 지시문 그대로, B는 A에 기획서의 역할과 받을 답의 모양을 더한 지시문, C는 B에 기획서의 좋은 답 예시를 더한 지시문이야. 기획서의 '받을 답의 모양' 표는 JSON으로 바꿔 코드에 넣어 줘. 기획서에 없는 기능은 넣지 마. 기획서는 [5-2에서 쓴 내 추천 프롬프트 기획서 붙여 넣기]야.
 형식: 탭마다 바꾼 지시문 전문을 대화에 보여 줘.</pre></div>
-<p class="blk k-chk"><span>확인할 점</span></p>
-<ul class="checklist"><li>탭 A·B·C가 있고, 대화에 지시문 세 개가 그대로 보인다</li><li>요청하지 않은 기능이 붙지 않았다</li></ul>
 </div>
 
 <div class="topic" id="s5-4"><h3><span class="stage check">기획자·확인</span>5-4. 기획서와 결과 견주기</h3>
@@ -916,8 +887,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td>검색해서 찾을 수 없는 책 수 (9권 중)</td><td></td><td></td><td></td></tr>
 <tr><td>[내 기획서의 완료 기준]</td><td></td><td></td><td></td></tr>
 </table></div>
-<p class="blk k-chk"><span>확인할 점</span></p>
-<ul class="checklist"><li>B·C는 A보다 답의 모양이 고르다</li><li>C까지 고쳐도 검색해서 찾을 수 없는 책이 나올 수 있다. 프롬프트로는 AI가 기억하는 책 밖으로 나갈 수 없기 때문이에요</li></ul>
+<div class="tip-box" role="note"><b>TIP</b><p>지시문을 아무리 고쳐도 검색해서 찾을 수 없는 책이 나올 수 있어요. 프롬프트로는 AI가 기억하는 책 밖으로 나갈 수 없기 때문이에요.</p></div>
 <p class="blk k-chk"><span>이렇게 하면 결과가 틀어져요</span></p>
 <p>"꼭 3권 골라 줘"라고 하면, AI는 확실하지 않아도 빈칸을 채우려고 책을 지어낼 수 있어요. 개수보다 진짜인 것이 중요하면 "확실한 만큼만 답해도 돼"라고 허락해요.</p>
 </div>
@@ -979,8 +949,6 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td>예외 시나리오</td><td></td></tr>
 <tr><td>완료 기준</td><td></td></tr>
 </table></div>
-<p class="blk k-chk"><span>확인할 점</span></p>
-<ul class="checklist"><li>"링크는 목록의 상세주소를 쓴다"가 기획서에 들어 있다</li><li>AI가 할 일과 코드가 할 일이 나뉘어 있다</li></ul>
 </div>
 
 <div class="topic" id="s6-3"><h3><span class="stage dev">개발자·구현</span>6-3. 기획서대로 목록을 붙이기</h3>
@@ -989,8 +957,6 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="copybox"><div class="copyhead"><span>프롬프트 17 · books_clean.csv를 올린 뒤 5세션 대화에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 첨부한 books_clean.csv와 아래 근거 추천 기획서로 탭 D를 새로 만들어 줘. 탭 A·B·C와 다른 기능은 바꾸지 마.
 내용: 탭 D의 지시문은 탭 C의 지시문에 기획서의 규칙을 더해 만들어 줘. 기획서의 '받을 답의 모양' 표는 JSON으로 바꿔 코드에 넣어 줘. 기획서에 없는 기능은 넣지 마. 기획서는 [6-2에서 쓴 내 근거 추천 기획서 붙여 넣기]야.
 형식: 바꾼 내용을 다섯 줄 안으로 알려 주고, 탭 D의 지시문 전문을 대화에 보여 줘.</pre></div>
-<p class="blk k-chk"><span>확인할 점</span></p>
-<ul class="checklist"><li>탭 D의 카드에 [책 보기]가 있고, 누르면 books.toscrape.com의 책 상세 페이지가 열린다</li><li>탭 A·B·C가 그대로 있다</li></ul>
 </div>
 
 <div class="topic" id="s6-4"><h3><span class="stage check">기획자·확인</span>6-4. 기획서와 결과 견주기</h3>
@@ -1004,8 +970,6 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td>3번 감정에서 어떻게 답했나요?</td><td></td><td></td></tr>
 <tr><td>[내 기획서의 완료 기준]</td><td></td><td></td></tr>
 </table></div>
-<p class="blk k-chk"><span>확인할 점</span></p>
-<ul class="checklist"><li>탭 D에 나온 번호가 모두 목록 안에 있다</li><li>3번 감정에서 책을 억지로 채우지 않고 안내 문구가 나왔다</li></ul>
 </div>
 
 <div class="topic" id="s6-5"><h3><span class="stage">결과</span>6-5. 결과</h3>
@@ -1016,8 +980,7 @@ aside nav a.active{border-left-color:var(--blue)}
 
 <section class="section session" id="wrap">
 <div class="session-head"><div class="eyebrow">정리 · 17:10–18:00</div><h2>오늘 정리와 과제</h2></div>
-<p><b>오늘의 규칙</b></p>
-<ul class="checklist">
+<div class="tip-box" role="note"><b>오늘의 규칙</b><ul>
 <li>LLM은 없는 책·저자·링크를 그럴듯하게 지어낼 수 있다</li>
 <li>기획자는 요구사항을 입력·처리·출력의 기준으로 준다. 자연어와 표로 충분하다</li>
 <li>기획자는 "무엇을, 어떤 기준으로" 넘기고, 구현은 기획서에 있는 것만 만든다. 확인은 다시 기획자가 기획서의 완료 기준으로 한다</li>
@@ -1027,6 +990,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <li>프롬프트는 답의 모양을 좋게 하고, 근거 목록(RAG)은 지어낸 답을 막는다</li>
 <li>개수를 채우는 것보다 진짜인 것이 중요하면, "확실한 만큼만 답해도 돼"라고 허락한다</li>
 </ul>
+</div>
 <div class="notice"><b>오늘의 결과물</b><br/>감정 책 추천 아티팩트(탭 1·2, A·B·C) + 개선 요청 표·검증표·AS-IS/TO-BE 도식 + API로 답하는 AI 스튜디오 앱(배포 주소) + 모델 비교표</div>
 <div class="notice"><b>과제</b><br/>내가 기획하는 서비스에서 AI가 기억으로 답하면 안 되는 일을 하나 찾아요. 그 일에 줄 근거 자료가 무엇인지 한 문장으로 적어 와요.</div>
 <p>목요일에는 클로드 코드로 셀렉트마켓 연말 이벤트 문의 챗봇 화면을 만들어요. 오늘처럼 기획서를 먼저 쓰고, 그 기획서로 화면을 만들어요.</p>

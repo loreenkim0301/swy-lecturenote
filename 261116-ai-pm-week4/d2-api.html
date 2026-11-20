@@ -294,6 +294,7 @@ aside nav a.active{border-left-color:var(--blue)}
 #fabMain[aria-expanded="true"] span{transform:rotate(45deg)}
 @media print{#fabMenu{display:none!important}}
 </style>
+<style>.tip-box{margin:14px 0;padding:12px 16px;border:1px solid #cfe8d8;border-left:4px solid #16a36b;background:#f3fbf6;border-radius:0 10px 10px 0}.tip-box>b{display:inline-block;font-size:12px;color:#fff;background:#16a36b;border-radius:6px;padding:1px 8px;margin-bottom:6px}.tip-box p{margin:4px 0}.tip-box ul,.tip-box ol{margin:4px 0;padding-left:20px}.tip-box li{margin:3px 0}</style>
 </head>
 <body>
 <button aria-controls="side-nav" aria-expanded="true" class="nav-toggle" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" viewbox="0 0 16 16"><path d="M2 4h12M2 8h12M2 12h12"></path></svg><span>목차 숨기기</span></button>
@@ -507,8 +508,6 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="copybox"><div class="copyhead"><span>프롬프트 1 · 복사해서 클로드 채팅에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 내 블로그의 GA4 이벤트 표를 검토하고 고친 표를 줘.
 내용: 내 블로그 화면은 [첫 화면, 글 목록, 글 상세 등 내 블로그 화면 이름]이야. 내 표는 [STEP 1에서 고친 이벤트 표 붙여 넣기]야. 이름은 소문자와 밑줄로 '대상_행동' 순서로 짓고, GA4 추천 이벤트로 바꿀 수 있는 것은 알려 줘. 관리자 행동(글쓰기·수정·삭제)과 개인정보는 넣지 마. 내 블로그에 없는 기능의 이벤트는 추가하지 마.
 형식: 고친 표(이벤트 이름 / 언제 보내나 / 파라미터 / 답하려는 질문) + 바뀐 곳과 이유 목록.</pre></div>
-<p class="blk k-chk"><span>확인할 점</span></p>
-<ul class="checklist"><li>모든 이벤트에 '언제 보내나'가 한 문장으로 적혀 있다</li><li>관리자 행동(글쓰기·수정·삭제)이 표에 없다</li><li>파라미터에 글 제목·이름·이메일이 없고, 글 ID만 있다</li><li>내 블로그에 없는 기능의 이벤트가 없다</li></ul>
 <p class="source-note">출처: Google 애널리틱스 고객센터 <a href="https://support.google.com/analytics/answer/9267735?hl=ko" target="_blank" rel="noopener">추천 이벤트</a> · Google 애널리틱스 개발자 문서 <a href="https://developers.google.com/analytics/devguides/collection/ga4/reference/recommended-events" target="_blank" rel="noopener">추천 이벤트 목록</a>(share의 파라미터 content_type·item_id) · <a href="https://support.google.com/analytics/answer/9216061?hl=ko" target="_blank" rel="noopener">향상된 측정 이벤트</a>(스크롤은 페이지 90% 지점) · <a href="https://support.google.com/analytics/answer/6366371?hl=ko" target="_blank" rel="noopener">개인 식별 정보(PII) 전송을 피하는 방법</a> (2026-11-18 확인)</p>
 <div class="term-note" role="note" aria-label="이 절의 용어"><b>용어</b><dl>
 <dt>이벤트 트래킹</dt><dd>사용자의 행동 하나에 이름을 붙여 분석 도구로 보내는 일</dd>
@@ -587,8 +586,6 @@ aside nav a.active{border-left-color:var(--blue)}
 <li><p>5분 동안 다른 사람의 블로그에 들어가서 글 목록을 보고, 글을 열고, 끝까지 내려 보며 이것저것 눌러요.</p></li>
 <li><p>내 GA에서 [보고서] → [실시간 개요]를 눌러요. 지난 30분 동안 들어온 사용자 수와, 2세션에서 심은 이벤트 이름이 보이는지 확인해요.</p></li>
 </ol>
-<p class="blk k-chk"><span>확인할 점</span></p>
-<ul class="checklist"><li>실시간 개요의 사용자 수가 1 이상이다</li><li>[이벤트 이름별 이벤트 수]에 page_view와 2세션에서 심은 이벤트(예: post_view)가 보인다</li></ul>
 </div>
 
 <div class="topic" id="s3-2"><h3><span class="stage">개념</span>3-2. 활성 사용자는 누구를 세는가, 그리고 GA에서 빠지는 사용자</h3>
@@ -704,8 +701,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td><b>형식</b></td><td>HTML 파일 하나. 텍스트와 표 중심으로 써요</td></tr>
 <tr><td><b>문서 크기</b></td><td>나중에 출력하거나 공유하기 쉽게, 슬라이드 규격이나 A4 문서 중 하나로 정해요</td></tr>
 </table></div>
-<p class="blk k-chk"><span>확인할 점</span></p>
-<ul class="checklist">
+<div class="tip-box" role="note"><b>TIP</b><ul>
 <li>문서 맨 위에 문제와 목표가 먼저 나와요. 제목 흐름은 '배경 → 문제와 해결 방안 → 목표 → 요구사항 상세'처럼 PRD 모양을 따라요</li>
 <li>문제 정의 → 최종 문제 정의 → 최종 문제에 대한 가설과 지표 → 가설마다의 해결 방안 표가 이어져요. 해결 방안 표에는 ID를 붙여 "어느 가설에서 나온 해결 방안인지" 읽히게 해요</li>
 <li>고칠 항목에 우선순위(상·중·하)가 있어요. 예: 모든 페이지 제목이 같다면 1순위로 고쳐요</li>
@@ -713,6 +709,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <li>목표 부분에 '하지 않을 것'도 적어요</li>
 <li>블로그 개선 정도의 작은 범위에서는 시장·경쟁사 조사(데스크 리서치)를 건너뛰어도 돼요</li>
 </ul>
+</div>
 </div>
 
 <div class="topic" id="s3-7"><h3><span class="stage">결과</span>3-7. 결과</h3>
@@ -874,8 +871,6 @@ aside nav a.active{border-left-color:var(--blue)}
 <li><p>클로드 코드가 알려 준 방법으로 화면을 열고, 버튼을 눌러 사진이 바뀌는지 봐요.</p></li>
 <li><p>5-4처럼 개발자 도구의 [Network] 탭을 열고 버튼을 눌러요. 이번에는 요청 주소가 내 서버(localhost)가 아니라 api.thecatapi.com이에요. 숨길 키가 없어서 화면이 API에 직접 요청해요.</p></li>
 </ol>
-<p class="blk k-chk"><span>확인할 점</span></p>
-<ul class="checklist"><li>버튼을 누를 때마다 다른 고양이 사진이 보인다</li><li>네트워크 탭의 요청 주소에 키가 없다</li><li>날씨 배너는 왜 서버를 거쳤고, 고양이 카드는 왜 서버 없이 되는지 말할 수 있다</li></ul>
 </div>
 
 <div class="topic" id="s5-6"><h3><span class="stage">개념</span>5-6. 오픈 API의 두 가지 유형: 개방형과 인증형</h3>
@@ -1070,8 +1065,7 @@ aside nav a.active{border-left-color:var(--blue)}
 
 <section class="section session" id="wrap">
 <div class="session-head"><div class="eyebrow">정리 · 17:30–18:00</div><h2>오늘 정리와 과제</h2></div>
-<p><b>오늘의 규칙</b></p>
-<ul class="checklist">
+<div class="tip-box" role="note"><b>오늘의 규칙</b><ul>
 <li>블로그 같은 서비스는 목표를 단계로 나누고, 단계마다 '다 됐다는 기준'을 먼저 정한다</li>
 <li>이벤트는 심기 전에 이름·언제 보내나·파라미터를 표로 정하고, 관리자 행동과 개인정보는 GA로 보내지 않는다</li>
 <li>GA 숫자는 무엇을 세고 무엇이 빠지는지 알고 읽는다. 지표는 목적 → 측정할 지표 → 계산 방식과 필요한 이벤트 순서로 정한다</li>
@@ -1081,6 +1075,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <li>키는 대화창·공개 코드·깃헙에 두지 않고, .env나 서버의 비밀 값 저장소에 둔다</li>
 <li>같은 정보를 주는 API라도 값이 다를 수 있으니, 기준 API를 기획서에 적는다</li>
 </ul>
+</div>
 <div class="notice"><b>오늘의 결과물</b><br/>내 블로그 배포 주소 + 블로그 이벤트 표와 DebugView 확인 + 2차 블로그 개선 PRD + 날씨를 붙인 이벤트 배너 화면</div>
 <div class="notice"><b>과제</b><br/><a href="#s1">내 손으로 만드는 자체 개발 블로그</a>를 2차 목표(전체 화면 시안)부터 이어서 만들어요. 3차 목표에서 글을 쓰고 나면, 로그아웃 상태로 그 글을 열어 DebugView에 post_view가 들어오는지 확인해요.</div>
 <div class="notice"><b>선택 과제</b><br/><a href="#s7">7세션</a>에서 공공데이터포털 API를 시험하고, <a href="#s8">8세션</a> 비교표를 만들어요. 내 서비스 아이디어에 쓸 만한 오픈 API 하나를 더 찾아 8-1 표의 칸(키, 비용·한도, 묻는 방법, 출처 표시)도 채워 와요.</div>
