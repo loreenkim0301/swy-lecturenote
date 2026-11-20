@@ -66,3 +66,16 @@
 ![s3-1](after_s3-1.png)
 ![s3-1 mobile](after_s3-1_390.png)
 ![s3-2](after_s3-2.png)
+
+## 3차 수정 (같은 날): 발전 흐름에 맞춰 '눈(비전)' 추가
+
+- SESSION 3 제목: 「눈과 손이 생긴 AI: 비전·커넥터·클로드 인 크롬·컴퓨터 유즈」
+- 3-1 새로 추가 「눈이 먼저: 비전(인식 AI)」: 인식 AI → 생성형 AI → 에이전트 흐름 표, 클로드의 공식 이름 비전(Vision), 눈을 쓰는 곳 표(이미지 올리기, PDF 올리기, 맥 데스크톱 앱 스크린샷·창 공유), 눈이 필요한 손과 필요 없는 손의 구분
+- 3-2(세 가지 손) 표에 '눈이 필요한가' 열 추가(커넥터 아니요, 클로드 인 크롬·컴퓨터 유즈 예), 실습은 3-3으로
+- 오늘의 단어에 비전(Vision) 추가
+- 근거(2026-11-20 확인): blogs.nvidia.com/blog/ces-2025-jensen-huang(인식 AI → 생성형 AI), platform.claude.com/docs/en/build-with-claude/vision, support.claude.com 8241126(이미지 붙여 넣기, 8000×8000픽셀, PDF 100쪽 이하 시각 요소 분석), academy.claude.com Claude 101 데스크톱 앱(맥 스크린샷·창 공유)
+
+![s3 head](after_s3_head.png)
+![s3-1](after_s3-1.png)
+![s3-1 mobile](after_s3-1_390.png)
+![s3-2](after_s3-2.png)
