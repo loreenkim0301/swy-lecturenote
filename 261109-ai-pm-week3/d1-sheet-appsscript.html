@@ -294,6 +294,7 @@ aside nav a.active{border-left-color:var(--blue)}
 #fabMain[aria-expanded="true"] span{transform:rotate(45deg)}
 @media print{#fabMenu{display:none!important}}
 </style>
+<style>.tip-box{margin:14px 0;padding:12px 16px;border:1px solid #cfe8d8;border-left:4px solid #16a36b;background:#f3fbf6;border-radius:0 10px 10px 0}.tip-box>b{display:inline-block;font-size:12px;color:#fff;background:#16a36b;border-radius:6px;padding:1px 8px;margin-bottom:6px}.tip-box p{margin:4px 0}.tip-box ul,.tip-box ol{margin:4px 0;padding-left:20px}.tip-box li{margin:3px 0}</style>
 </head>
 <body>
 <button aria-controls="side-nav" aria-expanded="true" class="nav-toggle" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" viewbox="0 0 16 16"><path d="M2 4h12M2 8h12M2 12h12"></path></svg><span>목차 숨기기</span></button>
@@ -467,8 +468,6 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td>종료 후 7일</td><td>실제 참석 수, 쿠폰 사용 수</td><td>신청이 실제 행동으로 이어졌는지 보려고</td><td>시트 · 주문 데이터</td></tr>
 <tr><td>종료 후 30일</td><td>이벤트로 들어온 사람의 재방문·재구매</td><td>이벤트가 다시 오는 고객을 만들었는지 보려고</td><td>GA · 주문 데이터</td></tr>
 </table></div></details>
-<p class="blk k-chk"><span>확인할 점</span></p>
-<ul class="checklist"><li>다섯 시점마다 데이터가 한 가지 이상 있다</li><li>데이터마다 왜 알고 싶은지 한 줄로 말할 수 있다</li><li>데이터가 섞이거나 빠질 수 있는 상황을 하나 이상 적었다</li></ul>
 <details class="optional" id="s1-4-map"><summary><span class="summary-title">선택 · 데이터 지도 만들기(프롬프트 1)</span><span class="summary-hint">눌러서 펼쳐 보세요</span></summary><p>STEP 1의 표에서 꼭 답해야 하는 질문 3개를 골라, 질문마다 필요한 데이터를 클로드에게 표로 받아요.</p>
 <p class="blk k-pr"><span>프롬프트</span></p>
 <div class="copybox"><div class="copyhead"><span>프롬프트 1 · 복사해서 클로드 새 대화에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 이벤트 운영 결과를 보고하려고 해. 내 질문마다 필요한 데이터를 표로 정리해 줘.
@@ -478,8 +477,6 @@ aside nav a.active{border-left-color:var(--blue)}
 <p><b>표를 읽고 고치기</b></p>
 <p>클로드가 GA4로 모으라고 한 칸에 이름·연락처 같은 개인정보가 있는지 봐요. 있으면 "개인정보는 GA4로 보내지 않게 고쳐 줘."라고 보내요.</p>
 <p>강사가 같은 프롬프트를 보냈을 때 클로드는 표 아래에 두 가지를 더 짚었어요. 첫째, 신청률을 계산할 때 신청 수(시트)와 방문 수(GA4)를 서로 다른 도구에서 가져오면 기준이 어긋나니, 신청 완료도 GA4 이벤트로 세고 시트 숫자는 대조용으로 쓰라고 했어요. 둘째, "왜 안 했나"는 GA4로 답할 수 없고 설문이나 인터뷰가 필요하다고 했어요. 두 가지 모두 오늘 오후 실습과 이어져요.</p>
-<p class="blk k-chk"><span>확인할 점</span></p>
-<ul class="checklist"><li>질문마다 데이터가 한 가지 이상 연결되어 있다</li><li>'왜 신청하지 않았나' 같은 질문에는 정성 데이터(인터뷰·설문)가 붙어 있다</li><li>GA4로 모으는 데이터에 개인정보가 없다</li></ul>
 </details>
 </div>
 
@@ -552,7 +549,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <p><b>STEP 1. 다섯 단계에 나눠 적기</b></p>
 <div class="table-wrap"><table class="tpl"><tr><th>단계</th><th>1-4에서 적은 데이터</th><th>새로 떠오른 데이터</th></tr><tr><td>Acquisition 획득</td><td></td><td></td></tr><tr><td>Activation 활성화</td><td></td><td></td></tr><tr><td>Retention 유지</td><td></td><td></td></tr><tr><td>Referral 추천</td><td></td><td></td></tr><tr><td>Revenue 수익</td><td></td><td></td></tr></table></div>
 <p><b>STEP 2. 세 가지로 점검하기</b></p>
-<ul class="checklist"><li><b>빠짐</b>: 데이터가 하나도 없는 단계가 있다면, 그 단계를 재지 않아도 되는지 생각해요</li><li><b>겹침</b>: 같은 숫자를 두 단계에 적었다면 한 곳으로 정리해요</li><li><b>치우침</b>: 한두 단계에만 몰렸다면 빈 단계에 필요한 데이터를 하나 더 적어요</li></ul>
+<ul><li><b>빠짐</b>: 데이터가 하나도 없는 단계가 있다면, 그 단계를 재지 않아도 되는지 생각해요</li><li><b>겹침</b>: 같은 숫자를 두 단계에 적었다면 한 곳으로 정리해요</li><li><b>치우침</b>: 한두 단계에만 몰렸다면 빈 단계에 필요한 데이터를 하나 더 적어요</li></ul>
 <p>1-4의 강사 예시 답도 나눠 보면 획득·활성화 칸이 많고 추천 칸은 비어 있어요. 연말 이벤트에 친구 초대 혜택이 있다면 추천 단계의 데이터(공유 수, 초대로 들어온 신청 수)를 더해야 해요.</p>
 <div class="ref-box" role="note" aria-label="참고"><b>참고</b><p>AARRR을 만든 데이브 매클루어는 2010년 크리스틴 차이와 함께 초기 스타트업 투자사이자 액셀러레이터인 500 Startups를 세웠어요. 2021년에 500 Global로 이름을 바꿨고, 미국 샌프란시스코에 본사가 있어요. 한국에서도 초기 스타트업에 투자해요.</p></div>
 <p class="source-note">출처: <a href="https://en.wikipedia.org/wiki/500_Global" target="_blank" rel="noopener">위키백과 500 Global</a> · <a href="https://500.co/korea-home-kr" target="_blank" rel="noopener">500 Global 한국 페이지</a> (2026.11.10 확인)</p>
@@ -573,8 +570,6 @@ aside nav a.active{border-left-color:var(--blue)}
 <p>강사가 '선착순 100명 사은품' 문구로 해 보니, 클로드는 계획보다 문제를 먼저 짚었어요. 차이를 판정하려면 그룹마다 수천 명이 페이지를 봐야 하는데 사은품은 100명분이라, 그 전에 문구가 사실과 달라진다는 것이에요. 실험할 안이 실제 운영과 맞는지도 함께 확인해요.</p>
 <p>클로드가 적은 지표를 지금 데이터로 셀 수 있는지 봐요. 신청 수는 시트로 셀 수 있지만, 방문 수와 단추 클릭 수는 GA4가 있어야 셀 수 있어요. 그래서 오후에 GA4를 붙여요.</p>
 <p>무엇을 어떻게 잴지는 대부분의 계획서에 들어 있어요. 그런데 실험을 언제 시작하고 끝낼지, 보고서는 언제 쓰고 결과는 언제 보고할지가 빠진 계획서가 많았어요. 일정이 없으면 실험을 언제 멈추고 판정할지 정할 수 없어요.</p>
-<p class="blk k-chk"><span>확인할 점</span></p>
-<ul class="checklist"><li>가설에 '누가 / 무엇을 / 어떤 숫자가'가 모두 있다</li><li>핵심 지표가 셀 수 있는 행동이다('만족도 향상'처럼 셀 수 없는 말이 아니다)</li><li>판정 기준(언제까지, 몇 명까지 보고 정할지)이 있다</li><li>실험 시작일·종료일과 결과 보고 일정이 있다</li></ul>
 <p class="blk k-chk"><span>이렇게 하면 결과가 틀어져요</span></p>
 <div class="table-wrap"><table><tr><th>한 일</th><th>생기는 일</th></tr>
 <tr><td>A안을 이번 주, B안을 다음 주에 보여 줌</td><td>요일·날씨·광고가 달라서 무엇 때문에 숫자가 바뀌었는지 알 수 없어요</td></tr>
@@ -657,8 +652,7 @@ aside nav a.active{border-left-color:var(--blue)}
 </ol>
 <div class="notice"><b>[공백 제거]는요?</b><br/>[데이터 정리] 안의 [공백 제거]는 칸 앞뒤의 공백을 지워요. CSV 파일을 [가져오기]로 넣으면 시트가 앞뒤 공백을 이미 지워 줘서, 이 실습 파일에서는 눌러도 바뀌는 칸이 없어요.</div>
 <p class="source-note">출처: 구글 스프레드시트 고객센터 <a href="https://support.google.com/docs/answer/6325535?hl=ko" target="_blank" rel="noopener">텍스트 분할, 중복 항목 삭제, 공백 제거</a> (2026.11.08 확인)</p>
-<p class="blk k-chk"><span>확인할 점</span></p>
-<ul class="checklist"><li>알림에 '6개의 중복 행'과 '119개의 고유한 행'이 나온다(119행은 첫 줄 열 이름을 포함한 수, 신청은 118줄)</li><li>그래도 01061748438, online, yes처럼 모양이 다른 값은 그대로 남아 있다</li></ul>
+<div class="tip-box" role="note"><b>TIP</b><p>시트의 중복 삭제는 글자가 똑같은 줄만 지워요. 01061748438, online, yes처럼 모양만 다른 값은 그대로 남아서 따로 맞춰야 해요.</p></div>
 <div class="table-wrap"><table><tr><th>시트 메뉴로 되는 일</th><th>메뉴로 안 되는 일 → 3-4에서 앱스스크립트로</th></tr>
 <tr><td>모든 칸이 똑같은 줄 지우기, 앞뒤 공백 지우기</td><td>연락처·날짜 형식 맞추기, 'online'을 '온라인'으로 바꾸기, '확인 필요' 이유 적기, 매주 같은 정리를 버튼 하나로 다시 하기</td></tr>
 </table></div>
@@ -781,8 +775,6 @@ aside nav a.active{border-left-color:var(--blue)}
 <li><p>GA 왼쪽 메뉴에서 [보고서](①) → [실시간 개요](②)를 눌러요. 지난 30분 동안 들어온 사람 수와 본 페이지 제목이 보여요.</p><figure class="shot"><a href="images/d1-s6-realtime-hl.png" target="_blank" rel="noopener"><img style="width:760px;max-width:100%" alt="GA 실시간 보고서" loading="lazy" src="images/d1-s6-realtime-hl.png"/></a><figcaption>GA 실시간 보고서 <span class="hl-leg">빨간 번호 = 누를 곳(순서)</span> <span class="hl-leg hl-k">주황 점선 = 확인할 곳</span></figcaption></figure></li>
 </ol>
 <details class="optional" id="s4-2-opt"><summary><span class="summary-title">선택 · 깃헙·버셀로 배포한 페이지에 직접 붙이기</span><span class="summary-hint">눌러서 펼쳐 보세요</span></summary><p>지난주 목요일에 버셀로 배포했다면, 깃헙 저장소의 index.html에 Google 태그를 직접 넣어요. 깃헙에 저장하면 버셀이 다시 배포해 줘요.</p><ol class="do-steps"><li><p>[웹 스트림 세부정보] 화면 위쪽 노란 안내의 [태그 안내 보기](①)를 눌러요.</p></li><li><p>설치 안내에서 [직접 설치](①) 탭을 누르면 코드가 나와요. 첫 줄 <code class="inline">&lt;script async</code>부터 마지막 <code class="inline">&lt;/script&gt;</code>까지 통째로 복사해요. 복사 아이콘(②)을 눌러도 돼요. 코드 속 태그 ID는 계정마다 달라요.</p><figure class="shot"><a href="images/d1-s6-tag-copy-hl.png" target="_blank" rel="noopener"><img style="width:759px;max-width:100%" alt="복사할 Google 태그 코드" loading="lazy" src="images/d1-s6-tag-copy-hl.png"/></a><figcaption>복사할 Google 태그 코드 <span class="hl-leg">빨간 번호 = 누를 곳(순서)</span> <span class="hl-leg hl-k">주황 점선 = 확인할 곳</span></figcaption></figure></li><li><p>지난주 목요일에 버셀과 연결한 깃헙 저장소를 열고 index.html을 눌러요. 오른쪽 위 연필 아이콘(①)을 눌러 편집 화면을 열어요.</p><figure class="shot"><a href="images/d1-s6-github-edit-hl.png" target="_blank" rel="noopener"><img style="width:749px;max-width:100%" alt="깃헙에서 index.html을 편집하는 곳" loading="lazy" src="images/d1-s6-github-edit-hl.png"/></a><figcaption>깃헙에서 index.html을 편집하는 곳 <span class="hl-leg">빨간 번호 = 누를 곳(순서)</span></figcaption></figure></li><li><p><code class="inline">&lt;head&gt;</code> 줄(①) 바로 아래 새 줄에 복사한 코드를 붙여 넣어요. [Commit changes...](②)를 눌러요. 뜨는 창의 메시지 칸에 [GA 태그 추가]를 쓰고, [Commit changes]를 한 번 더 눌러요.</p><figure class="shot"><a href="images/d1-s6-github-paste-hl.png" target="_blank" rel="noopener"><img style="width:749px;max-width:100%" alt="head 바로 아래에 Google 태그가 들어간 화면" loading="lazy" src="images/d1-s6-github-paste-hl.png"/></a><figcaption>head 바로 아래에 Google 태그가 들어간 화면 <span class="hl-leg">빨간 번호 = 누를 곳(순서)</span> <span class="hl-leg hl-k">주황 점선 = Google 태그</span></figcaption></figure></li><li><p>버셀 대시보드에서 새 배포가 [Ready]가 되는지 봐요.</p><figure class="shot"><a href="images/d1-s6-vercel-ready-hl.png" target="_blank" rel="noopener"><img style="width:760px;max-width:100%" alt="커밋 뒤 버셀에 생긴 새 배포" loading="lazy" src="images/d1-s6-vercel-ready-hl.png"/></a><figcaption>커밋 뒤 버셀에 생긴 새 배포 <span class="hl-leg hl-k">주황 점선 = 확인할 곳</span></figcaption></figure></li></ol><p>그다음 STEP 6처럼 버셀 주소에서 측정 ID를 찾고, 실시간 보고서를 봐요.</p></details>
-<p class="blk k-chk"><span>확인할 점</span></p>
-<ul class="checklist"><li>배포한 페이지의 소스에서 내 측정 ID(G-…)가 찾아진다</li><li>클로드가 단 주석으로 태그 위치를 찾을 수 있다</li><li>실시간 보고서에 사용자 수가 1 이상으로 보인다</li><li>시트에 쌓이는 신청 내용과 GA에 쌓이는 방문이 서로 다른 데이터라는 것을 말할 수 있다</li></ul>
 <p class="blk k-chk"><span>막히면</span></p>
 <div class="table-wrap"><table><tr><th>이렇게 보이면</th><th>이렇게 해요</th></tr>
 <tr><td><b>실시간 보고서가 0이에요</b></td><td>데이터가 모이기 시작하기까지 최대 30분이 걸릴 수 있어요. 페이지를 새로고침하고 몇 분 뒤에 다시 봐요. 광고 차단 확장 프로그램을 켜 두었다면 끄거나 휴대폰으로 열어 봐요.</td></tr>
@@ -820,8 +812,6 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td>장바구니 담기 → 구매</td><td>21.1%</td><td>담은 뒤에는 다섯 명 중 한 명이 사요. 결제 단계보다 담기 전이 더 큰 문제예요</td></tr>
 </table></div>
 <p>보고서는 답이 아니라 <b>다음에 확인할 질문</b>을 줘요. 휴대폰과 PC의 차이가 왜 생기는지는 GA만으로는 알 수 없어요. 화면을 직접 보거나(히트맵), 사용자에게 물어봐야(인터뷰) 해요.</p>
-<p class="blk k-chk"><span>확인할 점</span></p>
-<ul class="checklist"><li>데모 계정 홈에 숫자와 그래프가 보인다</li><li>트래픽 획득 보고서에서 채널 이름(Organic Search 등)을 읽을 수 있다</li><li>유입경로에 '장바구니 담기' 단계가 들어가고, 단계별 이탈률이 보인다</li><li>가장 많이 빠지는 단계와 그 이유를 확인할 질문을 하나 말할 수 있다</li></ul>
 <p class="source-note">출처: Google 애널리틱스 고객센터 <a href="https://support.google.com/analytics/answer/6367342?hl=ko" target="_blank" rel="noopener">데모 계정</a> · <a href="https://support.google.com/analytics/answer/7579450?hl=ko" target="_blank" rel="noopener">탐색 분석 시작하기</a> (2026.11.09 확인)</p>
 </div>
 
@@ -850,8 +840,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <figure class="shot"><a href="images/d1-ga-schedule-hl.png" target="_blank" rel="noopener"><img style="width:602px;max-width:100%" alt="이메일 예약 창" loading="lazy" src="images/d1-ga-schedule-hl.png"/></a><figcaption>이메일 예약 창 <span class="hl-leg">빨간 번호 = 누를 곳(순서)</span> <span class="hl-leg hl-k">주황 점선 = 확인할 곳</span></figcaption></figure>
 <p>[관리] → [예약된 이메일]에 방금 만든 예약이 '예약됨'으로 보이면 성공이에요. 필요 없어지면 여기서 지워요.</p>
 <figure class="shot"><a href="images/d1-ga-schedule-list-hl.png" target="_blank" rel="noopener"><img style="width:760px;max-width:100%" alt="관리 화면의 예약된 이메일 목록" loading="lazy" src="images/d1-ga-schedule-list-hl.png"/></a><figcaption>관리 화면의 예약된 이메일 목록 <span class="hl-leg hl-k">주황 점선 = 확인할 곳</span></figcaption></figure>
-<p class="blk k-chk"><span>확인할 점</span></p>
-<ul class="checklist"><li>[이메일 보내기]로 보낸 보고서가 내 메일함에 PDF 첨부로 왔다</li><li>[예약된 이메일] 목록에 매주 예약이 '예약됨'으로 보인다</li><li>데모 계정에서는 이메일 메뉴가 없는 이유(보기 권한)를 말할 수 있다</li></ul>
+<div class="tip-box" role="note"><b>TIP</b><p>GA 데모 계정은 보기 권한만 있어서 이메일 보내기 메뉴가 보이지 않아요. 보고서 메일은 내 GA 속성에서 보내요.</p></div>
 <div class="notice">예약 이메일은 받는 사람이 그 속성에 접근할 수 있어야 해요. 팀장님께 보내려면 먼저 [관리] → [속성 액세스 관리]에서 팀장님 계정을 추가해요. 데이터 처리에 시간이 걸려서, 매월 보고서는 월초 며칠 데이터가 빠질 수 있어요. 공식 도움말은 매월 4일 예약을 권해요.</div>
 <p class="source-note">출처: Google 애널리틱스 고객센터 <a href="https://support.google.com/analytics/answer/13722168?hl=ko" target="_blank" rel="noopener">보고서 이메일 예약</a> (2026.11.09 확인)</p>
 </div>
@@ -931,13 +920,13 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td>plan_select</td><td>월간·연간 상품을 고를 때</td><td>plan_id, billing_period</td><td>없음</td></tr>
 <tr><td>purchase</td><td>결제가 성공한 직후</td><td>transaction_id, value, currency</td><td>purchase(유지)</td></tr>
 </table></div>
-<h4>이 사례에서 배울 점</h4>
-<ul class="checklist">
+<div class="tip-box" role="note"><b>이 사례에서 배울 점</b><ul>
 <li>데이터는 한 곳만 믿지 않아요. GA, 회원 데이터베이스, 결제 데이터를 대조해야 진짜 숫자가 보여요</li>
 <li>이벤트 이름보다 '언제 보내나'가 더 중요해요</li>
 <li>사이트를 고칠 때마다 이벤트가 그대로 들어오는지 확인해요</li>
 <li>방문자 수가 늘었다고 좋은 소식은 아니에요. 어디서, 얼마나 머물렀는지 같이 봐요</li>
 </ul>
+</div>
 </div>
 
 <div class="topic" id="s5-4"><h3><span class="stage">실습</span>5-4. 연말 이벤트 신청 페이지의 이벤트 텍소노미 설계</h3>
@@ -964,8 +953,6 @@ aside nav a.active{border-left-color:var(--blue)}
 </table></div>
 <p>experiment_assign과 ab_variant 파라미터가 있어야 2세션의 A/B 테스트를 판정할 수 있어요. 폼 이벤트를 직접 보낼 때는 향상된 측정의 폼 상호작용을 꺼야 form_start가 두 번 세지지 않아요. 파라미터를 보고서에서 쓰려면 GA4 [관리]에서 맞춤 측정기준으로 등록해요. 이름·연락처는 어디에도 없어요.</p>
 </details>
-<p class="blk k-chk"><span>확인할 점</span></p>
-<ul class="checklist"><li>모든 이벤트에 '언제 보내나'가 한 문장으로 적혀 있다</li><li>이름이 모두 소문자와 밑줄, '대상_행동' 순서다</li><li>바뀌는 값(안 이름, 단추 위치)은 이름이 아니라 파라미터에 있다</li><li>개인정보가 파라미터에 없다</li><li>2세션 가설의 핵심 지표를 이 표의 이벤트로 셀 수 있다</li></ul>
 <div class="ref-box" role="note" aria-label="도전 과제"><b>도전 · 선택</b><p>4-2에서 GA를 붙인 내 이벤트 신청 페이지에 apply_button_click 하나를 클로드 코드로 심어 보고, GA4 [관리] → [데이터 표시] → [DebugView]에서 들어오는지 확인해 봐요. 목요일에 클로드 코드를 설치한 뒤 해도 돼요.</p></div>
 </div>
 
@@ -978,8 +965,7 @@ aside nav a.active{border-left-color:var(--blue)}
 
 <section class="section session" id="wrap">
 <div class="session-head"><div class="eyebrow">정리 · 17:00–18:00</div><h2>오늘 정리와 과제</h2></div>
-<p><b>오늘의 규칙</b></p>
-<ul class="checklist">
+<div class="tip-box" role="note"><b>오늘의 규칙</b><ul>
 <li>알고 싶은 질문을 먼저 정하고, 질문마다 필요한 데이터를 고른다</li>
 <li>알고 싶은 데이터는 시점(매일·매주·종료일·종료 후)별로 나누고, AARRR로 빠짐·겹침·치우침을 점검한다</li>
 <li>가설은 셀 수 있는 지표로 판정한다. 계획서에는 실험과 보고 일정까지 넣는다</li>
@@ -988,6 +974,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <li>입력한 내용은 시트에, 방문 같은 행동은 GA에 모은다. GA는 붙인 날부터 기록하니 서비스를 열 때 함께 붙인다</li>
 <li>이벤트는 심기 전에 이름·언제·파라미터를 표로 정한다. 데이터는 한 곳만 믿지 않는다</li>
 </ul>
+</div>
 <div class="notice"><b>오늘의 결과물</b><br/>시점별 측정 표 + AARRR 점검표 + A/B 테스트 계획서 1장 + [정리본] 시트 + GA 태그를 넣은 신청 페이지와 실시간 보고서<br/>(선택) 데모 계정 유입경로 보고서 · 주간 보고서 메일 예약 · 이벤트 텍소노미 표</div>
 <div class="notice"><b>회고</b><br/><a href="https://www.swy.kr/retrospective" target="_blank" rel="noopener">swy.kr/retrospective</a>에 오늘의 회고를 남겨요.</div>
 <div class="notice"><b>과제</b><br/>① [정리본]의 '확인 필요' 18줄 중 '중복 신청 의심' 한 쌍을 골라, 두 줄 중 어느 줄을 남길지와 그 이유를 한 문장으로 적어 와요.<br/>② 내가 자주 쓰는 쇼핑몰 하나를 골라 '방문 → 상품 보기 → 장바구니 → 구매' 유입경로에서 가장 많이 빠질 것 같은 단계와 그 단계를 셀 이벤트 이름 하나를 적어 와요.</div>
@@ -1027,8 +1014,6 @@ aside nav a.active{border-left-color:var(--blue)}
 <li><p>가져오기 위치는 [현재 시트 바꾸기](①)를 골라요. [데이터 가져오기](②)를 누르면 빈 시트가 명단으로 채워져요.</p><figure class="shot"><a href="images/d1-s2-import-option-hl.png" target="_blank" rel="noopener"><img style="width:540px;max-width:100%" alt="가져오기 위치를 고르는 창" loading="lazy" src="images/d1-s2-import-option-hl.png"/></a><figcaption>가져오기 위치를 고르는 창 <span class="hl-leg">빨간 번호 = 누를 곳(순서)</span></figcaption></figure></li>
 <li><p>아래쪽 시트 탭 이름이 [시트1]인지 확인해요. 복습 3의 프롬프트에 이 이름을 써요.</p><figure class="shot"><a href="images/d1-s2-sheet-filled-hl.png" target="_blank" rel="noopener"><img style="width:760px;max-width:100%" alt="명단 100줄이 채워진 시트" loading="lazy" src="images/d1-s2-sheet-filled-hl.png"/></a><figcaption>명단 100줄이 채워진 시트 <span class="hl-leg hl-k">주황 점선 = 확인할 곳</span></figcaption></figure></li>
 </ol>
-<p class="blk k-chk"><span>확인할 점</span></p>
-<ul class="checklist"><li>첫 줄이 열 이름 9개이고, 그 아래가 100줄이다(마지막 줄 번호 101)</li><li>이메일이 모두 example.com으로 끝난다</li><li>참석유형에 '온라인'과 '오프라인' 말고 다른 값이 없다</li></ul>
 <p class="blk k-chk"><span>막히면</span></p>
 <div class="table-wrap"><table><tr><th>이렇게 보이면</th><th>이렇게 해요</th></tr>
 <tr><td><b>클로드가 파일 대신 표를 대화창에 보여 줘요</b></td><td>"이 표를 내려받을 수 있는 CSV 파일로 만들어 줘."라고 한 번 더 보내요.</td></tr>
@@ -1086,8 +1071,6 @@ aside nav a.active{border-left-color:var(--blue)}
 </ol>
 <p><b>STEP 5. 주소 열어 보기</b></p>
 <p>복사한 주소를 새 탭에 붙여 넣어 열어요. 카카오톡 '나에게 보내기'로 주소를 보내 휴대폰에서도 열어 봐요.</p><details class="res-toggle"><summary><span class="blk k-res"><span>실행 결과</span></span><span class="tg"></span></summary><div class="scr-note"><b>화면에서 볼 것</b><p>PC 화면에는 맨 위에 검색창, 그 옆이나 아래에 참석유형·상태 필터가 있고, 그 아래로 신청 명단 표가 보여요. 표가 비어 있으면 시트 이름이나 권한을 다시 봐요.</p></div></details><details class="res-toggle"><summary><span class="blk k-res"><span>실행 결과</span></span><span class="tg"></span></summary><div class="scr-note"><b>화면에서 볼 것</b><p>휴대폰에서도 검색창이 보이고, 표의 글자가 잘리지 않아야 해요. 표가 화면보다 넓으면 옆으로 밀어서 볼 수 있으면 괜찮아요.</p></div></details>
-<p class="blk k-chk"><span>확인할 점</span></p>
-<ul class="checklist"><li>시트의 100줄이 웹 페이지에 모두 보인다</li><li>검색창에 이름 한 글자를 넣으면 맞는 줄만 남는다</li><li>참석유형·상태로 거르면 줄 수가 바뀐다</li><li>휴대폰에서 글자가 잘리지 않고 읽힌다</li></ul>
 <p class="blk k-chk"><span>막히면</span></p>
 <div class="table-wrap"><table><tr><th>이렇게 보이면</th><th>이렇게 해요</th></tr>
 <tr><td><b>클로드 파일 미리보기에 'google is not defined' 오류가 보여요</b></td><td>앱스스크립트 밖(클로드 미리보기)에서 열어서 나오는 오류예요. 코드를 앱스스크립트에 붙여 넣고 웹 앱 주소로 열면 괜찮아요.</td></tr>
@@ -1159,8 +1142,6 @@ aside nav a.active{border-left-color:var(--blue)}
 <li><p>이번에는 이메일 칸을 비우고 [신청하기]를 눌러요. 저장되지 않고 안내 문구가 나오는지 봐요.</p><details class="res-toggle"><summary><span class="blk k-res"><span>실행 결과</span></span><span class="tg"></span></summary><div class="scr-note"><b>화면에서 볼 것</b><p>시트에 저장되지 않고, 어떤 칸이 비었는지 알려 주는 문구가 나와요(예: 이메일을 입력해 주세요).</p></div></details></li>
 <li><p>시트 탭으로 돌아가 맨 아래 줄을 봐요.</p><div class="scr-note"><b>화면에서 볼 것</b><p>시트 맨 아래에 새 줄이 하나 생겨요. 신청번호는 바로 위 줄 다음 번호이고, 신청일시에는 방금 신청한 시각이 들어가요.</p></div></li>
 </ol>
-<p class="blk k-chk"><span>확인할 점</span></p>
-<ul class="checklist"><li>① 입력 화면이 휴대폰에서 보이고 [신청하기]를 누를 수 있다</li><li>② 신청하면 시트 맨 아래에 새 줄이 생기고, 신청번호가 이어진다</li><li>빈칸으로 신청하면 시트에 줄이 생기지 않는다</li><li>웹 페이지 목록에도 방금 넣은 신청이 보인다</li></ul>
 <p class="blk k-chk"><span>막히면</span></p>
 <div class="table-wrap"><table><tr><th>이렇게 보이면</th><th>이렇게 해요</th></tr>
 <tr><td><b>"접수됐어요"는 나오는데 시트에 줄이 없어요</b></td><td>앱스스크립트 왼쪽 메뉴 [실행]을 눌러요. 기록 목록에서 상태가 [실패]인 줄을 눌러 열어요. 빨간 오류 문장을 복사해 클로드에게 붙여 넣어요.</td></tr>
