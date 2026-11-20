@@ -294,6 +294,7 @@ aside nav a.active{border-left-color:var(--blue)}
 #fabMain[aria-expanded="true"] span{transform:rotate(45deg)}
 @media print{#fabMenu{display:none!important}}
 </style>
+<style>.tip-box{margin:14px 0;padding:12px 16px;border:1px solid #cfe8d8;border-left:4px solid #16a36b;background:#f3fbf6;border-radius:0 10px 10px 0}.tip-box>b{display:inline-block;font-size:12px;color:#fff;background:#16a36b;border-radius:6px;padding:1px 8px;margin-bottom:6px}.tip-box p{margin:4px 0}.tip-box ul,.tip-box ol{margin:4px 0;padding-left:20px}.tip-box li{margin:3px 0}</style>
 </head>
 <body>
 <button aria-controls="side-nav" aria-expanded="true" class="nav-toggle" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" viewbox="0 0 16 16"><path d="M2 4h12M2 8h12M2 12h12"></path></svg><span>목차 숨기기</span></button>
@@ -526,8 +527,8 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td><b>IDE용 확장</b></td><td>VS Code, JetBrains(IntelliJ IDEA 등) 같은 편집기에 안티그래비티를 붙이는 확장</td><td>참고만 해요</td></tr>
 </table></div>
 <div class="entry-box" role="note" aria-label="안티그래비티 앱과 IDE 고르기"><b>어느 쪽을 쓰면 될까요?</b>
-<p>제미나이(Gemini)가 들어간 데스크톱 앱을 쓰고 싶다면<br><b>Antigravity App</b>으로 가세요.</p>
-<p>제미나이가 들어 있는 개발자용 코드 편집기(개발 IDE)를 쓰고 싶다면<br><b>Antigravity IDE</b>로 가 보세요.</p>
+<p>제미나이(Gemini)가 들어간 데스크톱 앱을 쓰고 싶다면<br><b>Antigravity App</b>으로 가세요.</p>
+<p>제미나이가 들어 있는 개발자용 코드 편집기(개발 IDE)를 쓰고 싶다면<br><b>Antigravity IDE</b>로 가 보세요.</p>
 </div>
 <figure class="shot"><a href="images/d3_antigravity_ide_plugins.jpg" target="_blank" rel="noopener"><img style="width:440px;max-width:100%" alt="안티그래비티 IDE용 확장 목록. Visual Studio, JetBrains(IntelliJ IDEA, PyCharm 등), Zed, Xcode" loading="lazy" src="images/d3_antigravity_ide_plugins.jpg"/></a><figcaption>다른 편집기에 붙이는 확장도 있어요. JetBrains 확장은 IntelliJ IDEA 같은 편집기를 지원해요 (2026-11-15 확인)</figcaption></figure>
 <p class="source-note">출처: Google Antigravity <a href="https://antigravity.google/download" target="_blank" rel="noopener">다운로드</a>(Antigravity App v2.32.1, CLI v1.5.8, IDE 독립 실행형 v2.7.0, VS Code·JetBrains 등 확장) (2026-11-15 확인) · <a href="https://thenewstack.io/antigravity-is-googles-new-agentic-development-platform/" target="_blank" rel="noopener">The New Stack</a>(2025-11-18 공개), <a href="https://venturebeat.com/ai/google-antigravity-introduces-agent-first-architecture-for-asynchronous" target="_blank" rel="noopener">VentureBeat</a>(2025년 7월 윈드서프 팀 합류, 퍼블릭 프리뷰), <a href="https://www.altamira.ai/antigravity-is-agent-first-coding-tool/" target="_blank" rel="noopener">Altamira</a>(VS Code 오픈소스 기반), <a href="https://www.testmuai.com/blog/google-antigravity-review/" target="_blank" rel="noopener">TestMu AI</a>(2025년 11월 IDE는 편집기와 에이전트 매니저를 함께 제공, 2026-05-19 2.0에서 편집기 없는 App 분리, 이후 IDE에서 에이전트 매니저 제거 예정) (2026-11-18 확인)</p>
@@ -581,8 +582,6 @@ aside nav a.active{border-left-color:var(--blue)}
 <li><p><b>화면 보기:</b> 브라우저 주소창에 <code class="inline">http://localhost:8000/index-tailwind.html</code>을 넣어요. 오전에 Tailwind와 Chart.js로 다듬은 날씨 배너가 보이면 성공이에요.</p></li>
 <li><p><b>서버 끄기:</b> 다 보면 입력창에 "로컬 서버를 꺼 줘"라고 보내요.</p></li>
 </ol>
-<p class="blk k-chk"><span>확인할 점</span></p>
-<ul class="checklist"><li>안티그래비티에서도 같은 화면(카드 + 그래프)이 열린다</li><li>에이전트가 실행 전에 보여 준 명령이 3주차 목요일에 직접 쳤던 로컬 서버 명령과 같다</li></ul>
 <p class="source-note">출처: Google Antigravity <a href="https://antigravity.google/docs/getting-started/" target="_blank" rel="noopener">Get started</a>([New Project] → [Add Folder] → [Create], Local mode), <a href="https://antigravity.google/docs/agent-settings" target="_blank" rel="noopener">Agent settings</a>(Request Review: 모든 터미널 명령에 승인 필요), <a href="https://antigravity.google/docs/settings" target="_blank" rel="noopener">Settings</a>(맥·리눅스는 Permission settings, 윈도우는 Terminal execution policy) · Python 공식 문서 <a href="https://docs.python.org/3/library/http.server.html" target="_blank" rel="noopener">http.server</a>(기본 포트 8000) (2026-11-18 확인)</p>
 <div class="term-note" role="note" aria-label="이 절의 용어"><b>용어</b><dl>
 <dt>로컬 서버</dt><dd>내 컴퓨터 안에서만 웹페이지를 열어 주는 작은 서버. 주소는 localhost로 시작해요</dd>
@@ -772,12 +771,12 @@ python -m http.server 8000</pre></div>
 
 <section class="section session" id="wrap">
 <div class="session-head"><div class="eyebrow">정리 · 17:30–18:00</div><h2>오늘 정리와 과제</h2></div>
-<p><b>오늘의 규칙</b></p>
-<ul class="checklist">
+<div class="tip-box" role="note"><b>오늘의 규칙</b><ul>
 <li>라이브러리는 부품, 프레임워크는 뼈대. 프레임워크는 처음에 잘 고른다</li>
 <li>바깥 주소에서 불러오는 라이브러리도 네트워크 탭에서 확인한다</li>
 <li>도구가 바뀌어도 '폴더 열기 → 시키기 → diff 보고 승인'의 흐름은 같다</li>
 </ul>
+</div>
 <div class="notice"><b>오늘의 결과물</b><br/>라이브러리로 다듬은 날씨 배너 + 터미널에서 만든 헬로 페이지 + 휴대폰에서 이어 한 작업</div>
 <div class="notice"><b>과제</b><br/>내일 크롬 확장 프로그램을 만들어요. 회사나 일상에서 크롬으로 매일 반복하는 일 하나를 적어 와요. 예: 자주 쓰는 문장 붙여 넣기, 페이지의 제목·주소 모으기</div>
 </section>

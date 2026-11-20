@@ -296,6 +296,7 @@ aside nav a.active{border-left-color:var(--blue)}
 </style>
 <style>.term-note{border-top:1px solid #d9dde5;margin:16px 0 4px;padding:10px 0 0;font-size:13.5px;color:#4b5563}.term-note>b{display:inline-block;font-size:12px;color:#3b4ec8;background:#eef2ff;border-radius:6px;padding:1px 8px;margin-bottom:6px}.term-note dl{margin:4px 0 0;display:grid;grid-template-columns:max-content 1fr;gap:4px 14px}.term-note dt{font-weight:700;color:#1f2937}.term-note dd{margin:0}@media(max-width:640px){.term-note dl{grid-template-columns:1fr}.term-note dd{margin:0 0 6px}}</style>
 <style>.where-line{margin:6px 0;font-size:14.5px}.where-line b{display:inline-block;margin-right:8px;padding:1px 8px;border-radius:6px;background:#eef2ff;color:#3b4ec8;font-size:12px}ol.sub-steps{margin:6px 0 8px;padding-left:20px}ol.sub-steps li{margin-bottom:4px}</style>
+<style>.tip-box{margin:14px 0;padding:12px 16px;border:1px solid #cfe8d8;border-left:4px solid #16a36b;background:#f3fbf6;border-radius:0 10px 10px 0}.tip-box>b{display:inline-block;font-size:12px;color:#fff;background:#16a36b;border-radius:6px;padding:1px 8px;margin-bottom:6px}.tip-box p{margin:4px 0}.tip-box ul,.tip-box ol{margin:4px 0;padding-left:20px}.tip-box li{margin:3px 0}</style>
 </head>
 <body>
 <button aria-controls="side-nav" aria-expanded="true" class="nav-toggle" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8" viewbox="0 0 16 16"><path d="M2 4h12M2 8h12M2 12h12"></path></svg><span>목차 숨기기</span></button>
@@ -506,12 +507,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <li><p>클로드 코드가 알려 준 테스트 순서대로 해 보고, <b>성공 화면과 오류 화면을 캡처</b>해요. 캡처는 맥은 <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>4</kbd>, 윈도우는 <kbd>Win</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd>로 해요.</p></li>
 <li><p>오류 화면은 클로드 코드에게 붙여 넣고 고치게 한 뒤, 다시 새로고침(↻)하고 테스트해요.</p></li>
 </ol>
-<p class="blk k-chk"><span>확인할 점</span></p>
-<ul class="checklist">
-<li>저장 성공, 중복, 빈 화면, 복사, 삭제·되돌리기 화면을 하나씩 캡처했다</li>
-<li>시안에 있는 단추가 실제 팝업에도 모두 있다(기능과 디자인을 한 번에 요청하면 단추가 빠지기 쉬워요)</li>
-<li>클로드가 스스로 넣은 기능이 있으면, 기획서와 맞는지 보고 남길지 지울지 내가 정했다</li>
-</ul>
+<div class="tip-box" role="note"><b>TIP</b><p>기능과 디자인을 한 번에 요청하면 시안에 있던 단추가 실제 팝업에서 빠지기 쉬워요. 시안과 설치한 화면을 단추 하나씩 견줘요.</p></div>
 
 <h4>STEP 5. 위에는 버전, 아래에는 내 이름과 문의 채널 넣기</h4>
 <p>출시할 프로그램에는 <b>지금 몇 번째 버전인지</b>와 <b>누가 만들었고 어디로 물어보면 되는지</b>가 보여야 해요. 사용자가 "안 돼요"라고 연락할 때 버전을 알려 주면, 만든 사람은 어느 코드에서 생긴 문제인지 바로 찾을 수 있어요.</p>
@@ -683,7 +679,7 @@ aside nav a.active{border-left-color:var(--blue)}
 
 <li><p><b>제출하기 전에 마지막으로 점검해요</b></p>
 <p class="where-line"><b>어디서</b>대시보드 각 메뉴와 새 크롬 프로필</p>
-<ul class="checklist">
+<ul>
 <li>왼쪽 메뉴마다 오류 표시가 없다</li>
 <li>설명과 스크린샷이 실제 기능과 같다</li>
 <li>모든 권한의 사용 근거를 적었다</li>
@@ -836,11 +832,6 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="copybox"><div class="copyhead"><span>프롬프트 3 · 클로드 새 대화에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 아래 크롬 확장 프로그램의 크롬 웹 스토어 등록정보 초안을 써 줘.
 내용: [1-2 기획서 표를 붙여 넣으세요] 권한은 contextMenus, storage 두 개뿐이고, 저장한 문장은 내 크롬 안에만 남고 바깥 서버로 보내지 않아. 실제로 없는 기능과 "최고", "유일" 같은 과장 표현은 쓰지 마. 모르는 정보는 [확인 필요]로 남겨.
 형식: ① 패키지 요약 한 줄 ② 상세 설명(문제 / 해결 / 기능 / 데이터 / 사용법) ③ 전용 목적 한 문장 ④ 권한마다 사용 이유 한 문장 ⑤ 원격 코드 사용 여부와 이유 ⑥ 사용자 데이터 사용(무엇을 모으고, 어디에 저장하고, 바깥으로 보내는지) ⑦ 스크린샷으로 찍을 장면 3개</pre></div>
-<ul class="checklist">
-<li>상세 설명의 기능이 오전에 실제로 써 본 기능과 같다</li>
-<li>권한 이유가 "사용자가 직접 실행한 기능에 필요해서"로 설명된다</li>
-<li>데이터 문장이 "바깥 서버로 보내지 않는다"는 실제 동작과 같다</li>
-</ul>
 <p>개인정보 보호 탭에는 아래 네 가지를 써요.</p>
 <div class="table-wrap"><table><tr><th>칸</th><th>쓰는 법</th></tr>
 <tr><td><b>전용 목적</b></td><td>이 프로그램이 하는 한 가지 일과, 하지 않는 일(페이지를 스스로 읽지 않음, 방문 기록을 모으지 않음)을 함께 써요</td></tr>
@@ -916,11 +907,6 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="copybox"><div class="copyhead"><span>프롬프트 5 · 같은 대화에 이어서 보내세요</span><button type="button">복사</button></div><pre>요청: 같은 서비스의 이용약관 초안도 써 줘.
 내용: 무료 서비스이고 결제·환불은 없어. 공정거래위원회 표준약관 구조를 참고하되 이 서비스에 없는 조항(결제, 회원 등급 등)은 넣지 마. 약관 변경 조항에는 "적용일 7일 전 공지, 이용자에게 불리하면 30일 전 공지"를 넣어.
 형식: 제1조(목적)부터 부칙까지. 맨 끝에 법률 검토가 필요한 조항 목록.</pre></div>
-<ul class="checklist">
-<li>수집 항목에 내가 말하지 않은 것(이름, 이메일, 기기 정보 등)이 들어가지 않았다</li>
-<li>스토어 개인정보 보호 탭에 답할 내용과 처리방침 내용이 같다</li>
-<li>[확인 필요] 자리를 채우거나 지우기 전에는 게시하지 않는다</li>
-</ul>
 <h4>로그인 없이 열리는 주소로 공개하기</h4>
 <p><b>더 빠른 방법</b> 2-4에서 만든 <b>공개(Public) 저장소</b>에 처리방침을 PRIVACY.md 파일로 올려도 돼요. 공개 저장소의 파일 주소는 로그인 없이 열려요. 클로드 코드에게 "개인정보처리방침 초안을 PRIVACY.md로 저장하고 깃헙에 올린 뒤, 파일 주소를 알려 줘"라고 시켜요. 회사 홈페이지처럼 보이는 주소가 필요하면 아래처럼 깃헙 페이지스로 공개해요.</p>
 <p>스토어 심사자는 로그인 없이 처리방침을 열 수 있어야 해요. 회사 홈페이지가 없다면, 2-4에서 깃헙에 올렸던 것처럼 깃헙 페이지스로 공개할 수 있어요.</p>
@@ -1162,11 +1148,6 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td>인스타그램 광고</td><td>페이드</td><td>instagram</td><td>cpc</td><td></td><td></td></tr>
 <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 </table></div>
-<ul class="checklist">
-<li>모든 주소에 source·medium·campaign이 있다</li>
-<li>값에 대문자·띄어쓰기·한글이 없다</li>
-<li>캠페인 이름이 채널마다 같고, 광고만 medium이 cpc다</li>
-</ul>
 </div>
 
 <div class="topic" id="s6-6"><h3><span class="stage">선택</span>6-6. (선택) GA에서 채널별 성과 보기</h3>
@@ -1189,8 +1170,7 @@ aside nav a.active{border-left-color:var(--blue)}
 
 <section class="section session" id="wrap">
 <div class="session-head"><div class="eyebrow">정리 · 17:30–18:00</div><h2>오늘 정리, 회고와 과제</h2></div>
-<p><b>오늘의 규칙</b></p>
-<ul class="checklist">
+<div class="tip-box" role="note"><b>오늘의 규칙</b><ul>
 <li>확장 프로그램도 기획서부터. '하지 않을 일'과 '필요한 권한'을 먼저 적는다</li>
 <li>권한은 가장 적게. 모든 사이트 권한은 정말 필요한지 다시 따진다</li>
 <li>플랫폼에 올리면 그 플랫폼의 약관과 정책을 따른다. 출시 일정에 계정·테스트·심사 기간을 넣는다</li>
@@ -1204,6 +1184,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <li>테스트는 미리보기가 아니라 설치한 크롬에서 하고, 성공·오류 화면을 캡처해 남긴다</li>
 <li>출시할 화면에는 버전과 만든 사람·문의 채널을 넣는다</li>
 </ul>
+</div>
 <p><b>회고 쓰기</b> 수업을 마치기 전에 <a href="https://www.swy.kr/retrospective" target="_blank" rel="noopener">회고 페이지(swy.kr/retrospective)</a>에 오늘 한 일, 막혔던 곳, 내일 해 볼 것을 적으며 하루를 정리해요.</p>
 <div class="notice"><b>오늘의 결과물</b><br/>내 문장 모음(버전·문의 채널 표시, 깃헙 저장소) + 테스트 성공·오류 캡처 + 스토어 등록정보·개인정보 보호 탭 초안 + 개인정보처리방침·이용약관 초안 + 약관 변경 계획표 + 채널별 UTM 링크표</div>
 <div class="notice"><b>과제</b><br/>① 아래 과제 1로 내 반복 업무 확장 프로그램을 만들어 깃헙에 올려요. ② 하루 동안 실제 업무에 써 보고, 줄어든 시간이나 불편했던 점을 한 줄 적어 와요. ③ 짝이 있으면 과제 2로 서로 바꿔 써 봐요.</div>
