@@ -439,8 +439,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="copybox"><div class="copyhead"><span>프롬프트 1 · 클로드 코드 입력창에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 이 프로젝트에 cs-answer 스킬을 만들어 줘.
 내용: 위치는 .claude/skills/cs-answer/SKILL.md. description은 '쇼핑몰 고객 문의에 답변 초안을 쓸 때'로 해 줘. 본문에는 data/shop-data.json의 운영 정책과 데이터만 근거로 답하기, 모르면 '확인 후 안내드릴게요'라고 하기, 해요체 3문장 이내, 개인정보는 묻지 않기를 순서대로 적어 줘. [월요일에 고친 규칙이 있으면 붙여 넣으세요]
 형식: SKILL.md 내용을 보여 주고, 승인하면 저장해 줘.</pre></div></li>
-<li><p>클로드 코드가 SKILL.md 내용을 보여 주며 저장해도 되는지 물어요. 내용을 읽고 규칙이 빠지지 않았는지 확인한 뒤 승인해요.</p>
-<figure class="shot shot-todo"><div class="shot-ph"><b>클로드 코드가 SKILL.md 내용을 보여 주고 저장 승인을 묻는 화면</b><span class="ph-file">images/d5_skill_create_approve-hl.png</span><span class="ph-marks"><i class="ph-click">① 승인 단추</i><i class="ph-check">확인할 곳: description 줄과 규칙 4개</i></span></div><figcaption>만들기: 저장하기 전에 SKILL.md 내용을 먼저 읽고 승인해요 (데스크톱 앱 [Code] 탭)</figcaption></figure></li>
+<li><p>클로드 코드가 SKILL.md 내용을 보여 주며 저장해도 되는지 물어요. 내용을 읽고 규칙이 빠지지 않았는지 확인한 뒤 승인해요.</p></li>
 <li><p>왼쪽 파일 목록이나 폴더에서 <code class="inline">.claude/skills/cs-answer/SKILL.md</code> 파일이 생겼는지 확인해요. 맨 위 <code class="inline">---</code> 사이에 description 줄이 있어야 해요.</p></li>
 </ol>
 <p class="source-note">출처: Claude Code 공식 문서 <a href="https://code.claude.com/docs/en/skills" target="_blank" rel="noopener">Extend Claude with skills</a>(개인 스킬은 ~/.claude/skills, 프로젝트 스킬은 .claude/skills) · Claude 도움말 <a href="https://support.claude.com/en/articles/12512180-use-skills-in-claude" target="_blank" rel="noopener">Use skills in Claude</a>([사용자 지정] → [스킬]에서 + → 스킬 만들기, ZIP 올리기) (2026-11-20 확인)</p>
@@ -449,11 +448,9 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="topic" id="s2-3"><h3><span class="stage">실습</span>2-3. 스킬 쓰기: 이름으로 부르기와 그냥 부탁하기</h3>
 <p>스킬을 쓰는 방법도 두 가지예요. 이름으로 직접 부르면 반드시 그 스킬을 써요. 그냥 부탁하면 클로드가 description을 보고 맞는 스킬을 스스로 골라 써요.</p>
 <ol class="do-steps">
-<li><p>새 대화의 입력창에 <code class="inline">/</code>를 입력해요. 명령과 스킬 목록이 열리면 <b>cs-answer</b>를 골라요. 입력창 옆 <+> → [슬래시 명령]으로 열어도 돼요.</p>
-<figure class="shot shot-todo"><div class="shot-ph"><b>입력창에 / 를 입력하면 열리는 목록에서 cs-answer를 고르는 화면</b><span class="ph-file">images/d5_skill_slash_menu-hl.png</span><span class="ph-marks"><i class="ph-click">① / 입력</i><i class="ph-click">② cs-answer 선택</i><i class="ph-check">확인할 곳: 목록에 내가 만든 스킬 이름이 보임</i></span></div><figcaption>쓰기 1: / 를 입력하면 기본 명령과 내가 만든 스킬이 함께 보여요 (데스크톱 앱 [Code] 탭)</figcaption></figure></li>
+<li><p>새 대화의 입력창에 <code class="inline">/</code>를 입력해요. 명령과 스킬 목록이 열리면 <b>cs-answer</b>를 골라요. 입력창 옆 <+> → [슬래시 명령]으로 열어도 돼요.</p></li>
 <li><p>cs-answer 뒤에 <code class="inline">쿠폰은 두 장 같이 쓸 수 있나요?</code>를 이어 써서 보내요.</p></li>
-<li><p>이번에는 /를 빼고 "고객 문의 답변 써 줘: 배송은 언제 와요?"라고 보내요. 답이 나오기 전에 클로드가 cs-answer 스킬을 불러왔다는 표시가 나오는지 봐요.</p>
-<figure class="shot shot-todo"><div class="shot-ph"><b>/ 없이 부탁했을 때 클로드가 cs-answer 스킬을 스스로 불러온 표시</b><span class="ph-file">images/d5_skill_auto_use-hl.png</span><span class="ph-marks"><i class="ph-check">확인할 곳: 스킬을 불러왔다는 표시</i><i class="ph-check">확인할 곳: 해요체 3문장 이내 답</i></span></div><figcaption>쓰기 2: 그냥 부탁해도 description과 맞으면 클로드가 스킬을 꺼내 써요</figcaption></figure></li>
+<li><p>이번에는 /를 빼고 "고객 문의 답변 써 줘: 배송은 언제 와요?"라고 보내요. 답이 나오기 전에 클로드가 cs-answer 스킬을 불러왔다는 표시가 나오는지 봐요.</p></li>
 </ol>
 <div class="table-wrap tpl"><table><tr><th>시험</th><th>스킬을 썼나</th><th>규칙을 지켰나</th></tr>
 <tr><td>/cs-answer 로 불렀을 때</td><td></td><td></td></tr>
@@ -469,8 +466,6 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td><b>클로드 코드</b></td><td>[Code] 탭 입력창에 <code class="inline">/skills</code>를 보내요</td><td>지금 쓸 수 있는 스킬 목록. 클로드 앱에서 만든 스킬은 'claude.ai sync' 묶음으로 따로 보여요</td></tr>
 <tr><td><b>클로드 앱 설정</b></td><td>왼쪽 사이드바 [사용자 지정] → [스킬]</td><td>Anthropic 기본 스킬과 내가 만든 스킬 목록, 켜고 끄는 스위치, 켠 날짜</td></tr>
 </table></div>
-<figure class="shot shot-todo"><div class="shot-ph"><b>[Code] 탭에서 /skills 를 보낸 결과: 쓸 수 있는 스킬 목록</b><span class="ph-file">images/d5_skill_list_skills-hl.png</span><span class="ph-marks"><i class="ph-click">① /skills 입력</i><i class="ph-check">확인할 곳: cs-answer가 목록에 있음</i></span></div><figcaption>전부 보기 1: 클로드 코드에서 /skills 로 지금 쓸 수 있는 스킬을 확인해요</figcaption></figure>
-<figure class="shot shot-todo"><div class="shot-ph"><b>클로드 앱 [사용자 지정] → [스킬] 화면: 스킬 목록과 켜고 끄는 스위치</b><span class="ph-file">images/d5_skill_customize_list-hl.png</span><span class="ph-marks"><i class="ph-click">① [사용자 지정]</i><i class="ph-click">② [스킬]</i><i class="ph-check">확인할 곳: 스킬마다 있는 켜기/끄기 스위치</i></span></div><figcaption>전부 보기 2: 클로드 앱 설정에서는 스킬을 켜고 끌 수 있어요. 꺼 둔 스킬은 클로드가 쓰지 않아요</figcaption></figure>
 <p>클로드 앱에서 스킬을 쓰려면 [설정] → [기능]에서 파일을 만들고 고치는 기능(코드 실행)이 켜져 있어야 해요. 팀·기업 요금제는 관리자가 먼저 스킬을 허용해야 해요.</p>
 <p class="source-note">출처: Claude Code 공식 문서 <a href="https://code.claude.com/docs/en/skills" target="_blank" rel="noopener">Extend Claude with skills</a>(/skills 목록, claude.ai sync 묶음) · Claude 도움말 <a href="https://support.claude.com/en/articles/12512180-use-skills-in-claude" target="_blank" rel="noopener">Use skills in Claude</a>([사용자 지정] → [스킬] 목록·스위치, 코드 실행 필요) (2026-11-20 확인)</p>
 </div>
@@ -525,8 +520,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="copybox"><div class="copyhead"><span>프롬프트 2 · 클로드 코드 입력창에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: copy-reviewer 서브에이전트를 만들어 줘.
 내용: 위치는 .claude/agents/copy-reviewer.md. 역할은 화면 문구 검수만이고 파일은 고치지 않아. 검사 기준은 ① 해요체 ② 과장 표현(최고, 무조건) ③ 근거 없는 숫자 ④ 출처 표시 빠짐 ⑤ 버튼 이름이 하는 일과 맞는지.
 형식: 만든 파일 내용을 보여 주고, 승인하면 저장해 줘.</pre></div></li>
-<li><p>클로드 코드가 만든 파일 내용을 보여 주면, 맨 위 <code class="inline">---</code> 사이에 name·description·tools 줄이 있는지 보고 승인해요. 검수만 하는 역할이므로 tools에는 파일을 읽는 도구만 있어야 해요.</p>
-<figure class="shot shot-todo"><div class="shot-ph"><b>클로드 코드가 copy-reviewer.md 내용을 보여 주고 저장 승인을 묻는 화면</b><span class="ph-file">images/d5_agent_create_approve-hl.png</span><span class="ph-marks"><i class="ph-click">① 승인 단추</i><i class="ph-check">확인할 곳: name, description, tools(읽기만) 줄</i></span></div><figcaption>만들기: 서브에이전트 파일도 저장하기 전에 내용을 읽고 승인해요 (데스크톱 앱 [Code] 탭)</figcaption></figure></li>
+<li><p>클로드 코드가 만든 파일 내용을 보여 주면, 맨 위 <code class="inline">---</code> 사이에 name·description·tools 줄이 있는지 보고 승인해요. 검수만 하는 역할이므로 tools에는 파일을 읽는 도구만 있어야 해요.</p></li>
 </ol>
 </div>
 
@@ -538,14 +532,12 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td><b>클로드가 알아서 맡기기</b></td><td>description에 적은 일(문구 검수)을 부탁하면 메인 클로드가 스스로 맡겨요</td></tr>
 </table></div>
 <ol class="do-steps">
-<li><p>입력창에 <code class="inline">@</code>를 입력해 목록에 copy-reviewer가 보이는지 확인해요.</p>
-<figure class="shot shot-todo"><div class="shot-ph"><b>입력창에 @ 를 입력하면 열리는 목록에서 copy-reviewer (agent)를 고르는 화면</b><span class="ph-file">images/d5_agent_at_mention-hl.png</span><span class="ph-marks"><i class="ph-click">① @ 입력</i><i class="ph-click">② copy-reviewer (agent) 선택</i><i class="ph-check">확인할 곳: 이름 뒤 (agent) 표시</i></span></div><figcaption>쓰기 1: @로 서브에이전트를 직접 골라 맡길 수 있어요</figcaption></figure></li>
+<li><p>입력창에 <code class="inline">@</code>를 입력해 목록에 copy-reviewer가 보이는지 확인해요.</p></li>
 <li><p>아래 프롬프트를 보내요.</p>
 <div class="copybox"><div class="copyhead"><span>프롬프트 3 · 서브에이전트에게 맡기기</span><button type="button">복사</button></div><pre>요청: copy-reviewer에게 weather-banner/index-tailwind.html의 화면 문구를 검수하게 해 줘.
 내용: 파일은 고치지 말고 검수 결과만 받아 줘.
 형식: 문구 / 걸린 기준 / 고칠 문구 3열 표.</pre></div></li>
-<li><p>클로드가 copy-reviewer에게 일을 넘기면, 화면에 서브에이전트가 일하는 표시가 나와요. 앱 위쪽 [⋮] 메뉴의 [Background tasks]를 열면 지금 일하는 서브에이전트와 그 결과를 볼 수 있어요.</p>
-<figure class="shot shot-todo"><div class="shot-ph"><b>서브에이전트가 일하는 표시와 [⋮] → [Background tasks] 창</b><span class="ph-file">images/d5_agent_running-hl.png</span><span class="ph-marks"><i class="ph-click">① [⋮]</i><i class="ph-click">② [Background tasks]</i><i class="ph-check">확인할 곳: copy-reviewer가 일하는 중 / 끝남</i></span></div><figcaption>쓰기 2: 서브에이전트는 따로 일하고 결과 요약만 메인 클로드에게 돌려줘요</figcaption></figure></li>
+<li><p>클로드가 copy-reviewer에게 일을 넘기면, 화면에 서브에이전트가 일하는 표시가 나와요. 앱 위쪽 [⋮] 메뉴의 [Background tasks]를 열면 지금 일하는 서브에이전트와 그 결과를 볼 수 있어요.</p></li>
 </ol>
 <div class="table-wrap tpl"><table><tr><th>걸린 문구</th><th>기준</th><th>고칠지(예/아니요)</th></tr>
 <tr><td></td><td></td><td></td></tr>
