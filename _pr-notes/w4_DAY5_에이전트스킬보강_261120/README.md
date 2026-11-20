@@ -14,7 +14,7 @@
 | 2-3 (새로 추가) | 2-2 안의 두 줄 | 스킬 쓰기: / 목록에서 고르기, 그냥 부탁하기, 스킬을 안 쓸 때 description 고치기, 화면 자리 2개 |
 | 2-4 (새로 추가) | 없음 | 내가 만든 스킬 전부 보기: [Code] 탭 /skills, 클로드 앱 [사용자 지정]→[스킬](켜기/끄기), 화면 자리 2개 |
 | 2-5 (새로 추가) | 없음 | 많이 쓰는 공개 스킬 9개(기획·디자인·개발 각 3개, 스타 5천 개 이상, 2025년 9월 이후 만든 저장소)와 설치 전 안전 안내 |
-| 3-2 ~ 3-4 | 만들기와 맡기기를 한 절에 둠 | 3-2 만들기(저장 위치 표, 승인 화면 자리) / 3-3 맡기기 세 방법(이름, @, 자동)과 [⋮]→[Background tasks] / 3-4 전부 보기 |
+| 3-2 ~ 3-3 | 만들기와 맡기기를 한 절에 둠 | 3-2 만들기(저장 위치 표, 승인 화면 자리) / 3-3 맡기기 세 방법(이름, @, 자동)과 [⋮]→[Background tasks]. 처음에 넣었던 '서브에이전트 전부 보기' 절은 공식 문서에 목록 화면이 없어 삭제함 |
 | 사이드 목차 | — | 새 절 반영 |
 
 ## 출처와 확인 상태 (2026-11-20 KST 확인)
@@ -23,15 +23,15 @@
 - 스킬 만들기·부르기·/skills·claude.ai sync: code.claude.com/docs/en/skills
 - 데스크톱 앱 / 목록, + → 슬래시 명령, [⋮] → Background tasks, Customize: code.claude.com/docs/en/desktop
 - 클로드 앱 [사용자 지정]→[스킬], + → 스킬 만들기, ZIP 올리기, 스위치, 코드 실행 필요: support.claude.com/en/articles/12512180-use-skills-in-claude
-- 서브에이전트 저장 위치, 맡기는 세 방법, **지금 버전의 /agents는 목록 화면 없이 안내만 보여 줌**(v2.1.197까지는 Running·Library 탭 화면): code.claude.com/docs/en/sub-agents
+- 서브에이전트 저장 위치, 맡기는 세 방법: code.claude.com/docs/en/sub-agents (공식 문서에 지금 버전의 서브에이전트 목록·설정 화면이 없어, 목록 보기 절은 넣지 않음)
 - 세 서비스 기능 이름: Claude(Cowork와 채팅 통합, 2026-09-16), ChatGPT(agent 종료 → Work), Gemini(Spark → Tasks, 개인 계정·만 18세 이상) — 각 공식 도움말
 - 공개 스킬 스타 수: 각 GitHub 저장소 페이지 값
 
 ## 아직 남은 것
 
-- **실제 화면 캡처 9장**: 이 작업 세션은 강사 컴퓨터와 연결되지 않아 데스크톱 앱 화면을 직접 찍지 못했습니다. 교안 저장소의 캡처 예정 자리(shot-todo)로 넣어 두었고, 파일 이름은 아래와 같습니다.
+- **실제 화면 캡처 8장**: 이 작업 세션은 강사 컴퓨터와 연결되지 않아 데스크톱 앱 화면을 직접 찍지 못했습니다. 교안 저장소의 캡처 예정 자리(shot-todo)로 넣어 두었고, 파일 이름은 아래와 같습니다.
   - d5_skill_create_approve-hl.png, d5_skill_slash_menu-hl.png, d5_skill_auto_use-hl.png, d5_skill_list_skills-hl.png, d5_skill_customize_list-hl.png
-  - d5_agent_create_approve-hl.png, d5_agent_at_mention-hl.png, d5_agent_running-hl.png, d5_agent_list-hl.png
+  - d5_agent_create_approve-hl.png, d5_agent_at_mention-hl.png, d5_agent_running-hl.png
 - 데스크톱 앱 한국어 화면의 메뉴 이름([사용자 지정], [스킬], [슬래시 명령])은 캡처할 때 실제 표기로 다시 맞춰야 합니다.
 
 ## 캡처
@@ -50,4 +50,3 @@
 ![2-4](after_s2-4.png)
 ![2-5](after_s2-5.png)
 ![3-3](after_s3-3.png)
-![3-4](after_s3-4.png)

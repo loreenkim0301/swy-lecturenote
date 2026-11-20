@@ -310,7 +310,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="grp"><div class="grp-label">오늘의 단어</div><a class="l2" href="#words">오늘의 단어</a></div>
 <div class="grp"><div class="grp-label">SESSION 1</div><a class="l2" href="#s1">에이전트란? 채팅과 무엇이 다른가</a><a class="l3" href="#s1-1">1-1. 한 번 답하기 vs 끝까지 해 나가기</a><a class="l3" href="#s1-2">1-2. ChatGPT·Claude·Gemini의 에이전트 기능 이름</a><a class="l3" href="#s1-3">1-3. 이번 주 작업에서 에이전트 단계 찾기</a></div>
 <div class="grp"><div class="grp-label">SESSION 2</div><a class="l2" href="#s2">스킬: 일하는 방법을 적어 두기</a><a class="l3" href="#s2-1">2-1. 스킬은 이렇게 생겼어요</a><a class="l3" href="#s2-2">2-2. 답변 규칙 스킬 만들기</a><a class="l3" href="#s2-3">2-3. 스킬 쓰기</a><a class="l3" href="#s2-4">2-4. 내가 만든 스킬 전부 보기</a><a class="l3" href="#s2-5">2-5. 많이 쓰는 공개 스킬</a><a class="l3" href="#s2-6">2-6. 결과</a></div>
-<div class="grp"><div class="grp-label">SESSION 3</div><a class="l2" href="#s3">서브에이전트: 일을 나눠 맡기기</a><a class="l3" href="#s3-1">3-1. 서브에이전트는 이렇게 일해요</a><a class="l3" href="#s3-2">3-2. 문구 검수 서브에이전트 만들기</a><a class="l3" href="#s3-3">3-3. 서브에이전트에게 일 맡기기</a><a class="l3" href="#s3-4">3-4. 내가 만든 서브에이전트 전부 보기</a><a class="l3" href="#s3-5">3-5. 결과</a></div>
+<div class="grp"><div class="grp-label">SESSION 3</div><a class="l2" href="#s3">서브에이전트: 일을 나눠 맡기기</a><a class="l3" href="#s3-1">3-1. 서브에이전트는 이렇게 일해요</a><a class="l3" href="#s3-2">3-2. 문구 검수 서브에이전트 만들기</a><a class="l3" href="#s3-3">3-3. 서브에이전트에게 일 맡기기</a><a class="l3" href="#s3-4">3-4. 결과</a></div>
 <div class="grp"><div class="grp-label">SESSION 4</div><a class="l2" href="#s4">손이 생긴 AI: 커넥터·브라우저·컴퓨터</a><a class="l3" href="#s4-1">4-1. 세 가지 손 견주기</a><a class="l3" href="#s4-2">4-2. 브라우저 손으로 정보 모으기</a></div>
 <div class="grp"><div class="grp-label">SESSION 5</div><a class="l2" href="#s5">사람이 확인할 곳 정하기</a><a class="l3" href="#s5-1">5-1. 쿠폰을 만들었다고 했는데, 아무것도 없었어요</a><a class="l3" href="#s5-2">5-2. 내 서비스의 '사람이 확인할 곳' 표</a><a class="l3" href="#s5-3">5-3. 결과</a></div>
 <div class="grp"><div class="grp-label">SESSION 6</div><a class="l2" href="#s6">4주차 회고</a><a class="l3" href="#s6-1">6-1. 이번 주 결과물 모으기</a></div>
@@ -555,19 +555,8 @@ aside nav a.active{border-left-color:var(--blue)}
 <p class="source-note">출처: Claude Code 공식 문서 <a href="https://code.claude.com/docs/en/sub-agents" target="_blank" rel="noopener">Create custom subagents</a>(자동으로 맡기기, 이름으로 부르기, @-멘션) · <a href="https://code.claude.com/docs/en/desktop" target="_blank" rel="noopener">Claude Desktop</a>([⋮] → Background tasks 창에 서브에이전트 표시) (2026-11-20 확인)</p>
 </div>
 
-<div class="topic" id="s3-4"><h3><span class="stage">실습</span>3-4. 내가 만든 서브에이전트 전부 보기</h3>
-<p>스킬과 달리, 지금 데스크톱 앱 [Code] 탭에는 서브에이전트를 모아 보여 주는 설정 화면이 따로 없어요. 예전에는 <code class="inline">/agents</code>를 보내면 목록 화면이 열렸지만, 지금 버전에서는 "클로드에게 부탁하거나 .claude/agents 폴더를 직접 고치라"는 안내만 나와요. 그래서 아래 세 곳에서 확인해요.</p>
-<div class="table-wrap"><table><tr><th>보는 곳</th><th>여는 방법</th><th>보이는 것</th></tr>
-<tr><td><b>클로드에게 묻기</b></td><td>"이 프로젝트와 내 컴퓨터에 있는 서브에이전트 목록을 이름·설명·저장 위치로 표로 보여 줘"</td><td>내가 만든 것과 기본으로 들어 있는 서브에이전트(Explore, Plan 등)</td></tr>
-<tr><td><b>@ 목록</b></td><td>입력창에 <code class="inline">@</code> 입력</td><td>지금 부를 수 있는 서브에이전트 이름 (agent)</td></tr>
-<tr><td><b>폴더</b></td><td>프로젝트의 <code class="inline">.claude/agents/</code> 폴더</td><td>서브에이전트 파일(이름.md) 그대로</td></tr>
-</table></div>
-<figure class="shot shot-todo"><div class="shot-ph"><b>/agents 를 보냈을 때 나오는 안내와, 클로드에게 서브에이전트 목록을 표로 받은 화면</b><span class="ph-file">images/d5_agent_list-hl.png</span><span class="ph-marks"><i class="ph-click">① /agents 입력</i><i class="ph-check">확인할 곳: copy-reviewer가 목록에 있음</i></span></div><figcaption>전부 보기: 서브에이전트 목록은 클로드에게 물어 표로 받아요</figcaption></figure>
-<p class="source-note">출처: Claude Code 공식 문서 <a href="https://code.claude.com/docs/en/sub-agents" target="_blank" rel="noopener">Create custom subagents</a>(지금 버전의 /agents는 안내만 보여 줌, 기본 서브에이전트 목록, 저장 위치) (2026-11-20 확인)</p>
-</div>
-
-<div class="topic" id="s3-5"><h3><span class="stage">결과</span>3-5. 결과</h3>
-<div class="result-box"><b>결과물</b> .claude/agents/copy-reviewer.md + 검수 결과 표 + 서브에이전트 목록 표</div>
+<div class="topic" id="s3-4"><h3><span class="stage">결과</span>3-4. 결과</h3>
+<div class="result-box"><b>결과물</b> .claude/agents/copy-reviewer.md + 검수 결과 표</div>
 <p class="ok-line"><b>이렇게 보이면 성공</b>검수 단계에서는 파일이 바뀌지 않았고, 반영 단계에서 고른 것만 바뀌었다</p>
 </div>
 </section>
