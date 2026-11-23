@@ -294,6 +294,7 @@ aside nav a.active{border-left-color:var(--blue)}
 #fabMain[aria-expanded="true"] span{transform:rotate(45deg)}
 @media print{#fabMenu{display:none!important}}
 </style>
+<style>.debate-team{border:1px solid #dfe4ed;border-radius:12px;padding:12px 18px;margin:16px 0;background:#fff}.debate-team h5,.debate-result h5{font-size:16px;font-weight:800;margin:6px 0 10px;color:#172033}.debate-say{margin:10px 0 4px;padding:10px 14px;background:#f5f7fb;border-radius:8px}.debate-say>b{display:inline-block;margin-right:8px;color:#2457f5}.debate-result{margin-top:20px}</style>
 <style>.tip-box{margin:14px 0;padding:12px 16px;border:1px solid #cfe8d8;border-left:4px solid #16a36b;background:#f3fbf6;border-radius:0 10px 10px 0}.tip-box>b{display:inline-block;font-size:12px;color:#fff;background:#16a36b;border-radius:6px;padding:1px 8px;margin-bottom:6px}.tip-box p{margin:4px 0}.tip-box ul,.tip-box ol{margin:4px 0;padding-left:20px}.tip-box li{margin:3px 0}</style>
 <style>/* diagram v1 */figure.diagram{margin:20px 0 22px;padding:16px;border:1px solid var(--line);border-radius:14px;background:#fff}figure.diagram .diagram-scroll{overflow-x:auto}figure.diagram svg{display:block;width:100%;min-width:760px;height:auto}figure.diagram figcaption{margin-top:10px;font-size:14px;color:var(--muted)}figure.diagram figcaption b{display:block;color:var(--ink);margin-bottom:2px}#slide figure.diagram{margin:6px 0;padding:8px}#slide figure.diagram svg{max-height:470px;min-width:0}</style>
 <style>/* kw-card v1 */.kw-card{border:1px solid #cfd9f3;border-radius:14px;margin:20px 0;overflow:hidden;background:#fff}.kw-card>header{background:#f5f8ff;padding:14px 18px;border-bottom:1px solid #dfe4ed}.kw-card>header h4{margin:0;font-size:20px;color:var(--ink)}.kw-card>header h4 .en{font-size:13px;color:var(--muted);margin-left:8px;font-weight:500}.kw-card>header p{margin:6px 0 0}.kw-card dl{margin:0;display:grid;grid-template-columns:160px 1fr}.kw-card dt{padding:12px 18px;font-weight:800;color:#2c48b8;border-top:1px solid #eef1f6;background:#fafbfe}.kw-card dd{margin:0;padding:12px 18px;border-top:1px solid #eef1f6}.kw-card dd ol{margin:0;padding-left:20px}.kw-card .source-note{margin:0;padding:10px 18px;border-top:1px solid #eef1f6}@media(max-width:640px){.kw-card dl{grid-template-columns:1fr}.kw-card dt{padding-bottom:2px}.kw-card dd{border-top:0;padding-top:4px}}#slide .kw-card dl{grid-template-columns:140px 1fr}</style><style>/* kw-news v1 */.kw-news{margin:0;padding:14px 18px;background:#fffbea;border-bottom:1px solid #f1e3a6}.kw-news>b{display:inline-block;font-size:12px;color:#8a6a00;background:#f6ecc4;border-radius:6px;padding:1px 8px;margin-bottom:6px}.kw-news p{margin:4px 0}.kw-news .kw-lesson span{font-weight:800;color:#8a6a00;margin-right:4px}.kw-news .kw-src{font-size:12.5px;color:var(--muted)}</style></head>
@@ -827,30 +828,81 @@ async function sendSummary(customer, input) {
 <p>그래서 답은 "부분적으로 같아요"예요. 클로드 코드 공식 문서에 따르면 Explore·Plan 같은 기본 하위 에이전트가 있고, Claude는 알맞을 때 이것을 알아서 써요. 직접 만든 하위 에이전트도 각 description을 보고 언제 맡길지 정해요. 즉 개발 도구에서는 "써 줘"라고 하지 않아도 쓸 수 있게 되어 있지만, <b>언제 맡길지를 적는 일은 여전히 사람 몫</b>이에요. 1-2에서 도구의 description이 곧 성능이었던 것과 같은 원리예요. API를 직접 쓸 때는 이 구조 전체를 개발자가 만들어야 해요.</p>
 </section>
 
-<section class="agent-qa" aria-labelledby="s2-1-q2">
-<h4 id="s2-1-q2">Q. 멀티 에이전트 최신 연구 흐름: "어떤 조합의 구조가 가장 효과적이었나?"</h4>
-<p>5세션에서 배울 가설 형식으로 먼저 적어 보면 이래요. <b>"멀티 에이전트는 에이전트 수가 많을수록 좋아질 것이다, 왜냐하면 일을 나눠 동시에 하니까."</b> 최근 연구는 이 가설을 그대로 받아 주지 않아요. "어떤 일에, 어떤 연결 방식으로"에 따라 결과가 갈렸어요.</p>
+<section class="agent-qa agent-debate" aria-labelledby="s2-1-q2">
+<h4 id="s2-1-q2">Q. 멀티 에이전트, "어떻게 일 시키는 게 제일 좋아?" 세 연구팀의 답을 토론처럼 모아 보기</h4>
+<p>구글 연구팀, Anthropic 팀, OpenAI 팀이 멀티 에이전트를 직접 만들거나 실험해 보고 내놓은 결과를 팀별로 최신순으로 모았어요. 같은 질문에 세 팀이 각자 답한다고 생각하고 읽어요. 마지막에 토론 결과를 정리했어요.</p>
+
+<article class="debate-team" aria-labelledby="s2-1-q2-google">
+<h5 id="s2-1-q2-google">구글 연구팀: "일의 모양부터 보고, 리더를 둬라"</h5>
+<ul>
+<li><b>2025년 12월 논문 · 2026년 1월 블로그 (구글 리서치·구글 딥마인드·MIT)</b>: 에이전트 하나와 멀티 에이전트 4종(서로 연락 없이 따로 일하는 <b>독립형</b>, 리더가 나눠 주고 모으는 <b>중앙 집중형</b>, 에이전트끼리 직접 주고받는 <b>분산형</b>, 둘을 섞은 <b>혼합형</b>)을 180가지 설정으로 비교했어요.
+<ul>
+<li>나눠서 할 수 있는 일(재무 분석)에서는 중앙 집중형이 에이전트 하나보다 80.9% 좋았어요.</li>
+<li>앞 단계를 이어받아야 하는 순서형 일(게임 속 제작 계획)에서는 모든 멀티 에이전트가 39~70% 나빠졌어요.</li>
+<li>독립형은 오류를 17.2배 키웠고, 중앙 집중형은 4.4배로 막았어요. 연구팀은 중앙 집중형이 성공률과 오류 막기의 균형이 가장 좋다고 봤어요.</li>
+<li>도구 수, 일을 나눌 수 있는 정도 같은 일의 특징만으로 처음 보는 일의 87%에서 가장 좋은 구조를 맞혔어요.</li>
+</ul></li>
+</ul>
+<p class="debate-say"><b>이 팀의 답</b> 에이전트 수보다 일의 모양이 먼저예요. 나눌 수 있는 일이면 리더를 둔 중앙 집중형으로, 순서대로 이어지는 일이면 에이전트 하나로 해요. 리더 없이 따로 일하게 두면 오류가 커져요.</p>
+</article>
+
+<article class="debate-team" aria-labelledby="s2-1-q2-anthropic">
+<h5 id="s2-1-q2-anthropic">Anthropic 팀: "기본은 하나, 맥락을 나눌 수 있을 때만 나눠라"</h5>
+<ul>
+<li><b>2026년 1월 · 「멀티 에이전트를 언제 쓰고 언제 쓰지 말까」</b>: 기본은 에이전트 하나라고 했어요. 멀티 에이전트가 도움이 되는 경우는 세 가지예요.
+<ul>
+<li><b>맥락 지키기</b>: 하위 작업에서 나오는 긴 내용이 대부분 본 작업과 상관없을 때, 하위 에이전트가 따로 처리해서 리더의 맥락을 깨끗하게 지켜요.</li>
+<li><b>나눠서 넓게 찾기</b>: 조사처럼 찾을 범위가 넓을 때예요. 이때 얻는 것은 속도보다 <b>꼼꼼함</b>이라고 했어요.</li>
+<li><b>전문화</b>: 한 에이전트에 도구가 20개를 넘거나, 성격이 다른 도구가 섞여 헷갈릴 때예요.</li>
+</ul>
+일은 일의 종류가 아니라 <b>맥락을 완전히 떼어 낼 수 있는지</b>로 나누라고 했어요. 같은 일의 앞뒤 단계는 한 에이전트에 둬요. 멀티 에이전트는 같은 일에 보통 3~10배 토큰을 써요.</li>
+<li><b>2025년 6월 · 클로드 리서치 기능 공개</b>: 리더 Claude Opus 4가 계획을 세우고 일꾼 Claude Sonnet 4 여러 개가 동시에 찾는 구조가 Claude Opus 4 단독보다 내부 평가에서 90.2% 좋았어요. 다만 성능 차이의 80%는 토큰을 얼마나 썼는지로 설명됐어요. 리더에게는 일의 크기에 따라 일꾼 수를 정하는 규칙을 줬어요. 간단한 사실 찾기는 에이전트 하나, 비교는 하위 에이전트 2~4개, 복잡한 조사는 10개 넘게요. 초기에는 간단한 질문에 하위 에이전트를 50개나 띄우는 문제가 있었다고 해요.</li>
+</ul>
+<p class="debate-say"><b>이 팀의 답</b> 먼저 에이전트 하나로 해 보고, 맥락을 떼어 낼 수 있는 조사만 나눠요. 나눌 때는 강한 모델을 리더로, 가벼운 모델을 일꾼으로 두고, 일의 크기에 맞게 일꾼 수를 정해 줘요.</p>
+</article>
+
+<article class="debate-team" aria-labelledby="s2-1-q2-openai">
+<h5 id="s2-1-q2-openai">OpenAI 팀: "최종 답을 누가 책임질지부터 정해라"</h5>
+<ul>
+<li><b>2026년 9월 · Agents API 공개 베타</b>: 코덱스(Codex)를 돌리는 구조를 API로 열었어요. 큰 일을 서로 떨어진 조각으로 나눠 <b>동시에 일하는 하위 에이전트</b>에게 맡기고, 하위 에이전트는 각자 맥락을 따로 가지며, 메인 에이전트가 결과를 합쳐요. 예시 코드에서는 동시에 돌리는 하위 에이전트 수를 3개로 묶어 뒀어요.</li>
+<li><b>2026년 3월 · 코덱스 하위 에이전트 정식 출시</b>: 코딩 에이전트 코덱스에서도 하위 에이전트와 직접 만든 에이전트를 쓸 수 있게 됐어요.</li>
+<li><b>개발자 문서 · 오케스트레이션 가이드</b>: "할 수 있으면 에이전트 하나로 시작하라"고 해요. 나눌 때는 두 방식 중에 골라요.
+<ul>
+<li><b>에이전트를 도구로(매니저 방식)</b>: 매니저가 계속 책임지고, 전문 에이전트에게는 범위가 정해진 일만 맡겨요. 최종 답은 매니저가 써요.</li>
+<li><b>핸드오프</b>: 전문 에이전트가 그 갈래의 대화를 완전히 넘겨받아 다음 답을 직접 해요.</li>
+</ul></li>
+</ul>
+<p class="debate-say"><b>이 팀의 답</b> 에이전트 하나로 시작해요. 나눈다면 최종 답을 쓰는 매니저를 하나 두고, 서로 떨어진 조각만 하위 에이전트에게 동시에 맡겨요. 동시에 돌리는 수에는 한도를 둬요.</p>
+</article>
+
+<section class="debate-result" aria-labelledby="s2-1-q2-result">
+<h5 id="s2-1-q2-result">토론 결과: 세 팀이 합의한 것과 갈린 것</h5>
 <div class="table-wrap"><table>
-<thead><tr><th scope="col">시기 · 누가</th><th scope="col">무엇을 비교했나</th><th scope="col">결과</th></tr></thead>
+<thead><tr><th scope="col">쟁점</th><th scope="col">구글 연구팀</th><th scope="col">Anthropic 팀</th><th scope="col">OpenAI 팀</th><th scope="col">토론 결과</th></tr></thead>
 <tbody>
-<tr><td>2025년 3월 · UC 버클리(MAST)</td><td>공개된 멀티 에이전트 프레임워크 7개의 실패 기록</td><td>실패 유형 14가지를 3묶음(설계·명세 문제, 에이전트끼리 어긋남, 검증·종료 문제)으로 정리했어요. 점수가 오른 폭은 대부분 작았어요</td></tr>
-<tr><td>2025년 6월 · Anthropic</td><td>리서치 기능: 리더 Claude Opus 4 + 일꾼 Claude Sonnet 4 vs Claude Opus 4 단독</td><td>내부 평가에서 90.2% 더 좋았어요. 다만 성능 차이의 80%는 토큰을 얼마나 썼는지로 설명됐어요</td></tr>
-<tr><td>2025년 12월 · 구글 리서치·구글 딥마인드·MIT</td><td>에이전트 하나 + 멀티 에이전트 4종(독립형·중앙 집중형·분산형·혼합형), 180가지 설정</td><td>나눠서 할 수 있는 일(재무 분석)에서는 중앙 집중형이 80.9% 좋아졌지만, 순서대로 이어 가야 하는 일에서는 모든 멀티 에이전트가 39~70% 나빠졌어요. 서로 확인 없이 따로 일하는 독립형은 오류를 17.2배 키웠고, 중앙 집중형은 4.4배로 막았어요</td></tr>
-<tr><td>2026년 4월 · 스탠퍼드</td><td>생각에 쓰는 토큰 양을 똑같이 맞추고 에이전트 하나 vs 멀티 에이전트 5종</td><td>여러 단계를 거치는 추론에서는 에이전트 하나가 같거나 더 좋았어요. 멀티 에이전트는 에이전트 하나의 맥락이 너무 길어지거나 망가질 때 경쟁력이 생겼어요</td></tr>
-<tr><td>2026년 4월 · Cognition</td><td>「멀티 에이전트를 만들지 마라」 10개월 뒤 실제 운영 경험</td><td>좁은 범위는 된다고 정리했어요. 여러 에이전트가 생각을 보태되, 결과물을 쓰는 일은 한 곳에서만 해요</td></tr>
+<tr><th scope="row">기본값</th><td>일의 모양에 따라 달라요</td><td>에이전트 하나</td><td>에이전트 하나</td><td><b>합의</b>: 먼저 하나로 해 보고 나눠요</td></tr>
+<tr><th scope="row">나눌 때 구조</th><td>리더가 나눠 주고 모으는 중앙 집중형</td><td>리더 + 동시에 찾는 일꾼</td><td>최종 답을 쓰는 매니저 + 하위 에이전트</td><td><b>합의</b>: 리더(매니저) 한 명이 나누고 합쳐요</td></tr>
+<tr><th scope="row">나눠도 되는 일</th><td>나눠서 할 수 있는 일</td><td>맥락을 완전히 떼어 낼 수 있는 조사</td><td>서로 떨어진 조각</td><td><b>합의</b>: 서로 기다릴 필요 없는 일만 나눠요</td></tr>
+<tr><th scope="row">나누면 안 되는 일</th><td>순서대로 이어지는 일(39~70% 나빠짐)</td><td>같은 일의 앞뒤 단계, 단단히 엮인 일</td><td>확인한 문서에는 따로 없어요</td><td>순서형 일은 하나로 해요</td></tr>
+<tr><th scope="row">왜 좋아지나</th><td>나눠서 동시에 할 수 있어서</td><td>토큰을 더 쓰게 되고 더 넓게 찾아서(꼼꼼함)</td><td>맥락을 따로 두고 동시에 처리해서</td><td><b>갈림</b>: 속도인지, 더 쓴 토큰 덕분인지 팀마다 강조점이 달라요</td></tr>
+<tr><th scope="row">조심할 점</th><td>리더 없이 따로 일하면 오류 17.2배</td><td>간단한 일에 일꾼을 너무 많이 띄움, 3~10배 토큰</td><td>동시에 돌리는 수에 한도</td><td>일꾼 수와 비용에 상한을 둬요</td></tr>
 </tbody>
 </table></div>
-<p><b>지금까지의 근거로 고친 가설</b></p>
-<ul>
-<li><b>가장 일관되게 좋았던 조합</b>: 리더 하나가 나눠 주고 모으는 <b>중앙 집중형</b> + 일꾼은 조사처럼 <b>읽는 일</b>을 맡고 + 최종 결과를 쓰는 곳은 <b>한 곳</b>이에요. Anthropic의 리서치 기능(강한 모델이 리더, 그보다 가벼운 모델이 일꾼)이 대표 사례예요.</li>
-<li><b>피할 조합</b>: 서로 확인하지 않고 따로 일한 뒤 마지막에 합치기만 하는 독립형이에요. 오류가 가장 크게 불어났어요.</li>
-<li><b>멀티 에이전트를 쓰지 말 일</b>: 앞 단계 결과를 이어받아야 하는 순서형 일, 모든 에이전트가 같은 맥락을 알아야 하는 일이에요. Anthropic도 대부분의 코딩 일은 나눠 할 부분이 적어 아직 잘 맞지 않는다고 했어요.</li>
-<li><b>비교할 때 조심할 점</b>: 멀티 에이전트가 좋아 보이는 결과 중에는 토큰을 더 많이 쓰게 해 준 효과가 섞여 있어요. 우리 서비스에서 비교할 때도 에이전트 하나에 같은 양의 토큰을 주고 견줘 봐요.</li>
-</ul>
+
+<p><b>그래서 "어떻게 일 시키는 게 제일 좋아?"에 대한 답</b></p>
+<ol>
+<li><b>먼저 에이전트 하나로 시켜 봐요.</b> 결과가 부족하면 프롬프트와 도구 설명부터 고쳐요.</li>
+<li><b>나눌 수 있는 일인지 확인해요.</b> 서로 기다릴 필요 없이 따로 찾을 수 있는 갈래(예: 국내 사례 / 고객 반응 / 비용)가 있을 때만 나눠요. 앞 단계 결과가 있어야 다음 단계를 하는 일은 나누지 않아요.</li>
+<li><b>리더 한 명을 정해요.</b> 리더가 일을 나눠 주고, 결과를 확인하고, 최종 답을 써요. 일꾼끼리 따로 일하고 끝에 붙이기만 하면 오류가 커져요.</li>
+<li><b>일꾼은 찾고 읽는 일을, 리더는 쓰는 일을 맡아요.</b> 강한 모델을 리더로, 가벼운 모델을 일꾼으로 두면 비용을 줄일 수 있어요.</li>
+<li><b>일꾼 수와 비용에 상한을 둬요.</b> 간단한 비교는 2~4개면 충분하고, 토큰은 3~10배 더 든다고 보고 시작해요.</li>
+</ol>
+<p class="source-note">참고: 같은 시기 다른 연구도 같은 방향을 가리켜요. 스탠퍼드(2026년 4월)는 생각에 쓰는 토큰을 똑같이 맞추면 여러 단계 추론에서 에이전트 하나가 같거나 더 좋았다고 했고, UC 버클리(2025년 3월)는 멀티 에이전트의 실패 유형 14가지를 정리하며 점수가 오른 폭이 대부분 작았다고 했어요.</p>
+</section>
 <div class="tip-box" role="note"><b>기획자가 볼 점</b><p>"에이전트를 몇 개 둘까?"보다 먼저 "이 일은 나눠서 동시에 할 수 있나, 결과를 누가 확인하고 합치나?"를 정해요. 2-2 판단표가 그 질문이에요.</p></div>
 </section>
 
-<p class="source-note">출처: <a href="https://www.anthropic.com/engineering/multi-agent-research-system" target="_blank" rel="noopener">Anthropic: How we built our multi-agent research system</a>(지휘자·일꾼 구조, 리더 Claude Opus 4 + 일꾼 Claude Sonnet 4가 단독보다 90.2% 높음, 성능 차이의 80%를 토큰 사용량이 설명, 채팅 대비 에이전트 약 4배·멀티 에이전트 약 15배 토큰, 같은 맥락 공유·의존 많은 일·대부분 코딩은 아직 맞지 않음) · <a href="https://support.claude.com/en/articles/11088861-using-research-in-claude" target="_blank" rel="noopener">Claude 도움말: Use research on Claude</a>(직접 켜는 기능, 유료 요금제, 웹 검색 필요, 사용 한도를 더 빨리 씀) · <a href="https://claude.com/resources/articles/building-multi-agent-systems-when-and-how-to-use-them" target="_blank" rel="noopener">Claude: Building multi-agent systems(2026-01-23)</a>(3~10배 토큰, 단일 에이전트 프롬프트 개선으로 같은 결과) · <a href="https://code.claude.com/docs/en/sub-agents" target="_blank" rel="noopener">Claude Code 문서: Subagents</a>(기본 하위 에이전트 자동 사용, description으로 위임 결정) · <a href="https://platform.claude.com/docs/en/agent-sdk/subagents" target="_blank" rel="noopener">Claude Agent SDK 문서: Subagents</a> · <a href="https://arxiv.org/abs/2503.13657" target="_blank" rel="noopener">Cemri 외: Why Do Multi-Agent LLM Systems Fail?(2025)</a> · <a href="https://research.google/blog/towards-a-science-of-scaling-agent-systems-when-and-why-agent-systems-work/" target="_blank" rel="noopener">Google Research: Towards a science of scaling agent systems(2026-01-28)</a> · <a href="https://arxiv.org/abs/2512.08296" target="_blank" rel="noopener">Kim 외 arXiv:2512.08296</a> · <a href="https://arxiv.org/abs/2604.02460" target="_blank" rel="noopener">Tran·Kiela: Single-Agent LLMs Outperform Multi-Agent Systems…(2026-04)</a> · <a href="https://cognition.com/blog/multi-agents-working" target="_blank" rel="noopener">Cognition: Multi-Agents: What’s Actually Working(2026-04-22)</a> (2026-11-23 확인)</p>
+<p class="source-note">출처: <a href="https://www.anthropic.com/engineering/multi-agent-research-system" target="_blank" rel="noopener">Anthropic: How we built our multi-agent research system</a>(지휘자·일꾼 구조, 리더 Claude Opus 4 + 일꾼 Claude Sonnet 4가 단독보다 90.2% 높음, 성능 차이의 80%를 토큰 사용량이 설명, 채팅 대비 에이전트 약 4배·멀티 에이전트 약 15배 토큰, 같은 맥락 공유·의존 많은 일·대부분 코딩은 아직 맞지 않음, 일꾼 수 규칙 1개/2~4개/10개 이상, 초기 50개 문제) · <a href="https://support.claude.com/en/articles/11088861-using-research-in-claude" target="_blank" rel="noopener">Claude 도움말: Use research on Claude</a>(직접 켜는 기능, 유료 요금제, 웹 검색 필요, 사용 한도를 더 빨리 씀) · <a href="https://claude.com/resources/articles/building-multi-agent-systems-when-and-how-to-use-them" target="_blank" rel="noopener">Claude: Building multi-agent systems(2026-01-23)</a>(3~10배 토큰, 단일 에이전트 프롬프트 개선으로 같은 결과, 맥락 지키기·넓게 찾기·전문화 세 경우, 맥락으로 나누기) · <a href="https://code.claude.com/docs/en/sub-agents" target="_blank" rel="noopener">Claude Code 문서: Subagents</a>(기본 하위 에이전트 자동 사용, description으로 위임 결정) · <a href="https://platform.claude.com/docs/en/agent-sdk/subagents" target="_blank" rel="noopener">Claude Agent SDK 문서: Subagents</a> · <a href="https://arxiv.org/abs/2503.13657" target="_blank" rel="noopener">Cemri 외: Why Do Multi-Agent LLM Systems Fail?(2025)</a> · <a href="https://research.google/blog/towards-a-science-of-scaling-agent-systems-when-and-why-agent-systems-work/" target="_blank" rel="noopener">Google Research: Towards a science of scaling agent systems(2026-01-28)</a> · <a href="https://arxiv.org/abs/2512.08296" target="_blank" rel="noopener">Kim 외 arXiv:2512.08296</a> · <a href="https://arxiv.org/abs/2604.02460" target="_blank" rel="noopener">Tran·Kiela: Single-Agent LLMs Outperform Multi-Agent Systems…(2026-04)</a> · <a href="https://cognition.com/blog/multi-agents-working" target="_blank" rel="noopener">Cognition: Multi-Agents: What’s Actually Working(2026-04-22)</a> · <a href="https://openai.com/index/introducing-the-agents-api/" target="_blank" rel="noopener">OpenAI: Introducing the Agents API(2026-09-10)</a>(독립된 조각을 동시에 일하는 하위 에이전트에게, 각자 맥락, 메인 에이전트가 합침) · <a href="https://simonwillison.net/2026/Mar/16/codex-subagents/" target="_blank" rel="noopener">Simon Willison: Codex 하위 에이전트 정식 출시(2026-03-16)</a> · <a href="https://developers.openai.com/api/docs/guides/agents/orchestration" target="_blank" rel="noopener">OpenAI 문서: Orchestration and handoffs</a>(에이전트 하나로 시작, 에이전트를 도구로 vs 핸드오프) (2026-11-23 확인)</p>
 </div>
 
 <div class="topic" id="s2-2"><h3><span class="stage">기획자</span>2-2. 멀티 에이전트를 쓸지 정하기</h3>
