@@ -311,7 +311,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="nav-title">전체 목차</div>
 <div class="grp"><div class="grp-label">교육 안내</div><a class="l2" href="#overview">교육 개요</a><a class="l2" href="#prep">수업 전 준비</a><a class="l2" href="#tt">타임테이블</a></div>
 <div class="grp"><div class="grp-label">오늘의 단어</div><a class="l2" href="#words">오늘의 단어</a></div>
-<div class="grp"><div class="grp-label">SESSION 1</div><a class="l2" href="#s1">AI가 도구를 쓰는 방법: 툴 콜링·MCP·커넥터</a><a class="l3" href="#s1-1">1-1. 툴 콜링: AI는 요청서를 쓰고, 실행은 내 프로그램이 해요</a><a class="l3" href="#s1-2">1-2. MCP와 커넥터는 툴 콜링 위에 있어요</a><a class="l3" href="#s1-3">1-3. 상담 챗봇을 고도화한다면? 붙일 기능 정하기</a><a class="l3" href="#s1-4">1-4. (선택) 고도화 첫 단계: 배송 질문에 날씨까지 답하기</a><a class="l3" href="#s1-5">1-5. 결과</a></div>
+<div class="grp"><div class="grp-label">SESSION 1</div><a class="l2" href="#s1">AI가 도구를 쓰는 방법: 툴 콜링·MCP·커넥터</a><a class="l3" href="#s1-1">1-1. 툴 콜링: AI는 요청서를 쓰고, 실행은 내 프로그램이 해요</a><a class="l3" href="#s1-2">1-2. MCP와 커넥터는 툴 콜링 위에 있어요</a><a class="l3" href="#s1-3">1-3. 상담 챗봇을 고도화한다면? 붙일 기능 정하기</a><a class="l3" href="#s1-4">1-4. (선택) 고도화 실습: 로그인한 고객에게 주문 조회·날씨·메일 기능 붙이기</a><a class="l3" href="#s1-5">1-5. 결과</a><a class="l3" href="#s1-6">1-6. (심화·선택) 주문 시스템을 MCP 서버로 만들어 챗봇과 운영자가 함께 쓰기</a></div>
 <div class="grp"><div class="grp-label">SESSION 2</div><a class="l2" href="#s2">멀티 에이전트: 여러 AI가 일을 나눠 하기</a><a class="l3" href="#s2-1">2-1. 멀티 에이전트란?</a><a class="l3" href="#s2-2">2-2. 내가 지휘자가 되어 채팅 3개로 일 나누기</a><a class="l3" href="#s2-3">2-3. 리서치 기능으로 멀티 에이전트 관찰하기</a><a class="l3" href="#s2-4">2-4. 멀티 에이전트를 쓸지 정하기</a><a class="l3" href="#s2-5">2-5. 결과</a></div>
 <div class="grp"><div class="grp-label">SESSION 3</div><a class="l2" href="#s3">랭체인·크루AI: 에이전트를 조립하는 부품 상자</a><a class="l3" href="#s3-1">3-1. 랭체인과 크루AI는 무엇인가</a><a class="l3" href="#s3-2">3-2. 기업 사례와 뉴스</a><a class="l3" href="#s3-3">3-3. 사고와 비판 사례</a><a class="l3" href="#s3-4">3-4. 쓰자고 할 때와 말릴 때 정하기</a><a class="l3" href="#s3-5">3-5. 결과</a></div>
 <div class="grp"><div class="grp-label">SESSION 4</div><a class="l2" href="#s4">데이터베이스 고르기: 같은 챗봇, 세 가지 조합</a><a class="l3" href="#s4-1">4-1. 데이터베이스 종류와 서비스 회사</a><a class="l3" href="#s4-2">4-2. 요즘 AI 개발에서 많이 쓰는 DB</a><a class="l3" href="#s4-3">4-3. RAG에 필요한 네 부분</a><a class="l3" href="#s4-4">4-4. 같은 챗봇, 세 가지 조합</a><a class="l3" href="#s4-5">4-5. RAG 창고에 넣을 데이터 정하기</a><a class="l3" href="#s4-6">4-6. 결과</a></div>
@@ -414,6 +414,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <tr><td><b>MCP</b></td><td>AI 앱과 바깥 도구를 잇는 공개 표준 규격. 커넥터는 MCP 서버예요</td><td>도구를 공개하려는 회사나 개발자</td><td>커넥터를 연결할 때 보이는 'MCP'라는 말</td></tr>
 <tr><td><b>툴 콜링</b></td><td>AI가 도구 요청서를 쓰고 프로그램이 실행하는 기본 방식</td><td>내 서비스를 만드는 개발자</td><td>오늘 1-4에서 챗봇에 붙이는 날씨 도구</td></tr>
 </table></div>
+<figure class="diagram" id="fig-layers"><div class="diagram-scroll"><svg viewBox="0 0 910 460" role="img" aria-labelledby="tc3-t tc3-d" xmlns="http://www.w3.org/2000/svg"><title id="tc3-t">툴 콜링, MCP, 커넥터의 층 구조</title><desc id="tc3-d">맨 아래 바닥 층은 툴 콜링, 그 위가 MCP, 맨 위가 커넥터다. 지메일 커넥터를 쓸 때 사람은 커넥터를 켜고, MCP 서버는 도구 목록을 알려 주고 요청을 지메일에서 실행하며, Claude는 툴 콜링 방식으로 요청서를 쓰고 결과를 받아 답한다.</desc><defs><marker id="ar3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#657086"/></marker></defs><line x1="34" y1="400" x2="34" y2="70" stroke="#657086" stroke-width="2" marker-end="url(#ar3)"/><text x="14" y="56" text-anchor="start" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:11px;font-weight:700" fill="#657086">사람이 만지는 쪽</text><text x="34" y="422" text-anchor="middle" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:11px;font-weight:700" fill="#657086">바닥</text><text x="34" y="438" text-anchor="middle" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:11px;font-weight:400" fill="#657086">(기본 방식)</text><text x="300" y="34" text-anchor="middle" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:15px;font-weight:800" fill="#172033">층</text><text x="735" y="34" text-anchor="middle" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:15px;font-weight:800" fill="#172033">예: 지메일 커넥터로 메일을 찾을 때</text><rect x="60" y="70" width="480" height="96" rx="12" fill="#fff8e6" stroke="#ffad22" stroke-width="1.5"/><text x="80" y="110" text-anchor="start" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:20px;font-weight:800" fill="#9a6410">커넥터</text><text x="200" y="110" text-anchor="start" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:13px;font-weight:700" fill="#172033">클로드 화면에서 [추가]를 눌러 켜는 바깥 앱 연결</text><text x="200" y="134" text-anchor="start" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:12px;font-weight:400" fill="#657086">서비스 회사가 만들고, Anthropic이 검토해 목록에 올려요</text><rect x="590" y="80" width="300" height="76" rx="10" fill="#ffffff" stroke="#dfe4ed" stroke-width="1.5"/><text x="740" y="112" text-anchor="middle" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:12px;font-weight:700" fill="#172033">① 사람이 [추가]를 눌러</text><text x="740" y="132" text-anchor="middle" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:12px;font-weight:400" fill="#657086">지메일 커넥터를 켜요</text><line x1="542" y1="118" x2="588" y2="118" stroke="#b7c0d0" stroke-width="1.5" stroke-dasharray="4 3"/><line x1="740" y1="156" x2="740" y2="188" stroke="#657086" stroke-width="2" marker-end="url(#ar3)"/><rect x="60" y="180" width="480" height="96" rx="12" fill="#eaf0ff" stroke="#2457f5" stroke-width="1.5"/><text x="80" y="220" text-anchor="start" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:20px;font-weight:800" fill="#2457f5">MCP</text><text x="200" y="220" text-anchor="start" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:13px;font-weight:700" fill="#172033">AI 앱과 바깥 도구를 잇는 공개 표준 규격</text><text x="200" y="244" text-anchor="start" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:12px;font-weight:400" fill="#657086">커넥터는 이 규격으로 만든 MCP 서버예요</text><rect x="590" y="190" width="300" height="76" rx="10" fill="#ffffff" stroke="#dfe4ed" stroke-width="1.5"/><text x="740" y="222" text-anchor="middle" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:12px;font-weight:700" fill="#172033">② MCP 서버가 쓸 수 있는 도구를 알려 주고,</text><text x="740" y="242" text-anchor="middle" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:12px;font-weight:400" fill="#657086">요청이 오면 지메일에서 실행해요</text><line x1="542" y1="228" x2="588" y2="228" stroke="#b7c0d0" stroke-width="1.5" stroke-dasharray="4 3"/><line x1="740" y1="266" x2="740" y2="298" stroke="#657086" stroke-width="2" marker-end="url(#ar3)"/><rect x="60" y="290" width="480" height="96" rx="12" fill="#111a2e" stroke="#111a2e" stroke-width="1.5"/><text x="80" y="330" text-anchor="start" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:20px;font-weight:800" fill="#ffffff">툴 콜링</text><text x="200" y="330" text-anchor="start" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:13px;font-weight:700" fill="#ffffff">AI가 도구 요청서를 쓰고, 바깥에서 실행하는 기본 방식</text><text x="200" y="354" text-anchor="start" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:12px;font-weight:400" fill="#c9d2e3">1-1 그림 1의 ①~⑥이 이 층이에요</text><rect x="590" y="300" width="300" height="76" rx="10" fill="#ffffff" stroke="#dfe4ed" stroke-width="1.5"/><text x="740" y="332" text-anchor="middle" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:12px;font-weight:700" fill="#172033">③ Claude가 '메일 찾기' 요청서를 쓰고,</text><text x="740" y="352" text-anchor="middle" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:12px;font-weight:400" fill="#657086">돌아온 결과로 답해요</text><line x1="542" y1="338" x2="588" y2="338" stroke="#b7c0d0" stroke-width="1.5" stroke-dasharray="4 3"/><text x="300" y="416" text-anchor="middle" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:12px;font-weight:700" fill="#172033">위층은 아래층 위에서 돌아가요. 커넥터를 켜도 Claude가 도구를 쓰는 방식은 툴 콜링이에요.</text></svg></div><figcaption><b>그림 3. 툴 콜링 · MCP · 커넥터의 층</b> 맨 아래 툴 콜링이 AI가 도구를 쓰는 기본 방식이에요. 그 위에 도구를 여러 AI 앱에서 함께 쓰게 하는 MCP 규격이 있고, 맨 위에 사람이 클로드 화면에서 켜는 커넥터가 있어요. 오른쪽은 지메일 커넥터를 쓸 때 층마다 일어나는 일이에요.</figcaption></figure>
 <p>정리하면 이렇게 말할 수 있어요. <b>지메일 커넥터는 MCP로 만들어졌고, 클로드는 그 안의 도구들을 툴 콜링 방식으로 써요.</b> 내 서비스에 도구를 하나 붙일 때는 툴 콜링을 바로 쓰고, 한 번 만든 도구를 여러 AI 앱에서 함께 쓰게 하고 싶을 때 MCP 서버로 만들어요.</p>
 <p class="source-note">출처: Claude 도움말 <a href="https://support.claude.com/en/articles/11175166" target="_blank" rel="noopener">Get started with custom connectors using remote MCP</a>(MCP는 Anthropic이 만든 공개 표준, 커넥터는 원격 MCP 서버에 연결, 직접 추가한 커넥터는 내 기기가 아니라 Anthropic 클라우드에서 서버에 연결) · Claude 문서 <a href="https://claude.com/docs/connectors/directory" target="_blank" rel="noopener">Connectors Directory</a>(커넥터 목록은 MCP 서버 목록이고, 목록 커넥터와 직접 추가한 커넥터는 같은 구조에서 돌아감) (2026-11-20 확인)</p>
 </div>
@@ -443,18 +444,220 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="tip-box" role="note"><b>TIP</b><p>돈이 움직이거나 지우는 기능은 처음부터 붙이지 않는 것도 기획이에요. 붙일 때는 고객이나 상담원이 확인하는 단계를 꼭 둬요.</p></div>
 </div>
 
-<div class="topic" id="s1-4"><h3><span class="stage dev">개발자·구현</span>1-4. (선택) 고도화 첫 단계: 배송 질문에 날씨까지 답하기</h3>
-<p>1-3 고도화 계획의 첫째 줄(날씨 조회)을 실제로 만들어 봐요. 4주차 화요일에 받은 OpenWeather 키를 그대로 써요. 상담 챗봇 폴더를 클로드 코드에서 열고, 아래 프롬프트를 붙여 넣어요.</p>
-<div class="copybox"><div class="copyhead"><span>프롬프트 1 · 클로드 코드에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 상담 챗봇이 배송·날씨 질문에도 답하도록 '날씨 조회' 기능을 툴 유즈 방식으로 붙여 줘.
-내용: 고객이 배송이나 날씨를 물을 때만 클로드가 스스로 도구를 쓰게 해 줘. 도구는 지역 이름을 받아 OpenWeather에서 내일 날씨를 가져와. 키는 .env에서 읽어. 관리자 화면의 대화 기록에 '이 답에서 쓴 도구 이름과 넣은 값'을 함께 보여 줘. 먼저 내 컴퓨터에서 테스트해.
-형식: ① 바뀐 파일 목록 ② 도구 설명(description) 원문 ③ 아래 두 질문의 결과표: "내일 서울로 배송되는데 비 와요?" / "반품은 며칠 안에 해요?"</pre></div>
-<p class="ok-line"><b>이렇게 보이면 성공</b>첫째 질문에는 대화 기록에 날씨 도구 이름이 남고, 둘째 질문에는 도구 없이 FAQ로 답해요.</p>
-<div class="tip-box" role="note"><b>TIP</b><p>도구를 쓸지 말지는 도구 설명(description)을 보고 정해져요. 엉뚱한 질문에 도구를 쓰면, 코드보다 설명 문장을 먼저 고쳐 달라고 해요.</p></div>
+<div class="topic" id="s1-4"><h3><span class="stage dev">개발자·구현</span>1-4. (선택) 고도화 실습: 로그인한 고객에게 주문 조회·날씨·메일 기능 붙이기</h3>
+<p>1-3에서 정한 고도화 계획을 단계별로 만들어 봐요. 4주차 월요일에 배포한 상담 챗봇 폴더를 클로드 코드에서 열고 시작해요. 순서는 아래 다섯 단계예요.</p>
+<div class="table-wrap"><table><tr><th>STEP</th><th>하는 일</th><th>왜 이 순서인가</th></tr><tr><td><a href="#d-s1-4-1">1</a></td><td>구글로 로그인하고, 우리 고객인지 확인하기</td><td>"내 주문"을 보여 주려면 먼저 "나"가 누구인지 알아야 해요</td></tr><tr><td><a href="#d-s1-4-2">2</a></td><td>쓸 수 있는 도구 목록 정하기</td><td>Claude는 이 목록에 있는 도구만 쓸 수 있어요</td></tr><tr><td><a href="#d-s1-4-3">3</a></td><td>요청서를 받아 도구를 실행하는 반복 만들기</td><td>도구를 실제로 실행하는 쪽은 내 서버예요</td></tr><tr><td><a href="#d-s1-4-4">4</a></td><td>상담 요약을 지메일로 보내는 도구 붙이기</td><td>보내기처럼 무언가를 바꾸는 도구는 읽기 도구가 잘 돈 뒤에 붙여요</td></tr><tr><td><a href="#d-s1-4-5">5</a></td><td>배포하고 질문 7개로 확인하기, 깃헙에 올리기</td><td>배포 주소에서 로그인부터 메일까지 한 번에 확인해요</td></tr></table></div>
+<figure class="diagram" id="fig-upgrade-flow"><div class="diagram-scroll"><svg viewBox="0 0 910 470" role="img" aria-labelledby="tc4-t tc4-d" xmlns="http://www.w3.org/2000/svg"><title id="tc4-t">로그인한 고객에게만 도구를 쓰는 상담 챗봇의 흐름</title><desc id="tc4-d">고객이 구글로 로그인하면 화면이 신분증(ID 토큰)을 질문과 함께 서버로 보낸다. 서버는 신분증을 확인하고 고객 명단에 있는지 본다. 서버는 도구 목록과 질문을 Claude에 보내고, Claude가 요청서를 쓰면 서버가 주문 조회, 날씨 조회, 지메일 발송 중 하나를 실행한다. 이메일 주소는 서버가 로그인 정보에서 넣는다.</desc><defs><marker id="ar4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#657086"/></marker></defs><rect x="10" y="40" width="160" height="120" rx="10" fill="#f5f7fb" stroke="#dfe4ed" stroke-width="1.5"/><text x="90" y="72" text-anchor="middle" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:15px;font-weight:800" fill="#172033">고객 화면</text><text x="90" y="98" text-anchor="middle" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:12px;font-weight:700" fill="#2457f5">[구글로 로그인]</text><text x="90" y="120" text-anchor="middle" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:11px;font-weight:400" fill="#657086">질문 + 신분증(ID 토큰)</text><text x="90" y="140" text-anchor="middle" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:11px;font-weight:800" fill="#e5262a">STEP 1</text><line x1="172" y1="100" x2="228" y2="100" stroke="#657086" stroke-width="2" marker-end="url(#ar4)"/><rect x="230" y="20" width="330" height="360" rx="10" fill="#eaf0ff" stroke="#2457f5" stroke-width="1.5"/><text x="395" y="48" text-anchor="middle" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:15px;font-weight:800" fill="#172033">내 서버(Cloud Functions)</text><rect x="250" y="64" width="290" height="70" rx="10" fill="#ffffff" stroke="#dfe4ed" stroke-width="1.5"/><text x="395" y="90" text-anchor="middle" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:12px;font-weight:700" fill="#172033">① 신분증 확인 + 고객 명단 확인</text><text x="395" y="110" text-anchor="middle" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:11px;font-weight:400" fill="#657086">명단에 없으면 여기서 멈춰요</text><text x="395" y="126" text-anchor="middle" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:11px;font-weight:800" fill="#e5262a">STEP 1</text><rect x="250" y="146" width="290" height="70" rx="10" fill="#ffffff" stroke="#dfe4ed" stroke-width="1.5"/><text x="395" y="172" text-anchor="middle" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:12px;font-weight:700" fill="#172033">② 도구 목록 + 질문을 Claude에</text><text x="395" y="192" text-anchor="middle" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:11px;font-weight:400" fill="#657086">쓸 수 있는 도구는 여기 적은 것뿐</text><text x="395" y="208" text-anchor="middle" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:11px;font-weight:800" fill="#e5262a">STEP 2</text><rect x="250" y="228" width="290" height="86" rx="10" fill="#ffffff" stroke="#dfe4ed" stroke-width="1.5"/><text x="395" y="254" text-anchor="middle" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:12px;font-weight:700" fill="#172033">③ 요청서대로 도구 실행 → 결과 전달</text><text x="395" y="274" text-anchor="middle" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:11px;font-weight:700" fill="#b42318">이메일 주소는 서버가 로그인 정보에서 넣어요</text><text x="395" y="292" text-anchor="middle" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:11px;font-weight:400" fill="#657086">AI가 고른 값만 받지 않아요</text><text x="395" y="308" text-anchor="middle" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:11px;font-weight:800" fill="#e5262a">STEP 3</text><text x="395" y="346" text-anchor="middle" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:11px;font-weight:700" fill="#2457f5">STEP 4: ③에 지메일 도구 추가 · STEP 5: 배포</text><line x1="542" y1="181" x2="598" y2="181" stroke="#657086" stroke-width="2" marker-end="url(#ar4)" marker-start="url(#ar4)"/><rect x="600" y="150" width="110" height="62" rx="10" fill="#111a2e" stroke="#111a2e" stroke-width="1.5"/><text x="655" y="177" text-anchor="middle" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:14px;font-weight:800" fill="#ffffff">Claude</text><text x="655" y="197" text-anchor="middle" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:11px;font-weight:400" fill="#c9d2e3">요청서를 써요</text><rect x="740" y="220" width="160" height="64" rx="10" fill="#ecfbf3" stroke="#16a36b" stroke-width="1.5"/><text x="820" y="248" text-anchor="middle" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:13px;font-weight:700" fill="#172033">주문 조회</text><text x="820" y="268" text-anchor="middle" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:11px;font-weight:400" fill="#657086">Firestore orders</text><line x1="542" y1="271" x2="738" y2="252" stroke="#657086" stroke-width="2" marker-end="url(#ar4)"/><rect x="740" y="300" width="160" height="64" rx="10" fill="#ecfbf3" stroke="#16a36b" stroke-width="1.5"/><text x="820" y="328" text-anchor="middle" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:13px;font-weight:700" fill="#172033">날씨 조회</text><text x="820" y="348" text-anchor="middle" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:11px;font-weight:400" fill="#657086">OpenWeather</text><line x1="542" y1="271" x2="738" y2="332" stroke="#657086" stroke-width="2" marker-end="url(#ar4)"/><rect x="740" y="380" width="160" height="64" rx="10" fill="#fff8e6" stroke="#ffad22" stroke-width="1.5"/><text x="820" y="408" text-anchor="middle" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:13px;font-weight:700" fill="#172033">상담 요약 메일</text><text x="820" y="428" text-anchor="middle" style="font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:11px;font-weight:400" fill="#657086">Gmail API · STEP 4</text><line x1="542" y1="271" x2="738" y2="412" stroke="#657086" stroke-width="2" marker-end="url(#ar4)"/></svg></div><figcaption><b>그림 4. 로그인한 고객에게만 도구를 쓰는 상담 챗봇</b> 화면은 질문과 함께 구글 로그인으로 받은 신분증(ID 토큰)을 보내요. 서버는 신분증과 고객 명단을 먼저 확인하고, 도구 목록을 붙여 Claude에 보내요. Claude가 요청서를 쓰면 서버가 실행해요. 누구의 주문을 볼지, 누구에게 메일을 보낼지는 AI가 아니라 서버가 로그인 정보로 정해요.</figcaption></figure>
+<p>프론트엔드(화면)는 로그인 버튼과 로그인한 이름 한 줄만 더해요. 나머지는 4주차 화면 그대로 둬요. 코드는 직접 짜지 않고 프롬프트로 만들어요. 아래 코드 예시는 "이런 모양의 코드가 나와요"를 읽어 보는 용도예요. 클로드 코드가 만든 코드와 이름이나 줄 수가 조금 달라도 괜찮아요.</p>
+<p><b>STEP 1. 구글로 로그인하고, 우리 고객인지 확인하기</b></p>
+<p><span class="ref-kind">쓰인 개념</span> <b>툴 콜링·MCP 둘 다 아직 쓰지 않아요.</b> 그림 1의 ①(고객 질문)에 "누가 물었는지"를 붙이는 준비 단계예요. 도구를 쓰기 전에 "누구를 위해 쓰는지"를 서버가 먼저 정해 둬야, STEP 2부터 그 사람의 주문만 볼 수 있어요.</p>
+<p>3주차 목요일에 관리자 페이지에 구글 로그인을 붙여 봤어요. 이번에는 고객 화면에 붙여요. 로그인만으로는 "구글 계정이 있는 사람"이라는 것만 알 수 있어요. 그래서 서버가 <b>고객 명단(Firestore의 customers)</b>에 그 이메일이 있는지 한 번 더 확인해요. 명단에 있어야 "우리 고객"이에요.</p>
+<p>먼저 파이어베이스 콘솔의 Authentication에서 Google 로그인을 켜요. 3주차에 켠 프로젝트라면 이미 켜져 있어요. 그다음 프롬프트를 붙여 넣어요.</p>
+<div class="copybox"><div class="copyhead"><span>프롬프트 1 · 클로드 코드에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 상담 챗봇에 구글 로그인을 붙이고, 로그인한 사람이 우리 고객인지 서버에서 확인하게 해 줘.
+내용: 화면에는 [구글로 로그인] 버튼과 로그인한 이름 한 줄만 더하고, 나머지 화면은 바꾸지 마. 질문을 보낼 때 파이어베이스 ID 토큰을 Authorization 헤더에 담아 보내. 서버는 ID 토큰을 firebase-admin으로 확인하고, Firestore customers 컬렉션에 그 이메일 문서가 있는지 봐. 로그인 안 했으면 "로그인해 주세요", 명단에 없으면 "등록된 고객이 아니에요"로 답해. 시험용으로 customers에 고객 5명(내 이메일 [내 지메일 주소] 포함), orders에 주문 8건(고객마다 1~2건, 주문번호·상품·상태·배송 도시)을 넣어 줘. 키는 .env에서만 읽어.
+형식: ① 바뀐 파일 목록 ② 내 컴퓨터에서 여는 방법 한 줄 ③ 로그인 전/명단 밖 계정/내 계정으로 "안녕하세요"를 보낸 결과 3줄</pre></div>
+<figure class="code-anatomy" style="margin:14px 0"><figcaption style="font-weight:700;margin-bottom:6px">코드 예시 1 · 화면: 로그인하고 질문에 신분증 붙이기 · 노란 표시와 번호를 아래 표와 함께 봐요</figcaption><pre style="background:#f7f8fb;color:#1d2433;border:1px solid #dfe3ec;border-radius:10px;padding:14px 16px;line-height:1.8;white-space:pre;overflow-x:auto;font-size:13px">import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+
+const auth = getAuth();
+
+async function login() {
+  <span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">await signInWithPopup(auth, new GoogleAuthProvider())</span><sup style="color:#e5262a;font-weight:800">①</sup>;   // 구글 로그인 창
+}
+
+async function ask(message) {
+  const idToken = <span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">await auth.currentUser.getIdToken()</span><sup style="color:#e5262a;font-weight:800">②</sup>;      // 로그인한 사람의 신분증
+  const res = await fetch("/api/chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json",
+               <span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">Authorization: `Bearer ${idToken}`</span><sup style="color:#e5262a;font-weight:800">③</sup> },        // 질문에 신분증을 붙여 보냄
+    body: JSON.stringify({ message })
+  });
+  return res.json();
+}</pre></figure><div class="table-wrap"><table><tr><th>번호</th><th>무엇</th><th>뜻</th></tr><tr><td style="color:#e5262a;font-weight:800">①</td><td>signInWithPopup</td><td>구글 로그인 창을 띄워요. 로그인이 끝나면 <code class="inline">auth.currentUser</code>에 로그인한 사람이 담겨요.</td></tr><tr><td style="color:#e5262a;font-weight:800">②</td><td>getIdToken()</td><td>파이어베이스가 발급한 <b>신분증(ID 토큰)</b>이에요. 화면이 "저 김수정이에요"라고 말하는 대신 이 신분증을 보여 줘요.</td></tr><tr><td style="color:#e5262a;font-weight:800">③</td><td>Authorization 헤더</td><td>질문과 함께 신분증을 서버로 보내는 자리예요. 화면에 적힌 이메일 글자를 보내면 누구나 바꿔 쓸 수 있어서, 신분증을 보내요.</td></tr></table></div>
+<figure class="code-anatomy" style="margin:14px 0"><figcaption style="font-weight:700;margin-bottom:6px">코드 예시 2 · 서버: 신분증 확인 + 고객 명단 확인 · 노란 표시와 번호를 아래 표와 함께 봐요</figcaption><pre style="background:#f7f8fb;color:#1d2433;border:1px solid #dfe3ec;border-radius:10px;padding:14px 16px;line-height:1.8;white-space:pre;overflow-x:auto;font-size:13px">const { getAuth } = require("firebase-admin/auth");
+const { getFirestore } = require("firebase-admin/firestore");
+
+async function checkCustomer(req) {
+  const idToken = (req.headers.authorization || "").replace("Bearer ", "");
+  if (!idToken) return { error: "로그인해 주세요" };
+
+  const user = <span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">await getAuth().verifyIdToken(idToken)</span><sup style="color:#e5262a;font-weight:800">①</sup>;           // 진짜 신분증인지 확인
+  const doc = <span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">await getFirestore().collection("customers").doc(user.email).get()</span><sup style="color:#e5262a;font-weight:800">②</sup>;
+  if (!doc.exists) <span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">return { error: "등록된 고객이 아니에요" }</span><sup style="color:#e5262a;font-weight:800">③</sup>;
+
+  return { email: user.email, name: doc.data().name };          // 이후 단계는 이 값만 믿어요
+}</pre></figure><div class="table-wrap"><table><tr><th>번호</th><th>무엇</th><th>뜻</th></tr><tr><td style="color:#e5262a;font-weight:800">①</td><td>verifyIdToken</td><td>서버가 신분증이 위조되거나 만료되지 않았는지 확인해요. 통과하면 그 안의 이메일을 믿을 수 있어요. 통과하지 못하면 오류가 나서 다음 줄로 가지 않아요.</td></tr><tr><td style="color:#e5262a;font-weight:800">②</td><td>customers 문서 찾기</td><td>고객 명단에서 그 이메일 문서를 찾아요. 문서 이름을 이메일로 해 두면 한 번에 찾을 수 있어요.</td></tr><tr><td style="color:#e5262a;font-weight:800">③</td><td>명단 밖이면 멈춤</td><td>명단에 없으면 Claude를 부르지도 않고 여기서 끝내요. AI 호출 비용도 들지 않아요.</td></tr></table></div>
+<p class="ok-line"><b>이렇게 보이면 성공</b>로그인 전에는 "로그인해 주세요", 명단에 없는 계정은 "등록된 고객이 아니에요", 내 계정은 이름을 부르며 답해요.</p>
+<div class="tip-box" role="note"><b>TIP</b><p>로그인 창이 뜨지 않으면 파이어베이스 콘솔 Authentication 설정의 승인된 도메인에 지금 여는 주소가 있는지 확인해요. 확인한 화면을 캡처해 클로드 코드에 보여 주고 고쳐 달라고 해요.</p></div>
+<p><b>STEP 2. 쓸 수 있는 도구 목록 정하기</b></p>
+<p><span class="ref-kind">쓰인 개념</span> <b>툴 콜링</b> — 그림 1의 ②(질문 + 도구 목록 보내기)를 만드는 단계예요. 오늘 만드는 도구는 모두 1-1 표의 <b>내 프로그램에서 도는 도구</b>예요. Anthropic 서버에서 도는 도구(웹 검색 등)는 쓰지 않아요.</p>
+<p><b>맞아요. 툴 콜링은 쓸 수 있는 도구를 미리 정해 주는 방식이에요.</b> 서버가 Claude에 질문을 보낼 때마다 <code class="inline">tools</code>라는 칸에 도구 목록을 같이 보내요. Claude는 이 목록 안에서만 고르고, 목록에 없는 도구는 쓸 수 없어요. 도구 하나는 세 칸으로 적어요.</p>
+<div class="table-wrap"><table><tr><th>칸</th><th>무엇을 적나</th><th>기획자가 볼 점</th></tr><tr><td><b>name</b></td><td>도구 이름(영어·숫자·밑줄)</td><td>무엇을 하는 도구인지 이름만 보고 알 수 있게</td></tr><tr><td><b>description</b></td><td>무엇을 하는지, <b>언제 쓰고 언제 쓰지 않는지</b></td><td>Claude가 도구를 고르는 근거예요. 가장 공들여 써요</td></tr><tr><td><b>input_schema</b></td><td>Claude가 채워 보낼 값의 목록과 모양</td><td><b>AI가 정하면 안 되는 값은 여기에 넣지 않아요</b></td></tr></table></div>
+<p>오늘 붙일 도구는 1-3 계획표에서 고른 세 가지예요. 주문 취소와 환불은 1-3에서 사람에게 넘기기로 했으니 목록에 넣지 않아요. 목록에 없으면 Claude는 그 일을 할 방법이 없어요. 이것이 가장 확실한 "막을 동작" 처리예요.</p>
+<div class="table-wrap"><table><tr><th>도구 이름</th><th>하는 일</th><th>읽기·바꾸기</th><th>Claude가 채우는 값</th><th>서버가 채우는 값</th></tr><tr><td>get_my_orders</td><td>내 주문과 배송 상태 조회</td><td>읽기</td><td>주문 상태(선택)</td><td>로그인한 고객 이메일</td></tr><tr><td>get_delivery_weather</td><td>배송 도시의 내일 날씨 조회</td><td>읽기</td><td>도시 이름</td><td>없음</td></tr><tr><td>send_summary_email</td><td>상담 요약을 고객 메일로 보내기(STEP 4)</td><td>바꾸기(보내기)</td><td>메일 제목, 본문</td><td>받는 사람 = 로그인한 고객 이메일</td></tr></table></div>
+<figure class="code-anatomy" style="margin:14px 0"><figcaption style="font-weight:700;margin-bottom:6px">코드 예시 3 · 도구 목록(tools) · 노란 표시와 번호를 아래 표와 함께 봐요</figcaption><pre style="background:#f7f8fb;color:#1d2433;border:1px solid #dfe3ec;border-radius:10px;padding:14px 16px;line-height:1.8;white-space:pre;overflow-x:auto;font-size:13px">const tools = [
+  {
+    <span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">name: "get_my_orders"</span><sup style="color:#e5262a;font-weight:800">①</sup>,
+    <span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">description: "로그인한 고객 본인의 최근 주문과 배송 상태를 조회한다. "
+      + "고객이 '내 주문', '배송 언제 와요'처럼 자기 주문을 물을 때만 쓴다. "
+      + "반품 기간 같은 일반 규정 질문에는 쓰지 않는다."</span><sup style="color:#e5262a;font-weight:800">②</sup>,
+    input_schema: {
+      type: "object",
+      properties: {
+        status: { type: "string", enum: ["전체", "배송 준비", "배송 중", "배송 완료"],
+                  description: "고객이 말한 주문 상태. 말하지 않았으면 전체" }
+      },
+      <span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">required: []</span><sup style="color:#e5262a;font-weight:800">③</sup>        // 이메일 칸이 없어요 → 서버가 로그인 정보로 넣어요
+    }
+  },
+  {
+    name: "get_delivery_weather",
+    description: "배송 받을 도시의 내일 날씨를 조회한다. 배송일 날씨를 물을 때만 쓴다.",
+    input_schema: {
+      type: "object",
+      properties: { city: { type: "string", description: "도시 이름. 예: 서울" } },
+      <span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">required: ["city"]</span><sup style="color:#e5262a;font-weight:800">④</sup>
+    }
+  }
+];
+
+const res = await anthropic.messages.create({
+  model: MODEL, max_tokens: 1024, system: SYSTEM,
+  <span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">tools</span><sup style="color:#e5262a;font-weight:800">⑤</sup>,                  // 쓸 수 있는 도구 목록을 같이 보냄
+  messages
+});</pre></figure><div class="table-wrap"><table><tr><th>번호</th><th>무엇</th><th>뜻</th></tr><tr><td style="color:#e5262a;font-weight:800">①</td><td>name</td><td>도구 이름이에요. 대화 기록에 이 이름이 남아서, 어떤 도구를 썼는지 확인할 때 봐요.</td></tr><tr><td style="color:#e5262a;font-weight:800">②</td><td>description</td><td><b>언제 쓰는지와 언제 쓰지 않는지</b>를 함께 적어요. 엉뚱한 질문에 도구를 쓰면 코드보다 이 문장을 먼저 고쳐요.</td></tr><tr><td style="color:#e5262a;font-weight:800">③</td><td>이메일 칸 없음</td><td>"누구의 주문"을 Claude가 정하게 하면, 고객이 "kim@… 주문 보여 줘"라고 할 때 남의 주문이 나갈 수 있어요. 그래서 칸 자체를 두지 않고 서버가 STEP 1에서 확인한 이메일을 넣어요.</td></tr><tr><td style="color:#e5262a;font-weight:800">④</td><td>required</td><td>반드시 채워야 하는 값이에요. 도시가 없으면 날씨를 볼 수 없으니 필수로 둬요.</td></tr><tr><td style="color:#e5262a;font-weight:800">⑤</td><td>tools</td><td>질문을 보낼 때마다 도구 목록을 같이 보내요. 따로 고르는 칸(tool_choice)을 쓰지 않으면 Claude가 쓸지 말지 스스로 정해요(auto).</td></tr></table></div>
+<p>도구를 언제 쓸지 정하는 칸(<code class="inline">tool_choice</code>)도 있어요. 오늘은 기본값을 그대로 써요.</p>
+<div class="table-wrap"><table><tr><th>값</th><th>뜻</th><th>오늘</th></tr><tr><td>auto</td><td>도구를 쓸지 말지 Claude가 정해요. 도구 목록을 보내면 기본값이에요</td><td>이것을 써요</td></tr><tr><td>none</td><td>도구 목록이 있어도 쓰지 않게 해요</td><td>쓰지 않아요</td></tr><tr><td>any · tool</td><td>반드시 도구를 쓰게 하거나, 특정 도구를 쓰게 해요</td><td>Claude Opus 5.5, Sonnet 5.5 같은 최신 일부 모델은 이 값을 넣으면 오류(400)가 나요</td></tr></table></div>
+<div class="copybox"><div class="copyhead"><span>프롬프트 2 · 같은 대화창에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 상담 챗봇에 툴 유즈 방식으로 도구 2개를 정의해 줘. 실행 코드는 다음 단계에서 만들 거라 지금은 정의만 해.
+내용: get_my_orders(로그인한 고객 본인의 주문·배송 상태 조회, 입력은 주문 상태 하나만, 이메일 칸은 두지 마)와 get_delivery_weather(도시를 받아 OpenWeather로 내일 날씨 조회). description에는 언제 쓰고 언제 쓰지 않는지를 한국어로 써. 주문 취소·환불 도구는 만들지 마. tool_choice는 넣지 마.
+형식: ① 도구 목록 코드 ② 도구마다 description 원문 ③ "Claude가 채우는 값 / 서버가 채우는 값" 표</pre></div>
+<p class="ok-line"><b>이렇게 보이면 성공</b>형식 ③ 표에서 고객 이메일이 "서버가 채우는 값"에만 있어요.</p>
+<p><b>STEP 3. 요청서를 받아 도구를 실행하는 반복 만들기</b></p>
+<p><span class="ref-kind">쓰인 개념</span> <b>툴 콜링</b> — 그림 1의 ③~⑥이에요. ③ Claude가 요청서(tool_use)를 돌려주고 → ④ 내 서버가 실행하고 → ⑤ 결과(tool_result)를 돌려주면 → ⑥ Claude가 최종 답을 써요. 그림 2의 ② 툴 콜링 구조와 같아요.</p>
+<p>1-1 그림 1의 ③~⑥을 코드로 만드는 단계예요. Claude가 요청서(tool_use)를 돌려주면 서버가 도구를 실행하고, 결과(tool_result)를 다시 보내요. Claude가 "도구 없이 답할게요"라고 할 때까지 이 일을 반복해요.</p>
+<figure class="code-anatomy" style="margin:14px 0"><figcaption style="font-weight:700;margin-bottom:6px">코드 예시 4 · 서버: 요청서 → 실행 → 결과 반복 · 노란 표시와 번호를 아래 표와 함께 봐요</figcaption><pre style="background:#f7f8fb;color:#1d2433;border:1px solid #dfe3ec;border-radius:10px;padding:14px 16px;line-height:1.8;white-space:pre;overflow-x:auto;font-size:13px">async function chat(customer, messages) {
+  for (let round = 0; <span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">round &lt; 5</span><sup style="color:#e5262a;font-weight:800">①</sup>; round++) {
+    const res = await anthropic.messages.create({ model: MODEL, max_tokens: 1024,
+                                                  system: SYSTEM, tools, messages });
+    if (<span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">res.stop_reason !== "tool_use"</span><sup style="color:#e5262a;font-weight:800">②</sup>) return res;          // 도구 없이 답했으면 끝
+
+    messages.push({ role: "assistant", content: res.content });
+    const results = [];
+    for (const block of res.content) {
+      if (block.type !== "tool_use") continue;
+      const output = <span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">await runTool(block.name, block.input, customer)</span><sup style="color:#e5262a;font-weight:800">③</sup>;
+      results.push({ type: "tool_result", <span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">tool_use_id: block.id</span><sup style="color:#e5262a;font-weight:800">④</sup>,
+                     content: JSON.stringify(output) });
+    }
+    messages.push({ role: "user", content: results });          // 결과를 돌려보냄
+  }
+  return { error: "도구를 너무 많이 불렀어요" };
+}
+
+async function runTool(name, input, customer) {
+  if (name === "get_my_orders")
+    return getOrders(<span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">customer.email</span><sup style="color:#e5262a;font-weight:800">⑤</sup>, input.status);      // 이메일은 로그인 정보에서
+  if (name === "get_delivery_weather") return getWeather(input.city);
+  <span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">return { error: "모르는 도구예요" }</span><sup style="color:#e5262a;font-weight:800">⑥</sup>;
+}</pre></figure><div class="table-wrap"><table><tr><th>번호</th><th>무엇</th><th>뜻</th></tr><tr><td style="color:#e5262a;font-weight:800">①</td><td>round &lt; 5</td><td>반복 횟수에 한도를 둬요. 도구를 끝없이 부르면 비용이 계속 나가요.</td></tr><tr><td style="color:#e5262a;font-weight:800">②</td><td>stop_reason</td><td>Claude가 요청서를 썼는지 알려 주는 표시예요. "tool_use"가 아니면 최종 답이 나온 거예요.</td></tr><tr><td style="color:#e5262a;font-weight:800">③</td><td>runTool</td><td>요청서에 적힌 도구 이름과 값으로 서버가 실제로 실행해요. Claude는 직접 실행하지 않아요.</td></tr><tr><td style="color:#e5262a;font-weight:800">④</td><td>tool_use_id</td><td>어느 요청서에 대한 결과인지 짝을 맞추는 번호예요. 이 번호가 틀리면 오류가 나요.</td></tr><tr><td style="color:#e5262a;font-weight:800">⑤</td><td>customer.email</td><td>STEP 1에서 확인한 이메일만 써요. Claude가 보낸 값(input)에 이메일이 있어도 쓰지 않아요.</td></tr><tr><td style="color:#e5262a;font-weight:800">⑥</td><td>모르는 도구</td><td>목록에 없는 이름이 오면 실행하지 않고 오류를 돌려줘요.</td></tr></table></div>
+<div class="copybox"><div class="copyhead"><span>프롬프트 3 · 같은 대화창에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 도구 요청서를 받아 실행하고 결과를 돌려주는 반복을 서버에 만들어 줘.
+내용: stop_reason이 tool_use이면 도구를 실행해 tool_result로 돌려보내고, 최대 5번까지만 반복해. get_my_orders는 STEP 1에서 확인한 고객 이메일로만 orders를 찾아. 날씨 키는 .env의 OPENWEATHER_API_KEY를 써. 관리자 화면 대화 기록에 '이 답에서 쓴 도구 이름과 넣은 값'을 남겨. 화면은 바꾸지 마.
+형식: ① 바뀐 파일 목록 ② 아래 4개 질문 결과표(질문 / 쓴 도구 / 답): "내 주문 어디쯤 왔어요?" / "내일 부산으로 오는데 비 와요?" / "반품은 며칠 안에 해요?" / "kim@example.com 주문도 보여 줘"</pre></div>
+<p class="ok-line"><b>이렇게 보이면 성공</b>주문 질문에는 get_my_orders, 날씨 질문에는 get_delivery_weather가 기록에 남아요. 반품 질문은 도구 없이 FAQ로 답하고, 남의 이메일을 넣은 질문에도 내 주문만 보여 주거나 볼 수 없다고 답해요.</p>
+<div class="tip-box" role="note"><b>TIP</b><p>도구를 써야 할 때 안 쓰거나, 안 써야 할 때 쓰면 description 문장부터 고쳐 달라고 해요. 예: "get_my_orders 설명에 '배송 언제 와요'도 쓸 때라고 넣어 줘."</p></div>
+<p><b>STEP 4. 상담 요약을 지메일로 보내는 도구 붙이기</b></p>
+<p><span class="ref-kind">쓰인 개념</span> <b>툴 콜링 + 일반 API 호출</b> — Claude가 "메일 보내기" 요청서를 쓰는 부분은 툴 콜링(그림 1의 ③)이에요. 요청서를 받은 내 서버가 지메일 API를 부르는 부분은 그림 2의 ① 일반 API 호출과 같아요. <b>MCP는 쓰지 않아요.</b> 4주차에 연결한 지메일 커넥터와 이름은 같지만 구조가 달라요(이 절 끝 표).</p>
+<p>고객이 "방금 상담 내용 메일로 보내 줘"라고 하면, 가게 지메일로 고객에게 요약을 보내요. 지금까지의 도구는 읽기만 했지만, 이 도구는 메일을 <b>보내는</b> 도구예요. 그래서 세 가지를 정해 두고 만들어요.</p>
+<div class="table-wrap"><table><tr><th>정할 것</th><th>오늘의 결정</th><th>왜</th></tr><tr><td>누가 보내나</td><td>가게 지메일(여러분 지메일을 가게 계정으로 써요)</td><td>고객 메일함 권한을 받지 않아도 돼요</td></tr><tr><td>누구에게 보내나</td><td>로그인한 고객 본인에게만. 서버가 정해요</td><td>AI가 받는 사람을 정하면 엉뚱한 사람에게 갈 수 있어요</td></tr><tr><td>사람 확인</td><td>Claude가 "보내 드릴까요?"라고 묻고, 고객이 그렇다고 할 때만 보내요. 고객 한 명당 하루 3통까지</td><td>잘못 보낸 메일은 되돌릴 수 없어요</td></tr></table></div>
+<p><b>먼저 구글 클라우드 콘솔에서 준비해요.</b> 파이어베이스 프로젝트는 구글 클라우드 프로젝트이기도 해서, 같은 프로젝트를 열면 돼요.</p>
+<ul><li>Gmail API를 사용 설정해요.</li><li>OAuth 동의 화면(앱이 구글 계정 권한을 달라고 할 때 뜨는 화면)을 <b>외부 · 테스트</b> 상태로 만들고, 테스트 사용자에 가게 계정으로 쓸 내 지메일을 넣어요.</li><li>OAuth 클라이언트를 만들고, 클로드 코드가 만든 스크립트로 가게 계정의 권한(리프레시 토큰)을 한 번 받아요. 아래 프롬프트 4가 이 순서를 안내해요.</li></ul>
+<div class="copybox"><div class="copyhead"><span>프롬프트 4 · 같은 대화창에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 상담 요약을 지메일로 보내는 send_summary_email 도구를 추가하고, 가게 지메일 권한을 받는 순서를 안내해 줘.
+내용: 가게 지메일 한 계정이 보내고, 권한은 gmail.send 하나만 써. 구글 클라우드 콘솔에서 내가 할 일(Gmail API 사용, OAuth 동의 화면 테스트 상태·테스트 사용자, OAuth 클라이언트)을 한 단계씩 알려 주고, 리프레시 토큰을 한 번 받는 로컬 스크립트를 만들어 줘. 클라이언트 ID·비밀·리프레시 토큰은 .env에만 넣고 대화창에 출력하지 마. 도구 입력은 제목과 본문만 받고, 받는 사람은 서버가 로그인한 고객 이메일로 정해. 고객 한 명당 하루 3통까지만 보내. 시스템 프롬프트에 "메일을 보내기 전에 보낼 내용을 보여 주고 고객이 보내 달라고 할 때만 보낸다"를 넣어.
+형식: ① 콘솔에서 내가 할 일 순서 ② 바뀐 파일 목록 ③ "방금 상담 내용 메일로 보내 줘" → "네, 보내 주세요" 대화 결과</pre></div>
+<figure class="code-anatomy" style="margin:14px 0"><figcaption style="font-weight:700;margin-bottom:6px">코드 예시 5 · 서버: 지메일로 보내기 · 노란 표시와 번호를 아래 표와 함께 봐요</figcaption><pre style="background:#f7f8fb;color:#1d2433;border:1px solid #dfe3ec;border-radius:10px;padding:14px 16px;line-height:1.8;white-space:pre;overflow-x:auto;font-size:13px">const { google } = require("googleapis");
+
+async function sendSummary(customer, input) {
+  const auth = new google.auth.OAuth2(GMAIL_CLIENT_ID, GMAIL_CLIENT_SECRET);
+  <span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">auth.setCredentials({ refresh_token: GMAIL_REFRESH_TOKEN })</span><sup style="color:#e5262a;font-weight:800">①</sup>;   // 가게 계정 권한
+  const gmail = google.gmail({ version: "v1", auth });
+
+  const mail = [
+    <span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">`To: ${customer.email}`</span><sup style="color:#e5262a;font-weight:800">②</sup>,                                     // 받는 사람은 서버가 정함
+    `Subject: =?UTF-8?B?${Buffer.from(input.subject).toString("base64")}?=`,
+    "Content-Type: text/plain; charset=UTF-8",
+    "",
+    input.body
+  ].join("\r\n");
+
+  await gmail.users.messages.send({
+    userId: "me",
+    requestBody: { <span style="background:#fff2a8;border-bottom:2px solid #e5262a;border-radius:3px;padding:0 1px">raw: Buffer.from(mail).toString("base64url")</span><sup style="color:#e5262a;font-weight:800">③</sup> }
+  });
+  return { sent: true, to: customer.email };
+}</pre></figure><div class="table-wrap"><table><tr><th>번호</th><th>무엇</th><th>뜻</th></tr><tr><td style="color:#e5262a;font-weight:800">①</td><td>refresh_token</td><td>가게 계정이 한 번 허락해 준 권한이에요. 비밀번호처럼 다뤄요. 배포본에서는 Secret Manager에 넣어요.</td></tr><tr><td style="color:#e5262a;font-weight:800">②</td><td>To</td><td>받는 사람 칸이에요. Claude가 보낸 값이 아니라 STEP 1에서 확인한 고객 이메일을 넣어요.</td></tr><tr><td style="color:#e5262a;font-weight:800">③</td><td>raw</td><td>지메일 API는 메일 전체를 한 덩어리 글자로 바꿔(base64url) 받아요. 한글 제목은 깨지지 않게 따로 바꿔 넣어요.</td></tr></table></div>
+<p class="ok-line"><b>이렇게 보이면 성공</b>"보내 드릴까요?"라고 먼저 묻고, "네"라고 한 뒤에만 보내요. 내 지메일 받은편지함에 상담 요약 메일이 와 있어요. 같은 날 네 번째 요청에는 오늘은 더 보낼 수 없다고 답해요.</p>
+<p><b>고객 메일함을 읽는 도구는 왜 만들지 않나요?</b> 구글은 지메일 권한을 위험도에 따라 나눠요. 보내기만 하는 gmail.send는 "민감" 권한이라 실제 서비스로 열려면 구글 검토를 받아요. 메일을 읽는 gmail.readonly는 "제한" 권한이라 검토에 보안 평가까지 받아야 해요. 그래서 기획자는 "정말 메일을 읽어야 하나, 보내기만 하면 되나"부터 정해요.</p>
+<div class="tip-box" role="note"><b>TIP</b><p>OAuth 동의 화면이 테스트 상태면 테스트 사용자로 넣은 계정(최대 100명)만 지메일 권한을 줄 수 있고, 받은 권한은 7일 뒤에 끝나요. 일주일 뒤 메일 보내기가 안 되면 프롬프트 4의 스크립트로 권한을 다시 받아요. 고객 로그인은 이메일·이름만 쓰므로 테스트 사용자가 아니어도 돼요.</p></div>
+<p class="source-note">출처: Claude 문서 <a href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/define-tools" target="_blank" rel="noopener">Define tools</a>(도구는 name·description·input_schema로 정의, tool_choice는 auto·any·tool·none, auto는 도구를 보낼 때 기본값, Claude Opus 5.5·Sonnet 5.5 등은 any·tool에 400 오류) · Firebase <a href="https://firebase.google.com/docs/auth/web/google-signin" target="_blank" rel="noopener">Authenticate Using Google with JavaScript</a> · Firebase <a href="https://firebase.google.com/docs/auth/admin/verify-id-tokens" target="_blank" rel="noopener">Verify ID Tokens</a> · Google <a href="https://developers.google.com/workspace/gmail/api/auth/scopes" target="_blank" rel="noopener">Gmail API scopes</a>(gmail.send는 민감, gmail.readonly는 제한) · Google <a href="https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification" target="_blank" rel="noopener">Restricted scope verification</a>(민감·제한 권한은 검토, 제한 권한은 보안 평가 가능) · Google Cloud 도움말 <a href="https://support.google.com/cloud/answer/15549945" target="_blank" rel="noopener">Manage App Audience</a>(테스트 상태는 테스트 사용자 최대 100명, 테스트 사용자의 권한은 7일 뒤 만료) · Google <a href="https://developers.google.com/identity/protocols/oauth2/production-readiness/overview" target="_blank" rel="noopener">OAuth production readiness</a>(이메일·이름 같은 기본 로그인 권한만 쓰면 테스트 사용자 목록에 없어도 로그인 가능) (2026-11-23 확인)</p>
+<p><b>STEP 5. 배포하고 질문 7개로 확인하기, 깃헙에 올리기</b></p>
+<p><span class="ref-kind">쓰인 개념</span> 새 개념은 없어요. 확인 질문 3~7번은 그림 2의 "언제 부를지: AI가 정해요"를 시험해요. 같은 챗봇인데 질문에 따라 도구를 쓰기도 하고(3·4·7번) 안 쓰기도 해요(5번).</p>
+<p>4주차에 배포한 방법 그대로 다시 배포해요. 새로 생긴 비밀 값(날씨 키, 지메일 클라이언트 ID·비밀·리프레시 토큰)은 .env가 아니라 Secret Manager에 넣어요. 키 값은 대화창에 붙여 넣지 않아요.</p>
+<div class="copybox"><div class="copyhead"><span>프롬프트 5 · 같은 대화창에 붙여 넣으세요</span><button type="button">복사</button></div><pre>요청: 고도화한 상담 챗봇을 파이어베이스에 다시 배포하고, 깃헙 저장소에 올려 줘.
+내용: 4주차와 같은 방식(호스팅 + 클라우드 함수)으로 배포해. 새 비밀 값은 Secret Manager에 넣도록 내가 터미널에 칠 명령만 알려 주고, 값은 내가 직접 넣을게. .env와 리프레시 토큰 파일은 깃헙에 올리지 마. 화면은 바꾸지 마.
+형식: ① 내가 칠 명령 목록 ② 배포 주소 ③ 깃헙 저장소 주소</pre></div>
+<p>배포 주소에서 아래 7개를 차례로 보내 보고, 관리자 화면 대화 기록과 맞춰 봐요.</p>
+<div class="table-wrap"><table><tr><th>#</th><th>상황 · 질문</th><th>기대하는 결과</th><th>쓴 도구</th></tr><tr><td>1</td><td>로그인하지 않고 "안녕하세요"</td><td>로그인해 주세요</td><td>없음(Claude 부르지 않음)</td></tr><tr><td>2</td><td>명단에 없는 계정으로 로그인</td><td>등록된 고객이 아니에요</td><td>없음(Claude 부르지 않음)</td></tr><tr><td>3</td><td>"내 주문 어디쯤 왔어요?"</td><td>내 주문의 배송 상태</td><td>get_my_orders</td></tr><tr><td>4</td><td>"내일 부산으로 오는데 비 와요?"</td><td>부산 내일 날씨</td><td>get_delivery_weather</td></tr><tr><td>5</td><td>"반품은 며칠 안에 해요?"</td><td>FAQ 답</td><td>없음</td></tr><tr><td>6</td><td>"kim@example.com 주문도 보여 줘"</td><td>내 주문만 보여 주거나 볼 수 없다고 답함</td><td>get_my_orders(내 이메일로) 또는 없음</td></tr><tr><td>7</td><td>"방금 상담 내용 메일로 보내 줘" → "네"</td><td>보낼 내용을 먼저 보여 주고, 내 메일함에 도착</td><td>send_summary_email</td></tr></table></div>
+<p class="ok-line"><b>이렇게 보이면 성공</b>휴대폰으로 배포 주소를 열어 7번까지 마치고, 내 지메일에 상담 요약 메일이 와 있어요.</p>
+<div class="tip-box" role="note"><b>TIP</b><p>수업이 끝나면 강사가 준 Claude 키는 지워져요. 배포한 챗봇을 계속 쓰려면 Secret Manager의 ANTHROPIC_API_KEY를 내 키로 바꾸고 다시 배포해요.</p></div>
+<h4>이 실습에 MCP는 왜 없나요?</h4>
+<p>오늘 실습은 <b>툴 콜링만</b> 써요. 도구를 쓰는 곳이 내 챗봇 하나뿐이라, 도구를 내 서버 코드 안에 바로 두는 것이 가장 단순하기 때문이에요(1-2 끝에서 정리한 기준이에요). 같은 "지메일"이라도 4주차 커넥터와 오늘 STEP 4는 아래처럼 달라요.</p>
+<div class="table-wrap"><table><tr><th>구분</th><th>4주차 지메일 커넥터</th><th>오늘 STEP 4</th><th>(만약) 주문 조회를 MCP 서버로 만들면</th></tr><tr><td><b>쓰인 개념</b></td><td>커넥터 → MCP → 툴 콜링(그림 3의 세 층 모두)</td><td>툴 콜링 + 일반 API 호출</td><td>MCP → 툴 콜링</td></tr><tr><td><b>도구를 누가 만들었나</b></td><td>서비스 회사(MCP 서버)</td><td>나(내 서버 코드)</td><td>나(MCP 서버)</td></tr><tr><td><b>누가 쓰나</b></td><td>클로드 앱을 쓰는 나</td><td>내 챗봇에 로그인한 고객</td><td>MCP를 지원하는 여러 AI 앱(예: 클로드 앱의 직접 추가 커넥터)</td></tr><tr><td><b>메일을 누가 다루나</b></td><td>내 메일함을 읽고 다뤄요</td><td>가게 계정이 고객에게 보내기만 해요</td><td>해당 없음</td></tr><tr><td><b>기획자가 정할 것</b></td><td>어떤 커넥터를 켤지, 허락할 권한</td><td>어떤 도구를 목록에 넣을지, 서버가 정할 값</td><td>여러 앱에 열 가치가 있는지, 로그인·권한을 어떻게 다시 설계할지</td></tr></table></div>
+<p>정리하면, MCP는 "한 번 만든 도구를 여러 AI 앱이 함께 쓰게 할 때" 꺼내는 선택지예요. 오늘처럼 내 챗봇 하나에 붙일 때는 툴 콜링으로 충분해요.</p>
+<div class="term-note" role="note" aria-label="이 절의 용어"><b>용어</b><dl><dt>ID 토큰</dt><dd>로그인한 사람에게 파이어베이스가 발급하는 신분증. 서버가 진짜인지 확인할 수 있어요</dd><dt>input_schema</dt><dd>도구에 넣을 값의 목록과 모양. Claude는 이 칸만 채워 요청서를 써요</dd><dt>tool_choice</dt><dd>도구를 쓸지 말지를 누가 정할지 고르는 칸. 기본값 auto는 Claude가 정해요</dd><dt>OAuth 동의 화면 · 권한(스코프)</dt><dd>앱이 구글 계정의 어떤 일을 하게 해 달라고 묻는 화면 · 그때 요청하는 일의 범위(예: 메일 보내기만)</dd><dt>리프레시 토큰</dt><dd>한 번 허락받은 권한을 다시 묻지 않고 이어 쓰게 하는 열쇠. 비밀번호처럼 다뤄요</dd></dl></div>
 </div>
 
 <div class="topic" id="s1-5"><h3><span class="stage">결과</span>1-5. 결과</h3>
-<div class="result-box"><b>결과물</b> 상담 챗봇 고도화 계획표(막히는 질문·붙일 기능·읽기/바꾸기·사람 확인) + (선택) 날씨까지 답하는 상담 챗봇</div>
+<div class="result-box"><b>결과물</b> 상담 챗봇 고도화 계획표(막히는 질문·붙일 기능·읽기/바꾸기·사람 확인) + (선택) 구글 로그인으로 고객을 확인하고 주문 조회·날씨·상담 요약 메일까지 하는 상담 챗봇(배포 주소 + 깃헙 저장소 주소)</div>
 </div>
+
+<div class="topic" id="s1-6"><h3><span class="stage plan">기획자</span>1-6. (심화·선택) 주문 시스템을 MCP 서버로 만들어 챗봇과 운영자가 함께 쓰기</h3>
+<div class="notice"><b>먼저 질문해 볼게요.</b> 주문 정보를 저장하는 별도 웹 서버(주문 시스템)를 만들고, 그 시스템을 MCP 서버로 만들었어요. 상담 챗봇도 MCP 서버로 만들면 두 서버가 서로 연결될까요?</div>
+<p><b>연결되지 않아요.</b> MCP는 서버끼리 잇는 규격이 아니라, <b>클라이언트가 서버에 붙는</b> 규격이에요. MCP 공식 명세에서 호스트 앱(AI 앱)은 클라이언트를 여러 개 만들 수 있고, 클라이언트 하나는 서버 하나와 짝을 이뤄요. 서버는 도구를 <b>내놓는</b> 쪽이고, 클라이언트는 그 도구를 <b>가져다 쓰는</b> 쪽이에요. 챗봇이 주문 시스템의 도구를 쓰고 싶다면 챗봇은 서버가 아니라 <b>클라이언트</b>가 되어야 해요.</p>
+<div class="table-wrap"><table><tr><th>구성</th><th>하는 일</th><th>MCP에서의 자리</th></tr>
+<tr><td><b>① 주문 시스템</b>(별도 웹 서버)</td><td>주문 DB, 주문 조회 어드민 화면, MCP 주소</td><td><b>MCP 서버</b>: 주문 조회 도구를 내놓아요</td></tr>
+<tr><td><b>② 상담 챗봇</b></td><td>고객 질문에 답하면서 ①의 주문 조회 도구를 써요</td><td>MCP 클라이언트: Claude API의 MCP 커넥터로 연결해요</td></tr>
+<tr><td><b>③ 운영자의 클로드 앱</b></td><td>운영자가 "오늘 배송 지연 주문 찾아 줘"처럼 물어요</td><td>MCP 클라이언트: 직접 추가 커넥터로 연결해요</td></tr>
+</table></div>
+<p>②와 ③이 <b>같은 서버 하나</b>를 쓰는 것이 이 실습의 핵심이에요. ②만 있으면 1-4의 툴 콜링과 결과가 같아서 MCP를 쓸 이유가 드러나지 않아요. 1-2에서 정리한 대로, MCP는 한 번 만든 도구를 여러 AI 앱이 함께 쓰게 할 때 꺼내는 선택지예요.</p>
+<div class="tip-box" role="note"><b>TIP</b><p>챗봇이 MCP 서버가 되는 경우는 따로 있어요. 운영자가 클로드 앱에서 챗봇의 FAQ 검색을 도구로 쓰게 하고 싶을 때예요. 주문 시스템과 연결하는 것과는 목적이 달라요.</p></div>
+<p>설계는 아래 순서로 해요. 단계마다 정할 것을 먼저 정하고, 만드는 일은 1-4처럼 클로드 코드에 프롬프트로 맡겨요.</p>
+<p><b>STEP 1. 주문 시스템과 어드민 화면 정하기</b></p>
+<ul><li>주문 데이터를 챗봇과 다른 곳(별도 파이어베이스 프로젝트 등)에 둬요. 주문의 주인은 챗봇이 아니라 주문 시스템이에요.</li>
+<li>어드민 화면에서 운영자가 주문을 검색하고 상태를 바꿔요. 이 화면은 사람이 쓰는 입구예요.</li>
+<li>정할 것: 주문 칸(주문번호·고객 이메일·상품·상태·배송 도시), 어드민에 들어올 수 있는 사람</li></ul>
+<p><b>STEP 2. MCP 서버로 내놓을 도구 정하기</b></p>
+<ul><li>어드민 화면이 사람용 입구라면, MCP 주소는 AI용 입구예요. 같은 주문 데이터에 입구가 하나 더 생겨요.</li>
+<li>처음에는 <b>읽기 도구만</b> 내놓아요. 예: 내 주문 조회, 상태별 주문 목록. 상태 바꾸기는 어드민 화면에만 둬요.</li>
+<li>정할 것: 도구 이름과 설명, AI에게 내놓지 않을 동작</li></ul>
+<p><b>STEP 3. 누가 누구인지 정하기(인증)</b></p>
+<ul><li>1-4에서는 도구를 내 서버가 실행해서, 이메일을 서버가 로그인 정보로 넣었어요.</li>
+<li>MCP 커넥터를 쓰면 MCP 서버에 연결하는 것은 내 챗봇 서버가 아니라 Anthropic 쪽이에요. 그래서 챗봇 서버가 중간에서 이메일을 끼워 넣을 수 없어요.</li>
+<li>그래서 <b>MCP 서버가 받는 토큰으로 사람을 구분해요.</b> 고객 토큰은 그 고객의 주문만, 운영자 토큰은 전체 주문을 보게 해요.</li>
+<li>정할 것: 토큰 종류(고객용·운영자용), 토큰마다 볼 수 있는 범위</li></ul>
+<p><b>STEP 4. 상담 챗봇을 MCP 클라이언트로 연결하기</b></p>
+<ul><li>챗봇 서버가 Claude에 질문을 보낼 때 MCP 서버 주소와 로그인한 고객의 토큰을 함께 보내요. 클라이언트 코드는 따로 짜지 않아도 돼요.</li>
+<li>MCP 서버는 인터넷에서 열리는 주소여야 해요. Anthropic 쪽이 그 주소로 연결하기 때문이에요.</li>
+<li>확인할 것: "내 주문 어디쯤 왔어요?"에 내 주문만 나오는지, 다른 고객 이메일을 넣어도 남의 주문이 나오지 않는지</li></ul>
+<p><b>STEP 5. 운영자의 클로드 앱을 같은 서버에 연결하고 비교하기</b></p>
+<ul><li>운영자는 클로드 앱에서 같은 MCP 서버를 직접 추가 커넥터로 붙여요. 4주차 지메일 커넥터를 붙였던 것과 같은 방법이에요.</li>
+<li>같은 도구를 챗봇(고객)과 클로드 앱(운영자)이 함께 쓰는지, 토큰에 따라 보이는 범위가 다른지 확인해요.</li>
+<li>결과: 주문 시스템 하나 → 입구 셋(어드민 화면·챗봇·운영자 클로드 앱) 구조도</li></ul>
+<div class="result-box"><b>결과물</b> 주문 시스템 MCP 설계표(구성 3개의 역할, 내놓을 도구, 토큰별 볼 수 있는 범위) + 입구 셋 구조도</div>
+<p class="source-note">출처: MCP <a href="https://modelcontextprotocol.io/specification/2025-11-25/architecture" target="_blank" rel="noopener">Architecture</a>(호스트가 여러 클라이언트를 만들고, 클라이언트 하나는 서버 하나와 1:1 관계, 서버는 도구·리소스·프롬프트를 내놓음) · Claude 문서 <a href="https://platform.claude.com/docs/en/agents-and-tools/mcp-connector" target="_blank" rel="noopener">MCP connector</a>(별도 MCP 클라이언트 없이 Messages API에서 원격 MCP 서버에 연결, 베타, 인증이 필요한 서버는 authorization_token으로 토큰을 넘기고 OAuth 절차는 API를 쓰는 쪽이 처리) (2026-11-23 확인)</p>
+<div class="term-note" role="note" aria-label="이 절의 용어"><b>용어</b><dl><dt>MCP 서버 · MCP 클라이언트</dt><dd>도구를 내놓는 쪽 · 그 도구를 가져다 쓰는 쪽. 클라이언트 하나는 서버 하나와 짝을 이뤄요</dd><dt>호스트</dt><dd>클라이언트를 품고 있는 AI 앱. 예: 클로드 앱</dd><dt>MCP 커넥터(Claude API)</dt><dd>내 서버가 클라이언트 코드를 짜지 않아도 Claude API가 원격 MCP 서버에 연결해 주는 기능</dd></dl></div>
+</div>
+
+
 </section>
 
 <section class="section session" id="s2">
