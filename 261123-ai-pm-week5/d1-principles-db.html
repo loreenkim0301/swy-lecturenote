@@ -311,7 +311,7 @@ aside nav a.active{border-left-color:var(--blue)}
 <div class="nav-title">전체 목차</div>
 <div class="grp"><div class="grp-label">교육 안내</div><a class="l2" href="#overview">교육 개요</a><a class="l2" href="#prep">수업 전 준비</a><a class="l2" href="#tt">타임테이블</a></div>
 <div class="grp"><div class="grp-label">오늘의 단어</div><a class="l2" href="#words">오늘의 단어</a></div>
-<div class="grp"><div class="grp-label">SESSION 1</div><a class="l2" href="#s1">AI가 도구를 쓰는 방법: 툴 콜링·MCP·커넥터</a><a class="l3" href="#s1-1">1-1. 툴 콜링: AI는 요청서를 쓰고, 실행은 내 프로그램이 해요</a><a class="l3" href="#s1-2">1-2. MCP와 커넥터는 툴 콜링 위에 있어요</a><a class="l3" href="#s1-3">1-3. 상담 챗봇을 고도화한다면? 붙일 기능 정하기</a><a class="l3" href="#s1-4">1-4. (선택) 고도화 실습: 로그인한 고객에게 주문 조회·날씨·메일 기능 붙이기</a><a class="l3" href="#s1-5">1-5. 결과</a></div>
+<div class="grp"><div class="grp-label">SESSION 1</div><a class="l2" href="#s1">AI가 도구를 쓰는 방법: 툴 콜링·MCP·커넥터</a><a class="l3" href="#s1-1">1-1. 툴 콜링: AI는 요청서를 쓰고, 실행은 내 프로그램이 해요</a><a class="l3" href="#s1-2">1-2. MCP와 커넥터는 툴 콜링 위에 있어요</a><a class="l3" href="#s1-3">1-3. 상담 챗봇을 고도화한다면? 붙일 기능 정하기</a><a class="l3" href="#s1-4">1-4. (선택) 고도화 실습: 로그인한 고객에게 주문 조회·날씨·메일 기능 붙이기</a><a class="l3" href="#s1-5">1-5. 결과</a><a class="l3" href="#s1-6">1-6. (심화·선택) 주문 시스템을 MCP 서버로 만들어 챗봇과 운영자가 함께 쓰기</a></div>
 <div class="grp"><div class="grp-label">SESSION 2</div><a class="l2" href="#s2">멀티 에이전트: 여러 AI가 일을 나눠 하기</a><a class="l3" href="#s2-1">2-1. 멀티 에이전트란?</a><a class="l3" href="#s2-2">2-2. 내가 지휘자가 되어 채팅 3개로 일 나누기</a><a class="l3" href="#s2-3">2-3. 리서치 기능으로 멀티 에이전트 관찰하기</a><a class="l3" href="#s2-4">2-4. 멀티 에이전트를 쓸지 정하기</a><a class="l3" href="#s2-5">2-5. 결과</a></div>
 <div class="grp"><div class="grp-label">SESSION 3</div><a class="l2" href="#s3">랭체인·크루AI: 에이전트를 조립하는 부품 상자</a><a class="l3" href="#s3-1">3-1. 랭체인과 크루AI는 무엇인가</a><a class="l3" href="#s3-2">3-2. 기업 사례와 뉴스</a><a class="l3" href="#s3-3">3-3. 사고와 비판 사례</a><a class="l3" href="#s3-4">3-4. 쓰자고 할 때와 말릴 때 정하기</a><a class="l3" href="#s3-5">3-5. 결과</a></div>
 <div class="grp"><div class="grp-label">SESSION 4</div><a class="l2" href="#s4">데이터베이스 고르기: 같은 챗봇, 세 가지 조합</a><a class="l3" href="#s4-1">4-1. 데이터베이스 종류와 서비스 회사</a><a class="l3" href="#s4-2">4-2. 요즘 AI 개발에서 많이 쓰는 DB</a><a class="l3" href="#s4-3">4-3. RAG에 필요한 네 부분</a><a class="l3" href="#s4-4">4-4. 같은 챗봇, 세 가지 조합</a><a class="l3" href="#s4-5">4-5. RAG 창고에 넣을 데이터 정하기</a><a class="l3" href="#s4-6">4-6. 결과</a></div>
@@ -619,6 +619,45 @@ async function sendSummary(customer, input) {
 <div class="topic" id="s1-5"><h3><span class="stage">결과</span>1-5. 결과</h3>
 <div class="result-box"><b>결과물</b> 상담 챗봇 고도화 계획표(막히는 질문·붙일 기능·읽기/바꾸기·사람 확인) + (선택) 구글 로그인으로 고객을 확인하고 주문 조회·날씨·상담 요약 메일까지 하는 상담 챗봇(배포 주소 + 깃헙 저장소 주소)</div>
 </div>
+
+<div class="topic" id="s1-6"><h3><span class="stage plan">기획자</span>1-6. (심화·선택) 주문 시스템을 MCP 서버로 만들어 챗봇과 운영자가 함께 쓰기</h3>
+<div class="notice"><b>먼저 질문해 볼게요.</b> 주문 정보를 저장하는 별도 웹 서버(주문 시스템)를 만들고, 그 시스템을 MCP 서버로 만들었어요. 상담 챗봇도 MCP 서버로 만들면 두 서버가 서로 연결될까요?</div>
+<p><b>연결되지 않아요.</b> MCP는 서버끼리 잇는 규격이 아니라, <b>클라이언트가 서버에 붙는</b> 규격이에요. MCP 공식 명세에서 호스트 앱(AI 앱)은 클라이언트를 여러 개 만들 수 있고, 클라이언트 하나는 서버 하나와 짝을 이뤄요. 서버는 도구를 <b>내놓는</b> 쪽이고, 클라이언트는 그 도구를 <b>가져다 쓰는</b> 쪽이에요. 챗봇이 주문 시스템의 도구를 쓰고 싶다면 챗봇은 서버가 아니라 <b>클라이언트</b>가 되어야 해요.</p>
+<div class="table-wrap"><table><tr><th>구성</th><th>하는 일</th><th>MCP에서의 자리</th></tr>
+<tr><td><b>① 주문 시스템</b>(별도 웹 서버)</td><td>주문 DB, 주문 조회 어드민 화면, MCP 주소</td><td><b>MCP 서버</b>: 주문 조회 도구를 내놓아요</td></tr>
+<tr><td><b>② 상담 챗봇</b></td><td>고객 질문에 답하면서 ①의 주문 조회 도구를 써요</td><td>MCP 클라이언트: Claude API의 MCP 커넥터로 연결해요</td></tr>
+<tr><td><b>③ 운영자의 클로드 앱</b></td><td>운영자가 "오늘 배송 지연 주문 찾아 줘"처럼 물어요</td><td>MCP 클라이언트: 직접 추가 커넥터로 연결해요</td></tr>
+</table></div>
+<p>②와 ③이 <b>같은 서버 하나</b>를 쓰는 것이 이 실습의 핵심이에요. ②만 있으면 1-4의 툴 콜링과 결과가 같아서 MCP를 쓸 이유가 드러나지 않아요. 1-2에서 정리한 대로, MCP는 한 번 만든 도구를 여러 AI 앱이 함께 쓰게 할 때 꺼내는 선택지예요.</p>
+<div class="tip-box" role="note"><b>TIP</b><p>챗봇이 MCP 서버가 되는 경우는 따로 있어요. 운영자가 클로드 앱에서 챗봇의 FAQ 검색을 도구로 쓰게 하고 싶을 때예요. 주문 시스템과 연결하는 것과는 목적이 달라요.</p></div>
+<p>설계는 아래 순서로 해요. 단계마다 정할 것을 먼저 정하고, 만드는 일은 1-4처럼 클로드 코드에 프롬프트로 맡겨요.</p>
+<p><b>STEP 1. 주문 시스템과 어드민 화면 정하기</b></p>
+<ul><li>주문 데이터를 챗봇과 다른 곳(별도 파이어베이스 프로젝트 등)에 둬요. 주문의 주인은 챗봇이 아니라 주문 시스템이에요.</li>
+<li>어드민 화면에서 운영자가 주문을 검색하고 상태를 바꿔요. 이 화면은 사람이 쓰는 입구예요.</li>
+<li>정할 것: 주문 칸(주문번호·고객 이메일·상품·상태·배송 도시), 어드민에 들어올 수 있는 사람</li></ul>
+<p><b>STEP 2. MCP 서버로 내놓을 도구 정하기</b></p>
+<ul><li>어드민 화면이 사람용 입구라면, MCP 주소는 AI용 입구예요. 같은 주문 데이터에 입구가 하나 더 생겨요.</li>
+<li>처음에는 <b>읽기 도구만</b> 내놓아요. 예: 내 주문 조회, 상태별 주문 목록. 상태 바꾸기는 어드민 화면에만 둬요.</li>
+<li>정할 것: 도구 이름과 설명, AI에게 내놓지 않을 동작</li></ul>
+<p><b>STEP 3. 누가 누구인지 정하기(인증)</b></p>
+<ul><li>1-4에서는 도구를 내 서버가 실행해서, 이메일을 서버가 로그인 정보로 넣었어요.</li>
+<li>MCP 커넥터를 쓰면 MCP 서버에 연결하는 것은 내 챗봇 서버가 아니라 Anthropic 쪽이에요. 그래서 챗봇 서버가 중간에서 이메일을 끼워 넣을 수 없어요.</li>
+<li>그래서 <b>MCP 서버가 받는 토큰으로 사람을 구분해요.</b> 고객 토큰은 그 고객의 주문만, 운영자 토큰은 전체 주문을 보게 해요.</li>
+<li>정할 것: 토큰 종류(고객용·운영자용), 토큰마다 볼 수 있는 범위</li></ul>
+<p><b>STEP 4. 상담 챗봇을 MCP 클라이언트로 연결하기</b></p>
+<ul><li>챗봇 서버가 Claude에 질문을 보낼 때 MCP 서버 주소와 로그인한 고객의 토큰을 함께 보내요. 클라이언트 코드는 따로 짜지 않아도 돼요.</li>
+<li>MCP 서버는 인터넷에서 열리는 주소여야 해요. Anthropic 쪽이 그 주소로 연결하기 때문이에요.</li>
+<li>확인할 것: "내 주문 어디쯤 왔어요?"에 내 주문만 나오는지, 다른 고객 이메일을 넣어도 남의 주문이 나오지 않는지</li></ul>
+<p><b>STEP 5. 운영자의 클로드 앱을 같은 서버에 연결하고 비교하기</b></p>
+<ul><li>운영자는 클로드 앱에서 같은 MCP 서버를 직접 추가 커넥터로 붙여요. 4주차 지메일 커넥터를 붙였던 것과 같은 방법이에요.</li>
+<li>같은 도구를 챗봇(고객)과 클로드 앱(운영자)이 함께 쓰는지, 토큰에 따라 보이는 범위가 다른지 확인해요.</li>
+<li>결과: 주문 시스템 하나 → 입구 셋(어드민 화면·챗봇·운영자 클로드 앱) 구조도</li></ul>
+<div class="result-box"><b>결과물</b> 주문 시스템 MCP 설계표(구성 3개의 역할, 내놓을 도구, 토큰별 볼 수 있는 범위) + 입구 셋 구조도</div>
+<p class="source-note">출처: MCP <a href="https://modelcontextprotocol.io/specification/2025-11-25/architecture" target="_blank" rel="noopener">Architecture</a>(호스트가 여러 클라이언트를 만들고, 클라이언트 하나는 서버 하나와 1:1 관계, 서버는 도구·리소스·프롬프트를 내놓음) · Claude 문서 <a href="https://platform.claude.com/docs/en/agents-and-tools/mcp-connector" target="_blank" rel="noopener">MCP connector</a>(별도 MCP 클라이언트 없이 Messages API에서 원격 MCP 서버에 연결, 베타, 인증이 필요한 서버는 authorization_token으로 토큰을 넘기고 OAuth 절차는 API를 쓰는 쪽이 처리) (2026-11-23 확인)</p>
+<div class="term-note" role="note" aria-label="이 절의 용어"><b>용어</b><dl><dt>MCP 서버 · MCP 클라이언트</dt><dd>도구를 내놓는 쪽 · 그 도구를 가져다 쓰는 쪽. 클라이언트 하나는 서버 하나와 짝을 이뤄요</dd><dt>호스트</dt><dd>클라이언트를 품고 있는 AI 앱. 예: 클로드 앱</dd><dt>MCP 커넥터(Claude API)</dt><dd>내 서버가 클라이언트 코드를 짜지 않아도 Claude API가 원격 MCP 서버에 연결해 주는 기능</dd></dl></div>
+</div>
+
+
 </section>
 
 <section class="section session" id="s2">
